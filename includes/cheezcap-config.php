@@ -1,0 +1,266 @@
+<?php
+/**
+ * Config for CheezCAP
+ */
+
+$number_entries = array( '', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '12', '14', '16', '18', '20' );
+$number_entries_labels = array( '== Select a Number ==' );
+
+$cap = new CheezCap( array(
+		new CheezCapGroup( 'Featured Posts', 'firstGroup',
+			array(
+				new CheezCapTextOption(
+					'Ribbon Title',
+					'What do you want the ribbon to say, keep this short. Ten characters or so...',
+					'ribbon_title',
+					''
+				),
+				new CheezCapTextOption(
+					'Main Item Title',
+					'This is the big image on the left...',
+					'main_title',
+					''
+				),
+				new CheezCapTextOption(
+					'Main Item Subtitle',
+					'',
+					'main_subtitle',
+					''
+				),
+				new CheezCapTextOption(
+					'Main Item Link',
+					'This is the link that to the main post. Make sure to use add the http://',
+					'main_link',
+					''
+				),
+				new CheezCapTextOption(
+					'Main Item Image URL',
+					'Add the uploaded image URL. Size should be 301px &times; 400px.',
+					'main_url',
+					''
+				),
+				new CheezCapTextOption(
+					'Top Right Item Title',
+					'This is the big image on the top right.',
+					'top_title',
+					''
+				),
+				new CheezCapTextOption(
+					'Top Right Item Subtitle',
+					'',
+					'top_subtitle',
+					''
+				),
+				new CheezCapTextOption(
+					'Top Right Item Link',
+					'This is the link that to the main post. Make sure to use add the http://',
+					'top_link',
+					''
+				),
+				new CheezCapTextOption(
+					'Top Right Image URL',
+					'Add the uploaded image URL. Size should be 290px &times; 180px.',
+					'top_url',
+					''
+				),
+				new CheezCapTextOption(
+					'Bottom Right Item Title',
+					'This is the big image on the top right.',
+					'bottom_title',
+					''
+				),
+				new CheezCapTextOption(
+					'Bottom Right Item Subtitle',
+					'',
+					'bottom_subtitle',
+					''
+				),
+				new CheezCapTextOption(
+					'Bottom Right Item Link',
+					'This is the link that to the main post. Make sure to use add the http://',
+					'bottom_link',
+					''
+				),
+				new CheezCapTextOption(
+					'Bottom Right Image URL',
+					'Add the uploaded image URL. Size should be 290px &times; 180px.',
+					'bottom_url',
+					''
+				),
+				new CheezCapTextOption(
+					'Hot Topics',
+					'Add an ordered list with three items to be used in the Hot Topic section near the search bar at the top of the page.',
+					'hot_topics',
+					'<ul class="terms">
+						<li><a href="http://blog.makezine.com/kids">Kids</a></li>
+						<li><a href="http://blog.makezine.com/arduino/">Arduino</a></li>
+						<li><a href="http://blog.makezine.com/category/desktop-manufacturing/3d-printing-desktop-manufacturing/">3D Printing</a></li>
+					</ul>',
+					'true'
+				),
+				new CheezCapTextOption(
+					'Livestream Embed',
+					'When you add the src of the Flash embed of a Livestream video here, it will add it under the feature boxes on the home page.',
+					'livestream',
+					''
+				),
+				
+			)
+		),
+		new CheezCapGroup( 'Craft Featured Posts', 'second_group',
+			array(
+				new CheezCapTextOption(
+					'Ribbon Title',
+					'What do you want the ribbon to say, keep this short. Ten characters or so...',
+					'craft_ribbon_title',
+					''
+				),
+				new CheezCapTextOption(
+					'Main Item Title',
+					'This is the big image on the left...',
+					'craft_main_title',
+					''
+				),
+				new CheezCapTextOption(
+					'Main Item Subtitle',
+					'',
+					'craft_main_subtitle',
+					''
+				),
+				new CheezCapTextOption(
+					'Main Item Link',
+					'This is the link that to the main post. Make sure to use add the http://',
+					'craft_main_link',
+					''
+				),
+				new CheezCapTextOption(
+					'Main Item Image URL',
+					'Add the uploaded image URL. Size should be 301px &times; 400px.',
+					'craft_main_url',
+					''
+				),
+				new CheezCapTextOption(
+					'Top Right Item Title',
+					'This is the big image on the top right.',
+					'craft_top_title',
+					''
+				),
+				new CheezCapTextOption(
+					'Top Right Item Subtitle',
+					'',
+					'craft_top_subtitle',
+					''
+				),
+				new CheezCapTextOption(
+					'Top Right Item Link',
+					'This is the link that to the main post. Make sure to use add the http://',
+					'craft_top_link',
+					''
+				),
+				new CheezCapTextOption(
+					'Top Right Image URL',
+					'Add the uploaded image URL. Size should be 290px &times; 180px.',
+					'craft_top_url',
+					''
+				),
+				new CheezCapTextOption(
+					'Bottom Right Item Title',
+					'This is the big image on the top right.',
+					'craft_bottom_title',
+					''
+				),
+				new CheezCapTextOption(
+					'Bottom Right Item Subtitle',
+					'',
+					'craft_bottom_subtitle',
+					''
+				),
+				new CheezCapTextOption(
+					'Bottom Right Item Link',
+					'This is the link that to the main post. Make sure to use add the http://',
+					'craft_bottom_link',
+					''
+				),
+				new CheezCapTextOption(
+					'Bottom Right Image URL',
+					'Add the uploaded image URL. Size should be 290px &times; 180px.',
+					'craft_bottom_url',
+					''
+				),
+				new CheezCapTextOption(
+					'Hot Topics',
+					'Add an ordered list with three items to be used in the Hot Topic section near the search bar at the top of the page.',
+					'craft_hot_topics',
+					'<ul class="terms">
+						<li><a href="http://blog.makezine.com/kids">Kids</a></li>
+						<li><a href="http://blog.makezine.com/arduino/">Arduino</a></li>
+						<li><a href="http://blog.makezine.com/category/desktop-manufacturing/3d-printing-desktop-manufacturing/">3D Printing</a></li>
+					</ul>',
+					'true'
+				),
+				new CheezCapTextOption(
+					'BIG OL\' YOUTUBE VIDEO',
+					'When you add the Iframe embed of a YouTube video here, it will add it under the feature boxes on the home page.',
+					'craft_youtube',
+					''
+				),
+				new CheezCapTextOption(
+					'Video Heading',
+					'This goes above the YouTube video',
+					'youtube_feature_heading',
+					''
+				),
+			)
+		),
+		new CheezCapGroup( 'Featured Content', 'anotherGroup',
+			array(
+				new CheezCapTextOption(
+					'BIG OL\' YOUTUBE VIDEO',
+					'When you add the Iframe embed of a YouTube video here, it will add it under the feature boxes on the home page.',
+					'youtube',
+					''
+				),
+				new CheezCapTextOption(
+					'Featured Box Heading',
+					'Something along the lines of "Maker Shed Exclusive"',
+					'feature_heading',
+					'Maker Shed Exclusive'
+				),
+				new CheezCapTextOption(
+					'Featured Box Title',
+					'This is the title of the content that you want to go in the box.',
+					'feature_title',
+					'The Arduino Forager'
+				),
+				new CheezCapTextOption(
+					'Featured Box Caption',
+					'Keep this caption kinda short, no more then 30 words. If you need to use an apostrope, type & #39; w/o space.',
+					'feature_caption',
+					'Find out why the SuperCap racer is the best kit to start learning how to solder today. This is a great little write up rolls...',
+					true
+				),
+				new CheezCapTextOption(
+					'Featured Box Image URL',
+					'Add the image URL here. Don\'t forget the http://',
+					'feature_img'
+				),
+				new CheezCapTextOption(
+					'Featured Box Link URL',
+					'Add the link URL here. Don\'t forget the http://',
+					'feature_link',
+					'http://makershed.com'
+				),	
+			)
+		),
+	), array(
+		'themename' => 'Home', // used on the title of the custom admin page
+		'req_cap_to_edit' => 'manage_options', // the user capability that is required to access the CheezCap settings page
+		'cap_menu_position' => 99, // OPTIONAL: This value represents the order in the dashboard menu that the CheezCap menu will display in. Larger numbers push it further down.
+		'cap_icon_url' => '', // OPTIONAL: Path to a custom icon for the CheezCap menu item. ex. $cap_icon_url = WP_CONTENT_URL . '/your-theme-name/images/awesomeicon.png'; Image size should be around 20px x 20px.
+	)
+);
+
+
+function make_get_cap_option( $option_name ) {
+	return cheezcap_get_option( $option_name );
+}
