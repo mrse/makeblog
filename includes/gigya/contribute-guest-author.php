@@ -144,7 +144,7 @@ function gigya_makeblog_register() {
 		wp_set_post_terms( $make_post_id, $userLogin, "author", false );
 		
 		//setUID
-		$url = "https://socialize-api.gigya.com/socialize.setUID?apiKey=".rawurlencode(getGigyaAPIKey())."&secret=".rawurlencode(getGigyaSecretKey())."&format=json&UID=".$uid."&siteUID=".$make_post_id;
+		$url = "https://socialize-api.gigya.com/socialize.setUID?apiKey=".rawurlencode(get_gigya_api_key())."&secret=".rawurlencode(get_gigya_secret_key())."&format=json&UID=".$uid."&siteUID=".$make_post_id;
 		$contents = wpcom_vip_file_get_contents( $url, 3, 900, array( 'obey_cache_control_header' => false ) );
 		$jobj = json_decode($contents);
 		
@@ -336,8 +336,8 @@ function get_esp_listener($srv) {
 function get_esp_api_url($srv,$req) {
 	// https://www.pubservice.com/wsrvc/Listener<##>.asmx/<SERVICE NAME>?CUID=<CUID>&CPWD=<CPWD>&REQ=<Request in XML format>
 	
-	$base  = getESPBaseURL();
-	$esp   = getESPAccount();
+	$base  = get_esp_base_url();
+	$esp   = get_esp_account();
 	$lisnr = get_esp_listener($srv);
 
 	$url = $base . '/wsrvc/Listener' . $lisnr . '.asmx/' . $srv . '?CUID=' . $esp->cuid . '&CPWD=' . rawurlencode($esp->cpwd) . '&REQ=' . $req;
@@ -351,7 +351,7 @@ function get_esp_xml($srv,$ary) {
 		$string .= '<'.$k.'>'.$v.'</'.$k.'>';
 	}
 	
-	$body =  '<?xml version="1.0" encoding="utf-8" ?>'
+	$xml =  '<?xml version="1.0" encoding="utf-8" ?>'
 			.'<'.$srv.'request>'
 			.$string
 			.'</'.$srv.'request>';
@@ -365,7 +365,7 @@ function esp_test() {
 	$response = array();
 	$response['complete'] = false;
 	
-	$pubcode = getESPPubCode();
+	$pubcode = get_esp_pubcode();
 	$uid = "";
 	$upwd = "";
 	$params = array(
@@ -377,18 +377,18 @@ function esp_test() {
 	$xmlreq = get_esp_xml( "ws1000",$params);
 	$url    = get_esp_api_url("ws1000",$xmlreq);
 	
-	$xmlresp = wpcom_vip_file_get_contents( $url );
+//	$xmlresp = wpcom_vip_file_get_contents( $url );
 	
-	$simpleXmlElem = simplexml_load_string( $xmlresp );
+//	$simpleXmlElem = simplexml_load_string( $xmlresp );
 	
-	if ( ! $simpleXmlElem ) {
-		$response['error'] = "ESP API";
-	} else {
-		$json = XML2JSON( $xmlresp );
+//	if ( ! $simpleXmlElem ) {
+//		$response['error'] = "ESP API";
+//	} else {
+//		$json = XML2JSON( $xmlresp );
 		$response['xml']  = $xmlresp;
-		$response['json'] = $json;
+//		$response['json'] = $json;
 		$response['complete'] = true;
-	}
+//	}
 	
 	//return AJAX response
 	header( "Content-Type: application/json" );

@@ -1,24 +1,24 @@
 <?php
 
-function getGigyaAPIKey() {
+function get_gigya_api_key() {
 //	return '3_L_MW5BjUW-9SCHSxto-985_WeNNnpeLOtohnGzJaYe7Xs-3cuj_HuYFurMq24jti'; //prod *.makezine.com
 	return '3_nUMOBEBpLoLnfNUbwAo9FCwTqzd6vTjpVt3Ojd807EIT5IcF94eM9hoV8vcqjoe8'; //dev *.smrtdsgn.com
 }
 
-function getGigyaSecretKey() {
+function get_gigya_secret_key() {
 	return 'GlvZcbxIY6Oy7lnWJheh56DXj3wKAiG3yVqhv++VLZM='; //both dev and prod
 }
 
-function getESPBaseURL() {
+function get_esp_base_url() {
 //	return 'https://www.pubservice.com'; //prod
 	return 'https://espdev.espcomp.net'; //dev
 }
 
-function getESPPubCode() {
+function get_esp_pubcode() {
 	return 'MK';
 }
 
-function getESPAccount() {
+function get_esp_account() {
 	$esp = array(
 		 'cuid' => '123'
 		,'cpwd' => 'pwd'
