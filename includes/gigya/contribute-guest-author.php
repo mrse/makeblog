@@ -493,7 +493,7 @@ function get_esp_api_url($srv,$req) {
 	$esp   = get_esp_account();
 	$lisnr = get_esp_listener($srv);
 
-	$url = $base . '/wsrvc/Listener' . $lisnr . '.asmx/' . $srv . '?CUID=' . $esp->cuid . '&CPWD=' . rawurlencode($esp->cpwd) . '&REQ=' . urlencode($req);
+	$url = $base . '/wsrvc/Listener' . $lisnr . '.asmx/' . $srv . '?CUID=' . $esp->cuid . '&CPWD=' . rawurlencode($esp->cpwd) . '&REQ=' . rawurlencode($req);
 	
 	return $url;
 }
@@ -554,6 +554,7 @@ function test_esp() {
 		} else {
 			
 			$ary = XML2array( $xmlresp );
+			$response['xmlresp']  = $xmlresp;
 			$response['respobj']  =  $ary;
 			
 			if( isset($ary['messagecodes']) ) { //grab an translate all message codes
