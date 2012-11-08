@@ -96,7 +96,7 @@ function gigya_makeblog_register() {
 	$uid     = $payload['UID'];
 	$tstamp  = $payload['signatureTimestamp'];
 	$sig     = $payload['UIDSignature'];
-	$isValid = SigUtils::validateUserSignature($uid, $tstamp, getGigyaSecretKey(), $sig);
+	$isValid = SigUtils::validateUserSignature($uid, $tstamp, get_gigya_secret_key(), $sig);
 
 	if( true === $isValid ) { //signature is good
 

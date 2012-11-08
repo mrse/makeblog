@@ -29,7 +29,7 @@ function make_action_after_setup_theme() {
 	// Post Formats
 	add_theme_support( 'post-formats', array( 'gallery', 'aside', 'video' ) );
 	// Custom Backgrounds
-	add_custom_background();
+	//add_custom_background();
 	//Infinite Scroll!
 	//add_theme_support( 'infinite-scroll', 'content' );
 }
@@ -174,6 +174,8 @@ function make_enqueue_jquery() {
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
 	wp_enqueue_style( 'make-bootstrap', get_stylesheet_directory_uri() . '/css/bootstrap.css' );
 	wp_enqueue_style( 'make', get_stylesheet_directory_uri() . '/style.css' );
+	wp_enqueue_script( 'gigya', 'http://cdn.gigya.com/js/socialize.js?apiKey='.get_gigya_api_key(), array( 'jquery' ) );
+	wp_enqueue_script( 'make-gigya', get_stylesheet_directory_uri() . '/includes/gigya/gigyaUtil.js', array( 'jquery' ) );
 }
 
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
