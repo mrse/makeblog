@@ -60,6 +60,7 @@
 							<li class=""><a href="http://makeprojects.com">Make: Projects</a></li>
 							<li class=""><a href="http://makershed.com">Maker Shed</a></li>
 							<!-- li class=""><a href="http://kits.makezine.com">Kits</a></li -->
+							<li class=""><a href="#" onclick="gigyaUtil.testESP();">ESP</a></li>
 							<li class="gigya-logged-out"><a href="#" onclick="gigyaUtil.showRegistrationModal();">Register</a></li>
 							<li class="gigya-logged-out"><a href="#" onclick="gigyaUtil.showLoginModal();">Login</a></li>
 							<li class="gigya-logged-in" style="display:none;"><img src="" class="gigya-thumbnail" style="width:25px; height:25px; display:none;" /> <a href="#" onclick="gigyaUtil.showProfileModal();"><span class="gigya-first-name"></span></a></li>

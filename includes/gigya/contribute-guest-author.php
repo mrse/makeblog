@@ -6,8 +6,8 @@ add_action('wp_ajax_nopriv_gigya_makeblog_register', 'gigya_makeblog_register');
 add_action('wp_ajax_gigya_makeblog_update', 'gigya_makeblog_update');
 add_action('wp_ajax_nopriv_gigya_makeblog_update', 'gigya_makeblog_update');
 
-add_action('wp_ajax_esp_test', 'esp_test');
-add_action('wp_ajax_nopriv_esp_test', 'esp_test');
+add_action('wp_ajax_test_esp', 'test_esp');
+add_action('wp_ajax_nopriv_test_esp', 'test_esp');
 
 
 function gigya_makeblog_register() {
@@ -359,15 +359,15 @@ function get_esp_xml($srv,$ary) {
 	return $xml;
 }
 
-function esp_test() {
+function test_esp() {
 	
 	$payload = $_POST;
 	$response = array();
 	$response['complete'] = false;
 	
 	$pubcode = get_esp_pubcode();
-	$uid = "";
-	$upwd = "";
+	$uid = "9876";
+	$upwd = "apassword";
 	$params = array(
 		 "pubcode" => $pubcode
 		,"uid"     => $uid
@@ -377,6 +377,9 @@ function esp_test() {
 	$xmlreq = get_esp_xml( "ws1000",$params);
 	$url    = get_esp_api_url("ws1000",$xmlreq);
 	
+	$response['xmlreq'] = $xmlreq;
+	$response['url']    = $url;
+
 //	$xmlresp = wpcom_vip_file_get_contents( $url );
 	
 //	$simpleXmlElem = simplexml_load_string( $xmlresp );
@@ -385,7 +388,7 @@ function esp_test() {
 //		$response['error'] = "ESP API";
 //	} else {
 //		$json = XML2JSON( $xmlresp );
-		$response['xml']  = $xmlresp;
+//		$response['xmlresp']  = $xmlresp;
 //		$response['json'] = $json;
 		$response['complete'] = true;
 //	}

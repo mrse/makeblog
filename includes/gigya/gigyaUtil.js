@@ -259,6 +259,33 @@ var gigyaUtil = {
 		
 //		if(gigyaUtil.debug) console.log("trackEvent() end reached");
 	}
+	,testESP: function() {
+
+		var d = {};
+		d.action = "test_esp";
+		jQuery.ajax({
+
+			type: "POST"
+			,cache: false
+			,url: "/wp-admin/admin-ajax.php"
+			,data: d
+			,success: function(data, textStatus, jqXHR) {
+				if(gigyaUtil.debug) console.log(data);
+				
+				if( data.complete ) {
+					if(gigyaUtil.debug) console.log("success!");
+				} else {
+					if(gigyaUtil.debug) console.log("fail!");
+				}
+
+			}
+			,error: function(jqXHR, textStatus, errorThrown) {
+				if(gigyaUtil.debug) console.log(textStatus+": "+errorThrown);
+			}
+
+		});
+
+	}
 };
 
 /////////////
