@@ -340,13 +340,16 @@ function get_esp_api_url($srv,$req) {
 	$esp   = get_esp_account();
 	$lisnr = get_esp_listener($srv);
 
-	$url = $base . '/wsrvc/Listener' . $lisnr . '.asmx/' . $srv . '?CUID=' . $esp->cuid . '&CPWD=' . rawurlencode($esp->cpwd) . '&REQ=' . $req;
+	$url = $base . '/wsrvc/Listener' . $lisnr . '.asmx/' . $srv . '?CUID=' . $esp->cuid . '&CPWD=' . rawurlencode($esp->cpwd) . '&REQ=' . urlencode($req);
 	
 	return $url;
 }
 
 function get_esp_xml($srv,$ary) {
-	$string = "";
+
+	$pubcode = get_esp_pubcode();
+
+	$string = '<pubcode>'.$pubcode.'</pubcode>';
 	foreach($ary as $k=>$v) {
 		$string .= '<'.$k.'>'.$v.'</'.$k.'>';
 	}
@@ -365,33 +368,39 @@ function test_esp() {
 	$response = array();
 	$response['complete'] = false;
 	
-	$pubcode = get_esp_pubcode();
 	$uid = "9876";
 	$upwd = "apassword";
 	$params = array(
-		 "pubcode" => $pubcode
-		,"uid"     => $uid
-		,"upwd"    => $upwd
+		 "lname"  => "spurlock"
+		,"fname" => "jake"
 	);
 	
-	$xmlreq = get_esp_xml( "ws1000",$params);
-	$url    = get_esp_api_url("ws1000",$xmlreq);
+	$xmlreq = get_esp_xml("ws3600",$params);
+	$url    = get_esp_api_url("ws3600",$xmlreq);
 	
 	$response['xmlreq'] = $xmlreq;
 	$response['url']    = $url;
 
-//	$xmlresp = wpcom_vip_file_get_contents( $url );
+	$xmlresp = wpcom_vip_file_get_contents( $url, 3, 900, array( 'obey_cache_control_header' => false ) );
+	$response['xmlresp']  = $xmlresp;
 	
-//	$simpleXmlElem = simplexml_load_string( $xmlresp );
+	if( $xmlresp ) {
 	
-//	if ( ! $simpleXmlElem ) {
-//		$response['error'] = "ESP API";
-//	} else {
-//		$json = XML2JSON( $xmlresp );
-//		$response['xmlresp']  = $xmlresp;
-//		$response['json'] = $json;
-		$response['complete'] = true;
-//	}
+		$simpleXmlElem = simplexml_load_string( $xmlresp );
+		
+		if ( ! $simpleXmlElem ) {
+			$response['error'] = "ESP API";
+			$response['message'] = "can't parse xml response";
+		} else {
+			$json = XML2JSON( $xmlresp );
+			$response['json'] = $json;
+			$response['complete'] = true;
+		}
+
+	} else {
+		$response['error'] = "wpcom_vip_file_get_contents";
+		$response['message'] = "unable to get contents from url";
+	}
 	
 	//return AJAX response
 	header( "Content-Type: application/json" );
