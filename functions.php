@@ -122,7 +122,19 @@ include_once dirname(__file__) . '/includes/projects-cpt.php';
 include_once dirname(__file__) . '/includes/video-cpt.php';
 
 // 26. Order Bender
- 
+
 include_once dirname(__file__) . '/includes/order-bender.php';
+
+// 27. Gigya Signature
+
+include_once dirname(__file__) . '/includes/gigya/SigUtils.php';
+
+// 28. Gigya Constants
+
+include_once dirname(__file__) . '/includes/gigya/GSConfig.php';
+
+// 29. Gigya - Contribute
+
+include_once dirname(__file__) . '/includes/gigya/contribute-guest-author.php';
 
 ?>
