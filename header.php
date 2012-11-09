@@ -68,10 +68,12 @@
 						</ul>
 					</div>
 					<div class="pull-right">
+					
 						<form action="http://blog.makezine.com/search/" class="form navbar-search">
-							<input type="text" class="search-query span1" name="q" placeholder="" />
+							<input type="text" class="span2 search-query" name="q" placeholder="" />
 							<input type="submit" class="btn btn-primary" style="height:28px" value="Search" />
 						</form>
+						
 					</div>
 				</div>
 			</div>
@@ -153,7 +155,7 @@
 				<div class="container">
 
 					<div class="topics">
-
+					
 						<h5 class="blue">Hot Topics:</h5>
 
 						<?php echo wp_kses_post( stripslashes( make_get_cap_option( 'hot_topics' ) ) ); ?>
@@ -161,8 +163,8 @@
 					</div>
 
 					<div class="pull-right">
-
-						<a href="http://blog.makezine.com/topics"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/see_all_topics.png" alt="See All Topics" class="see pull-right" /></a><!--  -->
+					
+						<a href="http://blog.makezine.com/topics"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/see_all_topics.png" alt="See All Topics" class="see" /></a><!--  -->
 
 					</div>
 

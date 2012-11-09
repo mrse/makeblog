@@ -91,3 +91,26 @@ function make_subscribe_iframe( $atts, $content = null ) {
 	return '<iframe width="100%" height="' . esc_attr( (int)$height ) . '" src="'. esc_url( 'http://espdev.espcomp.net/mk/' . $content . '.aspx?PC=MK' ) .'" frameborder="0"></iframe>';
 }
 add_shortcode( 'subscribe', 'make_subscribe_iframe' );
+
+function make_printing_guide_blurb() {
+
+	return '<div class="alert alert-info">
+
+			<img src="'.get_stylesheet_directory_uri().'/img/SIP4_Cover_RGB1.jpg" class="thumbnail pull-right" style="width:125px; height: auto;" />
+
+			<h4 style="text-align:center;">MAKE Ultimate Guide To 3D Printing</h4>
+			
+			<ul>
+				<li>3D Printers Buyer\'s Guide</li>
+				<li>Get started in 3D</li>
+				<li>10 things you need to know</li>
+				<li>Best software to use</li>
+				<li>How to scan objects</li>
+			</ul>
+			
+			<p><a class="btn btn-primary" href="http://www.makershed.com/Make_Ultimate_Guide_to_3D_Printing_p/1449357377.htm">Buy now!</a></p>
+
+		</div>';
+}
+
+add_shortcode( 'printing', 'make_printing_guide_blurb' );

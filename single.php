@@ -38,7 +38,7 @@
 
 									<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
-									<p class="meta top">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>
+									<p class="meta top">By <?php if( function_exists( 'coauthors_posts_links' ) ) {	coauthors_posts_links(); } else { the_author_posts_link(); } ?> , <?php the_time('Y/m/d \@ g:i a') ?></p>
 
 									<div class="social"></div>
 
@@ -73,7 +73,12 @@
 											
 											<div class="span-well well">
 											
-												<p>Posted by <?php the_author_posts_link(); ?> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>
+												<p>Posted by 
+													<?php if(function_exists('coauthors_posts_links')) {
+														coauthors_posts_links();
+													} else { 
+														the_author_posts_link();
+													} ?> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>
 												<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
 
 											</div>

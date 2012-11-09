@@ -32,6 +32,7 @@ function make_action_after_setup_theme() {
 	//add_custom_background();
 	//Infinite Scroll!
 	//add_theme_support( 'infinite-scroll', 'content' );
+	add_theme_support( 'automatic-feed-links' );
 }
 add_action( 'after_setup_theme', 'make_action_after_setup_theme' );
 
@@ -438,10 +439,12 @@ function make_infinite_scroll_render() {
 }
 
 function make_get_category_name() {
+	global $post;
 	if ( is_single() ) {
-		$cats = get_the_category();
-		if (!empty($cats)) {
-			$cat = $cats[0]; // let's just assume the post has one category
+		$cats = get_the_terms($post->ID, 'category');
+		$sortcats = array_shift($cats);
+		if (!empty($sortcats)) {
+			$cat = $sortcats; // let's just assume the post has one category
 		}
 	}
 	elseif ( is_category() ) { // category archives

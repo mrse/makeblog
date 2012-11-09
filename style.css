@@ -2248,17 +2248,25 @@ blockquote p {
 	color:#00315d
 }
 
+.navbar-search {
+	margin-top:4px;
+}
+
 .navbar-search .search-query {
-	background-color:#ccc;
 }
 
 .topics {
-	width:783px;
+	width:690px;
+	float:left;
+}
+
+.topics ul {
 	float:left;
 }
 
 .see {
 	margin-top:7px;
+	float:left;
 }
 
 #nav-buttons {
@@ -2739,4 +2747,20 @@ body#shop {
 .wpcom-related-posts ul li img {
 	padding:4px;
 	border:1px solid #999;
+}
+
+.alert {
+	padding: 8px 14px 8px 14px !important;
+}
+
+.footer {
+	/*this is a comment*/
+}
+
+.feature li {
+	list-style-image:url('img/arrows.png');
+}
+
+.feature li.red {
+	list-style-image:url('img/arrows-red.png');
 }

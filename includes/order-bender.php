@@ -85,6 +85,7 @@ class mtekk_order_bender
 			'name' => $this->unique_prefix . '_primary_cat',
 			'id' => 'primary_cat',
 			'echo' => 1,
+			'orderby' => 'name',
 			'show_option_none' => __( '&mdash; Select &mdash;' ),
 			'option_none_value' => '0',
 			'selected' => $pref_id));

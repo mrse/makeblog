@@ -25,24 +25,77 @@
 							<p><strong>Join the <span class="red">Make:</span> newsletter and receive exclusive discounts and news!</strong></p>
 
 						</div>
-
-						<div class="drill side">
-
-							<div class="inner">
 						
-								<h3>Narrow Your Search</h3>
+						<?php 
+							global $post;
+							$meta = get_post_meta( get_the_ID(), 'hide' );
+							if ('review' == get_post_type() && (empty($meta[0]) == 'on') ) { ?>
+
+								<div class="drill side">
+
+									<div class="inner">
 								
-								<ul id="sidebar">
+										<h3>Narrow Your Search</h3>
+										
+										<ul id="sidebar">
+										
+											<?php if ( !function_exists('dynamic_sidebar')
+													|| !dynamic_sidebar() ) : ?>
+											<?php endif; ?>
+										
+										</ul>
+										
+									</div>
+
+								</div>
 								
-									<?php if ( !function_exists('dynamic_sidebar')
-											|| !dynamic_sidebar() ) : ?>
-									<?php endif; ?>
-								
-								</ul>
-								
+						<?php } else { ?>
+						
+						<div class="categories">
+
+							<div class="row">
+
+								<div class="span2">
+
+									<ul>
+										<li><a href="http://blog.makezine.com/category/art-design/">Art &amp; Design</a></li>
+										<li><a href="http://blog.makezine.com/category/computers-mobile/">Computers &amp; Mobile</a></li>
+										<li><a href="http://blog.makezine.com/category/craft/">Craft</a></li>
+										<li><a href="http://blog.makezine.com/category/desktop-manufacturing-2/">Desktop Manufacturing</a></li>
+										<li><a href="http://blog.makezine.com/category/electronics/">Electronics</a></li>
+										<li><a href="http://blog.makezine.com/category/energy/">Energy</a></li>
+										<li><a href="http://blog.makezine.com/category/events-holidays/">Events &amp; Holidays</a></li>
+										<li><a href="http://blog.makezine.com/category/flight-projectiles/">Flight &amp; Projectiles</a></li>
+										<li><a href="http://blog.makezine.com/category/green/">Green</a></li>
+										<li><a href="http://blog.makezine.com/category/home-and-garden/">Home &amp; Garden</a></li>
+										
+									</ul>
+
+								</div>
+
+								<div class="span2">
+
+									<ul>
+										<li><a href="http://blog.makezine.com/category/imaging/">Imaging</a></li>
+										<li><a href="http://blog.makezine.com/category/kids-family/">Kids</a></li>
+										<li><a href="http://blog.makezine.com/category/makers/">Makers</a></li>
+										<li><a href="http://blog.makezine.com/category/microcontrollers-2/">Microcontrollers</a></li>
+										<li><a href="http://blog.makezine.com/category/recreation-entertainment/">Recreation &amp; Entertainment</a></li>
+										<li><a href="http://blog.makezine.com/category/robotics/">Robots</a></li>
+										<li><a href="http://blog.makezine.com/category/science/">Science</a></li>
+										<li><a href="http://blog.makezine.com/category/shop-craft/">Shop Craft</a></li>
+										<li><a href="http://blog.makezine.com/category/toys_and_games/">Toys &amp; Games</a></li>
+										<li><a href="http://blog.makezine.com/category/workshop-tools/">Workshops &amp; Tools</a></li>
+										<li><a href="http://blog.makezine.com/category/vehicles-2/">Vehicles</a></li>
+									</ul>
+
+								</div>
+
 							</div>
 
 						</div>
+						
+						<?php } ?>
 
 						<div class="new-dotw">
 
