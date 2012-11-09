@@ -20,8 +20,8 @@ function get_esp_pubcode() {
 
 function get_esp_account() {
 	$esp = array(
-		 'cuid' => 'MWS' //OJS' //Jake Spurlock, jspurlock@oreilly.com
-		,'cpwd' => '8184874500'
+		 'cuid' => 'MWS' //Make Web Services
+		,'cpwd' => 'fume29teal'
 	);
 	
 	return (object) $esp;

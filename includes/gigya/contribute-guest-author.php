@@ -337,6 +337,7 @@ function get_esp_listener($srv) {
 
 function get_esp_error_meaning($code) {
 	$k = ''.$code; //force to string
+	$meaning = "unknown";
 	
 	$map = array(
 		//general
@@ -483,7 +484,11 @@ function get_esp_error_meaning($code) {
 		,"41001" => "No Accounts Found"
 	);
 	
-	return $map[$k];
+	if( array_key_exists($k,$map) ) {
+		$meaning = $map[$k];
+	}
+
+	return $meaning;
 }
 
 function get_esp_api_url($srv,$req) {
@@ -515,23 +520,15 @@ function get_esp_xml($srv,$ary) {
 	return $xml;
 }
 
-function test_esp() {
+function get_esp_api($srv,$params) {
 	
-	$payload = $_POST;
 	$response = array();
 	$response['complete'] = false;
+		
+	$xmlreq =     get_esp_xml($srv,$params); //generate xml request
+	$url    = get_esp_api_url($srv,$xmlreq); //generate url for GET
 	
-	$uid = "9876";
-	$upwd = "apassword";
-	$params = array(
-		 "lname"  => "spurlock"
-		,"fname" => "jake"
-	);
-	
-	$xmlreq =     get_esp_xml("ws3600",$params); //generate xml request
-	$url    = get_esp_api_url("ws3600",$xmlreq); //generate url for GET
-	
-	$response['xmlreq'] = $xmlreq;
+//	$response['xmlreq'] = $xmlreq;
 
 	$xmlresp = wpcom_vip_file_get_contents( $url, 3, 900, array( 'obey_cache_control_header' => false ) ); //send GET request
 	
@@ -554,13 +551,94 @@ function test_esp() {
 		} else {
 			
 			$ary = XML2array( $xmlresp );
-			$response['xmlresp']  = $xmlresp;
-			$response['respobj']  =  $ary;
+			$response['respobj'] = $ary;
+//			$response['url']     = $url;
+//			$response['xmlresp'] = $xmlresp;
 			
 			if( isset($ary['messagecodes']) ) { //grab an translate all message codes
 
 				//get all message codes and meanings
-				$codes = $ary['messagecodes'];
+				$codes = $ary['messagecodes']['code'];
+//				$response['codes'] = $codes;
+				$codeary = array();
+				foreach($codes as $code) {
+					$meaning = get_esp_error_meaning($code);
+					if( isset($meaning) ) {
+						$codeary[$code] = $meaning;
+					}
+				}
+				$response['messagecodes'] = $codeary;
+
+			}
+
+			if( "0" == $ary['returncode'] ) { //transaction failed
+
+				//set transaction result in response
+				$response['tx'] = "failure";
+								
+			} else { //transaction succeeded
+				
+				//
+				// process transaction results
+				//
+				
+				//set transactions flags in response
+				$response['tx'] = "success";
+				$response['complete'] = true;
+			}
+		}
+
+	}
+	
+	return $response;
+}
+
+function test_esp() {
+	
+	$payload = $_POST;
+	$response = array();
+	$response['complete'] = false;
+	
+	$params = array(
+		 "uid"  => "stefan"
+		,"upwd" => "stefan"
+	);
+	
+	$xmlreq =     get_esp_xml("ws1000",$params); //generate xml request
+	$url    = get_esp_api_url("ws1000",$xmlreq); //generate url for GET
+	
+//	$response['xmlreq'] = $xmlreq;
+
+	$xmlresp = wpcom_vip_file_get_contents( $url, 3, 900, array( 'obey_cache_control_header' => false ) ); //send GET request
+	
+	if( ! $xmlresp ) { //GET returned false
+	
+		$response['error']   = "wpcom_vip_file_get_contents";
+		$response['message'] = "unable to get contents from url: ".$url;
+		$response['url']    = $url;
+
+	} else { //xml returned ok
+
+		$simpleXmlElem = simplexml_load_string( $xmlresp ); //load xml into object
+		
+		if ( ! $simpleXmlElem ) { //unable to parse xml
+			
+			$response['error'] = "ESP API";
+			$response['message'] = "can't parse xml response";
+			$response['xmlresp']  = $xmlresp;
+			
+		} else {
+			
+			$ary = XML2array( $xmlresp );
+			$response['respobj'] = $ary;
+//			$response['url']     = $url;
+//			$response['xmlresp'] = $xmlresp;
+			
+			if( isset($ary['messagecodes']) ) { //grab an translate all message codes
+
+				//get all message codes and meanings
+				$codes = $ary['messagecodes']['code'];
+//				$response['codes'] = $codes;
 				$codeary = array();
 				foreach($codes as $code) {
 					$meaning = get_esp_error_meaning($code);
@@ -596,7 +674,80 @@ function test_esp() {
 	echo json_encode($response);
 
 	exit;
+}
 
+/**
+ * Determine if user is logged into Gigya
+ *
+ * returns true if logged in, false otherwise
+ */
+function is_gigya_user_logged_in() {
+	
+	$isLoggedIn = false;
+	
+	if( ! empty($_COOKIE['gigyaLoggedIn']) ) {
+		
+		$isLoggedIn = true;
+		
+	}
+	
+	return $isLoggedIn;
+}
+
+/**
+ * Determine if user is an ESP subscriber
+ *
+ * returns acct no. if logged in, false otherwise
+ */
+function is_gigya_user_esp_subscriber() {
+	
+	$acct = false;
+	
+	return $acct;
+}
+
+/**
+ *
+ */
+function is_gigya_user_account_status() {
+
+	return;
+}
+
+/**
+ * Get guest author id / Gigya user id if user is logged into Gigya
+ *
+ * returns wp post id / gigya uid if logged in, false otherwise
+ */
+function get_gigya_user_uid() {
+	
+	$uid = false;
+	
+	if( ! empty($_COOKIE['gigyaLoggedIn']) ) {
+		
+		$uid = $_COOKIE['gigyaLoggedIn'];
+		
+	}
+	
+	return $uid;
+}
+
+/**
+ *
+ */
+function get_gigya_user_array() {
+
+	//setUID
+	$include = "profile,data"; //possible: "data,emails,identities-active,identities-all,irank,loginIDs,profile"
+	$url = "https://socialize-api.gigya.com/accounts.getAccountInfo?apiKey=".rawurlencode(get_gigya_api_key())."&secret=".rawurlencode(get_gigya_secret_key())."&format=json&UID=".$uid."&include=".$include;
+	$contents = wpcom_vip_file_get_contents( $url, 3, 900, array( 'obey_cache_control_header' => false ) );
+	$jobj = json_decode($contents);
+	$userarray = array(
+		"profile" => $jobj['profile']
+		,"data" => $jobj['data']
+	);
+		
+	return $userarray;
 }
 
 ?>
