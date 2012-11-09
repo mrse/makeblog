@@ -6,6 +6,9 @@ add_action('wp_ajax_nopriv_gigya_makeblog_register', 'gigya_makeblog_register');
 add_action('wp_ajax_gigya_makeblog_update', 'gigya_makeblog_update');
 add_action('wp_ajax_nopriv_gigya_makeblog_update', 'gigya_makeblog_update');
 
+add_action('wp_ajax_gigya_esp_screenset', 'gigya_esp_screenset');
+add_action('wp_ajax_nopriv_gigya_esp_screenset', 'gigya_esp_screenset');
+
 add_action('wp_ajax_test_esp', 'test_esp');
 add_action('wp_ajax_nopriv_test_esp', 'test_esp');
 
@@ -353,7 +356,7 @@ function get_esp_error_meaning($code) {
 		//ws1000, ws1000tx Add New Subscriber(s) or Product Buyer
 		,"10010" => "Good Logon"
 		,"10011" => "Good Logon - Credit card information is about to expire" // ***
-		,"10012" => "Good Logon – One or more related accounts about to expire or have expired	" // ***
+		,"10012" => "Good Logon – One or more related accounts about to expire or have expired" // ***
 		,"10013" => "Subscriber is receiving credit service (no underlying paid service)"
 		,"10015" => "Bad Logon - User ID invalid" // ***
 		,"10016" => "Bad Logon - Password invalid" // ***
@@ -509,7 +512,15 @@ function get_esp_xml($srv,$ary) {
 
 	$string = '<pubcode>'.$pubcode.'</pubcode>';
 	foreach($ary as $k=>$v) {
-		$string .= '<'.$k.'>'.$v.'</'.$k.'>';
+		if( is_array($v) ) {
+			$string .= '<'.$k.'>';
+			foreach($v as $sk=>$sv) {
+				$string .= '<'.$sk.'>'.$sv.'</'.$sk.'>';
+			}
+			$string .= '</'.$k.'>';
+		} else {
+			$string .= '<'.$k.'>'.$v.'</'.$k.'>';
+		}
 	}
 	
 	$xml =  '<?xml version="1.0" encoding="utf-8" ?>'
@@ -528,7 +539,7 @@ function get_esp_api($srv,$params) {
 	$xmlreq =     get_esp_xml($srv,$params); //generate xml request
 	$url    = get_esp_api_url($srv,$xmlreq); //generate url for GET
 	
-//	$response['xmlreq'] = $xmlreq;
+	$response['xml_req'] = $xmlreq;
 
 	$xmlresp = wpcom_vip_file_get_contents( $url, 3, 900, array( 'obey_cache_control_header' => false ) ); //send GET request
 	
@@ -546,44 +557,53 @@ function get_esp_api($srv,$params) {
 			
 			$response['error'] = "ESP API";
 			$response['message'] = "can't parse xml response";
-			$response['xmlresp']  = $xmlresp;
+			$response['xml_resp']  = $xmlresp;
 			
 		} else {
 			
 			$ary = XML2array( $xmlresp );
-			$response['respobj'] = $ary;
-//			$response['url']     = $url;
-//			$response['xmlresp'] = $xmlresp;
+			$response['esp'] = $ary;
+			$response['url']     = $url;
+			$response['xml_resp'] = $xmlresp;
 			
 			if( isset($ary['messagecodes']) ) { //grab an translate all message codes
 
 				//get all message codes and meanings
-				$codes = $ary['messagecodes']['code'];
+				$codes = $ary['messagecodes'];
 //				$response['codes'] = $codes;
+				if( is_array($codes['code']) ) {
+					$codes = $codes['code'];
+				}
 				$codeary = array();
-				foreach($codes as $code) {
-					$meaning = get_esp_error_meaning($code);
-					if( isset($meaning) ) {
-						$codeary[$code] = $meaning;
+				if( is_array($codes) ) {
+					foreach($codes as $code) {
+						if( ! empty($code) ) {
+							$meaning = get_esp_error_meaning($code);
+							if( isset($meaning) ) {
+								$codeary[$code] = $meaning;
+							}
+						}
+					}
+				} else {
+//					$response['codes'] = $codes;
+					if( ! empty($codes) ) {
+						$meaning = get_esp_error_meaning($codes);
+						$codeary[$codes] = $meaning;
 					}
 				}
-				$response['messagecodes'] = $codeary;
+				$response['message_codes'] = $codeary;
 
 			}
 
-			if( "0" == $ary['returncode'] ) { //transaction failed
+			$response['esp_tx'] = "failure"; //set default transaction result from response
+			if( "0" != $ary['returncode'] ) { //transaction succeeded
 
-				//set transaction result in response
-				$response['tx'] = "failure";
-								
-			} else { //transaction succeeded
-				
 				//
 				// process transaction results
 				//
 				
 				//set transactions flags in response
-				$response['tx'] = "success";
+				$response['esp_tx'] = "success";
 				$response['complete'] = true;
 			}
 		}
@@ -596,78 +616,56 @@ function get_esp_api($srv,$params) {
 function test_esp() {
 	
 	$payload = $_POST;
-	$response = array();
-	$response['complete'] = false;
-	
+
+/*
+	$srv = "ws1000";
 	$params = array(
 		 "uid"  => "stefan"
 		,"upwd" => "stefan"
 	);
-	
-	$xmlreq =     get_esp_xml("ws1000",$params); //generate xml request
-	$url    = get_esp_api_url("ws1000",$xmlreq); //generate url for GET
-	
-//	$response['xmlreq'] = $xmlreq;
 
-	$xmlresp = wpcom_vip_file_get_contents( $url, 3, 900, array( 'obey_cache_control_header' => false ) ); //send GET request
-	
-	if( ! $xmlresp ) { //GET returned false
-	
-		$response['error']   = "wpcom_vip_file_get_contents";
-		$response['message'] = "unable to get contents from url: ".$url;
-		$response['url']    = $url;
+	$srv = "ws1600";
+	$params = array(
+		"emailaddress" => "whyisjake@gmail.com"
+	);
 
-	} else { //xml returned ok
+	$srv = "ws1400";
+	$params = array(
+		"acctno" => "000500"
+	);
 
-		$simpleXmlElem = simplexml_load_string( $xmlresp ); //load xml into object
-		
-		if ( ! $simpleXmlElem ) { //unable to parse xml
-			
-			$response['error'] = "ESP API";
-			$response['message'] = "can't parse xml response";
-			$response['xmlresp']  = $xmlresp;
-			
-		} else {
-			
-			$ary = XML2array( $xmlresp );
-			$response['respobj'] = $ary;
-//			$response['url']     = $url;
-//			$response['xmlresp'] = $xmlresp;
-			
-			if( isset($ary['messagecodes']) ) { //grab an translate all message codes
+	$srv = "ws3600";
+	$params = array(
+		"shippingdetails" => array(
+			"lname"     => ""
+			,"fname"    => ""
+			,"address1" => ""
+			,"address2" => ""
+			,"city"     => ""
+			,"state"    => ""
+			,"zip"      => ""
+			,"country"  => ""
+			,"email"    => "adutt@espcomp.com"
+		)
+	);
 
-				//get all message codes and meanings
-				$codes = $ary['messagecodes']['code'];
-//				$response['codes'] = $codes;
-				$codeary = array();
-				foreach($codes as $code) {
-					$meaning = get_esp_error_meaning($code);
-					if( isset($meaning) ) {
-						$codeary[$code] = $meaning;
-					}
-				}
-				$response['messagecodes'] = $codeary;
+*/
+	$srv = "ws3600";
+	$params = array(
+		"shippingdetails" => array(
+			"lname"     => "spurlock"
+			,"fname"    => "jake"
+			,"address1" => ""
+			,"address2" => ""
+			,"city"     => ""
+			,"state"    => "ca"
+			,"zip"      => "95401"
+			,"country"  => ""
+			,"email"    => ""
+		)
+	);
 
-			}
-
-			if( "0" == $ary['returncode'] ) { //transaction failed
-
-				//set transaction result in response
-				$response['tx'] = "failure";
-								
-			} else { //transaction succeeded
-				
-				//
-				// process transaction results
-				//
-				
-				//set transactions flags in response
-				$response['tx'] = "success";
-				$response['complete'] = true;
-			}
-		}
-
-	}
+	$response = get_esp_api($srv,$params);
 	
 	//return AJAX response
 	header( "Content-Type: application/json" );
@@ -677,21 +675,223 @@ function test_esp() {
 }
 
 /**
+ *
+ */
+function get_esp_acct($params) {
+
+	$acct = false;
+	
+	if( array_key_exists("acctno",$params) ) { //lookup w/ acct number
+		// e.g.
+		//	$params = array(
+		//		"acctno" => "000500"
+		//	);
+		
+		$acct = get_esp_api("ws1400",$params); //Obtain Current Account Information
+/* e.g.
+			{
+				"complete": true,
+				"xml_req": "<?xml version=\"1.0\" encoding=\"utf-8\" ?><ws1400request><pubcode>MK<\/pubcode><acctno>000500<\/acctno><\/ws1400request>",
+				"esp": {
+					"returncode": "1",
+					"pubcode": "MK",
+					"acctno": "000500",
+					"uid": "jakesuid",
+					"upwd": "apassword",
+					"accttype": "R",
+					"subaccttype": null,
+					"status": "A",
+					"expiredate": "7\/1\/2013 12:00:00 AM",
+					"amountdue": "0.0000",
+					"globalacctno": null,
+					"renewamtyr": "0",
+					"renewamtmth": "0",
+					"renewamtday": "0",
+					"lastorderterm": "12",
+					"lastordertermunit": "M",
+					"currentpromocode": "PROMO1",
+					"groupcode": null,
+					"handlingcode": "PWD",
+					"billmefirstdate": null,
+					"billmelastdate": null,
+					"adddate": "9\/24\/2007 12:00:00 AM",
+					"emailoptioncode1": null,
+					"emailoptioncode2": null,
+					"emailoptioncode3": null,
+					"emailoptioncode4": null,
+					"emailoptioncode5": null,
+					"emailvalid": null,
+					"shippingdetails": {
+						"lname": "SPURLOCK",
+						"fname": "JAKE",
+						"title": "SUPREME COMMANDER",
+						"companyname": null,
+						"address1": "1234 SOME PL",
+						"address2": null,
+						"city": "SEBASTAPOL",
+						"state": "CA",
+						"zip": "95472-2811",
+						"zipcode": "95472-2811",
+						"country": null,
+						"telephone": "UNITED STATES",
+						"fax": null,
+						"email": "JSPURLOCK@OREILLY.COM",
+						"clientcustno": null
+					},
+					"billingdetails": {
+						"lname": null,
+						"fname": null,
+						"companyname": null,
+						"address1": null,
+						"address2": null,
+						"city": null,
+						"state": null,
+						"zip": null,
+						"zipcode": null,
+						"country": null,
+						"telephone": null,
+						"fax": null,
+						"email": null
+					},
+					"ccdetails": {
+						"cctype": "A",
+						"ccname": "JAKE SPURLOCK",
+						"ccnumber": "************1234",
+						"ccexpmm": "MM",
+						"ccexpyy": "YYYY"
+					},
+					"demographics": null,
+					"messagecodes": {
+						"code": null
+					}
+				},
+				"message_codes": [],
+				"esp_tx": "success"
+			}
+*/
+	} elseif ( array_key_exists("uid") && array_key_exists("upwd") ) { //lookup w/ esp user id and password
+		// e.g.
+		//	$params = array(
+		//		 "uid"  => "stefan"
+		//		,"upwd" => "stefan"
+		//	);
+		
+		$acct = get_esp_api("ws1000",$params); //Verify Existing User Logon
+/* e.g.
+			{
+				"complete": true,
+				"xml_req": "<?xml version=\"1.0\" encoding=\"utf-8\" ?><ws1000request><pubcode>MK<\/pubcode><uid>stefan<\/uid><upwd>stefan<\/upwd><\/ws1000request>",
+				"esp": {
+					"returncode": "1",
+					"uid": "stefan",
+					"pubcode": "MK",
+					"acctno": "000500",
+					"accttype": "R",
+					"subaccttype": null,
+					"status": "C",
+					"lname": "UNIDENTIFIED PAYMENTS",
+					"fname": null,
+					"expiredate": "12\/1\/2011 12:00:00 AM",
+					"lastpromocode": "EXX",
+					"handlingcode": "MWEB",
+					"zip": "91606-3156",
+					"messagecodes": {
+						"code": ["10012", "10010"]
+					},
+					"globalacctno": "20429048",
+					"copies": "1"
+				},
+				"message_codes": {
+					"10012": "Good Logon \u2013 One or more related accounts about to expire or have expired",
+					"10010": "Good Logon"
+				},
+				"esp_tx": "success"
+			}
+*/
+
+	} else { //lookup w/ postal or email address
+		// e.g.
+		//	$params = array(
+		//		"email"    => "adutt@espcomp.com"
+		//	);
+		//
+		//	$params = array(
+		//		"lname"     => "spurlock"
+		//		,"fname"    => "jake"
+		//		,"address1" => ""
+		//		,"address2" => ""
+		//		,"city"     => ""
+		//		,"state"    => "ca"
+		//		,"zip"      => "95401"
+		//		,"country"  => ""
+		//	);
+		
+		
+		$shippingdetails = array( //prototype of req fields
+			"lname"     => ""
+			,"fname"    => ""
+			,"address1" => ""
+			,"address2" => ""
+			,"city"     => ""
+			,"state"    => ""
+			,"zip"      => ""
+			,"country"  => ""
+			,"email"    => ""
+		);
+		
+		//grab relevant query parameters and set shippingdetails
+		foreach( array_keys($shippingdetails) as $k=>$v ) {
+			if( array_key_exists($k,$params) ) {
+				$shippingdetails[$k] = $params[$k];
+			}
+		}
+		
+		$acct = get_esp_api("ws3600",array("shippingdetails"=>$shippingdetails)); //Lookup Subscriber by Postal or Email Address
+/* e.g.
+			{
+				"complete": true,
+				"xml_req": "<?xml version=\"1.0\" encoding=\"utf-8\" ?><ws3600request><pubcode>MK<\/pubcode><shippingdetails><lname><\/lname><fname><\/fname><address1><\/address1><address2><\/address2><city><\/city><state><\/state><zip><\/zip><country><\/country><email>adutt@espcomp.com<\/email><\/shippingdetails><\/ws3600request>",
+				"esp": {
+					"returncode": "1",
+					"fname": "ARTI",
+					"lname": "DUTT",
+					"globalacctno": null,
+					"subscription": {
+						"pubcode": "MK",
+						"uid": "artidutt",
+						"acctno": "874868",
+						"accttype": "S",
+						"subaccttype": null,
+						"status": "A",
+						"expiredate": "1\/1\/1900",
+						"emailaddr": "ADUTT@ESPCOMP.COM"
+					},
+					"messagecodes": null
+				},
+				"esp_tx": "success"
+			}
+*/
+	}
+	
+	return $acct;
+}
+
+/**
  * Determine if user is logged into Gigya
  *
- * returns true if logged in, false otherwise
+ * returns wp post id / gigya uid if logged in, false otherwise
  */
 function is_gigya_user_logged_in() {
 	
-	$isLoggedIn = false;
+	$uid = false;
 	
 	if( ! empty($_COOKIE['gigyaLoggedIn']) ) {
 		
-		$isLoggedIn = true;
+		$uid = $_COOKIE['gigyaLoggedIn'];
 		
 	}
 	
-	return $isLoggedIn;
+	return $uid;
 }
 
 /**
@@ -715,24 +915,6 @@ function is_gigya_user_account_status() {
 }
 
 /**
- * Get guest author id / Gigya user id if user is logged into Gigya
- *
- * returns wp post id / gigya uid if logged in, false otherwise
- */
-function get_gigya_user_uid() {
-	
-	$uid = false;
-	
-	if( ! empty($_COOKIE['gigyaLoggedIn']) ) {
-		
-		$uid = $_COOKIE['gigyaLoggedIn'];
-		
-	}
-	
-	return $uid;
-}
-
-/**
  *
  */
 function get_gigya_user_array() {
@@ -748,6 +930,10 @@ function get_gigya_user_array() {
 	);
 		
 	return $userarray;
+}
+
+function gigya_esp_screenset() {
+	
 }
 
 ?>

@@ -378,7 +378,7 @@ gigya.accounts.addEventHandlers({
 
 			});
 
-		} else {
+		} else { //this is a login
 			if(gigyaUtil.debug) console.log("this is a login");
 
 			gigya.accounts.setAccountInfo({
@@ -391,6 +391,18 @@ gigya.accounts.addEventHandlers({
 				}
 			});
 			
+		}
+		
+		//check for ESP account
+		if( undefined != data.id_esp && data.is_esp) { //Make Magazine subscriber
+
+			if( undefined == data.esp ) { //user has not linked ESP acct
+
+				//prompt user for ESP info
+
+			} else { //ESP acct info has been set in Gigya
+				if(gigyaUtil.debug) console.log(data.esp);
+			}
 		}
 
 	}
