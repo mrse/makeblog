@@ -528,12 +528,12 @@ function test_esp() {
 		,"fname" => "jake"
 	);
 	
-	$xmlreq = get_esp_xml("ws3600",$params);
-	$url    = get_esp_api_url("ws3600",$xmlreq);
+	$xmlreq =     get_esp_xml("ws3600",$params); //generate xml request
+	$url    = get_esp_api_url("ws3600",$xmlreq); //generate url for GET
 	
 	$response['xmlreq'] = $xmlreq;
 
-	$xmlresp = wpcom_vip_file_get_contents( $url, 3, 900, array( 'obey_cache_control_header' => false ) );
+	$xmlresp = wpcom_vip_file_get_contents( $url, 3, 900, array( 'obey_cache_control_header' => false ) ); //send GET request
 	
 	if( ! $xmlresp ) { //GET returned false
 	
@@ -543,7 +543,7 @@ function test_esp() {
 
 	} else { //xml returned ok
 
-		$simpleXmlElem = simplexml_load_string( $xmlresp );
+		$simpleXmlElem = simplexml_load_string( $xmlresp ); //load xml into object
 		
 		if ( ! $simpleXmlElem ) { //unable to parse xml
 			
@@ -574,10 +574,16 @@ function test_esp() {
 
 			if( "0" == $ary['returncode'] ) { //transaction failed
 
+				//set transaction result in response
 				$response['tx'] = "failure";
 								
-			} else {
-			
+			} else { //transaction succeeded
+				
+				//
+				// process transaction results
+				//
+				
+				//set transactions flags in response
 				$response['tx'] = "success";
 				$response['complete'] = true;
 			}
