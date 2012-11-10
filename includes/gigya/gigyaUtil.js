@@ -286,6 +286,86 @@ var gigyaUtil = {
 		});
 
 	}
+	,searchEspEmail: function() {
+
+		var email = jQuery("#input_esp_email").val();
+		
+		var d = {};
+		d.action = "esp_acct_search";
+		d.email = email;
+		
+		jQuery.ajax({
+
+			type: "POST"
+			,cache: false
+			,url: "/wp-admin/admin-ajax.php"
+			,data: d
+			,success: function(data, textStatus, jqXHR) {
+				if(gigyaUtil.debug) console.log(data);
+				
+				if( data.complete ) {
+					if(gigyaUtil.debug) console.log(data.esp_normalized);
+					
+					//confirm w/ user
+					gigyaUtil.showEspConfirm(data.esp_normalized);
+					
+				} else {
+					if(gigyaUtil.debug) console.log("no joy");
+				}
+
+			}
+			,error: function(jqXHR, textStatus, errorThrown) {
+				if(gigyaUtil.debug) console.log(textStatus+": "+errorThrown);
+			}
+
+		});		
+	}
+	,searchEspAcctno: function() {
+		
+		var acctno = jQuery("#input_esp_acctno").val();
+		
+		var d = {};
+		d.action = "esp_acct_search";
+		d.acctno = acctno;
+		
+		jQuery.ajax({
+
+			type: "POST"
+			,cache: false
+			,url: "/wp-admin/admin-ajax.php"
+			,data: d
+			,success: function(data, textStatus, jqXHR) {
+				if(gigyaUtil.debug) console.log(data);
+				
+				if( data.complete ) {
+					if(gigyaUtil.debug) console.log(data.esp_normalized);
+					
+					//confirm w/ user
+					gigyaUtil.showEspConfirm(data.esp_normalized);
+
+				} else {
+					if(gigyaUtil.debug) console.log("no joy");
+				}
+
+			}
+			,error: function(jqXHR, textStatus, errorThrown) {
+				if(gigyaUtil.debug) console.log(textStatus+": "+errorThrown);
+			}
+
+		});
+	}
+	,showEspConfirm: function(esp) {
+		jQuery('.esp_uid').html(esp.uid);
+		jQuery('#esp_uid').val(esp.uid);
+		jQuery('.esp_acctno').html(esp.acctno);
+		jQuery('#esp_acctno').val(esp.acctno);
+		jQuery('#esp_accttype').val(esp.accttype);
+		jQuery('#esp_status').val(esp.status);
+		jQuery('#esp_expiredate').val(esp.expiredate);
+		
+		jQuery('#modal_esp_confirm').modal('show');
+	}
+
 };
 
 /////////////
@@ -298,15 +378,15 @@ gigya.accounts.addEventHandlers({
 		if(gigyaUtil.debug) console.log(e); //debug event object
 		
 		//set ui
-		var user = e.profile;
+		var profile = e.profile;
 		var data = e.data;
-		gigyaUtil.showUser(user);
+		gigyaUtil.showUser(profile);
 		gigyaUtil.showLoggedIn();
 		
 		//set cookies
 		var now=new Date();
 		var expiresDate=new Date();
-		var skel = gigyaUtil.getUserSkeleton(user);
+		var skel = gigyaUtil.getUserSkeleton(profile);
 		var json = JSON.stringify(skel);
 		expiresDate.setDate(now.getDate() + 14);
 		jQuery.cookie('gigyaLoggedIn', e.UID,  { expires: expiresDate, path: '/' });
@@ -394,11 +474,18 @@ gigya.accounts.addEventHandlers({
 		}
 		
 		//check for ESP account
-		if( undefined != data.id_esp && data.is_esp) { //Make Magazine subscriber
+		if(gigyaUtil.debug) console.log("checking if user has esp acct");
+		if( undefined != data.is_esp && data.is_esp) { //Make Magazine subscriber
+			if(gigyaUtil.debug) console.log("esp checkbox checked");
 
 			if( undefined == data.esp ) { //user has not linked ESP acct
+				if(gigyaUtil.debug) console.log("no esp object found");
 
 				//prompt user for ESP info
+				if( undefined != profile.email && '' != profile.email ) {
+					jQuery("#input_esp_email").val(profile.email);
+				}
+				jQuery('#modal_esp_link').modal('show');
 
 			} else { //ESP acct info has been set in Gigya
 				if(gigyaUtil.debug) console.log(data.esp);

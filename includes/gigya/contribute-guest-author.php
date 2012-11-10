@@ -6,8 +6,8 @@ add_action('wp_ajax_nopriv_gigya_makeblog_register', 'gigya_makeblog_register');
 add_action('wp_ajax_gigya_makeblog_update', 'gigya_makeblog_update');
 add_action('wp_ajax_nopriv_gigya_makeblog_update', 'gigya_makeblog_update');
 
-add_action('wp_ajax_gigya_esp_screenset', 'gigya_esp_screenset');
-add_action('wp_ajax_nopriv_gigya_esp_screenset', 'gigya_esp_screenset');
+add_action('wp_ajax_esp_acct_search', 'esp_acct_search');
+add_action('wp_ajax_nopriv_esp_acct_search', 'esp_acct_search');
 
 add_action('wp_ajax_test_esp', 'test_esp');
 add_action('wp_ajax_nopriv_test_esp', 'test_esp');
@@ -769,7 +769,7 @@ function get_esp_acct($params) {
 				"esp_tx": "success"
 			}
 */
-	} elseif ( array_key_exists("uid") && array_key_exists("upwd") ) { //lookup w/ esp user id and password
+	} elseif ( array_key_exists("uid",$params) && array_key_exists("upwd",$params) ) { //lookup w/ esp user id and password
 		// e.g.
 		//	$params = array(
 		//		 "uid"  => "stefan"
@@ -840,7 +840,7 @@ function get_esp_acct($params) {
 		);
 		
 		//grab relevant query parameters and set shippingdetails
-		foreach( array_keys($shippingdetails) as $k=>$v ) {
+		foreach( array_keys($shippingdetails) as $k ) {
 			if( array_key_exists($k,$params) ) {
 				$shippingdetails[$k] = $params[$k];
 			}
@@ -873,8 +873,56 @@ function get_esp_acct($params) {
 */
 	}
 	
+	if( array_key_exists('esp',$acct) ) { //add esp normalized
+		
+		$esp = $acct['esp'];
+		if( array_key_exists('subscription',$esp) ) { //info is in subscription subarray
+			$esp = $esp['subscription'];
+		}
+		
+		$esp_normalized = array();
+		if( array_key_exists('acctno',$esp) ) {
+			$esp_normalized['acctno'] = $esp['acctno'];
+		}
+		if( array_key_exists('uid',$esp) ) {
+			$esp_normalized['uid'] = $esp['uid'];
+		}
+		if( array_key_exists('accttype',$esp) ) {
+			$esp_normalized['accttype'] = $esp['accttype'];
+		}
+		if( array_key_exists('status',$esp) ) {
+			$esp_normalized['status'] = $esp['status'];
+		}
+		if( array_key_exists('expiredate',$esp) ) {
+			$esp_normalized['expiredate'] = $esp['expiredate'];
+		}
+		if( array_key_exists('adddate',$esp) ) {
+			$esp_normalized['adddate'] = $esp['adddate'];
+		}
+		$acct['esp_normalized'] = $esp_normalized;
+
+	}
+
 	return $acct;
 }
+
+/**
+ *
+ */
+function esp_acct_search() {
+
+	$params = $_POST;
+	unset($params['action']);
+	
+	$response = get_esp_acct($params);
+
+	//return AJAX response
+	header( "Content-Type: application/json" );
+	echo json_encode($response);
+
+	exit;
+}
+
 
 /**
  * Determine if user is logged into Gigya
@@ -899,28 +947,28 @@ function is_gigya_user_logged_in() {
  *
  * returns acct no. if logged in, false otherwise
  */
-function is_gigya_user_esp_subscriber() {
+function is_gigya_user_esp_subscriber($userarray) {
 	
-	$acct = false;
+	$esp = false;
+
+	$data = $userarray['data'];
+	if( array_key_exists('esp',$data) ) {
+		
+		$esp = $data['esp'];
+	}
 	
-	return $acct;
+	return $esp;
 }
 
 /**
+ * Get Gigya user profile and data array
  *
+ * returns array( "profile"=>array(), "data"=>array() )
  */
-function is_gigya_user_account_status() {
+function get_gigya_user_array($uid) {
 
-	return;
-}
-
-/**
- *
- */
-function get_gigya_user_array() {
-
-	//setUID
-	$include = "profile,data"; //possible: "data,emails,identities-active,identities-all,irank,loginIDs,profile"
+	//getAccountInfo
+	$include = "profile,data"; //available: "data,emails,identities-active,identities-all,irank,loginIDs,profile"
 	$url = "https://socialize-api.gigya.com/accounts.getAccountInfo?apiKey=".rawurlencode(get_gigya_api_key())."&secret=".rawurlencode(get_gigya_secret_key())."&format=json&UID=".$uid."&include=".$include;
 	$contents = wpcom_vip_file_get_contents( $url, 3, 900, array( 'obey_cache_control_header' => false ) );
 	$jobj = json_decode($contents);
@@ -930,10 +978,6 @@ function get_gigya_user_array() {
 	);
 		
 	return $userarray;
-}
-
-function gigya_esp_screenset() {
-	
 }
 
 ?>

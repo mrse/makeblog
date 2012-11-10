@@ -8,35 +8,44 @@ get_header(); ?>
 		<script type="text/javascript">
 		jQuery(document).ready(function() {
 			
-			if( jQuery.cookie('gigyaLoggedIn') != null ) { //user is logged into Gigya
-
-				//display profile
-				var context = gigyaUtil.getContext();
-					context.event = "profile";
-				gigya.accounts.showScreenSet({
-					containerID: 'profileForm'
-					,screenSet:'Profile-web'
-					,startScreen:'gigya-update-profile-screen'
-					,context: context
-					,cid: context.cid
-					,onError:function(e) {
-						if(gigyaUtil.debug) console.log(e);
-					}
-					,onBeforeScreenLoad:function(e) {
-						//if(gigyaUtil.debug) console.log(e);
-					}
-					,onAfterSubmit:function(e) {
-						if(gigyaUtil.debug) console.log(e);
-		
-						gigyaUtil.updateProfile(context);
-		
-					}
-				});
-				
-			} else { //user is not logged in
-
-				//show login ui
-			}
+			//display registration
+			var context = gigyaUtil.getContext();
+				context.event = "registration";
+			gigya.accounts.showScreenSet({
+				containerID: 'inlineRegister'
+				,screenSet:'Login-web'
+				,startScreen:'gigya-register-screen'
+				,context: context
+				,cid: context.cid
+				,onError:function(e) {
+					if(gigyaUtil.debug) console.log(e);
+				}
+				,onBeforeScreenLoad:function(e) {
+					//if(gigyaUtil.debug) console.log(e);
+				}
+			});
+	
+			//display profile
+				context.event = "profile";
+			gigya.accounts.showScreenSet({
+				containerID: 'profileForm'
+				,screenSet:'Profile-web'
+				,startScreen:'gigya-update-profile-screen'
+				,context: context
+				,cid: context.cid
+				,onError:function(e) {
+					if(gigyaUtil.debug) console.log(e);
+				}
+				,onBeforeScreenLoad:function(e) {
+					//if(gigyaUtil.debug) console.log(e);
+				}
+				,onAfterSubmit:function(e) {
+					if(gigyaUtil.debug) console.log(e);
+	
+					gigyaUtil.updateProfile(context);
+	
+				}
+			});				
 
 		});
 		</script>

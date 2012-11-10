@@ -82,5 +82,89 @@
 
 
 		<?php wp_footer(); ?>
+		
+		<!-- GIGYA -->
+		<div id="gigya_modals">
+			<div id="modal_esp_link" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="label_modal_esp_email" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="label_modal_esp_email">Make Magazine subscriber?</h3>
+				</div><!-- /modal-header -->
+				
+				<div class="modal-body">
+					<div>
+						<h4>Yes</h4>
+						<p>This is the email associated w/ my subscription:</p>
+						<input id="input_esp_email" name="input_esp_email"/>
+						<button id="btn_esp_search_email" onclick="gigyaUtil.searchEspEmail()">Lookup</button>
+						<p> - OR -</p>
+						<p>This is my account number(<a href="#">?</a>):</p>
+						<input id="input_esp_acctno" name="input_esp_acctno"/>
+						<button id="btn_esp_search_acct" onclick="gigyaUtil.searchEspAcctno()">Lookup</button>
+					</div>
+					
+					<div style="margin-top:20px;">
+						<h4>No</h4>
+						<p>Don't ask me this again</p>
+						<button id="btn_esp_reset" onclick="">Dismiss</button>
+					</div>
+				</div><!-- /modal-body -->
+				
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+				</div><!-- /modal-footer -->
+			</div><!-- /modal_esp_email -->
+						
+			<div id="modal_esp_confirm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="label_modal_esp_confirm" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="label_modal_esp_confirm">Is this you?</h3>
+				</div><!-- /modal-header -->
+				
+				<div class="modal-body">
+					<div>
+						<form id="form_esp_acct">
+							<table border="0" cellpadding="10" cellspacing="5">
+							<tr>
+								<td align="right">ESP User ID:</td>
+								<td><span name="uid" class="esp_uid"></span></td>
+							</tr>
+							<tr>
+								<td align="right">ESP Acct No.:</td>
+								<td><span name="acctno" class="esp_acctno"></span></td>
+							</tr>
+							</table>
+							<input type="hidden" id="esp_uid" name="uid" />
+							<input type="hidden" id="esp_acctno" name="acctno" />
+							<input type="hidden" id="esp_accttype" name="accttype"/>
+							<input type="hidden" id="esp_status" name="status" />
+							<input type="hidden" id="esp_expiredate" name="expiredate" />
+						</form>
+					</div>
+				</div><!-- /modal-body -->
+				
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+				</div><!-- /modal-footer -->
+			</div><!-- /modal_esp_confirm -->
+			
+			<!-- EXAMPLE -->
+			<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel">Modal header</h3>
+				</div>
+				<div class="modal-body">
+					<p>One fine body…</p>
+				</div>
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					<button class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+			<!-- /EXAMPLE -->
+		</div><!-- /gigya_modals -->
+		<!-- /GIGYA -->
+		
 	</body>
 </html>
