@@ -53,7 +53,7 @@
 					</div>
 					<div class="pull-right">
 						<form action="http://blog.makezine.com/search/" class="form navbar-search">
-							<input type="text" class="search-query" name="q" placeholder="" />
+							<input type="text" class="span2 search-query" name="q" placeholder="" />
 							<input type="submit" class="btn btn-primary" style="height:28px" value="Search" />
 						</form>
 					</div>

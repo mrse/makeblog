@@ -80,10 +80,6 @@ Template Name: Categories
 
 										<div class="cat-crafts" id="">
 
-											<div class="taxonomy-image">
-												<img src="http://makezineblog.files.wordpress.com/2012/09/kollabora.png" alt="kollabora" />
-											</div>
-
 											<h2><a href="http://blog.makezine.com/category/craft/">Crafts</a></h2>
 
 											<ul class="drop-down">
@@ -130,11 +126,7 @@ Template Name: Categories
 									<div class="cat" id="electronics">
 
 										<div class="cat-electronics" id="">
-
-											<div class="taxonomy-image">
-												<img src="http://makezineblog.files.wordpress.com/2012/08/element141.png" alt="java" />
-											</div>
-
+										
 											<h2><a href="http://blog.makezine.com/category/electronics/">Electronics</a></h2>
 
 											<ul class="drop-down">

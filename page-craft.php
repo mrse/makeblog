@@ -102,8 +102,8 @@ Template Name: Craft Home Page
 
 						<div>
 
-							<a href="http://blog.makezine.com/2012/11/06/first-international-maker-meetup-on-3d-printing-nov-15/">
-								<img src="<?php bloginfo('stylesheet_directory'); ?>/img/3D-Printer-Meetup.jpg" class="contribute" alt="Worldwide 3D  Printing Meetup" />
+							<a href="https://www.pubservice.com/subgiftcombo.aspx?PC=MK&PK=42BBN04">
+								<img src="<?php bloginfo('stylesheet_directory'); ?>/img/holiday-subscribe.jpg" class="contribute" alt="Holiday special, buy one, get one free!" />
 							</a>
 
 						</div>
@@ -137,8 +137,8 @@ Template Name: Craft Home Page
 
 					<div class="span12">
 
-						<a href="https://pubservice.com/Subgiftcombo.aspx?PC=MK&PK=429NGFT">
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/bogo-subscribe-banner.png" alt="Subscribe to MAKE magazine" />
+						<a href="https://www.pubservice.com/subgiftcombo.aspx?PC=MK&PK=42BBN03">
+							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/holiday-belt.png" alt="Subscribe to MAKE magazine" />
 						</a>
 
 					</div>

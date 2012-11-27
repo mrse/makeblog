@@ -27,12 +27,13 @@ get_header(); ?>
 									<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
 									<?php if($post->post_parent !== 0) { ?>
-										<p class="meta top">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>		
+										<p class="meta top">By <?php if( function_exists( 'coauthors_posts_links' ) ) {	coauthors_posts_links(); } else { the_author_posts_link(); } ?> , <?php the_time('Y/m/d \@ g:i a') ?></p>
 									<?php } ?>
 
 									<?php the_content(); ?>
 
 									<?php echo make_magazine_toc() ?>
+									<?php echo make_magazine_toc('review', 'Reviews') ?>
 
 									<div class="clear"></div>
 
@@ -48,7 +49,7 @@ get_header(); ?>
 											
 											<div class="span-well well">
 											
-												<p>Posted by <?php the_author_posts_link(); ?> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>
+												<p>Posted by <?php if( function_exists( 'coauthors_posts_links' ) ) {	coauthors_posts_links(); } else { the_author_posts_link(); } ?> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>
 												<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
 
 											</div>
@@ -68,7 +69,7 @@ get_header(); ?>
 							
 							</ul>
 
-							<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
+							<?php if (function_exists('make_printer_makershed_thing')) { echo make_printer_makershed_thing(); } ?>
 
 							<div class="comments">
 								<?php comments_template(); ?>

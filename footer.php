@@ -1,5 +1,21 @@
-			</div>
+				<div class="footer-ad" style="padding-top:30px;">
+				
+					<div class="" style="width:728px; margin:0 auto;">
 
+						<!-- Beginning Sync AdSlot 4 for Ad unit header ### size: [[728,90]]  -->
+						<div id='div-gpt-ad-664089004995786621-4'>
+							<script type='text/javascript'>
+								googletag.display('div-gpt-ad-664089004995786621-4');
+							</script>
+						</div>
+						<!-- End AdSlot 4 -->
+						
+					</div>
+
+				</div>
+			
+			</div>
+		
 		</div>
 
 		<div class="new-footer">
@@ -83,6 +99,7 @@
 
 		<?php wp_footer(); ?>
 		
+<<<<<<< HEAD
 		<!-- GIGYA -->
 		<div id="gigya_modals">
 			<div id="modal_esp_link" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="label_modal_esp_email" aria-hidden="true">
@@ -166,5 +183,7 @@
 		</div><!-- /gigya_modals -->
 		<!-- /GIGYA -->
 		
+=======
+>>>>>>> Whole buncha changes, notably updating bootstrap, changes to DFP, new ad slots, contextly, errata cpt, lot of magazine changes and more!
 	</body>
 </html>

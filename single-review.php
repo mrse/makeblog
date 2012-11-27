@@ -37,7 +37,7 @@ get_header(); ?>
 									
 
 									<?php if($post->post_parent !== 0) { ?>
-										<p class="meta top">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>		
+										<p class="meta top">By <?php if( function_exists( 'coauthors_posts_links' ) ) {	coauthors_posts_links(); } else { the_author_posts_link(); } ?> , <?php the_time('Y/m/d \@ g:i a') ?></p>
 									<?php } ?>
 
 									<?php the_content(); ?>
@@ -55,7 +55,7 @@ get_header(); ?>
 							
 							</ul>
 
-							<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
+							<?php if (function_exists('make_printer_makershed_thing')) { echo make_printer_makershed_thing(); } ?>
 
 							<div class="comments">
 								<?php comments_template(); ?>
@@ -70,7 +70,11 @@ get_header(); ?>
 						</div>
 
 					</div>
-
-					<?php get_sidebar('review'); ?>
+					
+					<?php if (has_category('3d-printing-desktop-manufacturing')) {
+						get_sidebar();
+					} else {
+						get_sidebar('review');
+					} ?>
 
 			<?php get_footer(); ?>

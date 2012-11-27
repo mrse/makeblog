@@ -4,6 +4,8 @@ add_action( 'init', 'register_cpt_review' );
 
 function register_cpt_review() {
 
+	add_rewrite_rule( 'review/([^/]*)/([^/]*)/?$','index.php?review=$matches[2]','top' );
+
 	$labels = array( 
 		'name' => _x( 'Reviews', 'review' ),
 		'singular_name' => _x( 'Review', 'review' ),
@@ -566,7 +568,7 @@ add_filter( 'the_content', 'make_post_add_review' );
 function new_js_add_review($content) {
 	global $post;
 	$meta = get_post_meta( get_the_ID(), 'hide' );
-	if ('review' == get_post_type() && (empty($meta[0]) == 'on') ) {
+	if ( array('review', 'volume' ) == get_post_type() && (empty($meta[0]) == 'on') ) {
 		$content = js_ratings_box().$content;
 		$guide = get_post_custom_values('MakeProjectsGuideNumber');
 		if (isset($guide[0])) {
@@ -640,4 +642,74 @@ add_action( 'admin_menu', 'make_review_remove_parent_meta_box' );
 
 function make_review_remove_parent_meta_box() { 
 	remove_meta_box('pageparentdiv', 'review', 'normal');
+}
+
+
+function make_printer_makershed_thing() {
+	$output = '<div class="well features">
+							
+		<h3>In The <a href="http://makershed.com">Maker Shed</a></h3>
+		
+		<div class="row-fluid">
+		
+			<div class="span3">
+				
+				<a href="http://www.makershed.com/Printrbot_LC_Plus_3D_Printer_Kit_p/dspb3.htm">
+					<img width="125" src="' . get_stylesheet_directory_uri() . '/img/printrbot.jpg" />
+				</a>
+				
+				<div class="blurb">
+				
+					<h4><a href="http://www.makershed.com/Printrbot_LC_Plus_3D_Printer_Kit_p/dspb3.htm">Printrbot LC Plus 3D - $699</a></h4>
+					
+				</div>
+				
+			</div>
+			
+			<div class="span3">
+				
+				<a href="http://www.makershed.com/Afinia_H_Series_3D_Printer_p/dsaf1.htm">
+					<img width="125" src="' . get_stylesheet_directory_uri() . '/img/affinia.jpg" />
+				</a>
+				
+				<div class="blurb">
+				
+					<h4><a href="http://www.makershed.com/Afinia_H_Series_3D_Printer_p/dsaf1.htm">Afinia H-Series 3D Printer - $1,499</a></h4>
+					
+				</div>
+				
+			</div>
+			
+			<div class="span3">
+				
+				<a href="http://www.makershed.com/MakerBot_Replicator_Dual_Extruder_3D_Printer_p/dsmb02-de.htm">
+					<img width="125" src="' . get_stylesheet_directory_uri() . '/img/replicator.jpg" />
+				</a>
+				
+				<div class="blurb">
+				
+					<h4><a href="http://www.makershed.com/MakerBot_Replicator_Dual_Extruder_3D_Printer_p/dsmb02-de.htm">MakerBot Replicator Dual Extruder 3D Printer - $1,749</a></h4>
+					
+				</div>
+				
+			</div>
+			
+			<div class="span3">
+				
+				<a href="http://www.makershed.com/Make_Ultimate_Guide_to_3D_Printing_p/1449357377.htm">
+					<img width="125" src="' . get_stylesheet_directory_uri() . '/img/makesip.jpg" />
+				</a>
+				
+				<div class="blurb">
+				
+					<h4><a href="http://www.makershed.com/Make_Ultimate_Guide_to_3D_Printing_p/1449357377.htm">Make: Ultimate Guide to 3D Printing - $9.99</a></h4>
+				
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>';
+	return $output;
 }

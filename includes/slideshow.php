@@ -49,7 +49,7 @@ function slideshow_content_filter( $content ) {
 
 		$other_args = array(
 			'before'			=> '<div class="clear"></div><p class="self"> ',
-			'after'				=> ' ' . make_vapp_the_link('View All', 'badge badge-info') . '</p>',
+			'after'				=> ' ' . make_vapp_the_link('View All', '') . '</p>',
 			'link_before'		=> '<span class="badge">',
 			'link_after'		=> '</span>',
 			'next_or_number'	=> 'number',
@@ -75,11 +75,14 @@ function slideshow_content_filter( $content ) {
 }
 
 function make_slideshow_hotkeys() {
-	wp_enqueue_script(
-		'hotkeys',
-		get_template_directory_uri() . '/js/jquery.hotkeys.js',
-		array('jquery')
-	);
+	if ( ('slideshow' ) == get_post_type() ) {
+		wp_enqueue_script(
+			'hotkeys',
+			get_template_directory_uri() . '/js/jquery.hotkeys.js',
+			array('jquery')
+		);
+	}
+	
 }
 add_action('wp_enqueue_scripts', 'make_slideshow_hotkeys');
 
@@ -100,7 +103,7 @@ function make_slidehow_embed( $atts ) {
 					<h3 id="myModalLabel">'.esc_html($title).'</h3>
 				</div>
 				<div class="modal-body">
-					<iframe width="940" height="600" frameborder=0 src="'.esc_url( 'http://blog.makezine.com/slideshow/' . $slug .'/embed/' ).'"></iframe>
+					<iframe width="940" height="600" frameborder=0 src="'.esc_url( 'http://blog.makezine.com/slideshow/' . $slug .'/' ).'"></iframe>
 				</div>
 				<div class="modal-footer">
 					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -113,7 +116,7 @@ add_shortcode( 'make_slideshow', 'make_slidehow_embed' );
 function make_add_slideshow_endpoint() {
 	add_rewrite_endpoint( 'embed', EP_PERMALINK | EP_PAGES );
 }
-add_action( 'init', 'make_add_slideshow_endpoint' );
+//add_action( 'init', 'make_add_slideshow_endpoint' );
 
 
 function make_embed_template_redirect() {
@@ -127,4 +130,39 @@ function make_embed_template_redirect() {
 	include dirname( __FILE__ ) . '/single-slideshow-embed.php';
 	exit;
 }
-add_action( 'template_redirect', 'make_embed_template_redirect' );
+//add_action( 'template_redirect', 'make_embed_template_redirect' );
+
+//add_rewrite_rule( 'slideshow/([^/]+)/([0-9]+)/embed(/(.*))?/?$','index.php?slideshow=$matches[1]&embed=$matches[3]&pagename=$matches[2]','top' );
+
+
+function make_bs_slideshow() {
+	global $post;
+	$images = get_children( array('post_parent' => $post->ID, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID') );
+
+	$output = '<div id="myCarousel" class="carousel slide"><div class="carousel-inner">';
+
+	$i = 0;
+	foreach( $images as $image ) {
+		$i++;
+		if ($i == 1) {
+			$output .= '<div class="item active">';	
+		} else {
+			$output .= '<div class="item">';
+		}
+		
+		$output .= wp_get_attachment_image( $image->ID, 'medium');
+		$output .= '</div>';
+		
+	} //foreach
+	$output .= '</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+	</div>';
+	$output .= '
+		<script>
+			jQuery(".carousel").carousel();
+		</script>
+	';
+
+	return $output;
+}

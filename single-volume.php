@@ -10,54 +10,139 @@ get_header(); ?>
 		<div class="sand">
 
 			<div class="container">
+			
+				<div class="content">
+				 
+				 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+				 
+				 	<?php 
+						$video = get_post_custom_values('VideoURL');
+						if ($video[0]) { ?>
+				
+							<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+
+							<div class="row-fluid">
+							
+								<div class="span8">
+								
+									<div class="row-fluid">
+									
+										<?php 
+											$video = get_post_custom_values('VideoURL');
+											if ($video[0]) {
+												echo '<div class="span12">';
+													echo make_youtube_iframe($video[0], 605, 340);
+												echo '</div>';
+											}
+										?>
+										
+									</div>
+										
+									<div class="banner">
+									
+										<?php
+											$featuredposts = get_post_custom_values('FeaturedPosts');
+											$posts = array_map( 'get_post', explode( ',', $featuredposts[0] ) );
+											foreach ( $posts as $post ) { 
+												//print_r($post); ?>
+												<div class="teaser2">
+													<a href="<?php echo get_permalink($post->ID); ?>">
+														<?php echo get_the_post_thumbnail( $post->ID, 'volume-thumb', array('class' => 'thumbnail' ) ); ?>
+														<?php echo get_the_title( $post->ID ); ?>
+													</a>
+												</div>
+											
+											<?php } 
+											wp_reset_query(); ?>
+										
+									</div>
+														
+								</div>
+								
+								<div class="span4">
+								
+									<?php the_content(); ?>
+
+								</div>
+								
+							</div>
+						
+						<?php } else { ?>
+
+							<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+
+							<div class="row-fluid">
+							
+								<div class="span8">
+								
+									<?php the_content(); ?>
+									
+								</div>
+								
+								<div class="span4">
+										
+									<div class="banner">
+									
+										<?php
+											$featuredposts = get_post_custom_values('FeaturedPosts');
+											if ($featuredposts[0]) {
+												$posts = array_map( 'get_post', explode( ',', $featuredposts[0] ) );
+												foreach ( $posts as $post ) { 
+													//print_r($post); ?>
+														<a href="<?php echo get_permalink($post->ID); ?>">
+															<?php echo get_the_post_thumbnail( $post->ID, 'side-thumb', array('class' => 'thumbnail' ) ); ?>
+															<?php echo get_the_title( $post->ID ); ?>
+														</a>
+												
+												<?php } 
+												wp_reset_query();
+												
+											}
+										?>
+											
+											
+										
+									</div>
+														
+								</div>
+								
+								<div class="span4">
+								
+									
+
+								</div>
+								
+							</div>
+
+					<?php } ?>
+				
+				</div>
 
 				<div class="row">
 
 					<div class="span8">
 
 						<div class="content">
-
-
-							 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			
-								<article <?php post_class(); ?>>
+							<article <?php post_class(); ?>>
 
-									<!--<p class="categories"><?php the_category(', '); ?></p>-->
+								<!--<p class="categories"><?php the_category(', '); ?></p>-->
 
-									<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+								<?php if($post->post_parent !== 0) { ?>
+									<p class="meta top">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>		
+								<?php } ?>
 
-									<?php if($post->post_parent !== 0) { ?>
-										<p class="meta top">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>		
-									<?php } ?>
+								<?php echo make_magazine_toc('review', 'Reviews') ?>
 
-									<?php the_content(); ?>
-
-									<?php echo make_magazine_toc() ?>
-
-									<div class="clear"></div>
-
-									<div class="row">
-
-										<div class="postmeta">
-		
-											<div class="span-thumb thumbnail">
-											
-												<?php echo get_avatar( get_the_author_meta('user_email'), 72); ?>
-											
-											</div>
-											
-											<div class="span-well well">
-											
-												<p>Posted by <?php the_author_posts_link(); ?> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>
-												<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
-
-											</div>
-
-										</div>
-										
-									</div>
+								<?php echo make_magazine_toc('magazine', 'Articles') ?>
 								
-								</article>
+								<?php echo make_magazine_toc('projects', 'Projects') ?>
+								
+								<?php echo make_magazine_errata('Web Extras'); ?>
+
+								<div class="clear"></div>
+							
+							</article>
 
 							<?php endwhile; ?>
 
@@ -68,7 +153,7 @@ get_header(); ?>
 							
 							</ul>
 
-							<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
+							<?php if (function_exists('make_printer_makershed_thing')) { echo make_printer_makershed_thing(); } ?>
 
 							<div class="comments">
 								<?php comments_template(); ?>

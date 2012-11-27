@@ -22,6 +22,8 @@ function make_action_after_setup_theme() {
 	add_image_size( 'archive-thumb', 200, 200, true );
 	add_image_size( 'faire-thumb', 130, 130, true );
 	add_image_size( 'comment-thumb', 70, 70, true );
+	add_image_size( 'volume-thumb', 144, 144, true );
+
 
 	// Content Width
 	if ( ! isset( $content_width ) )
@@ -29,7 +31,7 @@ function make_action_after_setup_theme() {
 	// Post Formats
 	add_theme_support( 'post-formats', array( 'gallery', 'aside', 'video' ) );
 	// Custom Backgrounds
-	//add_custom_background();
+	add_custom_background();
 	//Infinite Scroll!
 	//add_theme_support( 'infinite-scroll', 'content' );
 	add_theme_support( 'automatic-feed-links' );
@@ -156,10 +158,10 @@ function make_live_widget($args){
   }
 
 wp_register_sidebar_widget(
-	'make_live_widget',        	// your unique widget id
+	'make_live_widget',	// your unique widget id
 	'Make: Live On Air Light', 	// widget name
 	'make_live_widget',  			// callback function
-	array(                  	// options
+	array(  	// options
 		'description' => 'Make Live Widget'
 	)
 );
@@ -175,8 +177,6 @@ function make_enqueue_jquery() {
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
 	wp_enqueue_style( 'make-bootstrap', get_stylesheet_directory_uri() . '/css/bootstrap.css' );
 	wp_enqueue_style( 'make', get_stylesheet_directory_uri() . '/style.css' );
-	wp_enqueue_script( 'gigya', 'http://cdn.gigya.com/js/socialize.js?apiKey='.get_gigya_api_key(), array( 'jquery' ) );
-	wp_enqueue_script( 'make-gigya', get_stylesheet_directory_uri() . '/includes/gigya/gigyaUtil.js', array( 'jquery' ) );
 }
 
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
@@ -232,19 +232,6 @@ function make_featured_products() {
 
 
 ?>
-
-<style type="text/css">
-	.features { margin:20px 0 20px; border:1px solid #eee; padding:10px; }
-	.features img { padding:5px; margin:0px; background-color: #eee; border:1px solid #ddd; }
-	.features h3, .features h4, .features h5, .features h6 { line-height: 24px; }
-	.clear { clear:both; }
-	.features .blurb { margin-left:0px; }
-	.features h3 { margin-bottom:12px; }
-	.features h4 { font-size:13px; line-height: 16px;}
-	.features .twenty-five { width:25%; float:left; text-align:center;}
-	.features .small-thumb { max-height: 75px; max-width: auto; }
-</style>
-
 
 <div class="features well">
 
@@ -440,7 +427,7 @@ function make_infinite_scroll_render() {
 
 function make_get_category_name() {
 	global $post;
-	if ( is_single() ) {
+	if ( is_single() && has_category() ) {
 		$cats = get_the_terms($post->ID, 'category');
 		$sortcats = array_shift($cats);
 		if (!empty($sortcats)) {
@@ -822,6 +809,30 @@ function make_cpt_icons() { ?>
 			background: url('<?php bloginfo('template_url') ?>/images/book-open.png') no-repeat 6px -17px !important;
 		}
 		#menu-posts-magazine:hover .wp-menu-image, #menu-posts-magazine.wp-has-current-submenu .wp-menu-image {
+			background-position:6px 7px!important;
+		}
+		#menu-posts-review .wp-menu-image {
+			background: url('<?php bloginfo('template_url') ?>/images/application-dialog.png') no-repeat 6px -17px !important;
+		}
+		#menu-posts-review:hover .wp-menu-image, #menu-posts-review.wp-has-current-submenu .wp-menu-image {
+			background-position:6px 7px!important;
+		}
+		#menu-posts-page_2 .wp-menu-image {
+			background: url('<?php bloginfo('template_url') ?>/images/application-form.png') no-repeat 6px -17px !important;
+		}
+		#menu-posts-page_2:hover .wp-menu-image, #menu-posts-page_2.wp-has-current-submenu .wp-menu-image {
+			background-position:6px 7px!important;
+		}
+		#menu-posts-errata .wp-menu-image {
+			background: url('<?php bloginfo('template_url') ?>/images/application-list.png') no-repeat 6px -17px !important;
+		}
+		#menu-posts-errata:hover .wp-menu-image, #menu-posts-errata.wp-has-current-submenu .wp-menu-image {
+			background-position:6px 7px!important;
+		}
+		#menu-posts-projects .wp-menu-image {
+			background: url('<?php bloginfo('template_url') ?>/images/application-tile.png') no-repeat 6px -17px !important;
+		}
+		#menu-posts-projects:hover .wp-menu-image, #menu-posts-projects.wp-has-current-submenu .wp-menu-image {
 			background-position:6px 7px!important;
 		}
 	</style>

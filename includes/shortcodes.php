@@ -34,7 +34,7 @@ function make_recent_arduino($atts){
 add_shortcode('recent_arduino', 'make_recent_arduino');
 
 function make_ad_block_shortcode( $atts, $content = null ) {
-	return 	'<div style="width:125px;height:125px;float:right;margin-top:0px;padding:0 10px 5px;"><div id=\'div-gpt-ad-664089004995786621-3\'><script type=\'text/javascript\'>googletag.display(\'div-gpt-ad-664089004995786621-3\');</script></div></div>';
+	return 	'<div style="width:125px;height:125px;float:right;margin-top:0px;padding:0 10px 5px;"><div id=\'div-gpt-ad-664089004995786621-5\'><script type=\'text/javascript\'>googletag.display(\'div-gpt-ad-664089004995786621-5\');</script></div></div>';
 }
 
 add_shortcode( 'ad_block', 'make_ad_block_shortcode' );
@@ -72,6 +72,33 @@ function make_newsletter( $atts, $content = null ) {
 }
 add_shortcode( 'newsletter', 'make_newsletter' );
 
+function make_marketron_newsletter( $atts, $content = null ) {
+	return '
+		<form class="form-stacked" action="http://makermedia.createsend.com/t/r/s/jrsydu/" method="post" id="subForm">
+			<fieldset>
+				<legend>Sign up for the Make: Newsletter</legend>
+				<div class="clearfix">
+					<label for="name">Name:</label>
+					<div class="input">
+						<input class="xlarge" id="name" name="cm-name" size="30" type="text">
+					</div>
+				</div>
+				<!-- /clearfix -->
+				<div class="clearfix">
+					<label for="jrsydu-jrsydu">Email:</label>
+					<div class="input">
+						<input class="xlarge" id="jrsydu-jrsydu" name="cm-jrsydu-jrsydu" size="30" type="text">
+					</div>
+				</div>
+				<!-- /clearfix -->
+			</fieldset>
+			<div class="actions">
+				<button type="submit" class="btn primary">Subscribe</button>
+			</div>
+		</form>';
+}
+add_shortcode( 'marketron', 'make_marketron_newsletter' );
+
 function youtube_playlist( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 		'width' => '370',
@@ -98,19 +125,87 @@ function make_printing_guide_blurb() {
 
 			<img src="'.get_stylesheet_directory_uri().'/img/SIP4_Cover_RGB1.jpg" class="thumbnail pull-right" style="width:125px; height: auto;" />
 
-			<h4 style="text-align:center;">MAKE Ultimate Guide To 3D Printing</h4>
-			
+			<h4>Get a copy of the MAKE Ultimate Guide To 3D Printing today!</h4>
+
 			<ul>
-				<li>3D Printers Buyer\'s Guide</li>
-				<li>Get started in 3D</li>
-				<li>10 things you need to know</li>
-				<li>Best software to use</li>
-				<li>How to scan objects</li>
+				<li>3D Printers Buyer\'s Guide &mdash; 15 Reviewed</li>
+				<li>Getting Started in 3D</li>
+				<li>Learn the Software Toolchain</li>
+				<li>3D Design for Beginners</li>
+				<li>3D Printing without a Printer</li>
+
 			</ul>
-			
+
 			<p><a class="btn btn-primary" href="http://www.makershed.com/Make_Ultimate_Guide_to_3D_Printing_p/1449357377.htm">Buy now!</a></p>
 
 		</div>';
 }
 
 add_shortcode( 'printing', 'make_printing_guide_blurb' );
+
+function make_holiday_banner() {
+	return '<img src="'. get_stylesheet_directory_uri() . '/img/holiday_banner.jpg" alt="MAKE Holiday Gift Guide 2012" />';
+}
+
+add_shortcode( 'holiday', 'make_holiday_banner' );
+
+function make_featured_products_shortcode() {
+
+	$xml = wpcom_vip_file_get_contents( 'http://makershed.com/net/webservice.aspx?api_name=generic\featured_products' );
+
+	if ( ! $xml )
+		return;
+
+	$simpleXmlElem = simplexml_load_string( $xml );
+	if ( ! $simpleXmlElem )
+		return;
+	$xml_featured_products = $simpleXmlElem->asXML();
+	$featured_products = simplexml_load_string($xml_featured_products);
+	$products = $featured_products->Product;
+	$products_count = count($products);
+	if ($products_count > 8) {
+		$input = range(1,$products_count);
+		$arr = array_rand($input, 4);
+	} else {
+		$input = range(1,8);
+		$arr = array_rand($input, 4);
+	}
+
+	ob_start();
+
+	echo '<table><tr>';
+
+	for ( $i = 0; $i <= 2; $i++ ) {
+		if ( ! isset( $products[ $arr[ $i ] ] ) ) {
+			continue;
+		}
+?>
+
+		<td>
+
+			<a href="<?php echo esc_url( 'http://www.makershed.com/ProductDetails.asp?&Click=107309&ProductCode=' . rawurlencode( $products[ $arr[ $i ] ]->ProductCode ) ); ?>">
+				<?php
+					if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
+						echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $products[ $arr[ $i ] ]->PhotoURL, 175, 175 ) . '" alt="' . esc_attr( $products[ $arr[ $i ] ]->ProductName ) . '" class="thumbnail small-thumb" />';
+					} else {
+						echo '<img src="' . esc_url( $products[ $arr[ $i ] ]->PhotoURL ) . '" alt="' . esc_attr( $products[ $arr[ $i ] ]->ProductName ) . '" class="thumbnail small-thumb"/>';
+					}
+				?>
+			</a>
+
+			<div class="blurb">
+				<h4><a href="<?php echo esc_url( 'http://www.makershed.com/ProductDetails.asp?&Click=107309&ProductCode=' . rawurlencode( $products[ $arr[ $i ] ]->ProductCode ) ); ?>"><?php echo esc_html( $products[ $arr[ $i ] ]->ProductName ); ?></a></h4>
+			</div>
+
+		</td>
+
+<?php
+
+	} // end for()
+
+	echo '</tr></table>';
+
+	return ob_get_clean();
+}
+
+add_shortcode( 'featured_products', 'make_featured_products_shortcode' );

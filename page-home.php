@@ -102,8 +102,8 @@ Template Name: Home Page
 
 						<div>
 
-							<a href="http://blog.makezine.com/2012/11/06/first-international-maker-meetup-on-3d-printing-nov-15/">
-								<img src="<?php bloginfo('stylesheet_directory'); ?>/img/3D-Printer-Meetup.jpg" class="contribute" alt="Worldwide 3D  Printing Meetup" />
+							<a href="https://www.pubservice.com/subgiftcombo.aspx?PC=MK&PK=42BBN04">
+								<img src="<?php bloginfo('stylesheet_directory'); ?>/img/holiday-subscribe.jpg" class="contribute" alt="Holiday special, buy one, get one free!" />
 							</a>
 
 						</div>
@@ -136,8 +136,8 @@ Template Name: Home Page
 
 					<div class="span12">
 
-						<a href="https://pubservice.com/Subgiftcombo.aspx?PC=MK&PK=429NGFT">
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/bogo-subscribe-banner.png" alt="Subscribe to MAKE magazine" />
+						<a href="https://www.pubservice.com/subgiftcombo.aspx?PC=MK&PK=42BBN03">
+							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/holiday-belt.png" alt="Subscribe to MAKE magazine" />
 						</a>
 
 					</div>
@@ -238,7 +238,7 @@ Template Name: Home Page
 										while ( $proj_query->have_posts() ) : $proj_query->the_post();
 											echo '<a href="'.get_permalink().'">';
 											the_post_thumbnail('small-home');
-											the_title('<h4>', '</h4>');
+											echo '<h4>' . wp_trim_words((get_the_title()),8) . '</h4>';
 											echo '<p>'.wp_trim_words(strip_shortcodes(get_the_content('...')), 12).'</p>';
 											echo '</a>';
 										endwhile;
@@ -306,7 +306,7 @@ Template Name: Home Page
 										while ( $the_query->have_posts() ) : $the_query->the_post();
 											echo '<a href="'.get_permalink().'">';
 											the_post_thumbnail('small-home');
-											the_title('<h4>', '</h4>');
+											echo '<h4>' . wp_trim_words((get_the_title()),8) . '</h4>';
 											echo '<p>'.wp_trim_words(strip_shortcodes(get_the_content('...')), 12).'</p>';
 											echo '</a>';
 										endwhile;
@@ -341,7 +341,7 @@ Template Name: Home Page
 										while ( $the_query->have_posts() ) : $the_query->the_post();
 											echo '<a href="'.get_permalink().'">';
 											the_post_thumbnail('small-home');
-											the_title('<h4>', '</h4>');
+											echo '<h4>' . wp_trim_words((get_the_title()),8) . '</h4>';
 											echo '<p>'.wp_trim_words(strip_shortcodes(get_the_content('...')), 12).'</p>';
 											echo '</a>';
 										endwhile;
@@ -372,7 +372,7 @@ Template Name: Home Page
 										while ( $the_query->have_posts() ) : $the_query->the_post();
 											echo '<a href="'.get_permalink().'">';
 											the_post_thumbnail('small-home');
-											the_title('<h4>', '</h4>');
+											echo '<h4>' . wp_trim_words((get_the_title()),8) . '</h4>';
 											echo '<p>'.wp_trim_words(strip_shortcodes(get_the_content('...')), 12).'</p>';
 											echo '</a>';
 										endwhile;
@@ -400,7 +400,7 @@ Template Name: Home Page
 										while ( $the_query->have_posts() ) : $the_query->the_post();
 											echo '<a href="'.get_permalink().'">';
 											the_post_thumbnail('small-home');
-											the_title('<h4>', '</h4>');
+											echo '<h4>' . wp_trim_words((get_the_title()),8) . '</h4>';
 											echo '<p>'.wp_trim_words(strip_shortcodes(get_the_content('...')), 12).'</p>';
 											echo '</a>';
 										endwhile;
@@ -422,10 +422,6 @@ Template Name: Home Page
 				</div>
 
 			</div>
-
-		</div>
-
-		</div>
 
 		<div class="clear"></div>
 

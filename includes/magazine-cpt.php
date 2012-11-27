@@ -102,19 +102,24 @@ $field_data = array (
 $easy_cf = new Easy_CF($field_data);
 
 
-function make_magazine_toc() {
+function make_magazine_toc($posttype = 'magazine', $title = 'Articles') {
 	global $post;
 	$args = array(
 		'post_parent' => $post->ID,
 		'no_found_rows' => true,
-		'post_type' => 'magazine'
+		'post_type' => $posttype,
+		'posts_per_page'=>-1,
+		'orderby' => 'name',
+		'order' => 'asc'
 	);
 	
-	if($post->post_parent == 0) {
-		echo '<h3>Articles</h3>';
-	}
-
 	$the_query = new WP_Query( $args );
+
+	// Need a way to filter out the title if there are no results in the query.
+	if($post->post_parent == 0 && !empty($the_query->posts) ) {
+		echo '<h3>'. $title .'</h3>';
+		//print_r($the_query);
+	}
 
 	while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
@@ -209,3 +214,17 @@ function register_taxonomy_section() {
 
 	register_taxonomy( 'section', array('magazine'), $args );
 }
+
+$field_data = array (
+	'advanced_testgroup' => array (
+		'fields' => array(
+			'FeaturedPosts' => array(),
+			'VideoURL' => array(),
+		),
+		'title'		=> 'Magazine Volume Setup',
+		'context'	=> 'side',
+		'pages'		=> array( 'volume' ),
+	),
+);
+
+$easy_cf = new Easy_CF($field_data);

@@ -37,8 +37,22 @@ function make_the_dash_shares_widget($type, $hits = null, $limit = 5, $size = 80
 		}
 		if(!$exclude){
 
-			$content .= '<div class="row-fluid item"><div class="span4"><a href="';
-			$content .= '">';
+			$slideshow = '/slideshow/';
+			if ($type == 'shares') {
+				$url = $item->url;
+			} else {
+				$url = $item->link;
+			}
+			$rand = mt_rand();
+
+			$pos = strpos( $url, $slideshow );
+
+			$content .= '<div class="row-fluid item"><div class="span4">';
+			if ( $pos === 24 ) {
+				$content .= '<a href="#myModal-' . $rand . '" role="button" class="" data-toggle="modal">';
+			} else {
+				$content .= '<a href="' . $url . '">';
+			}
 
 			if (isset($item->thumb_url_medium)) {
 				if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
@@ -49,21 +63,31 @@ function make_the_dash_shares_widget($type, $hits = null, $limit = 5, $size = 80
 			} else {
 				$content .= '<img src="http://1.gravatar.com/blavatar/dab43acfe30c0e28a023bb3b7a700440?s=70" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
 			}
-			$content .= '</a></div><div class="span8"><h5><a href="';
-			if ($type == 'shares') {
-				$content .= esc_url($item->url);
+			$content .= '</a></div><div class="span8"><h5>';
+			if ( $pos === 24 ) {
+				$content .= '<a href="#myModal-' . $rand . '" role="button" class="" data-toggle="modal">' . esc_html($item->title) . '</a>';
 			} else {
-				$content .= esc_url($item->link);
+				$content .= '<a href="' . $url . '">' . esc_html($item->title) . '</a>';
 			}
-			$content .= '">';
-			$content .= esc_html($item->title);
-			$content .= '</a></h5><ul class="unstyled"><li>By: ' . esc_html($item->author)  . '</li>';
+			$content .= '</h5><ul class="unstyled"><li>By: ' . esc_html($item->author)  . '</li>';
 			if ($type == 'shares' && $hits != null) {
 				$content .= '<li>'  . $hits .' <span class="badge badge-info">'.  esc_html($item->_shares) . '</span></li>';
 			} elseif ($hits != null) {
 				$content .= '<li>'  . $hits .' <span class="badge badge-info">'.  esc_html($item->_hits) . '</span></li>';
 			}
 			$content .= '</ul></div></div>';
+			$content .= '<div class="modal hide fade slideshow" id="myModal-' . $rand . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel">' . esc_html( $item->title ) . '</h3>
+				</div>
+				<div class="modal-body">
+					<iframe width="940" height="600" frameborder=0 src="'.esc_url( $url ).'"></iframe>
+				</div>
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+				</div>
+			</div>';
 		}
 	}
 

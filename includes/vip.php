@@ -34,6 +34,11 @@ wpcom_vip_load_plugin( 'simply-show-ids' );
 wpcom_vip_load_plugin( 'view-all-posts-pages' );
 wpcom_vip_load_plugin( 'co-authors-plus' );
 
+
+if (is_page('contribute')) {
+	wpcom_vip_load_plugin( 'wp-frontend-uploader' );	
+}
+
 if ( ! jetpack_is_mobile() ) {
 	wpcom_vip_load_plugin( 'facebook' );
 }
