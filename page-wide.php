@@ -13,7 +13,7 @@ get_header(); ?>
 				context.event = "registration";
 			gigya.accounts.showScreenSet({
 				containerID: 'inlineRegister'
-				,screenSet:'Login-web'
+				,screenSet:'Login-inline'
 				,startScreen:'gigya-register-screen'
 				,context: context
 				,cid: context.cid

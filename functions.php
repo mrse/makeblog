@@ -133,4 +133,15 @@ include_once dirname(__file__) . '/includes/errata-cpt.php';
  
 include_once dirname(__file__) . '/includes/contextly-related-links/contextly-linker.php';
 
+// 29. Gigya Signature
+ 
+//include_once dirname(__file__) . '/includes/gigya/SigUtils.php';
+
+// 30. Gigya Constants
+ 
+//include_once dirname(__file__) . '/includes/gigya/GSConfig.php';
+
+// 31. Gigya - Contribute
+ 
+//include_once dirname(__file__) . '/includes/gigya/contribute-guest-author.php';
 ?>
