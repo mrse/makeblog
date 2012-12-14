@@ -71,7 +71,7 @@ var gigyaUtil = {
 		var context = gigyaUtil.getContext();
 			context.event = "login";
 		gigya.accounts.showScreenSet({
-			screenSet:'Login-web'
+			screenSet:'Custom-Login-web'
 			,startScreen:'gigya-login-screen'
 			,context: context
 			,cid: context.cid
@@ -89,7 +89,7 @@ var gigyaUtil = {
 		var context = gigyaUtil.getContext();
 			context.event = "registration";
 		gigya.accounts.showScreenSet({
-			screenSet:'Login-web'
+			screenSet:'Custom-Login-web'
 			,startScreen:'gigya-register-screen'
 			,context: context
 			,cid: context.cid
@@ -286,9 +286,10 @@ var gigyaUtil = {
 		});
 
 	}
-	,searchEspEmail: function() {
-
-		var email = jQuery("#input_esp_email").val();
+	,searchEspEmail: function(email) {
+		if( undefined == email ) {
+			email = jQuery('#input_esp_email').val();
+		}
 		
 		var d = {};
 		d.action = "esp_acct_search";
@@ -303,7 +304,7 @@ var gigyaUtil = {
 			,success: function(data, textStatus, jqXHR) {
 				if(gigyaUtil.debug) console.log(data);
 				
-				if( data.complete ) {
+				if( data.complete && null !== data.esp_normalized.acctno ) {
 					if(gigyaUtil.debug) console.log(data.esp_normalized);
 					
 					//confirm w/ user
@@ -311,11 +312,17 @@ var gigyaUtil = {
 					
 				} else {
 					if(gigyaUtil.debug) console.log("no joy");
+
+					//prompt user for ESP info
+					gigyaUtil.showEspSearch("We weren't able to verify your magazine subscription based on your email address but we can look up your account number, which is located on your magazine mailing label.");
 				}
 
 			}
 			,error: function(jqXHR, textStatus, errorThrown) {
 				if(gigyaUtil.debug) console.log(textStatus+": "+errorThrown);
+			}
+			,complete: function(jqXHR, textStatus) {
+				if(gigyaUtil.debug) console.log("searchEspEmail complete:"+textStatus);
 			}
 
 		});		
@@ -337,7 +344,7 @@ var gigyaUtil = {
 			,success: function(data, textStatus, jqXHR) {
 				if(gigyaUtil.debug) console.log(data);
 				
-				if( data.complete ) {
+				if( data.complete && null !== data.esp_normalized.acctno ) {
 					if(gigyaUtil.debug) console.log(data.esp_normalized);
 					
 					//confirm w/ user
@@ -345,6 +352,9 @@ var gigyaUtil = {
 
 				} else {
 					if(gigyaUtil.debug) console.log("no joy");
+
+					//prompt user for ESP info
+					gigyaUtil.showEspSearch("Hmm, we weren't able to verify your magazine subscription with that account number. You can still use your maker account, you just won't be able to view the magazine online until we get this sorted out. You can try again below or email us for help at <a href='mailto:subscriptions@makezine.com'>subscriptions@makezine.com</a>.");
 				}
 
 			}
@@ -355,17 +365,82 @@ var gigyaUtil = {
 		});
 	}
 	,showEspConfirm: function(esp) {
-		jQuery('.esp_uid').html(esp.uid);
+		if(gigyaUtil.debug) console.log("showEspConfirm() called...");
+
+		jQuery('#modal_esp_link').modal('hide');
+
+		switch(esp.method) {
+			case 'acctno':
+				jQuery("#esp_verify_type").html("account number");
+				jQuery("#esp_verify_info").html(esp.acctno);
+				break;
+
+			case 'uid':
+				jQuery("#esp_verify_type").html("user name");
+				jQuery("#esp_verify_info").html(esp.uid);
+				break;
+
+			case 'address':
+			default:
+				jQuery("#esp_verify_type").html("email address");
+				jQuery("#esp_verify_info").html(esp.email);
+				break;
+		}
+
 		jQuery('#esp_uid').val(esp.uid);
-		jQuery('.esp_acctno').html(esp.acctno);
 		jQuery('#esp_acctno').val(esp.acctno);
 		jQuery('#esp_accttype').val(esp.accttype);
 		jQuery('#esp_status').val(esp.status);
 		jQuery('#esp_expiredate').val(esp.expiredate);
+		jQuery('#esp_email').val(esp.email);
 		
 		jQuery('#modal_esp_confirm').modal('show');
 	}
+	,showEspSearch: function(msg) {
+		jQuery('#modal_esp_confirm').modal('hide');
+		jQuery('#no-match-msg').html(msg);
+		jQuery('#modal_esp_link').modal('show');
+	}
+	,confirmEsp: function() {
+		var context = gigyaUtil.getContext();
 
+		var esp = {
+			uid: jQuery("#esp_uid").val()
+			,acctno: jQuery("#esp_acctno").val()
+			,accttype: jQuery("#esp_accttype").val()
+			,status: jQuery("#esp_status").val()
+			,expiredate: jQuery("#esp_expiredate").val()
+			,email: jQuery("#esp_email").val()
+		};
+
+		gigya.accounts.setAccountInfo({
+			data: {
+				is_esp: true
+				,esp: esp
+			}
+			,cid: context.cid
+			,context: context
+			,callback: function() {
+				jQuery('#modal_esp_confirm').modal('hide');
+				jQuery('#modal_esp_link').modal('hide');
+			}
+		});
+	}
+	,cancelEsp: function() {
+		var context = gigyaUtil.getContext();
+
+		gigya.accounts.setAccountInfo({
+			data: {
+				is_esp: false
+			}
+			,cid: context.cid
+			,context: context
+			,callback: function() {
+				jQuery('#modal_esp_confirm').modal('hide');
+				jQuery('#modal_esp_link').modal('hide');
+			}
+		});
+	}
 };
 
 /////////////
@@ -403,6 +478,7 @@ gigya.accounts.addEventHandlers({
 			,timestamp: c.timestamp
 		};
 		
+		var isReg = false;
 		if( undefined == data.registration || null == data.registration ) { //this is a registration
 			if(gigyaUtil.debug) console.log("setting reg URL");
 			
@@ -412,9 +488,11 @@ gigya.accounts.addEventHandlers({
 				,timestamp: c.timestamp
 			};
 			d.cid = c.cid;
+
+			isReg = true;
 		}
 
-		if( e.UID.match(/^_guid_/) ) { //this is a registration
+		if( isReg ) { //this is a registration
 			if(gigyaUtil.debug) console.log("this is a registration");
 
 			//AJAX call to WP to create guest author account
@@ -475,17 +553,14 @@ gigya.accounts.addEventHandlers({
 		
 		//check for ESP account
 		if(gigyaUtil.debug) console.log("checking if user has esp acct");
-		if( undefined != data.is_esp && data.is_esp) { //Make Magazine subscriber
+		if( undefined !== data.is_esp && data.is_esp) { //Make Magazine subscriber
 			if(gigyaUtil.debug) console.log("esp checkbox checked");
 
 			if( undefined == data.esp ) { //user has not linked ESP acct
 				if(gigyaUtil.debug) console.log("no esp object found");
 
-				//prompt user for ESP info
-				if( undefined != profile.email && '' != profile.email ) {
-					jQuery("#input_esp_email").val(profile.email);
-				}
-				jQuery('#modal_esp_link').modal('show');
+				//check ESP for acct from email
+				gigyaUtil.searchEspEmail(profile.email);				
 
 			} else { //ESP acct info has been set in Gigya
 				if(gigyaUtil.debug) console.log(data.esp);

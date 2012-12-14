@@ -680,6 +680,7 @@ function test_esp() {
 function get_esp_acct($params) {
 
 	$acct = false;
+	$method = null;
 	
 	if( array_key_exists("acctno",$params) ) { //lookup w/ acct number
 		// e.g.
@@ -688,6 +689,7 @@ function get_esp_acct($params) {
 		//	);
 		
 		$acct = get_esp_api("ws1400",$params); //Obtain Current Account Information
+		$method = "acctno";
 /* e.g.
 			{
 				"complete": true,
@@ -777,6 +779,7 @@ function get_esp_acct($params) {
 		//	);
 		
 		$acct = get_esp_api("ws1000",$params); //Verify Existing User Logon
+		$method = "uid";
 /* e.g.
 			{
 				"complete": true,
@@ -847,6 +850,7 @@ function get_esp_acct($params) {
 		}
 		
 		$acct = get_esp_api("ws3600",array("shippingdetails"=>$shippingdetails)); //Lookup Subscriber by Postal or Email Address
+		$method = "address";
 /* e.g.
 			{
 				"complete": true,
@@ -881,6 +885,7 @@ function get_esp_acct($params) {
 		}
 		
 		$esp_normalized = array();
+		$esp_normalized['method'] = $method;
 		if( array_key_exists('acctno',$esp) ) {
 			$esp_normalized['acctno'] = $esp['acctno'];
 		}
@@ -898,6 +903,11 @@ function get_esp_acct($params) {
 		}
 		if( array_key_exists('adddate',$esp) ) {
 			$esp_normalized['adddate'] = $esp['adddate'];
+		}
+		if( array_key_exists('emailaddr', $esp) ) {
+			$esp_normalized['email'] = strtolower($esp['emailaddr']);
+		} else if( array_key_exists('shippingdetails', $esp) ) {
+			$esp_normalized['email'] = strtolower($esp['shippingdetails']['email']);
 		}
 		$acct['esp_normalized'] = $esp_normalized;
 
@@ -971,7 +981,7 @@ function get_gigya_user_array($uid) {
 	$include = "profile,data"; //available: "data,emails,identities-active,identities-all,irank,loginIDs,profile"
 	$url = "https://socialize-api.gigya.com/accounts.getAccountInfo?apiKey=".rawurlencode(get_gigya_api_key())."&secret=".rawurlencode(get_gigya_secret_key())."&format=json&UID=".$uid."&include=".$include;
 	$contents = wpcom_vip_file_get_contents( $url, 3, 900, array( 'obey_cache_control_header' => false ) );
-	$jobj = json_decode($contents);
+	$jobj = json_decode($contents, true);
 	$userarray = array(
 		"profile" => $jobj['profile']
 		,"data" => $jobj['data']

@@ -10,8 +10,8 @@ function get_gigya_secret_key() {
 }
 
 function get_esp_base_url() {
-//	return 'https://www.pubservice.com'; //prod
-	return 'https://espdev.espcomp.net'; //dev
+	return 'https://www.pubservice.com'; //prod
+//	return 'https://espdev.espcomp.net'; //dev
 }
 
 function get_esp_pubcode() {

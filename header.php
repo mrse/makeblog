@@ -59,12 +59,17 @@
 							<li class=""><a href="http://makerfaire.com">Maker Faire</a></li>
 							<li class=""><a href="http://makeprojects.com">Make: Projects</a></li>
 							<li class=""><a href="http://makershed.com">Maker Shed</a></li>
-							<li class=""><a href="http://kits.makezine.com">Kits</a></li>
+							<!-- li class=""><a href="http://kits.makezine.com">Kits</a></li -->
+							<!-- li class=""><a href="#" onclick="gigyaUtil.testESP();">ESP</a></li -->
+							<li class="gigya-logged-out"><a href="#" onclick="gigyaUtil.showRegistrationModal();">Register</a></li>
+							<li class="gigya-logged-out"><a href="#" onclick="gigyaUtil.showLoginModal();">Login</a></li>
+							<li class="gigya-logged-in" style="display:none;"><img src="" class="gigya-thumbnail" style="width:25px; height:25px; display:none;" /> <a href="#" onclick="gigyaUtil.showProfileModal();"><span class="gigya-first-name"></span></a></li>
+							<li class="gigya-logged-in" style="display:none;"><a href="#" onclick="gigyaUtil.logout();">Logout</a></li>
 						</ul>
 					</div>
 					<div class="pull-right">
 						<form action="http://blog.makezine.com/search/" class="form navbar-search">
-							<input type="text" class="span2 search-query" name="q" placeholder="" />
+							<input type="text" class="search-query span1" name="q" placeholder="" />
 							<input type="submit" class="btn btn-primary" style="height:28px" value="Search" />
 						</form>
 					</div>
