@@ -4,7 +4,7 @@
       <div class="gigya-layout-row"></div>
       <div class="gigya-layout-row">
         <div class="gigya-layout-cell">
-          <h2 class="gigya-composite-control gigya-composite-control-header">Login with your social network:</h2>
+          <h2 class="gigya-composite-control gigya-composite-control-header">Login using your social media credentials:</h2>
           <div class="gigya-composite-control gigya-spacer"
           data-units="2" style="height: 20px;"></div>
           <div class="gigya-composite-control gigya-composite-control-social-login">
@@ -21,12 +21,13 @@
           </div>
         </div>
         <div class="gigya-layout-cell">
-          <h2 class="gigya-composite-control gigya-composite-control-header">Or, login here:</h2>
+          <h2 class="gigya-composite-control gigya-composite-control-header">Or, login with your email address:</h2>
           <div class="gigya-composite-control gigya-spacer" data-units="2"
           style="height: 20px;"></div>
           <div class="gigya-composite-control gigya-composite-control-textbox">
             <label class="gigya-label">
               <span class="gigya-label-text">Email:</span>
+              <span class="gigya-required">*</span>
             </label>
             <input tabindex="1" name="loginID" class="gigya-input-text" type="text">
             <span class="gigya-error-msg" data-bound-to="loginID"></span>
@@ -35,8 +36,8 @@
             <label class="gigya-label">
               <label for="password" class="gigya-label"> <a style="float: right; font-weight: normal; margin-right: 5px;"
                 data-switch-screen="gigya-forgot-password-screen">Forgot password</a> 
-                <span
-                class="gigya-label-text">Password:</span>
+                <span class="gigya-label-text">Password:</span>
+                <span class="gigya-required">*</span>
                   <div class="gigya-clear"></div>
               </label>
             </label>

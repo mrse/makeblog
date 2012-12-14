@@ -8,44 +8,20 @@ get_header(); ?>
 		<script type="text/javascript">
 		jQuery(document).ready(function() {
 			
-			//display registration
-			var context = gigyaUtil.getContext();
-				context.event = "registration";
-			gigya.accounts.showScreenSet({
-				containerID: 'inlineRegister'
-				,screenSet:'Login-inline'
-				,startScreen:'gigya-register-screen'
-				,context: context
-				,cid: context.cid
-				,onError:function(e) {
-					if(gigyaUtil.debug) console.log(e);
-				}
-				,onBeforeScreenLoad:function(e) {
-					//if(gigyaUtil.debug) console.log(e);
+			//display login
+			gigyaUtil.showLoginInline();
+
+			//display profile
+			gigyaUtil.showProfileInline();
+
+			gigya.accounts.addEventHandlers({
+				onLogin: function(e) {
+					if(gigyaUtil.debug) console.log("onLogin event fired");
+
+					//refresh profile
+					gigyaUtil.showProfileInline();
 				}
 			});
-	
-			//display profile
-				context.event = "profile";
-			gigya.accounts.showScreenSet({
-				containerID: 'profileForm'
-				,screenSet:'Profile-web'
-				,startScreen:'gigya-update-profile-screen'
-				,context: context
-				,cid: context.cid
-				,onError:function(e) {
-					if(gigyaUtil.debug) console.log(e);
-				}
-				,onBeforeScreenLoad:function(e) {
-					//if(gigyaUtil.debug) console.log(e);
-				}
-				,onAfterSubmit:function(e) {
-					if(gigyaUtil.debug) console.log(e);
-	
-					gigyaUtil.updateProfile(context);
-	
-				}
-			});				
 
 		});
 		</script>

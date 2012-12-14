@@ -83,6 +83,23 @@ var gigyaUtil = {
 			}
 		});
 	}
+	,showLoginInline: function() {
+		var context = gigyaUtil.getContext();
+			context.event = "login";
+		gigya.accounts.showScreenSet({
+			containerID: 'inlineRegister'
+			,screenSet:'Custom-Login-web'
+			,startScreen:'gigya-login-screen'
+			,context: context
+			,cid: context.cid
+			,onError:function(e) {
+				if(gigyaUtil.debug) console.log(e);
+			}
+			,onBeforeScreenLoad:function(e) {
+				//if(gigyaUtil.debug) console.log(e);
+			}
+		});
+	}
 	,showRegistrationModal: function() {
 		if(gigyaUtil.debug) console.log("showRegistrationModal() called...");
 		
@@ -101,6 +118,23 @@ var gigyaUtil = {
 			}
 		});
 	}
+	,showRegistrationInline: function() {
+		var context = gigyaUtil.getContext();
+			context.event = "registration";
+		gigya.accounts.showScreenSet({
+			containerID: 'inlineRegister'
+			,screenSet:'Custom-Login-web'
+			,startScreen:'gigya-register-screen'
+			,context: context
+			,cid: context.cid
+			,onError:function(e) {
+				if(gigyaUtil.debug) console.log(e);
+			}
+			,onBeforeScreenLoad:function(e) {
+				//if(gigyaUtil.debug) console.log(e);
+			}
+		});
+	}
 	,showProfileModal: function() {
 		if(gigyaUtil.debug) console.log("showProfileModal() called...");
 		
@@ -108,6 +142,29 @@ var gigyaUtil = {
 			context.event = "profile";
 		gigya.accounts.showScreenSet({
 			screenSet:'Profile-web'
+			,startScreen:'gigya-update-profile-screen'
+			,context: context
+			,cid: context.cid
+			,onError:function(e) {
+				if(gigyaUtil.debug) console.log(e);
+			}
+			,onBeforeScreenLoad:function(e) {
+				//if(gigyaUtil.debug) console.log(e);
+			}
+			,onAfterSubmit:function(e) {
+				if(gigyaUtil.debug) console.log(e);
+
+				gigyaUtil.updateProfile(context);
+
+			}
+		});
+	}
+	,showProfileInline: function() {
+		var context = gigyaUtil.getContext();
+			context.event = "profile";
+		gigya.accounts.showScreenSet({
+			containerID: 'profileForm'
+			,screenSet:'Profile-web'
 			,startScreen:'gigya-update-profile-screen'
 			,context: context
 			,cid: context.cid
