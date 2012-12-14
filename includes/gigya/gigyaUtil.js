@@ -65,6 +65,38 @@ var gigyaUtil = {
 		jQuery(".gigya-photo").hide();
 		jQuery(".gigya-logged-out").show();			
 	}
+	,showCustomError: function(e) {
+		var msg = "";
+
+		switch(e.screen) {
+			case 'gigya-register-screen':
+				var errors = e.response.validationErrors;
+				for(var i=0; i<errors.length; i++) {
+					var error = errors[i];
+					if( 400003 == error.errorCode) {
+						msg += "Whoops! There's already an account for that email address. You can <a href='#' onclick='gigyaUtil.showLoginModal();'>Login</a> or we can email your password to you, if you <a href='#' onclick='gigyaUtil.showForgotPasswordModal();'>Forgot Your Password</a>.";
+					} else {
+						msg += error.message+"<br/>";
+					}
+				}
+				break;
+		}
+
+		var f = function() {
+			if( "" != msg ) {
+				setTimeout(function() {
+					var div = jQuery("#register-error-msg");
+					if("" != div.html()) {
+						div.html(msg);
+					} else {
+						console.log("nothing yet");
+						f();
+					}
+				}, 200);				
+			}
+		}
+		f();
+	}
 	,showLoginModal: function() {
 		if(gigyaUtil.debug) console.log("showLoginModal() called...");
 		
@@ -77,6 +109,7 @@ var gigyaUtil = {
 			,cid: context.cid
 			,onError:function(e) {
 				if(gigyaUtil.debug) console.log(e);
+				gigyaUtil.showCustomError(e);
 			}
 			,onBeforeScreenLoad:function(e) {
 				//if(gigyaUtil.debug) console.log(e);
@@ -94,6 +127,7 @@ var gigyaUtil = {
 			,cid: context.cid
 			,onError:function(e) {
 				if(gigyaUtil.debug) console.log(e);
+				gigyaUtil.showCustomError(e);
 			}
 			,onBeforeScreenLoad:function(e) {
 				//if(gigyaUtil.debug) console.log(e);
@@ -112,31 +146,7 @@ var gigyaUtil = {
 			,cid: context.cid
 			,onError:function(e) {
 				if(gigyaUtil.debug) console.log(e);
-				var msg = "";
-
-				switch(e.screen) {
-					case 'gigya-register-screen':
-						var errors = e.response.validationErrors;
-						for(var i=0; i<errors.length; i++) {
-							var error = errors[i];
-							msg += error.message+"<br/>";
-						}
-						break;
-				}
-
-				var f = function() {
-					setTimeout(function() {
-						var div = jQuery("#register-error-msg");
-						if("" != div.html()) {
-							div.html(msg);
-						} else {
-							console.log("nothing yet");
-							f();
-						}
-					}, 200);
-				}
-				f();
-
+				gigyaUtil.showCustomError(e);
 			}
 			,onBeforeScreenLoad:function(e) {
 				//if(gigyaUtil.debug) console.log(e);
@@ -154,6 +164,24 @@ var gigyaUtil = {
 			,cid: context.cid
 			,onError:function(e) {
 				if(gigyaUtil.debug) console.log(e);
+				gigyaUtil.showCustomError(e);
+			}
+			,onBeforeScreenLoad:function(e) {
+				//if(gigyaUtil.debug) console.log(e);
+			}
+		});
+	}
+	,showForgotPasswordModal: function() {
+		var context = gigyaUtil.getContext();
+			context.event = "login";
+		gigya.accounts.showScreenSet({
+			screenSet:'Custom-Login-web'
+			,startScreen:'gigya-forgot-password-screen'
+			,context: context
+			,cid: context.cid
+			,onError:function(e) {
+				if(gigyaUtil.debug) console.log(e);
+				gigyaUtil.showCustomError(e);
 			}
 			,onBeforeScreenLoad:function(e) {
 				//if(gigyaUtil.debug) console.log(e);
