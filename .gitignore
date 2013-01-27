@@ -1,8 +1,2 @@
 .svn
-<<<<<<< HEAD
-=======
-.DS_Store
-_notes
-*.sublime-project
-*.sublime-workspace
->>>>>>> 98d910939171bde08835eeb3042b34001b5acf89
+includes/gigya/
