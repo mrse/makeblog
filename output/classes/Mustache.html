@@ -1,0 +1,927 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Mustache</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/makeblog.html"><i class="icon-folder-open"></i> makeblog</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">533</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">5</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">7</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___clone" title="__clone :: Mustache class clone method."><span class="description">Mustache class clone method.</span><pre>__clone()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct :: Mustache class constructor."><span class="description">Mustache class constructor.</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method___toString" title="__toString :: Wrap the render() function for string conversion."><span class="description">Wrap the render() function for string conversion.</span><pre>__toString()</pre></a></li>
+<li class="method public "><a href="#method_render" title="render :: Render the given template and view object."><span class="description">Render the given template and view object.</span><pre>render()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method__changeDelimiter" title="_changeDelimiter :: Change the Mustache tag delimiter."><span class="description">Change the Mustache tag delimiter.</span><pre>_changeDelimiter()</pre></a></li>
+<li class="method protected "><a href="#method__findSection" title="_findSection :: Extract the first section from $template."><span class="description">Extract the first section from $template.</span><pre>_findSection()</pre></a></li>
+<li class="method protected "><a href="#method__findVariableInContext" title="_findVariableInContext :: Get a variable from the context array."><span class="description">Get a variable from the context array.</span><pre>_findVariableInContext()</pre></a></li>
+<li class="method protected "><a href="#method__getPartial" title="_getPartial :: Retrieve the partial corresponding to the requested tag name."><span class="description">Retrieve the partial corresponding to the requested tag name.</span><pre>_getPartial()</pre></a></li>
+<li class="method protected "><a href="#method__getPragmaOptions" title="_getPragmaOptions :: Return pragma options, if any."><span class="description">Return pragma options, if any.</span><pre>_getPragmaOptions()</pre></a></li>
+<li class="method protected "><a href="#method__getVariable" title="_getVariable :: Get a variable from the context array."><span class="description">Get a variable from the context array.</span><pre>_getVariable()</pre></a></li>
+<li class="method protected "><a href="#method__hasPragma" title="_hasPragma :: Check whether this Mustache has a specific pragma."><span class="description">Check whether this Mustache has a specific pragma.</span><pre>_hasPragma()</pre></a></li>
+<li class="method protected "><a href="#method__popContext" title="_popContext :: Remove the latest context from the stack."><span class="description">Remove the latest context from the stack.</span><pre>_popContext()</pre></a></li>
+<li class="method protected "><a href="#method__preparePragmaRegEx" title="_preparePragmaRegEx :: Prepare a pragma RegEx for the given opening/closing tags."><span class="description">Prepare a pragma RegEx for the given opening/closing tags.</span><pre>_preparePragmaRegEx()</pre></a></li>
+<li class="method protected "><a href="#method__prepareSectionRegEx" title="_prepareSectionRegEx :: Prepare a section RegEx string for the given opening/closing tags."><span class="description">Prepare a section RegEx string for the given opening/closing tags.</span><pre>_prepareSectionRegEx()</pre></a></li>
+<li class="method protected "><a href="#method__prepareTagRegEx" title="_prepareTagRegEx :: Prepare a tag RegEx for the given opening/closing tags."><span class="description">Prepare a tag RegEx for the given opening/closing tags.</span><pre>_prepareTagRegEx()</pre></a></li>
+<li class="method protected "><a href="#method__pushContext" title="_pushContext :: Push a local context onto the stack."><span class="description">Push a local context onto the stack.</span><pre>_pushContext()</pre></a></li>
+<li class="method protected "><a href="#method__renderComment" title="_renderComment :: Render a comment (i.e."><span class="description">Render a comment (i.e.</span><pre>_renderComment()</pre></a></li>
+<li class="method protected "><a href="#method__renderEscaped" title="_renderEscaped :: Escape and return the requested tag."><span class="description">Escape and return the requested tag.</span><pre>_renderEscaped()</pre></a></li>
+<li class="method protected "><a href="#method__renderPartial" title="_renderPartial :: Render the requested partial."><span class="description">Render the requested partial.</span><pre>_renderPartial()</pre></a></li>
+<li class="method protected "><a href="#method__renderPragma" title="_renderPragma :: A preg_replace helper to remove {{%PRAGMA}} tags and enable requested pragma."><span class="description">A preg_replace helper to remove {{%PRAGMA}} tags and enable requested pragma.</span><pre>_renderPragma()</pre></a></li>
+<li class="method protected "><a href="#method__renderPragmas" title="_renderPragmas :: Initialize pragmas and remove all pragma tags."><span class="description">Initialize pragmas and remove all pragma tags.</span><pre>_renderPragmas()</pre></a></li>
+<li class="method protected "><a href="#method__renderTag" title="_renderTag :: Render the named tag, given the specified modifier."><span class="description">Render the named tag, given the specified modifier.</span><pre>_renderTag()</pre></a></li>
+<li class="method protected "><a href="#method__renderTags" title="_renderTags :: Loop through and render individual Mustache tags."><span class="description">Loop through and render individual Mustache tags.</span><pre>_renderTags()</pre></a></li>
+<li class="method protected "><a href="#method__renderTemplate" title="_renderTemplate :: Internal render function, used for recursive calls."><span class="description">Internal render function, used for recursive calls.</span><pre>_renderTemplate()</pre></a></li>
+<li class="method protected "><a href="#method__renderUnescaped" title="_renderUnescaped :: Return the requested tag unescaped."><span class="description">Return the requested tag unescaped.</span><pre>_renderUnescaped()</pre></a></li>
+<li class="method protected "><a href="#method__setOptions" title="_setOptions :: Helper function for setting options from constructor args."><span class="description">Helper function for setting options from constructor args.</span><pre>_setOptions()</pre></a></li>
+<li class="method protected "><a href="#method__stringHasR" title='_stringHasR :: Returns true if any of its args contains the "\r" character.'><span class="description">Returns true if any of its args contains the "\r" character.</span><pre>_stringHasR()</pre></a></li>
+<li class="method protected "><a href="#method__throwsException" title="_throwsException :: Check whether this Mustache instance throws a given exception."><span class="description">Check whether this Mustache instance throws a given exception.</span><pre>_throwsException()</pre></a></li>
+<li class="method protected "><a href="#method__varIsIterable" title="_varIsIterable :: Check whether the given $var should be iterated (i.e."><span class="description">Check whether the given $var should be iterated (i.e.</span><pre>_varIsIterable()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property__charset" title="$_charset :: "><span class="description"></span><pre>$_charset</pre></a></li>
+<li class="property protected "><a href="#property__context" title="$_context :: "><span class="description"></span><pre>$_context</pre></a></li>
+<li class="property protected "><a href="#property__ctag" title="$_ctag :: "><span class="description"></span><pre>$_ctag</pre></a></li>
+<li class="property protected "><a href="#property__localPragmas" title="$_localPragmas :: "><span class="description"></span><pre>$_localPragmas</pre></a></li>
+<li class="property protected "><a href="#property__otag" title="$_otag :: "><span class="description"></span><pre>$_otag</pre></a></li>
+<li class="property protected "><a href="#property__partials" title="$_partials :: "><span class="description"></span><pre>$_partials</pre></a></li>
+<li class="property protected "><a href="#property__pragmas" title="$_pragmas :: "><span class="description"></span><pre>$_pragmas</pre></a></li>
+<li class="property protected "><a href="#property__pragmasImplemented" title="$_pragmasImplemented :: "><span class="description"></span><pre>$_pragmasImplemented</pre></a></li>
+<li class="property protected "><a href="#property__tagRegEx" title="$_tagRegEx :: "><span class="description"></span><pre>$_tagRegEx</pre></a></li>
+<li class="property protected "><a href="#property__template" title="$_template :: "><span class="description"></span><pre>$_template</pre></a></li>
+<li class="property protected "><a href="#property__throwsExceptions" title="$_throwsExceptions :: Should this Mustache throw exceptions when it finds unexpected tags?"><span class="description"></span><pre>$_throwsExceptions</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_PRAGMA_UNESCAPED" title="PRAGMA_UNESCAPED :: The {{%UNESCAPED}} pragma swaps the meaning of the {{normal}} and {{{unescaped}}}
+Mustache tags."><span class="description">The {{%UNESCAPED}} pragma swaps the meaning of the {{normal}} and {{{unescaped}}}
+Mustache tags.</span><pre>PRAGMA_UNESCAPED</pre></a></li>
+<li class="constant  "><a href="#constant_SECTION_TYPES" title="SECTION_TYPES :: Constants used for section and tag RegEx"><span class="description">Constants used for section and tag RegEx</span><pre>SECTION_TYPES</pre></a></li>
+<li class="constant  "><a href="#constant_TAG_TYPES" title="TAG_TYPES :: "><span class="description">TAG_TYPES</span><pre>TAG_TYPES</pre></a></li>
+<li class="constant  "><a href="#constant_VERSION" title="VERSION :: "><span class="description">VERSION</span><pre>VERSION</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\Mustache"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Mustache.html">Mustache</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">A Mustache implementation in PHP.</p>
+<div class="details">
+<div class="long_description"><p><a href="http://defunkt.github.com/mustache">http://defunkt.github.com/mustache</a></p>
+
+<p>Mustache is a framework-agnostic logic-less templating language. It enforces separation of view
+logic from template files. In fact, it is not even possible to embed logic in the template.</p>
+
+<p>This is very, very rad.</p></div>
+<table class="table table-bordered"><tr>
+<th>author</th>
+<td><a href="">Justin Hileman {@link http://justinhileman.com}</a></td>
+</tr></table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___clone"></a><div class="element clickable method public method___clone" data-toggle="collapse" data-target=".method___clone .collapse">
+<h2>Mustache class clone method.</h2>
+<pre>__clone() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A cloned Mustache instance should have pragmas, delimeters and root context
+reset to default values.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Mustache class constructor.</h2>
+<pre>__construct(string $template, mixed $view, array $partials, array $options) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This method accepts a $template string and a $view object. Optionally, pass an associative
+array of partials as well.</p>
+
+<p>Passing an $options array allows overriding certain Mustache options during instantiation:</p>
+
+<pre><code>$options = array(
+    // `charset` -- must be supported by `htmlspecialentities()`. defaults to 'UTF-8'
+    'charset' =&gt; 'ISO-8859-1',
+
+    // opening and closing delimiters, as an array or a space-separated string
+    'delimiters' =&gt; '&lt;% %&gt;',
+
+    // an array of pragmas to enable
+    'pragmas' =&gt; array(
+        Mustache::PRAGMA_UNESCAPED
+    ),
+);
+</code></pre></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$template</h4>
+<code>string</code><p>(default: null)</p>
+</div>
+<div class="subelement argument">
+<h4>$view</h4>
+<code>mixed</code><p>(default: null)</p>
+</div>
+<div class="subelement argument">
+<h4>$partials</h4>
+<code>array</code><p>(default: null)</p>
+</div>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>(default: array())</p>
+</div>
+</div></div>
+</div>
+<a id="method___toString"></a><div class="element clickable method public method___toString" data-toggle="collapse" data-target=".method___toString .collapse">
+<h2>Wrap the render() function for string conversion.</h2>
+<pre>__toString() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_render"></a><div class="element clickable method public method_render" data-toggle="collapse" data-target=".method_render .collapse">
+<h2>Render the given template and view object.</h2>
+<pre>render(string $template, mixed $view, array $partials) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Defaults to the template and view passed to the class constructor unless a new one is provided.
+Optionally, pass an associative array of partials as well.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$template</h4>
+<code>string</code><p>(default: null)</p>
+</div>
+<div class="subelement argument">
+<h4>$view</h4>
+<code>mixed</code><p>(default: null)</p>
+</div>
+<div class="subelement argument">
+<h4>$partials</h4>
+<code>array</code><p>(default: null)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Rendered Mustache template.</div>
+</div></div>
+</div>
+<a id="method__changeDelimiter"></a><div class="element clickable method protected method__changeDelimiter" data-toggle="collapse" data-target=".method__changeDelimiter .collapse">
+<h2>Change the Mustache tag delimiter.</h2>
+<pre>_changeDelimiter(string $tag_name, string $leading, string $trailing) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This method also replaces this object's current
+tag RegEx with one using the new delimiters.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tag_name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$leading</h4>
+<code>string</code><p>Whitespace</p></div>
+<div class="subelement argument">
+<h4>$trailing</h4>
+<code>string</code><p>Whitespace</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__findSection"></a><div class="element clickable method protected method__findSection" data-toggle="collapse" data-target=".method__findSection .collapse">
+<h2>Extract the first section from $template.</h2>
+<pre>_findSection(string $template) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$template</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>$before, $type, $tag_name, $content and $after</div>
+</div></div>
+</div>
+<a id="method__findVariableInContext"></a><div class="element clickable method protected method__findVariableInContext" data-toggle="collapse" data-target=".method__findVariableInContext .collapse">
+<h2>Get a variable from the context array.</h2>
+<pre>_findVariableInContext(string $tag_name, array $context) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Internal helper used by getVariable() to abstract
+variable traversal for dot notation.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tag_name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$context</h4>
+<code>array</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/MustacheException.html">\MustacheException</a></code></th>
+<td>Unknown variable name.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__getPartial"></a><div class="element clickable method protected method__getPartial" data-toggle="collapse" data-target=".method__getPartial .collapse">
+<h2>Retrieve the partial corresponding to the requested tag name.</h2>
+<pre>_getPartial(string $tag_name) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Silently fails (i.e. returns '') when the requested partial is not found.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tag_name</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/MustacheException.html">\MustacheException</a></code></th>
+<td>Unknown partial name.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__getPragmaOptions"></a><div class="element clickable method protected method__getPragmaOptions" data-toggle="collapse" data-target=".method__getPragmaOptions .collapse">
+<h2>Return pragma options, if any.</h2>
+<pre>_getPragmaOptions(string $pragma_name) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pragma_name</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/MustacheException.html">\MustacheException</a></code></th>
+<td>Unknown pragma</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method__getVariable"></a><div class="element clickable method protected method__getVariable" data-toggle="collapse" data-target=".method__getVariable .collapse">
+<h2>Get a variable from the context array.</h2>
+<pre>_getVariable(string $tag_name) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If the view is an array, returns the value with array key $tag_name.
+If the view is an object, this will check for a public member variable
+named $tag_name. If none is available, this method will execute and return
+any class method named $tag_name. Failing all of the above, this method will
+return an empty string.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tag_name</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/MustacheException.html">\MustacheException</a></code></th>
+<td>Unknown variable name.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__hasPragma"></a><div class="element clickable method protected method__hasPragma" data-toggle="collapse" data-target=".method__hasPragma .collapse">
+<h2>Check whether this Mustache has a specific pragma.</h2>
+<pre>_hasPragma(string $pragma_name) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pragma_name</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method__popContext"></a><div class="element clickable method protected method__popContext" data-toggle="collapse" data-target=".method__popContext .collapse">
+<h2>Remove the latest context from the stack.</h2>
+<pre>_popContext() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method__preparePragmaRegEx"></a><div class="element clickable method protected method__preparePragmaRegEx" data-toggle="collapse" data-target=".method__preparePragmaRegEx .collapse">
+<h2>Prepare a pragma RegEx for the given opening/closing tags.</h2>
+<pre>_preparePragmaRegEx(string $otag, string $ctag) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$otag</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$ctag</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__prepareSectionRegEx"></a><div class="element clickable method protected method__prepareSectionRegEx" data-toggle="collapse" data-target=".method__prepareSectionRegEx .collapse">
+<h2>Prepare a section RegEx string for the given opening/closing tags.</h2>
+<pre>_prepareSectionRegEx(string $otag, string $ctag) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$otag</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$ctag</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__prepareTagRegEx"></a><div class="element clickable method protected method__prepareTagRegEx" data-toggle="collapse" data-target=".method__prepareTagRegEx .collapse">
+<h2>Prepare a tag RegEx for the given opening/closing tags.</h2>
+<pre>_prepareTagRegEx(string $otag, string $ctag, $first) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$otag</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$ctag</h4>
+<code>string</code>
+</div>
+<div class="subelement argument"><h4>$first</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__pushContext"></a><div class="element clickable method protected method__pushContext" data-toggle="collapse" data-target=".method__pushContext .collapse">
+<h2>Push a local context onto the stack.</h2>
+<pre>_pushContext(array $local_context) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$local_context</h4>
+<code>array</code><p>&$local_context</p>
+</div>
+</div></div>
+</div>
+<a id="method__renderComment"></a><div class="element clickable method protected method__renderComment" data-toggle="collapse" data-target=".method__renderComment .collapse">
+<h2>Render a comment (i.e.</h2>
+<pre>_renderComment(string $tag_name, string $leading, string $trailing) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>return an empty string).</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tag_name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$leading</h4>
+<code>string</code><p>Whitespace</p></div>
+<div class="subelement argument">
+<h4>$trailing</h4>
+<code>string</code><p>Whitespace</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__renderEscaped"></a><div class="element clickable method protected method__renderEscaped" data-toggle="collapse" data-target=".method__renderEscaped .collapse">
+<h2>Escape and return the requested tag.</h2>
+<pre>_renderEscaped(string $tag_name, string $leading, string $trailing) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tag_name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$leading</h4>
+<code>string</code><p>Whitespace</p></div>
+<div class="subelement argument">
+<h4>$trailing</h4>
+<code>string</code><p>Whitespace</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__renderPartial"></a><div class="element clickable method protected method__renderPartial" data-toggle="collapse" data-target=".method__renderPartial .collapse">
+<h2>Render the requested partial.</h2>
+<pre>_renderPartial(string $tag_name, string $leading, string $trailing) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tag_name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$leading</h4>
+<code>string</code><p>Whitespace</p></div>
+<div class="subelement argument">
+<h4>$trailing</h4>
+<code>string</code><p>Whitespace</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__renderPragma"></a><div class="element clickable method protected method__renderPragma" data-toggle="collapse" data-target=".method__renderPragma .collapse">
+<h2>A preg_replace helper to remove {{%PRAGMA}} tags and enable requested pragma.</h2>
+<pre>_renderPragma(mixed $matches) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$matches</h4>
+<code>mixed</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/MustacheException.html">\MustacheException</a></code></th>
+<td>unknown pragma</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method__renderPragmas"></a><div class="element clickable method protected method__renderPragmas" data-toggle="collapse" data-target=".method__renderPragmas .collapse">
+<h2>Initialize pragmas and remove all pragma tags.</h2>
+<pre>_renderPragmas(string $template) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$template</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__renderTag"></a><div class="element clickable method protected method__renderTag" data-toggle="collapse" data-target=".method__renderTag .collapse">
+<h2>Render the named tag, given the specified modifier.</h2>
+<pre>_renderTag(string $modifier, string $tag_name, string $leading, string $trailing) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Accepted modifiers are <code>=</code> (change delimiter), <code>!</code> (comment), <code>&gt;</code> (partial)
+<code>{</code> or <code>&amp;</code> (don't escape output), or none (render escaped output).</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$modifier</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$tag_name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$leading</h4>
+<code>string</code><p>Whitespace</p></div>
+<div class="subelement argument">
+<h4>$trailing</h4>
+<code>string</code><p>Whitespace</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/MustacheException.html">\MustacheException</a></code></th>
+<td>Unmatched section tag encountered.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__renderTags"></a><div class="element clickable method protected method__renderTags" data-toggle="collapse" data-target=".method__renderTags .collapse">
+<h2>Loop through and render individual Mustache tags.</h2>
+<pre>_renderTags(string $template) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$template</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method__renderTemplate"></a><div class="element clickable method protected method__renderTemplate" data-toggle="collapse" data-target=".method__renderTemplate .collapse">
+<h2>Internal render function, used for recursive calls.</h2>
+<pre>_renderTemplate(string $template) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$template</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Rendered Mustache template.</div>
+</div></div>
+</div>
+<a id="method__renderUnescaped"></a><div class="element clickable method protected method__renderUnescaped" data-toggle="collapse" data-target=".method__renderUnescaped .collapse">
+<h2>Return the requested tag unescaped.</h2>
+<pre>_renderUnescaped(string $tag_name, string $leading, string $trailing) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tag_name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$leading</h4>
+<code>string</code><p>Whitespace</p></div>
+<div class="subelement argument">
+<h4>$trailing</h4>
+<code>string</code><p>Whitespace</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__setOptions"></a><div class="element clickable method protected method__setOptions" data-toggle="collapse" data-target=".method__setOptions .collapse">
+<h2>Helper function for setting options from constructor args.</h2>
+<pre>_setOptions(array $options) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method__stringHasR"></a><div class="element clickable method protected method__stringHasR" data-toggle="collapse" data-target=".method__stringHasR .collapse">
+<h2>Returns true if any of its args contains the "\r" character.</h2>
+<pre>_stringHasR(string $str) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$str</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a id="method__throwsException"></a><div class="element clickable method protected method__throwsException" data-toggle="collapse" data-target=".method__throwsException .collapse">
+<h2>Check whether this Mustache instance throws a given exception.</h2>
+<pre>_throwsException(mixed $exception) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Expects exceptions to be MustacheException error codes (i.e. class constants).</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$exception</h4>
+<code>mixed</code>
+</div>
+</div></div>
+</div>
+<a id="method__varIsIterable"></a><div class="element clickable method protected method__varIsIterable" data-toggle="collapse" data-target=".method__varIsIterable .collapse">
+<h2>Check whether the given $var should be iterated (i.e.</h2>
+<pre>_varIsIterable(mixed $var) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>in a section context).</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>protected</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$var</h4>
+<code>mixed</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property__charset"> </a><div class="element clickable property protected property__charset" data-toggle="collapse" data-target=".property__charset .collapse">
+<h2></h2>
+<pre>$_charset </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__context"> </a><div class="element clickable property protected property__context" data-toggle="collapse" data-target=".property__context .collapse">
+<h2></h2>
+<pre>$_context </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__ctag"> </a><div class="element clickable property protected property__ctag" data-toggle="collapse" data-target=".property__ctag .collapse">
+<h2></h2>
+<pre>$_ctag </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__localPragmas"> </a><div class="element clickable property protected property__localPragmas" data-toggle="collapse" data-target=".property__localPragmas .collapse">
+<h2></h2>
+<pre>$_localPragmas </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__otag"> </a><div class="element clickable property protected property__otag" data-toggle="collapse" data-target=".property__otag .collapse">
+<h2></h2>
+<pre>$_otag </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__partials"> </a><div class="element clickable property protected property__partials" data-toggle="collapse" data-target=".property__partials .collapse">
+<h2></h2>
+<pre>$_partials </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__pragmas"> </a><div class="element clickable property protected property__pragmas" data-toggle="collapse" data-target=".property__pragmas .collapse">
+<h2></h2>
+<pre>$_pragmas </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__pragmasImplemented"> </a><div class="element clickable property protected property__pragmasImplemented" data-toggle="collapse" data-target=".property__pragmasImplemented .collapse">
+<h2></h2>
+<pre>$_pragmasImplemented </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__tagRegEx"> </a><div class="element clickable property protected property__tagRegEx" data-toggle="collapse" data-target=".property__tagRegEx .collapse">
+<h2></h2>
+<pre>$_tagRegEx </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__template"> </a><div class="element clickable property protected property__template" data-toggle="collapse" data-target=".property__template .collapse">
+<h2></h2>
+<pre>$_template </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__throwsExceptions"> </a><div class="element clickable property protected property__throwsExceptions" data-toggle="collapse" data-target=".property__throwsExceptions .collapse">
+<h2></h2>
+<pre>$_throwsExceptions </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\self::_throwsException()</a></td>
+</tr></table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_PRAGMA_UNESCAPED"> </a><div class="element clickable constant  constant_PRAGMA_UNESCAPED" data-toggle="collapse" data-target=".constant_PRAGMA_UNESCAPED .collapse">
+<h2>The {{%UNESCAPED}} pragma swaps the meaning of the {{normal}} and {{{unescaped}}}
+Mustache tags.</h2>
+<pre>PRAGMA_UNESCAPED </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>That is, once this pragma is activated the {{normal}} tag will not be
+escaped while the {{{unescaped}}} tag will be escaped.</p>
+
+<p>Pragmas apply only to the current template. Partials, even those included after the
+{{%UNESCAPED}} call, will need their own pragma declaration.</p>
+
+<p>This may be useful in non-HTML Mustache situations.</p></div></div></div>
+</div>
+<a id="constant_SECTION_TYPES"> </a><div class="element clickable constant  constant_SECTION_TYPES" data-toggle="collapse" data-target=".constant_SECTION_TYPES .collapse">
+<h2>Constants used for section and tag RegEx</h2>
+<pre>SECTION_TYPES </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_TAG_TYPES"> </a><div class="element clickable constant  constant_TAG_TYPES" data-toggle="collapse" data-target=".constant_TAG_TYPES .collapse">
+<h2>TAG_TYPES</h2>
+<pre>TAG_TYPES </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_VERSION"> </a><div class="element clickable constant  constant_VERSION" data-toggle="collapse" data-target=".constant_VERSION .collapse">
+<h2>VERSION</h2>
+<pre>VERSION </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-01-25T12:24:12-08:00.<br></footer></div>
+</div>
+</body>
+</html>
