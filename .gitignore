@@ -1,2 +1,4 @@
 .svn
 includes/gigya/
+.DS_Store*
+.svn*
