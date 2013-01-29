@@ -1,3 +1,13 @@
+<?php
+/**
+ * The generic footer template for Craft posts.
+ *
+ * @package    makeblog
+ * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
+ * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * 
+ */
+?>
 				<div class="footer-ad" style="padding-top:30px;">
 				
 					<div class="" style="width:728px; margin:0 auto;">
@@ -64,19 +74,19 @@
 					<!-- END span4 newsletter -->
 					</div>
 					<div class="span about-us">
-						<h5>About Us</h5>
+						<h5>About <a href="http://makermedia.com">Maker Media</a></h5>
 						<div class="span about-column-01">
 							<ul>
 								<li><a href="http://makezine.com/help/index.html">Help</a></li>
-								<li><a href="http://makezine.com/contact.html">Contact</a></li>
+								<li><a href="http://makermedia.com/contact-us/">Contact</a></li>
 								<li><a href="http://www.makezine.com/go/subscribe2make">Subscribe</a></li>
-								<li><a href="http://makezine.com/advertise/index.html">Advertise</a></li> 
-								<li><a href="http://www.oreillynet.com/pub/a/mediakit/privacy.html">Privacy</a></li>
+								<li><a href="http://makermedia.com/work-with-us/advertising/">Advertise</a></li> 
+								<li><a href="http://makermedia.com/privacy/">Privacy</a></li>
 							</ul>
 						<!-- END span about-column-01 --></div>
 						<div class="span about-column-02">
 							<ul>
-								<li><a href="http://makezine.com/about/index.html">About Us</a></li>
+								<li><a href="http://makermedia.com/about-us/management-team/">About Us</a></li>
 								<li><a href="http://makezine.com/faq/index.html">FAQ</a></li>
 								<li><a href="http://makezine.com/community/index.html">Forums</a></li>
 								<li><a href="http://blog.makezine.com/contribute/">Write for MAKE</a></li>
@@ -86,11 +96,11 @@
 						<div class="clearfix"></div>
 						<div class="span socialArea">
 							<p class="links">
-								<span class="soci"><a href="http://twitter.com/craft"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/twitter.png?m=1351191030g" alt="Make on Twitter"></a></span>
-								<span class="soci"><a href="http://youtube.com/craft"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/youtube.png?m=1347432875g" alt="Make on YouTube"></a></span>
-								<span class="soci"><a href="http://pinterest.com/craftzine/"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/pinterest.png?m=1351191030g" alt="Make on Pintrest"></a></span>
-								<span class="soci"><a href="http://www.flickr.com/groups/craft/"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/flickr.png?m=1347432875g" alt="Make on Flickr"></a></span>
-								<span class="soci"><a href="http://facebook.com/craftzine"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/facebook.png?m=1347432875g" alt="Make on Facebook"></a></span>
+								<span class="soci"><a href="http://twitter.com/make"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/twitter.png?m=1351191030g" alt="Make on Twitter"></a></span>
+								<span class="soci"><a href="http://youtube.com/make"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/youtube.png?m=1347432875g" alt="Make on YouTube"></a></span>
+								<span class="soci"><a href="http://pinterest.com/makemagazine/"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/pinterest.png?m=1351191030g" alt="Make on Pintrest"></a></span>
+								<span class="soci"><a href="http://www.flickr.com/groups/make/"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/flickr.png?m=1347432875g" alt="Make on Flickr"></a></span>
+								<span class="soci"><a href="http://facebook.com/makemagazine"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/facebook.png?m=1347432875g" alt="Make on Facebook"></a></span>
 								<span class="soci"><a href="http://www.stumbleupon.com/to/stumble/stumblethru:makezine.com?utm_source=Makezine&amp;utm_medium=StumbleThru&amp;utm_campaign=StumbleThruButton"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/stumbleupon.png?m=1351191030g" alt="Stumble Make Magazine"></a></span>
 								<span class="soci"><a href="http://instagram.com/makemagazine"><img src="http://makezineblog.files.wordpress.com/2012/12/instagram.png" alt="MAKE on Instagram"></a></span>
 								<span class="soci"><a href="https://google.com/+MAKE/"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/google-plus.png?m=1347432875g" alt="MAKE on Google+"></a></span>
@@ -100,7 +110,7 @@
 					<!-- END span3 about-us -->
 					</div>
 					<div class="span subscribe">
-						<a href="https://www.pubservice.com/Subgift.aspx?PC=MK"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/current-volume-footer.gif" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
+						<a href="https://www.pubservice.com/Subgift.aspx?PC=MK"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/33.jpg" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/arrow-footer.png" width="80" height="48" id="mag-arrow">
 						<h5>Subscribe<br /> to MAKE!</h5>
 						<p>Get print and the digital version when you join!</p>

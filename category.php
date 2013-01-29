@@ -1,10 +1,4 @@
-<?php 
-	if ( ( 'craft' == get_post_type() ) || in_category( 30694999 ) || post_is_in_descendant_category( 30694999 ) ) {
-		get_header('craft');
-	} else { 
-		get_header();
-	}
-?>
+<?php make_get_header() ?>
 		
 		<div class="clear"></div>
 

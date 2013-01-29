@@ -65,3 +65,23 @@ $field_data = array (
 	),
 );
 $easy_cf = new Easy_CF($field_data);
+
+
+/**
+  * Crab the craft header if we are on a craft page.
+ */
+function make_get_header() {
+	if (is_single()) {
+		$primary_cat = get_the_category();
+		$primary_cat = $primary_cat[0]->term_id;
+	} elseif (is_category()) {
+		$primary_cat = get_queried_object_id();
+	} else {
+		$primary_cat = null;
+	}
+	if ( $primary_cat == 15803 || $primary_cat == 30694999 ) {
+		get_header('craft');
+	} else { 
+		get_header();
+	}
+}

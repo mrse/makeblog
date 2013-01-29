@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php make_get_header() ?>
 		
 		<div class="clear"></div>
 
@@ -9,7 +9,7 @@
 				<div class="row">
 
 					<div class="span8">
-
+					
 						<ul class="breadcrumb">
 		
 							<?php if(class_exists('bcn_breadcrumb_trail')) {
@@ -30,7 +30,7 @@
 						<div class="content">
 
 
-							 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+							<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			
 								<article <?php post_class(); ?>>
 

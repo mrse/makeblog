@@ -1,10 +1,11 @@
 <?php
 /**
- * The template for displaying the archive of Page:2 posts.
+ * The generic footer template.
  *
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
  * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * 
  */
 ?>
 				</div>
@@ -74,19 +75,19 @@
 					<!-- END span newsletter -->
 					</div>
 					<div class="span about-us">
-						<h5>About Us</h5>
+						<h5>About <a href="http://makermedia.com">Maker Media</a></h5>
 						<div class="span about-column-01">
 							<ul>
 								<li><a href="http://makezine.com/help/index.html">Help</a></li>
-								<li><a href="http://makezine.com/contact.html">Contact</a></li>
+								<li><a href="http://makermedia.com/contact-us/">Contact</a></li>
 								<li><a href="http://www.makezine.com/go/subscribe2make">Subscribe</a></li>
-								<li><a href="http://makezine.com/advertise/index.html">Advertise</a></li> 
-								<li><a href="http://www.oreillynet.com/pub/a/mediakit/privacy.html">Privacy</a></li>
+								<li><a href="http://makermedia.com/work-with-us/advertising/">Advertise</a></li> 
+								<li><a href="http://makermedia.com/privacy/">Privacy</a></li>
 							</ul>
 						<!-- END span about-column-01 --></div>
 						<div class="span about-column-02">
 							<ul>
-								<li><a href="http://makezine.com/about/index.html">About Us</a></li>
+								<li><a href="http://makermedia.com/about-us/management-team/">About Us</a></li>
 								<li><a href="http://makezine.com/faq/index.html">FAQ</a></li>
 								<li><a href="http://makezine.com/community/index.html">Forums</a></li>
 								<li><a href="http://blog.makezine.com/contribute/">Write for MAKE</a></li>

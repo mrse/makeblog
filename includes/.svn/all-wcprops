@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 33
-/!svn/ver/90981/makeblog/includes
+/!svn/ver/91259/makeblog/includes
 END
 pagenavi.php
 K 25
@@ -67,7 +67,7 @@ order-bender.php
 K 25
 svn:wc:ra_dav:version-url
 V 50
-/!svn/ver/83382/makeblog/includes/order-bender.php
+/!svn/ver/91259/makeblog/includes/order-bender.php
 END
 craft-cpt-stuff.php
 K 25

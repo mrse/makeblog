@@ -2,15 +2,15 @@
 /*
 Plugin Name: Order Bender
 Plugin URI: http://mtekk.us/code/
-Description: Adds a metabox that allows you to set a page as the parent of a post
-Version: 0.1.0
+Description: Adds a metabox that allows you to set the prefered hierarchical taxonomy term for a post.
+Version: 0.5.0
 Author: John Havlik
 Author URI: http://mtekk.us/
 License: GPL2
 TextDomain: mtekk-order-bender
 DomainPath: /languages/
 */
-/*  Copyright 2012  John Havlik  (email : mtekkmonkey@gmail.com)
+/*  Copyright 2012-2013  John Havlik  (email : mtekkmonkey@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ DomainPath: /languages/
  */
 class mtekk_order_bender
 {
-	protected $version = '0.2.0';
+	protected $version = '0.5.0';
 	protected $full_name = 'Order Bender';
 	protected $short_name = 'Order Bender';
 	protected $access_level = 'manage_options';
@@ -56,39 +56,46 @@ class mtekk_order_bender
 	 */
 	function meta_boxes()
 	{
-		global $wp_post_types;
+		global $wp_post_types, $wp_taxonomies;
 		foreach($wp_post_types as $post_type)
 		{
-			//We only want custom post types that are public
-			if(!$post_type->_builtin && $post_type->public)
+			foreach($wp_taxonomies as $taxonomy)
 			{
-				//Add our primary category metabox for the current post type
-				add_meta_box('postparentdiv', __('Primary Category', 'mtekk-order-bender'), array($this,'primary_category_meta_box'), $post_type->name, 'side', 'low');
+				if($taxonomy->hierarchical && in_array($post_type->name, $taxonomy->object_type))
+				{
+					//Add our primary category metabox for the current post type
+					add_meta_box( $this->unique_prefix . '_' . $taxonomy->name . '_primary_term_div', sprintf(__('Primary %s', 'mtekk-order-bender'), $taxonomy->labels->singular_name), array($this,'primary_taxonomy_term_meta_box'), $post_type->name, 'side', 'low', array($taxonomy));
+				}
 			}
 		}
-		//Add our primary category metabox for posts
-		add_meta_box('postparentdiv', __('Primary Category', 'mtekk-order-bender'), array($this,'primary_category_meta_box'), 'post', 'side', 'low');
 	}
 	/**
 	 * This function outputs the primary category metabox
 	 * 
 	 * @param WP_Post $post The post object for the post being edited
+	 * @param array $callback_args The callback argument array
 	 */
-	function primary_category_meta_box($post)
+	function primary_taxonomy_term_meta_box($post, $callback_args)
 	{
+		//Grab our taxonomy from the args
+		$taxonomy = $callback_args['args'][0];
 		//Nonce this bad boy up
-		wp_nonce_field($this->plugin_basename, $this->unique_prefix . '-category-prefered-nonce');
-		$pref_id = get_post_meta($post->ID, $this->unique_prefix . '_category_prefered', true);
+		wp_nonce_field($this->plugin_basename, $this->unique_prefix . '-' . $taxonomy->name . '-prefered-nonce');
+		$pref_id = get_post_meta($post->ID, $this->unique_prefix .'_' . $taxonomy->name . '_prefered', true);
 		//Need inline style to keep our category drop down from doing bad things width wise
-		echo "<style>#primary_cat{max-width: 100%;}</style>";
+		echo '<style>.' . $this->unique_prefix . '_primary_term{max-width: 100%;}</style>';
 		wp_dropdown_categories(array(
-			'name' => $this->unique_prefix . '_primary_cat',
-			'id' => 'primary_cat',
+			'name' => $this->unique_prefix . '_' . $taxonomy->name . '_primary_term',
+			'id' => $this->unique_prefix . '_' . $taxonomy->name . '_primary_term',
+			'class' => $this->unique_prefix . '_primary_term',
 			'echo' => 1,
-			'orderby' => 'name',
+			'depth' => 1,
+			'hierarchical' => 1,
 			'show_option_none' => __( '&mdash; Select &mdash;' ),
 			'option_none_value' => '0',
-			'selected' => $pref_id));
+			'orderby' => 'name',
+			'selected' => $pref_id,
+			'taxonomy' => $taxonomy->name));
 	}
 	/**
 	 * This function hooks into the save_post action and saves our prefered category
@@ -97,20 +104,30 @@ class mtekk_order_bender
 	 */
 	function save_post($post_id)
 	{
-		//Exit early if we don't have our data
-		if(!isset($_POST[$this->unique_prefix . '_primary_cat']))
+		global $wp_post_types, $wp_taxonomies;
+		foreach($wp_post_types as $post_type)
 		{
-			return;
+			foreach($wp_taxonomies as $taxonomy)
+			{
+				if($taxonomy->hierarchical && in_array($post_type->name, $taxonomy->object_type))
+				{
+					//Exit early if we don't have our data
+					if(!isset($_POST[$this->unique_prefix . '_' . $taxonomy->name . '_primary_term']))
+					{
+						continue;
+					}
+					//Exit early if the nonce fails
+					if(!wp_verify_nonce($_POST[$this->unique_prefix . '-' . $taxonomy->name . '-prefered-nonce'], $this->plugin_basename))
+					{
+						continue;
+					}
+					//Grab the prefered category ID
+					$prefered_term = absint($_POST[$this->unique_prefix . '_' . $taxonomy->name . '_primary_term']);
+					//Save the prefered category as a postmeta
+					update_post_meta($post_id, $this->unique_prefix .'_' . $taxonomy->name . '_prefered', $prefered_term);
+				}
+			}
 		}
-		//Exit early if the nonce fails
-		if(!wp_verify_nonce($_POST[$this->unique_prefix . '-category-prefered-nonce'], $this->plugin_basename))
-		{
-			return;
-		}
-		//Grab the prefered category ID
-		$prefered_category = absint($_POST[$this->unique_prefix . '_primary_cat']);
-		//Save the prefered category as a postmeta
-		update_post_meta($post_id, $this->unique_prefix . '_category_prefered', $prefered_category);
 	}
 	/**
 	 * This function changes the order of the input terms to place a prefered term at the top
@@ -121,7 +138,7 @@ class mtekk_order_bender
 	 */
 	function reorder_terms($terms, $post_id, $taxonomy)
 	{
-		//Get the prefered category for the post here
+		//Get the prefered taxonomy term for the post here
 		$pref_id = get_post_meta($post_id, $this->unique_prefix . '_' . $taxonomy . '_prefered', true);
 		//Make sure that ID is in the array
 		if(array_key_exists($pref_id, $terms))
