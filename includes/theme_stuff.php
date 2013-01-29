@@ -853,7 +853,7 @@ add_filter('the_excerpt_rss', 'make_rss_post_thumbnail');
 add_filter('the_content_feed', 'make_rss_post_thumbnail');
 
 
-add_filter( 'the_content', 'make_add_sharing_to_content_top' ); 
+//add_filter( 'the_content', 'make_add_sharing_to_content_top' ); 
 
 /**
  * Adds the WordPress.com sharing bar to the top of posts.

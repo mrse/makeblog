@@ -146,6 +146,6 @@ include_once dirname(__file__) . '/includes/categories.php';
 
 // 30. JSON Endpoint
  
-include_once dirname(__file__) . '/includes/json-endpoint.php';
+//include_once dirname(__file__) . '/includes/json-endpoint.php';
 
 ?>
