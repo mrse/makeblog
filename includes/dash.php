@@ -1,8 +1,15 @@
-<?php 
-
-
+<?php
+/**
+ * Dash Analytics Tools
+ *
+ * @package    makeblog
+ * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
+ * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * 
+ */
 /**
  * Pulls content from the Dash API.
+ * With the make_the_dash_shares_widget(), we want to ping the stats from dash, and then return each item in a list.
  *
  * @param string $type Which analytivs to return. Current options are 'realtime', 'analytics', and 'shares'.
  * @param string $hits String to preface the hit counter. If blank, nothing is added.
@@ -46,13 +53,8 @@ function make_the_dash_shares_widget($type, $hits = null, $limit = 5, $size = 80
 			$rand = mt_rand();
 
 			$pos = strpos( $url, $slideshow );
-
 			$content .= '<div class="row-fluid item"><div class="span4">';
-			//if ( $pos === 24 ) {
-			//	$content .= '<a href="' . esc_url( $url ) . '"" data-target="#myModal-' . $rand . '" role="button" class="" data-toggle="modal">';
-			//} else {
-				$content .= '<a href="' . esc_url( $url ) . '">';
-			//}
+			$content .= '<a href="' . esc_url( $url ) . '">';
 
 			if (isset($item->thumb_url_medium)) {
 				if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
@@ -64,11 +66,7 @@ function make_the_dash_shares_widget($type, $hits = null, $limit = 5, $size = 80
 				$content .= '<img src="http://1.gravatar.com/blavatar/dab43acfe30c0e28a023bb3b7a700440?s=70" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
 			}
 			$content .= '</a></div><div class="span8"><h5>';
-			//if ( $pos === 24 ) {
-			//	$content .= '<a href="' . esc_url( $url ) . '"" data-target="#myModal-' . $rand . '" role="button" class="" data-toggle="modal">' . esc_html($item->title) . '</a>';
-			//} else {
-				$content .= '<a href="' . esc_url( $url ) . '">' . esc_html($item->title) . '</a>';
-			//}
+			$content .= '<a href="' . esc_url( $url ) . '">' . esc_html($item->title) . '</a>';
 			$content .= '</h5><ul class="unstyled"><li>By: ' . esc_html($item->author)  . '</li>';
 			if ($type == 'shares' && $hits != null) {
 				$content .= '<li>'  . $hits .' <span class="badge badge-info">'.  esc_html($item->_shares) . '</span></li>';
@@ -76,17 +74,6 @@ function make_the_dash_shares_widget($type, $hits = null, $limit = 5, $size = 80
 				$content .= '<li>'  . $hits .' <span class="badge badge-info">'.  esc_html($item->_hits) . '</span></li>';
 			}
 			$content .= '</ul></div></div>';
-			/*$content .= '<div class="modal hide slideshow" id="myModal-' . $rand . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h3 id="myModalLabel">' . esc_html( $item->title ) . '</h3>
-				</div>
-				<div class="modal-body">
-				</div>
-				<div class="modal-footer">
-					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-				</div>
-			</div>';*/
 		}
 	}
 
@@ -94,6 +81,17 @@ function make_the_dash_shares_widget($type, $hits = null, $limit = 5, $size = 80
 
 }
 
+/**
+ * Grab the shares for a post.
+ * This function just grabs the totals, but could be adapted to grab the individual stats.
+ *
+ * @uses wp_cache_get()
+ * @uses wpcom_vip_file_get_contents()
+ * @uses json_decode()
+ * @uses wp_cache_set()
+ * @param string|array $url URL of post to get stats for.
+ * @return string Totals shares, combined of Twitter, Facebook, Linkedin, StumbleUpon, and Pinterest
+ */
 function make_dash_get_the_shares( $url ) {
 
 	$post_shares = wp_cache_get( $url . '-dash' );
@@ -113,6 +111,18 @@ function make_dash_get_the_shares( $url ) {
 
 }
 
+/**
+ * Generate the list items for the child categories, given a slug.
+ *
+ * When redoing the category structure, we wanted have a list of categories that we would feature all over the site.
+ * If we did wp_list_categories, we would get all of them, so I created these functions to spit everything out based on the categories that we wanted.
+ * @uses wp_cache_get()
+ * @uses wpcom_vip_file_get_contents()
+ * @uses json_decode()
+ * @uses wp_cache_set()
+ * @param string|array $url URL of post to get stats for.
+ * @return string Totals shares, combined of Twitter, Facebook, Linkedin, StumbleUpon, and Pinterest
+ */
 function make_most_commented_query() {
 	$pop_query = new WP_Query( array(
 		'post_type'              => 'post',
