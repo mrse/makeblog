@@ -90,7 +90,7 @@
       <tag line="2" name="author" description="Jake Spurlock &lt;jspurlock@makermedia.com&gt;"/>
     </docblock>
   </file>
-  <file path="category.php" hash="17915a7160888aa12f15265de4e3094d" package="Default">
+  <file path="category.php" hash="413356018f341daadb2920faa5af93e2" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file category.php</error>
     </parse_markers>
@@ -220,7 +220,7 @@
       <critical line="2" code="50008">No short description for file feed-rss2-itunes.php</critical>
     </parse_markers>
   </file>
-  <file path="footer-craft.php" hash="f81fdcfee0366fa8517296ec6a2c5a0e" package="Default">
+  <file path="footer-craft.php" hash="d6be5ac56ce0580219b3420dd05e5802" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file footer-craft.php</error>
     </parse_markers>
@@ -230,12 +230,12 @@
       <error line="0" code="50007">No page-level DocBlock was found in file footer-slideshow.php</error>
     </parse_markers>
   </file>
-  <file path="footer.php" hash="3273f0bdb578aa7d267c303a65233c83" package="Default">
+  <file path="footer.php" hash="89f2efa380b1eafbdb80efcbfdd0d35c" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file footer.php</error>
     </parse_markers>
   </file>
-  <file path="functions.php" hash="318faaf8c9474b47e9ba39e944908673" package="Default">
+  <file path="functions.php" hash="f7e4d38ecfa4611da97b5cd8fdc0a5a9" package="Default">
     <include line="29" type="Include Once" package="Default">
       <name/>
     </include>
@@ -324,9 +324,6 @@
       <name/>
     </include>
     <include line="145" type="Include Once" package="Default">
-      <name/>
-    </include>
-    <include line="149" type="Include Once" package="Default">
       <name/>
     </include>
     <parse_markers>
@@ -878,10 +875,10 @@ Create a new term, and then assign all posts the tag</description>
       <error line="181" code="50009">No DocBlock was found for function \makeblog_articleform()</error>
     </parse_markers>
   </file>
-  <file path="includes/craft-cpt-stuff.php" hash="faf936e25c877c741eab261f3e5987d8" package="makeblog">
+  <file path="includes/craft-cpt-stuff.php" hash="0763be331a2f4f0f53125e6acc092881" package="makeblog">
     <docblock line="2">
       <description>Functions for the Craft Custom Post Type</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="2" name="package" description="makeblog"/>
       <tag line="2" name="license" description="http://opensource.org/licenses/gpl-license.php  GNU Public License"/>
       <tag line="2" name="author" description="Jake Spurlock &lt;jspurlock@makermedia.com&gt;"/>
@@ -891,71 +888,115 @@ Create a new term, and then assign all posts the tag</description>
       <full_name>\register_cpt_craft</full_name>
       <docblock line="10">
         <description>Registers the Craft CPT</description>
-        <long-description></long-description>
+        <long-description/>
+      </docblock>
+    </function>
+    <function namespace="global" line="73" package="makeblog">
+      <name>make_get_header</name>
+      <full_name>\make_get_header</full_name>
+      <docblock line="70">
+        <description>Crab the craft header if we are on a craft page.</description>
+        <long-description/>
       </docblock>
     </function>
   </file>
-  <file path="includes/dash.php" hash="c400f42417c5e6491d2513622a24ca4a" package="Default">
-    <function namespace="global" line="14" package="Default">
+  <file path="includes/dash.php" hash="a14994f56e4948dbd003adfc449a2634" package="makeblog">
+    <docblock line="2">
+      <description>Dash Analytics Tools</description>
+      <long-description/>
+      <tag line="2" name="package" description="makeblog"/>
+      <tag line="2" name="license" description="http://opensource.org/licenses/gpl-license.php  GNU Public License"/>
+      <tag line="2" name="author" description="Jake Spurlock &lt;jspurlock@makermedia.com&gt;"/>
+    </docblock>
+    <function namespace="global" line="21" package="makeblog">
       <name>make_the_dash_shares_widget</name>
       <full_name>\make_the_dash_shares_widget</full_name>
-      <docblock line="4">
+      <docblock line="10">
         <description>Pulls content from the Dash API.</description>
-        <long-description/>
-        <tag line="4" name="param" description="Which analytivs to return. Current options are 'realtime', 'analytics', and 'shares'." type="string" variable="$type">
+        <long-description>&lt;p&gt;With the make_the_dash_shares_widget(), we want to ping the stats from dash, and then return each item in a list.&lt;/p&gt;</long-description>
+        <tag line="10" name="param" description="Which analytivs to return. Current options are 'realtime', 'analytics', and 'shares'." type="string" variable="$type">
           <type by_reference="false">string</type>
         </tag>
-        <tag line="4" name="param" description="String to preface the hit counter. If blank, nothing is added." type="string" variable="$hits">
+        <tag line="10" name="param" description="String to preface the hit counter. If blank, nothing is added." type="string" variable="$hits">
           <type by_reference="false">string</type>
         </tag>
-        <tag line="4" name="param" description="Integer, defaults to 5" type="string" variable="$limit">
+        <tag line="10" name="param" description="Integer, defaults to 5" type="string" variable="$limit">
           <type by_reference="false">string</type>
         </tag>
-        <tag line="4" name="param" description="Integer, size of image to return." type="string" variable="$size">
+        <tag line="10" name="param" description="Integer, size of image to return." type="string" variable="$size">
           <type by_reference="false">string</type>
         </tag>
-        <tag line="4" name="return" description="Unordered list" type="string">
+        <tag line="10" name="return" description="Unordered list" type="string">
           <type by_reference="false">string</type>
         </tag>
       </docblock>
-      <argument line="14">
+      <argument line="21">
         <name>$type</name>
         <default/>
         <type/>
       </argument>
-      <argument line="14">
+      <argument line="21">
         <name>$hits</name>
         <default>null</default>
         <type/>
       </argument>
-      <argument line="14">
+      <argument line="21">
         <name>$limit</name>
         <default>5</default>
         <type/>
       </argument>
-      <argument line="14">
+      <argument line="21">
         <name>$size</name>
         <default>80</default>
         <type/>
       </argument>
     </function>
-    <function namespace="global" line="97" package="Default">
+    <function namespace="global" line="95" package="makeblog">
       <name>make_dash_get_the_shares</name>
       <full_name>\make_dash_get_the_shares</full_name>
-      <argument line="97">
+      <docblock line="84">
+        <description>Grab the shares for a post.</description>
+        <long-description>&lt;p&gt;This function just grabs the totals, but could be adapted to grab the individual stats.&lt;/p&gt;</long-description>
+        <tag line="84" name="uses" description="\global\wp_cache_get()" refers="\global\wp_cache_get()"/>
+        <tag line="84" name="uses" description="\global\wpcom_vip_file_get_contents()" refers="\global\wpcom_vip_file_get_contents()"/>
+        <tag line="84" name="uses" description="\global\json_decode()" refers="\global\json_decode()"/>
+        <tag line="84" name="uses" description="\global\wp_cache_set()" refers="\global\wp_cache_set()"/>
+        <tag line="84" name="param" description="URL of post to get stats for." type="string|array" variable="$url">
+          <type by_reference="false">string</type>
+          <type by_reference="false">array</type>
+        </tag>
+        <tag line="84" name="return" description="Totals shares, combined of Twitter, Facebook, Linkedin, StumbleUpon, and Pinterest" type="string">
+          <type by_reference="false">string</type>
+        </tag>
+      </docblock>
+      <argument line="95">
         <name>$url</name>
         <default/>
         <type/>
       </argument>
     </function>
-    <function namespace="global" line="116" package="Default">
+    <function namespace="global" line="126" package="makeblog">
       <name>make_most_commented_query</name>
       <full_name>\make_most_commented_query</full_name>
+      <docblock line="114">
+        <description>Generate the list items for the child categories, given a slug.</description>
+        <long-description>&lt;p&gt;When redoing the category structure, we wanted have a list of categories that we would feature all over the site.
+If we did wp_list_categories, we would get all of them, so I created these functions to spit everything out based on the categories that we wanted.&lt;/p&gt;</long-description>
+        <tag line="114" name="uses" description="\global\wp_cache_get()" refers="\global\wp_cache_get()"/>
+        <tag line="114" name="uses" description="\global\wpcom_vip_file_get_contents()" refers="\global\wpcom_vip_file_get_contents()"/>
+        <tag line="114" name="uses" description="\global\json_decode()" refers="\global\json_decode()"/>
+        <tag line="114" name="uses" description="\global\wp_cache_set()" refers="\global\wp_cache_set()"/>
+        <tag line="114" name="param" description="URL of post to get stats for." type="string|array" variable="$url">
+          <type by_reference="false">string</type>
+          <type by_reference="false">array</type>
+        </tag>
+        <tag line="114" name="return" description="Totals shares, combined of Twitter, Facebook, Linkedin, StumbleUpon, and Pinterest" type="string">
+          <type by_reference="false">string</type>
+        </tag>
+      </docblock>
     </function>
     <parse_markers>
-      <error line="0" code="50007">No page-level DocBlock was found in file includes/dash.php</error>
-      <error line="97" code="50009">No DocBlock was found for function \make_dash_get_the_shares()</error>
-      <error line="116" code="50009">No DocBlock was found for function \make_most_commented_query()</error>
+      <notice line="114" code="50013">Parameter $url could not be found in \make_most_commented_query()</notice>
     </parse_markers>
   </file>
   <file path="includes/errata-cpt.php" hash="bec91a55eb54e7b083e19e813e1def30" package="Default">
@@ -1845,7 +1886,7 @@ Create a new term, and then assign all posts the tag</description>
       <error line="1501" code="50010">No DocBlock was found for method _unhash_callback()</error>
     </parse_markers>
   </file>
-  <file path="includes/order-bender.php" hash="9b99a189744faaa9340433ddaa290f0a" package="Default">
+  <file path="includes/order-bender.php" hash="f32c0880a3f04cd7f66d0fa7e38af7dc" package="Default">
     <class final="false" abstract="false" namespace="global" line="32" package="Default">
       <extends/>
       <name>mtekk_order_bender</name>
@@ -1856,7 +1897,7 @@ Create a new term, and then assign all posts the tag</description>
       </docblock>
       <property final="false" static="false" visibility="protected" line="34" namespace="global" package="Default">
         <name>$version</name>
-        <default>'0.2.0'</default>
+        <default>'0.5.0'</default>
       </property>
       <property final="false" static="false" visibility="protected" line="35" namespace="global" package="Default">
         <name>$full_name</name>
@@ -1898,65 +1939,73 @@ Create a new term, and then assign all posts the tag</description>
           <long-description/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="77" package="Default">
-        <name>primary_category_meta_box</name>
-        <full_name>primary_category_meta_box</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="78" package="Default">
+        <name>primary_taxonomy_term_meta_box</name>
+        <full_name>primary_taxonomy_term_meta_box</full_name>
         <docblock line="72">
           <description>This function outputs the primary category metabox</description>
           <long-description/>
           <tag line="72" name="param" description="The post object for the post being edited" type="\WP_Post" variable="$post">
             <type by_reference="false">\WP_Post</type>
           </tag>
+          <tag line="72" name="param" description="The callback argument array" type="array" variable="$callback_args">
+            <type by_reference="false">array</type>
+          </tag>
         </docblock>
-        <argument line="77">
+        <argument line="78">
           <name>$post</name>
           <default/>
           <type/>
         </argument>
+        <argument line="78">
+          <name>$callback_args</name>
+          <default/>
+          <type/>
+        </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="98" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="105" package="Default">
         <name>save_post</name>
         <full_name>save_post</full_name>
-        <docblock line="93">
+        <docblock line="100">
           <description>This function hooks into the save_post action and saves our prefered category</description>
           <long-description/>
-          <tag line="93" name="param" description="The ID of the post that was just saved" type="int" variable="$post_id">
+          <tag line="100" name="param" description="The ID of the post that was just saved" type="int" variable="$post_id">
             <type by_reference="false">int</type>
           </tag>
         </docblock>
-        <argument line="98">
+        <argument line="105">
           <name>$post_id</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="122" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="139" package="Default">
         <name>reorder_terms</name>
         <full_name>reorder_terms</full_name>
-        <docblock line="115">
+        <docblock line="132">
           <description>This function changes the order of the input terms to place a prefered term at the top</description>
           <long-description/>
-          <tag line="115" name="param" description="The array of WP_Term objects" type="array" variable="$terms">
+          <tag line="132" name="param" description="The array of WP_Term objects" type="array" variable="$terms">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="115" name="param" description="The ID of the post in question" type="int" variable="$post_id">
+          <tag line="132" name="param" description="The ID of the post in question" type="int" variable="$post_id">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="115" name="param" description="The taxonomy of the term in question" type="string" variable="$taxonomy">
+          <tag line="132" name="param" description="The taxonomy of the term in question" type="string" variable="$taxonomy">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="122">
+        <argument line="139">
           <name>$terms</name>
           <default/>
           <type/>
         </argument>
-        <argument line="122">
+        <argument line="139">
           <name>$post_id</name>
           <default/>
           <type/>
         </argument>
-        <argument line="122">
+        <argument line="139">
           <name>$taxonomy</name>
           <default/>
           <type/>
@@ -5073,10 +5122,10 @@ variable traversal for dot notation.&lt;/p&gt;</long-description>
       <error line="73" code="50009">No DocBlock was found for function \register_taxonomy_craft_rss()</error>
     </parse_markers>
   </file>
-  <file path="includes/theme_stuff.php" hash="a228bd6de452ac7cae14bfc472734ade" package="makeblog">
+  <file path="includes/theme_stuff.php" hash="9855ad23e93b596b5cf99b617b70bba7" package="makeblog">
     <docblock line="2">
       <description>Sidebar for Projects Page</description>
-      <long-description></long-description>
+      <long-description/>
       <tag line="2" name="package" description="makeblog"/>
       <tag line="2" name="license" description="http://opensource.org/licenses/gpl-license.php  GNU Public License"/>
       <tag line="2" name="author" description="Jake Spurlock &lt;jspurlock@makermedia.com&gt;"/>
@@ -5110,7 +5159,7 @@ support post thumbnails.&lt;/p&gt;</long-description>
       </docblock>
       <argument line="106">
         <name>$content</name>
-        <default></default>
+        <default/>
         <type/>
       </argument>
     </function>
@@ -5130,7 +5179,7 @@ support post thumbnails.&lt;/p&gt;</long-description>
       </docblock>
       <argument line="141">
         <name>$text</name>
-        <default></default>
+        <default/>
         <type/>
       </argument>
     </function>
@@ -5139,7 +5188,7 @@ support post thumbnails.&lt;/p&gt;</long-description>
       <full_name>\make_register_sidebar</full_name>
       <docblock line="157">
         <description>Register the WordPress sidebar to site.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
     </function>
     <function namespace="global" line="182" package="makeblog">
@@ -5151,7 +5200,7 @@ support post thumbnails.&lt;/p&gt;</long-description>
       <full_name>\make_enqueue_jquery</full_name>
       <docblock line="202">
         <description>Enqueue all scripts and stylesheets.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
     </function>
     <function namespace="global" line="221" package="makeblog">
@@ -5159,7 +5208,7 @@ support post thumbnails.&lt;/p&gt;</long-description>
       <full_name>\make_catch_that_desc</full_name>
       <docblock line="214">
         <description>Catch a description for the OG protocol</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="214" name="deprecated" description="Since January 2013."/>
         <tag line="214" name="param" description="to be trimmed, stripped, and shortened." type="string" variable="$post-&gt;post_content">
           <type by_reference="false">string</type>
@@ -5174,7 +5223,7 @@ support post thumbnails.&lt;/p&gt;</long-description>
       <full_name>\make_makers</full_name>
       <docblock line="228">
         <description>List all Makers that are associated with the post.</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="228" name="deprecated" description="Since January 2013."/>
         <tag line="228" name="return" description="List of Makers" type="string">
           <type by_reference="false">string</type>
@@ -5197,7 +5246,7 @@ support post thumbnails.&lt;/p&gt;</long-description>
       <full_name>\itunes_feed</full_name>
       <docblock line="402">
         <description>Send iTunes requests to a specific feed</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
     </function>
     <function namespace="global" line="420" package="makeblog">
@@ -5205,252 +5254,266 @@ support post thumbnails.&lt;/p&gt;</long-description>
       <full_name>\make_mf_remove_tag_from_home</full_name>
       <docblock line="416">
         <description>Take Maker Faire posts that don't have MF tag, and remove from the main query.</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="416" name="param" description="" type="\global\" variable="$query"/>
       </docblock>
       <argument line="420">
         <name>$query</name>
-        <default></default>
+        <default/>
         <type/>
       </argument>
     </function>
-    <function namespace="global" line="431" package="makeblog">
+    <function namespace="global" line="435" package="makeblog">
+      <name>make_craft_remove_tag_from_home</name>
+      <full_name>\make_craft_remove_tag_from_home</full_name>
+      <docblock line="431">
+        <description>Take Craft posts and remove from the main query.</description>
+        <long-description/>
+        <tag line="431" name="param" description="" type="\global\" variable="$query"/>
+      </docblock>
+      <argument line="435">
+        <name>$query</name>
+        <default/>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="global" line="446" package="makeblog">
       <name>make_custom_excerpt_length</name>
       <full_name>\make_custom_excerpt_length</full_name>
-      <docblock line="428">
+      <docblock line="443">
         <description>Truncate the excerpt to 50 charecters.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
-      <argument line="431">
+      <argument line="446">
         <name>$length</name>
-        <default></default>
+        <default/>
         <type/>
       </argument>
     </function>
-    <function namespace="global" line="442" package="makeblog">
+    <function namespace="global" line="457" package="makeblog">
       <name>make_infinite_scroll_render</name>
       <full_name>\make_infinite_scroll_render</full_name>
-      <docblock line="438">
+      <docblock line="453">
         <description>Function to enable unlimited scroll.</description>
-        <long-description></long-description>
-        <tag line="438" name="deprecated" description="Since January 2013"/>
+        <long-description/>
+        <tag line="453" name="deprecated" description="Since January 2013"/>
       </docblock>
     </function>
-    <function namespace="global" line="452" package="makeblog">
+    <function namespace="global" line="467" package="makeblog">
       <name>make_get_category_name</name>
       <full_name>\make_get_category_name</full_name>
-      <docblock line="447">
+      <docblock line="462">
         <description>Get the first category name of a post.</description>
         <long-description>&lt;p&gt;This take the category name, strips out content (spaces, &amp;amp;, and) and then returns.&lt;/p&gt;</long-description>
-        <tag line="447" name="return" description="Main category name with a slash at the end." type="string">
+        <tag line="462" name="return" description="Main category name with a slash at the end." type="string">
           <type by_reference="false">string</type>
         </tag>
       </docblock>
     </function>
-    <function namespace="global" line="480" package="makeblog">
+    <function namespace="global" line="495" package="makeblog">
       <name>make_get_category_name_strip_slash</name>
       <full_name>\make_get_category_name_strip_slash</full_name>
-      <docblock line="475">
+      <docblock line="490">
         <description>Get the first category name of a post.</description>
         <long-description>&lt;p&gt;This take the category name, strips out content (spaces, &amp;amp;, and) and then returns.&lt;/p&gt;</long-description>
-        <tag line="475" name="return" description="Main category name with a stripped slash." type="string">
+        <tag line="490" name="return" description="Main category name with a stripped slash." type="string">
           <type by_reference="false">string</type>
         </tag>
       </docblock>
     </function>
-    <function namespace="global" line="502" package="makeblog">
+    <function namespace="global" line="517" package="makeblog">
       <name>make_add_custom_types</name>
       <full_name>\make_add_custom_types</full_name>
-      <argument line="502">
+      <argument line="517">
         <name>$query</name>
-        <default></default>
+        <default/>
         <type/>
       </argument>
     </function>
-    <function namespace="global" line="525" package="makeblog">
+    <function namespace="global" line="540" package="makeblog">
       <name>post_is_in_descendant_category</name>
       <full_name>\post_is_in_descendant_category</full_name>
-      <argument line="525">
+      <argument line="540">
         <name>$cats</name>
-        <default></default>
+        <default/>
         <type/>
       </argument>
-      <argument line="525">
+      <argument line="540">
         <name>$_post</name>
         <default>null</default>
         <type/>
       </argument>
     </function>
-    <function namespace="global" line="540" package="makeblog">
+    <function namespace="global" line="555" package="makeblog">
       <name>make_quantcast_tag</name>
       <full_name>\make_quantcast_tag</full_name>
-      <docblock line="536">
+      <docblock line="551">
         <description>Adds the Quantcast tag to the bottom of the page.</description>
-        <long-description></long-description>
-        <tag line="536" name="return" description="Quantcast Javascript tracking code." type="string">
+        <long-description/>
+        <tag line="551" name="return" description="Quantcast Javascript tracking code." type="string">
           <type by_reference="false">string</type>
         </tag>
       </docblock>
     </function>
-    <function namespace="global" line="572" package="makeblog">
+    <function namespace="global" line="587" package="makeblog">
       <name>make_add_popover</name>
       <full_name>\make_add_popover</full_name>
-      <docblock line="569">
+      <docblock line="584">
         <description>Adds the popover javascript for review posts.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
     </function>
-    <function namespace="global" line="587" package="makeblog">
+    <function namespace="global" line="602" package="makeblog">
       <name>make_get_rid_of_thumbnail_class</name>
       <full_name>\make_get_rid_of_thumbnail_class</full_name>
-      <docblock line="584">
+      <docblock line="599">
         <description>Removes the thumbnail class from the homepages of Craft and make.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
     </function>
-    <function namespace="global" line="606" package="makeblog">
+    <function namespace="global" line="621" package="makeblog">
       <name>make_hide_breadcrumb_elements</name>
       <full_name>\make_hide_breadcrumb_elements</full_name>
-      <docblock line="602">
+      <docblock line="617">
         <description>Hides the post name from the breadcrumb.</description>
         <long-description>&lt;p&gt;Ideally, we would do this using PHP, but I couldn't figure out an easy method. While this might be a little jarring, it works for now.&lt;/p&gt;</long-description>
       </docblock>
     </function>
-    <function namespace="global" line="627" package="makeblog">
+    <function namespace="global" line="642" package="makeblog">
       <name>add_magazine_article_counts</name>
       <full_name>\add_magazine_article_counts</full_name>
-      <docblock line="624">
+      <docblock line="639">
         <description>Counts the post numbers for the Dashboard.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
     </function>
-    <function namespace="global" line="665" package="makeblog">
+    <function namespace="global" line="680" package="makeblog">
       <name>add_craft_article_counts</name>
       <full_name>\add_craft_article_counts</full_name>
-      <docblock line="662">
+      <docblock line="677">
         <description>Counts the craft numbers for the Dashboard.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
     </function>
-    <function namespace="global" line="703" package="makeblog">
+    <function namespace="global" line="718" package="makeblog">
       <name>add_page_2_article_counts</name>
       <full_name>\add_page_2_article_counts</full_name>
-      <docblock line="700">
+      <docblock line="715">
         <description>Counts the Page: 2 numbers for the Dashboard.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
     </function>
-    <function namespace="global" line="740" package="makeblog">
+    <function namespace="global" line="755" package="makeblog">
       <name>make_cat_change</name>
       <full_name>\make_cat_change</full_name>
-      <docblock line="736">
+      <docblock line="751">
         <description>Creates a dropdown of child categories.</description>
-        <long-description></long-description>
-        <tag line="736" name="deprecated" description="Since January 2013."/>
+        <long-description/>
+        <tag line="751" name="deprecated" description="Since January 2013."/>
       </docblock>
     </function>
-    <function namespace="global" line="763" package="makeblog">
+    <function namespace="global" line="778" package="makeblog">
       <name>make_get_better_tag_title</name>
       <full_name>\make_get_better_tag_title</full_name>
-      <docblock line="760">
+      <docblock line="775">
         <description>Takes popular tags, and renames them.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
     </function>
-    <function namespace="global" line="829" package="makeblog">
+    <function namespace="global" line="844" package="makeblog">
       <name>make_rss_post_thumbnail</name>
       <full_name>\make_rss_post_thumbnail</full_name>
-      <docblock line="825">
+      <docblock line="840">
         <description>Adds the post thumbnail to the RSS feed.</description>
         <long-description>&lt;p&gt;Like a lot of people, I wish that we weren't truncating the RSS feed, but hey, not my decision!&lt;/p&gt;</long-description>
       </docblock>
-      <argument line="829">
+      <argument line="844">
         <name>$content</name>
-        <default></default>
+        <default/>
         <type/>
       </argument>
     </function>
-    <function namespace="global" line="846" package="makeblog">
+    <function namespace="global" line="861" package="makeblog">
       <name>make_add_sharing_to_content_top</name>
       <full_name>\make_add_sharing_to_content_top</full_name>
-      <docblock line="843">
+      <docblock line="858">
         <description>Adds the WordPress.com sharing bar to the top of posts.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
-      <argument line="846">
+      <argument line="861">
         <name>$content</name>
-        <default></default>
+        <default/>
         <type/>
       </argument>
     </function>
-    <function namespace="global" line="857" package="makeblog">
+    <function namespace="global" line="872" package="makeblog">
       <name>make_category_id_class</name>
       <full_name>\make_category_id_class</full_name>
-      <docblock line="853">
+      <docblock line="868">
         <description>Add category nicenames in body and post class</description>
-        <long-description></long-description>
-        <tag line="853" name="deprecated" description="Since January 2013"/>
+        <long-description/>
+        <tag line="868" name="deprecated" description="Since January 2013"/>
       </docblock>
-      <argument line="857">
+      <argument line="872">
         <name>$classes</name>
-        <default></default>
+        <default/>
         <type/>
       </argument>
     </function>
-    <function namespace="global" line="868" package="makeblog">
+    <function namespace="global" line="883" package="makeblog">
       <name>make_vapp_the_link</name>
       <full_name>\make_vapp_the_link</full_name>
-      <docblock line="865">
+      <docblock line="880">
         <description>Adds a View All link to the slideshow.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
-      <argument line="868">
+      <argument line="883">
         <name>$link_text</name>
         <default>'View All'</default>
         <type/>
       </argument>
-      <argument line="868">
+      <argument line="883">
         <name>$class</name>
         <default>'vapp'</default>
         <type/>
       </argument>
     </function>
-    <function namespace="global" line="882" package="makeblog">
+    <function namespace="global" line="897" package="makeblog">
       <name>make_cpt_icons</name>
       <full_name>\make_cpt_icons</full_name>
-      <docblock line="879">
+      <docblock line="894">
         <description>Adds icons for the custom post types that are in the admin.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
     </function>
-    <function namespace="global" line="945" package="makeblog">
+    <function namespace="global" line="960" package="makeblog">
       <name>make_support_post_parent_queries_in_admin</name>
       <full_name>\make_support_post_parent_queries_in_admin</full_name>
-      <docblock line="942">
+      <docblock line="957">
         <description>Adds the ability to get all posts from a given parent in the admin.</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
-      <argument line="945">
+      <argument line="960">
         <name>$query</name>
-        <default></default>
+        <default/>
         <type/>
       </argument>
     </function>
     <markers>
-      <todo line="501">Bring in reviews.</todo>
+      <todo line="516">Bring in reviews.</todo>
     </markers>
     <parse_markers>
       <error line="182" code="50009">No DocBlock was found for function \make_live_register_sidebar()</error>
       <notice line="214" code="50013">Parameter $post-&gt;post_content could not be found in \make_catch_that_desc()</notice>
-      <error line="428" code="50015">Argument $length is missing from the Docblock of \make_custom_excerpt_length()</error>
-      <error line="502" code="50009">No DocBlock was found for function \make_add_custom_types()</error>
-      <error line="525" code="50009">No DocBlock was found for function \post_is_in_descendant_category()</error>
-      <error line="825" code="50015">Argument $content is missing from the Docblock of \make_rss_post_thumbnail()</error>
-      <error line="843" code="50015">Argument $content is missing from the Docblock of \make_add_sharing_to_content_top()</error>
-      <error line="853" code="50015">Argument $classes is missing from the Docblock of \make_category_id_class()</error>
-      <error line="865" code="50015">Argument $link_text is missing from the Docblock of \make_vapp_the_link()</error>
-      <error line="865" code="50015">Argument $class is missing from the Docblock of \make_vapp_the_link()</error>
-      <error line="942" code="50015">Argument $query is missing from the Docblock of \make_support_post_parent_queries_in_admin()</error>
+      <error line="443" code="50015">Argument $length is missing from the Docblock of \make_custom_excerpt_length()</error>
+      <error line="517" code="50009">No DocBlock was found for function \make_add_custom_types()</error>
+      <error line="540" code="50009">No DocBlock was found for function \post_is_in_descendant_category()</error>
+      <error line="840" code="50015">Argument $content is missing from the Docblock of \make_rss_post_thumbnail()</error>
+      <error line="858" code="50015">Argument $content is missing from the Docblock of \make_add_sharing_to_content_top()</error>
+      <error line="868" code="50015">Argument $classes is missing from the Docblock of \make_category_id_class()</error>
+      <error line="880" code="50015">Argument $link_text is missing from the Docblock of \make_vapp_the_link()</error>
+      <error line="880" code="50015">Argument $class is missing from the Docblock of \make_vapp_the_link()</error>
+      <error line="957" code="50015">Argument $query is missing from the Docblock of \make_support_post_parent_queries_in_admin()</error>
     </parse_markers>
   </file>
   <file path="includes/video-cpt.php" hash="5c3d74e58bf235ffa1afcbec9e2affa9" package="Default">
@@ -6108,7 +6171,7 @@ firstname + lastname, and finally the nickname.</description>
       <error line="17" code="50009">No DocBlock was found for function \makeblog_shorten()</error>
     </parse_markers>
   </file>
-  <file path="page-footer-subscribe.php" hash="ada83fe0e96cb3c88eeb9dfb092d79c2" package="Default">
+  <file path="page-footer-subscribe.php" hash="32663620d69cde8e4cb610785f8ed3ee" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file page-footer-subscribe.php</error>
     </parse_markers>
@@ -6325,9 +6388,24 @@ firstname + lastname, and finally the nickname.</description>
       <error line="0" code="50007">No page-level DocBlock was found in file single-volume.php</error>
     </parse_markers>
   </file>
-  <file path="single.php" hash="0c7602954f2228f03546069fedb2dd90" package="Default">
+  <file path="single.php" hash="db3c91dbea2fb35bf3ef316233b5fe03" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file single.php</error>
+    </parse_markers>
+  </file>
+  <file path="tag-altsxsw.php" hash="70ac6f2b873ed48c9108df71e4760d07" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file tag-altsxsw.php</error>
+    </parse_markers>
+  </file>
+  <file path="tag-elmers.php" hash="70ac6f2b873ed48c9108df71e4760d07" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file tag-elmers.php</error>
+    </parse_markers>
+  </file>
+  <file path="tag-greatcreate.php" hash="53254bc06216fdde897913e954241919" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file tag-greatcreate.php</error>
     </parse_markers>
   </file>
   <file path="tag.php" hash="11c17b149465f0b440dbcd0f38f2584e" package="Default">

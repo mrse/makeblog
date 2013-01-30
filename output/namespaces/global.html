@@ -32,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">533</span></a></li>
+                <span class="label label-info">534</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
                 <span class="label label-info">5</span>
@@ -620,6 +620,16 @@ support post thumbnails.</p></div>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
+<a id="function_make_craft_remove_tag_from_home"></a><div class="element clickable function  function_make_craft_remove_tag_from_home" data-toggle="collapse" data-target=".function_make_craft_remove_tag_from_home .collapse">
+<h2>Take Craft posts and remove from the main query.</h2>
+<pre>make_craft_remove_tag_from_home($query) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$query</h4></div>
+</div></div>
+</div>
 <a id="function_make_custom_excerpt_length"></a><div class="element clickable function  function_make_custom_excerpt_length" data-toggle="collapse" data-target=".function_make_custom_excerpt_length .collapse">
 <h2>Truncate the excerpt to 50 charecters.</h2>
 <pre>make_custom_excerpt_length($length) </pre>
@@ -631,14 +641,36 @@ support post thumbnails.</p></div>
 </div></div>
 </div>
 <a id="function_make_dash_get_the_shares"></a><div class="element clickable function  function_make_dash_get_the_shares" data-toggle="collapse" data-target=".function_make_dash_get_the_shares .collapse">
-<h2>make_dash_get_the_shares()
-        </h2>
-<pre>make_dash_get_the_shares($url) </pre>
+<h2>Grab the shares for a post.</h2>
+<pre>make_dash_get_the_shares(string | array $url) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>This function just grabs the totals, but could be adapted to grab the individual stats.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>uses</th>
+<td>\global\wp_cache_get()</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\wpcom_vip_file_get_contents()</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\json_decode()</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\wp_cache_set()</td>
+</tr>
+</table>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$url</h4></div>
+<div class="subelement argument">
+<h4>$url</h4>
+<code>string</code><code>array</code><p>URL of post to get stats for.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Totals shares, combined of Twitter, Facebook, Linkedin, StumbleUpon, and Pinterest</div>
 </div></div>
 </div>
 <a id="function_make_email_encode_function"></a><div class="element clickable function  function_make_email_encode_function" data-toggle="collapse" data-target=".function_make_email_encode_function .collapse">
@@ -772,6 +804,12 @@ support post thumbnails.</p></div>
 <div class="subelement response">
 <code>string</code>Link to slug archive page.</div>
 </div></div>
+</div>
+<a id="function_make_get_header"></a><div class="element clickable function  function_make_get_header" data-toggle="collapse" data-target=".function_make_get_header .collapse">
+<h2>Crab the craft header if we are on a craft page.</h2>
+<pre>make_get_header() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="function_make_get_rid_of_thumbnail_class"></a><div class="element clickable function  function_make_get_rid_of_thumbnail_class" data-toggle="collapse" data-target=".function_make_get_rid_of_thumbnail_class .collapse">
 <h2>Removes the thumbnail class from the homepages of Craft and make.</h2>
@@ -931,11 +969,34 @@ support post thumbnails.</p></div>
 </div></div>
 </div>
 <a id="function_make_most_commented_query"></a><div class="element clickable function  function_make_most_commented_query" data-toggle="collapse" data-target=".function_make_most_commented_query .collapse">
-<h2>make_most_commented_query()
-        </h2>
-<pre>make_most_commented_query() </pre>
+<h2>Generate the list items for the child categories, given a slug.</h2>
+<pre>make_most_commented_query() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>When redoing the category structure, we wanted have a list of categories that we would feature all over the site.
+If we did wp_list_categories, we would get all of them, so I created these functions to spit everything out based on the categories that we wanted.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>uses</th>
+<td>\global\wp_cache_get()</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\wpcom_vip_file_get_contents()</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\json_decode()</td>
+</tr>
+<tr>
+<th>uses</th>
+<td>\global\wp_cache_set()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Totals shares, combined of Twitter, Facebook, Linkedin, StumbleUpon, and Pinterest</div>
+</div></div>
 </div>
 <a id="function_make_namify"></a><div class="element clickable function  function_make_namify" data-toggle="collapse" data-target=".function_make_namify .collapse">
 <h2>make_namify()
@@ -1311,7 +1372,7 @@ If we did wp_list_categories, we would get all of them, so I created these funct
 <pre>make_the_dash_shares_widget(string $type, string $hits, string $limit, string $size) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>With the make_the_dash_shares_widget(), we want to ping the stats from dash, and then return each item in a list.</p></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$type</h4>
@@ -2023,7 +2084,7 @@ If we did wp_list_categories, we would get all of them, so I created these funct
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-01-25T12:24:12-08:00.<br></footer></div>
+            generated on 2013-01-30T12:29:36-08:00.<br></footer></div>
 </div>
 </body>
 </html>

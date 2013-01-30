@@ -32,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">533</span></a></li>
+                <span class="label label-info">534</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
                 <span class="label label-info">5</span>
@@ -140,8 +140,6 @@
         </span><pre>make_columns_head</pre></a></li>
 <li class="function  "><a href="#function_make_comments" title="make_comments :: "><span class="description">make_comments()
         </span><pre>make_comments</pre></a></li>
-<li class="function  "><a href="#function_make_dash_get_the_shares" title="make_dash_get_the_shares :: "><span class="description">make_dash_get_the_shares()
-        </span><pre>make_dash_get_the_shares</pre></a></li>
 <li class="function  "><a href="#function_make_email_encode_function" title="make_email_encode_function :: "><span class="description">make_email_encode_function()
         </span><pre>make_email_encode_function</pre></a></li>
 <li class="function  "><a href="#function_make_embed_template_redirect" title="make_embed_template_redirect :: "><span class="description">make_embed_template_redirect()
@@ -174,8 +172,6 @@
         </span><pre>make_magazine_video_toc</pre></a></li>
 <li class="function  "><a href="#function_make_marketron_newsletter" title="make_marketron_newsletter :: "><span class="description">make_marketron_newsletter()
         </span><pre>make_marketron_newsletter</pre></a></li>
-<li class="function  "><a href="#function_make_most_commented_query" title="make_most_commented_query :: "><span class="description">make_most_commented_query()
-        </span><pre>make_most_commented_query</pre></a></li>
 <li class="function  "><a href="#function_make_namify" title="make_namify :: "><span class="description">make_namify()
         </span><pre>make_namify</pre></a></li>
 <li class="function  "><a href="#function_make_newsletter" title="make_newsletter :: "><span class="description">make_newsletter()
@@ -240,7 +236,6 @@
         </span><pre>make_slideshow_hotkeys</pre></a></li>
 <li class="function  "><a href="#function_make_subscribe_iframe" title="make_subscribe_iframe :: "><span class="description">make_subscribe_iframe()
         </span><pre>make_subscribe_iframe</pre></a></li>
-<li class="function  "><a href="#function_make_the_dash_shares_widget" title="make_the_dash_shares_widget :: Pulls content from the Dash API."><span class="description">Pulls content from the Dash API.</span><pre>make_the_dash_shares_widget</pre></a></li>
 <li class="function  "><a href="#function_make_video_add_meta_box" title="make_video_add_meta_box :: "><span class="description">make_video_add_meta_box()
         </span><pre>make_video_add_meta_box</pre></a></li>
 <li class="function  "><a href="#function_make_video_add_review" title="make_video_add_review :: "><span class="description">make_video_add_review()
@@ -767,17 +762,6 @@
 <div class="subelement argument"><h4>$depth</h4></div>
 </div></div>
 </div>
-<a id="function_make_dash_get_the_shares"></a><div class="element clickable function  function_make_dash_get_the_shares" data-toggle="collapse" data-target=".function_make_dash_get_the_shares .collapse">
-<h2>make_dash_get_the_shares()
-        </h2>
-<pre>make_dash_get_the_shares($url) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$url</h4></div>
-</div></div>
-</div>
 <a id="function_make_email_encode_function"></a><div class="element clickable function  function_make_email_encode_function" data-toggle="collapse" data-target=".function_make_email_encode_function .collapse">
 <h2>make_email_encode_function()
         </h2>
@@ -923,13 +907,6 @@
 <div class="subelement argument"><h4>$atts</h4></div>
 <div class="subelement argument"><h4>$content</h4></div>
 </div></div>
-</div>
-<a id="function_make_most_commented_query"></a><div class="element clickable function  function_make_most_commented_query" data-toggle="collapse" data-target=".function_make_most_commented_query .collapse">
-<h2>make_most_commented_query()
-        </h2>
-<pre>make_most_commented_query() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="function_make_namify"></a><div class="element clickable function  function_make_namify" data-toggle="collapse" data-target=".function_make_namify .collapse">
 <h2>make_namify()
@@ -1212,31 +1189,6 @@
 <h3>Parameters</h3>
 <div class="subelement argument"><h4>$atts</h4></div>
 <div class="subelement argument"><h4>$content</h4></div>
-</div></div>
-</div>
-<a id="function_make_the_dash_shares_widget"></a><div class="element clickable function  function_make_the_dash_shares_widget" data-toggle="collapse" data-target=".function_make_the_dash_shares_widget .collapse">
-<h2>Pulls content from the Dash API.</h2>
-<pre>make_the_dash_shares_widget(string $type, string $hits, string $limit, string $size) : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$type</h4>
-<code>string</code><p>Which analytivs to return. Current options are 'realtime', 'analytics', and 'shares'.</p>
-</div>
-<div class="subelement argument">
-<h4>$hits</h4>
-<code>string</code><p>String to preface the hit counter. If blank, nothing is added.</p></div>
-<div class="subelement argument">
-<h4>$limit</h4>
-<code>string</code><p>Integer, defaults to 5</p></div>
-<div class="subelement argument">
-<h4>$size</h4>
-<code>string</code><p>Integer, size of image to return.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>string</code>Unordered list</div>
 </div></div>
 </div>
 <a id="function_make_video_add_meta_box"></a><div class="element clickable function  function_make_video_add_meta_box" data-toggle="collapse" data-target=".function_make_video_add_meta_box .collapse">
@@ -1902,7 +1854,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-01-25T12:24:12-08:00.<br></footer></div>
+            generated on 2013-01-30T12:29:36-08:00.<br></footer></div>
 </div>
 </body>
 </html>
