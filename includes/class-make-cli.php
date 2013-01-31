@@ -113,6 +113,51 @@ class MAKE_CLI extends WP_CLI_Command {
 		WP_CLI::success( "Delete complete" );
 	}
 
+	/**
+	 * Migrate makemagazineuser's posts to guest author profiles
+	 *
+	 * @subcommand migrate-author-posts
+	 */
+	public function migrate_author_posts() {
+		global $wpdb, $coauthors_plus;
+
+		$post_ids = $wpdb->get_col( "SELECT ID FROM $wpdb->posts WHERE post_author=29763769 AND post_type='projects' AND post_status='publish'" );
+		WP_CLI::line( "Checking " . count( $post_ids ) . " posts to maybe update authors" );
+		$affected = 0;
+		foreach( $post_ids as $post_id ) {
+			$coauthors = get_coauthors( $post_id );
+			$user_logins = wp_list_pluck( $coauthors, 'user_login' );
+			if ( ! empty( $user_logins ) && ! in_array( 'makemagazineuser', $user_logins ) ) {
+				WP_CLI::line( "Skipping: Post #{$post_id} already has these coauthors: " . implode( ', ', $user_logins ) );
+				continue;
+			}
+			$original_import_author = get_post_meta( $post_id, '_original_import_author', true );
+			if ( ! $original_import_author ) {
+				WP_CLI::line( "Error: No _original_import_author found for post #{$post_id}" );
+				continue;
+			}
+			$guest_login = sanitize_title( $original_import_author );
+			$guest_author = $coauthors_plus->guest_authors->get_guest_author_by( 'user_login', $guest_login );
+			if ( ! $guest_author ) {
+				$coauthors_plus->guest_authors->create( array( 'display_name' => $original_import_author, 'user_login' => $guest_login ) );
+				$guest_author = $coauthors_plus->guest_authors->get_guest_author_by( 'user_login', $guest_login );
+				if ( is_wp_error( $guest_author ) ) {
+
+					continue;
+				}
+				WP_CLI::line( "---> Created guest author profile for {$original_import_author}" );
+			}
+			$coauthors_plus->add_coauthors( $post_id, array( $guest_login ) );
+			WP_CLI::line( "Added: Post #{$post_id} is now assigned to {$original_import_author}" );
+			$affected++;
+
+			if ( $affected && $affected % 10 == 0 )
+				sleep( 3 );
+		}
+		WP_CLI::success( "All done! {$affected} posts were updated" );
+
+	}
+
 	private function free_up_memory() {
 		global $wpdb, $wp_object_cache;
 		$wpdb->queries = array(); // or define( 'WP_IMPORTING', true );

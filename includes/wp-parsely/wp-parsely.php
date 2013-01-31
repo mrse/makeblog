@@ -380,10 +380,7 @@ class Parsely {
     */
     private function getCategoryName($postObj, $parselyOptions) {
         $category   = get_the_category($postObj->ID);
-        if (!'post' == get_post_type() ) {
-            $category   = $parselyOptions["use_top_level_cats"] ? $this->getTopLevelCategory($category[0]->cat_ID) : $category[0]->name;
-        }
-        //$category   = $parselyOptions["use_top_level_cats"] ? $this->getTopLevelCategory($category[0]->cat_ID) : $category[0]->name;
+        $category   = $parselyOptions["use_top_level_cats"] ? $this->getTopLevelCategory($category[0]->cat_ID) : $category[0]->name;
         // For some odd reason we apparently can still get nulls for a category
         // so we add this last check and assign a WordPress appropriate default
         if (is_null($category)) {

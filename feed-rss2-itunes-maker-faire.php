@@ -26,7 +26,7 @@ header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_opt
 	<image>
       <title>Maker Faire</title>
       <url>http://cdn.makezine.com/make/podcasts/MakerFaire.jpg</url>
-      <link>http://blog.makezine.com/archive/category/maker_faire</link>
+      <link>http://blog.makezine.com/archive/category/makerfaire</link>
     </image>
     <itunes:author>O'Reilly Media, Inc.</itunes:author>
     <itunes:subtitle>The world's largest DIY festival!</itunes:subtitle>
@@ -47,7 +47,7 @@ header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_opt
 	<docs>http://www.rssboard.org/rss-specification</docs>	
 	<?php do_action('rss2_head'); ?>
 	<?php 
-		$args=array('post_type'=>'post', 'category_name'=>'maker_faire', 'showposts'=>45);
+		$args=array('post_type'=>'post', 'tag'=>'maker-faire', 'showposts'=>45);
 		$qry=new WP_Query($args);
 		while( $qry->have_posts()) : $qry->the_post(); ?>
 	<item>

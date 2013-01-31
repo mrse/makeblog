@@ -1,4 +1,13 @@
-<?php make_get_header() ?>
+<?php
+/**
+ * Single Page Template
+ *
+ * @package    makeblog
+ * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
+ * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * 
+ */
+make_get_header() ?>
 		
 		<div class="clear"></div>
 
@@ -52,7 +61,7 @@
 		
 											<div class="span-thumb thumbnail">
 											
-												<?php echo get_avatar( get_the_author_meta('user_email'), 72); ?>
+												<?php $coauthor = array_shift( get_coauthors() ); echo get_avatar( $coauthor->user_email, 72); ?>
 											
 											</div>
 											

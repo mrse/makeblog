@@ -47,7 +47,7 @@ header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_opt
 	<docs>http://www.rssboard.org/rss-specification</docs>	
 	<?php do_action('rss2_head'); ?>
 	<?php 
-		$args=array('post_type'=>'post', 'tag'=>'LatestInArduino', 'showposts'=>45);
+		$args=array('post_type'=>'post', 'tag'=>'latestinarduino', 'showposts'=>45);
 		$qry=new WP_Query($args);
 		while( $qry->have_posts()) : $qry->the_post(); ?>
 	<item>

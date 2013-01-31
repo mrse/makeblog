@@ -49,7 +49,7 @@ echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'; ?>
 	<docs>http://www.rssboard.org/rss-specification</docs>	
 	<?php do_action('rss2_head'); ?>
 	<?php 
-		$args=array('post_type'=>'post', 'tag'=>'CollinsLab', 'showposts'=>45);
+		$args=array('post_type'=>'post', 'tag'=>'collinslab', 'showposts'=>45);
 		$qry=new WP_Query($args);
 		while( $qry->have_posts()) : $qry->the_post(); ?>
 	<item>
