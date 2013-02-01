@@ -48,8 +48,7 @@ Template name: Header
 
 		<?php endif; ?>
 
-		<link rel="stylesheet" href="https://s0.wp.com/wp-content/themes/vip/makeblog/css/bootstrap.css">
-		<link rel="stylesheet" href="https://s0.wp.com/wp-content/themes/vip/makeblog/style.css">
+		<link rel="stylesheet" href="https://s0.wp.com/wp-content/themes/vip/makeblog/css/style.css">
 		
 
 	</head>

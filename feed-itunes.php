@@ -1,10 +1,9 @@
 <?php
 /**
- * Template Name: Arduino RSS
+ * Template Name: iTunes RSS Feed
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
  * @author     Jake Spurlock <jspurlock@makermedia.com>
- * @deprecated Since January 31, 2013
 */
 header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_option('blog_charset'), true); $more = 1; echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'; ?>
 <rss version="2.0"
@@ -33,7 +32,6 @@ header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_opt
 		<?php 
 			$tag = get_post_custom_values('Tag'); 
 			$tag = $tag[0];
-			//TODO: Does this need to be added to the globa scope of the page?
 		?>
 		<link><?php echo make_get_category_url( $tag, 'post_tag' ); ?></link>
 	</image>
@@ -44,8 +42,8 @@ header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_opt
 		<itunes:email>webmaster@makezine.com</itunes:email>
 	</itunes:owner>
 	<itunes:category text="Technology"></itunes:category>
-	<itunes:category text="Technology">
-	<itunes:category text="Gadgets" />
+		<itunes:category text="Technology">
+		<itunes:category text="Gadgets" />
 	</itunes:category>
 	<itunes:category text="Games &amp; Hobbies"></itunes:category>
 	<itunes:category text="Games &amp; Hobbies"><itunes:category text="Hobbies" /></itunes:category>
@@ -79,7 +77,6 @@ header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_opt
 		}
 		?></itunes:keywords>	
 <?php the_category_rss() ?>
-
 		<guid isPermaLink="false"><?php the_guid(); ?></guid>
 <?php if (get_option('rss_use_excerpt')) : ?>
 		<description><![CDATA[<?php the_excerpt_rss() ?>]]></description>

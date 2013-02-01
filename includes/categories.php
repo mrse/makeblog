@@ -4,7 +4,7 @@
  *
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
- * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * @author 	   Jake Spurlock <jspurlock@makermedia.com>
  * 
  */
 
@@ -66,19 +66,21 @@ function make_sub_category_list( $slug ) {
 
 /**
  * Retrives the URL of a given slug.
+ * Switched to just use the full term object so we don't have to check against the taxonomy.
  * 
  * @uses get_category_link() Returns the correct url for a given Category ID.
  * @uses wpcom_vip_get_term_by() Cached version of get_category_by_slug
  * @param string|array $slug Slugs of category.
+ * @param string $taxonomy to query against. Defaults to category.
  * @return string Link to slug archive page.
  */
-function make_get_category_url( $slug ) {
-	$category = wpcom_vip_get_term_by('name', $slug, 'category');
-
-	if ( ! $category )
+function make_get_category_url( $slug, $taxonomy='category' ) {
+	$category = wpcom_vip_get_term_by('name', $slug, $taxonomy );
+	if ( ! $category ) {
 		return false;
-
-	return get_category_link( $category->term_id );
+	} else {
+		return get_term_link( $category );
+	}
 }
 
 /**

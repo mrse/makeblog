@@ -205,8 +205,7 @@ add_filter( 'wp_feed_cache_transient_lifetime', create_function( '$a', 'return 9
 function make_enqueue_jquery() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
-	wp_enqueue_style( 'make-bootstrap', get_stylesheet_directory_uri() . '/css/bootstrap.css' );
-	wp_enqueue_style( 'make', get_stylesheet_directory_uri() . '/style.css' );
+	wp_enqueue_style( 'make-css', get_stylesheet_directory_uri() . '/css/style.css' );
 }
 
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
@@ -946,4 +945,32 @@ function make_support_post_parent_queries_in_admin( $query ) {
 	if ( is_admin() && ! empty( $_GET['post_parent'] ) && $query->is_main_query() && ! $query->get( 'post_parent' ) && empty( $_POST ) && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 		$query->set( 'post_parent', absint( $_GET['post_parent'] ) );
 	}
+}
+
+/**
+ * iTunes RSS feed stuff for page templates.
+ */
+
+$field_data = array (
+	'advanced_testgroup' => array (
+		'fields' => array(
+			'ImageURL'					=> array(),
+			'Summary'				    => array(),
+			'Subtitle'				    => array(),
+			'Tag'						=> array()
+	),
+	'title'		=> 'RSS Stuff',
+	'context'	=> 'side',
+	'pages'		=> array( 'page' ),
+	),
+);
+
+$easy_cf = new Easy_CF($field_data);
+
+function make_get_post_meta_rss( $term ) {
+	$term =  get_post_custom_values( $term );
+	$term = $term[0];
+	$term = ent2ncr( $term );
+	return $term;
+
 }
