@@ -1,93 +1,59 @@
 <?php make_get_header() ?>
 		
-		<div class="clear"></div>
 
-		<div style="background-color:white;">
+	<div class="category-top">
 
-			<div class="container">
+		<div class="container">
+		
+			<div class="row">
+			
+				<div class="span4">
+				
+					<?php print apply_filters( 'taxonomy-images-queried-term-image', '', array( 'after' => '</div>', 'before' => '<div id="taxonomy-image">', 'image_size' => 'full') ); ?>
+				
+				</div>
 
-				<div class="row">
 
-					<div class="span12">
+				<div class="span8">
+				
+					<h1 class="jumbo"><?php single_cat_title('', true); ?></h1>
+				
+					<?php echo Markdown( strip_tags( category_description() ) ); ?>
+					
+					<?php make_child_category_list(); ?>
+					
+				</div>
+				
+			</div>
+		
+		</div>
 
-						<div class="">
-
-							<div class="category-title">
-							
-								<h1 class="cat-title jumbo"><?php single_cat_title('', true); ?></h1>
+	</div>
+	
+	<div class="grey">
+	
+		<div class="container">
 								
-								<div class="row">
-								
-									<div class="span4">
-									
-										<?php 
+			<div class="row">
+			
+				<div class="span12">
+				
+					<?php 
 
-											print apply_filters( 'taxonomy-images-queried-term-image', '', array( 'after' => '</div>', 'before' => '<div id="taxonomy-image">', 'image_size' => 'full') );
-										?>
-									
-									</div>
-
-
-									<div class="span8">
-									
-										<?php
-
-											$cat_ID = get_queried_object_id();
-
-											echo Markdown( strip_tags( category_description() ) );
-
-											$args = array(
-												'type'                     => 'post',
-												'child_of'                 => $cat_ID,
-												'parent'                   => '',
-												'orderby'                  => 'name',
-												'order'                    => 'ASC',
-												'hide_empty'               => 1,
-												'hierarchical'             => 1,
-												'exclude'                  => '',
-												'include'                  => '',
-												'number'                   => '',
-												'taxonomy'                 => 'category',
-												'pad_counts'               => false )
-											;
-											$categories = get_categories( $args );
-
-										?>
-										
-										<ul class="nav nav-pills">
-										
-										<?php
-											foreach ($categories as $category) {
-												echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->cat_name . '</a></li>';
-											}
-										?>
-										
-										</ul>
-										
-									</div>
-									
-								</div>
-
-							</div>
-							
-							<div class="row">
-							
-								<div class="span12">
-								
-									<?php 
-
-										//print_r(get_queried_object());
-
-										$args = array(
-											'category__in'		=> get_queried_object_id(), // Likely the queried object ID
-											'title'				=> 'New in ' . get_queried_object()->name
-										);
-										
-										make_carousel($args);
-									?>
-									
-								</div>
-							</div>
+						$args = array(
+							'category__in'		=> get_queried_object_id(), // Likely the queried object ID
+							'title'				=> 'New in ' . get_queried_object()->name
+						);
+						
+						make_carousel($args);
+					?>
+					
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
 							
 							
 							<!-- Getting Started Section -->

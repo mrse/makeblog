@@ -115,3 +115,60 @@ function make_category_li() {
 	}
 	return $output;
 }
+
+/**
+ * Generate an ordered list, with bullets inbetween the links.
+ *
+ * @uses get_categories() Retrieves all of the child categories for the given category.
+ * @uses get_category_link() Returns the correct url for a given Category ID.
+ * @uses get_queried_object_id() Finds the page that we are on.
+ */
+function make_child_category_list() {
+	$catobj = get_queried_object();
+	$cat_ID = $catobj->cat_ID;
+	$args = array(
+		'type'                     => 'post',
+		'child_of'                 => $cat_ID,
+		'parent'                   => '',
+		'orderby'                  => 'name',
+		'order'                    => 'ASC',
+		'hide_empty'               => 1,
+		'hierarchical'             => 1,
+		'exclude'                  => '',
+		'include'                  => '',
+		'number'                   => '',
+		'taxonomy'                 => 'category',
+		'pad_counts'               => false);
+
+	$categories = get_categories( $args );
+	
+	if ( make_pregnancy_check( $cat_ID ) ) {
+		echo '<h3>More in ' . get_queried_object()->name . '</h3>';	
+	}
+	echo '<ul class="subs">';
+	$count = count($categories);
+	$i = 0;
+	foreach ($categories as $category) {
+		echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->cat_name . '</a></li>';
+		if(++$i != $count) {
+			echo '<li>&bull;</li>';	
+		}
+	}
+	echo '</ul>';
+}
+
+/**
+ * Test to see if a category has any children.
+ *	
+ * @param int $id ID of category.
+ * @uses get_categories() Retrieves all of the child categories for the given category.
+ * @return true|false
+ */
+function make_pregnancy_check($id) {
+	$children = get_categories( array( 'child_of' => $id, 'hide_empty' => 0 ) );
+	if ( count( $children ) > 1 ) {
+		return true;
+	} else {
+		return false;
+	}
+}

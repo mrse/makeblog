@@ -79,7 +79,7 @@ function make_get_header() {
 	} else {
 		$primary_cat = null;
 	}
-	if ( $primary_cat == 15803 || $primary_cat == 30694999 ) {
+	if ( $primary_cat == 15803 || $primary_cat == 30694999 || 'craft' == get_post_type() ) {
 		get_header('craft');
 	} else { 
 		get_header();

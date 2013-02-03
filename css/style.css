@@ -7232,7 +7232,8 @@ blockquote p {
 }
 .modal.slideshow {
   width: 1030px;
-  margin-top: -325px;
+  /* margin-top:-325px; */
+
   margin-left: -470px;
 }
 .modal.slideshow .modal-body iframe {
@@ -8144,4 +8145,45 @@ textarea.radio-narrow,
 .pro-newsletter .email-area #appendedInputButton {
   border-radius: 0 0 0 0;
   height: 16px;
+}
+.category-top {
+  background: url('../img/dots.png');
+  background-repeat: repeat-x;
+  padding-top: 20px;
+  font-family: "proxima-nova", sans-serif;
+  border-bottom: 4px solid #DBDBDB;
+}
+.category-top h1 {
+  font-size: 38px;
+}
+.category-top h3 {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #ed1c24;
+}
+.category-top p {
+  font-size: 18px;
+}
+.category-top p a {
+  color: #005d8f;
+  border-bottom: 1px solid #005d8f;
+}
+.category-top p a:hover {
+  text-decoration: none;
+}
+.category-top .subs {
+  margin: 0px 0px 20px;
+}
+.category-top .subs li {
+  font-size: 18px;
+  display: inline;
+  margin-right: 20px;
+}
+.category-top .subs li a {
+  color: #005d8f;
+  font-weight: bold;
+}
+.grey {
+  padding: 20px 0;
+  background-color: #f3f3f3;
 }
