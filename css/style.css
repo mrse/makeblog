@@ -5940,7 +5940,8 @@ Time for a Dr. Pepper?
 }
 .commentlist .children li.comment .comment-content {
   margin: 1.625em 0 0;
-  overflow: scroll;
+  /* overflow: scroll; */
+
 }
 .comment-meta a {
   font-weight: bold;
@@ -5957,7 +5958,7 @@ Time for a Dr. Pepper?
   top: 0;
 }
 .commentlist > li:before {
-  content: url(img/comment-arrow.png);
+  content: url(../img/comment-arrow.png);
   left: -21px;
   position: absolute;
 }
@@ -6017,7 +6018,7 @@ a.comment-reply-link > span {
 }
 .commentlist > li.comment-author-whyisjake:before,
 .commentlist > li.comment-author-jspurlock:before {
-  content: url(img/comment-arrow-blank.png);
+  content: url(../img/comment-arrow-blank.png);
   left: -21px;
   position: absolute;
 }
