@@ -132,7 +132,7 @@
 
 							while ( $the_query->have_posts() ) : $the_query->the_post();
 								$link = get_post_custom_values( 'Link' , $post->ID );
-								echo do_shortcode('[youtube='. esc_url( $link[0] ) .'&w=440]');
+								echo do_shortcode('[youtube='. esc_url( $link[0] ) .'&w=442]');
 								the_title( '<h4>' . '<a href="' . get_permalink() . '">', '</a></h4>' );
 								echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 20, '...' ) . '</p>';
 							endwhile;
