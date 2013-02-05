@@ -8147,6 +8147,10 @@ textarea.radio-narrow,
   border-radius: 0 0 0 0;
   height: 16px;
 }
+.dots {
+  background: url('../img/dots.png');
+  background-repeat: repeat-x;
+}
 .category-top {
   background: url('../img/dots.png');
   background-repeat: repeat-x;
@@ -8187,4 +8191,113 @@ textarea.radio-narrow,
 .grey {
   padding: 20px 0;
   background-color: #f3f3f3;
+}
+.item img {
+  border: 1px solid #cecece;
+  max-width: 100%;
+}
+.item h4 {
+  margin: 5px 0;
+}
+.item h4 a {
+  color: #005d8f;
+}
+.item p {
+  line-height: 15px;
+}
+.item .span4 {
+  height: 250px;
+}
+.item .span3 {
+  height: 282px;
+}
+.icons {
+  display: block;
+  height: 30px;
+  width: 67px;
+  margin: 0 6px -29px;
+  position: relative;
+}
+.video-icon {
+  display: block;
+  height: 30px;
+  width: 67px;
+  margin: 0 6px -29px;
+  position: relative;
+  height: 64px;
+  width: 64px;
+  background: url('../img/play.png') no-repeat;
+  margin: 0 auto -64px;
+  top: 30px;
+}
+.projects-icon {
+  display: block;
+  height: 30px;
+  width: 67px;
+  margin: 0 6px -29px;
+  position: relative;
+  background: url('../img/project.png') no-repeat;
+}
+.review-icon {
+  display: block;
+  height: 30px;
+  width: 67px;
+  margin: 0 6px -29px;
+  position: relative;
+  background: url('../img/review.png') no-repeat;
+}
+.cat-carousel-control {
+  position: absolute;
+  top: 30%;
+  left: -24px;
+  width: 24px;
+  height: 47px;
+  margin-top: -20px;
+}
+.cat-carousel-control.right {
+  left: auto;
+  right: -24px;
+}
+.all {
+  color: #868484;
+}
+.heading {
+  font-family: "proxima-nova", sans-serif;
+  color: #022c44;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 24px;
+}
+.child {
+  background: url('../img/dots.png');
+  background-repeat: repeat-x;
+  padding: 20px 0;
+  background-color: #f3f3f3;
+  border-top: 4px solid #696a6a;
+}
+.child h2 {
+  font-family: "proxima-nova", sans-serif;
+  color: #022c44;
+}
+.video-box {
+  padding: 8px;
+  border: 1px solid #cecece;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+.video-box p {
+  margin-bottom: 0px;
+}
+.video-box a {
+  color: #005d8f;
+}
+.video-box ul {
+  position: relative;
+  bottom: 0px;
+}
+.video-box ul strong {
+  color: #ed1c24;
+}
+.video-box ul li {
+  font-weight: bold;
 }

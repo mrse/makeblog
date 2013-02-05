@@ -122,67 +122,60 @@ function make_post_loop( $args ) {
 
 	// Need a way to filter out the title if there are no results in the query.
 	if($post->post_parent == 0 && !empty($the_query->posts) ) {
-		echo '<h4>'. esc_html( $args['title']  ) .'</h4>';
+		echo '<h4 class="heading">'. esc_html( $args['title']  ) .'</h4>';
 		
 	}
 
 	while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
-		<div <?php post_class( 'row'); ?>>
+		<div <?php post_class( 'row-fluid'); ?>>
+		
+			<div class="video-box">
 
-			<div class="span2">
+				<div class="span4">
+					<?php $type = get_post_type( $post ); ?>
+					<?php echo '<span class="' . $type .'-icon"></span>'; ?>
+					<?php get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb', 'image_class' => 'hide-thumbnail' ) ); ?>
+				</div>
 
-				<?php get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb' ) ); ?>
+				<div class="span8">
 
-			</div>
+					<h4><a class="" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
-			<div class="span4">
+					<p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
 
-				<?php 
-					$link = get_post_custom_values( 'Link' );
-					if (isset( $link ) ) {
-						echo '<h4><a class="red" href="' . esc_url( $link[0] ) .'">' . get_the_title() . '</a></h3>';
-					} else {
-						echo '<h4><a class="red" href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
-					}
-				?>
-
-				<p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
-
-				<p class="meta">
-					<?php 
-					if(function_exists('coauthors_posts_links')) {
-						coauthors_posts_links();
-					} else { 
-						the_author_posts_link();
-					} 
-					echo make_page_number();
-					?>
-				</p>
-				
-				<?php if ($args['post_type'] == 'projects' ) {
-					$time = get_post_custom_values( 'TimeRequired' );
-					$terms = get_the_terms( $post->ID, 'difficulty' );
-					echo '<ul class="unstyled">';
-					if ($terms) {
-						foreach ($terms as $term) {
-							echo '<li>Difficulty: <strong>' . esc_html( $term->name ) . '</strong></li>';
+					<p class="meta">
+						<?php 
+						if(function_exists('coauthors_posts_links')) {
+							coauthors_posts_links();
+						} else { 
+							the_author_posts_link();
+						} 
+						echo make_page_number();
+						?>
+					</p>
+					
+					<?php if ($args['post_type'] == 'projects' ) {
+						$time = get_post_custom_values( 'TimeRequired' );
+						$terms = get_the_terms( $post->ID, 'difficulty' );
+						echo '<ul class="unstyled">';
+						if ($terms) {
+							foreach ($terms as $term) {
+								echo '<li><strong>Difficulty:</strong> ' . esc_html( $term->name ) . '</li>';
+							}
 						}
-					}
-					if (isset($time[0])) {
-						echo '<li>Time Required: <strong>' . esc_html( $time[0] ) . '</strong></li>';
-					}
+						if (isset($time[0])) {
+							echo '<li><strong>Time Required:</strong> ' . esc_html( $time[0] ) . '</li>';
+						}
 
-				} else { ?>
-					<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
-				<? }	?>
+					} else { ?>
+						<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
+					<? }	?>
+					
+				</div>
 				
-				
-
-			</div>
+				<div class="clearfix"></div>
 			
-			<div class="span6">
-				<hr>
 			</div>
 			
 		</div> 

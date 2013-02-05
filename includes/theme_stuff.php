@@ -22,6 +22,7 @@
 function make_action_after_setup_theme() {
 
 	add_theme_support('post-thumbnails' );
+	add_image_size( 'comment-thumb', 70, 70, true );				// Used in the most commented area of the sidebar.
 	add_image_size( 'attachment-thumb', 75, 75, true ); 			// Maker Faire Sidebar
 	add_image_size( 'shed-thumb', 90, 999, false); 					// Used in Maker Shed homepage widget
 	add_image_size( 'ftms-thumb', 300, 999, false); 				// Used in the From the Maker Shed widget on homepage
@@ -33,11 +34,12 @@ function make_action_after_setup_theme() {
 	add_image_size( 'archive-thumb', 200, 200, true );				// Used on archives pages
 	add_image_size( 'faire-thumb', 130, 130, true );				// Used on Maker Faire homepage
 	add_image_size( 'volume-thumb', 144, 144, true );				// Used on volume page
+	add_image_size( 'category-thumb', 298, 146, true );				// Used on Category archive pages when in a .span4
+	add_image_size( 'category-thumb-small', 218, 146, true );		// Used on Category archive pages when in a .span3
 	/**
 	  * Depracated image sizes.
 	 */
 	// add_image_size( 'super-thumb', 290, 170, true );
-	// add_image_size( 'comment-thumb', 70, 70, true );
 	// add_image_size( 'search-thumb', 100, 100, true );
 	// add_image_size( 'big-thumb', 300, 300, true ); //300 pixels wide (and unlimited height)
 	// add_image_size( 'dotw', 300, 209, true );

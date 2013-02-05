@@ -187,7 +187,14 @@ function make_carousel( $args ) {
 		'posts_per_page'	=> 8,				// Need to have this divisable by 8, ideally.
 		'no_found_rows'		=> true,			// Helps to keep the query fast.
 		'title'				=> 'New Posts!',	//To be change, immediately.
-		'post_type'			=> 'post'
+		'post_type'			=> 'post',
+		'limit'				=> 4,
+		'post_type'			=> array( 
+								'post', 
+								'magazine', 
+								'video', 
+								'projects',
+								'review' )
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -197,12 +204,12 @@ function make_carousel( $args ) {
 
 	?>
 
-<div class="row">
+<div class="row-fluid">
 	<div class="span10">
-		<h3><?php echo $args['title']?></h3>
+		<h3 class="heading"><?php echo $args['title']?></h3>
 	</div>
 	<div class="span2">
-		<p style="text-align:right;"><a href="#">View All</a></p>
+		<p class="pull-right"><a href="#" class="all">View All</a></p>
 	</div>
 </div>
 
@@ -213,7 +220,7 @@ function make_carousel( $args ) {
 
 			$the_query = new WP_Query( $args );
 			
-			$arrays = array_chunk( $the_query->posts, 4, true );
+			$arrays = array_chunk( $the_query->posts, $args['limit'], true );
 
 			foreach( $arrays as $idx => $posts) {
 				
@@ -224,13 +231,25 @@ function make_carousel( $args ) {
 				}
 				echo '<div class="row">';
 					foreach ($posts as $post) {
-						echo '<div class="span3">';
-						get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'size' => 'big-thumb', 'image_class' => 'hide-thumbnail' ) );
+						$type = get_post_type( $post );
+						if ($args['limit'] == 4 ) {
+							echo '<div class="span3 ' . $type . '">';
+							echo '<span class="' . $type .'-icon"></span>';
+							get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail' ) );
+						} elseif ($args['limit'] == 2) {
+							echo '<div class="span4 ' . $type . '">';
+							echo '<span class="' . $type .'-icon"></span>';
+							get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'size' => 'category-thumb', 'image_class' => 'hide-thumbnail' ) );
+						}
+						
+						
 						echo '<h4><a href="';
 						echo get_permalink( $post->ID );
 						echo '">';
 						echo get_the_title( $post->ID );
-						echo '</a></h4></div>';
+						echo '</a></h4>';
+						echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 15, '...' ) . '</p>';
+						echo '</div>'. "\n";
 					}
 					echo '</div>';
 				echo '</div>';
@@ -245,8 +264,8 @@ function make_carousel( $args ) {
 	
 	</div>
 
-	<a class="left carousel-control" href="#<?php echo $id ?>" data-slide="prev">‹</a>
-	<a class="right carousel-control" href="#<?php echo $id ?>" data-slide="next">›</a>
+	<a class="left cat-carousel-control" href="#<?php echo $id ?>" data-slide="prev"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/larr.png" alt="Left"></a>
+	<a class="right cat-carousel-control" href="#<?php echo $id ?>" data-slide="next"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/rarr.png" alt="Left"></a>
 
 </div>
 	

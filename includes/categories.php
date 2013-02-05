@@ -172,3 +172,19 @@ function make_pregnancy_check($id) {
 		return false;
 	}
 }
+
+/**
+ * Return an array of child category IDs. If none exist, return false.
+ *	
+ * @param int $id ID of category.
+ * @uses get_categories() Retrieves all of the child categories for the given category.
+ * @return array|false
+ */
+function make_children($id) {
+	$children = get_categories( array( 'child_of' => $id, 'hide_empty' => 0 ) );
+	if ( count( $children ) > 1 ) {
+		return $children;
+	} else {
+		return false;
+	}
+}

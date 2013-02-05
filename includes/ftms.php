@@ -84,29 +84,6 @@ $ftms_field_data = array (
 
 $ftms_easy_cf = new Easy_CF($ftms_field_data);
 
-class Easy_CF_Validator_Url extends Easy_CF_Validator {
-
-	/* 
-	 * Return a sanitized value for writing user submitted data to the database
-	 */
-	public function set( $value='' ) {
-		$value = esc_url_raw( $value );
-		$value = trim( stripslashes( $value ) );
-		return $value;
-	}
-
-	/* 
-	 * Validate a value and return true/false
-	 */
-	public function validate( $value='' ) {
-		if ( $this->set( $value ) == trim( stripslashes( $value ) ) ) 
-			return true;
-		else
-			return false;
-	}
-}
-
-
 if (class_exists('MultiPostThumbnails')) {
 	new MultiPostThumbnails(
 		array(
