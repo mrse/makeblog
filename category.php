@@ -159,7 +159,7 @@
 							'cat'				=> $category->term_id,
 							'orderby' 			=> 'date',
 							'order' 			=> 'dsc',
-							//'tax_query' 		=> array( array( 'taxonomy' => 'difficulty', 'field' => 'slug', 'terms' => 'easy' ) )
+							'tax_query' 		=> array( array( 'taxonomy' => 'difficulty', 'field' => 'slug', 'terms' => 'easy' ) )
 							);
 						make_post_loop($args); ?>
 				
