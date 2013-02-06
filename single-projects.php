@@ -220,7 +220,10 @@ get_header(); ?>
 												<!-- End AdSlot 2 -->
 											
 											</div>
-									
+											
+										</div>
+										
+									</div>
 								
 								</article>
 
@@ -248,7 +251,5 @@ get_header(); ?>
 						</div>
 
 					</div>
-
-					<?php // get_sidebar('projects'); ?>
 
 			<?php get_footer(); ?>
