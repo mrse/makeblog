@@ -234,11 +234,23 @@ function make_carousel( $args ) {
 						$type = get_post_type( $post );
 						if ($args['limit'] == 4 ) {
 							echo '<div class="span3 ' . $type . '">';
-							echo '<span class="' . $type .'-icon"></span>';
+							if ($type == 'video') {
+								echo '<a class="" data-toggle="modal" onclick="_gaq.push([\'_trackPageview\', \'' . get_post_permalink( $post->ID ) . '\']);" href="#myModal-' . $post->ID . '">';
+								echo '<span class="' . $type .'-icon"></span>';
+								echo '</a>';
+							} else {
+								echo '<span class="' . $type .'-icon"></span>';
+							}
 							get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail' ) );
 						} elseif ($args['limit'] == 2) {
 							echo '<div class="span4 ' . $type . '">';
-							echo '<span class="' . $type .'-icon"></span>';
+							if ($type == 'video') {
+								echo '<a class="" data-toggle="modal" onclick="_gaq.push([\'_trackPageview\', \'' . get_post_permalink( $post->ID ) . '\']);" href="#myModal-' . $post->ID . '">';
+								echo '<span class="' . $type .'-icon"></span>';
+								echo '</a>';
+							} else {
+								echo '<span class="' . $type .'-icon"></span>';
+							}
 							get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'size' => 'category-thumb', 'image_class' => 'hide-thumbnail' ) );
 						}
 						
@@ -250,6 +262,22 @@ function make_carousel( $args ) {
 						echo '</a></h4>';
 						echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 15, '...' ) . '</p>';
 						echo '</div>'. "\n";
+						if ($type == 'video') {
+							echo '<div class="modal hide" id="myModal-' . $post->ID . '">
+								<div class="modal-header">
+									<a class="close" data-dismiss="modal">&times;</a>
+									<h3>' . get_the_title( $post->ID ) . '</h3>
+								</div>
+								<div class="modal-body">';
+									$link = get_post_custom_values( 'Link' , $post->ID );
+									echo do_shortcode('[youtube='. esc_url( $link[0] ) .'&w=530]');
+									echo apply_filters('the_content', strip_shortcodes( $post->post_content ) );
+								echo '</div>
+								<div class="modal-footer">
+									<a href="#" class="btn" data-dismiss="modal">Close</a>
+								</div>
+							</div>';
+						}
 					}
 					echo '</div>';
 				echo '</div>';

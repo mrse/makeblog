@@ -1,0 +1,140 @@
+@light-grey:		#cdcdcd;
+
+.transition (@prop: all, @time: 1s, @ease: linear) {
+    -webkit-transition: @prop @time @ease;
+    -moz-transition: @prop @time @ease;
+    -o-transition: @prop @time @ease;
+    -ms-transition: @prop @time @ease;
+    transition: @prop @time @ease;
+}
+
+.gradient (@origin: left, @start: #ffffff, @stop: #000000) {
+    background-color: @start;
+    background-image: -webkit-linear-gradient(@origin, @start, @stop);
+    background-image: -moz-linear-gradient(@origin, @start, @stop);
+    background-image: -o-linear-gradient(@origin, @start, @stop);
+    background-image: -ms-linear-gradient(@origin, @start, @stop);
+    background-image: linear-gradient(@origin, @start, @stop);
+}
+
+.projects-masthead {
+	font-family: @font;
+	h3 {
+		font-size:22px;
+		text-transform: uppercase;
+		a {
+			color:@red;
+		}
+	}
+	h1 {
+		font-size:60px;
+		line-height: 60px;
+		a {
+			color:@link-color;
+		}
+	}
+}
+
+.projects-meta {
+	margin:10px 0;
+	padding:5px 0;
+	font-weight: bold;
+	color:@red;
+	border-top:2px solid @light-grey;
+	border-bottom:2px solid @light-grey;
+	li {
+		display: inline;
+		margin-right:10px;
+		font-size:16px;
+		span {
+			color:@link-color;
+		}
+	}
+}
+
+a {
+	color:@link-color;
+}
+
+.parts-tools {
+	border-top: 7px solid @red;
+	border-bottom: 7px solid @red;
+	max-height:600px;
+	padding:10px;
+	.gradient(top, #EAEAEA, #ffffff);
+	.top {
+		font-size:18px;
+		margin-left:0px;
+		padding-top:0px;
+		text-transform: uppercase;
+		li {
+			display: inline;
+			font-weight:bold;
+			padding-bottom:7px;
+			// .transition(background-image, 0.5s, ease-in);
+			a {
+				color: @grey;
+			}
+		}
+		li.active {
+			background-image: url('../img/active-arrow.png');
+			background-repeat: no-repeat;
+			background-position: center bottom;
+			a {
+				color: @red;
+			}
+		}
+		li.divider {
+			color:#7cd5fc;
+		}
+	}
+	.lists {
+		margin-left:0px;
+		font-size:18px;
+		font-weight: bold;
+		li {
+			color:#0776b7;
+			border-bottom:1px solid #CCEFFB;
+			list-style-type: none;
+			line-height:22px;
+		}
+	}
+}
+
+.top-steps {
+	h4 {
+		font-size:22px;
+		position:relative;
+		top:-39px;
+		left:1px;
+		background-color: #fff;
+		padding:10px;
+		width:198px;
+		opacity: .8;
+	}
+	img {
+		border:1px solid @border-color;
+		height: 146px;
+		width: 218px;
+		
+	}
+	.span3 {
+	}
+}
+.bottom-steps {
+	font-size:16px;
+	.smalls {
+		margin-top:10px;
+	}
+	ol {
+		margin-top:10px;
+	}
+	h4 {
+		color: @link-color;
+		font-size:28px;
+		line-height:24px;
+		margin-bottom:15px;
+	}
+	img {
+	}
+}
