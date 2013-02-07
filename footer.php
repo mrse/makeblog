@@ -185,6 +185,11 @@
 			a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 		</script>
 
+		<script>
+
+			  jQuery('.tabs a').tab('show');
+
+		</script>
 
 		<?php wp_footer(); ?>
 		

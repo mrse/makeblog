@@ -145,15 +145,16 @@ get_header(); ?>
 											foreach( $arrays as $stepped ) {
 												echo '<div class="row">';
 												foreach ($stepped as $idx =>$step) {
-													echo '<div class="span3">';
+													echo '<a data-toggle="tab" id="link-js-step-'  . esc_attr( $step->number ) . '" href="#js-step-'  . esc_attr( $step->number ) . '">';
+													echo '<div class="span3 tabs">';
 													$image = $step->images;
 													if ($image) {
-														echo '<a href="#" data-step="'  . esc_attr( $image[0]->orderby ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( $image[0]->text, 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-traget ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" /></a>';
+														echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image[0]->text, 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
 													} else {
 														echo '<img src="http://placekitten.com/218/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 													}
 													echo '<h4 class="red">Step #' . esc_html( $step->number ) . '</h4>';
-													echo '</div>'; 
+													echo '</div></a>'; 
 												}
 												echo '</div>';
 											}
@@ -172,9 +173,9 @@ get_header(); ?>
 												<?php 
 												foreach ( $steps as $idx => $step ) {
 													if ($idx == 0) {
-														echo '<div class="step active tab-pane" id=js-step-' . esc_attr( $step->number ) . '">';
+														echo '<div class="step active tab-pane fade in" id=js-step-' . esc_attr( $step->number ) . '">';
 													} else {
-														echo '<div class="step tab-pane" id=js-step-' . esc_attr( $step->number ) . '">';
+														echo '<div class="step tab-pane fade" id=js-step-' . esc_attr( $step->number ) . '">';
 													}
 													
 													echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
@@ -276,15 +277,6 @@ get_header(); ?>
 								</article>
 
 							<?php endwhile; ?>
-							
-<script>
-	
-	jQuery('.js-target').click(function() {
-		jQuery('.bottom-steps').find('.active').removeClass('active').addClass('hide');
-	});
-	
-
-</script>							
 
 							<ul class="pager">
 							

@@ -180,6 +180,8 @@ function make_bs_slideshow() {
 	return $output;
 }
 
+add_shortcode( 'bs_slideshow', 'make_bs_slideshow' );
+
 function make_carousel( $args ) {
 
 	$defaults = array(

@@ -8455,6 +8455,10 @@ a {
 .bottom-steps ol {
   margin-top: 10px;
 }
+.bottom-steps ol li {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 .bottom-steps h4 {
   color: #005d8f;
   font-size: 28px;
