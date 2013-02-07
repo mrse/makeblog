@@ -36,6 +36,7 @@ function make_action_after_setup_theme() {
 	add_image_size( 'volume-thumb', 144, 144, true );				// Used on volume page
 	add_image_size( 'category-thumb', 298, 146, true );				// Used on Category archive pages when in a .span4
 	add_image_size( 'category-thumb-small', 218, 146, true );		// Used on Category archive pages when in a .span3
+	add_image_size( 'related-thumb', 98, 55, true );				// Used on related blocks.
 	/**
 	  * Depracated image sizes.
 	 */

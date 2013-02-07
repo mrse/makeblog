@@ -17,6 +17,14 @@
     background-image: linear-gradient(@origin, @start, @stop);
 }
 
+.quick-gradient (@origin: left, @alpha: 0.2) {
+    background-image: -webkit-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+    background-image: -moz-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+    background-image: -o-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+    background-image: -ms-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+    background-image: linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+}
+
 .projects-masthead {
 	font-family: @font;
 	h3 {
@@ -137,4 +145,43 @@ a {
 	}
 	img {
 	}
+}
+
+.related-projects {
+	border-top: 7px solid @red;
+	border-bottom: 7px solid @red;
+	max-height:600px;
+	padding:10px;
+	.gradient(top, #EAEAEA, #ffffff);
+	overflow:scroll;
+	margin-top:10px;
+}
+
+.related {
+	margin: 10px 0;
+	position: relative;
+	.image {
+		width:100px;
+		float:left;
+		margin-bottom:10px;
+		img {
+			border:1px solid @border-color;
+		}
+	}
+	.blurb {
+		width:170px;
+		float:left;
+		margin-left:10px;
+		p {
+			font-size:16px;
+		}
+		h5 {
+			color:@link-color;
+			font-size:16px;
+		}
+	}
+}
+
+.black {
+	color:#333;
 }

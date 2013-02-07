@@ -141,8 +141,6 @@ get_header(); ?>
 											$i = 0;
 											$steps = get_post_custom_values('Steps');
 											$steps = unserialize($steps[0]);
-
-											
 											$arrays = array_chunk( $steps, 4 );
 											foreach( $arrays as $stepped ) {
 												echo '<div class="row">';
@@ -178,7 +176,7 @@ get_header(); ?>
 														echo '<div class="step tab-pane" id=js-step-' . esc_attr( $step->number ) . '">';
 													}
 													
-													echo '<h4 class="clear">Step #' . esc_html( $step->number ) . ' ' . esc_html( $step->title ) . '</h4>';
+													echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
 													$images = $step->images;
 													echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $images[0]->text, 620, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
 													echo '<div class="row smalls">';
@@ -218,6 +216,56 @@ get_header(); ?>
 													</script>
 												</div>
 												<!-- End AdSlot 2 -->
+												
+												<div class="related-projects">
+												
+														<h3>Related Projects</h3>
+												
+														<?php
+															$cat = wp_get_post_categories($post->ID);
+															$args = array(
+																'post_type'				=> 'projects', 
+																'cat'			 		=> $cat[0],
+																'posts_per_page' 			=> 8, 
+																'orderby' 				=> 'rand', 
+																'order' 					=> 'asc',
+																);
+															$the_query = new WP_Query( $args );
+															
+															while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+															
+														<div <?php post_class( 'related' ); ?>>
+															
+															<div class="image">
+																
+																<?php
+																	$args = array(
+																		'image_scan' => true, 
+																		'size' => 'related-thumb', 
+																		'image_class' => 'hide-thumbnail', 
+																		'default_image' => 'http://placekitten.com/98/55'
+																		);
+																	get_the_image( $args );
+																?>
+																
+															</div>
+															
+															<div class="blurb">
+																<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+																<p><?php the_author_posts_link(); ?></p>
+															</div>
+															
+														</div>
+														
+														<div class="clearfix"></div>
+															
+														<?php endwhile; wp_reset_postdata(); ?>
+
+													<div class="clearfix"></div>
+													
+													<div class="grad"></div>
+													
+												</div>
 											
 											</div>
 											

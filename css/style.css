@@ -8461,3 +8461,44 @@ a {
   line-height: 24px;
   margin-bottom: 15px;
 }
+.related-projects {
+  border-top: 7px solid #ed1c24;
+  border-bottom: 7px solid #ed1c24;
+  max-height: 600px;
+  padding: 10px;
+  background-color: #eaeaea;
+  background-image: -webkit-linear-gradient(top, #eaeaea, #ffffff);
+  background-image: -moz-linear-gradient(top, #eaeaea, #ffffff);
+  background-image: -o-linear-gradient(top, #eaeaea, #ffffff);
+  background-image: -ms-linear-gradient(top, #eaeaea, #ffffff);
+  background-image: linear-gradient(top, #eaeaea, #ffffff);
+  overflow: scroll;
+  margin-top: 10px;
+}
+.related {
+  margin: 10px 0;
+  position: relative;
+}
+.related .image {
+  width: 100px;
+  float: left;
+  margin-bottom: 10px;
+}
+.related .image img {
+  border: 1px solid #cecece;
+}
+.related .blurb {
+  width: 170px;
+  float: left;
+  margin-left: 10px;
+}
+.related .blurb p {
+  font-size: 16px;
+}
+.related .blurb h5 {
+  color: #005d8f;
+  font-size: 16px;
+}
+.black {
+  color: #333;
+}
