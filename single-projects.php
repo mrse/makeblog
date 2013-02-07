@@ -148,7 +148,7 @@ get_header(); ?>
 													echo '<div class="span3">';
 													$image = $step->images;
 													if ($image) {
-														echo '<a href="#js-step-' . esc_attr( $image[0]->orderby ) . '" data-toggle="tab"><img src="' . wpcom_vip_get_resized_remote_image_url( $image[0]->text, 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" /></a>';
+														echo '<a href="#" data-step="'  . esc_attr( $image[0]->orderby ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( $image[0]->text, 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-traget ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" /></a>';
 													} else {
 														echo '<img src="http://placekitten.com/218/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 													}
@@ -169,7 +169,8 @@ get_header(); ?>
 											
 												<div class="tab-content">
 										
-												<?php foreach ( $steps as $idx => $step ) {
+												<?php 
+												foreach ( $steps as $idx => $step ) {
 													if ($idx == 0) {
 														echo '<div class="step active tab-pane" id=js-step-' . esc_attr( $step->number ) . '">';
 													} else {
@@ -195,14 +196,13 @@ get_header(); ?>
 													echo '</ol>';
 													echo '</div><!--.right_column-->';
 													if (++$i == 999) break;
-
 												}
-													echo '<div class="conclusion">';
-													$conclusion = get_post_custom_values('Conclusion');
-													echo wp_kses_post( $conclusion[0] ) ;
-													echo '</div>';
+												echo '<div class="conclusion">';
+												$conclusion = get_post_custom_values('Conclusion');
+												echo wp_kses_post( $conclusion[0] ) ;
+												echo '</div>';
 
-													?>
+												?>
 												</div>
 												
 											</div>
@@ -226,9 +226,9 @@ get_header(); ?>
 															$args = array(
 																'post_type'				=> 'projects', 
 																'cat'			 		=> $cat[0],
-																'posts_per_page' 			=> 8, 
+																'posts_per_page' 		=> 8, 
 																'orderby' 				=> 'rand', 
-																'order' 					=> 'asc',
+																'order' 				=> 'asc',
 																);
 															$the_query = new WP_Query( $args );
 															
@@ -276,6 +276,15 @@ get_header(); ?>
 								</article>
 
 							<?php endwhile; ?>
+							
+<script>
+	
+	jQuery('.js-target').click(function() {
+		jQuery('.bottom-steps').find('.active').removeClass('active').addClass('hide');
+	});
+	
+
+</script>							
 
 							<ul class="pager">
 							
