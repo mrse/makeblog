@@ -162,8 +162,13 @@ function make_bs_slideshow() {
 		} else {
 			$output .= '<div class="item">';
 		}
-		
+		if (isset($image->post_title)) {
+			$output .= '<h3>' . $image->post_title . '</h3>';
+		}
 		$output .= wp_get_attachment_image( $image->ID, 'medium');
+		if (isset($image->post_excerpt)) {
+			$output .= '<p>' . $image->post_excerpt . '</p>';
+		}
 		$output .= '</div>';
 		
 	} //foreach

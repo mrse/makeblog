@@ -39,6 +39,10 @@
 						window.location = url;
 					}
 				});
+				jQuery('#myCarousel').on('slide', function () {
+					googletag.pubads().refresh();
+					_gaq.push(['_trackPageview']);
+				})
 			});
 
     	</script>
