@@ -276,7 +276,7 @@ function make_platt() {
 
 			<img src="' . get_stylesheet_directory_uri() . '/img/platt.jpg" class="thumbnail pull-right" style="width:125px; margin-left:10px; height: auto;" />
 
-			<p>For more on microswitches, rockers, sliders, toggles, DIPs, SIPs, paddle switches, and more, check out the Encyclopedia of Electronic Components Volume 1 by Charles Platt. It’s the convenient, concise, well-organized, and precise resource for teachers, hobbyists, engineers, and students of all ages who a go-to electronics resource right at their fingertips.<p>
+			<p>For more on microswitches, rockers, sliders, toggles, DIPs, SIPs, paddle switches, and more, check out the Encyclopedia of Electronic Components Volume 1 by Charles Platt. It’s the informative, concise, and well-organized resource that\'s perfect for teachers, hobbyists, engineers, and students wanting a go-to electronics quick reference.<p>
 			<p><a class="btn btn-primary" href="http://www.makershed.com/Encyclopedia_of_Electronic_Components_Vol_1_p/mkbk17.htm">Buy now!</a></p>
 
 		</div>';

@@ -145,16 +145,18 @@ get_header(); ?>
 											foreach( $arrays as $stepped ) {
 												echo '<div class="row">';
 												foreach ($stepped as $idx =>$step) {
-													echo '<a data-toggle="tab" id="link-js-step-'  . esc_attr( $step->number ) . '" href="#js-step-'  . esc_attr( $step->number ) . '">';
 													echo '<div class="span3 tabs">';
 													$image = $step->images;
+													echo '<a data-toggle="tab" id="link-js-step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
 													if ($image) {
-														echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image[0]->text, 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
+														//echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image[0]->text, 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
+														echo '<img src="http://placekitten.com/218/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 													} else {
 														echo '<img src="http://placekitten.com/218/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 													}
-													echo '<h4 class="red">Step #' . esc_html( $step->number ) . '</h4>';
-													echo '</div></a>'; 
+													echo '</a>';
+													echo '<h4 class="red"><a data-toggle="tab" id="link-js-step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">Step #' . esc_html( $step->number ) . '</a></h4>';
+													echo '</div>'; 
 												}
 												echo '</div>';
 											}
@@ -173,19 +175,23 @@ get_header(); ?>
 												<?php 
 												foreach ( $steps as $idx => $step ) {
 													if ($idx == 0) {
-														echo '<div class="step active tab-pane fade in" id=js-step-' . esc_attr( $step->number ) . '">';
+														echo '<div class="active" id="js-step-' . esc_attr( $step->number ) . '">';
 													} else {
-														echo '<div class="step tab-pane fade" id=js-step-' . esc_attr( $step->number ) . '">';
+														echo '<div class="hide" id="js-step-' . esc_attr( $step->number ) . '">';
 													}
 													
 													echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
 													$images = $step->images;
-													echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $images[0]->text, 620, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
+													// echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $images[0]->text, 620, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
+													echo '<img src="http://placekitten.com/620/405" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 													echo '<div class="row smalls">';
 													$number = count($images);
 													if ($number > 1) {
 														foreach ($images as $image) {
-															echo '<div class="span2"><img src="' . wpcom_vip_get_resized_remote_image_url( $image->text, 140, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" /></div>';	
+															// echo '<div class="span2">';
+															// echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image->text, 140, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
+															// echo '</div>';
+															echo '<img src="http://placekitten.com/218/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 														}
 													}
 													echo '</div><!--.row-->';

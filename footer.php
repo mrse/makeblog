@@ -137,18 +137,6 @@
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script>jQuery(".entry-content:odd").addClass('odd');</script>
 
-		<div id="fb-root"></div>
-		<script>
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=216859768380573";
-			fjs.parentNode.insertBefore(js, fjs);
-			}
-		(document, 'script', 'facebook-jssdk'));
-		</script>
-
 		<script type="text/javascript">
 		jQuery(document).ready(function(){
 			jQuery(".scroll").click(function(event){
@@ -185,11 +173,6 @@
 			a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 		</script>
 
-		<script>
-
-			  jQuery('.tabs a').tab('show');
-
-		</script>
 
 		<?php wp_footer(); ?>
 		
