@@ -1,8 +1,13 @@
 <?php
-/*
- * Template name: Project
+/**
+ * Single page template for projects custom post type.
+ *
+ * @package    makeblog
+ * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
+ * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * 
  */
-
+$steps = get_post_custom_values('Steps');
 get_header(); ?>
 		
 	<div class="category-top">
@@ -137,30 +142,7 @@ get_header(); ?>
 									
 										<h3>Step by Step</h3>
 									
-										<?php 
-											$i = 0;
-											$steps = get_post_custom_values('Steps');
-											$steps = unserialize($steps[0]);
-											$arrays = array_chunk( $steps, 4 );
-											foreach( $arrays as $stepped ) {
-												echo '<div class="row">';
-												foreach ($stepped as $idx =>$step) {
-													echo '<div class="span3 tabs">';
-													$image = $step->images;
-													echo '<a data-toggle="tab" id="link-js-step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
-													if ($image) {
-														//echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image[0]->text, 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
-														echo '<img src="http://placekitten.com/218/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
-													} else {
-														echo '<img src="http://placekitten.com/218/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
-													}
-													echo '</a>';
-													echo '<h4 class="red"><a data-toggle="tab" id="link-js-step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">Step #' . esc_html( $step->number ) . '</a></h4>';
-													echo '</div>'; 
-												}
-												echo '</div>';
-											}
-										?>
+										<?php make_projects_steps_nav( $steps ); ?>
 
 									</div>
 									
@@ -172,44 +154,15 @@ get_header(); ?>
 											
 												<div class="tab-content">
 										
-												<?php 
-												foreach ( $steps as $idx => $step ) {
-													if ($idx == 0) {
-														echo '<div class="active" id="js-step-' . esc_attr( $step->number ) . '">';
-													} else {
-														echo '<div class="hide" id="js-step-' . esc_attr( $step->number ) . '">';
-													}
-													
-													echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
-													$images = $step->images;
-													// echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $images[0]->text, 620, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
-													echo '<img src="http://placekitten.com/620/405" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
-													echo '<div class="row smalls">';
-													$number = count($images);
-													if ($number > 1) {
-														foreach ($images as $image) {
-															// echo '<div class="span2">';
-															// echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image->text, 140, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
-															// echo '</div>';
-															echo '<img src="http://placekitten.com/218/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
-														}
-													}
-													echo '</div><!--.row-->';
-													$lines = $step->lines;
-													echo '<ol>';
-													foreach ($lines as $line) {
-														echo '<li>' . wp_kses_post( $line->text ) . '</li>';
-													}
-													echo '</ol>';
-													echo '</div><!--.right_column-->';
-													if (++$i == 999) break;
-												}
-												echo '<div class="conclusion">';
-												$conclusion = get_post_custom_values('Conclusion');
-												echo wp_kses_post( $conclusion[0] ) ;
-												echo '</div>';
-
-												?>
+													<?php make_projects_steps( $steps ); ?>
+												
+												</div>
+												
+												<div class="conclusion">
+													<?php 
+														$conclusion = get_post_custom_values('Conclusion');
+														echo wp_kses_post( $conclusion[0] ) ;
+													?>
 												</div>
 												
 											</div>
@@ -259,7 +212,14 @@ get_header(); ?>
 															
 															<div class="blurb">
 																<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-																<p><?php the_author_posts_link(); ?></p>
+																<p><?php 
+																		if( function_exists( 'coauthors_posts_links' ) ) {	
+																			coauthors_posts_links(); 
+																		} else { 
+																			the_author_posts_link(); 
+																		} 
+																	?>
+																</p>
 															</div>
 															
 														</div>

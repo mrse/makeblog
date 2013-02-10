@@ -104,6 +104,12 @@ $cap = new CheezCap( array(
 					'livestream',
 					''
 				),
+				new CheezCapTextOption(
+					'Featured Posts',
+					'Add the post IDs of the five posts that you want to feature. The need to be in order, m->f.',
+					'daily',
+					'274361'
+				),
 				
 			)
 		),

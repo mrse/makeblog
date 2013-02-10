@@ -112,10 +112,6 @@ global $post;
 			googletag.pubads().setTargeting('PageID',['<?php the_id(); ?>']);
 			googletag.pubads().enableSyncRendering();
 			googletag.enableServices();
-			(function(){
-				setInterval(googletag.pubads().refresh(), 5000);
-			})();
-			
 
 		</script>
 		<!-- End: GPT -->

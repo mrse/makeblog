@@ -37,6 +37,7 @@ function make_action_after_setup_theme() {
 	add_image_size( 'category-thumb', 298, 146, true );				// Used on Category archive pages when in a .span4
 	add_image_size( 'category-thumb-small', 218, 146, true );		// Used on Category archive pages when in a .span3
 	add_image_size( 'related-thumb', 98, 55, true );				// Used on related blocks.
+	add_image_size( 'featured-thumb', 105, 105, true );				// Used on related blocks.
 	/**
 	  * Depracated image sizes.
 	 */
@@ -208,7 +209,9 @@ add_filter( 'wp_feed_cache_transient_lifetime', create_function( '$a', 'return 9
 function make_enqueue_jquery() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
-	wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.js', array( 'jquery' ) );
+	if ( 'projects' == get_post_type() ) {
+		wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.js', array( 'jquery' ) );
+	}
 	wp_enqueue_style( 'make-css', get_stylesheet_directory_uri() . '/css/style.css' );
 }
 
@@ -977,4 +980,44 @@ function make_get_post_meta_rss( $term ) {
 	$term = ent2ncr( $term );
 	return $term;
 
+}
+
+function make_daily_themes() {
+	$featuredposts = esc_html( make_get_cap_option( 'weekly' ) );
+	$posts = array_map( 'get_post', explode( ',', $featuredposts ) );
+	$output = '<ul>';
+	foreach ( $posts as $idx => $post ) {
+		$output .= '<li><a href="' . get_permalink( $post->ID ) . '">';
+		if ( $idx == 0 )
+			$output .= '<strong>Monday Jolt:</strong> ';
+		if ( $idx == 1 )
+			$output .= '<strong>Toolsday:</strong> ';
+		if ( $idx == 2 )
+			$output .= '<strong>Workshop Wednesday:</strong> ';
+		if ( $idx == 3 )
+			$output .= '<strong>3D Thursday:</strong> ';
+		if ( $idx == 4 )
+			$output .= '<strong>Family Friday:</strong> ';
+		$output .= get_the_title( $post->ID );
+		$output .= '</a></li>';
+		
+	}
+	$output .= '</ul>';
+	return $output;
+	
+	wp_reset_query();
+}
+
+function make_featured_post() {
+	$post_id = make_get_cap_option( 'daily' );
+	$post = get_post( $post_id );
+	$output = '<div class="img"><a href="' . get_permalink( $post->ID) . '">';
+	$output .= get_the_post_thumbnail( $post->ID , $size = 'featured-thumb' );
+	$output .= '</div>';
+	$output .= '<div class="blurb">';
+	$output .= '<h3><span class="trending">What\'s hot:</span> ' . $post->post_title . '</h3>';
+	$output .= '<p><small>By: <strong>' . get_the_author_meta( 'display_name', $post->post_author ) . '</strong></small></p>';
+	$output .= '<p>'.wp_trim_words(strip_shortcodes( $post->post_content ), 20).'</p>';
+	$output .= '</a></div>';
+	return $output;
 }

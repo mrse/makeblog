@@ -1,7 +1,20 @@
 <?php
+/**
+ * Functions for the projects custom post type.
+ *
+ * @package    makeblog
+ * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
+ * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * 
+ */
 
 add_action( 'init', 'register_cpt_project' );
 
+/**
+ * Register the projects custom post type
+ * @uses add_rewite_rule
+ * @uses regoster_post_type
+ */
 function register_cpt_project() {
 
 	add_rewrite_rule( 'projects/([^/]*)/([^/]*)/?$','index.php?projects=$matches[2]','top' );
@@ -70,7 +83,12 @@ $field_data = array (
 
 $easy_cf = new Easy_CF($field_data);
 
-
+/**
+ * Generate the TOC for projects.
+ *
+ * @deprecated February 2013. The make_magazine_toc has been made more flexible to allow for any post type.
+ * 
+ */
 function make_magazine_projects_toc() {
 	global $post;
 	$args = array(
@@ -119,15 +137,22 @@ function make_magazine_projects_toc() {
 
 }
 
-
 add_action('add_meta_boxes', 'make_projects_add_meta_box');
 
+/**
+ * Add the parent selector to assign to a project to a volume.
+ * 
+ */
 function make_projects_add_meta_box() { 
 	add_meta_box('volume-parent', 'Magazine Volume', 'make_magazine_parent_page', 'projects', 'side', 'high');
 }
 
 add_action( 'admin_menu', 'make_projects_remove_parent_meta_box' );
 
+/**
+ * Remove the existing parent selector meta box.
+ * 
+ */
 function make_projects_remove_parent_meta_box() { 
 	remove_meta_box('pageparentdiv', 'projects', 'normal');
 }
@@ -150,6 +175,10 @@ function make_projects_add_review($content) {
 
 add_action( 'init', 'make_register_taxonomy_flags' );
 
+/**
+ * Register the flags taxonomy
+ * 
+ */
 function make_register_taxonomy_flags() {
 
 	$labels = array( 
@@ -187,6 +216,10 @@ function make_register_taxonomy_flags() {
 
 add_action( 'init', 'make_register_taxonomy_difficulty' );
 
+/**
+ * Add the difficulty taxonomy
+ * 
+ */
 function make_register_taxonomy_difficulty() {
 
 	$labels = array( 
@@ -223,6 +256,10 @@ function make_register_taxonomy_difficulty() {
 
 add_action( 'init', 'register_taxonomy_tools' );
 
+/**
+ * Add the tools taxonomy
+ * 
+ */
 function register_taxonomy_tools() {
 
 	$labels = array( 
@@ -259,6 +296,10 @@ function register_taxonomy_tools() {
 
 add_action( 'init', 'register_taxonomy_parts' );
 
+/**
+ * Add the parts taxonomy
+ * 
+ */
 function register_taxonomy_parts() {
 
 	$labels = array( 
@@ -296,6 +337,10 @@ function register_taxonomy_parts() {
 
 add_action( 'init', 'register_taxonomy_types' );
 
+/**
+ * Add the types taxonomy
+ * 
+ */
 function register_taxonomy_types() {
 
 	$labels = array( 
@@ -330,6 +375,10 @@ function register_taxonomy_types() {
 	register_taxonomy( 'types', array('projects'), $args );
 }
 
+/**
+ * Simple grid for the projects landing page.
+ * 
+ */
 function make_projects_grid( $label, $posts, $taxonomy, $terms ) {
 
 	$output = '<div class="' . $label . '">
@@ -382,4 +431,69 @@ function make_projects_grid( $label, $posts, $taxonomy, $terms ) {
 	$output .= '</div><!--' . $label . '-->';
 	return $output;
 }
-	
+
+/**
+ * The steps thumbmails for the projects pages.
+ * 
+ */
+function make_projects_steps_nav( $steps ) {
+	$steps = unserialize($steps[0]);
+	$arrays = array_chunk( $steps, 6 );
+	foreach( $arrays as $stepped ) {
+		echo '<div class="row" id="tabs">';
+		foreach ($stepped as $idx =>$step) {
+			echo '<div class="span2 tabs" data-toggle="tab" id="step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
+			$image = $step->images;
+			if ($image) {
+				//echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image[0]->text, 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
+				echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+			} else {
+				echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+			}
+			echo '<h4 class="red">Step #' . esc_html( $step->number ) . '</h4>';
+			echo '</div>'; 
+		}
+		echo '</div>';
+	}
+}
+
+/**
+ * Full content of the steps.
+ * 
+ */
+function make_projects_steps( $steps ) {
+	$steps = unserialize($steps[0]);
+	$i = 0;
+	foreach ( $steps as $idx => $step ) {
+		if ($idx == 0) {
+			echo '<div class="active" id="js-step-' . esc_attr( $step->number ) . '">';
+		} else {
+			echo '<div class="hide" id="js-step-' . esc_attr( $step->number ) . '">';
+		}
+		
+		echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
+		$images = $step->images;
+		// echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $images[0]->text, 620, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
+		echo '<img src="http://placekitten.com/620/405" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+		echo '<div class="row smalls">';
+		$number = count($images);
+		if ($number > 1) {
+			foreach ($images as $image) {
+				// echo '<div class="span2">';
+				// echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image->text, 140, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
+				// echo '</div>';
+				echo '<img src="http://placekitten.com/218/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+			}
+		}
+		echo '</div><!--.row-->';
+		$lines = $step->lines;
+		echo '<ol>';
+		foreach ($lines as $line) {
+			echo '<li>' . wp_kses_post( $line->text ) . '</li>';
+		}
+		echo '</ol>';
+		echo '<h3><a class="btn btn-large btn-danger" href="">Next:</a> Step #2 Plan your build carefully</h3>';
+		echo '</div><!--.right_column-->';
+		if (++$i == 999) break;
+	}
+}

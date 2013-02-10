@@ -91,44 +91,25 @@ Template Name: Home Page
 									</div>
 
 								</div>
-
-							</div>
-
-						</div>
-						
-						<div class="row">
-						
-							<div class="span8 hangout">
-							
-								<?php
-									$daily_hangout = make_get_cap_option( 'daily_hangout' );
-									$onair = make_get_cap_option( 'onair' );
-									$heading = make_get_cap_option( 'hangout_heading' );
-									$blurb = make_get_cap_option( 'hangout_blurb' );
-									//$caption = make_get_cap_option( 'hangout_caption' );
-									if ( $daily_hangout == true ) {
-
-										if ( $onair == true ) {
-											echo '<div class="hoa onair">';
-										} else {
-											echo '<div class="hoa">';
-										}
-
-										echo '<h4>' . $heading . '</h4>';
-										echo '<p>' . $blurb . '</p>';
-										echo '<p><small>Watch the hangout at <a href="http://google.com/+make">google.com/+make</a></small></p>';
-										echo '</div>';
+								
+								<div class="row-fluid">
+									
+									<div class="span12">
+									
+										<div class="featured">
+											
+											<?php echo make_featured_post(); ?>	
+											
+										</div>
 										
-									} else {
-										echo '<a href="http://plus.google.com/+make"><img src="' . get_stylesheet_directory_uri() . '/img/Google_Hangout_WebAd2.png" alt="Google Hangout"></a>';
-									}
+									</div>
+									
+								</div>
 
-								?>
-								
-								
-								
 							</div>
+
 						</div>
+						
 					</div>
 
 					<div class="span4">
@@ -406,14 +387,14 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3 class="red"><a href="http://blog.makezine.com/tag/skillbuilder/" class="red">Skill Builders</a></h3>
+								<h3 class="red"><a href="http://blog.makezine.com/tag/cotm/" class="red">Component of the Month</a></h3>
 
 								<div class="grid-box boxy">
 
 									<?php
 										
 										$args = array(
-											'p' => 262894,
+											'tag_id' => 1814920,
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
 										);

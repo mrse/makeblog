@@ -112,16 +112,8 @@ function make_dash_get_the_shares( $url ) {
 }
 
 /**
- * Generate the list items for the child categories, given a slug.
+ * Generate the a list of most commented posts.
  *
- * When redoing the category structure, we wanted have a list of categories that we would feature all over the site.
- * If we did wp_list_categories, we would get all of them, so I created these functions to spit everything out based on the categories that we wanted.
- * @uses wp_cache_get()
- * @uses wpcom_vip_file_get_contents()
- * @uses json_decode()
- * @uses wp_cache_set()
- * @param string|array $url URL of post to get stats for.
- * @return string Totals shares, combined of Twitter, Facebook, Linkedin, StumbleUpon, and Pinterest
  */
 function make_most_commented_query() {
 	$pop_query = new WP_Query( array(
