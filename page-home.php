@@ -387,7 +387,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3 class="red"><a href="http://blog.makezine.com/tag/cotm/" class="red">Component of the Month</a></h3>
+								<h3 class="red"><a href="http://blog.makezine.com/tag/cotm/" class="red">Skill Builder</a></h3>
 
 								<div class="grid-box boxy">
 

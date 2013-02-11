@@ -56,14 +56,22 @@ function make_the_dash_shares_widget($type, $hits = null, $limit = 5, $size = 80
 			$content .= '<div class="row-fluid item"><div class="span4">';
 			$content .= '<a href="' . esc_url( $url ) . '">';
 
-			if (isset($item->thumb_url_medium)) {
+			if ( $type == 'realtime' && ( isset( $item->image_url ) ) ) {
 				if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
-					$content .= '<img src="' . wpcom_vip_get_resized_remote_image_url( $item->thumb_url_medium, $size, $size ) . '" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
+					$content .= '<img src="' . wpcom_vip_get_resized_remote_image_url( $item->image_url, $size, $size ) . '" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
 				} else {
-					$content .= '<img src="' . esc_url($item->thumb_url_medium) . '" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
+					$content .= '<img src="' . esc_url($item->image_url) . '" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
 				}
 			} else {
-				$content .= '<img src="http://1.gravatar.com/blavatar/dab43acfe30c0e28a023bb3b7a700440?s=70" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
+				if (isset($item->thumb_url_medium)) {
+					if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
+						$content .= '<img src="' . wpcom_vip_get_resized_remote_image_url( $item->thumb_url_medium, $size, $size ) . '" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
+					} else {
+						$content .= '<img src="' . esc_url($item->thumb_url_medium) . '" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
+					}
+				} else {
+					$content .= '<img src="http://1.gravatar.com/blavatar/dab43acfe30c0e28a023bb3b7a700440?s=70" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
+				}				
 			}
 			$content .= '</a></div><div class="span8"><h5>';
 			$content .= '<a href="' . esc_url( $url ) . '">' . esc_html($item->title) . '</a>';
