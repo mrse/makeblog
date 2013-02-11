@@ -79,7 +79,7 @@
 						?>
 					</div><!--[END #image-list]-->
 					<div id="list" class="alignleft">
-						<input type="text" name="title" id="project-header" class="widefat" placeholder="Description" value="<?php echo (!empty($steps->title)) ? esc_attr($steps->title) : 'nothing'; ?>">
+						<input type="text" name="title" id="project-header" class="widefat" placeholder="Description" value="<?php echo (!empty($steps->title)) ? esc_attr($steps->title) : ''; ?>">
 						<ul id="sub-lists" class="reset-list">
 							<?php // Add an HTML template for us to use to duplicate via jQuery. Set to display:none ?>
 							<li class="list-template">

@@ -127,7 +127,7 @@ function make_projects_manager_add_list() {
 		// Set a variable to toss into the ID tag...
 		var num = jQuery('#sub-lists li').length - 1;
 
-		console.log(jQuery(this).prev()[0]);
+		//console.log(jQuery(this).prev()[0]);
 
 		// Duplicate our list template and remove the .list-template class.
 		jQuery('#sub-lists .list-template').clone(true).appendTo('#sub-lists').removeClass().find('textarea').attr({
