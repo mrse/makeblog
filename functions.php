@@ -148,4 +148,8 @@ include_once dirname(__file__) . '/includes/categories.php';
  
 //include_once dirname(__file__) . '/includes/json-endpoint.php';
 
+// 31. Projects Step Manager
+
+include_once dirname(__file__) . '/includes/projects-manager.php';
+
 ?>

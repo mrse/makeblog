@@ -1,0 +1,35 @@
+.step .add-step { position:absolute; top:-33px; right:27px; z-index:1; }
+.step-wrapper { border:1px solid rgb(223, 223, 223); margin:.2em 0 1em; border-radius:3px; position:relative; }
+.step-wrapper h3 { cursor:inherit !important; }
+.step-contents { padding:.5em; }
+
+/***** [ Step Images ] *****/
+#image-list { width:45%; }
+#image-list .image-upload:first-child .steps-image { margin-left:0; }
+.steps-image { border:2px solid #fff; margin:0 4px; cursor:pointer; }
+.steps-image:hover, .steps-delete-hover { border:2px solid #eee; box-shadow:0 2px 3px rgba(0,0,0,.3); }
+.image-upload { position:relative; display:inline-block; }
+.image-upload .remove-image { position:absolute; bottom:-4px; right:3px; cursor:pointer; z-index:10; border-radius:15px; background:#ccc; padding:3px; opacity:.5; display:none; }
+.image-upload .remove-image:hover { opacity:1; }
+
+/***** [ Step Sub-list ] *****/
+#list { width:52%; }
+#list #project-header { font-weight:bold; }
+#list input { margin-bottom:.5em; }
+#list textarea { width:74%; min-width:74%; }
+.project-button { border:1px solid #ccc; border-radius:3px; padding:5px; vertical-align:top; cursor:pointer; }
+.project-button:hover { border:1px solid #bbb; background:#ccc; }
+.project-button.sort { cursor:move; }
+#sub-lists li.list-template { display:none; }
+#sub-lists .ui-state-highlight { background:#eee; border:2px dashed #ddd; height:50px; width:100%; }
+
+/****** [ Misc ] *****/
+.group:after { content:""; display:table; clear:both; }
+.reset-list { list-style:none; padding:0; margin:0; }
+
+
+/****** [ Responsive ] *****/
+@media screen and (max-width:1117px) {
+	#image-list, #list { display:block; width:100%; }
+	#image-list { margin-bottom:20px; }
+}
