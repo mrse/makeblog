@@ -1,29 +1,4 @@
-	@light-grey:		#cdcdcd;
-
-.transition (@prop: all, @time: 1s, @ease: linear) {
-    -webkit-transition: @prop @time @ease;
-    -moz-transition: @prop @time @ease;
-    -o-transition: @prop @time @ease;
-    -ms-transition: @prop @time @ease;
-    transition: @prop @time @ease;
-}
-
-.gradient (@origin: left, @start: #ffffff, @stop: #000000) {
-    background-color: @start;
-    background-image: -webkit-linear-gradient(@origin, @start, @stop);
-    background-image: -moz-linear-gradient(@origin, @start, @stop);
-    background-image: -o-linear-gradient(@origin, @start, @stop);
-    background-image: -ms-linear-gradient(@origin, @start, @stop);
-    background-image: linear-gradient(@origin, @start, @stop);
-}
-
-.quick-gradient (@origin: left, @alpha: 0.2) {
-    background-image: -webkit-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
-    background-image: -moz-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
-    background-image: -o-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
-    background-image: -ms-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
-    background-image: linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
-}
+@light-grey:		#cdcdcd;
 
 .projects-masthead {
 	font-family: @font;
@@ -110,6 +85,11 @@ a {
 }
 
 .top-steps {
+	.all {
+		a {
+			color:@light-grey;
+		}
+	}
 	h4 {
 		font-size:22px;
 		position:relative;
@@ -133,6 +113,12 @@ a {
 	font-size:16px;
 	.smalls {
 		margin-top:10px;
+		img {
+			margin-right:5px;
+		}
+		img:last-child{
+			text-align: right;
+		}
 	}
 	ol {
 		margin-top:10px;
@@ -154,11 +140,14 @@ a {
 .related-projects {
 	border-top: 7px solid @red;
 	border-bottom: 7px solid @red;
-	max-height:600px;
+	max-height:300px;
 	padding:10px;
 	.gradient(top, #EAEAEA, #ffffff);
 	overflow:scroll;
 	margin-top:10px;
+	h3 {
+		border-bottom:2px solid @light-grey;
+	}
 }
 
 .related {
@@ -188,4 +177,24 @@ a {
 
 .black {
 	color:#333;
+}
+
+.next {
+	margin-bottom: 12px;
+	a {
+		float: left;
+		margin-right:10px;
+	}
+	span {
+		color:#333;
+		text-transform: none;
+		font-size:28px;
+		padding-top:10px;
+		display: block;
+		float: left;
+	}
+}
+
+.conclusion {
+	margin-top:20px;
 }

@@ -54,12 +54,6 @@ get_header(); ?>
 											echo '<li>Difficulty: <span>' . esc_html( $term->name ) . '</span></li>';
 										}
 									}
-									$terms = get_the_terms( $post->ID, 'flags' );
-									if ($terms) {
-										foreach ($terms as $term) {
-											echo '<li>Flagged: <span>' . esc_html( $term->name ) . '</span></li>';
-										}
-									}
 									
 									?>
 							</ul>
@@ -139,14 +133,28 @@ get_header(); ?>
 								<div class="span12">
 								
 									<div class="top-steps">
-									
-										<h3>Step by Step</h3>
+										
+										<div class="row">
+											
+											<div class="span11">
+												
+												<h3>Step by Step</h3>
+												
+											</div>
+											
+											<div class="span1">
+												
+												<span class="all"><a href="#target" class="scroll">View All</a></span>
+												
+											</div>
+											
+										</div>
 									
 										<?php make_projects_steps_nav( $steps ); ?>
 
 									</div>
 									
-									<div class="bottom-steps">
+									<div class="bottom-steps" id="target">
 									
 										<div class="row">
 										
@@ -156,13 +164,6 @@ get_header(); ?>
 										
 													<?php make_projects_steps( $steps ); ?>
 												
-												</div>
-												
-												<div class="conclusion">
-													<?php 
-														$conclusion = get_post_custom_values('Conclusion');
-														echo wp_kses_post( $conclusion[0] ) ;
-													?>
 												</div>
 												
 											</div>
@@ -212,7 +213,7 @@ get_header(); ?>
 															
 															<div class="blurb">
 																<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-																<p><?php 
+																<p>By: <?php 
 																		if( function_exists( 'coauthors_posts_links' ) ) {	
 																			coauthors_posts_links(); 
 																		} else { 
@@ -234,6 +235,26 @@ get_header(); ?>
 													
 												</div>
 											
+											</div>
+											
+										</div>
+										
+										<div class="row">
+											
+											<div class="span8">
+												
+												<?php 
+													$conclusion = get_post_custom_values('Conclusion');
+													if ( !empty( $conclusion[0] ) ) {
+														echo '<div class="conclusion">';
+														echo '<hr>';
+														echo '<h4 class="heading conclusion">Conclusion</h4>';
+														echo wp_kses_post( $conclusion[0] ) ;
+														echo '</div>';
+													}
+													
+												?>
+												
 											</div>
 											
 										</div>

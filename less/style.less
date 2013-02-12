@@ -12,17 +12,19 @@ License URI: license.txt
 // Bring in Bootstrap
 @import "bootstrap/bootstrap.less";
 
-@the-border: 	1px;
-@link-color: 	#005d8f;
-@red:        	#ed1c24;
-@bg-color:   	#f3f3f3;
-@border-color: 	#cecece;
-@grey: 			#868484;
-@headings-color:#022c44;
-@font:			"proxima-nova",sans-serif;
+@the-border: 		1px;
+@link-color: 		#005d8f;
+@red:        		#ed1c24;
+@bg-color:   		#f3f3f3;
+@border-color: 		#cecece;
+@grey: 				#868484;
+@headings-color:	#022c44;
+@light-grey:		#cdcdcd;
+@font:				"proxima-nova",sans-serif;
 
 // Bring in MAKE Styles.
+@import "make/mixins.less";
 @import "make/style.less";
-//@import "make/category.less";
-//@import "make/projects.less";
+@import "make/category.less";
+@import "make/projects.less";
 @import "make/home.less";

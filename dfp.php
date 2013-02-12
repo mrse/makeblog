@@ -4,16 +4,24 @@ global $post;
 
 ?>
 
-		<!-- Start: GPT Sync -->
-		<script type='text/javascript'>
-		(function(){
-		var useSSL = 'https:' == document.location.protocol;
-		var src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
-		document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-		})();
-		</script>
 
+		<script type='text/javascript'>
+			var googletag = googletag || {};
+			googletag.cmd = googletag.cmd || [];
+			(function() {
+			var gads = document.createElement('script');
+			gads.async = true;
+			gads.type = 'text/javascript';
+			var useSSL = 'https:' == document.location.protocol;
+			gads.src = (useSSL ? 'https:' : 'http:') + 
+			'//www.googletagservices.com/tag/js/gpt.js';
+			var node = document.getElementsByTagName('script')[0];
+			node.parentNode.insertBefore(gads, node);
+			})();
+		</script>
 		<script type="text/javascript">
+
+		googletag.cmd.push(function() {
 
 		<?php 
 		$parent = (!empty($_REQUEST['parent']) ? $_REQUEST['parent'] : null);
@@ -109,9 +117,8 @@ global $post;
 					echo "googletag.pubads().setTargeting('sponsor',['element14']);";
 				}
 			?>
-			googletag.pubads().setTargeting('PageID',['<?php the_id(); ?>']);
-			googletag.pubads().enableSyncRendering();
-			googletag.enableServices();
-
+				googletag.pubads().enableSingleRequest();
+				googletag.enableServices();
+			});
 		</script>
 		<!-- End: GPT -->
