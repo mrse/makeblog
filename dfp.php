@@ -117,8 +117,8 @@ global $post;
 					echo "googletag.pubads().setTargeting('sponsor',['element14']);";
 				}
 			?>
-				googletag.pubads().enableSingleRequest();
-				googletag.enableServices();
+			googletag.pubads().enableSingleRequest();
+			googletag.enableServices();
 			});
 		</script>
 		<!-- End: GPT -->

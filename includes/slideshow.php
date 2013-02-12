@@ -196,6 +196,7 @@ function make_carousel( $args ) {
 		'title'				=> 'New Posts!',	//To be change, immediately.
 		'post_type'			=> 'post',
 		'limit'				=> 4,
+		'projects_landing'	=> false,
 		'post_type'			=> array( 
 								'post', 
 								'magazine', 
@@ -245,10 +246,10 @@ function make_carousel( $args ) {
 								echo '<a class="" data-toggle="modal" onclick="_gaq.push([\'_trackPageview\', \'' . get_post_permalink( $post->ID ) . '\']);" href="#myModal-' . $post->ID . '">';
 								echo '<span class="' . $type .'-icon"></span>';
 								echo '</a>';
-							} else {
-								echo '<span class="' . $type .'-icon"></span>';
+							} elseif ( $args['projects_landing'] == false ) {
+									echo '<span class="' . $type .'-icon"></span>';
 							}
-							get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail' ) );
+							get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'meta_key' => array( 'Image' ), 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail' ) );
 						} elseif ($args['limit'] == 2) {
 							echo '<div class="span4 ' . $type . '">';
 							if ($type == 'video') {
@@ -268,6 +269,18 @@ function make_carousel( $args ) {
 						echo get_the_title( $post->ID );
 						echo '</a></h4>';
 						echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 15, '...' ) . '</p>';
+						echo '<div class="project-meta"><ul>';
+						$time = get_post_custom_values('TimeRequired');
+						if ($time[0]) {
+							echo '<li>Time: <span>' . esc_html( $time[0] ) . '</span></li>';
+						}
+						$terms = get_the_terms( $post->ID, 'difficulty' );
+						if ($terms) {
+							foreach ($terms as $term) {
+								echo '<li>Difficulty: <span>' . esc_html( $term->name ) . '</span></li>';
+							}
+						}
+						echo '</ul></div>';
 						echo '</div>'. "\n";
 						if ($type == 'video') {
 							echo '<div class="modal hide" id="myModal-' . $post->ID . '">

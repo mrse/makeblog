@@ -8,7 +8,7 @@
  * 
  */
 
-get_header('craft'); ?>
+get_header(); ?>
 		
 		<div class="clear"></div>
 

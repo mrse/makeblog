@@ -1,88 +1,140 @@
 <?php
 /**
- * Archive template for the projects post type.
+ * Archive page template for projects custom post type.
  *
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
  * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * 
  */
-
+global $catslugs;
 get_header(); ?>
 		
-		<div class="clear"></div>
-
-		<div class="sand">
-
+	<div class="projects-home">
+	
+		<div class="art">
+		
 			<div class="container">
 
 				<div class="row">
-				
-					<div class="span8">
 
-						<div class="content">
-
-							 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-			
-								<article <?php post_class(); ?>>
-
-									<!--<p class="categories"><?php the_category(', '); ?></p>-->
-
-									<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-
-									<p class="meta top">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>
-
-									<?php the_content(); ?>
-
-									<div class="clear"></div>
-
-									<div class="row">
-
-										<div class="postmeta">
-		
-											<div class="span-thumb thumbnail">
-											
-												<?php echo get_avatar( get_the_author_meta('user_email'), 72); ?>
-											
-											</div>
-											
-											<div class="span-well well">
-											
-												<p>Posted by <?php the_author_posts_link(); ?> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>
-												<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
-
-											</div>
-
-										</div>
-										
-									</div>
+					<div class="span12">
+					
+						<div class="projects-top">
+						
+							<div class="row">
 								
-								</article>
-
-							<?php endwhile; ?>
-
-							<ul class="pager">
+								<div class="span8">
+									
+									<h1>Make: Projects</h1>
 							
-								<li class="previous"><?php previous_posts_link('&larr; Previous Page'); ?></li>
-								<li class="next"><?php next_posts_link('Next Page &rarr;'); ?></li>
-							
-							</ul>
-
-							<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
-
-							<div class="comments">
-								<?php comments_template(); ?>
+									<p>Learn how to make just about anything. Build something from our growing cookbook of projects, and discover new ideas like <a href="#">Raspberry Pi</a> and other platforms. Get inspired. Start making something today.</p>
+									
+									<h3>Find Projects by Category:</h3>
+									<ul class="subs">
+										
+										<?php echo make_category_li(); ?>		
+										
+									</ul>
+									
+								</div>
+								
+								<div class="span4"></div>
+								
 							</div>
-							
-							<?php else: ?>
-							
-								<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-							
-							<?php endif; ?>
-
+						
 						</div>
+						
+					</div>
+					
+				</div>
+				
+			</div>
+		
+		</div>
+
+	</div>
+					
+	<div class="grey">
+
+		<div class="container">
+		
+			<div class="row">
+			
+				<div class="span8">
+					
+					<?php
+						$args = array(
+							'post_type'			=> 'projects',
+							'title'				=> 'Featured Projects',
+							'limit'				=> 2,
+							'tag'				=> 'Featured',
+							'projects_landing'	=> true
+						);
+						make_carousel( $args ); ?>
+					
+				</div>
+				
+				<div class="span4">
+					
+					<div class="sidebar-ad">
+
+						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
+						<div id='div-gpt-ad-664089004995786621-2'>
+							<script type='text/javascript'>
+								googletag.display('div-gpt-ad-664089004995786621-2');
+							</script>
+						</div>
+						<!-- End AdSlot 2 -->
 
 					</div>
+					
+				</div>
+				
+			</div>
+								
+			<div class="row">
+			
+				<div class="span12">
+				
+					<?php 
 
-					<?php get_sidebar(); ?>
+						$args = array(
+							'post_type'			=> 'projects',
+							'title'				=> 'New',
+							'projects_landing'	=> true
+						);
+						
+						make_carousel($args);
+					?>
+					
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+				
+	<?php
 
-			<?php get_footer(); ?>
+		if ($catslugs) {
+			echo '<div class="grey dots topper"><div class="container"><div class="row"><div class="span12"><h2>Projects by Category</h2></div></div></div></div>';
+			foreach ($catslugs as $category) {
+				$category = wpcom_vip_get_term_by('name', $category, 'category');
+				echo '<div class="grey"><div class="container"><div class="row"><div class="span12">';							
+				$args = array(
+					'post_type'			=> 'projects',
+					'category__in'		=> $category->term_id,
+					'title'				=> $category->name,
+					'projects_landing'	=> true
+
+				);
+				make_carousel( $args );
+				echo '</div></div></div>';
+			} 
+		} 
+	?>
+
+</div>
+
+	<?php get_footer(); ?>

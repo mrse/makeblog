@@ -23,4 +23,10 @@ jQuery(document).ready(function(){
 		console.log('Pushed a pageview, like a boss.');
 	});
 
+	jQuery('.carousel').on('slide', function () {
+		googletag.pubads().refresh();
+		_gaq.push(['_trackPageview']);
+		console.log('Pushed a pageview, and an ad refresh, like a boss.');
+		jQuery('.carousel').carousel('pause');
+	});
 });

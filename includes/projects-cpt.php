@@ -438,22 +438,24 @@ function make_projects_grid( $label, $posts, $taxonomy, $terms ) {
  */
 function make_projects_steps_nav( $steps ) {
 	$steps = unserialize($steps[0]);
-	$arrays = array_chunk( $steps, 6 );
-	foreach( $arrays as $stepped ) {
-		echo '<div class="row" id="tabs">';
-		foreach ($stepped as $idx =>$step) {
-			echo '<div class="span2 tabs" data-toggle="tab" id="step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
-			$image = $step->images;
-			if ($image) {
-				echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image[0]->text, 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
-				// echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
-			} else {
-				echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+	if ( !empty( $steps ) ) {
+		$arrays = array_chunk( $steps, 6 );
+		foreach( $arrays as $stepped ) {
+			echo '<div class="row" id="tabs">';
+			foreach ($stepped as $idx =>$step) {
+				echo '<div class="span2 tabs" data-toggle="tab" id="step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
+				$image = $step->images;
+				if ($image) {
+					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image[0]->text, 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
+					// echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+				} else {
+					echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+				}
+				echo '<h4 class="red">Step #' . esc_html( $step->number ) . '</h4>';
+				echo '</div>'; 
 			}
-			echo '<h4 class="red">Step #' . esc_html( $step->number ) . '</h4>';
-			echo '</div>'; 
+			echo '</div>';
 		}
-		echo '</div>';
 	}
 }
 
@@ -464,40 +466,42 @@ function make_projects_steps_nav( $steps ) {
 function make_projects_steps( $steps ) {
 	$steps = unserialize($steps[0]);
 	$count = count($steps);
-	foreach ( $steps as $idx => $step ) {
-		if ($idx == 0) {
-			echo '<div class="active" id="js-step-' . esc_attr( $step->number ) . '">';
-		} else {
-			echo '<div class="hide" id="js-step-' . esc_attr( $step->number ) . '">';
-		}
-		
-		echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
-		$images = $step->images;
-		if ( isset( $images[0]->text ) ) {
-			echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $images[0]->text, 620, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
-		}
-		// echo '<img src="http://placekitten.com/620/405" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
-		echo '<div class="row smalls">';
-		$number = count($images);
-		if ($number > 1) {
-			foreach ($images as $image) {
-				echo '<div class="span2">';
-				echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image->text, 140, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
-				echo '</div>';
-				//echo '<img src="http://placekitten.com/205/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+	if ( !empty( $count ) ) {
+		foreach ( $steps as $idx => $step ) {
+			if ($idx == 0) {
+				echo '<div class="active" id="js-step-' . esc_attr( $step->number ) . '">';
+			} else {
+				echo '<div class="hide" id="js-step-' . esc_attr( $step->number ) . '">';
 			}
-		}
-		echo '</div><!--.row-->';
-		$lines = $step->lines;
-		echo '<ol>';
-		foreach ($lines as $line) {
-			echo '<li>' . wp_kses_post( $line->text ) . '</li>';
-		}
-		echo '</ol>';
+			
+			echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
+			$images = $step->images;
+			if ( isset( $images[0]->text ) ) {
+				echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $images[0]->text, 620, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
+			}
+			// echo '<img src="http://placekitten.com/620/405" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+			echo '<div class="row smalls">';
+			$number = count($images);
+			if ($number > 1) {
+				foreach ($images as $image) {
+					echo '<div class="span2">';
+					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image->text, 140, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
+					echo '</div>';
+					//echo '<img src="http://placekitten.com/205/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+				}
+			}
+			echo '</div><!--.row-->';
+			$lines = $step->lines;
+			echo '<ol>';
+			foreach ($lines as $line) {
+				echo '<li>' . wp_kses_post( $line->text ) . '</li>';
+			}
+			echo '</ol>';
 
-		if( $idx < $count - 1 ) {
-			echo '<h3 class="next"><a class="btn btn-large btn-danger next" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next:</a> <span>Step #' . intval( $step->number + 1 ) . '</span></h3><div class="clearfix"></div>';
+			if( $idx < $count - 1 ) {
+				echo '<h3 class="next"><a class="btn btn-large btn-danger next" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next:</a> <span>Step #' . intval( $step->number + 1 ) . '</span></h3><div class="clearfix"></div>';
+			}
+			echo '</div><!--.right_column-->';
 		}
-		echo '</div><!--.right_column-->';
 	}
 }

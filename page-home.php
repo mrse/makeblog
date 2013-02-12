@@ -146,7 +146,7 @@ Template Name: Home Page
 
 		</div>
 
-		<div class="sand">
+		<div class="sand new-sand">
 
 			<div class="container">
 
