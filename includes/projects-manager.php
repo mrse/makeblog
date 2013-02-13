@@ -56,68 +56,106 @@
 		wp_nonce_field('make-mag-projects-metabox-nonce', 'meta_box_nonce'); ?>
 		<div class="step group">
 			<input type="button" value="Add Another Step" class="button add-step alignright" />
-			<div id="step-1" class="step-wrapper">
+			<div class="steps-template step-wrapper">
+				<input type="hidden" name="step-number-0" value="0">
 				<div class="step-title">
-					<h3>Step 1</h3>
+					<h3>Step 0</h3>
+					<div class="remove-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-remove.png"></div>
 				</div>
 				<div class="step-contents group">
 					<div id="image-list" class="alignleft">
-						<?php // loop through our images array 3 times, checking if images exist. If not, add placeholders.
-							for($i = 0; $i < 3; $i++) :
-								if(isset($steps->images[$i])) { ?>
-									<div class="image-upload group has-image">
-										<img src="<?php echo esc_url($steps->images[$i]->text); ?>" alt="" class="alignleft steps-image" width="94" height="94" />
-										<input type="hidden" name="images[]" class="image-url" value="<?php echo esc_url($steps->images[$i]->text); ?>">
-									</div><!--[END .image-upload]-->
-								<?php } else { ?>
-									<div class="image-upload group">
-										<img src="http://placehold.it/94x94" alt="" class="alignleft steps-image" title="Upload an Image" width="94" height="94" />
-										<input type="hidden" name="images[]" class="image-url" value="">
-									</div><!--[END .image-upload]-->
-								<?php }
-							endfor;
-						?>
+						<div class="image-upload group">
+							<img src="http://placehold.it/94x94" alt="" class="alignleft steps-image" title="Upload an Image" width="94" height="94" />
+							<input type="hidden" name="step-image-0[]" class="image-url" value="">
+						</div><!--[END .image-upload]-->
+						<div class="image-upload group">
+							<img src="http://placehold.it/94x94" alt="" class="alignleft steps-image" title="Upload an Image" width="94" height="94" />
+							<input type="hidden" name="step-images-0[]" class="image-url" value="">
+						</div><!--[END .image-upload]-->
+						<div class="image-upload group">
+							<img src="http://placehold.it/94x94" alt="" class="alignleft steps-image" title="Upload an Image" width="94" height="94" />
+							<input type="hidden" name="step-images-0[]" class="image-url" value="">
+						</div><!--[END .image-upload]-->
 					</div><!--[END #image-list]-->
 					<div id="list" class="alignleft">
-						<input type="text" name="title" id="project-header" class="widefat" placeholder="Description" value="<?php echo (!empty($steps->title)) ? esc_attr($steps->title) : ''; ?>">
+						<input type="text" name="step-title-0" id="project-header" class="widefat" placeholder="Description" value="">
 						<ul id="sub-lists" class="reset-list">
-							<?php // Add an HTML template for us to use to duplicate via jQuery. Set to display:none ?>
 							<li class="list-template">
-								<textarea name="" id="line-0" rows="5"></textarea>
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort ss" />
+								<textarea name="step-lines-0[]" id="line-0" rows="5"></textarea>
+								<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
 								<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
 								<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
 							</li>
-							<?php if(isset($steps->lines)) : ?>
-								<?php
-									$total = count($steps->lines); // Count the number of sub-steps
-									$i = 0; // Used to set the right ID's and to check against
-									foreach($steps->lines as $key) : ?>
-									<li>
-										<textarea name="lines[]" id="line-<?php echo $i; ?>" rows="5"><?php echo esc_attr($key->text); ?></textarea>
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
-										<?php if($i + 1 === $total) : // Display our add button only on the last step on load. ?>
-											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
-										<?php endif;
-										$i++; ?>
-									</li>
-									<?php endforeach;
-								?>
-							<?php else : ?>
-								<li>
-									<textarea name="lines[]" id="line-0" rows="5"></textarea>
-									<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
-									<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
-									<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
-								</li>
-							<?php endif; ?>
+							<li>
+								<textarea name="step-lines-0[]" id="line-0" rows="5"></textarea>
+								<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
+								<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
+								<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
+							</li>
 						</ul>
 					</div><!--[END #list]-->
 				</div><!--[END .step-contents]-->
-			</div><!--[END step-wrapper]-->
-			<input type="hidden" name="number" value="<?php echo $steps->number; ?>">
+			</div><!--[END .steps-template]-->
+			<?php $step_num = 1; foreach($steps as $step) : ?>
+				<div id="step-<?php echo $step_num; ?>" class="step-wrapper">
+					<input type="hidden" name="step-number-<?php echo $step_num; ?>" value="<?php echo (!empty($step->number)) ? $step->number : $step_num; ?>">
+					<div class="step-title">
+						<h3>Step <?php echo $step_num; ?></h3>
+						<div class="remove-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-remove.png"></div>
+					</div>
+					<div class="step-contents group">
+						<div id="image-list" class="alignleft">
+							<?php // loop through our images array 3 times, checking if images exist. If not, add placeholders.
+								for($i = 0; $i < 3; $i++) :
+									if(isset($step->images[$i]) && !empty($step->images[$i]->text)) { ?>
+										<div class="image-upload group has-image">
+											<img src="<?php echo esc_url($step->images[$i]->text); ?>" alt="" class="alignleft steps-image" width="94" height="94" />
+											<input type="hidden" name="step-images-<?php echo $step_num; ?>[]" class="image-url" value="<?php echo esc_url($step->images[$i]->text); ?>">
+										</div><!--[END .image-upload]-->
+									<?php } else { ?>
+										<div class="image-upload group">
+											<img src="http://placehold.it/94x94" alt="" class="alignleft steps-image" title="Upload an Image" width="94" height="94" />
+											<input type="hidden" name="step-images-<?php echo $step_num; ?>[]" class="image-url" value="">
+										</div><!--[END .image-upload]-->
+									<?php }
+								endfor;
+							?>
+						</div><!--[END #image-list]-->
+						<div id="list" class="alignleft">
+							<input type="text" name="step-title-<?php echo $step_num; ?>" id="project-header" class="widefat" placeholder="Add A Title" value="<?php echo (!empty($step->title)) ? esc_attr($step->title) : ''; ?>">
+							<ul id="sub-lists" class="sortable reset-list">
+								<?php if(isset($step->lines)) : ?>
+									<?php
+										$total = count($step->lines); // Count the number of sub-steps
+										$i = 1; // Used to set the right ID's and to check against
+										foreach($step->lines as $key) : ?>
+										<li>
+											<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $i; ?>" rows="5"><?php echo esc_attr($key->text); ?></textarea>
+											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
+											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
+											<?php if($i === $total) : // Display our add button only on the last step on load. ?>
+												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
+											<?php endif;
+											$i++; ?>
+										</li>
+										<?php endforeach;
+									?>
+								<?php else : ?>
+									<li>
+										<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $step_num; ?>" rows="5"></textarea>
+										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
+										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
+										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
+									</li>
+								<?php endif; ?>
+							</ul>
+						</div><!--[END #list]-->
+					</div><!--[END .step-contents]-->
+				</div><!--[END step-wrapper]-->
+				<?php $step_num++; ?>
+			<?php endforeach; ?>
 		</div>
+		<input type="hidden" name="total-steps" value="<?php echo $step_num - 1; ?>">
 	<?php }
 
 
@@ -135,38 +173,44 @@
 
 		/***** Format the submitted data to match the original Object returned by make_magazine_get_project_data() *****/
 
-		// Add our title to the object
-		$steps['title'] = esc_attr($_POST['title']);
+		// Loop through each step and create an object for each. Loop through the number of total steps sent through the $_POST array.
+		for($i = 1; $i <= intval($_POST['total-steps']); $i++) {
+			// Define a new $step array. Other wise, we'll end up getting duplicate content...
+			$step = array();
 
-		// Create the lines array and contain each line as an object in the Steps object
-		$i = 0;
-		foreach($_POST['lines'] as $line) {
-			$steps['lines'][$i] = (object) array('text' => esc_attr($line), 'text_raw' => esc_attr($line), 'bullet' => 'black', 'level' => 0);
-			$i++;
-		}
+			// Add our title to the object
+			$step['title'] = esc_attr($_POST['step-title-' . $i]);
 
-		// Set the object array
-		$steps['object'] = '';
+			// Create the lines array and contain each line as an object in the Steps object
+			$int = 0;
+		 	foreach($_POST['step-lines-' . $i] as $line) {
+				$step['lines'][] = (object) array('text' => esc_attr($line), 'text_raw' => esc_attr($line), 'bullet' => 'black', 'level' => 0);
+				//echo $_POST['step-lines-' . $i][$int] . '<br />';
+				$int++;
+		 	}
 
-		// Set our images array and contain each image as an object in the Steps object
-		$i = 0;
-		foreach($_POST['images'] as $image) {
-			if(!empty($image)) {
-				$steps['images'][$i] = (object) array('imageid' => $post_id, 'orderby' => $i, 'text' => $image);
-				$i++; // Only increase the integer variable when we encounter a non-empty image value
+			// Set the object array. At this moment. It's empty.
+			$step['object'] = '';
+
+			// Set our images array and contain each image as an object in the Steps object
+			$int = 0;
+			foreach($_POST['step-images-' . $i] as $image) {
+				$step['images'][$int] = (object) array('imageid' => $post_id, 'orderby' => $int, 'text' => esc_url($image));
+				$int++; // Only increase the integer variable when we encounter a non-empty image value
 			}
+
+			// Count the number of Steps set in the step manager and save that number
+			$step['number'] = intval($_POST['step-number-' . $i]);
+
+			// Contain the whole $steps array into an object
+			$step_object[] = (object) $step;
+
 		}
-
-		// Count the number of Steps set in the step manager and save that number
-		$steps['number'] = intval($_POST['number']);
-
-		// Contain the whole $steps array into an object
-		$steps_object[] = (object) $steps;
 
 		// Apparently update_post_meta() will serialize our data for us... and add/update our Steps row.
-		update_post_meta($post_id, 'Steps', $steps_object);
+		update_post_meta($post_id, 'Steps', $step_object);
 
-		//echo '<pre>'; print_r($steps_object); echo '</pre>';
+		//echo '<pre>'; print_r($step_object); echo '</pre>';
 	}
 	add_action('save_post', 'make_magazine_projects_save_step_manager');
 
@@ -182,5 +226,5 @@
 		$data = get_post_custom_values($key);
 		$data = unserialize($data[0]);
 
-		return $data[0];
+		return $data;
 	}

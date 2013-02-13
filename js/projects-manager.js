@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
 	 *
 	 * @version 1.0
 	 */
-	$('#sub-lists').sortable({
+	$('.sortable').sortable({
 		connectWith: '.sort',
 		// The class assigned to the
 		placeholder: 'ui-state-highlight',
@@ -38,7 +38,128 @@ jQuery(document).ready(function($) {
 
 	// Call our "Remove List" function.
 	make_projects_manager_remove_list();
+
+
+	/**
+	 * Run our "Add Step" click event. This seems like too much. Can probably re-work this and optimize it...
+	 *
+	 * @version 1.0
+	 */
+	$('.add-step').click(function() {
+
+		// Count how many LI tags we currently have so we can change the ID number when duplicated.
+		var num = $('.step-wrapper').length;
+
+		// Duplicate our list template and remove the .list-template class.
+		var clone = $('.steps-template').clone(true).removeClass('steps-template').attr('id', 'step-' + num);
+
+		$('input[name="total-steps"]').val(num);
+
+		// Append our cloned template item into the bottom of our current ul#sub-lists.
+		clone.appendTo($(this).parent()).find('.step-title h3').html('Step ' + num).find('.list-template').remove();
+
+		// Remove the .list-template that get duplicated in the cloning process
+		$('#step-' + num + ' li.list-template').remove();
+
+		// Update the the title name field
+		$('#step-' + num + ' input[name="step-title-0"]').attr('name', 'step-title-' + num);
+
+		// Update the number field in the object.
+		$('#step-' + num + ' > input[type="hidden"]').attr({'name': 'step-number-' + num, 'value': num});
+
+		// Update each image field with the proper name field.
+		$('#step-' + num + ' input.image-url').each(function() {
+			$(this).attr('name', 'step-images-' + num + '[]');
+		});
+
+		// Update each sub-list with the proper name and ID fields.
+		$('#step-' + num + ' textarea[name="step-lines-0[]"]').each(function() {
+			$(this).attr({'name': 'step-lines-' + num + '[]', 'id': 'line-' + num});
+		});
+	});
+
+
+	/**
+	 * Run our "Remove Step" click event.
+	 *
+	 * @version 1.0
+	 */
+	$('.remove-step').click(function() {
+		// Remove the main .step-wrapper div.
+		$(this).parent().parent().remove();
+
+		// Change the Step number in each .step-title.
+		var count = 0;
+		$('.step-title h3').each(function() {
+			$(this).html('Step ' + count);
+			count++;
+		});
+
+		// Update the #step-$num value for each step section
+		var count = 0;
+		$('.inside .step .step-wrapper').each(function() {
+			$(this).attr('id', 'step-' + count).children('input[type="hidden"]').attr({'name': 'step-number-' + count, 'value': count});
+			count++;
+		});
+
+		// Count how many steps we have and update the total-steps field. This is needed to compile our onject upon save.
+		var num = $('.step-wrapper').length - 1;
+		$('input[name="total-steps"]').val(num)
+	});
 });
+
+
+/**
+ * Put our add list functionality into a function. This allows us to reuse this code multiple times when needed
+ *
+ * @version 2.0
+ */
+function make_projects_manager_add_list() {
+	jQuery('#sub-lists img.add').click(function() {
+		// Get the current step number. Needed for setting the proper name field for our textarea.
+		var step_num = jQuery(this).parents('.step-wrapper').children().val();
+
+		// Count how many LI tags we currently have so we can change the ID number when duplicated.
+		var num = jQuery(this).parent().parent('#sub-lists').children().length + 1;
+
+		// Duplicate our list template and remove the .list-template class.
+		var clone = jQuery('.steps-template .list-template').clone(true).removeClass('list-template');
+
+		// Append our cloned template item into the bottom of our current ul#sub-lists.
+		clone.appendTo(jQuery(this).parent().parent('#sub-lists')).find('textarea').attr({'id': 'line-' + num, 'name': 'step-lines-' + step_num + '[]'});
+
+		// Remove the add sign from all list items. NOTE, adding first will break the script! MUST BE LAST.
+		jQuery(this).remove();
+	});
+}
+
+
+/**
+ * Put our remove list functionality into a function. This allows us to reuse this code multiple times when needed
+ *
+ * @version 1.0
+ */
+function make_projects_manager_remove_list() {
+	jQuery('#sub-lists img.remove').click(function() {
+
+		// Create a variable that will traverse to the main UL
+		var parent_ul = jQuery(this).parent().parent('#sub-lists');
+
+		// Remove the entire LI tag for the button pressed
+		jQuery(this).parent().remove();
+
+		// Check if our add button exists
+		var add_btn = parent_ul.find('img.add').length;//.find('#sub-lists img.add').length;
+
+		// If add_btn does not return with 1 (AKA true), then we will add a new one.
+		if(add_btn === 0) {
+			parent_ul.find('li:last').append('<img src="' + stylesheet_uri + '/images/icon-add.png" class="project-button add">');
+		}
+
+		// Call our add list functions again so we don't lose the click events after we append. I'm sure there's a better way to this.
+		make_projects_manager_add_list();
+	});
+}
 
 
 /**
@@ -111,55 +232,6 @@ function make_projects_manager_sort_stop(selector) {
 
 		jQuery('#sub-lists li:last').append('<img src="' + stylesheet_uri + '/images/icon-add.png" class="project-button add">');
 	}
-}
-
-
-/**
- * Put our add list functionality into a function. This allows us to reuse this code multiple times when needed
- *
- * @version 1.0
- */
-function make_projects_manager_add_list() {
-	jQuery('#sub-lists img.add').click(function() {
-		// Remove the add sign from all list items
-		jQuery(this).remove();
-
-		// Set a variable to toss into the ID tag...
-		var num = jQuery('#sub-lists li').length - 1;
-
-		//console.log(jQuery(this).prev()[0]);
-
-		// Duplicate our list template and remove the .list-template class.
-		jQuery('#sub-lists .list-template').clone(true).appendTo('#sub-lists').removeClass().find('textarea').attr({
-			'name': 'lines[]',
-			'id': 'line-' + num
-		});
-	});
-}
-
-
-/**
- * Put our remove list functionality into a function. This allows us to reuse this code multiple times when needed
- *
- * @version 1.0
- */
-function make_projects_manager_remove_list() {
-	jQuery('#sub-lists img.remove').click(function() {
-		// Remove the entire LI tag for the button pressed
-		jQuery(this).parent().remove();
-
-		// Check if our add button exists
-		var add_btn = jQuery('#sub-lists img.add').length;
-
-		// If add_btn does not return with 1 (AKA true), then we will add a new one.
-		if(add_btn === 1) {
-			jQuery('#sub-lists li:last').append('<img src="' + stylesheet_uri + '/images/icon-add.png" class="project-button add">');
-		}
-
-		// TO DO: FIX The odd list addition bug.
-		// When we uncomment the function below, we can add new lists after removing a list item, but will create duplicate add buttons?
-		//make_projects_manager_add_list();
-	});
 }
 
 
@@ -241,9 +313,4 @@ function make_projects_manager_remove_list() {
 		$('.image-upload').make_projects_manager();
    });
 }(jQuery));
-
-
-function make_projects_add_step() {
-
-}
 

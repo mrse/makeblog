@@ -2,6 +2,10 @@
 .step-wrapper { border:1px solid rgb(223, 223, 223); margin:.2em 0 1em; border-radius:3px; position:relative; }
 .step-wrapper h3 { cursor:inherit !important; }
 .step-contents { padding:.5em; }
+.step .steps-template { display:none; }
+.step-title { position:relative; }
+.step-title .remove-step { position:absolute; right:8px; top:8px; opacity:.3; cursor:pointer; }
+.step-title .remove-step:hover { opacity:1; }
 
 /***** [ Step Images ] *****/
 #image-list { width:45%; }
