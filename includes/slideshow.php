@@ -77,7 +77,7 @@ function slideshow_content_filter( $content ) {
 	);
 
 	if ( 'slideshow' == get_post_type() ) {
-		$content = wp_link_pages($other_args).wp_link_pages($args).$content.make_vapp_the_link('View All Slides', 'self');
+		$content = wp_link_pages($other_args).wp_link_pages($args).$content/*.make_vapp_the_link('View All Slides', 'self')*/;
 		return $content;
 	} elseif ( 'post' == get_post_type() ) {
 		$content = $content.wp_link_pages( $post_args );
@@ -152,7 +152,7 @@ function make_bs_slideshow() {
 	global $post;
 	$images = get_children( array('post_parent' => $post->ID, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID') );
 
-	$output = '<div id="myCarousel" class="carousel slide"><div class="carousel-inner">';
+	$output = '<div id="myCarousel" class="carousel slide" data-interval=""><div class="carousel-inner">';
 
 	$i = 0;
 	foreach( $images as $image ) {

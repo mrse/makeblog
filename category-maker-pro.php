@@ -37,7 +37,7 @@ get_header(); ?>
 
 									<div class="span4 pro-newsletter">
 										<p>Are you in the business of making?
-										Stay up to date with MAKE Market Wire newsletter. Sign up here.</p>
+										Stay up to date with Maker Pro Newsletter. Sign up here.</p>
 										<form action="http://makermedia.createsend.com/t/r/s/jrsydu/" method="post" id="subForm">
 											<fieldset>
 												<div class="input-append control-group email-area">

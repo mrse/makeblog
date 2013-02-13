@@ -39,10 +39,11 @@
 						window.location = url;
 					}
 				});
-				jQuery('#myCarousel').on('slide', function () {
+
+				jQuery('#myCarousel').on('slid', function () {
+					jQuery('.carousel').carousel('pause');
 					googletag.pubads().refresh();
 					_gaq.push(['_trackPageview']);
-					jQuery('.carousel').carousel('pause');
 					console.log('Paused that sucker...');
 				})
 			});
