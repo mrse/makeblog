@@ -28,5 +28,6 @@ jQuery(document).ready(function(){
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, and an ad refresh, like a boss.');
 		jQuery('.carousel').carousel('pause');
+		console.log('Paused that sucker...');
 	});
 });

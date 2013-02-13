@@ -8545,6 +8545,7 @@ a {
 .project-meta {
   border-top: 1px solid #cecece;
   border-bottom: 1px solid #cecece;
+  margin-bottom: 7px;
 }
 .project-meta ul {
   margin: 0px;

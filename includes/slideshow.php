@@ -262,13 +262,6 @@ function make_carousel( $args ) {
 							get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'size' => 'category-thumb', 'image_class' => 'hide-thumbnail' ) );
 						}
 						
-						
-						echo '<h4><a href="';
-						echo get_permalink( $post->ID );
-						echo '">';
-						echo get_the_title( $post->ID );
-						echo '</a></h4>';
-						echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 15, '...' ) . '</p>';
 						echo '<div class="project-meta"><ul>';
 						$time = get_post_custom_values('TimeRequired');
 						if ($time[0]) {
@@ -281,6 +274,12 @@ function make_carousel( $args ) {
 							}
 						}
 						echo '</ul></div>';
+						echo '<h4><a href="';
+						echo get_permalink( $post->ID );
+						echo '">';
+						echo get_the_title( $post->ID );
+						echo '</a></h4>';
+						echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 15, '...' ) . '</p>';
 						echo '</div>'. "\n";
 						if ($type == 'video') {
 							echo '<div class="modal hide" id="myModal-' . $post->ID . '">
