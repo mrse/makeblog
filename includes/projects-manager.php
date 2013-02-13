@@ -96,64 +96,66 @@
 					</div><!--[END #list]-->
 				</div><!--[END .step-contents]-->
 			</div><!--[END .steps-template]-->
-			<?php $step_num = 1; foreach($steps as $step) : ?>
-				<div id="step-<?php echo $step_num; ?>" class="step-wrapper">
-					<input type="hidden" name="step-number-<?php echo $step_num; ?>" value="<?php echo (!empty($step->number)) ? $step->number : $step_num; ?>">
-					<div class="step-title">
-						<h3>Step <?php echo $step_num; ?></h3>
-						<div class="remove-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-remove.png"></div>
-					</div>
-					<div class="step-contents group">
-						<div id="image-list" class="alignleft">
-							<?php // loop through our images array 3 times, checking if images exist. If not, add placeholders.
-								for($i = 0; $i < 3; $i++) :
-									if(isset($step->images[$i]) && !empty($step->images[$i]->text)) { ?>
-										<div class="image-upload group has-image">
-											<img src="<?php echo esc_url($step->images[$i]->text); ?>" alt="" class="alignleft steps-image" width="94" height="94" />
-											<input type="hidden" name="step-images-<?php echo $step_num; ?>[]" class="image-url" value="<?php echo esc_url($step->images[$i]->text); ?>">
-										</div><!--[END .image-upload]-->
-									<?php } else { ?>
-										<div class="image-upload group">
-											<img src="http://placehold.it/94x94" alt="" class="alignleft steps-image" title="Upload an Image" width="94" height="94" />
-											<input type="hidden" name="step-images-<?php echo $step_num; ?>[]" class="image-url" value="">
-										</div><!--[END .image-upload]-->
-									<?php }
-								endfor;
-							?>
-						</div><!--[END #image-list]-->
-						<div id="list" class="alignleft">
-							<input type="text" name="step-title-<?php echo $step_num; ?>" id="project-header" class="widefat" placeholder="Add A Title" value="<?php echo (!empty($step->title)) ? esc_attr($step->title) : ''; ?>">
-							<ul id="sub-lists" class="sortable reset-list">
-								<?php if(isset($step->lines)) : ?>
-									<?php
-										$total = count($step->lines); // Count the number of sub-steps
-										$i = 1; // Used to set the right ID's and to check against
-										foreach($step->lines as $key) : ?>
+			<?php if(isset($steps) && is_array($steps)) : ?>
+				<?php $step_num = 1; foreach($steps as $step) : ?>
+					<div id="step-<?php echo $step_num; ?>" class="step-wrapper">
+						<input type="hidden" name="step-number-<?php echo $step_num; ?>" value="<?php echo (!empty($step->number)) ? $step->number : $step_num; ?>">
+						<div class="step-title">
+							<h3>Step <?php echo $step_num; ?></h3>
+							<div class="remove-step"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-remove.png"></div>
+						</div>
+						<div class="step-contents group">
+							<div id="image-list" class="alignleft">
+								<?php // loop through our images array 3 times, checking if images exist. If not, add placeholders.
+									for($i = 0; $i < 3; $i++) :
+										if(isset($step->images[$i]) && !empty($step->images[$i]->text)) { ?>
+											<div class="image-upload group has-image">
+												<img src="<?php echo esc_url($step->images[$i]->text); ?>" alt="" class="alignleft steps-image" width="94" height="94" />
+												<input type="hidden" name="step-images-<?php echo $step_num; ?>[]" class="image-url" value="<?php echo esc_url($step->images[$i]->text); ?>">
+											</div><!--[END .image-upload]-->
+										<?php } else { ?>
+											<div class="image-upload group">
+												<img src="http://placehold.it/94x94" alt="" class="alignleft steps-image" title="Upload an Image" width="94" height="94" />
+												<input type="hidden" name="step-images-<?php echo $step_num; ?>[]" class="image-url" value="">
+											</div><!--[END .image-upload]-->
+										<?php }
+									endfor;
+								?>
+							</div><!--[END #image-list]-->
+							<div id="list" class="alignleft">
+								<input type="text" name="step-title-<?php echo $step_num; ?>" id="project-header" class="widefat" placeholder="Add A Title" value="<?php echo (!empty($step->title)) ? esc_attr($step->title) : ''; ?>">
+								<ul id="sub-lists" class="sortable reset-list">
+									<?php if(isset($step->lines)) : ?>
+										<?php
+											$total = count($step->lines); // Count the number of sub-steps
+											$i = 1; // Used to set the right ID's and to check against
+											foreach($step->lines as $key) : ?>
+											<li>
+												<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $i; ?>" rows="5"><?php echo esc_attr($key->text); ?></textarea>
+												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
+												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
+												<?php if($i === $total) : // Display our add button only on the last step on load. ?>
+													<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
+												<?php endif;
+												$i++; ?>
+											</li>
+											<?php endforeach;
+										?>
+									<?php else : ?>
 										<li>
-											<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $i; ?>" rows="5"><?php echo esc_attr($key->text); ?></textarea>
+											<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $step_num; ?>" rows="5"></textarea>
 											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
 											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
-											<?php if($i === $total) : // Display our add button only on the last step on load. ?>
-												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
-											<?php endif;
-											$i++; ?>
+											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
 										</li>
-										<?php endforeach;
-									?>
-								<?php else : ?>
-									<li>
-										<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $step_num; ?>" rows="5"></textarea>
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
-									</li>
-								<?php endif; ?>
-							</ul>
-						</div><!--[END #list]-->
-					</div><!--[END .step-contents]-->
-				</div><!--[END step-wrapper]-->
-				<?php $step_num++; ?>
-			<?php endforeach; ?>
+									<?php endif; ?>
+								</ul>
+							</div><!--[END #list]-->
+						</div><!--[END .step-contents]-->
+					</div><!--[END step-wrapper]-->
+					<?php $step_num++; ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
 		</div>
 		<input type="hidden" name="total-steps" value="<?php echo $step_num - 1; ?>">
 	<?php }
