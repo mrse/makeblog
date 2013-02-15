@@ -50,7 +50,7 @@
 										<input type="checkbox" name="cm-ol-tyvyh" id="MakerShed-MasterList" /> Maker Shed
 										</label> 
 										<label for="MarketWireNewsletter">
-										<input type="checkbox" name="cm-ol-jjhuukr" id="MAKEMarketWirenewsletter" /> MarketWire Newsletter
+										<input type="checkbox" name="cm-ol-jjhuukr" id="MAKEMarketWirenewsletter" /> Maker Pro Newsletter
 										</label> 
 									<!-- END controls -->
 									</div>

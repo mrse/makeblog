@@ -178,7 +178,7 @@ function make_bs_slideshow() {
 	</div>';
 	$output .= '
 		<script>
-			jQuery(".carousel").carousel();
+			//jQuery(".carousel").carousel({interval:false});
 		</script>
 	';
 
@@ -186,6 +186,25 @@ function make_bs_slideshow() {
 }
 
 add_shortcode( 'bs_slideshow', 'make_bs_slideshow' );
+
+function make_get_arg_title( $args, $title ) {
+	$output = null;
+	if ( $title == true ) {
+		$view = $args['title'];
+	} else {
+		$view = 'View All';
+	}
+	if ( $args['all'] == false ) {
+		$output = null;
+	} elseif (isset($args['tag'])) {
+		$output .= '<a href="' . esc_url( get_term_link( $args['tag'], 'post_tag' ) ) . '">' . $view . '</a>';
+	} elseif ( isset( $args['category__in'] ) && ($args['category__in'] > 0 )  ) {
+		$output .= '<a href="' . esc_url( get_term_link( intval( $args['category__in'] ), 'category' ) ) . '">' . $view . '</a>';
+	} else {
+		$output .= $view;
+	}
+	return $output;
+}
 
 function make_carousel( $args ) {
 
@@ -195,6 +214,7 @@ function make_carousel( $args ) {
 		'no_found_rows'		=> true,			// Helps to keep the query fast.
 		'title'				=> 'New Posts!',	//To be change, immediately.
 		'post_type'			=> 'post',
+		'all'				=> null,
 		'limit'				=> 4,
 		'projects_landing'	=> false,
 		'post_type'			=> array( 
@@ -210,24 +230,30 @@ function make_carousel( $args ) {
 	$rand = mt_rand(0, 100);
 	$id = 'newcarousel' . $rand;
 
+	$the_query = new WP_Query( $args );
+
+	if ( $the_query->post_count == 0 ) {
+		return;
+	}
+
 	?>
 
 <div class="row-fluid">
 	<div class="span10">
-		<h3 class="heading"><?php echo $args['title']?></h3>
+		<h3 class="heading">
+			<?php echo make_get_arg_title( $args, true ); ?>
+		</h3>
 	</div>
 	<div class="span2">
-		<p class="pull-right"><a href="#" class="all">View All</a></p>
+		<p class="pull-right"><a href="#" class="all"><?php echo make_get_arg_title( $args, false ); ?></p>
 	</div>
 </div>
 
-<div id="<?php echo $id ?>" class="carousel slide">
+<div id="<?php echo $id ?>" class="carousel slide" data-interval="false">
 	<div class="carousel-inner">
 	
 		<?php
 
-			$the_query = new WP_Query( $args );
-			
 			$arrays = array_chunk( $the_query->posts, $args['limit'], true );
 
 			foreach( $arrays as $idx => $posts) {
@@ -259,21 +285,24 @@ function make_carousel( $args ) {
 							} else {
 								echo '<span class="' . $type .'-icon"></span>';
 							}
-							get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'size' => 'category-thumb', 'image_class' => 'hide-thumbnail' ) );
+
+							get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'meta_key' => array( 'Image' ), 'size' => 'category-thumb', 'image_class' => 'hide-thumbnail' ) );
 						}
 						
-						echo '<div class="project-meta"><ul>';
-						$time = get_post_custom_values('TimeRequired');
-						if ($time[0]) {
-							echo '<li>Time: <span>' . esc_html( $time[0] ) . '</span></li>';
-						}
-						$terms = get_the_terms( $post->ID, 'difficulty' );
-						if ($terms) {
-							foreach ($terms as $term) {
-								echo '<li>Difficulty: <span>' . esc_html( $term->name ) . '</span></li>';
+						if ( $args['projects_landing'] == true ) {
+							echo '<div class="project-meta"><ul>';
+							$time = get_post_custom_values('TimeRequired');
+							if ($time[0]) {
+								echo '<li>Time: <span>' . esc_html( $time[0] ) . '</span></li>';
 							}
+							$terms = get_the_terms( $post->ID, 'difficulty' );
+							if ($terms) {
+								foreach ($terms as $term) {
+									echo '<li>Difficulty: <span>' . esc_html( $term->name ) . '</span></li>';
+								}
+							}
+							echo '</ul></div>';
 						}
-						echo '</ul></div>';
 						echo '<h4><a href="';
 						echo get_permalink( $post->ID );
 						echo '">';

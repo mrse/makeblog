@@ -67,9 +67,10 @@ get_header(); ?>
 						$args = array(
 							'post_type'			=> 'projects',
 							'title'				=> 'Featured Projects',
-							'limit'				=> 2,
+							'limit'				=> 4,
 							'tag'				=> 'Featured',
-							'projects_landing'	=> true
+							'projects_landing'	=> true,
+							'all'				=> false
 						);
 						make_carousel( $args ); ?>
 					
@@ -102,7 +103,8 @@ get_header(); ?>
 						$args = array(
 							'post_type'			=> 'projects',
 							'title'				=> 'New',
-							'projects_landing'	=> true
+							'projects_landing'	=> true,
+							'all'				=> false
 						);
 						
 						make_carousel($args);
@@ -126,7 +128,8 @@ get_header(); ?>
 					'post_type'			=> 'projects',
 					'category__in'		=> $category->term_id,
 					'title'				=> $category->name,
-					'projects_landing'	=> true
+					'projects_landing'	=> true,
+					'all'				=> true
 
 				);
 				make_carousel( $args );

@@ -22,13 +22,10 @@ jQuery(document).ready(function(){
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, like a boss.');
 	});
-
-	jQuery('.carousel').carousel({interval: false});
-
-	jQuery('.carousel').on('slide', function () {
+	jQuery('.carousel').on('slid', function () {
 		googletag.pubads().refresh();
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, and an ad refresh, like a boss.');
-		console.log('Paused that sucker...');
+		jQuery(this).carousel({interval:});
 	});
 });

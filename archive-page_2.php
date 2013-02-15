@@ -20,7 +20,10 @@ get_header(); ?>
 					<div class="span8">
 
 						<div class="content">
-
+						
+							<a href="http://blog.makezine.com/contribute/">
+								<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/contribute-page-2_jbr-1.jpg" alt="Contribute to Page: 2">
+							</a>
 
 							 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 							 

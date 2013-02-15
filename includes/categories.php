@@ -14,7 +14,7 @@
  * When redoing the category structure, we wanted have a list of categories that we would feature all over the site.
  * If we did wp_list_categories, we would get all of them, so I created these functions to spit everything out based on the categories that we wanted.
  */
-$GLOBALS['catslugs'] = array( 'Electronics', 'Workshop', 'Craft', 'Science', 'Home', 'Art &amp; Design', 'Makers' );
+$GLOBALS['catslugs'] = array( 'Electronics', 'Workshop', 'Craft', 'Science', 'Home', 'Art &amp; Design', 'Maker Pro' );
 
 /**
  * Search for a page with the same name as a category, and then dump the content into the existing page.

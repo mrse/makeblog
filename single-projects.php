@@ -91,31 +91,40 @@ get_header(); ?>
 									</div>
 								
 									<div class="parts-tools">
+										<?php 
+											$parts = get_the_terms( $post->ID, 'parts' );
+											$tools = get_the_terms( $post->ID, 'tools' );
+										?>
 										<ul class="top">
-											<li class="active"><a href="#1" data-toggle="tab">Tools</a></li>
-											<li class="divider"> / </li>
-											<li><a href="#2" data-toggle="tab">Parts</a></li>
+											<?php 
+												if ($parts) {
+													echo '<li class="active"><a href="#1" data-toggle="tab">Parts</a></li>';
+												} 
+												if ($tools) {
+													echo '<li class="divider"> / </li><li><a href="#2" data-toggle="tab">Tools</a></li>';
+												}
+											?>
+											
 										</ul>
 										<div class="tab-content">
 											<div class="tab-pane active" id="1">
 												<?php
-													$terms = get_the_terms( $post->ID, 'tools' );
-													if ($terms) {
+													if ($parts) {
 														echo '<ul class="lists">';
-														foreach ($terms as $term) {
-															echo '<li><a href="'. esc_url( get_term_link( $term->slug, 'tools' ) ).'">'. esc_html( $term->name ) .'</a></li>';
+														foreach ($parts as $part) {
+															echo '<li><a href="'.esc_url( get_term_link( $part->slug, 'parts' ) ).'">'. esc_html( $part->name ) .'</a></li>';
 														}
 														echo '</ul>';
 													}
 												?>
 											</div>
 											<div class="tab-pane" id="2">
-												<?php 
-													$terms = get_the_terms( $post->ID, 'parts' );
-													if ($terms) {
+												<?php
+													
+													if ($tools) {
 														echo '<ul class="lists">';
-														foreach ($terms as $term) {
-															echo '<li><a href="'.esc_url( get_term_link( $term->slug, 'parts' ) ).'">'. esc_html( $term->name ) .'</a></li>';
+														foreach ($tools as $tool) {
+															echo '<li><a href="'. esc_url( get_term_link( $tool->slug, 'tools' ) ).'">'. esc_html( $tool->name ) .'</a></li>';
 														}
 														echo '</ul>';
 													}
@@ -183,12 +192,12 @@ get_header(); ?>
 														<h3>Related Projects</h3>
 												
 														<?php
-															$cat = wp_get_post_categories($post->ID);
+															$cat = get_the_category($post->ID);
+															$objid = $cat[0]->term_id;
 															$args = array(
 																'post_type'				=> 'projects', 
-																'cat'			 		=> $cat[0],
-																'posts_per_page' 		=> 8, 
-																'orderby' 				=> 'rand', 
+																'cat'			 		=> $objid,
+																'posts_per_page' 		=> 8,
 																'order' 				=> 'asc',
 																);
 															$the_query = new WP_Query( $args );
