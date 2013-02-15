@@ -110,8 +110,8 @@
 									for($i = 0; $i < 3; $i++) :
 										if(isset($step->images[$i]) && !empty($step->images[$i]->text)) { ?>
 											<div class="image-upload group has-image">
-												<img src="<?php echo esc_url($step->images[$i]->text); ?>" alt="" class="alignleft steps-image" width="94" height="94" />
-												<input type="hidden" name="step-images-<?php echo $step_num; ?>[]" class="image-url" value="<?php echo esc_url($step->images[$i]->text); ?>">
+												<img src="<?php echo esc_url_raw($step->images[$i]->text); ?>" alt="" class="alignleft steps-image" width="94" height="94" />
+												<input type="hidden" name="step-images-<?php echo $step_num; ?>[]" class="image-url" value="<?php echo esc_url_raw($step->images[$i]->text); ?>">
 											</div><!--[END .image-upload]-->
 										<?php } else { ?>
 											<div class="image-upload group">
@@ -123,7 +123,7 @@
 								?>
 							</div><!--[END #image-list]-->
 							<div id="list" class="alignleft">
-								<input type="text" name="step-title-<?php echo $step_num; ?>" id="project-header" class="widefat" placeholder="Add A Title" value="<?php echo (!empty($step->title)) ? esc_attr($step->title) : ''; ?>">
+								<input type="text" name="step-title-<?php echo $step_num; ?>" id="project-header" class="widefat" placeholder="Add A Title" value="<?php echo (!empty($step->title)) ? sanitize_text_field($step->title) : ''; ?>">
 								<ul id="sub-lists" class="sortable reset-list">
 									<?php if(isset($step->lines)) : ?>
 										<?php
@@ -131,7 +131,7 @@
 											$i = 1; // Used to set the right ID's and to check against
 											foreach($step->lines as $key) : ?>
 											<li>
-												<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $i; ?>" rows="5"><?php echo esc_attr($key->text); ?></textarea>
+												<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $i; ?>" rows="5"><?php echo sanitize_text_field($key->text); ?></textarea>
 												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
 												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
 												<?php if($i === $total) : // Display our add button only on the last step on load. ?>
@@ -181,12 +181,12 @@
 			$step = array();
 
 			// Add our title to the object
-			$step['title'] = esc_attr($_POST['step-title-' . $i]);
+			$step['title'] = sanitize_text_field($_POST['step-title-' . $i]);
 
 			// Create the lines array and contain each line as an object in the Steps object
 			$int = 0;
 		 	foreach($_POST['step-lines-' . $i] as $line) {
-				$step['lines'][] = (object) array('text' => esc_attr($line), 'text_raw' => esc_attr($line), 'bullet' => 'black', 'level' => 0);
+				$step['lines'][] = (object) array('text' => sanitize_text_field($line), 'text_raw' => sanitize_text_field($line), 'bullet' => 'black', 'level' => 0);
 				//echo $_POST['step-lines-' . $i][$int] . '<br />';
 				$int++;
 		 	}
@@ -197,7 +197,7 @@
 			// Set our images array and contain each image as an object in the Steps object
 			$int = 0;
 			foreach($_POST['step-images-' . $i] as $image) {
-				$step['images'][$int] = (object) array('imageid' => $post_id, 'orderby' => $int, 'text' => esc_url($image));
+				$step['images'][$int] = (object) array('imageid' => $post_id, 'orderby' => $int, 'text' => esc_url_raw($image));
 				$int++; // Only increase the integer variable when we encounter a non-empty image value
 			}
 
