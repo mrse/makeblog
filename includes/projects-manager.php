@@ -110,8 +110,8 @@
 									for($i = 0; $i < 3; $i++) :
 										if(isset($step->images[$i]) && !empty($step->images[$i]->text)) { ?>
 											<div class="image-upload group has-image">
-												<img src="<?php echo esc_url_raw($step->images[$i]->text); ?>" alt="" class="alignleft steps-image" width="94" height="94" />
-												<input type="hidden" name="step-images-<?php echo $step_num; ?>[]" class="image-url" value="<?php echo esc_url_raw($step->images[$i]->text); ?>">
+												<img src="<?php echo esc_url($step->images[$i]->text); ?>" alt="" class="alignleft steps-image" width="94" height="94" />
+												<input type="hidden" name="step-images-<?php echo $step_num; ?>[]" class="image-url" value="<?php echo esc_url($step->images[$i]->text); ?>">
 											</div><!--[END .image-upload]-->
 										<?php } else { ?>
 											<div class="image-upload group">

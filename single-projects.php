@@ -68,7 +68,8 @@ get_header(); ?>
 												the_post_thumbnail('review-large');
 											echo '</div>';
 										} elseif ( $image = get_post_custom_values('Image') ) {
-											echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image[0] , 598, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
+											$imageurl = $image[0] . '.medium';
+											echo '<img src="' . esc_url( $imageurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
 										}
 									?>
 									
@@ -213,7 +214,7 @@ get_header(); ?>
 																		'image_scan' => true, 
 																		'size' => 'related-thumb', 
 																		'image_class' => 'hide-thumbnail', 
-																		'default_image' => 'http://placekitten.com/98/55'
+																		//'default_image' => 'http://placekitten.com/98/55'
 																		);
 																	get_the_image( $args );
 																?>

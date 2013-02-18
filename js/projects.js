@@ -26,6 +26,5 @@ jQuery(document).ready(function(){
 		googletag.pubads().refresh();
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, and an ad refresh, like a boss.');
-		jQuery(this).carousel({interval:});
 	});
 });

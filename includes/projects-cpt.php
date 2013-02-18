@@ -446,7 +446,8 @@ function make_projects_steps_nav( $steps ) {
 				echo '<div class="span2 tabs" data-toggle="tab" id="step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
 				$image = $step->images;
 				if ($image) {
-					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image[0]->text, 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
+					$imgurl = $image[0]->text . '.standard';
+					echo '<img src="' . esc_url( $imgurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
 					// echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 				} else {
 					echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
@@ -477,7 +478,8 @@ function make_projects_steps( $steps ) {
 			echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
 			$images = $step->images;
 			if ( isset( $images[0]->text ) ) {
-				echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $images[0]->text, 620, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
+				$imgurl = $images[0]->text . '.medium';
+				echo '<img src="' . esc_url( $imgurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
 			}
 			// echo '<img src="http://placekitten.com/620/405" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 			echo '<div class="row smalls">';
@@ -485,7 +487,8 @@ function make_projects_steps( $steps ) {
 			if ($number > 1) {
 				foreach ($images as $image) {
 					echo '<div class="span2">';
-					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( $image->text, 140, 1000 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
+					$imgurl = $image->text . '.standard';
+					echo '<img src="' . esc_url( $imgurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
 					echo '</div>';
 					//echo '<img src="http://placekitten.com/205/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 				}
