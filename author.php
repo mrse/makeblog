@@ -106,19 +106,6 @@ make_get_header() ?>
 			
 			<?php
 
-				function make_post_type_better_name( $name ) {
-					if ($name == 'post') {
-						return 'posts';
-					} elseif ($name == 'projects' ) {
-						return 'projects';
-					} elseif ( $name == 'videos' ) {
-						return 'videos';
-					} elseif ( $name == 'magazine' ) {
-						return 'articles';
-					} elseif ( $name == 'review' ) {
-						return 'reviews';
-					}
-				}
 				$types = array('posts' => 'post', 'projects' => 'projects', 'videos' => 'videos', 'articles' => 'magazine', 'reviews' => 'review' );
 
 				foreach ( $types as $type ) { ?>

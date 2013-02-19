@@ -155,7 +155,7 @@
 				var target_top = target_offset.top;
 		 
 				//goto that anchor by setting the body scroll top to anchor top
-				jQuery('html, body').animate({scrollTop:target_top - 30}, 1000);
+				jQuery('html, body').animate({scrollTop:target_top - 50}, 1000);
 
 				//Style the pagination links
 

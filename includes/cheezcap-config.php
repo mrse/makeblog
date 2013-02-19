@@ -106,8 +106,14 @@ $cap = new CheezCap( array(
 				),
 				new CheezCapTextOption(
 					'Featured Posts',
-					'Add the post IDs of the five posts that you want to feature. The need to be in order, m->f.',
+					'Add the post IDs of one post that you want to feature.',
 					'daily',
+					'274361'
+				),
+				new CheezCapTextOption(
+					'Weekly Theme',
+					'Add the post IDs of the five posts that you want to feature. They need to be in order, m->f.',
+					'weekly',
 					'274361'
 				),
 				

@@ -980,6 +980,9 @@ function make_get_post_meta_rss( $term ) {
 
 }
 
+/**
+ * Spits out a UL of all of the featured posts
+ */
 function make_daily_themes() {
 	$featuredposts = esc_html( make_get_cap_option( 'weekly' ) );
 	$posts = array_map( 'get_post', explode( ',', $featuredposts ) );
@@ -1006,6 +1009,11 @@ function make_daily_themes() {
 	wp_reset_query();
 }
 
+add_shortcode( 'themes', 'make_daily_themes' );
+
+/**
+ * Adds a dynamic feature block to the home page.
+ */
 function make_featured_post() {
 	$post_id = make_get_cap_option( 'daily' );
 	$post = get_post( $post_id );
@@ -1018,4 +1026,22 @@ function make_featured_post() {
 	$output .= '<p>'.wp_trim_words(strip_shortcodes( $post->post_content ), 20).'</p>';
 	$output .= '</a></div>';
 	return $output;
+}
+
+
+/**
+ * Renames the custom post type on the front end to be a little better.
+ */
+function make_post_type_better_name( $name ) {
+	if ($name == 'post') {
+		return 'posts';
+	} elseif ($name == 'projects' ) {
+		return 'projects';
+	} elseif ( $name == 'videos' ) {
+		return 'videos';
+	} elseif ( $name == 'magazine' ) {
+		return 'articles';
+	} elseif ( $name == 'review' ) {
+		return 'reviews';
+	}
 }

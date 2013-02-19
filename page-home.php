@@ -387,14 +387,14 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3 class="red"><a href="http://blog.makezine.com/tag/cotm/" class="red">Skill Builder</a></h3>
+								<h3 class="red"><a href="http://blog.makezine.com/tag/component-of-the-month/" class="red">Skill Builder</a></h3>
 
 								<div class="grid-box boxy">
 
 									<?php
 										
 										$args = array(
-											'tag_id' => 1814920,
+											'tag_id' => 115565268,
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
 										);

@@ -53,7 +53,7 @@
 					<div class="sidebar-ad">
 
 						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
-						<div id='div-gpt-ad-664089004995786621-2'>
+						<div P='div-gpt-ad-664089004995786621-2'>
 							<script type='text/javascript'>
 								googletag.display('div-gpt-ad-664089004995786621-2');
 							</script>
@@ -105,8 +105,8 @@
 			<div class="row">
 			
 				<div class="span12">
-			
-					<h2>Latest in <?php echo $category->name; ?></h2>
+					
+					<h2 id="<?php echo $category->slug; ?>">Latest in <?php echo $category->name; ?></h2>
 				
 				</div>
 				
