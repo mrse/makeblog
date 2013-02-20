@@ -184,6 +184,9 @@ function make_bs_slideshow() {
 			jQuery(document).ready(function(){
 				jQuery(".viewall").click(function() {
 					jQuery(".carousel-inner").removeClass("carousel-inner");
+					googletag.pubads().refresh();
+					_gaq.push([\'_trackPageview\']);
+					console.log(\'Pushed a pageview, and an ad refresh, like a boss.\');
 				})
 			});
 		</script>
