@@ -101,8 +101,11 @@ get_header(); ?>
 												if ($parts) {
 													echo '<li class="active"><a href="#1" data-toggle="tab">Parts</a></li>';
 												} 
+												if ($parts && $tools) {
+													echo '<li class="divider"> / </li>';
+												}
 												if ($tools) {
-													echo '<li class="divider"> / </li><li><a href="#2" data-toggle="tab">Tools</a></li>';
+													echo '<li><a href="#2" data-toggle="tab">Tools</a></li>';
 												}
 											?>
 											
@@ -208,6 +211,17 @@ get_header(); ?>
 														<div <?php post_class( 'related' ); ?>>
 															
 															<div class="image">
+																
+																<?php
+																	if (has_post_thumbnail()) {
+																		echo '<div class="post-image">';
+																			the_post_thumbnail('review-large');
+																		echo '</div>';
+																	} elseif ( $image = get_post_custom_values('Image') ) {
+																		$imageurl = $image[0] . '.medium';
+																		echo '<img src="' . esc_url( $imageurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
+																	}
+																?>
 																
 																<?php
 																	$args = array(

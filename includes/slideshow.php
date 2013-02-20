@@ -153,7 +153,6 @@ function make_bs_slideshow() {
 	$images = get_children( array('post_parent' => $post->ID, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID') );
 
 	$output = '<div id="myCarousel" class="carousel slide" data-interval=""><div class="carousel-inner">';
-
 	$i = 0;
 	foreach( $images as $image ) {
 		$i++;
@@ -162,12 +161,15 @@ function make_bs_slideshow() {
 		} else {
 			$output .= '<div class="item">';
 		}
-		if (isset($image->post_title)) {
-			$output .= '<h3>' . $image->post_title . '</h3>';
-		}
 		$output .= wp_get_attachment_image( $image->ID, 'medium');
-		if (isset($image->post_excerpt)) {
-			$output .= '<p>' . $image->post_excerpt . '</p>';
+		if (isset($image->post_title)) {
+			$output .= '<div class="carousel-caption">';
+			$output .= '<h4>' . $image->post_title . '</h4>';
+			if (isset($image->post_excerpt)) {
+				$output .= '<p>' . $image->post_excerpt . '</p>';
+			}
+			$output .= '</div>';
+			
 		}
 		$output .= '</div>';
 		
@@ -176,12 +178,16 @@ function make_bs_slideshow() {
 		<a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 		<a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
 	</div>';
+	$output .= '<p class="pull-right"><span class="viewall" style="cursor:pointer">View All</span></p>';
 	$output .= '
 		<script>
-			//jQuery(".carousel").carousel({interval:false});
+			jQuery(document).ready(function(){
+				jQuery(".viewall").click(function() {
+					jQuery(".carousel-inner").removeClass("carousel-inner");
+				})
+			});
 		</script>
 	';
-
 	return $output;
 }
 

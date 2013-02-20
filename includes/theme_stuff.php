@@ -1009,7 +1009,7 @@ function make_daily_themes() {
 	wp_reset_query();
 }
 
-add_shortcode( 'themes', 'make_daily_themes' );
+add_shortcode( 'make-themes', 'make_daily_themes' );
 
 /**
  * Adds a dynamic feature block to the home page.
