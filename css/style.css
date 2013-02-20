@@ -8664,3 +8664,9 @@ a {
   margin-bottom: 20px;
   border: 1px solid #cecece;
 }
+.carousel-inner .carousel-caption {
+  position: absolute;
+}
+.carousel-caption {
+  position: relative;
+}
