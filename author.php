@@ -17,12 +17,53 @@ make_get_header() ?>
 				
 				</div>
 
-
 				<div class="span8">
 				
-					<h1 class="jumbo"><?php echo $author->display_name; ?></h1>
+					<?php
+						$url = 'http://en.gravatar.com/'. $author->data->user_login .'.json';
+						$contents = wpcom_vip_file_get_contents( $url );
+
+						if ( empty( $contents ) || is_wp_error( $contents ) )
+							continue;
+						
+						$json_output = json_decode($contents);
+						if ( !$json_output || !isset( $json_output->entry ) )
+							continue;
+
+						$author = $json_output->entry[0];
+					?>
+					
+					<style type="text/css">
+						.author_meta { background-image:url('<?php echo $author->profileBackground->url; ?>'); }
+					</style>
+
+					
+					<h1 class="jumbo"><a class="noborder" href="http://blog.makezine.com/author/<?php if (isset($author)) {echo $author->requestHash; } ?>"><?php if (isset($author->displayName)) {echo $author->displayName; } ?></a></h1>
 				
-					<p><?php  echo Markdown( $author->description ); ?></p>
+					<?php if (isset( $author->aboutMe )) { echo markdown( $author->aboutMe ); } ?>
+					<?php if (isset( $author->accounts )) { $accounts = $author->accounts;  ?>
+						<ul class="social">
+							<?php foreach ($accounts as $account) {
+								echo '<li class="' . esc_attr( $account->shortname ) . '"><a class="noborder" href="' . esc_url( $account->url ) . '"><span class="sp">&nbsp;</span></a></li>';
+							}
+							?>
+							<?php 
+								if ( isset( $author->emails[0]->value ) ) {
+									echo '<a href="' . esc_attr( antispambot( "mailto:".$author->emails[0]->value ) ) . '">'.antispambot( $author->emails[0]->value ).'</a>';
+								} 
+							?>
+						</ul>
+					<?php } ?>
+					<?php if (isset($author->urls)) { $urls = $author->urls;  ?>
+						<ul class="links">
+							<?php
+								foreach ($urls as $url) {
+									echo '<li><a class="noborder" href="' . esc_url( $url->value ) . '">'. esc_html( $url->title ) . '</a></li>';
+								}
+							?>
+						</ul>
+					<?php } ?>
+				</div>
 					
 				</div>
 				
@@ -42,10 +83,10 @@ make_get_header() ?>
 					
 					<?php
 						$args = array(
-							'author'		=> get_queried_object_id(), // Likely the queried object ID
-							'title'			=> 'Featured ' . get_queried_object()->name,
-							'limit'			=> 2,
-							'tag'			=> 'Featured',
+							'author'	=> get_queried_object_id(), // Likely the queried object ID
+							'title'		=> 'New from ' . $author->displayName,
+							'all'		=> true,
+							'limit'		=> 2
 						);
 						make_carousel( $args ); ?>
 					
@@ -68,23 +109,6 @@ make_get_header() ?>
 				</div>
 				
 			</div>
-								
-			<div class="row">
-			
-				<div class="span12">
-				
-					<?php 
-
-						$args = array(
-							'author'	=> get_queried_object_id(), // Likely the queried object ID
-							'title'		=> 'New in ' . get_queried_object()->name
-						);
-						
-						make_carousel($args);
-					?>
-					
-				</div>
-			</div>
 			
 		</div>
 		
@@ -98,7 +122,7 @@ make_get_header() ?>
 			
 				<div class="span12">
 			
-					<h2>Latest from <?php echo $author->display_name; ?></h2>
+					<h2>Latest from <?php echo $author->displayName; ?></h2>
 				
 				</div>
 				

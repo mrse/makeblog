@@ -220,17 +220,14 @@ get_header(); ?>
 																	} elseif ( $image = get_post_custom_values('Image') ) {
 																		$imageurl = $image[0] . '.medium';
 																		echo '<img src="' . esc_url( $imageurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
+																	} else {
+																		$args = array(
+																			'image_scan' => true, 
+																			'size' => 'related-thumb', 
+																			'image_class' => 'hide-thumbnail', 
+																			);
+																		get_the_image( $args );
 																	}
-																?>
-																
-																<?php
-																	$args = array(
-																		'image_scan' => true, 
-																		'size' => 'related-thumb', 
-																		'image_class' => 'hide-thumbnail', 
-																		//'default_image' => 'http://placekitten.com/98/55'
-																		);
-																	get_the_image( $args );
 																?>
 																
 															</div>

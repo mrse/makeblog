@@ -187,6 +187,14 @@ function make_bs_slideshow() {
 					googletag.pubads().refresh();
 					_gaq.push([\'_trackPageview\']);
 					console.log(\'Pushed a pageview, and an ad refresh, like a boss.\');
+					urlref = location.href;
+					PARSELY.beacon.trackPageView({
+						url: urlref,
+						urlref: urlref,
+						js: 1,
+						action_name: "Next Slide"
+					});
+					return true;
 				})
 			});
 		</script>

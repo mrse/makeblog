@@ -502,7 +502,7 @@ function make_projects_steps( $steps ) {
 			echo '</ol>';
 
 			if( $idx < $count - 1 ) {
-				echo '<h3 class="next"><a class="btn btn-large btn-danger next" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next:</a> <span>Step #' . intval( $step->number + 1 ) . '</span></h3><div class="clearfix"></div>';
+				echo '<h3 class="nexter"><a class="btn btn-large btn-danger nexter" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next:</a> <span>Step #' . intval( $step->number + 1 ) . '</span></h3><div class="clearfix"></div>';
 			}
 			echo '</div><!--.right_column-->';
 		}
