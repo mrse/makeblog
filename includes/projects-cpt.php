@@ -372,7 +372,7 @@ function register_taxonomy_types() {
 		'query_var' => true
 	);
 
-	register_taxonomy( 'types', array('projects'), $args );
+	register_taxonomy( 'types', array('projects', 'post', 'review', 'magazine', 'craft' ), $args );
 }
 
 /**
@@ -446,8 +446,7 @@ function make_projects_steps_nav( $steps ) {
 				echo '<div class="span2 tabs" data-toggle="tab" id="step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
 				$image = $step->images;
 				if ($image) {
-					$imgurl = $image[0]->text . '.standard';
-					echo '<img src="' . esc_url( $imgurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
+					echo '<img src="' . esc_url( make_projects_to_s3( $images[0]->text ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
 					// echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 				} else {
 					echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
@@ -458,6 +457,15 @@ function make_projects_steps_nav( $steps ) {
 			echo '</div>';
 		}
 	}
+}
+
+function make_projects_to_s3( $str ) {
+	// http://guide-images.makeprojects.org/igi/wFhmkdeyH2foOpyl
+	// https://make-images.s3.amazonaws.com/1CsBX4ypdTHuEOsU.jpg
+	$needle = 'guide-images.makeprojects.org/igi/';
+	$new_needle = 'make-images.s3.amazonaws.com/';
+	$str = str_replace( $needle, $new_needle, $str);
+	return $str . '.jpg';
 }
 
 /**
@@ -478,8 +486,7 @@ function make_projects_steps( $steps ) {
 			echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
 			$images = $step->images;
 			if ( isset( $images[0]->text ) ) {
-				$imgurl = $images[0]->text . '.medium';
-				echo '<img src="' . esc_url( $imgurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
+				echo '<img src="' . esc_url( make_projects_to_s3( $images[0]->text ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
 			}
 			// echo '<img src="http://placekitten.com/620/405" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 			echo '<div class="row smalls">';
@@ -487,8 +494,7 @@ function make_projects_steps( $steps ) {
 			if ($number > 1) {
 				foreach ($images as $image) {
 					echo '<div class="span2">';
-					$imgurl = $image->text . '.standard';
-					echo '<img src="' . esc_url( $imgurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
+					echo '<img src="' . esc_url( make_projects_to_s3( $images[0]->text ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
 					echo '</div>';
 					//echo '<img src="http://placekitten.com/205/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 				}

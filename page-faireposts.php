@@ -6,7 +6,7 @@
 ?>
 <?php 
 $args = array(
-	'post_type' => 'post',
+	'post_type' => array( 'post', 'craft' ),
 	'post_status' => 'publish',
 	'posts_per_page' => 5,
 	'ignore_sticky_posts' => 1,
@@ -18,7 +18,7 @@ $query = new WP_Query($args);
 	
 	<div class="news post">
 		
-		<h3 style="color:#FC040C"><a href="http://blog.makezine.com/category/events-3/maker-faire-events/">Latest Maker Faire News</a></h3>
+		<h3 style="color:#FC040C"><a href="http://blog.makezine.com/tag/maker-faire/">Latest Maker Faire News</a></h3>
 
 		<?php if( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
 		

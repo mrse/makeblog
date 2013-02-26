@@ -509,7 +509,7 @@ function make_add_custom_types( $query ) {
 		return $query;
 	}
 }
-add_filter( 'pre_get_posts', 'make_add_custom_types' );
+// add_filter( 'pre_get_posts', 'make_add_custom_types' );
 
 add_filter( 'byline_auto_filter_author', '__return_true' );
 

@@ -152,4 +152,13 @@ include_once dirname(__file__) . '/includes/categories.php';
 
 include_once dirname(__file__) . '/includes/projects-manager.php';
 
+// 31. CLI CSV
+
+if ( defined('WP_CLI') && WP_CLI ) {
+
+	include_once dirname(__file__) . '/includes/wp-cli.php';
+
+}
+
+
 ?>

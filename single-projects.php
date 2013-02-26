@@ -68,8 +68,7 @@ get_header(); ?>
 												the_post_thumbnail('review-large');
 											echo '</div>';
 										} elseif ( $image = get_post_custom_values('Image') ) {
-											$imageurl = $image[0] . '.medium';
-											echo '<img src="' . esc_url( $imageurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
+											echo '<img src="' . esc_url( make_projects_to_s3( $image[0] ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
 										}
 									?>
 									

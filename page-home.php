@@ -349,7 +349,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3 class="red"><a href="http://blog.makezine.com/category/events-holidays/maker-faire-events/" class="red">Maker Faire News</a></h3>
+								<h3 class="red"><a href="http://blog.makezine.com/tag/maker-faire/" class="red">Maker Faire News</a></h3>
 
 								<div class="grid-box boxy">
 
@@ -450,6 +450,19 @@ Template Name: Home Page
 						
 						<div class="row">
 							<div class="span8">
+							
+								<?php
+									$arr = array(
+										'https://plus.google.com/communities/105413589856236995389' => 'http://placekitten.com/300/250', 
+										'https://google.com/' => 'http://placekitten.com/400/150'
+										);
+									$shuffle = shuffle($arr);
+									print_r($shuffle);
+									 
+									echo '<a href="' . esc_url( array_keys($arr) )  . '"><img src="' . esc_url( $arr[0] ) . '" /></a>';
+
+								?>
+							
 								<a href="https://plus.google.com/communities/105413589856236995389">
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Make_Forum_join_banner.jpg" alt="Join the +MAKE Forum">
 								</a>
