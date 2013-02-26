@@ -446,8 +446,12 @@ function make_projects_steps_nav( $steps ) {
 				echo '<div class="span2 tabs" data-toggle="tab" id="step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
 				$image = $step->images;
 				if ($image) {
-					echo '<img src="' . esc_url( make_projects_to_s3( $images[0]->text ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
-					// echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+					if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
+						echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0]->text ), 142, 82 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
+					} else {
+						echo '<img src="' . esc_url( make_projects_to_s3( $image[0]->text ), 142, 82 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
+					}
+					//echo '<img src="' . esc_url( make_projects_to_s3( $image[0]->text ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
 				} else {
 					echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 				}
@@ -486,17 +490,20 @@ function make_projects_steps( $steps ) {
 			echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
 			$images = $step->images;
 			if ( isset( $images[0]->text ) ) {
-				echo '<img src="' . esc_url( make_projects_to_s3( $images[0]->text ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
+				if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
+					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $images[0]->text ), 620, 465 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
+				} else {
+					echo '<img src="' . esc_url( make_projects_to_s3( $images[0]->text ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
+				}
 			}
-			// echo '<img src="http://placekitten.com/620/405" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
-			echo '<div class="row smalls">';
+			
+			echo '<div class="row smalls" style="display:block">';
 			$number = count($images);
 			if ($number > 1) {
 				foreach ($images as $image) {
 					echo '<div class="span2">';
-					echo '<img src="' . esc_url( make_projects_to_s3( $images[0]->text ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
+					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image->text ), 140, 80 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
 					echo '</div>';
-					//echo '<img src="http://placekitten.com/205/146" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
 				}
 			}
 			echo '</div><!--.row-->';

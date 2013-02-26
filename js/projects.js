@@ -15,7 +15,7 @@ jQuery(document).ready(function(){
 		});
 		return true;
 	});
-	jQuery('.next a').click(function() {
+	jQuery('.nexter a').click(function() {
 		var id = jQuery(this).attr('id');
 		jQuery('.tab-content div#js-' + id).slideDown();
 		jQuery('.tab-content div:not(#js-' + id + ')').slideUp();
@@ -33,7 +33,7 @@ jQuery(document).ready(function(){
 	});
 	jQuery('.all').click(function() {
 		jQuery('.tab-content div').slideDown();
-		jQuery('.next').hide();
+		jQuery('.nexter').hide();
 		googletag.pubads().refresh();
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, like a boss.');
