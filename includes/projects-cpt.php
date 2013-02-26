@@ -463,12 +463,12 @@ function make_projects_steps_nav( $steps ) {
 	}
 }
 
-function make_projects_to_s3( $str ) {
-	// http://guide-images.makeprojects.org/igi/wFhmkdeyH2foOpyl
-	// https://make-images.s3.amazonaws.com/1CsBX4ypdTHuEOsU.jpg
+function make_projects_to_s3( $haystack ) {
+	// Old: http://guide-images.makeprojects.org/igi/wFhmkdeyH2foOpyl
+	// New: https://make-images.s3.amazonaws.com/wFhmkdeyH2foOpyl.jpg
 	$needle = 'guide-images.makeprojects.org/igi/';
 	$new_needle = 'make-images.s3.amazonaws.com/';
-	$str = str_replace( $needle, $new_needle, $str);
+	$str = str_replace( $needle, $new_needle, $haystack);
 	return $str . '.jpg';
 }
 

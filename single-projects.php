@@ -68,7 +68,7 @@ get_header(); ?>
 												the_post_thumbnail('review-large');
 											echo '</div>';
 										} elseif ( $image = get_post_custom_values('Image') ) {
-											echo '<img src="' . esc_url( make_projects_to_s3( $image[0] ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
+											echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 620, 465 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
 										}
 									?>
 									
