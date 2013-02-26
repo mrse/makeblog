@@ -463,9 +463,13 @@ function make_projects_steps_nav( $steps ) {
 	}
 }
 
+/**
+ * Convert the old Dozuki URLs into our S3 bucket URLs. Also append .jpg onto the end.
+ * 
+ */
 function make_projects_to_s3( $haystack ) {
 	// Old: http://guide-images.makeprojects.org/igi/wFhmkdeyH2foOpyl
-	// New: https://make-images.s3.amazonaws.com/wFhmkdeyH2foOpyl.jpg
+	// New: http://make-images.s3.amazonaws.com/wFhmkdeyH2foOpyl.jpg
 	$needle = 'guide-images.makeprojects.org/igi/';
 	$new_needle = 'make-images.s3.amazonaws.com/';
 	$str = str_replace( $needle, $new_needle, $haystack);
