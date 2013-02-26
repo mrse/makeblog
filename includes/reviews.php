@@ -383,13 +383,16 @@ register_nav_menu( 'primary', 'Top Bar' );
 //Custom Field Hacks
 
 $field_data = array (
-	'Meta' => array (				// unique group id
-		'fields' => array(				// array "fields" with field definitions
-			'CompanyURL' => array(),		// globally unique field id
-			'ProductURL'	=> array(),
-			'Price'	=> array(),
+	'Meta' => array (
+		'fields' => array(
+			'CompanyURL' 				=> array(),
+			'ProductURL'				=> array(),
+			'Price'						=> array(),
 			'MakeProjectsGuideNumber'	=> array(),
 		),
+	'title'		=> 'Reviews Meta',
+	'context'	=> 'advanced',
+	'pages'		=> array( 'review' ),
 	),
 );
 $easy_cf = new Easy_CF($field_data);

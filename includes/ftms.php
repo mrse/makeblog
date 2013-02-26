@@ -62,7 +62,6 @@ $ftms_field_data = array (
 				'type' 			=> 'textarea',							// Custom Field Type (see Ref: field_type)
 				'class'			=> 'aclass',							// CSS Wrapper class for the field
 				'input_class' 	=> 'theEditor',							// CSS class for the input field
-				'validate'		=> 'url',
 				'error_msg' 	=> 'The Advanced Field is wrong' ),		// Error message to show when validate fails
 				
 			'ftms_pre_price_verbage'	=> array(								// globally unique field id
