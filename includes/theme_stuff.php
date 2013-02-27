@@ -50,7 +50,7 @@ function make_action_after_setup_theme() {
 
 	// Content Width
 	if ( ! isset( $content_width ) )
-		$content_width = 598;
+		$content_width = 620;
 	// Post Formats
 	add_theme_support( 'post-formats', array( 'gallery', 'aside', 'video' ) );
 	// Custom Backgrounds
