@@ -465,13 +465,16 @@ function make_projects_steps_nav( $steps ) {
 
 /**
  * Convert the old Dozuki URLs into our S3 bucket URLs. Also append .jpg onto the end.
- * 
+ * Old: http://guide-images.makeprojects.org/igi/wFhmkdeyH2foOpyl
+ * New: http://make-images.s3.amazonaws.com/wFhmkdeyH2foOpyl.jpg
+ * Default: http://cacher.dozuki.net/static/images/make/guide/NoImageMP_96x72.gif
  */
 function make_projects_to_s3( $haystack ) {
-	// Old: http://guide-images.makeprojects.org/igi/wFhmkdeyH2foOpyl
-	// New: http://make-images.s3.amazonaws.com/wFhmkdeyH2foOpyl.jpg
 	$needle = 'guide-images.makeprojects.org/igi/';
 	$new_needle = 'make-images.s3.amazonaws.com/';
+	if ($haystack == 'http://cacher.dozuki.net/static/images/make/guide/NoImageMP_96x72.gif' ) {
+		return $haystack;
+	}
 	$str = str_replace( $needle, $new_needle, $haystack);
 	return $str . '.jpg';
 }

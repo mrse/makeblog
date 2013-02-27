@@ -33,12 +33,7 @@ make_get_header() ?>
 						$author = $json_output->entry[0];
 					?>
 					
-					<style type="text/css">
-						.author_meta { background-image:url('<?php echo $author->profileBackground->url; ?>'); }
-					</style>
-
-					
-					<h1 class="jumbo"><a class="noborder" href="http://blog.makezine.com/author/<?php if (isset($author)) {echo $author->requestHash; } ?>"><?php if (isset($author->displayName)) {echo $author->displayName; } ?></a></h1>
+					<h1 class="jumbo"><a class="noborder" href="http://blog.makezine.com/author/<?php if ( isset($author )) { echo $author->requestHash; } ?>"><?php if (isset($author->displayName)) {echo $author->displayName; } ?></a></h1>
 				
 					<?php if (isset( $author->aboutMe )) { echo markdown( $author->aboutMe ); } ?>
 					<?php if (isset( $author->accounts )) { $accounts = $author->accounts;  ?>
@@ -130,7 +125,7 @@ make_get_header() ?>
 			
 			<?php
 
-				$types = array('posts' => 'post', 'projects' => 'projects', 'videos' => 'videos', 'articles' => 'magazine', 'reviews' => 'review' );
+				$types = array('posts' => 'post', 'projects' => 'projects', 'videos' => 'videos', /*'articles' => 'magazine',*/ 'reviews' => 'review' );
 
 				foreach ( $types as $type ) { ?>
 

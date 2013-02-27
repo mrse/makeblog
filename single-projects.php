@@ -62,14 +62,10 @@ get_header(); ?>
 							
 								<div class="span8">
 
-									<?php
-										if (has_post_thumbnail()) {
-											echo '<div class="post-image">';
-												the_post_thumbnail('review-large');
-											echo '</div>';
-										} elseif ( $image = get_post_custom_values('Image') ) {
+									<?php 
+										if ( $image = get_post_custom_values('Image') ) {
 											echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 620, 465 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
-										}
+										} 
 									?>
 									
 									<?php the_content(); ?>
@@ -90,11 +86,14 @@ get_header(); ?>
 
 									</div>
 								
+									<?php 
+										$parts = get_the_terms( $post->ID, 'parts' );
+										$tools = get_the_terms( $post->ID, 'tools' );
+										if ( !empty( $parts ) or !empty( $tools ) ) {
+									?>
+								
 									<div class="parts-tools">
-										<?php 
-											$parts = get_the_terms( $post->ID, 'parts' );
-											$tools = get_the_terms( $post->ID, 'tools' );
-										?>
+										
 										<ul class="top">
 											<?php 
 												if ($parts) {
@@ -135,10 +134,17 @@ get_header(); ?>
 											</div>
 										</div>
 									</div>
+									
+									<?php } ?>
 								
 								</div>
 									
 							</div>
+							
+							<?php 
+								$stepscount = unserialize($steps[0]);
+								if (!empty($stepscount)) {
+							?>
 							
 							<div class="row">
 							
@@ -282,27 +288,115 @@ get_header(); ?>
 									</div>
 								
 								</article>
-
-							<?php endwhile; ?>
-
-							<ul class="pager">
 							
-								<li class="previous"><?php previous_posts_link('&larr; Previous Page'); ?></li>
-								<li class="next"><?php next_posts_link('Next Page &rarr;'); ?></li>
-							
-							</ul>
-
-							<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
-
-							<div class="comments">
-								<?php comments_template(); ?>
 							</div>
 							
-							<?php else: ?>
+							<?php } ?>
+
+							<?php endwhile; ?>
 							
-								<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-							
-							<?php endif; ?>
+							<div class="row">
+								
+								<div class="span8">
+										
+									<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
+
+									<div class="comments">
+										<?php comments_template(); ?>
+									</div>
+									
+									<?php else: ?>
+									
+										<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+									
+									<?php endif; ?>	
+									
+								</div>
+								
+								<?php if (empty($stepscount)) { ?>
+								
+									<div class="span4" style="margin-top:20px;">
+											
+										<!-- Beginning Sync AdSlot 3 for Ad unit sidebar ### size: [[300,250]]  -->
+										<div id='div-gpt-ad-664089004995786621-3'>
+											<script type='text/javascript'>
+												googletag.display('div-gpt-ad-664089004995786621-3');
+											</script>
+										</div>
+										<!-- End AdSlot 3 -->
+									
+										<div class="related-projects">
+									
+											<h3>Related Projects</h3>
+									
+											<?php
+												$cat = get_the_category($post->ID);
+												$objid = $cat[0]->term_id;
+												$args = array(
+													'post_type'				=> 'projects', 
+													'cat'			 		=> $objid,
+													'posts_per_page' 		=> 8,
+													'order' 				=> 'asc',
+													);
+												$the_query = new WP_Query( $args );
+												
+												while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+												
+											<div <?php post_class( 'related' ); ?>>
+												
+												<div class="image">
+													
+													<?php
+														if (has_post_thumbnail()) {
+															echo '<div class="post-image">';
+																the_post_thumbnail('review-large');
+															echo '</div>';
+														} elseif ( $image = get_post_custom_values('Image') ) {
+															$imageurl = $image[0] . '.medium';
+															echo '<img src="' . esc_url( $imageurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
+														} else {
+															$args = array(
+																'image_scan' => true, 
+																'size' => 'related-thumb', 
+																'image_class' => 'hide-thumbnail', 
+																);
+															get_the_image( $args );
+														}
+													?>
+													
+												</div>
+												
+												<div class="blurb">
+													
+													<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+													<p>By: <?php 
+															if( function_exists( 'coauthors_posts_links' ) ) {	
+																coauthors_posts_links(); 
+															} else { 
+																the_author_posts_link(); 
+															} 
+														?>
+													</p>
+												
+												</div>
+												
+											</div>
+											
+											<div class="clearfix"></div>
+												
+											<?php endwhile; wp_reset_postdata(); ?>
+
+										<div class="clearfix"></div>
+										
+									</div>
+								
+								</div>
+								
+								<?php } else {
+									get_sidebar();
+								} ?>
+								
+							</div>
 
 						</div>
 
