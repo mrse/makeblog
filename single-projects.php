@@ -122,7 +122,7 @@ get_header(); ?>
 													if ($parts) {
 														echo '<ul class="lists">';
 														foreach ($parts as $part) {
-															echo '<li><a href="'.esc_url( get_term_link( $part->slug, 'parts' ) ).'">'. esc_html( $part->name ) .'</a></li>';
+															echo '<li>'. esc_html( $part->name ) .'</li>';
 														}
 														echo '</ul>';
 													}
@@ -134,7 +134,7 @@ get_header(); ?>
 													if ($tools) {
 														echo '<ul class="lists">';
 														foreach ($tools as $tool) {
-															echo '<li><a href="'. esc_url( get_term_link( $tool->slug, 'tools' ) ).'">'. esc_html( $tool->name ) .'</a></li>';
+															echo '<li>' . esc_html( $tool->name ) . '</li>';
 														}
 														echo '</ul>';
 													}

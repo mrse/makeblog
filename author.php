@@ -23,12 +23,8 @@ make_get_header() ?>
 						$url = 'http://en.gravatar.com/'. $author->data->user_login .'.json';
 						$contents = wpcom_vip_file_get_contents( $url );
 						if ($contents != false) {
-							$json_output = json_decode($contents);
-							if ( !$json_output || !isset( $json_output->entry ) )
-								continue;
-
+							$json_output = json_decode($contents);								
 							$author = $json_output->entry[0];
-
 					?>
 					
 							<h1 class="jumbo"><a class="noborder" href="http://blog.makezine.com/author/<?php if ( isset($author )) { echo $author->requestHash; } ?>"><?php if (isset($author->displayName)) {echo $author->displayName; } ?></a></h1>
@@ -57,7 +53,7 @@ make_get_header() ?>
 								</ul>
 							<?php }
 							} else { ?>
-								<h1 class="jumbo"><a class="noborder" href="http://blog.makezine.com/author/<?php if ( isset($author )) { echo $author->user_nicename; } ?>"><?php if (isset($author->user_login)) {echo $author->user_login; } ?></a></h1>
+								<h1 class="jumbo"><a class="noborder" href="http://blog.makezine.com/author/<?php if ( isset($author )) { echo $author->user_nicename; } ?>"><?php if (isset($author->user_login)) {echo $author->user_login; } ?></a></h1>	
 							<?php } ?>
 				</div>
 					
@@ -126,7 +122,7 @@ make_get_header() ?>
 			
 			<?php
 
-				$types = array('posts' => 'post', 'projects' => 'projects', 'videos' => 'videos', /*'articles' => 'magazine',*/ 'reviews' => 'review' );
+				$types = array( 'posts' => 'post', 'craft' => 'craft', 'projects' => 'projects', 'videos' => 'videos', /*'articles' => 'magazine',*/ 'reviews' => 'review' );
 
 				foreach ( $types as $type ) { ?>
 

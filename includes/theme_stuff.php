@@ -1043,5 +1043,7 @@ function make_post_type_better_name( $name ) {
 		return 'articles';
 	} elseif ( $name == 'review' ) {
 		return 'reviews';
-	}
+	} elseif ( $name == 'craft' ) {
+		return 'craft';
+	} 
 }

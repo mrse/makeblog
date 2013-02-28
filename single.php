@@ -35,7 +35,10 @@ make_get_header() ?>
 							} ?>
 						</li>
 						<li>
-							Category: <?php the_category(', '); ?>
+							Posted <span class="blue"><?php the_date(); ?></span>
+						</li>
+						<li>
+							Category <?php the_category(', '); ?>
 						</li>
 					</ul>
 		

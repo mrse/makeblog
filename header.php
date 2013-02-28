@@ -72,25 +72,31 @@
 			</div>
 		</div>
 
-		<div class="fix">
+		<div class="topad">
 
-			<div id="header">
+			<div id='div-gpt-ad-664089004995786621-1'>
+				<script type='text/javascript'>
+					googletag.display('div-gpt-ad-664089004995786621-1');
+				</script>
+			</div>
+			
+		</div>
+		
+		<header>
+
+			<div class="container">
 				
-				<div class="container">
+				<div class="logo">
+				
+					<h1><a href="http://makezine.com/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/new-logo.png" alt="MAKE" title="MAKE"></a></h1>
 					
-					<div class="row">
-
-						<div class="span topad">
-							
-							<!-- Beginning Sync AdSlot 1 for Ad unit header ### size: [[728,90]]  -->
-							<div id='div-gpt-ad-664089004995786621-1'>
-								<script type='text/javascript'>
-									googletag.display('div-gpt-ad-664089004995786621-1');
-								</script>
-							</div>
-							<!-- End AdSlot 1 -->
-							
-						</div>
+				</div>
+				
+				<div><?php wp_nav_menu(); ?></div>
+				
+			</div>
+			
+		</header>
 
 						<div class="biggins">
 
