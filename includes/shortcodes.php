@@ -76,7 +76,7 @@ function make_marketron_newsletter( $atts, $content = null ) {
 	return '
 		<form class="form-stacked" action="http://makermedia.createsend.com/t/r/s/jrsydu/" method="post" id="subForm">
 			<fieldset>
-				<legend>Sign up for the Make: Newsletter</legend>
+				<legend>Sign up for the Maker Pro Newsletter</legend>
 				<div class="clearfix">
 					<label for="name">Name:</label>
 					<div class="input">
@@ -97,7 +97,7 @@ function make_marketron_newsletter( $atts, $content = null ) {
 			</div>
 		</form>';
 }
-add_shortcode( 'marketron', 'make_marketron_newsletter' );
+add_shortcode( 'makerpro', 'make_marketron_newsletter' );
 
 function youtube_playlist( $atts, $content = null ) {
 	extract( shortcode_atts( array(
