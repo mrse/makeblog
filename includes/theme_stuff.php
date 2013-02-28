@@ -504,12 +504,12 @@ function make_get_category_name_strip_slash() {
  */
 // TODO: Bring in reviews.
 function make_add_custom_types( $query ) {
-	if ( ! is_admin() && $query->is_main_query() && ( $query->is_category() || $query->is_tag() || $query->is_author() || $query-> is_tax() ) && empty( $query->query_vars['suppress_filters'] ) ) {
+	if ( ! is_admin() && $query->is_main_query() && ( $query->is_tag() || $query->is_author() || $query-> is_tax() ) && empty( $query->query_vars['suppress_filters'] ) ) {
 		$query->set( 'post_type', array( 'post', 'craft', 'projects', 'video' ));
 		return $query;
 	}
 }
-// add_filter( 'pre_get_posts', 'make_add_custom_types' );
+add_filter( 'pre_get_posts', 'make_add_custom_types' );
 
 add_filter( 'byline_auto_filter_author', '__return_true' );
 

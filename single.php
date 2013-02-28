@@ -9,7 +9,7 @@
  */
 make_get_header() ?>
 		
-	<div class="category-top">
+	<div class="single">
 	
 		<div class="container">
 
@@ -36,9 +36,6 @@ make_get_header() ?>
 						</li>
 						<li>
 							Category: <?php the_category(', '); ?>
-						</li>
-						<li>
-							<?php the_tags( 'Tags: ', ', '); ?>
 						</li>
 					</ul>
 		

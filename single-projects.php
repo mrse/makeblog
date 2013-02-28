@@ -28,6 +28,14 @@ get_header(); ?>
 							
 								<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 								
+								<?php 
+										$ex = get_the_excerpt();
+										$con = get_the_content();
+										if ($ex != $con) {
+											the_excerpt();
+										}
+									?>
+								
 							</div>
 							
 							<ul class="projects-meta">

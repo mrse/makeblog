@@ -8,8 +8,15 @@
  * 
  */
 
-get_header('craft'); ?>
-		
+$type = get_query_var('post_type');
+
+if ($type == 'projects') {
+	include_once 'archive-projects-category.php';
+	return;
+}
+
+make_get_header(); ?>
+
 		<div class="clear"></div>
 
 		<div class="sand">
@@ -52,16 +59,16 @@ get_header('craft'); ?>
 							 		</div>
 
 							 		<div class="cat-blurb">
-
+							 				
 							 			<?php 
-							 				$parent = $_REQUEST['parent']; 
+							 				$parent = (!empty($_REQUEST['parent']) ? $_REQUEST['parent'] : null);
 							 				if (isset($parent)) { ?>
 							 					<h3><a class="red" href="<?php the_permalink(); ?>?parent=<?php echo esc_html($parent); ?>"><?php the_title(); ?></a></h3>
 							 				<?php } else { ?>
 							 					<h3><a class="red" href="<?php the_permalink(); ?>?parent=<?php echo make_get_category_name_strip_slash(); ?>"><?php the_title(); ?></a></h3>
 							 				<?php } ?>
 
-										<p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
+										<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
 
 										<p class="meta">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>
 										<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>

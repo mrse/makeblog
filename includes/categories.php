@@ -48,9 +48,10 @@ function make_category_page_fill() {
  * @uses get_categories()
  * @uses get_category_link()
  * @param string|array $slug Slugs of category.
+ * @param bool Whether or not to add projects as a query string.
  * @return string List items containing link to child categories. If none exist, nothing.
  */
-function make_sub_category_list( $slug ) {
+function make_sub_category_list( $slug, $projects = false ) {
 	$home = wpcom_vip_get_term_by('name', $slug, 'category');
 	$args = array(
 		'orderby' => 'name',
@@ -59,7 +60,11 @@ function make_sub_category_list( $slug ) {
 	$categories = get_categories( $args );
 	$output = null;
 	foreach($categories as $category) { 
-		$output .= '<li><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </li>';
+		if ($projects == true ) { 
+			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=projects" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </li>';
+		} else {
+			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </li>';
+		}
 	}
 	return $output;
 }
@@ -74,8 +79,8 @@ function make_sub_category_list( $slug ) {
  * @param string $taxonomy to query against. Defaults to category.
  * @return string Link to slug archive page.
  */
-function make_get_category_url( $slug, $taxonomy='category' ) {
-	$category = wpcom_vip_get_term_by('name', $slug, $taxonomy );
+function make_get_category_url( $slug, $taxonomy='category', $field = 'name' ) {
+	$category = wpcom_vip_get_term_by( $field, $slug, $taxonomy );
 	if ( ! $category ) {
 		return false;
 	} else {

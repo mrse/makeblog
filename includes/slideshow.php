@@ -226,10 +226,10 @@ function make_get_arg_title( $args, $title ) {
 function make_carousel( $args ) {
 
 	$defaults = array(
-		'category__in'		=> 0, 				// Likely the queried object ID
+		'cat'				=> 0, 				// Likely the queried object ID
 		'posts_per_page'	=> 8,				// Need to have this divisable by 8, ideally.
 		'no_found_rows'		=> true,			// Helps to keep the query fast.
-		'title'				=> 'New Posts!',	//To be change, immediately.
+		'title'				=> 'New Posts!',	// To be changed, immediately.
 		'post_type'			=> 'post',
 		'all'				=> null,
 		'limit'				=> 4,
@@ -262,7 +262,22 @@ function make_carousel( $args ) {
 		</h3>
 	</div>
 	<div class="span2">
-		<p class="pull-right"><a href="#" class="all"><?php echo make_get_arg_title( $args, false ); ?></p>
+		<?php
+			if ($args['all'] != null ) {
+				if ( isset( $args['difficulty'] ) ) {
+					$output = '<p class="pull-right"><a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '" class="all">View All</p>';
+					echo $output;
+				} elseif ( isset($args['category__in']) && ($args['all']) == true ) {
+					$output = '<p class="pull-right"><a href="';
+					$output .= get_term_link( intval($args['category__in']), 'category', 'id');
+					$output .= '?post_type=projects" class="all">';
+					$output .= 'View All';
+					$output .= '</p>';	
+					echo $output;
+				}
+			}
+		?>
+		
 	</div>
 </div>
 
@@ -292,7 +307,12 @@ function make_carousel( $args ) {
 							} elseif ( $args['projects_landing'] == false ) {
 									echo '<span class="' . $type .'-icon"></span>';
 							}
-							get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'meta_key' => array( 'Image' ), 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail' ) );
+							$image = get_post_custom_values('Image', $post->ID);
+							if ( !empty( $image[0] ) )  {
+								echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+							} else {
+								get_the_image( array( 'post_id' => $post->ID, 'image_scan' => true, 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail' ) );
+							} 
 						} elseif ($args['limit'] == 2) {
 							echo '<div class="span4 ' . $type . '">';
 							if ($type == 'video') {
@@ -302,8 +322,14 @@ function make_carousel( $args ) {
 							} else {
 								echo '<span class="' . $type .'-icon"></span>';
 							}
+							$image = get_post_custom_values('Image', $post->ID);
+							if ( !empty( $image[0] ) )  {
+								echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 298, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+							} else {
+								get_the_image( array( 'post_id' => $post->ID, 'image_scan' => true, 'size' => 'category-thumb', 'image_class' => 'hide-thumbnail' ) );
 
-							get_the_image( array( 'post_id' => $post->ID,'image_scan' => true, 'meta_key' => array( 'Image' ), 'size' => 'category-thumb', 'image_class' => 'hide-thumbnail' ) );
+							}  
+							
 						}
 						
 						if ( $args['projects_landing'] == true ) {

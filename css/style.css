@@ -5935,7 +5935,7 @@ Time for a Dr. Pepper?
 .commentlist {
   list-style: none;
   margin: 0 auto;
-  width: 496px !important;
+  width: 520px !important;
   margin-left: 100px;
 }
 .content .commentlist,
@@ -7917,7 +7917,7 @@ textarea.radio-narrow,
   line-height: 0px;
 }
 .new-footer {
-  margin-top: 20px;
+  padding-top: 20px;
   width: 100%;
   text-align: center;
   border-top: 3px solid #A0B0B8;
@@ -8348,7 +8348,7 @@ textarea.radio-narrow,
   color: #ed1c24;
 }
 .projects-masthead h1 {
-  font-size: 60px;
+  font-size: 60px !important;
   line-height: 60px;
   letter-spacing: -2px;
 }
@@ -8729,6 +8729,46 @@ a {
 }
 .carousel-caption {
   position: relative;
+}
+.single {
+  background: url('../img/dots.png');
+  background-color: url('../img/dots.png');
+  background-repeat: repeat-x;
+  padding-top: 20px;
+  font-family: "proxima-nova", sans-serif;
+  border-bottom: 4px solid #DBDBDB;
+  border-bottom: 0px;
+}
+.single h1 {
+  font-size: 38px;
+}
+.single h3 {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #ed1c24;
+}
+.single p {
+  font-size: 18px;
+  line-height: 140%;
+}
+.single p a {
+  color: #005d8f;
+  border-bottom: 1px solid #005d8f;
+}
+.single p a:hover {
+  text-decoration: none;
+}
+.single .subs {
+  margin: 0px 0px 20px;
+}
+.single .subs li {
+  font-size: 18px;
+  display: inline;
+  margin-right: 20px;
+}
+.single .subs li a {
+  color: #005d8f;
+  font-weight: bold;
 }
 .widget {
   margin: 20px 0;

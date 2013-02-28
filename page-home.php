@@ -266,7 +266,7 @@ Template Name: Home Page
 											echo '<a href="'.get_permalink().'">';
 											the_post_thumbnail('small-home-feature-boxes');
 											echo '<h4>' . wp_trim_words((get_the_title()),8) . '</h4>';
-											echo '<p>'.wp_trim_words(strip_shortcodes(get_the_content('...')), 12).'</p>';
+											echo '<p>'.wp_trim_words( strip_shortcodes( get_the_excerpt() ), 12 ).'</p>';
 											echo '</a>';
 										endwhile;
 
@@ -333,7 +333,7 @@ Template Name: Home Page
 											echo '<a href="'.get_permalink().'">';
 											the_post_thumbnail('small-home-feature-boxes');
 											echo '<h4>' . wp_trim_words((get_the_title()),8) . '</h4>';
-											echo '<p>'.wp_trim_words(strip_shortcodes(get_the_content('...')), 12).'</p>';
+											echo '<p>'.wp_trim_words( strip_shortcodes( get_the_excerpt() ), 12 ).'</p>';
 											echo '</a>';
 										endwhile;
 
@@ -368,7 +368,7 @@ Template Name: Home Page
 											echo '<a href="'.get_permalink().'">';
 											the_post_thumbnail('small-home-feature-boxes');
 											echo '<h4>' . wp_trim_words((get_the_title()),8) . '</h4>';
-											echo '<p>'.wp_trim_words(strip_shortcodes(get_the_content('...')), 12).'</p>';
+											echo '<p>'.wp_trim_words( strip_shortcodes( get_the_excerpt() ), 12 ).'</p>';
 											echo '</a>';
 										endwhile;
 
@@ -405,7 +405,7 @@ Template Name: Home Page
 											echo '<a href="'.get_permalink().'">';
 											the_post_thumbnail('small-home-feature-boxes');
 											echo '<h4>' . wp_trim_words((get_the_title()),8) . '</h4>';
-											echo '<p>'.wp_trim_words(strip_shortcodes(get_the_content('...')), 12).'</p>';
+											echo '<p>'.wp_trim_words( strip_shortcodes( get_the_excerpt() ), 12 ).'</p>';
 											echo '</a>';
 										endwhile;
 
@@ -433,7 +433,7 @@ Template Name: Home Page
 											echo '<a href="'.get_permalink().'">';
 											the_post_thumbnail('small-home-feature-boxes');
 											echo '<h4>' . wp_trim_words((get_the_title()),8) . '</h4>';
-											echo '<p>'.wp_trim_words(strip_shortcodes(get_the_content('...')), 12).'</p>';
+											echo '<p>'.wp_trim_words( strip_shortcodes( get_the_excerpt() ), 12 ).'</p>';
 											echo '</a>';
 										endwhile;
 

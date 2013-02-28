@@ -20,17 +20,23 @@ make_get_header() ?>
 				<div class="span8">
 				
 					<?php
-						$url = 'http://en.gravatar.com/'. $author->data->user_login .'.json';
-						$contents = wpcom_vip_file_get_contents( $url );
 
-						if ( empty( $contents ) || is_wp_error( $contents ) )
-							continue;
-						
-						$json_output = json_decode($contents);
-						if ( !$json_output || !isset( $json_output->entry ) )
-							continue;
+						function maker_profile( $author ) {
 
-						$author = $json_output->entry[0];
+							$url = 'http://en.gravatar.com/'. $author->data->user_login .'.json';
+							$contents = wpcom_vip_file_get_contents( $url );
+							
+							$json_output = json_decode($contents);
+
+							if (is_array($json_output)) {
+								return;
+							} else {
+								continue;
+							}
+
+							$author = $json_output->entry[0];
+						}
+
 					?>
 					
 					<h1 class="jumbo"><a class="noborder" href="http://blog.makezine.com/author/<?php if ( isset($author )) { echo $author->requestHash; } ?>"><?php if (isset($author->displayName)) {echo $author->displayName; } ?></a></h1>

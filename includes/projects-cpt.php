@@ -445,7 +445,7 @@ function make_projects_steps_nav( $steps ) {
 			foreach ($stepped as $idx =>$step) {
 				echo '<div class="span2 tabs" data-toggle="tab" id="step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
 				$image = $step->images;
-				if ($image) {
+				if (!empty( $image ) ) {
 					if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
 						echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0]->text ), 142, 82 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
 					} else {
@@ -453,7 +453,7 @@ function make_projects_steps_nav( $steps ) {
 					}
 					//echo '<img src="' . esc_url( make_projects_to_s3( $image[0]->text ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="js-target ' . esc_attr( $image[0]->imageid ) . ' ' . esc_attr( $image[0]->orderby ) .'" />';
 				} else {
-					echo '<img src="http://placekitten.com/140/80" alt="Kittens" class="' . esc_attr( $step->number ) . '" />';
+					echo '<img src="' . get_stylesheet_directory_uri() . '/img/placeholder.jpg" alt="No Image" class="' . esc_attr( $step->number ) . '" />';
 				}
 				echo '<h4 class="red">Step #' . esc_html( $step->number ) . '</h4>';
 				echo '</div>'; 
@@ -472,9 +472,9 @@ function make_projects_steps_nav( $steps ) {
 function make_projects_to_s3( $haystack ) {
 	$needle = 'guide-images.makeprojects.org/igi/';
 	$new_needle = 'make-images.s3.amazonaws.com/';
-	if ($haystack == 'http://cacher.dozuki.net/static/images/make/guide/NoImageMP_96x72.gif' ) {
+	if ( $haystack == 'http://cacher.dozuki.net/static/images/make/guide/NoImageMP_96x72.gif' or empty( $haystack ) ) {
 		return $haystack;
-	}
+	}	
 	$str = str_replace( $needle, $new_needle, $haystack);
 	return $str . '.jpg';
 }
@@ -496,7 +496,7 @@ function make_projects_steps( $steps ) {
 			
 			echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
 			$images = $step->images;
-			if ( isset( $images[0]->text ) ) {
+			if ( !empty( $images[0]->text ) ) {
 				if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
 					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $images[0]->text ), 620, 465 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
 				} else {
