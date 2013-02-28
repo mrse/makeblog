@@ -20,50 +20,45 @@ make_get_header() ?>
 				<div class="span8">
 				
 					<?php
-
-						function maker_profile( $author ) {
-
-							$url = 'http://en.gravatar.com/'. $author->data->user_login .'.json';
-							$contents = wpcom_vip_file_get_contents( $url );
-							
+						$url = 'http://en.gravatar.com/'. $author->data->user_login .'.json';
+						$contents = wpcom_vip_file_get_contents( $url );
+						if ($contents != false) {
 							$json_output = json_decode($contents);
-
-							if (is_array($json_output)) {
-								return;
-							} else {
+							if ( !$json_output || !isset( $json_output->entry ) )
 								continue;
-							}
 
 							$author = $json_output->entry[0];
-						}
 
 					?>
 					
-					<h1 class="jumbo"><a class="noborder" href="http://blog.makezine.com/author/<?php if ( isset($author )) { echo $author->requestHash; } ?>"><?php if (isset($author->displayName)) {echo $author->displayName; } ?></a></h1>
-				
-					<?php if (isset( $author->aboutMe )) { echo markdown( $author->aboutMe ); } ?>
-					<?php if (isset( $author->accounts )) { $accounts = $author->accounts;  ?>
-						<ul class="social">
-							<?php foreach ($accounts as $account) {
-								echo '<li class="' . esc_attr( $account->shortname ) . '"><a class="noborder" href="' . esc_url( $account->url ) . '"><span class="sp">&nbsp;</span></a></li>';
-							}
-							?>
-							<?php 
-								if ( isset( $author->emails[0]->value ) ) {
-									echo '<a href="' . esc_attr( antispambot( "mailto:".$author->emails[0]->value ) ) . '">'.antispambot( $author->emails[0]->value ).'</a>';
-								} 
-							?>
-						</ul>
-					<?php } ?>
-					<?php if (isset($author->urls)) { $urls = $author->urls;  ?>
-						<ul class="links">
-							<?php
-								foreach ($urls as $url) {
-									echo '<li><a class="noborder" href="' . esc_url( $url->value ) . '">'. esc_html( $url->title ) . '</a></li>';
-								}
-							?>
-						</ul>
-					<?php } ?>
+							<h1 class="jumbo"><a class="noborder" href="http://blog.makezine.com/author/<?php if ( isset($author )) { echo $author->requestHash; } ?>"><?php if (isset($author->displayName)) {echo $author->displayName; } ?></a></h1>
+						
+							<?php if (isset( $author->aboutMe )) { echo markdown( $author->aboutMe ); } ?>
+							<?php if (isset( $author->accounts )) { $accounts = $author->accounts;  ?>
+								<ul class="social">
+									<?php foreach ($accounts as $account) {
+										echo '<li class="' . esc_attr( $account->shortname ) . '"><a class="noborder" href="' . esc_url( $account->url ) . '"><span class="sp">&nbsp;</span></a></li>';
+									}
+									?>
+									<?php 
+										if ( isset( $author->emails[0]->value ) ) {
+											echo '<a href="' . esc_attr( antispambot( "mailto:".$author->emails[0]->value ) ) . '">'.antispambot( $author->emails[0]->value ).'</a>';
+										} 
+									?>
+								</ul>
+							<?php } ?>
+							<?php if (isset($author->urls)) { $urls = $author->urls;  ?>
+								<ul class="links">
+									<?php
+										foreach ($urls as $url) {
+											echo '<li><a class="noborder" href="' . esc_url( $url->value ) . '">'. esc_html( $url->title ) . '</a></li>';
+										}
+									?>
+								</ul>
+							<?php }
+							} else { ?>
+								<h1 class="jumbo"><a class="noborder" href="http://blog.makezine.com/author/<?php if ( isset($author )) { echo $author->user_nicename; } ?>"><?php if (isset($author->user_login)) {echo $author->user_login; } ?></a></h1>
+							<?php } ?>
 				</div>
 					
 				</div>
