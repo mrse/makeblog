@@ -29,12 +29,11 @@ get_header(); ?>
 								<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 								
 								<?php 
-										$ex = get_the_excerpt();
-										$con = get_the_content();
-										if ($ex != $con) {
-											the_excerpt();
-										}
-									?>
+									$desc = get_post_custom_values('Description');
+									if (isset($desc[0])) {
+										echo '<p>' . $desc[0] . '</p>';	
+									}
+								?>
 								
 							</div>
 							
@@ -117,7 +116,7 @@ get_header(); ?>
 											
 										</ul>
 										<div class="tab-content">
-											<div class="tab-pane active" id="1">
+											<div class="tab-paner active" id="1">
 												<?php
 													if ($parts) {
 														echo '<ul class="lists">';
@@ -128,7 +127,7 @@ get_header(); ?>
 													}
 												?>
 											</div>
-											<div class="tab-pane" id="2">
+											<div class="tab-paner" id="2">
 												<?php
 													
 													if ($tools) {
@@ -158,117 +157,43 @@ get_header(); ?>
 							
 								<div class="span12">
 								
-									<div class="top-steps">
+									<div class="row">
 										
-										<div class="row">
+										<div class="span12">
 											
-											<div class="span11">
-												
-												<h3>Step by Step</h3>
-												
-											</div>
-											
-											<div class="span1">
-												
-												<span class="all"><a href="#target" class="scroll">View All</a></span>
-												
-											</div>
+											<h2 class="new-heading">Steps</h2>
 											
 										</div>
-									
-										<?php make_projects_steps_nav( $steps ); ?>
-
+										
 									</div>
 									
 									<div class="bottom-steps" id="target">
 									
 										<div class="row">
 										
-											<div class="span8">
-											
-												<div class="tab-content">
-										
-													<?php make_projects_steps( $steps ); ?>
-												
-												</div>
-												
-											</div>
-											
 											<div class="span4">
 											
-												<!-- Beginning Sync AdSlot 3 for Ad unit sidebar ### size: [[300,250]]  -->
+												<?php make_projects_steps_list( $steps ); ?>
+												
+												
+												<!-- Beginning Sync AdSlot 3 for Ad unit header ### size: [[300,250]]  -->
 												<div id='div-gpt-ad-664089004995786621-3'>
 													<script type='text/javascript'>
 														googletag.display('div-gpt-ad-664089004995786621-3');
 													</script>
 												</div>
-												<!-- End AdSlot 2 -->
-												
-												<div class="related-projects">
-												
-														<h3>Related Projects</h3>
-												
-														<?php
-															$cat = get_the_category($post->ID);
-															$objid = $cat[0]->term_id;
-															$args = array(
-																'post_type'				=> 'projects', 
-																'cat'			 		=> $objid,
-																'posts_per_page' 		=> 8,
-																'order' 				=> 'asc',
-																);
-															$the_query = new WP_Query( $args );
-															
-															while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-															
-														<div <?php post_class( 'related' ); ?>>
-															
-															<div class="image">
-																
-																<?php
-																	if (has_post_thumbnail()) {
-																		echo '<div class="post-image">';
-																			the_post_thumbnail('review-large');
-																		echo '</div>';
-																	} elseif ( $image = get_post_custom_values('Image') ) {
-																		$imageurl = $image[0] . '.medium';
-																		echo '<img src="' . esc_url( $imageurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
-																	} else {
-																		$args = array(
-																			'image_scan' => true, 
-																			'size' => 'related-thumb', 
-																			'image_class' => 'hide-thumbnail', 
-																			);
-																		get_the_image( $args );
-																	}
-																?>
-																
-															</div>
-															
-															<div class="blurb">
-																<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-																<p>By: <?php 
-																		if( function_exists( 'coauthors_posts_links' ) ) {	
-																			coauthors_posts_links(); 
-																		} else { 
-																			the_author_posts_link(); 
-																		} 
-																	?>
-																</p>
-															</div>
-															
-														</div>
-														
-														<div class="clearfix"></div>
-															
-														<?php endwhile; wp_reset_postdata(); ?>
-
-													<div class="clearfix"></div>
-													
-													<div class="grad"></div>
-													
-												</div>
+												<!-- End AdSlot 3 -->
 											
+											</div>
+										
+											<div class="span8">
+											
+												<div class="tab-content" id="steppers">
+										
+													<?php make_projects_steps( $steps ); ?>
+												
+												</div>
+												
 											</div>
 											
 										</div>
@@ -281,8 +206,7 @@ get_header(); ?>
 													$conclusion = get_post_custom_values('Conclusion');
 													if ( !empty( $conclusion[0] ) ) {
 														echo '<div class="conclusion">';
-														echo '<hr>';
-														echo '<h4 class="heading conclusion">Conclusion</h4>';
+														echo '<h2 class="new-heading">Conclusion</h2>';
 														echo wp_kses_post( $conclusion[0] ) ;
 														echo '</div>';
 													}
@@ -291,18 +215,85 @@ get_header(); ?>
 												
 											</div>
 											
+											<div class="span4">
+												
+												<div class="related-projects">
+												
+													<h3>Related Projects</h3>
+											
+													<?php
+														$cat = get_the_category($post->ID);
+														$objid = $cat[0]->term_id;
+														$args = array(
+															'post_type'				=> 'projects', 
+															'cat'			 		=> $objid,
+															'posts_per_page' 		=> 8,
+															'order' 				=> 'asc',
+															);
+														$the_query = new WP_Query( $args );
+														
+														while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+														
+													<div <?php post_class( 'related' ); ?>>
+														
+														<div class="image">
+															
+															<?php
+																if (has_post_thumbnail()) {
+																	echo '<div class="post-image">';
+																		the_post_thumbnail('review-large');
+																	echo '</div>';
+																} elseif ( $image = get_post_custom_values('Image') ) {
+																	$imageurl = $image[0] . '.medium';
+																	echo '<img src="' . esc_url( $imageurl ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
+																} else {
+																	$args = array(
+																		'image_scan' => true, 
+																		'size' => 'related-thumb', 
+																		'image_class' => 'hide-thumbnail', 
+																		);
+																	get_the_image( $args );
+																}
+															?>
+															
+														</div>
+														
+														<div class="blurb">
+															<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+															<p>By: <?php 
+																	if( function_exists( 'coauthors_posts_links' ) ) {	
+																		coauthors_posts_links(); 
+																	} else { 
+																		the_author_posts_link(); 
+																	} 
+																?>
+															</p>
+														</div>
+														
+													</div>
+													
+													<div class="clearfix"></div>
+													
+													<?php endwhile; wp_reset_postdata(); ?>
+												
+												</div>
+ 												
+											</div>
+											
 										</div>
 										
 									</div>
 								
-								</article>
+								</div>
 							
 							</div>
+								
+						</article>
 							
-							<?php } ?>
+					<?php } ?>
 
-							<?php endwhile; ?>
-							
+					<?php endwhile; ?>
+					
 							<div class="row">
 								
 								<div class="span8">

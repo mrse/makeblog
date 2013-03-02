@@ -464,6 +464,29 @@ function make_projects_steps_nav( $steps ) {
 }
 
 /**
+ * Spit out the steps as a list.
+ * 
+ */
+function make_projects_steps_list( $steps ) {
+	$steps = unserialize($steps[0]);
+	if ( !empty( $steps ) ) {
+		echo '<div class="well" style="padding:8px 0px;"><ul class="nav nav-list" id="tabs">';
+		echo '<li class="nav-header">Project Steps</li>';
+		foreach ($steps as $idx =>$step) {
+			echo '<li class="tabs" data-toggle="tab" id="step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
+			if (!empty($step->title)) {
+				echo '<a>' . esc_html( $step->number ) . ". " . esc_html( $step->title ) . '</a>';
+			} else {
+				echo '<a>' . esc_html( $step->number ) . ". " . esc_html( wp_trim_words( $step->lines[0]->text,  5, '...' ) ) . '</a>';
+			}
+			
+			echo '</li>'; 
+		}
+		echo '</ul></div>';
+	}
+}
+
+/**
  * Convert the old Dozuki URLs into our S3 bucket URLs. Also append .jpg onto the end.
  * Old: http://guide-images.makeprojects.org/igi/wFhmkdeyH2foOpyl
  * New: http://make-images.s3.amazonaws.com/wFhmkdeyH2foOpyl.jpg
@@ -493,8 +516,12 @@ function make_projects_steps( $steps ) {
 			} else {
 				echo '<div class="hide" id="js-step-' . esc_attr( $step->number ) . '">';
 			}
+			if( $idx < $count - 1 ) {
+				echo '<span class="row"><span class="span7"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4></span><span class="span1"><a class="btn pull-right btn-danger nexter" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next</a></span></span>';
+			} else {
+				echo '<span class="row"><span class="span8"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4></span></span>';
+			}
 			
-			echo '<h4 class="clear"><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4>';
 			$images = $step->images;
 			if ( !empty( $images[0]->text ) ) {
 				if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
@@ -504,26 +531,22 @@ function make_projects_steps( $steps ) {
 				}
 			}
 			
-			echo '<div class="row smalls" style="display:block">';
+			echo '<span class="row smalls" style="display:block">';
 			$number = count($images);
 			if ($number > 1) {
 				foreach ($images as $image) {
-					echo '<div class="span2">';
+					echo '<span class="span2">';
 					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image->text ), 140, 80 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
-					echo '</div>';
+					echo '</span>';
 				}
 			}
-			echo '</div><!--.row-->';
+			echo '</span><!--.row-->';
 			$lines = $step->lines;
 			echo '<ol>';
 			foreach ($lines as $line) {
 				echo '<li>' . wp_kses_post( $line->text ) . '</li>';
 			}
 			echo '</ol>';
-
-			if( $idx < $count - 1 ) {
-				echo '<h3 class="nexter"><a class="btn btn-large btn-danger nexter" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next:</a> <span>Step #' . intval( $step->number + 1 ) . '</span></h3><div class="clearfix"></div>';
-			}
 			echo '</div><!--.right_column-->';
 		}
 	}

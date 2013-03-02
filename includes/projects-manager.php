@@ -123,7 +123,7 @@
 								?>
 							</div><!--[END #image-list]-->
 							<div id="list" class="alignleft">
-								<input type="text" name="step-title-<?php echo $step_num; ?>" id="project-header" class="widefat" placeholder="Add A Title" value="<?php echo (!empty($step->title)) ? sanitize_text_field($step->title) : ''; ?>">
+								<input type="text" name="step-title-<?php echo $step_num; ?>" id="project-header" class="widefat" placeholder="Add A Title" value="<?php echo (!empty($step->title)) ? wp_filter_post_kses($step->title) : ''; ?>">
 								<ul id="sub-lists" class="sortable reset-list">
 									<?php if(isset($step->lines)) : ?>
 										<?php
@@ -131,7 +131,7 @@
 											$i = 1; // Used to set the right ID's and to check against
 											foreach($step->lines as $key) : ?>
 											<li>
-												<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $i; ?>" rows="5"><?php echo sanitize_text_field($key->text); ?></textarea>
+												<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $i; ?>" rows="5"><?php echo wp_filter_post_kses($key->text); ?></textarea>
 												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
 												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
 												<?php if($i === $total) : // Display our add button only on the last step on load. ?>
@@ -181,12 +181,12 @@
 			$step = array();
 
 			// Add our title to the object
-			$step['title'] = sanitize_text_field($_POST['step-title-' . $i]);
+			$step['title'] = wp_filter_post_kses($_POST['step-title-' . $i]);
 
 			// Create the lines array and contain each line as an object in the Steps object
 			$int = 0;
 		 	foreach($_POST['step-lines-' . $i] as $line) {
-				$step['lines'][] = (object) array('text' => sanitize_text_field($line), 'text_raw' => sanitize_text_field($line), 'bullet' => 'black', 'level' => 0);
+				$step['lines'][] = (object) array('text' => wp_filter_post_kses($line), 'text_raw' => wp_filter_post_kses($line), 'bullet' => 'black', 'level' => 0);
 				//echo $_POST['step-lines-' . $i][$int] . '<br />';
 				$int++;
 		 	}

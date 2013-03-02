@@ -111,12 +111,16 @@ function make_category_list() {
  * @uses get_category_link() Returns the correct url for a given Category ID.
  * @uses wpcom_vip_get_term_by() Cached version of get_category_by_slug
  */
-function make_category_li() {
+function make_category_li( $project = false ) {
 	global $catslugs;
 	$output = null;
 	foreach ($catslugs as $slug) {
 		$category = wpcom_vip_get_term_by('name', $slug, 'category');
-		$output .= '<li><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </li>';
+		if ( $project == true ) {
+			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=projects" title="' . sprintf( __( "View all posts in %s" ), esc_attr( $category->name ) ) . '" ' . '>' . esc_html( $category->name ) .'</a></li>';
+		} else {
+			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), esc_attr( $category->name ) ) . '" ' . '>' . esc_html( $category->name ) .'</a></li>';
+		}
 	}
 	return $output;
 }

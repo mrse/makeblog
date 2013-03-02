@@ -214,9 +214,17 @@ function make_get_arg_title( $args, $title ) {
 	if ( $args['all'] == false ) {
 		$output = null;
 	} elseif (isset($args['tag'])) {
-		$output .= '<a href="' . esc_url( get_term_link( $args['tag'], 'post_tag' ) ) . '">' . $view . '</a>';
+		$output .= '<a href="' . esc_url( get_term_link( $args['tag'], 'post_tag' ) );
+		if( $args['post_type'] == 'projects' ){
+			$output .= '?post_type=projects';
+		} 
+		$output .= '">' . $view . '</a>';
 	} elseif ( isset( $args['category__in'] ) && ($args['category__in'] > 0 )  ) {
-		$output .= '<a href="' . esc_url( get_term_link( intval( $args['category__in'] ), 'category' ) ) . '">' . $view . '</a>';
+		$output .= '<a href="' . esc_url( get_term_link( intval( $args['category__in'] ), 'category' ) );
+		if( $args['post_type'] == 'projects' ){
+			$output .= '?post_type=projects';
+		} 
+		$output .= '">' . $view . '</a>';
 	} else {
 		$output .= $view;
 	}
@@ -235,9 +243,8 @@ function make_carousel( $args ) {
 		'limit'				=> 4,
 		'projects_landing'	=> false,
 		'post_type'			=> array( 
-								'post', 
-								'magazine', 
-								'video', 
+								'post',
+								'video',
 								'projects',
 								'review' )
 	);
@@ -334,7 +341,7 @@ function make_carousel( $args ) {
 						
 						if ( $args['projects_landing'] == true ) {
 							echo '<div class="project-meta"><ul>';
-							$time = get_post_custom_values('TimeRequired');
+							$time = get_post_custom_values('TimeRequired', $post->ID);
 							if ($time[0]) {
 								echo '<li>Time: <span>' . esc_html( $time[0] ) . '</span></li>';
 							}

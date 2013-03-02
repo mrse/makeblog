@@ -1,8 +1,10 @@
 jQuery(document).ready(function(){
-	jQuery('#tabs div').click(function() {
+	jQuery('#tabs li').click(function() {
+		jQuery(this).addClass('current');
 		var id = jQuery(this).attr('id');
-		jQuery('.tab-content div#js-' + id).slideDown();
-		jQuery('.tab-content div:not(#js-' + id + ')').slideUp();
+		jQuery('#steppers div#js-' + id).slideDown().removeClass('hide').addClass('active');
+		jQuery('#steppers div:not(#js-' + id + ')').slideUp();
+		jQuery('#tabs li:not(#' + id + ')').removeClass('current');
 		googletag.pubads().refresh();
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, like a boss.');
@@ -15,10 +17,13 @@ jQuery(document).ready(function(){
 		});
 		return true;
 	});
-	jQuery('.nexter a').click(function() {
+	jQuery('.nexter').click(function() {
 		var id = jQuery(this).attr('id');
-		jQuery('.tab-content div#js-' + id).slideDown();
-		jQuery('.tab-content div:not(#js-' + id + ')').slideUp();
+		jQuery('#steppers div#js-' + id).slideDown().removeClass('hide');
+		jQuery('#steppers div:not(#js-' + id + ')').slideUp();
+		jQuery(this).addClass('current');
+		jQuery('#tabs li#' + id).addClass('current');
+		jQuery('#tabs li:not(#' + id + ')').removeClass('current');
 		googletag.pubads().refresh();
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, like a boss.');

@@ -8,6 +8,7 @@
  * 
  */
 $cat = get_queried_object();
+//print_r($cat);
 get_header(); ?>
 		
 	<div class="projects-home">
@@ -25,13 +26,15 @@ get_header(); ?>
 							<div class="row">
 								
 								<div class="span8">
-									
+
+									<?php $parent = intval( $cat->category_parent );?>
+									<h3 class="red"><a class="red" href="<?php bloginfo('url'); ?>/projects/">Make: Projects</a><?php if ($parent != 0 ) { ?> &raquo; <a class="red" href="<?php echo get_category_link( $parent ); ?>?post_type=projects"><?php echo get_cat_name( $parent ); ?></a> <?php } ?></h3>
 									<h1><?php echo $cat->name; ?></h1>
-									<h3>Make: Projects</h3>
+									
 							
 									<?php 
 										echo Markdown($cat->category_description);
-										
+
 										if ( make_pregnancy_check( $cat->cat_ID ) ) {
 											echo '<h3>Find ' . $cat->name . ' Projects by Category:</h3>';
 											echo '<ul class="subs">' . make_sub_category_list( $cat->slug, true ) . '</ul>';

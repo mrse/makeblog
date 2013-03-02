@@ -376,10 +376,6 @@ function js_kit_comments( $comment, $args, $depth ) {
 	endswitch;
 }
 
-register_nav_menu( 'primary', 'Primary Navigation' );
-register_nav_menu( 'primary', 'Top Bar' );
-
-
 //Custom Field Hacks
 
 $field_data = array (

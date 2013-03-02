@@ -2,6 +2,7 @@
 
 .projects-masthead {
 	font-family: @font;
+	padding-top:20px;
 	h3 {
 		font-size:22px;
 		text-transform: uppercase;
@@ -244,7 +245,8 @@ a {
 	.art {
 		width:940px;
 		padding-top:20px;
-		margin:-20px auto 20px;
+		padding-bottom:20px;
+		margin:-20px auto 0px;
 		background:url('../img/project_placeholder.png') no-repeat;
 		background-position: 587px -89px;
 	}
@@ -257,7 +259,7 @@ a {
 		color:@link-color;
 	}
 	h3 {
-		font-size: 16px;
+		font-size: 20px;
 		text-transform: uppercase;
 		color:@red;
 	}
@@ -282,5 +284,45 @@ a {
 				font-weight:bold;
 			}
 		}
+	}
+}
+
+.projects-top h3 a {
+	color:@red;
+}
+
+
+ul#tabs {
+	margin:0px;
+	cursor: pointer;
+	.nav-header {
+		color:@red;
+		font-weight: bold;
+		font-size: 24px;
+	}
+	.current > a,
+	.current > a:hover {
+		color: @white;
+		text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+		background-color: @linkColor;
+		}
+}
+
+.new-heading {
+	border-bottom:1px solid @border-color;
+	margin-bottom:20px;
+	color:@light-grey;
+	font-size:65px;
+	text-transform: uppercase;
+	font-weight: 400;
+	margin-top:20px;
+}
+
+.tab-content {
+	span {
+		display: block;
+	}
+	.black {
+		display: inline;
 	}
 }

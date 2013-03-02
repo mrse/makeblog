@@ -92,83 +92,49 @@
 					
 				</div>
 				
-				<div><?php wp_nav_menu(); ?></div>
+				<?php 
+				$top_menu = array(
+					'theme_location'  => 'main_bar',
+					'container'       => 'nav',
+					'container_class' => '',
+					'container_id'    => '',
+					'menu_class'      => 'menu',
+					'menu_id'         => '',
+					'echo'            => true,
+					'fallback_cb'     => 'wp_page_menu',
+					'before'          => '',
+					'after'           => '',
+					'link_before'     => '',
+					'link_after'      => '',
+					'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+					'depth'           => 0,
+					'walker'          => ''
+				);
 				
+				$cat_menu = array(
+					'theme_location'  => 'category_bar',
+					'container'       => 'nav',
+					'container_class' => '',
+					'container_id'    => '',
+					'menu_class'      => 'menu',
+					'menu_id'         => '',
+					'echo'            => true,
+					'fallback_cb'     => 'wp_page_menu',
+					'before'          => '',
+					'after'           => '',
+					'link_before'     => '',
+					'link_after'      => '',
+					'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+					'depth'           => 0,
+					'walker'          => ''
+				); ?>
+
+				
+				<?php wp_nav_menu($top_menu); ?>
+				<?php wp_nav_menu($cat_menu); ?>
+
+				<?php echo make_house_ad(); ?>
+								
 			</div>
 			
 		</header>
-
-						<div class="biggins">
-
-							<?php
-								
-								$ad_query = new WP_Query( array(
-									'post_type' => 'house-ads',
-									'posts_per_page' => 20,
-									'fields' => 'ids',
-									'no_found_rows' => true,
-								) );
-								$ad_ids = $ad_query->get_posts();
-
-								if ( ! empty( $ad_ids ) ) :
-									shuffle( $ad_ids );
-									$ad_id = array_shift( $ad_ids );
-									$post = get_post( $ad_id );
-
-									if ( $post ) : setup_postdata( $post );
-										echo '<a href="'. esc_url( get_post_meta( $post->ID, 'LinkURL', true ) ).'">';
-										the_post_thumbnail('house-ad');
-										echo '</a>';
-									endif;
-								endif;
-
-								// Reset Post Data
-								wp_reset_postdata();
-
-							?>
-
-						</div>
-
-					</div>
-
-					<div class="clear"></div>
-
-					<h1><a href="http://makezine.com/"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/make.png" alt="MAKE" title="MAKE" /></a></h1>
-
-					<ul class="navi">
-						
-						<li class="active"><a href="http://blog.makezine.com">Blog</a></li>
-						<li><a href="http://makezine.com/magazine">Magazine</a></li>
-						<li><a href="http://makeprojects.com">Projects</a></li>
-						<li><a href="http://kits.makezine.com">Reviews</a></li>
-						<li><a href="http://makershed.com">Shop</a></li>
-
-					</ul>
-
-				</div>
-
-			</div>
-
-			<div class="header-bottom">
-
-				<div class="container">
-
-					<div class="topics">
-
-						<h5 class="blue">Hot Topics:</h5>
-
-						<?php echo wp_kses_post( stripslashes( make_get_cap_option( 'hot_topics' ) ) ); ?>
-
-					</div>
-
-					<div class="pull-right">
-
-						<a href="http://blog.makezine.com/topics"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/see_all_topics.png" alt="See All Topics" class="see pull-right" /></a><!--  -->
-
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>

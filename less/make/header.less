@@ -6,12 +6,61 @@
 header {
 	.container {
 		border-top:1px solid @border-color;
+		padding:10px 0 0;
 	}
+	border-bottom:7px solid #005C8D;
 }
 
 .logo {
-	width: 316px;
-	height:127px;
-	margin-left:-45px;
+	width: 251px;
+	height:103px;
 	.pull-left;
+}
+
+nav {
+	display: block;
+}
+.menu-main-menu-container, .menu-category-bar-container {
+	width:520px;
+	float:left;
+	font-family: "bebas-neue", sans-serif;
+	a {
+		color:#203655;
+	}
+	#menu-main-menu {
+		font-size:38px;
+		margin-left:0px;
+		margin-bottom:20px;
+		margin-top:25px;
+		li {
+			line-height: 38px;
+			.pull-left;
+			list-style-type: none;
+			margin-right:10px;
+		}
+		li.current-menu-item{
+			border-top:3px solid #005C8D;
+			margin-top:-3px;
+		}
+	}
+	#menu-category-bar {
+		border-top:1px solid @border-color;
+		padding-top:8px;
+		margin-left:0px;
+		font-size:22px;
+		li {
+			.pull-left;
+			margin-right:9px;
+			list-style-type: none;
+			a {
+				color:#6b6e74;
+			}
+		}
+		li.current-menu-item {
+			a {
+				color:#203655;
+			}
+		}
+	}
+	 
 }

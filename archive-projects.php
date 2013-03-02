@@ -28,12 +28,12 @@ get_header(); ?>
 									
 									<h1>Make: Projects</h1>
 							
-									<p>Learn how to make just about anything. Build something from our growing cookbook of projects, and discover new ideas like <a href="#">Raspberry Pi</a> and other platforms. Get inspired. Start making something today.</p>
+									<p>Learn how to make just about anything. Build something from our growing cookbook of projects, and discover new ideas like <a href="http://blog.makezine.com/category/electronics/raspberry-pi/?post_type=projects">Raspberry Pi</a> and other platforms. Get inspired. Start making something today.</p>
 									
 									<h3>Find Projects by Category:</h3>
 									<ul class="subs">
 										
-										<?php echo make_category_li(); ?>		
+										<?php echo make_category_li('true'); ?>		
 										
 									</ul>
 									

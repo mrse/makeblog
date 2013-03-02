@@ -207,7 +207,7 @@ Template Name: Home Page
 									<a href="<?php the_permalink(); ?>">
 										<span class="arrows">&raquo;</span> <?php the_title(); ?>
 										<span class="blurb">
-											<?php echo wp_trim_words(strip_shortcodes( get_the_excerpt() ), 16, '...') ; ?>
+											<?php echo wp_trim_words(strip_shortcodes( get_the_excerpt() ), 20, '...') ; ?>
 										</span>
 									</a>
 								</h4>

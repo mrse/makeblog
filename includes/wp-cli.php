@@ -24,7 +24,7 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 
 		$args = array(
 			'post_type' => array( 'projects' ),
-			'post_status' => 'publish',
+			'post_status' => 'any',
 			'posts_per_page' => 3000,
 		);
 
@@ -33,10 +33,41 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 		if( $query->have_posts() ) :
 			while ( $query->have_posts() ) : $query->the_post();
 				$link = get_post_custom_values( 'Link' );
-				file_put_contents( $file, get_the_ID() . ", " . get_permalink() . ", " . esc_url( $link[0] ) . ", " . substr( esc_url( $link[0] ), -6, -2) . "\n", FILE_APPEND );
+				file_put_contents( $file, get_the_ID() . ", " . get_permalink() . ", " . esc_url( $link[0] ) . ", " . substr(esc_url( $link[0] ), -6, -2) . "\n", FILE_APPEND );
 			endwhile;
 		endif;
 
 	}
+
+	/**
+	 * Prints a redirect map for Make: Projects/
+	 *
+	 * @subcommand redirect
+	 * 
+	 */
+	public function make_redirect_map() {
+		// Create a new output file
+		$file = sprintf( '/tmp/%s-make-query-to-csv.csv', date( 'Y-m-d' ) );
+		file_put_contents( $file, "" );
+
+		$args = array(
+			'post_type' => array( 'projects' ),
+			'post_status' => 'any',
+			'posts_per_page' => 3000,
+		);
+
+		$query = new WP_Query($args);
+
+		if( $query->have_posts() ) :
+			while ( $query->have_posts() ) : $query->the_post();
+				$link = get_post_custom_values( 'Link' );
+				$bad = array(":", '/', '+');
+				$good = array('\:', '\/', '\+' );
+				file_put_contents( $file, "rewriterule ^" . str_replace( $bad, $good, substr( esc_url( $link[0] ), 24 ) ) . " \"" .  ( str_replace( $bad, $good, get_permalink() ) ) . "\" [R=301,L] \n", FILE_APPEND );
+			endwhile;
+		endif;
+
+	}
+
 
 }
