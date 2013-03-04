@@ -1,4 +1,4 @@
-.topad {
+.new-topad {
 	width:728px;
 	margin:60px auto 20px;
 }
@@ -21,9 +21,9 @@ nav {
 	display: block;
 }
 .menu-main-menu-container, .menu-category-bar-container {
-	width:520px;
-	float:left;
 	font-family: "bebas-neue", sans-serif;
+	display: block;
+	width: 100%;
 	a {
 		color:#203655;
 	}
@@ -63,4 +63,33 @@ nav {
 		}
 	}
 	 
+}
+
+.current-nav {
+	border-top:3px solid #005C8D;
+	margin-top:-3px;		
+}
+
+.single-post,
+.category {
+	.menu-item-271399 {
+		.current-nav;
+	}
+}
+
+.single-projects,
+.post-type-archive-projects {
+	.menu-item-271399 {
+		border:0px;
+		margin:0px;
+	}
+	.menu-item-271401 {
+		.current-nav;	
+	}
+}
+
+@media (min-width: 1200px) {
+
+
+
 }

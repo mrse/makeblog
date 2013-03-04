@@ -72,7 +72,7 @@
 			</div>
 		</div>
 
-		<div class="topad">
+		<div class="new-topad">
 
 			<div id='div-gpt-ad-664089004995786621-1'>
 				<script type='text/javascript'>
@@ -85,55 +85,66 @@
 		<header>
 
 			<div class="container">
+			
+				<div class="row">
+					
+					<div class="span2">
 				
-				<div class="logo">
+						<h1 class="pull-right"><a href="http://makezine.com/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/new-logo.png" alt="MAKE" title="MAKE"></a></h1>
+						
+					</div>
 				
-					<h1><a href="http://makezine.com/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/new-logo.png" alt="MAKE" title="MAKE"></a></h1>
+					<?php 
+					$top_menu = array(
+						'theme_location'  => 'main_bar',
+						'container'       => 'nav',
+						'container_class' => '',
+						'container_id'    => '',
+						'menu_class'      => 'menu',
+						'menu_id'         => '',
+						'echo'            => true,
+						'fallback_cb'     => 'wp_page_menu',
+						'before'          => '',
+						'after'           => '',
+						'link_before'     => '',
+						'link_after'      => '',
+						'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+						'depth'           => 0,
+						'walker'          => ''
+					);
+					
+					$cat_menu = array(
+						'theme_location'  => 'category_bar',
+						'container'       => 'nav',
+						'container_class' => '',
+						'container_id'    => '',
+						'menu_class'      => 'menu',
+						'menu_id'         => '',
+						'echo'            => true,
+						'fallback_cb'     => 'wp_page_menu',
+						'before'          => '',
+						'after'           => '',
+						'link_before'     => '',
+						'link_after'      => '',
+						'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+						'depth'           => 0,
+						'walker'          => ''
+					); ?>
+
+					<div class="span8">
+						
+						<?php wp_nav_menu($top_menu); ?>
+						<?php wp_nav_menu($cat_menu); ?>
+						
+					</div>
+					
+					<div class="span2">
+						
+						<?php echo make_house_ad(); ?>
+						
+					</div>
 					
 				</div>
-				
-				<?php 
-				$top_menu = array(
-					'theme_location'  => 'main_bar',
-					'container'       => 'nav',
-					'container_class' => '',
-					'container_id'    => '',
-					'menu_class'      => 'menu',
-					'menu_id'         => '',
-					'echo'            => true,
-					'fallback_cb'     => 'wp_page_menu',
-					'before'          => '',
-					'after'           => '',
-					'link_before'     => '',
-					'link_after'      => '',
-					'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-					'depth'           => 0,
-					'walker'          => ''
-				);
-				
-				$cat_menu = array(
-					'theme_location'  => 'category_bar',
-					'container'       => 'nav',
-					'container_class' => '',
-					'container_id'    => '',
-					'menu_class'      => 'menu',
-					'menu_id'         => '',
-					'echo'            => true,
-					'fallback_cb'     => 'wp_page_menu',
-					'before'          => '',
-					'after'           => '',
-					'link_before'     => '',
-					'link_after'      => '',
-					'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-					'depth'           => 0,
-					'walker'          => ''
-				); ?>
-
-				
-				<?php wp_nav_menu($top_menu); ?>
-				<?php wp_nav_menu($cat_menu); ?>
-
-				<?php echo make_house_ad(); ?>
 								
 			</div>
 			

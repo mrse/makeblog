@@ -63,7 +63,14 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 				$link = get_post_custom_values( 'Link' );
 				$bad = array(":", '/', '+');
 				$good = array('\:', '\/', '\+' );
-				file_put_contents( $file, "rewriterule ^" . str_replace( $bad, $good, substr( esc_url( $link[0] ), 24 ) ) . " \"" .  ( str_replace( $bad, $good, get_permalink() ) ) . "\" [R=301,L] \n", FILE_APPEND );
+				$link = get_post_custom_values( 'Link' );
+				if (!empty($link[0])) {
+					if ( get_post_status ( get_the_ID() ) == 'publish' ) {
+						file_put_contents( $file, "rewriterule ^" . str_replace( $bad, $good, substr( esc_url( $link[0] ), 24 ) ) . " \"" .  ( str_replace( $bad, $good, get_permalink() ) ) . "\" [R=301,L] \n", FILE_APPEND );
+					} else {
+						file_put_contents( $file, "rewriterule ^" . str_replace( $bad, $good, substr( esc_url( $link[0] ), 24 ) ) . " \"http\:\/\/blog.makezine.com\/projects\/\" [R=301,L] \n", FILE_APPEND );
+					}
+				}
 			endwhile;
 		endif;
 

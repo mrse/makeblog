@@ -530,17 +530,16 @@ function make_projects_steps( $steps ) {
 					echo '<img src="' . esc_url( make_projects_to_s3( $images[0]->text ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
 				}
 			}
-			
-			echo '<span class="row smalls" style="display:block">';
 			$number = count($images);
 			if ($number > 1) {
+				echo '<span class="row smalls" style="display:block">';
 				foreach ($images as $image) {
 					echo '<span class="span2">';
 					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image->text ), 140, 80 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
 					echo '</span>';
 				}
+				echo '</span><!--.row-->';
 			}
-			echo '</span><!--.row-->';
 			$lines = $step->lines;
 			echo '<ol>';
 			foreach ($lines as $line) {
