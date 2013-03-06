@@ -51,8 +51,8 @@ function make_category_page_fill() {
  * @param bool Whether or not to add projects as a query string.
  * @return string List items containing link to child categories. If none exist, nothing.
  */
-function make_sub_category_list( $slug, $projects = false ) {
-	$home = wpcom_vip_get_term_by('name', $slug, 'category');
+function make_sub_category_list( $id, $projects = false ) {
+	$home = wpcom_vip_get_term_by('id', $id, 'category');
 	$args = array(
 		'orderby' => 'name',
 		'child_of' => $home->term_id
@@ -100,7 +100,7 @@ function make_category_list() {
 		echo '<div class="cat" id="' . $slug . '"><div class="cat-home">';
 		echo '<h2><a href="' . make_get_category_url( $slug ) .'">' . $slug . '</a></h2>';
 		echo '<ul class="drop-down">';
-		echo make_sub_category_list( $slug );
+		echo make_sub_category_list( wpcom_vip_get_category_by_slug( $slug ) );
 		echo '</ul></div></div><!-- ' . $slug . ' -->';
 	}
 }

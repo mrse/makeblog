@@ -27,10 +27,13 @@ get_header(); ?>
 								<div class="span8">
 									
 									<h1>Make: Projects</h1>
-							
-									<p>Learn how to make just about anything. Build something from our growing cookbook of projects, and discover new ideas like <a href="http://blog.makezine.com/category/electronics/raspberry-pi/?post_type=projects">Raspberry Pi</a> and other platforms. Get inspired. Start making something today.</p>
+									
+									<p>Explore our growing cookbook of DIY projects for the workshop, <a href="http://blog.makezine.com/category/home/food-beverage/?post_type=projects">kitchen</a>, garage, and backyard. Learn new skills, find <a href="http://blog.makezine.com/category/home/kids-family/?post_type=projects">family fun</a>, build a <a href="http://blog.makezine.com/category/electronics/robotics/?post_type=projects">robot</a> or a <a href="http://blog.makezine.com/category/home/fun-games/?post_type=projects&amp;tag=rockets">rocket</a>. <a href="http://blog.makezine.com/category/electronics/?post_type=projects&amp;difficulty=easy">Get started in electronics</a> and use new platforms like <a href="http://blog.makezine.com/category/electronics/raspberry-pi/?post_type=projects">Raspberry Pi</a> and <a href="http://blog.makezine.com/category/electronics/arduino/?post_type=projects">Arduino</a> to power your inventions. Get inspired and start making something today.</p>
+
+									<p class="muted" style="font-size:15px;font-style:italic;">Welcome to the new Make: Projects! User accounts are temporarily disabled. If you contributed on our old platform, you can still view your projects here, and we're working on an easy way to edit them in the future. If you'd like access to update a project, email us at <a href="mailto:projects@makezine.com">projects@makezine.com</a>.</p>
 									
 									<h3>Find Projects by Category:</h3>
+									
 									<ul class="subs">
 										
 										<?php echo make_category_li('true'); ?>		

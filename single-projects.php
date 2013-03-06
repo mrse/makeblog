@@ -198,19 +198,21 @@ get_header(); ?>
 											
 										</div>
 										
+										
+										<?php 
+											$conclusion = get_post_custom_values('Conclusion');
+											if ( !empty( $conclusion[0] ) ) {
+										?>
+										
 										<div class="row">
 											
 											<div class="span8">
 												
-												<?php 
-													$conclusion = get_post_custom_values('Conclusion');
-													if ( !empty( $conclusion[0] ) ) {
-														echo '<div class="conclusion">';
-														echo '<h2 class="new-heading">Conclusion</h2>';
-														echo wp_kses_post( $conclusion[0] ) ;
-														echo '</div>';
-													}
-													
+												<?php
+													echo '<div class="conclusion">';
+													echo '<h2 class="new-heading">Conclusion</h2>';
+													echo wp_kses_post( $conclusion[0] ) ;
+													echo '</div>';
 												?>
 												
 											</div>
@@ -281,6 +283,8 @@ get_header(); ?>
 											</div>
 											
 										</div>
+										
+										<?php } ?>
 										
 									</div>
 								
@@ -392,7 +396,7 @@ get_header(); ?>
 								</div>
 								
 								<?php } else {
-									get_sidebar();
+									get_sidebar('projects');
 								} ?>
 								
 							</div>

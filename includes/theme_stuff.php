@@ -27,7 +27,7 @@ function make_action_after_setup_theme() {
 	add_image_size( 'shed-thumb', 90, 999, false); 					// Used in Maker Shed homepage widget
 	add_image_size( 'ftms-thumb', 300, 999, false); 				// Used in the From the Maker Shed widget on homepage
 	add_image_size( 'left-rail-home-thumb', 269, 120, true );		// Small blog posts on left rail
-	add_image_size( 'house-ad', 134, 103, true );					// Top right corner of all pages
+	add_image_size( 'house-ad', 279, 170, true );					// Top right corner of all pages
 	add_image_size( 'small-home-feature-boxes', 285, 144, true );	// Feature boxes on home page.
 	add_image_size( 'new-thumb', 140, 140, true ); 					// Used on Super Pages
 	add_image_size( 'side-thumb', 280, 95, true );					// Used on Super Pages
@@ -58,13 +58,6 @@ function make_action_after_setup_theme() {
 	//Infinite Scroll!
 	//add_theme_support( 'infinite-scroll', 'content' );
 	add_theme_support( 'automatic-feed-links' );
-
-	register_nav_menus( array(
-		'main_bar'		=> 'Primary Navigation',
-		'category_bar' 	=> 'Categories',
-		'top_bar'		=> 'Top Bar'
-		) 
-	);
 
 	if ( array('volume', 'project' ) == get_post_type() ) {
 		remove_action('the_content', 'contextly_linker_widget');
@@ -517,6 +510,7 @@ function make_add_custom_types( $query ) {
 	}
 }
 add_filter( 'pre_get_posts', 'make_add_custom_types' );
+
 
 add_filter( 'byline_auto_filter_author', '__return_true' );
 

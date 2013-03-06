@@ -8,7 +8,8 @@
  * 
  */
 
-$type = get_query_var('post_type');
+$type = get_query_var( 'post_type' );
+$tag = get_query_var( 'tag' );
 
 if ($type == 'projects') {
 	include_once 'archive-projects-category.php';
@@ -30,13 +31,8 @@ make_get_header(); ?>
 						<div class="content">
 
 							<div class="category-title">
-
-								<?php 
-
-									print apply_filters( 'taxonomy-images-queried-term-image', '', array( 'after' => '</div>', 'before' => '<div id="taxonomy-image">', 'image_size' => 'full') );
-								?>
-
-								<p class="uppercase">Topic:</p>
+								
+								<p class="uppercase">Topic: <?php if ($tag) { echo esc_html( $tag ); } ?></p>
 
 								<h1 class="cat-title jumbo"><?php single_cat_title('', true); ?></h1>
 
@@ -49,24 +45,30 @@ make_get_header(); ?>
 							 	<article <?php post_class(); ?>>
 
 							 		<div class="cat-thumb">
-
-							 			<?php get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb' ) ); ?>
+							 		
+								 		<?php 
+											if ( $image = get_post_custom_values('Image') ) {
+												echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 200, 200 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
+											} else {
+												get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb' ) );
+											}
+										?>
 
 							 		</div>
 
 							 		<div class="cat-blurb">
 
-							 			<?php 
-							 				$parent = (!empty($_REQUEST['parent']) ? $_REQUEST['parent'] : null);
-							 				if (isset($parent)) { ?>
-							 					<h3><a class="red" href="<?php the_permalink(); ?>?parent=<?php echo esc_html($parent); ?>"><?php the_title(); ?></a></h3>
-							 				<?php } else { ?>
-							 					<h3><a class="red" href="<?php the_permalink(); ?>?parent=<?php echo make_get_category_name_strip_slash(); ?>"><?php the_title(); ?></a></h3>
-							 				<?php } ?>
+										<h3><a class="red" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
-										<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
+										<p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
 
-										<p class="meta">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>
+										<p>Posted by 
+											<?php if(function_exists('coauthors_posts_links')) {
+												coauthors_posts_links();
+											} else { 
+												the_author_posts_link();
+											} ?>
+											<?php $type = get_post_type( $post->ID ); if ($type != 'projects') { echo ' | <a href="' . get_permalink() . '">' . get_the_time('l F jS, Y g:i A'); } ?></a></p>
 										<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
 
 									</div>

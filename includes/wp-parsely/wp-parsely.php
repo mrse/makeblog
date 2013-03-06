@@ -225,9 +225,9 @@ class Parsely {
             $parselyPage["link"]        = $currentURL;
         } elseif (is_category()) {
             $category = get_the_category();
-            $category = $category[0];
+            //$category = $category[0];
             $parselyPage["type"]        = "sectionpage";
-            $parselyPage["title"]       = $this->getCleanParselyPageValue($category->name);
+            //$parselyPage["title"]       = $this->getCleanParselyPageValue($category->name);
             $parselyPage["link"]        = $currentURL;
         } elseif (is_date()) {
             $parselyPage["type"]        = "sectionpage";

@@ -47,7 +47,7 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 	 */
 	public function make_redirect_map() {
 		// Create a new output file
-		$file = sprintf( '/tmp/%s-make-query-to-csv.csv', date( 'Y-m-d' ) );
+		$file = sprintf( '/tmp/%s-htaccess.txt', date( 'Y-m-d' ) );
 		file_put_contents( $file, "" );
 
 		$args = array(
@@ -76,5 +76,16 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 
 	}
 
-
+	/**
+	 * Inserts comments from Make: Projects
+	 *
+	 * @subcommand comments
+	 * 
+	 */
+	public function make_projects_comment_import() {
+		include_once 'comments.php';
+		foreach ($comments as $comment) {
+			wp_insert_comment( $comment );
+		}
+	}
 }

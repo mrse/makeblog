@@ -8,7 +8,6 @@
  * 
  */
 $cat = get_queried_object();
-//print_r($cat);
 get_header(); ?>
 		
 	<div class="projects-home">
@@ -37,7 +36,7 @@ get_header(); ?>
 
 										if ( make_pregnancy_check( $cat->cat_ID ) ) {
 											echo '<h3>Find ' . $cat->name . ' Projects by Category:</h3>';
-											echo '<ul class="subs">' . make_sub_category_list( $cat->slug, true ) . '</ul>';
+											echo '<ul class="subs">' . make_sub_category_list( $cat->term_id, true ) . '</ul>';
 										}
 									?>
 									
@@ -109,7 +108,7 @@ get_header(); ?>
 							'post_type'			=> 'projects',
 							'title'				=> 'New '. $cat->name .' Projects',
 							'projects_landing'	=> true,
-							'all'				=> true,
+							'all'				=> false,
 							'category__in'		=> $cat->cat_ID
 						);
 						

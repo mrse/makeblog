@@ -19,35 +19,28 @@ get_header(); ?>
 
 					<div class="span8">
 
-						<?php if (!is_home()) { ?>
-
-							<ul class="breadcrumb">
-			
-								<?php if(class_exists('bcn_breadcrumb_trail')) {
-									$breadcrumb_trail = new bcn_breadcrumb_trail;
-									$breadcrumb_trail->opt['home_title'] = "Home";
-									$breadcrumb_trail->opt['current_item_prefix'] = '<li class="current">';
-									$breadcrumb_trail->opt['current_item_suffix'] = '</li>';
-									$breadcrumb_trail->opt['separator'] = '<span class="divider">&nbsp;/&nbsp;</span>';
-									$breadcrumb_trail->opt['home_prefix'] = '<li>';
-									$breadcrumb_trail->opt['home_suffix'] = '</li>';
-									$breadcrumb_trail->opt['max_title_length'] = 70;
-									$breadcrumb_trail->fill();
-									$breadcrumb_trail->display();
-								} ?>
-										
-							</ul>
-
-						<?php } ?>
+						<ul class="breadcrumb">
+		
+							<?php if(class_exists('bcn_breadcrumb_trail')) {
+								$breadcrumb_trail = new bcn_breadcrumb_trail;
+								$breadcrumb_trail->opt['home_title'] = "Home";
+								$breadcrumb_trail->opt['current_item_prefix'] = '<li class="current">';
+								$breadcrumb_trail->opt['current_item_suffix'] = '</li>';
+								$breadcrumb_trail->opt['separator'] = '<span class="divider">&nbsp;/&nbsp;</span>';
+								$breadcrumb_trail->opt['home_prefix'] = '<li>';
+								$breadcrumb_trail->opt['home_suffix'] = '</li>';
+								$breadcrumb_trail->opt['max_title_length'] = 70;
+								$breadcrumb_trail->fill();
+								$breadcrumb_trail->display();
+							} ?>
+									
+						</ul>
 
 						<div class="content">
-
 
 							 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			
 								<article <?php post_class(); ?>>
-
-									<!--<p class="categories"><?php the_category(', '); ?></p>-->
 
 									<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
@@ -69,7 +62,12 @@ get_header(); ?>
 											
 											<div class="span-well well">
 											
-												<p>Posted by <?php the_author_posts_link(); ?> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>
+												<p>Posted by <?php 
+													if( function_exists( 'coauthors_posts_links' ) ) {	
+														coauthors_posts_links(); 
+													} else { 
+														the_author_posts_link(); 
+													} ?> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>
 												<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
 
 											</div>

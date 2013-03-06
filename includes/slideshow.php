@@ -389,9 +389,11 @@ function make_carousel( $args ) {
 		?>
 	
 	</div>
-
+	
+<?php if ( $the_query->post_count > 4 ) { ?>
 	<a class="left cat-carousel-control" href="#<?php echo $id ?>" data-slide="prev"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/larr.png" alt="Left"></a>
 	<a class="right cat-carousel-control" href="#<?php echo $id ?>" data-slide="next"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/rarr.png" alt="Left"></a>
+<?php } ?>
 
 </div>
 	
