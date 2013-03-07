@@ -313,14 +313,14 @@ Template Name: Craft Home Page
 
 							<div class="span4">
 
-								<h3 class="red"><a href="http://blog.makezine.com/category/craft/food-and-beverage/" class="red">Food &amp; Beverage</a></h3>
+								<h3 class="red"><a href="http://blog.makezine.com/category/home/food-beverage/" class="red">Food &amp; Beverage</a></h3>
 
 								<div class="grid-box boxy">
 
 									<?php
 										
 										$args = array(
-											'cat' => 172917,
+											'cat' => 116504,
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
 											'post_type' => 'craft'

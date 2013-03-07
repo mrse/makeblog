@@ -19,28 +19,35 @@ get_header(); ?>
 
 					<div class="span8">
 
-						<ul class="breadcrumb">
-		
-							<?php if(class_exists('bcn_breadcrumb_trail')) {
-								$breadcrumb_trail = new bcn_breadcrumb_trail;
-								$breadcrumb_trail->opt['home_title'] = "Home";
-								$breadcrumb_trail->opt['current_item_prefix'] = '<li class="current">';
-								$breadcrumb_trail->opt['current_item_suffix'] = '</li>';
-								$breadcrumb_trail->opt['separator'] = '<span class="divider">&nbsp;/&nbsp;</span>';
-								$breadcrumb_trail->opt['home_prefix'] = '<li>';
-								$breadcrumb_trail->opt['home_suffix'] = '</li>';
-								$breadcrumb_trail->opt['max_title_length'] = 70;
-								$breadcrumb_trail->fill();
-								$breadcrumb_trail->display();
-							} ?>
-									
-						</ul>
+						<?php if (!is_home()) { ?>
+
+							<ul class="breadcrumb">
+			
+								<?php if(class_exists('bcn_breadcrumb_trail')) {
+									$breadcrumb_trail = new bcn_breadcrumb_trail;
+									$breadcrumb_trail->opt['home_title'] = "Home";
+									$breadcrumb_trail->opt['current_item_prefix'] = '<li class="current">';
+									$breadcrumb_trail->opt['current_item_suffix'] = '</li>';
+									$breadcrumb_trail->opt['separator'] = '<span class="divider">&nbsp;/&nbsp;</span>';
+									$breadcrumb_trail->opt['home_prefix'] = '<li>';
+									$breadcrumb_trail->opt['home_suffix'] = '</li>';
+									$breadcrumb_trail->opt['max_title_length'] = 70;
+									$breadcrumb_trail->fill();
+									$breadcrumb_trail->display();
+								} ?>
+										
+							</ul>
+
+						<?php } ?>
 
 						<div class="content">
+
 
 							 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			
 								<article <?php post_class(); ?>>
+
+									<!--<p class="categories"><?php the_category(', '); ?></p>-->
 
 									<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 

@@ -265,14 +265,37 @@ function make_carousel( $args ) {
 <div class="row-fluid">
 	<div class="span10">
 		<h3 class="heading">
-			<?php echo make_get_arg_title( $args, true ); ?>
+			<?php
+				if ( isset( $args['difficulty'] ) ) {
+					$output = '<a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '?cat=' . intval($args['category__in']) . '">';
+					$output .= $args['difficulty'];
+					$output .= '</a>';
+					echo $output;
+				} elseif ( isset( $args['category__in'] ) ) {
+					$output = '<a href="';
+					$output .= get_term_link( intval($args['category__in']), 'category', 'id');
+					$output .= '?post_type=projects">';
+					$output .= $args['title'];
+					$output .= '</a>';
+					echo $output;
+				} elseif ( isset($args['tag'] ) ) {
+					$output = '<a href="';
+					$output .= get_term_link( $args['tag'], 'post_tag');
+					$output .= '?post_type=projects">';
+					$output .= $args['title'];
+					$output .= '</a>';
+					echo $output;
+				} else {
+					echo $args['title'];
+				}
+			?>
 		</h3>
 	</div>
 	<div class="span2">
 		<?php
 			if ($args['all'] != null ) {
 				if ( isset( $args['difficulty'] ) ) {
-					$output = '<p class="pull-right"><a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '" class="all">View All</p>';
+					$output = '<p class="pull-right"><a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '?cat=' . intval($args['category__in']) . '" class="all">View All</p>';
 					echo $output;
 				} elseif ( isset($args['category__in']) && ($args['all']) == true ) {
 					$output = '<p class="pull-right"><a href="';
@@ -280,6 +303,11 @@ function make_carousel( $args ) {
 					$output .= '?post_type=projects" class="all">';
 					$output .= 'View All';
 					$output .= '</p>';	
+					echo $output;
+				} elseif ( isset($args['tag'] ) ) {
+					$output = '<a href="';
+					$output .= get_term_link( $args['tag'], 'post_tag');
+					$output .= '?post_type=projects" class="all">View All</a>';
 					echo $output;
 				}
 			}

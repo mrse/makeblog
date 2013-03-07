@@ -8589,6 +8589,7 @@ a {
   font-size: 20px;
   text-transform: uppercase;
   color: #ed1c24;
+  margin-top: 10px;
 }
 .projects-home p {
   font-size: 18px;
@@ -8841,4 +8842,310 @@ ul#tabs .current > a:hover {
 }
 .tab-content h3 {
   margin-bottom: 10px;
+}
+.page-id-286853,
+.page-id-271492 {
+  /* 2012 Stuff */
+
+}
+.page-id-286853 #content,
+.page-id-271492 #content {
+  background-image: url('http://cdn.makezine.com/make/facebook/weekend_project/cork1.jpg');
+  margin-top: 20px;
+  padding: 10px 0;
+}
+.page-id-286853 h1#pageTitle,
+.page-id-271492 h1#pageTitle {
+  display: none;
+}
+.page-id-286853 .renderedText,
+.page-id-271492 .renderedText {
+  margin: -10px 10px 10px;
+  padding: 10px;
+  background-color: #fff;
+}
+.page-id-286853 #wikiArticle,
+.page-id-271492 #wikiArticle {
+  padding-bottom: 10px;
+}
+.page-id-286853 h2#Section_Check_out_the_past_weekend_projects,
+.page-id-271492 h2#Section_Check_out_the_past_weekend_projects {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-top: 0px;
+  border-bottom: 2px solid #42b5e5;
+  margin: 0px 10px -10px;
+  padding: 10px;
+  background-color: #fff;
+}
+.page-id-286853 h2#other,
+.page-id-271492 h2#other {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-top: 0px;
+  border-bottom: 2px solid #42b5e5;
+  margin: 0px -10px;
+  padding: 20px 10px 10px;
+  background-color: #fff;
+}
+.page-id-286853 .guideList,
+.page-id-271492 .guideList {
+  background-color: #fff;
+  padding: 10px;
+  margin: 10px;
+}
+.page-id-286853 h4,
+.page-id-271492 h4 {
+  color: #004883;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.page-id-286853 ul,
+.page-id-271492 ul {
+  margin: 0;
+}
+.page-id-286853 h5,
+.page-id-271492 h5,
+.page-id-286853 h5 a,
+.page-id-271492 h5 a {
+  color: #e10100;
+  padding: 0px !important;
+  background-color: transparent !important;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.page-id-286853 form,
+.page-id-271492 form {
+  font-size: 12px;
+}
+.page-id-286853 .blurbMini img,
+.page-id-271492 .blurbMini img {
+  height: 72px !important;
+  width: 96px !important;
+}
+.page-id-286853 .blurbMini,
+.page-id-271492 .blurbMini {
+  border: 1px solid #B8E5FF;
+  padding: 5px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #29ABE2;
+}
+.page-id-286853 .blurbMini,
+.page-id-271492 .blurbMini,
+.page-id-286853 .blurbMiniAvatar,
+.page-id-271492 .blurbMiniAvatar {
+  height: 84px;
+}
+.page-id-286853 .blurbTitle,
+.page-id-271492 .blurbTitle {
+  margin: 0 0 0 111px;
+  word-spacing: -2px;
+  font-size: 13px;
+}
+.page-id-286853 .blurbTitle a,
+.page-id-271492 .blurbTitle a {
+  border: 0px;
+}
+.page-id-286853 .banner,
+.page-id-271492 .banner {
+  text-align: center;
+}
+.page-id-286853 .blurbBlurb,
+.page-id-271492 .blurbBlurb {
+  font-weight: 400;
+  font-size: 11px;
+  margin-left: 110px;
+  margin-top: 3px;
+  margin-bottom: -8px;
+  color: #333;
+}
+.page-id-286853 .column,
+.page-id-271492 .column,
+.page-id-286853 .columnLast,
+.page-id-271492 .columnLast {
+  width: 280px !important;
+  font-size: 12px;
+  float: left;
+  margin-right: 15px;
+}
+.page-id-286853 .columnLast,
+.page-id-271492 .columnLast {
+  margin-right: -15px;
+}
+.page-id-286853 .fb-like-small,
+.page-id-271492 .fb-like-small {
+  margin: 10px 0 0 111px;
+}
+.page-id-286853 #red p a,
+.page-id-271492 #red p a {
+  color: #fff;
+}
+.page-id-286853 #red p a:hover,
+.page-id-271492 #red p a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.page-id-286853 .blurbImage,
+.page-id-271492 .blurbImage {
+  float: left;
+}
+.page-id-286853 .guideList .blurbMini,
+.page-id-271492 .guideList .blurbMini {
+  height: 89px !important;
+  margin: 8px 0;
+}
+.page-id-286853 .guideList .blurbMini .blurbImage,
+.page-id-271492 .guideList .blurbMini .blurbImage {
+  background-size: 56px auto;
+  float: left !important;
+}
+.page-id-286853 .flag,
+.page-id-271492 .flag {
+  display: none;
+}
+.page-id-286853 .fb-like-small,
+.page-id-271492 .fb-like-small {
+  width: 49px !important;
+  overflow: hidden;
+}
+.page-id-286853 .new_red,
+.page-id-271492 .new_red {
+  padding: 17px;
+  border: 3px solid #c61d23;
+  margin: 15px 10px;
+  background-color: #ed1c24;
+  display: block;
+  color: #fff;
+}
+.page-id-286853 .new_red h1,
+.page-id-271492 .new_red h1 {
+  color: #fff;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+.page-id-286853 .new_red h3,
+.page-id-271492 .new_red h3 {
+  font-size: 15px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 15px;
+}
+.page-id-286853 .video,
+.page-id-271492 .video {
+  border: 3px solid #d0d0d0;
+}
+.page-id-286853 .signup,
+.page-id-271492 .signup {
+  padding: 0px 17px 17px;
+  border: 3px solid #C61D23;
+  margin: 15px 10px;
+  background-color: #ED1C24;
+  display: block;
+  color: white;
+}
+.page-id-286853 #subForm,
+.page-id-271492 #subForm {
+  padding-top: 15px;
+}
+.page-id-286853 span.label,
+.page-id-271492 span.label,
+.page-id-286853 span.spacer,
+.page-id-271492 span.spacer,
+.page-id-286853 span.multiple span,
+.page-id-271492 span.multiple span {
+  width: 120px;
+  float: left;
+  margin-bottom: 5px;
+}
+.page-id-286853 input,
+.page-id-271492 input {
+  margin-bottom: 10px;
+}
+.page-id-286853 span.multiple,
+.page-id-271492 span.multiple {
+  float: left;
+}
+.page-id-286853 span.button,
+.page-id-271492 span.button {
+  padding-left: 0px;
+}
+.page-id-286853 .orm button,
+.page-id-271492 .orm button,
+.page-id-286853 .orm .button,
+.page-id-271492 .orm .button {
+  background: -webkit-gradient(linear, 0% 45%, 0% 55%, from(#e10100), to(#cb0100));
+  background: -moz-linear-gradient(0% 45% 270deg, #e10100, #dc0100, #cb0100 55%);
+  background-color: #ff0505;
+  border: 1px solid #ff0505;
+  font-weight: bold;
+  display: inline-block;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  padding: 4px 10px;
+  color: #fff;
+  margin: 0px 4px 8px 0;
+}
+.page-id-286853 .orm button:hover,
+.page-id-271492 .orm button:hover,
+.page-id-286853 .orm .button:hover,
+.page-id-271492 .orm .button:hover,
+.page-id-286853 .orm .button-on:hover,
+.page-id-271492 .orm .button-on:hover {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: .85;
+}
+.page-id-286853 .orm .button-on,
+.page-id-271492 .orm .button-on,
+.page-id-286853 .orm .button-off,
+.page-id-271492 .orm .button-off {
+  font-weight: bold;
+  font-size: 15px;
+  color: black;
+  padding: 12px 0 0 40px;
+  display: block;
+  width: 162px;
+  height: 40px;
+}
+.page-id-286853 .orm .button-off:hover,
+.page-id-271492 .orm .button-off:hover {
+  text-decoration: none;
+  cursor: default;
+}
+.page-id-286853 .orm .button-on span.sub,
+.page-id-271492 .orm .button-on span.sub,
+.page-id-286853 .orm .button-off span.sub,
+.page-id-271492 .orm .button-off span.sub {
+  font-size: 12px;
+  top: -2px;
+  position: relative;
+  font-weight: normal;
+  display: block;
+}
+.page-id-286853 div.clear,
+.page-id-271492 div.clear {
+  clear: both;
+  padding-top: 5px;
+}
+.page-id-286853 .clearer,
+.page-id-271492 .clearer {
+  *zoom: 1;
+}
+.page-id-286853 .clearer:before,
+.page-id-271492 .clearer:before,
+.page-id-286853 .clearer:after,
+.page-id-271492 .clearer:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.page-id-286853 .clearer:after,
+.page-id-271492 .clearer:after {
+  clear: both;
 }

@@ -13,8 +13,21 @@
 						<div class="content">
 
 							<div class="category-title">
+							
+								<?php 
+									if ($wp_query->query_vars['taxonomy'] == 'difficulty') {
+										echo '<h3><a class="red" href="http://blog.makezine.com/projects">Make: Projects</a></h3>';
+									}?>
 
-								<h1 class="cat-title jumbo"><?php echo make_get_better_tag_title(); ?></h1>
+								<h1 class="cat-title jumbo">
+									<?php 
+										//print_r($wp_query);
+										echo make_get_better_tag_title(); 
+										if( isset( $wp_query->query_vars['cat'] ) ) { 
+											echo ' ' . get_cat_name( $wp_query->query_vars['cat'] ) . ' Projects';
+										} 
+									?> 
+								</h1>
 
 								<div class="clear"></div>
 
@@ -26,7 +39,14 @@
 
 							 		<div class="cat-thumb">
 
-							 			<?php get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb', 'meta_key' => array( 'Image' ) ) ); ?>
+								 		<?php 
+								 			$image = get_post_custom_values('Image');
+											if ( !empty( $image[0] ) ) {
+												echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 200, 200 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+											} else {
+												get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb' ) );
+											}
+										?>
 
 							 		</div>
 
@@ -41,7 +61,8 @@
 												coauthors_posts_links();
 											} else { 
 												the_author_posts_link();
-											} ?> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>
+											} ?>
+											<?php $type = get_post_type( $post->ID ); if ($type != 'projects') { echo ' | <a href="' . get_permalink() . '">' . get_the_time('l F jS, Y g:i A'); } ?></a></p>
 										<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
 
 									</div>

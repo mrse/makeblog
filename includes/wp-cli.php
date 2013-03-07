@@ -102,7 +102,7 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 	}
 
 	/**
-	 * Inserts comments from Make: Projects
+	 * Inserts parts from Make: Projects
 	 *
 	 * @subcommand parts
 	 * 
@@ -114,7 +114,7 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 			if ( !$pid ) {
 				WP_CLI::error( "Could not create part..." );
 			} else {
-				WP_CLI::success( "Inserted part: $pid->notes." );
+				WP_CLI::success( 'Inserted part: ' . $part['text'] );
 			}
 		}
 	}

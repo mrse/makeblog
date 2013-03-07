@@ -95,22 +95,23 @@ get_header(); ?>
 									</div>
 								
 									<?php 
-										$parts = get_the_terms( $post->ID, 'parts' );
+										$old_parts = get_the_terms( $post->ID, 'parts' );
+										$parts = get_post_meta( $post->ID , 'parts');
 										$tools = get_the_terms( $post->ID, 'tools' );
-										if ( !empty( $parts ) or !empty( $tools ) ) {
+										if ( !empty( $old_parts ) or !empty( $tools ) ) {
 									?>
 								
 									<div class="parts-tools">
 										
 										<ul class="top">
 											<?php 
-												if ($parts) {
+												if ( $parts || $old_parts ) {
 													echo '<li class="active"><a href="#1" data-toggle="tab">Parts</a></li>';
 												} 
-												if ($parts && $tools) {
+												if ( ( $parts || $old_parts ) && $tools) {
 													echo '<li class="divider"> / </li>';
 												}
-												if ($tools) {
+												if ( $tools ) {
 													echo '<li><a href="#2" data-toggle="tab">Tools</a></li>';
 												}
 											?>
@@ -119,9 +120,11 @@ get_header(); ?>
 										<div class="tab-content">
 											<div class="tab-paner active" id="1">
 												<?php
-													if ($parts) {
+													if( $parts ) {
+														echo make_projects_parts( $parts );
+													} elseif ( $old_parts ) {
 														echo '<ul class="lists">';
-														foreach ($parts as $part) {
+														foreach ($old_parts as $part) {
 															echo '<li>'. esc_html( $part->name ) .'</li>';
 														}
 														echo '</ul>';
