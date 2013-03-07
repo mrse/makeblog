@@ -70,9 +70,10 @@ get_header(); ?>
 								<div class="span8">
 
 									<?php 
-										if ( $image = get_post_custom_values('Image') ) {
-											echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 620, 465 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" style="margin-bottom:20px;" />';
-										} 
+							 			$image = get_post_custom_values('Image');
+										if ( !empty( $image[0] ) ) {
+											echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 620, 465 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+										}
 									?>
 									
 									<?php the_content(); ?>

@@ -8384,6 +8384,7 @@ a {
   border-bottom: 7px solid #ed1c24;
   max-height: 600px;
   padding: 10px;
+  overflow: scroll;
   background-color: #eaeaea;
   background-image: -webkit-linear-gradient(top, #eaeaea, #ffffff);
   background-image: -moz-linear-gradient(top, #eaeaea, #ffffff);

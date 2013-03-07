@@ -39,7 +39,7 @@ $query = new WP_Query($args);
 				<p class="read_more"><strong><a href="<?php the_permalink(); ?>" class="btn btn-primary btn-mini">Read full story &rarr;</a></strong></p>
 				
 				<ul class="unstyled">
-					<li>Posted by <?php the_author_posts_link(); ?> | <?php the_time('F jS, Y g:i A') ?> <?php edit_post_link('Fix me...'); ?></li>
+					<li>Posted by <?php if( function_exists( 'coauthors_posts_links' ) ) {	coauthors_posts_links(); } else { the_author_posts_link(); 	} ?> | <?php the_time('F jS, Y g:i A') ?> <?php edit_post_link('Fix me...'); ?></li>
 					<li>Categories: <?php the_category(', ') ?> | <?php comments_popup_link(); ?></li>
 				</ul>
 

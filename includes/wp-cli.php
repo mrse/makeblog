@@ -85,7 +85,33 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 	public function make_projects_comment_import() {
 		include_once 'comments.php';
 		foreach ($comments as $comment) {
-			wp_insert_comment( $comment );
+			$data = array(
+				'comment_post_ID' => $comment['comment_post_ID'],
+				'comment_author' => $comment['comment_author'],
+				'comment_author_email' => $comment['comment_author_email'],
+				'comment_content' => $comment['comment_content'],
+				'comment_date' => date( 'Y-m-d H:i:s', $comment['comment_date'] )
+			);
+			$comment_id = wp_insert_comment( $comment );
+			if ( !$comment_id ) {
+				WP_CLI::error( "Could not create comment" );
+			} else {
+				WP_CLI::success( "Inserted comment $comment_id." );
+			}
+		}
+	}
+
+	/**
+	 * Inserts comments from Make: Projects
+	 *
+	 * @subcommand parts
+	 * 
+	 */
+	public function make_projects_parts_import() {
+		include_once 'parts.php';
+		foreach ($parts as $part) {
+			print_r($part);
+			update_post_meta( $part->pid, 'parts', $part );
 		}
 	}
 }

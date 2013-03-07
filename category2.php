@@ -1,4 +1,22 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying the category archives.
+ *
+ * @package    makeblog
+ * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
+ * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * 
+ */
+
+$type = get_query_var( 'post_type' );
+$tag = get_query_var( 'tag' );
+
+if ($type == 'projects') {
+	include_once 'archive-projects-category.php';
+	return;
+}
+
+make_get_header(); ?>
 		
 		<div class="clear"></div>
 
@@ -11,18 +29,12 @@
 					<div class="span8">
 
 						<div class="content">
-						
-							<?php
-								if (is_tag( 'greatcreate' )) {
-									echo '<a href="http://blog.makezine.com/tag/greatcreate"><img src="http://cdn.makezine.com/make/jake/great_create.jpg" border="0" alt="Great Create Archives" /></a>';
-								} elseif ( is_tag( array( 'altsxsw', 'elmers' ) ) ) {
-									echo '<a href="http://www.elmers.com/glueguide"><img src="http://cdn.makezine.com/make/ads/glue_guide.jpg" style="height:auto; max-width:580px;" border="0" alt="Elmers Glue Guide" /></a>';
-								}
-							?>
 
 							<div class="category-title">
+								
+								<p class="uppercase">Topic: <?php if ($tag) { echo esc_html( $tag ); } ?></p>
 
-								<h1 class="cat-title jumbo"><?php echo make_get_better_tag_title(); ?></h1>
+								<h1 class="cat-title jumbo"><?php single_cat_title('', true); ?></h1>
 
 								<div class="clear"></div>
 
@@ -89,6 +101,12 @@
 
 					</div>
 
-					<?php get_sidebar(); ?>
-
-			<?php get_footer(); ?>
+					<?php 
+						if ( ( 'craft' == get_post_type() ) || in_category( 30694999 ) || post_is_in_descendant_category( 30694999 ) ) {
+							get_sidebar('craft');
+							get_footer('craft');
+						} else { 
+							get_sidebar();
+							get_footer();
+						}
+					?>
