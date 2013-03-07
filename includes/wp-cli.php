@@ -90,7 +90,7 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 				'comment_author' => $comment['comment_author'],
 				'comment_author_email' => $comment['comment_author_email'],
 				'comment_content' => $comment['comment_content'],
-				'comment_date' => date( 'Y-m-d H:i:s', $comment['comment_date'] )
+				'comment_date' => date( 'Y-m-d H:i:s', strtotime( $comment['comment_date'] ) )
 			);
 			$comment_id = wp_insert_comment( $comment );
 			if ( !$comment_id ) {
@@ -110,8 +110,12 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 	public function make_projects_parts_import() {
 		include_once 'parts.php';
 		foreach ($parts as $part) {
-			print_r($part);
-			update_post_meta( $part->pid, 'parts', $part );
+			$pid = add_post_meta( $part['post_ID'], 'parts', $part );
+			if ( !$pid ) {
+				WP_CLI::error( "Could not create part..." );
+			} else {
+				WP_CLI::success( "Inserted part: $pid->notes." );
+			}
 		}
 	}
 }
