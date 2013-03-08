@@ -118,7 +118,7 @@ get_header(); ?>
 											
 										</ul>
 										<div class="tab-content">
-											<div class="tab-paner active" id="1">
+											<div class="tab-pane active" id="1">
 												<?php
 													if( $parts ) {
 														echo make_projects_parts( $parts );
@@ -131,7 +131,7 @@ get_header(); ?>
 													}
 												?>
 											</div>
-											<div class="tab-paner" id="2">
+											<div class="tab-pane" id="2">
 												<?php
 													
 													if ($tools) {

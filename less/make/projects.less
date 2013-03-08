@@ -83,6 +83,9 @@ a {
 			border-bottom:1px solid #CCEFFB;
 			list-style-type: none;
 			line-height:22px;
+			.muted {
+				.muted;
+			}
 		}
 	}
 }
@@ -277,6 +280,9 @@ a {
 	}
 	.subs {
 		margin:0px 0px 20px;
+		.dropdown {
+			float:left;
+		}
 		li {
 			font-size:18px;
 			display: inline;
@@ -284,6 +290,15 @@ a {
 			a {
 				color:@link-color;
 				font-weight:bold;
+			}
+			ul {
+				li {
+					display: list-item;
+					margin:0px;
+					a:hover {
+						color:#fff;
+					}
+				}
 			}
 		}
 	}

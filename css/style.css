@@ -8428,6 +8428,9 @@ a {
   list-style-type: none;
   line-height: 22px;
 }
+.parts-tools .lists li .muted {
+  color: #999999;
+}
 .top-steps .all a {
   color: #cdcdcd;
 }
@@ -8604,6 +8607,9 @@ a {
 .projects-home .subs {
   margin: 0px 0px 20px;
 }
+.projects-home .subs .dropdown {
+  float: left;
+}
 .projects-home .subs li {
   font-size: 18px;
   display: inline;
@@ -8612,6 +8618,13 @@ a {
 .projects-home .subs li a {
   color: #005d8f;
   font-weight: bold;
+}
+.projects-home .subs li ul li {
+  display: list-item;
+  margin: 0px;
+}
+.projects-home .subs li ul li a:hover {
+  color: #fff;
 }
 .projects-top h3 a {
   color: #ed1c24;

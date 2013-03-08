@@ -14,7 +14,7 @@
  * When redoing the category structure, we wanted have a list of categories that we would feature all over the site.
  * If we did wp_list_categories, we would get all of them, so I created these functions to spit everything out based on the categories that we wanted.
  */
-$GLOBALS['catslugs'] = array( 'Electronics', 'Workshop', 'Craft', 'Science', 'Home', 'Art &amp; Design', 'Maker Pro' );
+$GLOBALS['catslugs'] = array( 'Electronics', 'Workshop', 'Craft', 'Science', 'Home', 'Art &amp; Design', /*'Maker Pro'*/ );
 
 /**
  * Search for a page with the same name as a category, and then dump the content into the existing page.
@@ -117,7 +117,21 @@ function make_category_li( $project = false ) {
 	foreach ($catslugs as $slug) {
 		$category = wpcom_vip_get_term_by('name', $slug, 'category');
 		if ( $project == true ) {
-			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=projects" title="' . sprintf( __( "View all posts in %s" ), esc_attr( $category->name ) ) . '" ' . '>' . esc_html( $category->name ) .'</a></li>';
+			$output .= '<div class="dropdown">';
+			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=projects" title="' . sprintf( __( "View all posts in %s" ), esc_attr( $category->name ) ) . '" data-target="#" data-toggle="dropdown" class="dropdown-toggle" ' . '>' . esc_html( $category->name ) .'  <b class="caret"></b></a>';
+			$children = get_categories( $args = array( 'parent' => $category->term_id, ) );
+			if (isset($children)) {
+				$output .= '<ul class="dropdown-menu">';
+				$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=projects" title="' . sprintf( __( "View all posts in %s" ), esc_attr( $category->name ) ) . '"' . '>' . esc_html( $category->name ) .'</a>';
+				$output .= '<li class="divider"></li>';
+				foreach ( $children as $child ) {
+					$output .= '<li><a href="' . get_category_link( $child->term_id ) . '?post_type=projects" title="' . sprintf( __( "View all posts in %s" ), esc_attr( $child->name ) ) . '" ' . '>' . esc_html( $child->name ) .'</a>';
+				}
+				$output .= '</ul>';
+			}
+			$output .= '</li>';
+			$output .= '</div>';
+
 		} else {
 			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), esc_attr( $category->name ) ) . '" ' . '>' . esc_html( $category->name ) .'</a></li>';
 		}
