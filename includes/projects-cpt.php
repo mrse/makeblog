@@ -570,6 +570,10 @@ function make_projects_parts( $parts ) {
 		if( !empty( $part['quantity'] ) ) {
 			$output .= '<span style="color:red; display:inline;"> &ndash; ' . esc_html($part['quantity']) . '</span>';
 		}
+		if( !empty( $part['type'] ) ) {
+			$output .= '<span style="color:red; display:inline;"> &ndash; ' . esc_html($part['type']) . '</span>';
+		}
+
 		$output .= '</a></li>';
 	}
 	$output .= '</ul>';
