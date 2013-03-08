@@ -76,7 +76,7 @@ a {
 	}
 	.lists {
 		margin-left:0px;
-		font-size:18px;
+		font-size:14px;
 		font-weight: bold;
 		li {
 			color:#0776b7;
@@ -84,7 +84,10 @@ a {
 			list-style-type: none;
 			line-height:22px;
 			.muted {
+				display: inline;
+				font-weight: light;
 				.muted;
+				color: lighten(#0776b7, 20%);
 			}
 		}
 	}
@@ -282,6 +285,7 @@ a {
 		margin:0px 0px 20px;
 		.dropdown {
 			float:left;
+			margin-right:7px;
 		}
 		li {
 			font-size:18px;

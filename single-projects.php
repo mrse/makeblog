@@ -24,7 +24,7 @@ get_header(); ?>
 						
 							<div class="projects-masthead">
 								
-								<h3><a href="http://blog.makezine.com/projects/"></a>Make: Projects</h3>
+								<h3><a href="http://blog.makezine.com/projects/">Make: Projects</a></h3>
 							
 								<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 								

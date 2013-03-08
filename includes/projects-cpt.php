@@ -567,12 +567,20 @@ function make_projects_parts( $parts ) {
 		} else {
 			$output .='<li><a href="#" data-toggle="tooltip" title="' . esc_attr( $notes ) .'">' . esc_html( $part['text'] );
 		}
-		if( !empty( $part['quantity'] ) ) {
-			$output .= '<span style="color:red; display:inline;"> &ndash; ' . esc_html($part['quantity']) . '</span>';
-		}
+
+		$output .= ' <span class="muted">';
+
 		if( !empty( $part['type'] ) ) {
-			$output .= '<span style="color:red; display:inline;"> &ndash; ' . esc_html($part['type']) . '</span>';
+			$output .= esc_html($part['type']);
 		}
+
+		if( !empty( $part['quantity'] ) ) {
+			$output .= ' (';
+			$output .= esc_html($part['quantity']);
+			$output .= ')';
+		}
+
+		$output .= '</span>';
 
 		$output .= '</a></li>';
 	}
