@@ -471,9 +471,10 @@ function make_projects_steps_list( $steps ) {
 	$steps = unserialize($steps[0]);
 	if ( !empty( $steps ) ) {
 		echo '<div class="well" style="padding:8px 0px;"><ul class="nav nav-list" id="tabs">';
-		echo '<li class="nav-header">Project Steps</li>';
+		echo '<li class="nav-header">Project Steps <span class="badge aller">All</span></li>';
+		echo '<li></li>';
 		foreach ($steps as $idx =>$step) {
-			echo '<li class="tabs" data-toggle="tab" id="step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
+			echo '<li class="tabs steps" data-toggle="tab" id="step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
 			if (!empty($step->title)) {
 				echo '<a>' . esc_html( $step->number ) . ". " . esc_html( $step->title ) . '</a>';
 			} else {
@@ -512,9 +513,9 @@ function make_projects_steps( $steps ) {
 	if ( !empty( $count ) ) {
 		foreach ( $steps as $idx => $step ) {
 			if ($idx == 0) {
-				echo '<div class="active" id="js-step-' . esc_attr( $step->number ) . '">';
+				echo '<div class="jstep active" id="js-step-' . esc_attr( $step->number ) . '">';
 			} else {
-				echo '<div class="hide" id="js-step-' . esc_attr( $step->number ) . '">';
+				echo '<div class="jstep hide" id="js-step-' . esc_attr( $step->number ) . '">';
 			}
 			if( $idx < $count - 1 ) {
 				echo '<span class="row"><span class="span7"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4></span><span class="span1"><a class="btn pull-right btn-danger nexter" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next</a></span></span>';
@@ -550,7 +551,10 @@ function make_projects_steps( $steps ) {
 		}
 	}
 }
-
+/**
+ * Get all of the post meta that has parts as the ID, and then output an unordered list
+ *
+ */
 function make_projects_parts( $parts ) {
 	$output = '<ul class="lists">';
 	foreach($parts as $part) {

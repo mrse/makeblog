@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-	jQuery('#tabs li').click(function() {
+	jQuery('#tabs li.steps').click(function() {
 		jQuery(this).addClass('current');
 		var id = jQuery(this).attr('id');
 		jQuery('#steppers div#js-' + id).slideDown().removeClass('hide').addClass('active');
@@ -36,9 +36,9 @@ jQuery(document).ready(function(){
 		});
 		return true;
 	});
-	jQuery('.all').click(function() {
-		jQuery('.tab-content div').slideDown();
-		jQuery('.nexter').hide();
+	jQuery('.aller').click(function() {
+		jQuery('#steppers').children().slideDown();
+		jQuery('#steppers .nexter').hide();
 		googletag.pubads().refresh();
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, like a boss.');

@@ -8646,6 +8646,9 @@ ul#tabs .current > a:hover {
 .tab-content .black {
   display: inline;
 }
+.jsteps {
+  margin-bottom: 40px;
+}
 .themes {
   margin-left: 30px;
   margin-top: 9px;
