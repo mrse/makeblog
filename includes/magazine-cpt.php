@@ -147,7 +147,7 @@ function make_post_loop( $args ) {
 					<p class="meta">
 						<?php 
 						if(function_exists('coauthors_posts_links')) {
-							coauthors_posts_links();
+							coauthors();
 						} else { 
 							the_author_posts_link();
 						} 
@@ -238,7 +238,7 @@ function make_magazine_toc( $args ) {
 					<?php 
 					if(function_exists('coauthors_posts_links')) {
 						echo 'By ';
-						coauthors_posts_links();
+						coauthors();
 					} else { 
 						echo 'By ';
 						the_author_posts_link();

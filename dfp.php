@@ -89,6 +89,9 @@ global $post;
 				if (has_tag('project-remake')) {
 					echo "googletag.pubads().setTargeting('sponsor',['schick']);";
 				}
+				if (has_tag('mcm')) {
+					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
+				}
 				elseif (has_tag('greatcreate')) {
 					echo "googletag.pubads().setTargeting('sponsor',['radioshack']);";
 				} 

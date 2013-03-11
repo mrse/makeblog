@@ -114,6 +114,29 @@ get_header(); ?>
 					?>
 					
 				</div>
+			
+			</div>
+			
+			<div class="row">
+			
+				<div class="span12">
+				
+					<?php 
+
+						$args = array(
+							'post_type'			=> 'projects',
+							'title'				=> 'Weekend Projects',
+							'tag'				=> 'weekend-projects',
+							'projects_landing'	=> true,
+							'all'				=> true,
+							'posts_per_page'	=> 24
+						);
+
+						make_carousel($args);
+					?>
+					
+				</div>
+			
 			</div>
 			
 		</div>

@@ -41,7 +41,7 @@ get_header(); ?>
 								<li>
 									By <?php 
 									if( function_exists( 'coauthors_posts_links' ) ) {	
-										coauthors_posts_links(); 
+										coauthors(); 
 									} else { 
 										the_author_posts_link(); 
 									} ?>
@@ -268,7 +268,7 @@ get_header(); ?>
 															<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 															<p>By: <?php 
 																	if( function_exists( 'coauthors_posts_links' ) ) {	
-																		coauthors_posts_links(); 
+																		coauthors(); 
 																	} else { 
 																		the_author_posts_link(); 
 																	} 
@@ -378,7 +378,7 @@ get_header(); ?>
 													<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 													<p>By: <?php 
 															if( function_exists( 'coauthors_posts_links' ) ) {	
-																coauthors_posts_links(); 
+																coauthors(); 
 															} else { 
 																the_author_posts_link(); 
 															} 

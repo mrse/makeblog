@@ -476,9 +476,9 @@ function make_projects_steps_list( $steps ) {
 		foreach ($steps as $idx =>$step) {
 			echo '<li class="tabs steps" data-toggle="tab" id="step-'  . esc_attr( $step->number ) . '" data-target="#js-step-'  . esc_attr( $step->number ) . '">';
 			if (!empty($step->title)) {
-				echo '<a>' . esc_html( $step->number ) . ". " . esc_html( $step->title ) . '</a>';
+				echo '<a>' . esc_html( $step->number ) . ". " . esc_html( stripslashes( $step->title ) ) . '</a>';
 			} else {
-				echo '<a>' . esc_html( $step->number ) . ". " . esc_html( wp_trim_words( $step->lines[0]->text,  5, '...' ) ) . '</a>';
+				echo '<a>' . esc_html( $step->number ) . ". " . esc_html( wp_trim_words( stripslashes( $step->lines[0]->text ),  5, '...' ) ) . '</a>';
 			}
 			
 			echo '</li>'; 
@@ -544,7 +544,7 @@ function make_projects_steps( $steps ) {
 			$lines = $step->lines;
 			echo '<ol>';
 			foreach ($lines as $line) {
-				echo '<li>' . wp_kses_post( $line->text ) . '</li>';
+				echo '<li>' . wp_kses_post( stripslashes( $line->text ) ) . '</li>';
 			}
 			echo '</ol>';
 			echo '</div><!--.right_column-->';

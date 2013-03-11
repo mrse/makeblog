@@ -33,7 +33,8 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 		if( $query->have_posts() ) :
 			while ( $query->have_posts() ) : $query->the_post();
 				$link = get_post_custom_values( 'Link' );
-				file_put_contents( $file, get_the_ID() . ", " . get_permalink() . ", " . esc_url( $link[0] ) . ", " . substr(esc_url( $link[0] ), -6, -2) . "\n", FILE_APPEND );
+				$number = get_post_custom_values( 'MakeProjectsGuideNumber' );
+				file_put_contents( $file, get_the_ID() . ", " . get_permalink() . ", " . esc_url( $link[0] ) . ", " . $number[0] . "\n", FILE_APPEND );
 			endwhile;
 		endif;
 

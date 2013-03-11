@@ -305,9 +305,9 @@ function make_carousel( $args ) {
 					$output .= '</p>';	
 					echo $output;
 				} elseif ( isset($args['tag'] ) ) {
-					$output = '<a href="';
+					$output = '<p class="pull-right"><a href="';
 					$output .= get_term_link( $args['tag'], 'post_tag');
-					$output .= '?post_type=projects" class="all">View All</a>';
+					$output .= '?post_type=projects" class="all">View All</a></p>';
 					echo $output;
 				}
 			}

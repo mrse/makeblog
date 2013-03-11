@@ -56,6 +56,14 @@ make_get_header() ?>
 					
 					</article>
 					
+				<div>
+				
+			</div>
+			
+			<div class="row">
+			
+				<div class="span8">
+					
 					<?php endwhile; ?>
 
 					<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>

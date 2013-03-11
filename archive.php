@@ -71,7 +71,7 @@ get_header(); ?>
 											
 												<p>Posted by <?php 
 													if( function_exists( 'coauthors_posts_links' ) ) {	
-														coauthors_posts_links(); 
+														coauthors(); 
 													} else { 
 														the_author_posts_link(); 
 													} ?> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>

@@ -131,7 +131,7 @@
 											$i = 1; // Used to set the right ID's and to check against
 											foreach($step->lines as $key) : ?>
 											<li>
-												<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $i; ?>" rows="5"><?php echo wp_filter_post_kses($key->text); ?></textarea>
+												<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $i; ?>" rows="5"><?php echo wp_filter_post_kses( stripslashes( $key->text ) ); ?></textarea>
 												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
 												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
 												<?php if($i === $total) : // Display our add button only on the last step on load. ?>
