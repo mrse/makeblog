@@ -22,7 +22,7 @@
 			$args = array(
 				'post_type' => array( 'post', 'craft' ),
 				'post_status' => 'publish',
-				'posts_per_page' => 5,
+				'posts_per_page' => 1,
 				'ignore_sticky_posts' => 1,
 				'tag' => 'maker-faire-beat'
 			);
