@@ -1048,3 +1048,31 @@ function make_post_type_better_name( $name ) {
 		return 'craft';
 	} 
 }
+
+add_action( 'init', 'make_allow_data_atts' );
+function make_allow_data_atts() {
+	global $allowedposttags;
+
+	$tags = array( 'div,a,button,input,li,div' );
+	$new_attributes = array( 'contenteditable' => array() );
+
+	foreach ( $tags as $tag ) {
+		if ( isset( $allowedposttags[ $tag ] ) && is_array( $allowedposttags[ $tag ] ) )
+			$allowedposttags[ $tag ] = array_merge( $allowedposttags[ $tag ], $new_attributes );
+	}
+}
+
+add_filter('tiny_mce_before_init', 'make_filter_tiny_mce_before_init'); 
+function make_filter_tiny_mce_before_init( $options ) { 
+
+	if ( ! isset( $options['extended_valid_elements'] ) ) 
+		$options['extended_valid_elements'] = ''; 
+
+	$options['extended_valid_elements'] .= ',a[data*|class|id|style|href]';
+	$options['extended_valid_elements'] .= ',button[data*|class|id|style|href]';
+	$options['extended_valid_elements'] .= ',input[data*|class|id|style|src]';
+	$options['extended_valid_elements'] .= ',li[data*|class|id|style]';
+	$options['extended_valid_elements'] .= ',div[data*|class|id|style]';
+
+	return $options; 
+}
