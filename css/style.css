@@ -8854,6 +8854,9 @@ ul#tabs .current > a:hover {
   color: #005d8f;
   font-weight: bold;
 }
+.single ul li {
+  font-size: 16px;
+}
 .widget {
   margin: 20px 0;
 }

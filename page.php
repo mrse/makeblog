@@ -34,12 +34,6 @@ make_get_header() ?>
 								the_author_posts_link(); 
 							} ?>
 						</li>
-						<li>
-							Posted <span class="blue"><?php the_date(); ?></span>
-						</li>
-						<li>
-							Category <?php the_category(', '); ?>
-						</li>
 					</ul>
 		
 				</div>

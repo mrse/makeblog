@@ -89,7 +89,10 @@ global $post;
 				if (has_tag('project-remake')) {
 					echo "googletag.pubads().setTargeting('sponsor',['schick']);";
 				}
-				if (has_tag('mcm')) {
+				elseif ( has_category('raspberry-pi') || is_category( 'raspberry-pi' ) ) {
+					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
+				} 
+				elseif (has_tag('mcm')) {
 					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
 				}
 				elseif (has_tag('greatcreate')) {
@@ -118,6 +121,9 @@ global $post;
 				}
 				elseif (is_single(array(122348))) {
 					echo "googletag.pubads().setTargeting('sponsor',['element14']);";
+				}
+				elseif ( is_page( array( 289746,271575 ) ) ) {
+					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
 				}
 			?>
 			googletag.pubads().enableSingleRequest();
