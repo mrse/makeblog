@@ -448,6 +448,30 @@ Template Name: Home Page
 
 						</div>
 						
+						<div class="row" style="margin-top:20px;margin-bottom:20px;">
+							
+							<div class="span4">
+								
+								<a href="http://blog.makezine.com/raspberry-pi-design-contest/">
+									
+									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/300x180.jpg" alt="Raspberry Pi Design Contest">
+									
+								</a>
+								
+							</div>
+							
+							<div class="span4">
+								
+								<a href="http://makezine.com/road-to-maker-faire-challenge/">
+									
+									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Homepage Graphic_300x180.jpg" alt="Road to Maker Faire Challenge">
+									
+								</a>
+								
+							</div>
+							
+						</div>
+						
 						<div class="row">
 							<div class="span8">
 								<a href="https://plus.google.com/communities/105413589856236995389">
