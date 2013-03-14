@@ -26,6 +26,8 @@ get_header(); ?>
 								
 								<div class="span8">
 
+									<?php print apply_filters( 'taxonomy-images-queried-term-image', '', array( 'after' => '</div>', 'before' => '<div class="tax-image">', 'image_size' => 'full') ); ?>
+
 									<?php $parent = intval( $cat->category_parent );?>
 									<h3 class="red"><a class="red" href="<?php bloginfo('url'); ?>/projects/">Make: Projects</a><?php if ($parent != 0 ) { ?> &raquo; <a class="red" href="<?php echo get_category_link( $parent ); ?>?post_type=projects"><?php echo get_cat_name( $parent ); ?></a> <?php } ?></h3>
 									<h1><?php echo $cat->name; ?></h1>

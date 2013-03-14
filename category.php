@@ -31,7 +31,9 @@ make_get_header(); ?>
 						<div class="content">
 
 							<div class="category-title">
-								
+							
+								<?php print apply_filters( 'taxonomy-images-queried-term-image', '', array( 'after' => '</div>', 'before' => '<div id="taxonomy-image">', 'image_size' => 'full') ); ?>
+
 								<p class="uppercase">Topic: <?php if ($tag) { echo esc_html( $tag ); } ?></p>
 
 								<h1 class="cat-title jumbo"><?php single_cat_title('', true); ?></h1>
@@ -42,12 +44,12 @@ make_get_header(); ?>
 
 							 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			
-							 	<article <?php post_class(); ?>>
+								<article <?php post_class(); ?>>
 
-							 		<div class="cat-thumb">
-							 		
-								 		<?php 
-								 			$image = get_post_custom_values('Image');
+									<div class="cat-thumb">
+									
+										<?php 
+											$image = get_post_custom_values('Image');
 											if ( !empty( $image[0] ) ) {
 												echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 200, 200 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
 											} else {
@@ -55,9 +57,9 @@ make_get_header(); ?>
 											}
 										?>
 
-							 		</div>
+									</div>
 
-							 		<div class="cat-blurb">
+									<div class="cat-blurb">
 
 										<h3><a class="red" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 

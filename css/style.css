@@ -7014,16 +7014,15 @@ blockquote p {
   margin-top: 9px;
   margin-left: 7px;
 }
+.tax-image,
 #taxonomy-image {
-  /*float:right;
-	width:200px;*/
-
+  float: right;
+  width: 200px;
 }
 .taxonomy-image {
-  /*float:right;
-	width:200px;
-	margin-top:-16px;*/
-
+  float: right;
+  width: 200px;
+  margin-top: -16px;
 }
 .craft .waist {
   background-color: #9acc67;
