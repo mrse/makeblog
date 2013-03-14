@@ -452,7 +452,7 @@ Template Name: Home Page
 							
 							<div class="span4">
 								
-								<a href="http://blog.makezine.com/raspberry-pi-design-contest/">
+								<a href="http://pubads.g.doubleclick.net/gampad/clk?id=29552218&iu=/11548178/Makezine">
 									
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/300x180.jpg" alt="Raspberry Pi Design Contest">
 									
@@ -462,7 +462,7 @@ Template Name: Home Page
 							
 							<div class="span4">
 								
-								<a href="http://makezine.com/road-to-maker-faire-challenge/">
+								<a href="http://pubads.g.doubleclick.net/gampad/clk?id=29549218&iu=/11548178/Makezine">
 									
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Homepage Graphic_300x180.jpg" alt="Road to Maker Faire Challenge">
 									
@@ -484,9 +484,5 @@ Template Name: Home Page
 					</div>
 
 				</div>
-
-			</div>
-
-		<div class="clear"></div>
 
 		<?php get_footer(); ?>
