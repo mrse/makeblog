@@ -1053,7 +1053,7 @@ add_action( 'init', 'make_allow_data_atts' );
 function make_allow_data_atts() {
 	global $allowedposttags;
 
-	$tags = array( 'div,a,button,input,li,div' );
+	$tags = array( 'div,a,li,div' );
 	$new_attributes = array( 'contenteditable' => array() );
 
 	foreach ( $tags as $tag ) {
@@ -1069,8 +1069,6 @@ function make_filter_tiny_mce_before_init( $options ) {
 		$options['extended_valid_elements'] = ''; 
 
 	$options['extended_valid_elements'] .= ',a[data*|class|id|style|href]';
-	$options['extended_valid_elements'] .= ',button[data*|class|id|style|href]';
-	$options['extended_valid_elements'] .= ',input[data*|class|id|style|src]';
 	$options['extended_valid_elements'] .= ',li[data*|class|id|style]';
 	$options['extended_valid_elements'] .= ',div[data*|class|id|style]';
 
