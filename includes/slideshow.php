@@ -426,3 +426,127 @@ function make_carousel( $args ) {
 </div>
 	
 <?php }
+
+
+/**
+ * The Better Gallery shortcode, courtesy of WordPress Core
+ *
+ * Wanted to extend our Bootstrap Slideshow so that you could put in Post IDs and get back a slideshow.
+ * Basically the same thing that the default slideshow does, so why not use that!
+ *
+ * @since 1.0
+ *
+ * @param array $attr Attributes of the shortcode.
+ * @return string HTML content to display gallery.
+ */
+function new_gallery_shortcode($attr) {
+	$post = get_post();
+
+	static $instance = 0;
+	$instance++;
+
+	if ( ! empty( $attr['ids'] ) ) {
+		// 'ids' is explicitly ordered, unless you specify otherwise.
+		if ( empty( $attr['orderby'] ) )
+			$attr['orderby'] = 'post__in';
+		$attr['include'] = $attr['ids'];
+	}
+
+	// Allow plugins/themes to override the default gallery template.
+	$output = apply_filters('post_gallery', '', $attr);
+	if ( $output != '' )
+		return $output;
+
+	// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
+	if ( isset( $attr['orderby'] ) ) {
+		$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+		if ( !$attr['orderby'] )
+			unset( $attr['orderby'] );
+	}
+
+	extract(shortcode_atts(array(
+		'order'      => 'ASC',
+		'orderby'    => 'menu_order ID',
+		'id'         => $post->ID,
+		'itemtag'    => 'dl',
+		'icontag'    => 'dt',
+		'captiontag' => 'dd',
+		'columns'    => 3,
+		'size'       => 'thumbnail',
+		'include'    => '',
+		'exclude'    => ''
+	), $attr));
+
+	$id = intval($id);
+	if ( 'RAND' == $order )
+		$orderby = 'none';
+
+	if ( !empty($include) ) {
+		$_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+
+		$attachments = array();
+		foreach ( $_attachments as $key => $val ) {
+			$attachments[$val->ID] = $_attachments[$key];
+		}
+	} elseif ( !empty($exclude) ) {
+		$attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	} else {
+		$attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	}
+
+	if ( empty($attachments) )
+		return '';
+
+	$output = '<div id="myCarousel" class="carousel slide" data-interval=""><div class="carousel-inner">';
+
+	$i = 0;
+	foreach( $attachments as $id => $attachment ) {
+		$i++;
+		if ($i == 1) {
+			$output .= '<div class="item active">';	
+		} else {
+			$output .= '<div class="item">';
+		}
+		$output .= wp_get_attachment_image( $attachment->ID, 'medium');
+		if (isset($attachment->post_title)) {
+			$output .= '<div class="carousel-caption">';
+			$output .= '<h4>' . $attachment->post_title . '</h4>';
+			if (isset($attachment->post_excerpt)) {
+				$output .= '<p>' . $attachment->post_excerpt . '</p>';
+			}
+			$output .= '</div>';
+			
+		}
+		$output .= '</div>';
+		
+	} //foreach
+	$output .= '</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+	</div>';
+	$output .= '<p class="pull-right"><span class="viewall" style="cursor:pointer">View All</span></p>';
+	$output .= '
+		<script>
+			jQuery(document).ready(function(){
+				jQuery(".viewall").click(function() {
+					jQuery(".carousel-inner").removeClass("carousel-inner");
+					googletag.pubads().refresh();
+					_gaq.push([\'_trackPageview\']);
+					console.log(\'Pushed a pageview, and an ad refresh, like a boss.\');
+					urlref = location.href;
+					PARSELY.beacon.trackPageView({
+						url: urlref,
+						urlref: urlref,
+						js: 1,
+						action_name: "Next Slide"
+					});
+					return true;
+				})
+			});
+		</script>
+	';
+	$output .= '<div class="clearfix"></div>';
+	return $output;
+}
+
+add_shortcode( 'better_gallery', 'new_gallery_shortcode' );
