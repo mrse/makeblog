@@ -64,23 +64,25 @@ make_get_header() ?>
 						<p>MAKE's Raspberry Pi Design Contest is a celebration of the innovation inspired by this affordable single-board computer that's taking the maker world by storm. Each entry should use the Raspberry Pi as an intrinsic part of the project, but may include other circuitry, software, mechanical, or sculptural parts as needed.</p>
 
 						<p>We've partnered with <a href="http://www.mcmelectronics.com/">MCM</a> to give away over $3,500 worth of prize packages!</p>
+						
+						<p>The deadline to submit an entry is 11:59pm PT on April 11th.</p>
 
 						<p>Pi Projects will be entered into one of the following four categories, and evaluated by a panel of judges using the criteria below.</p>
 
 						<h4>Pi Project Categories:</h4>
 						
 						<ul>
-							<li>Enclosure : Raspberry Pi are bare PCBs with exposed ports. Do you have a design for a case that's more clever or cool than all the rest?</li>
-							<li>Artistic : Use the physical computing of Raspberry Pi as a component of your music, animation, sound, performance, or art installation.</li>
-							<li>Utility : Detail your amazingly useful, day-to-day application for this inexpensive Linux-based computer.</li>
-							<li>Education : Show us a compelling idea for how the Pi can be utilized for education, whether in a classroom or a community workshop setting.</li>
+							<li><strong>Artistic</strong>: Use the physical computing of Raspberry Pi as a component of your music, animation, sound, performance, or art installation.</li>
+							<li><strong>Utility</strong>: Detail your amazingly useful, day-to-day application for this inexpensive Linux-based computer.</li>
+							<li><strong>Education</strong>: Show us a compelling idea for how the Pi can be utilized for education, whether in a classroom or a community workshop setting.</li>
+							<li><strong>Enclosure</strong>: Raspberry Pi are bare PCBs with exposed ports. Do you have a design for a case that's more clever or cool than all the rest?</li>
 						</ul>
 
 						<h4>Entries will be judged by the following criteria:</h4>
 						<ul>
-							<li>Documentation (30%): Supporting material such as a blog, flickr set of photos, YouTube video, etc.
-							<li>Project Success (30%): Did your project achieve its goal?
-							<li>Unique Application (40%): Novel use of the Pi.
+							<li><strong>Documentation (30%)</strong>: Supporting material such as a blog, flickr set of photos, YouTube video, etc.
+							<li><strong>Project Success (30%)</strong>: Did your project achieve its goal?
+							<li><strong>Unique Application (40%)</strong>: Novel use of the Pi.
 						</li>
 					
 					</div>
@@ -89,11 +91,25 @@ make_get_header() ?>
 						
 						<h2>Prizes</h2>
 						
-						<p>Four (4) Category Prize Winners will each receive an MCM Raspberry Pi Prize Package (total estimated retail value of $615.91).</p>
+						<div class="row">
+						
+							<div class="span6">
+								
+								<p>Four (4) Category Prize Winners will each receive an MCM Raspberry Pi Prize Package (total estimated retail value of $615.91).</p>
+									
+								<p>One (1) Grand Prize winner will receive an MCM Raspberry Pi Prize Package &amp; a Printrbot Jr. 3D Printer (Total estimated retail value of $1,114.91)</p>
 
-						<p>One (1) Grand Prize winner will receive an MCM Raspberry Pi Prize Package &amp; a Printrbot Jr. 3D Printer (Total estimated retail value of $1,114.91)</p>
-
-						<p>The MCM Raspberry Pi Prize Package includes: USB DMM, DC Power Supply, Digital Soldering Iron, Gertboard, Pi Face, Pi View, Wi-Pi Wireless Adapter, &amp; Raspberry Pi Iron-On Skill Badge.</p>
+								<p>The MCM Raspberry Pi Prize Package includes: USB DMM, DC Power Supply, Digital Soldering Iron, Gertboard, Pi Face, Pi View, Wi-Pi Wireless Adapter, &amp; Raspberry Pi Iron-On Skill Badge.</p>	
+								
+							</div>
+							
+							<div class="span6">
+						
+								<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/MCM_Prizes_photoshopped.jpg" alt="MCM Grand Prize" class="pull-right">		
+								
+							</div>
+							
+						</div>
 						
 					</div>
 					
@@ -352,5 +368,15 @@ make_get_header() ?>
 		</div>
 
 	</div>
+	
+<script>
+
+	jQuery('a[data-toggle="tab"]').on('shown', function (e) {
+		googletag.pubads().refresh();
+		_gaq.push(['_trackPageview']);
+		console.log('Pushed a pageview, and an ad refresh, like a boss.');
+	});
+
+</script>
 
 <?php get_footer(); ?>
