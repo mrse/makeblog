@@ -439,7 +439,7 @@ function make_carousel( $args ) {
  * @param array $attr Attributes of the shortcode.
  * @return string HTML content to display gallery.
  */
-function new_gallery_shortcode($attr) {
+function make_new_gallery_shortcode($attr) {
 	$post = get_post();
 
 	static $instance = 0;
@@ -507,7 +507,7 @@ function new_gallery_shortcode($attr) {
 		} else {
 			$output .= '<div class="item">';
 		}
-		$output .= wp_get_attachment_image( $attachment->ID, 'medium');
+		$output .= wp_get_attachment_link( $attachment->ID, 'medium');
 		if (isset($attachment->post_title)) {
 			$output .= '<div class="carousel-caption">';
 			$output .= '<h4>' . $attachment->post_title . '</h4>';
@@ -524,7 +524,7 @@ function new_gallery_shortcode($attr) {
 		<a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 		<a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
 	</div>';
-	$output .= '<p class="pull-right"><span class="viewall" style="cursor:pointer">View All</span></p>';
+	$output .= '<p class="pull-right"><span class="label viewall" style="cursor:pointer">View All</span></p>';
 	$output .= '
 		<script>
 			jQuery(document).ready(function(){
@@ -532,7 +532,6 @@ function new_gallery_shortcode($attr) {
 					jQuery(".carousel-inner").removeClass("carousel-inner");
 					googletag.pubads().refresh();
 					_gaq.push([\'_trackPageview\']);
-					console.log(\'Pushed a pageview, and an ad refresh, like a boss.\');
 					urlref = location.href;
 					PARSELY.beacon.trackPageView({
 						url: urlref,
@@ -540,6 +539,7 @@ function new_gallery_shortcode($attr) {
 						js: 1,
 						action_name: "Next Slide"
 					});
+					jQuery(this).addClass(\'hide\');
 					return true;
 				})
 			});
@@ -549,4 +549,4 @@ function new_gallery_shortcode($attr) {
 	return $output;
 }
 
-add_shortcode( 'better_gallery', 'new_gallery_shortcode' );
+add_shortcode( 'gallery', 'make_new_gallery_shortcode' );

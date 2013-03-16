@@ -341,7 +341,7 @@ make_get_header() ?>
 						
 						<article <?php post_class(); ?>>
 
-							<h2>Coming soon!</h2>
+							<?php the_content(); ?>
 					
 						</article>
 						
