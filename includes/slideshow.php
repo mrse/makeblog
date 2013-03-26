@@ -274,14 +274,22 @@ function make_carousel( $args ) {
 				} elseif ( isset( $args['category__in'] ) ) {
 					$output = '<a href="';
 					$output .= get_term_link( intval($args['category__in']), 'category', 'id');
-					$output .= '?post_type=projects">';
+					if ($args['projects_landing'] != false ) {
+						$output .= '?post_type=projects">';	
+					} else {
+						$output .= '">';
+					}
 					$output .= $args['title'];
 					$output .= '</a>';
 					echo $output;
 				} elseif ( isset($args['tag'] ) ) {
 					$output = '<a href="';
 					$output .= get_term_link( $args['tag'], 'post_tag');
-					$output .= '?post_type=projects">';
+					if ($args['projects_landing'] != false ) {
+						$output .= '?post_type=projects">';	
+					} else {
+						$output .= '">';
+					}
 					$output .= $args['title'];
 					$output .= '</a>';
 					echo $output;
@@ -452,11 +460,6 @@ function make_new_gallery_shortcode($attr) {
 		$attr['include'] = $attr['ids'];
 	}
 
-	// Allow plugins/themes to override the default gallery template.
-	$output = apply_filters('post_gallery', '', $attr);
-	if ( $output != '' )
-		return $output;
-
 	// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
 	if ( isset( $attr['orderby'] ) ) {
 		$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
@@ -549,4 +552,4 @@ function make_new_gallery_shortcode($attr) {
 	return $output;
 }
 
-add_shortcode( 'gallery', 'make_new_gallery_shortcode' );
+add_shortcode( 'new_gallery', 'make_new_gallery_shortcode' );

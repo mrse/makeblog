@@ -126,4 +126,27 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 			}
 		}
 	}
+
+	/**
+	 * Inserts parts from Make: Projects
+	 *
+	 * @subcommand switcher
+	 * 
+	 */
+	public function make_post_type_switcher() {
+		$args = array(
+			'tag' 				=> 'reviews',
+			'posts_per_page' 	=> 300,
+			'post_type'			=> 'post'
+			);
+		$the_query = new WP_Query( $args );
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+			$set = set_post_type( get_the_ID(), 'review' );
+			if ( $set == 0 ) {
+				WP_CLI::warning( "Blerg... Wasn't able to update " . get_the_title() );
+			} else {
+				WP_CLI::success( 'Updated ' . get_the_title() );
+			}
+		endwhile;
+	}
 }

@@ -4,6 +4,8 @@ add_action( 'init', 'make_register_cpt_video' );
 
 function make_register_cpt_video() {
 
+	add_rewrite_rule( 'video/([^/]*)/([^/]*)/?$','index.php?video=$matches[2]','top' );
+
 	$labels = array( 
 		'name' => _x( 'Videos', 'video' ),
 		'singular_name' => _x( 'Video', 'video' ),

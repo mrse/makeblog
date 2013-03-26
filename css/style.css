@@ -7152,16 +7152,18 @@ blockquote p {
   margin-top: 9px;
   margin-left: 7px;
 }
-.tax-image,
+/* .tax-image, 
 #taxonomy-image {
-  float: right;
-  width: 200px;
+	float:right;
+	width:200px;
 }
+
 .taxonomy-image {
-  float: right;
-  width: 200px;
-  margin-top: -16px;
+	float:right;
+	width:200px;
+	margin-top:-16px;
 }
+ */
 .craft .waist {
   background-color: #9acc67;
   background-image: none;
@@ -8330,6 +8332,7 @@ textarea.radio-narrow,
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
+  padding-top: 20px;
 }
 .category-top h1 {
   font-size: 38px;
@@ -8463,6 +8466,7 @@ textarea.radio-narrow,
   border: 1px solid #cecece;
   background-color: #fff;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 .video-box p {
   margin-bottom: 0px;
@@ -8479,6 +8483,9 @@ textarea.radio-narrow,
 }
 .video-box ul li {
   font-weight: bold;
+}
+#taxonomy-image {
+  margin-top: 20px;
 }
 .projects-masthead {
   font-family: "proxima-nova", sans-serif;
@@ -8954,6 +8961,7 @@ ul#tabs .current > a:hover {
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
+  padding-top: 20px;
   border-bottom: 0px;
 }
 .single h1 {

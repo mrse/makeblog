@@ -224,8 +224,8 @@ class Parsely {
             $parselyPage["title"]       = $this->getCleanParselyPageValue("Author - ".$author->data->display_name);
             $parselyPage["link"]        = $currentURL;
         } elseif (is_category()) {
-            $category = get_the_category();
-            $category = $category[0];
+            $category = get_queried_object();
+            //$category = $category[0];
             $parselyPage["type"]        = "sectionpage";
             $parselyPage["title"]       = $this->getCleanParselyPageValue($category->name);
             $parselyPage["link"]        = $currentURL;
@@ -405,6 +405,7 @@ class Parsely {
     */
     private function getAuthorName($postObj) {
         $author = get_user_meta($postObj->post_author, 'display_name', true);
+        $author = coauthors( null, null, null, null, false );
         if (!empty($author)) {
             return $this->getCleanParselyPageValue($author);
         }

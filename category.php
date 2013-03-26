@@ -17,98 +17,294 @@ if ($type == 'projects') {
 }
 
 make_get_header(); ?>
+
+	<div class="category-top">
+
+		<div class="container">
 		
-		<div class="clear"></div>
+			<div class="row">
+					
+				<?php 
+					$image = apply_filters( 'taxonomy-images-queried-term-image', '', array( 'after' => '</div>', 'before' => '<div id="taxonomy-image">', 'image_size' => 'full') );
+					if ( !empty( $image ) ) {
+						echo '<div class="span4">';
+						echo $image;
+						echo '</div>';
+						echo '<div class="span8">';
+					} else {
+						echo '<div class="span12">';
+					}
+				?>
 
-		<div class="sand">
+				
+				
+					<h1 class="jumbo"><?php single_cat_title('', true); ?></h1>
+				
+					<?php echo Markdown( strip_tags( category_description() ) ); ?>
+					
+					<?php make_child_category_list(); ?>
+					
+				</div>
+				
+			</div>
+		
+		</div>
 
-			<div class="container">
-
-				<div class="row">
-
-					<div class="span8">
-
-						<div class="content">
-
-							<div class="category-title">
-							
-								<?php print apply_filters( 'taxonomy-images-queried-term-image', '', array( 'after' => '</div>', 'before' => '<div id="taxonomy-image">', 'image_size' => 'full') ); ?>
-
-								<p class="uppercase">Topic: <?php if ($tag) { echo esc_html( $tag ); } ?></p>
-
-								<h1 class="cat-title jumbo"><?php single_cat_title('', true); ?></h1>
-
-								<div class="clear"></div>
-
-							</div>
-
-							 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+	</div>
+	
+	<div class="grey">
+	
+		<div class="container">
+		
+			<div class="row">
 			
-								<article <?php post_class(); ?>>
+				<div class="span8">
+					
+					<?php
+						$args = array(
+							'category__in'	=> get_queried_object_id(), // Likely the queried object ID
+							'title'			=> 'Featured in ' . get_queried_object()->name,
+							'limit'			=> 2,
+							'tag'			=> 'Featured',
+							// 'all'			=> true
+						);
+						make_carousel( $args ); ?>
+					
+				</div>
+				
+				<div class="span4">
+					
+					<div class="sidebar-ad">
 
-									<div class="cat-thumb">
-									
-										<?php 
-											$image = get_post_custom_values('Image');
-											if ( !empty( $image[0] ) ) {
-												echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 200, 200 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
-											} else {
-												get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb' ) );
-											}
-										?>
-
-									</div>
-
-									<div class="cat-blurb">
-
-										<h3><a class="red" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-
-										<p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
-
-										<p>Posted by 
-											<?php if(function_exists('coauthors_posts_links')) {
-												coauthors();
-											} else { 
-												the_author_posts_link();
-											} ?>
-											<?php $type = get_post_type( $post->ID ); if ($type != 'projects') { echo ' | <a href="' . get_permalink() . '">' . get_the_time('l F jS, Y g:i A'); } ?></a></p>
-										<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
-
-									</div>
-
-									<div class="clear"></div>
-									
-									<hr />
-
-								</article>
-
-							<?php endwhile; ?>
-
-							<ul class="pager">
-							
-								<li class="previous"><?php previous_posts_link('&larr; Previous Page'); ?></li>
-								<li class="next"><?php next_posts_link('Next Page &rarr;'); ?></li>
-							
-							</ul>
-
-							<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
-						
-							<?php else: ?>
-							
-								<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-							
-							<?php endif; ?>
-
+						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
+						<div P='div-gpt-ad-664089004995786621-2'>
+							<script type='text/javascript'>
+								googletag.display('div-gpt-ad-664089004995786621-2');
+							</script>
 						</div>
+						<!-- End AdSlot 2 -->
 
 					</div>
-
+					
+				</div>
+				
+			</div>
+								
+			<div class="row">
+			
+				<div class="span12">
+				
 					<?php 
-						if ( ( 'craft' == get_post_type() ) || in_category( 30694999 ) || post_is_in_descendant_category( 30694999 ) ) {
-							get_sidebar('craft');
-							get_footer('craft');
-						} else { 
-							get_sidebar();
-							get_footer();
-						}
+
+						$args = array(
+							'category__in'		=> get_queried_object_id(), // Likely the queried object ID
+							'title'				=> 'New in ' . get_queried_object()->name,
+							'posts_per_page'	=> 32
+						);
+						
+						make_carousel($args);
 					?>
+					
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<?php
+
+		$children = make_children( get_queried_object_id() );
+		if ($children) {
+			foreach ($children as $child => $category) {
+
+	?>
+	
+	<div class="grey child">
+	
+		<div class="container">
+
+			<div class="row">
+			
+				<div class="span10">
+
+					<h2 id="<?php echo $category->slug; ?>" class="heading"><a href="<?php echo get_term_link( $category ); ?>">Latest in <?php echo $category->name; ?></a></h2>
+				
+				</div>
+				
+				<div class="span2">
+					
+					<?php echo '<p class="pull-right"><a href="' . get_term_link( $category ) . '" class="all">View All</p>'; ?>
+					
+				</div>
+				
+			</div>
+			
+			<div class="row">
+			
+				<div class="span6">
+				
+					<div class="video-box">
+						
+						<?php
+
+							$args = array(
+								'post_type'			=> 'video',
+								'posts_per_page'	=> 1,
+								'no_found_rows'		=> true,
+								'cat'				=> $category->term_id,
+								// 'orderby'			=> 'rand'
+							);
+							
+							$the_query = new WP_Query( $args );
+
+							while ( $the_query->have_posts() ) : $the_query->the_post();
+								$link = get_post_custom_values( 'Link' , $post->ID );
+								echo do_shortcode('[youtube='. esc_url( $link[0] ) .'&w=442]');
+								the_title( '<h4>' . '<a href="' . get_permalink() . '">', '</a></h4>' );
+								echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 20, '...' ) . '</p>';
+							endwhile;
+
+							// Reset Post Data
+							wp_reset_postdata();
+
+						?>
+						
+						<div class="clearfix"></div>
+						
+					</div>
+					
+				</div>
+				
+				<div class="span6">
+				
+					
+					<?php 
+						$args = array(
+							'title' 			=> 'Latest ' . $category->name . ' Projects',
+							'posts_per_page' 	=> 2,
+							'post_type'			=> 'projects',
+							'cat'				=> $category->term_id,
+							'orderby' 			=> 'date',
+							'order' 			=> 'dsc',
+							// 'tax_query' 		=> array( array( 'taxonomy' => 'difficulty', 'field' => 'slug', 'terms' => 'easy' ) )
+							);
+						make_post_loop($args); ?>
+				
+				</div>
+				
+			</div>
+					
+			<div class="row">
+			
+				<div class="span12">
+				
+					<?php 
+
+						$args = array(
+							'category__in'		=> $category->term_id,
+							'title'				=> null
+						);
+						
+						make_carousel($args);
+					?>
+					
+				</div>
+			
+			</div>
+						
+		</div>
+		
+	<?php } }
+	else { ?>
+	
+	<?php 
+		$id = get_queried_object_id();
+		$name = get_cat_name( $id );
+
+	?>
+	
+	<div class="grey child">
+	
+		<div class="container">
+
+			<div class="row">
+				
+				<div class="span12">
+				
+					<?php 
+
+						$args = array(
+							'cat'		=> $id,
+							'title'		=> $name . ' On the Blog',
+							'post_type'	=> 'post'
+						);
+						
+						make_carousel($args);
+					?>
+					
+				</div>
+			
+			</div>
+			
+			<div class="row">
+				
+				<div class="span12">
+				
+					<?php 
+						$args = array(
+							'cat'		=> $id,
+							'title'		=> $name . ' Projects',
+							'post_type'	=> 'projects'
+						);
+						
+						make_carousel($args);
+					?>
+					
+				</div>
+			
+			</div>
+			
+			<div class="row">
+				
+				<div class="span12">
+				
+					<?php 
+						$args = array(
+							'cat'		=> $id,
+							'title'		=> $name . ' Videos',
+							'post_type'	=> 'video'
+						);
+
+						make_carousel($args);
+					?>
+					
+				</div>
+			
+			</div>
+			
+			<?php 
+				if ( is_category( array( '157499811', '5094' ) ) ) { ?>
+					
+					<div class="row">
+						
+						<div class="span12">
+						
+							<?php 
+								$args = array(
+									'cat'		=> $id,
+									'title'		=> $name . ' Reviews',
+									'post_type'	=> 'review'
+								);
+
+								make_carousel($args);
+							?>
+							
+						</div>
+					
+					</div>
+			<?php } ?>
+
+<?
+}
+get_footer();

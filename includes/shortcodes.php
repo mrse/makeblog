@@ -284,3 +284,40 @@ function make_platt() {
 }
 
 add_shortcode( 'platt', 'make_platt' );
+
+function make_rpi() {
+
+	$output = '<div class="clearfix"></div>';
+
+	$output .='<div class="alert alert-info">
+		<p>
+			<a href="http://pubads.g.doubleclick.net/gampad/clk?id=29978938&iu=/11548178/Makezine">
+				<img class="" style="width: 100%; height: auto;" alt="Raspberry Pi Design Contest" src="'. get_stylesheet_directory_uri() .'/img/RASPBERRYPI_AD.jpg" />
+			</a>
+		</p>
+		<h4>Enter Your Project In Our Raspberry Pi Design Contest</h4>
+		<ul>
+	        <li>Over $3,500 in prizes from MCM Electronics</li>
+	        <li>Best In Show wins a Printrbot Jr.</li>
+	        <li>Four Categories: Artistic, Utility, Education and Enclosures</li>
+	        <li>Submissions due by April 11th, 2013</li>
+		</ul>
+		<a class="btn btn-primary" href="http://pubads.g.doubleclick.net/gampad/clk?id=29978938&iu=/11548178/Makezine">Enter Today!</a>
+	</div>';
+	return $output;
+}
+
+add_shortcode( 'make_rpi', 'make_rpi' );
+
+function make_rtm() {
+	$output = '<div class="alert alert-info">
+		<a href="http://pubads.g.doubleclick.net/gampad/clk?id=29978218&amp;iu=/11548178/Makezine">
+			<img src="http://makezineblog.files.wordpress.com/2013/03/rtmfc_620x120.jpg" alt="RTMFC_620x120" width="620" height="120" style="margin-bottom:10px;" class="alignnone size-full wp-image-292301" />
+		</a>
+		<p>The <a href="http://pubads.g.doubleclick.net/gampad/clk?id=29978218&amp;iu=/11548178/Makezine">Road to Maker Faire Challenge</a> will award $2,500 to one winner to bring his or her project to Maker Faire Bay Area on May 18-19 in San Mateo, CA. Use the funding for materials, transport, or anything else you might need to get to Maker Faire. Applications are due by 11:59 PM PDT on April 8th, 2013.</p>
+		<p><a href="http://pubads.g.doubleclick.net/gampad/clk?id=29978218&amp;iu=/11548178/Makezine" class="btn btn-primary">Enter Now!</a></p>
+		</div>';
+	return $output;
+}
+
+add_shortcode( 'make_road_to_maker_faire', 'make_rtm' );

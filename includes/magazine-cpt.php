@@ -164,7 +164,7 @@ function make_post_loop( $args ) {
 								echo '<li><strong>Difficulty:</strong> ' . esc_html( $term->name ) . '</li>';
 							}
 						}
-						if (isset($time[0])) {
+						if (!empty($time[0])) {
 							echo '<li><strong>Time Required:</strong> ' . esc_html( $time[0] ) . '</li>';
 						}
 

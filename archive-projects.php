@@ -126,7 +126,13 @@ get_header(); ?>
 						$args = array(
 							'post_type'			=> 'projects',
 							'title'				=> 'Weekend Projects',
-							'tag'				=> 'weekend-projects',
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'flags',
+									'field' => 'slug',
+									'terms' => 'weekend-project'
+								)
+							),
 							'projects_landing'	=> true,
 							'all'				=> true,
 							'posts_per_page'	=> 24

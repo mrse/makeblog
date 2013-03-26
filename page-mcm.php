@@ -342,6 +342,16 @@ make_get_header() ?>
 						<article <?php post_class(); ?>>
 
 							<?php the_content(); ?>
+							
+							<script type="text/javascript">
+								
+								jQuery(document).ready(function(){
+									jQuery('a[data-toggle="tab"]').on('shown', function (e) {
+										jQuery('.gallery-row, .gallery-group, article a img').css('height', '').css('width', '');
+									})
+								});
+
+							</script>
 					
 						</article>
 						
