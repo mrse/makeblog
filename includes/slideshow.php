@@ -353,6 +353,16 @@ function make_carousel( $args ) {
 							$image = get_post_custom_values('Image', $post->ID);
 							if ( !empty( $image[0] ) )  {
 								echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+							} elseif ( $type == 'video' ) {
+								$link = get_post_custom_values( 'Link' , $post->ID );
+								$link = 'http://www.youtube.com/oembed?format=json&url=' . esc_url( $link[0] );
+								$contents = wpcom_vip_file_get_contents( $link );
+								if ($contents != false) {
+									$json_output = json_decode($contents);
+									$img = $json_output->thumbnail_url;
+									update_post_meta( $post->ID, 'Image', $img );
+									echo '<img src="' . wpcom_vip_get_resized_remote_image_url( get_post_meta( $post->ID, 'Image', true ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+								}
 							} else {
 								get_the_image( array( 'post_id' => $post->ID, 'image_scan' => true, 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail' ) );
 							} 

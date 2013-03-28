@@ -36,7 +36,7 @@ make_get_header(); ?>
 					}
 				?>
 
-				
+					<?php if (is_category( 'Raspberry Pi' )) { echo '<p class="pull-right"><img src="http://makezineblog.files.wordpress.com/2013/03/mcm.png" /></p>'; } ?>
 				
 					<h1 class="jumbo"><?php single_cat_title('', true); ?></h1>
 				
@@ -61,14 +61,12 @@ make_get_header(); ?>
 				<div class="span8">
 					
 					<?php
-						$args = array(
-							'category__in'	=> get_queried_object_id(), // Likely the queried object ID
-							'title'			=> 'Featured in ' . get_queried_object()->name,
-							'limit'			=> 2,
-							'tag'			=> 'Featured',
-							// 'all'			=> true
-						);
-						make_carousel( $args ); ?>
+						make_carousel( array(
+							'category__in' => get_queried_object_id(), // Likely the queried object ID
+							'title'        => 'Featured in ' . get_queried_object()->name,
+							'limit'        => 2,
+							'tag'          => 'Featured'
+					) ); ?>
 					
 				</div>
 				
@@ -77,7 +75,7 @@ make_get_header(); ?>
 					<div class="sidebar-ad">
 
 						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
-						<div P='div-gpt-ad-664089004995786621-2'>
+						<div id='div-gpt-ad-664089004995786621-2'>
 							<script type='text/javascript'>
 								googletag.display('div-gpt-ad-664089004995786621-2');
 							</script>
@@ -95,14 +93,11 @@ make_get_header(); ?>
 				<div class="span12">
 				
 					<?php 
-
-						$args = array(
-							'category__in'		=> get_queried_object_id(), // Likely the queried object ID
-							'title'				=> 'New in ' . get_queried_object()->name,
-							'posts_per_page'	=> 32
-						);
-						
-						make_carousel($args);
+						make_carousel( array(
+							'category__in'   => get_queried_object_id(), // Likely the queried object ID
+							'title'          => 'New in ' . get_queried_object()->name,
+							'posts_per_page' => 32
+						) );
 					?>
 					
 				</div>
@@ -117,7 +112,6 @@ make_get_header(); ?>
 		$children = make_children( get_queried_object_id() );
 		if ($children) {
 			foreach ($children as $child => $category) {
-
 	?>
 	
 	<div class="grey child">
@@ -128,7 +122,7 @@ make_get_header(); ?>
 			
 				<div class="span10">
 
-					<h2 id="<?php echo $category->slug; ?>" class="heading"><a href="<?php echo get_term_link( $category ); ?>">Latest in <?php echo $category->name; ?></a></h2>
+					<h2 id="<?php echo esc_attr( $category->slug ); ?>" class="heading"><a href="<?php echo get_term_link( $category ); ?>">Latest in <?php echo esc_html( $category->name ); ?></a></h2>
 				
 				</div>
 				
@@ -147,19 +141,15 @@ make_get_header(); ?>
 					<div class="video-box">
 						
 						<?php
-
-							$args = array(
-								'post_type'			=> 'video',
-								'posts_per_page'	=> 1,
-								'no_found_rows'		=> true,
-								'cat'				=> $category->term_id,
-								// 'orderby'			=> 'rand'
-							);
-							
-							$the_query = new WP_Query( $args );
+							$the_query = new WP_Query( array(
+								'post_type'      => 'video',
+								'posts_per_page' => 1,
+								'no_found_rows'  => true,
+								'category__in'   => $category->term_id,
+							) );
 
 							while ( $the_query->have_posts() ) : $the_query->the_post();
-								$link = get_post_custom_values( 'Link' , $post->ID );
+								$link = get_post_custom_values( 'Link' , get_the_ID() );
 								echo do_shortcode('[youtube='. esc_url( $link[0] ) .'&w=442]');
 								the_title( '<h4>' . '<a href="' . get_permalink() . '">', '</a></h4>' );
 								echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 20, '...' ) . '</p>';
@@ -180,17 +170,16 @@ make_get_header(); ?>
 				
 					
 					<?php 
-						$args = array(
-							'title' 			=> 'Latest ' . $category->name . ' Projects',
-							'posts_per_page' 	=> 2,
-							'post_type'			=> 'projects',
-							'cat'				=> $category->term_id,
-							'orderby' 			=> 'date',
-							'order' 			=> 'dsc',
-							// 'tax_query' 		=> array( array( 'taxonomy' => 'difficulty', 'field' => 'slug', 'terms' => 'easy' ) )
-							);
-						make_post_loop($args); ?>
-				
+						make_post_loop( array(
+							'title'          => 'Latest ' . $category->name . ' Projects',
+							'posts_per_page' => 2,
+							'post_type'      => 'projects',
+							'category__in'   => $category->term_id,
+							'orderby'        => 'date',
+							'order'          => 'dsc',
+						) );
+					?>
+
 				</div>
 				
 			</div>
@@ -200,13 +189,10 @@ make_get_header(); ?>
 				<div class="span12">
 				
 					<?php 
-
-						$args = array(
-							'category__in'		=> $category->term_id,
-							'title'				=> null
-						);
-						
-						make_carousel($args);
+						make_carousel( array(
+							'category__in' => $category->term_id,
+							'title'        => null
+						) );
 					?>
 					
 				</div>
@@ -221,7 +207,6 @@ make_get_header(); ?>
 	<?php 
 		$id = get_queried_object_id();
 		$name = get_cat_name( $id );
-
 	?>
 	
 	<div class="grey child">
@@ -232,15 +217,12 @@ make_get_header(); ?>
 				
 				<div class="span12">
 				
-					<?php 
-
-						$args = array(
-							'cat'		=> $id,
-							'title'		=> $name . ' On the Blog',
-							'post_type'	=> 'post'
-						);
-						
-						make_carousel($args);
+					<?php
+						make_carousel( array(
+							'cat'       => $id,
+							'title'     => $name . ' On the Blog',
+							'post_type' => 'post'
+						) );
 					?>
 					
 				</div>
@@ -252,13 +234,11 @@ make_get_header(); ?>
 				<div class="span12">
 				
 					<?php 
-						$args = array(
-							'cat'		=> $id,
-							'title'		=> $name . ' Projects',
-							'post_type'	=> 'projects'
-						);
-						
-						make_carousel($args);
+						make_carousel( array(
+							'cat'       => $id,
+							'title'     => $name . ' Projects',
+							'post_type' => 'projects'
+						) );
 					?>
 					
 				</div>
@@ -270,13 +250,11 @@ make_get_header(); ?>
 				<div class="span12">
 				
 					<?php 
-						$args = array(
-							'cat'		=> $id,
-							'title'		=> $name . ' Videos',
-							'post_type'	=> 'video'
-						);
-
-						make_carousel($args);
+						make_carousel( array(
+							'cat'       => $id,
+							'title'     => $name . ' Videos',
+							'post_type' => 'video'
+						) );
 					?>
 					
 				</div>
@@ -291,13 +269,11 @@ make_get_header(); ?>
 						<div class="span12">
 						
 							<?php 
-								$args = array(
-									'cat'		=> $id,
-									'title'		=> $name . ' Reviews',
-									'post_type'	=> 'review'
-								);
-
-								make_carousel($args);
+								make_carousel( array(
+									'cat'       => $id,
+									'title'     => $name . ' Reviews',
+									'post_type' => 'review'
+								) );
 							?>
 							
 						</div>
@@ -305,6 +281,6 @@ make_get_header(); ?>
 					</div>
 			<?php } ?>
 
-<?
+<?php
 }
 get_footer();

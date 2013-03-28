@@ -134,8 +134,13 @@ function make_post_loop( $args ) {
 
 				<div class="span4">
 					<?php $type = get_post_type( $post ); ?>
-					<?php echo '<span class="' . $type .'-icon"></span>'; ?>
-					<?php get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb', 'image_class' => 'hide-thumbnail' ) ); ?>
+					<?php echo '<span class="' . $type .'-icon"></span>';
+					$image = get_post_custom_values('Image', $post->ID);
+					if ( !empty( $image[0] ) )  {
+						echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+					} else {
+						get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb', 'image_class' => 'hide-thumbnail' ) );
+					} ?>
 				</div>
 
 				<div class="span8">

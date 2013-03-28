@@ -495,12 +495,16 @@ function make_projects_steps_list( $steps ) {
  */
 function make_projects_to_s3( $haystack ) {
 	$needle = 'guide-images.makeprojects.org/igi/';
-	$new_needle = 'make-images.s3.amazonaws.com/';
+	$replace = 'make-images.s3.amazonaws.com/';
 	if ( $haystack == 'http://cacher.dozuki.net/static/images/make/guide/NoImageMP_96x72.gif' or empty( $haystack ) ) {
 		return $haystack;
 	}	
-	$str = str_replace( $needle, $new_needle, $haystack);
-	return $str . '.jpg';
+	$str = str_replace( $needle, $replace, $haystack);
+	if ( strpos($str, 'make-images') !== true ) {
+    	return $str;
+	} else {
+		return $str . '.jpg';	
+	}
 }
 
 /**
