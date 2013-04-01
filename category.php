@@ -220,14 +220,15 @@ make_get_header(); ?>
 					<?php
 						make_carousel( array(
 							'cat'       => $qo_id,
-							'title'     => $qo_name . ' On the Blog',
-							'post_type' => 'post'
+							'title'     => $qo_name . ' Videos',
+							'post_type' => 'video'
 						) );
 					?>
 					
 				</div>
-			
+				
 			</div>
+			
 			
 			<div class="row">
 				
@@ -252,8 +253,8 @@ make_get_header(); ?>
 					<?php
 						make_carousel( array(
 							'cat'       => $qo_id,
-							'title'     => $qo_name . ' Videos',
-							'post_type' => 'video'
+							'title'     => $qo_name . ' On the Blog',
+							'post_type' => 'post'
 						) );
 					?>
 					
