@@ -494,6 +494,9 @@ function make_projects_steps_list( $steps ) {
  * Default: http://cacher.dozuki.net/static/images/make/guide/NoImageMP_96x72.gif
  */
 function make_projects_to_s3( $haystack ) {
+	if ( strpos( $haystack, 'ytimg' ) !== false ) {
+		return $haystack;
+	}
 	$needle = 'guide-images.makeprojects.org/igi/';
 	$replace = 'make-images.s3.amazonaws.com/';
 	if ( $haystack == 'http://cacher.dozuki.net/static/images/make/guide/NoImageMP_96x72.gif' or empty( $haystack ) ) {
@@ -501,9 +504,9 @@ function make_projects_to_s3( $haystack ) {
 	}	
 	$str = str_replace( $needle, $replace, $haystack);
 	if ( strpos($str, 'make-images') !== true ) {
-    	return $str;
-	} else {
 		return $str . '.jpg';	
+	} else {
+		return $str;
 	}
 }
 

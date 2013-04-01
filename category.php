@@ -204,9 +204,9 @@ make_get_header(); ?>
 	<?php } }
 	else { ?>
 	
-	<?php 
-		$id = get_queried_object_id();
-		$name = get_cat_name( $id );
+	<?php
+		$qo_id   = get_queried_object_id();
+		$qo_name = get_cat_name( $qo_id );
 	?>
 	
 	<div class="grey child">
@@ -219,8 +219,8 @@ make_get_header(); ?>
 				
 					<?php
 						make_carousel( array(
-							'cat'       => $id,
-							'title'     => $name . ' On the Blog',
+							'cat'       => $qo_id,
+							'title'     => $qo_name . ' On the Blog',
 							'post_type' => 'post'
 						) );
 					?>
@@ -235,8 +235,8 @@ make_get_header(); ?>
 				
 					<?php 
 						make_carousel( array(
-							'cat'       => $id,
-							'title'     => $name . ' Projects',
+							'cat'       => $qo_id,
+							'title'     => $qo_name . ' Projects',
 							'post_type' => 'projects'
 						) );
 					?>
@@ -249,10 +249,10 @@ make_get_header(); ?>
 				
 				<div class="span12">
 				
-					<?php 
+					<?php
 						make_carousel( array(
-							'cat'       => $id,
-							'title'     => $name . ' Videos',
+							'cat'       => $qo_id,
+							'title'     => $qo_name . ' Videos',
 							'post_type' => 'video'
 						) );
 					?>
@@ -270,8 +270,8 @@ make_get_header(); ?>
 						
 							<?php 
 								make_carousel( array(
-									'cat'       => $id,
-									'title'     => $name . ' Reviews',
+									'cat'       => $qo_id,
+									'title'     => $qo_name . ' Reviews',
 									'post_type' => 'review'
 								) );
 							?>

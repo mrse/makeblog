@@ -25,6 +25,8 @@ get_header(); ?>
 							<div class="row">
 								
 								<div class="span8">
+								
+									<?php if (is_category( 'Raspberry Pi' )) { echo '<p class="pull-right"><img src="http://makezineblog.files.wordpress.com/2013/03/mcm.png" /></p>'; } ?>
 
 									<?php print apply_filters( 'taxonomy-images-queried-term-image', '', array( 'after' => '</div>', 'before' => '<div class="tax-image">', 'image_size' => 'full') ); ?>
 

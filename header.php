@@ -64,10 +64,11 @@
 					</div>
 					<div class="pull-right">
 						<form action="http://blog.makezine.com/search/" class="form navbar-search">
-							<input type="text" class="span2 search-query" name="q" placeholder="" />
+							<input type="text" class="span2 search-query" style="width:126px;" name="q" placeholder="" />
 							<input type="submit" class="btn btn-primary" style="height:28px" value="Search" />
 						</form>
 					</div>
+					<div class="clearfix"></div>
 				</div>
 			</div>
 		</div>
