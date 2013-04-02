@@ -52,11 +52,21 @@ function make_category_page_fill() {
  * @return string List items containing link to child categories. If none exist, nothing.
  */
 function make_sub_category_list( $id, $projects = false ) {
-	$home = wpcom_vip_get_term_by('id', $id, 'category');
-	$args = array(
-		'orderby' => 'name',
-		'child_of' => $home->term_id
+	$args = array();
+	if ( $projects == false && isset( $id->term_id ) ) {
+		$args = array(
+			'orderby' => 'name',
+			'child_of' => $id->term_id
 		);
+	} else {
+		$args = array(
+			'orderby' => 'name',
+			'child_of' => $id
+			);
+	}
+	if ( $args['child_of'] == null ) {
+		return;
+	}
 	$categories = get_categories( $args );
 	$output = null;
 	foreach($categories as $category) { 

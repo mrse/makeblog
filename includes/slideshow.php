@@ -246,7 +246,8 @@ function make_carousel( $args ) {
 								'post',
 								'video',
 								'projects',
-								'review' )
+								'review',
+								'craft' )
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -339,7 +340,9 @@ function make_carousel( $args ) {
 					echo '<div class="item">';
 				}
 				echo '<div class="row">';
+					global $post;
 					foreach ($posts as $post) {
+						setup_postdata( $post );
 						$type = get_post_type( $post );
 						if ($args['limit'] == 4 ) {
 							echo '<div class="span3 ' . $type . '">';
@@ -348,11 +351,11 @@ function make_carousel( $args ) {
 								echo '<span class="' . $type .'-icon"></span>';
 								echo '</a>';
 							} elseif ( $args['projects_landing'] == false ) {
-									echo '<span class="' . $type .'-icon"></span>';
+									echo '<a href="'. get_post_permalink( $post->ID ) . '"><span class="' . $type .'-icon"></span></a>';
 							}
 							$image = get_post_custom_values('Image', $post->ID);
 							if ( !empty( $image[0] ) )  {
-								echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+								echo '<a href="'. get_post_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" /></a>';
 							} elseif ( $type == 'video' ) {
 								$link = get_post_custom_values( 'Link' , $post->ID );
 								$link = 'http://www.youtube.com/oembed?format=json&url=' . esc_url( $link[0] );
@@ -361,10 +364,12 @@ function make_carousel( $args ) {
 									$json_output = json_decode($contents);
 									$img = $json_output->thumbnail_url;
 									update_post_meta( $post->ID, 'Image', $img );
-									echo '<img src="' . wpcom_vip_get_resized_remote_image_url( get_post_meta( $post->ID, 'Image', true ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+									echo '<a href="'. get_post_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( get_post_meta( $post->ID, 'Image', true ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" /></a>';
 								}
 							} else {
+								echo '<a href="'. get_post_permalink( $post->ID ) . '">';
 								get_the_image( array( 'post_id' => $post->ID, 'image_scan' => true, 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail' ) );
+								echo '</a>';
 							} 
 						} elseif ($args['limit'] == 2) {
 							echo '<div class="span4 ' . $type . '">';
@@ -377,9 +382,13 @@ function make_carousel( $args ) {
 							}
 							$image = get_post_custom_values('Image', $post->ID);
 							if ( !empty( $image[0] ) )  {
+								echo '<a href="'. get_post_permalink( $post->ID ) . '">';
 								echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 298, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+								echo '</a>';
 							} else {
+								echo '<a href="'. get_post_permalink( $post->ID ) . '">';
 								get_the_image( array( 'post_id' => $post->ID, 'image_scan' => true, 'size' => 'category-thumb', 'image_class' => 'hide-thumbnail' ) );
+								echo '</a>';
 
 							}  
 							

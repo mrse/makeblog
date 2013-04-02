@@ -65,7 +65,8 @@ make_get_header(); ?>
 							'category__in' => get_queried_object_id(), // Likely the queried object ID
 							'title'        => 'Featured in ' . get_queried_object()->name,
 							'limit'        => 2,
-							'tag'          => 'Featured'
+							'tag'          => 'Featured',
+							'post_type'	   => array( 'post', 'video','projects', 'review', 'craft' )
 					) ); ?>
 					
 				</div>

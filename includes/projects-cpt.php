@@ -497,6 +497,9 @@ function make_projects_to_s3( $haystack ) {
 	if ( strpos( $haystack, 'ytimg' ) !== false ) {
 		return $haystack;
 	}
+	if ( strpos( $haystack, 'makezineblog' ) !== false ) {
+		return $haystack;
+	}
 	$needle = 'guide-images.makeprojects.org/igi/';
 	$replace = 'make-images.s3.amazonaws.com/';
 	if ( $haystack == 'http://cacher.dozuki.net/static/images/make/guide/NoImageMP_96x72.gif' or empty( $haystack ) ) {

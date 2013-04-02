@@ -2,7 +2,6 @@
 /*
 Template Name: Categories
 */
-error_reporting('none');
 ?>
 
 <?php get_header(); ?>

@@ -13,57 +13,99 @@ Template Name: Home Page
 				<div class="row">
 
 					<div class="span8">
-					
-						<style>	
 
-							.drudge a:hover {
-								text-decoration: underline !important;
-							}
-
-						</style>	
-
-						<div class="checkers drudge" style="background-color:#fff; background-image:none;">
+						<div class="checkers">
 
 							<div class="row">
 
-								<div class="span8" style="font-family:serif;">
-									
-									<h1 style="font-family:sans-serif;color:#cc2229;text-align:center;margin-bottom:10px;margin-top:10px;">+++ Breaking News +++</h1>
-											
-									<a href="<?php echo esc_url( get_permalink( 297352 ) ); ?>">
-										<img src="<? echo get_stylesheet_directory_uri(); ?>/img/AprilFools.jpg" alt="Mars Rover Finds Arrowhead" class="alignleft">
-									</a>
-											
-									<h2 style="font-family:serif"><a href="<?php echo esc_url( get_permalink( 297352 ) ); ?>" style="color:#000;">Curiousity Rover scoops up Martian arrowhead</a></h2>
-									<h3 style="font-family:serif"><a href="<?php echo esc_url( get_permalink( 297352 ) ); ?>">Developing Story</a></h3>
-									
-									<div class="clearfix"></div>
-									
-									<hr>
-									
-									<ul class="unstyled" style="font-size:20px;font-weight:bold;marign-left:10px;">
-										
-										<li style="line-height:24px; margin-left:10px;"><a style="color:#000;" href="<?php echo esc_url( get_permalink( 297352 ) ); ?>">> 8th Grader Recreates "Temple of Doom" in Family Basement</a></li>
-										<li style="line-height:24px; margin-left:10px;"><a style="color:#000;" href="<?php echo esc_url( get_permalink( 297352 ) ); ?>">> TechShop Competitor Offers Gym Equipment</a></li>
-										<li style="line-height:24px; margin-left:10px;"><a style="color:#000;" href="<?php echo esc_url( get_permalink( 297352 ) ); ?>">> Why Self-Replicating Machines Aren't Getting any Better</a></li>
-										<li style="line-height:24px; margin-left:10px;"><a style="color:#000;" href="<?php echo esc_url( get_permalink( 297352 ) ); ?>">> Two Crafters in Decade-long dispute Over Skull Pattern</a></li>
-										<li style="line-height:24px; margin-left:10px;"><a style="color:#000;" href="<?php echo esc_url( get_permalink( 297352 ) ); ?>">> New on Kickstarter: Spinnaret Device Shoots Webs Like Spiderman</a></li>
-										
-									</ul>
-									
-									<hr>
-									
-									<a href="<?php echo esc_url( get_permalink( 297352 ) ); ?>">
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/orange.jpg" alt="Tang 2.0" class="alignleft" style="margin-left:10px;border:0px;">
-									</a>
-									
-									<h3 style="color:#000;">Plus:</h3>
-									<h3><a href="<?php echo esc_url( get_permalink( 297352 ) ); ?>" style="color:#0094ce"><span style="color:orange">Tang 2.0:</span> New Powder Creates Oranges In 3D Printers</a></h3>
-									
-									<div class="clearfix"></div>
-									
+								<div class="span4">
+
+									<div class="paddme">
+
+										<div class="ribbon"><?php echo esc_html( make_get_cap_option( 'ribbon_title' ) ); ?></div>
+
+										<a href="<?php echo esc_html( make_get_cap_option( 'main_link' ) ); ?>">
+
+											<img src="<?php echo esc_url( make_get_cap_option( 'main_url' ) ); ?>" id="top-left" />
+
+										</a>
+
+										<div class="caption">
+
+											<h3><a href="<?php echo esc_html( make_get_cap_option( 'main_link' ) ); ?>"><?php echo esc_html( make_get_cap_option( 'main_title' ) ); ?></a></h3>
+											<p><a href="<?php echo esc_html( make_get_cap_option( 'main_link' ) ); ?>"><?php echo esc_html( make_get_cap_option( 'main_subtitle' ) ); ?></a></p>
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="span4">
+
+									<div class="row">
+
+										<div class="span4">
+
+											<div class="paddme small">
+
+												<a href="<?php echo esc_url( make_get_cap_option( 'top_link' ) ); ?>">
+												
+													<img class="home-biggest" src="<?php echo esc_url( make_get_cap_option( 'top_url' ) ); ?>" />
+
+												</a>
+
+												<div class="caption">
+
+													<h3><a href="<?php echo esc_url( make_get_cap_option( 'top_link' ) ); ?>"><?php echo esc_html( make_get_cap_option( 'top_title' ) ); ?></a></h3>
+													<p><a href="<?php echo esc_url( make_get_cap_option( 'top_link' ) ); ?>"><?php echo esc_html( make_get_cap_option( 'top_subtitle' ) ); ?></a></p>
+
+												</div>
+
+											</div>
+
+										</div>
+
+										<div class="span4">
+
+											<div class="paddme small">
+
+												<a href="<?php echo esc_url( make_get_cap_option( 'bottom_link' ) ); ?>">
+													
+													<img class="home-biggest" src="<?php echo esc_url( make_get_cap_option( 'bottom_url' ) ); ?>" />
+
+												</a>
+
+												<div class="caption">
+
+													<h3><a href="<?php echo esc_url( make_get_cap_option( 'bottom_link' ) ); ?>"><?php echo esc_html( make_get_cap_option( 'bottom_title' ) ); ?></a></h3>
+													<p><a href="<?php echo esc_url( make_get_cap_option( 'bottom_link' ) ); ?>"><?php echo esc_html( make_get_cap_option( 'bottom_subtitle' ) ); ?></a></p>
+
+												</div>
+
+
+											</div>
+
+										</div>
+
+									</div>
+
 								</div>
 								
+								<div class="row-fluid">
+									
+									<div class="span12">
+									
+										<div class="featured">
+											
+											<?php echo make_featured_post(); ?>	
+											
+										</div>
+										
+									</div>
+									
+								</div>
+
 							</div>
 
 						</div>
