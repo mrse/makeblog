@@ -84,6 +84,8 @@ make_get_header() ?>
 							<li><strong>Project Success (30%)</strong>: Did your project achieve its goal?
 							<li><strong>Unique Application (40%)</strong>: Novel use of the Pi.
 						</li>
+						
+						<?php if ( function_exists( 'sharing_display') ) echo sharing_display(); ?> 
 					
 					</div>
 					
