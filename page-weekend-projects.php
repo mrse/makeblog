@@ -35,49 +35,11 @@ make_get_header() ?>
 				
 					<article <?php post_class(); ?>>
 
-						<div id="content">
-						
-							<div class="new_red">
-
-								<h1>Mini Rover Redux</h1>
-
-								<div class="video">
-							
-								<iframe width="560" height="315" src="http://www.youtube.com/embed/YFGKa1pf2Pk" frameborder="0" allowfullscreen></iframe>
-							
-							</div>
-							
-							<p>Learn the basics of modding a remote-controlled (R/C) vehicle for the purpose of making your own terrestrial rover. Mount one wireless camera onto your vehicle's chassis, and see how far you can drive it and see what it sees. Then, add a second camera for ultra-wide-angle vision, front and rear viewing, or sterescopic 3D video of the world!
-						</p>
-
-							<p><a href="http://blog.makezine.com/projects/mini-rover-redux/" target="_blank" class="btn">See it here &rarr;</a></p>
-
-						</div>
-
-						<div class="clearer"></div>
-
 						<div class="banner">
 
 							<img src="http://cdn.makezine.com/make/facebook/weekend_project/MakeProjectsRSLanding1.png" alt="Weekend Projects" />
 
 						</div>
-
-						<div class="new_red signup">
-
-							<h3>Subscribe to the Weekend Projects Newsletter</h3>
-							
-							<form action="http://makermedia.createsend.com/t/r/s/qhiiyu/" method="post" id="subForm">
-								
-								<input type="text" placeholder="name" name="cm-name" id="name" />
-								<input type="text" name="cm-qhiiyu-qhiiyu" placeholder="email" id="qhiiyu-qhiiyu" />
-								<span class="button orm"><input type="submit" class="button orm" value="Subscribe" /></span>
-
-							</form>
-							
-							<div class="clearer"></div>
-
-						</div>
-
 
 						<h2 id="Section_Check_out_the_past_weekend_projects">Latest Projects</h2>
 

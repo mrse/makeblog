@@ -278,14 +278,14 @@ Template Name: Craft Home Page
 
 							<div class="span4">
 
-								<h3 class="red"><a href="http://blog.makezine.com/category/craft/54321-about/" class="red">Crafters</a></h3>
+								<h3 class="red"><a href="http://blog.makezine.com/tag/makers/" class="red">Crafters</a></h3>
  
 								<div class="grid-box boxy">
 
 									<?php
 
 										$args = array(
-											'tag_id' => 62859496,
+											'tag_id' => 296748,
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
 											'post_type' => 'craft'

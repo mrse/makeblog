@@ -536,9 +536,9 @@ function make_projects_steps( $steps ) {
 			$images = $step->images;
 			if ( !empty( $images[0]->text ) ) {
 				if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
-					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $images[0]->text ), 620, 465 ) . '" data-src="' . make_projects_to_s3( $images[0]->text ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
+					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $images[0]->text ), 620, 465 ) . '" data-src="' . make_projects_to_s3( $images[0]->text ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="main ' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
 				} else {
-					echo '<img src="' . esc_url( make_projects_to_s3( $images[0]->text ) ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
+					echo '<img src="' . esc_url( make_projects_to_s3( $images[0]->text ) ) . '" data-loc="js-step-' . esc_attr( $step->number ) . ' alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
 				}
 			}
 			$number = count($images);
@@ -546,7 +546,7 @@ function make_projects_steps( $steps ) {
 				echo '<span class="row smalls" style="display:block">';
 				foreach ($images as $image) {
 					echo '<span class="span2">';
-					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image->text ), 140, 80 ) . '" data-src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $images[0]->text ), 620, 465 )  . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="thumbs ' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
+					echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image->text ), 140, 80 ) . '" data-loc="js-step-' . esc_attr( $step->number ) . '" data-src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image->text ), 620, 465 )  . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="thumbs ' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />';
 					echo '</span>';
 				}
 				echo '</span><!--.row-->';

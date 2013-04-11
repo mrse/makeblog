@@ -65,8 +65,7 @@ jQuery(document).ready(function(){
 		return true;
 	});
 	jQuery('.thumbs').click(function () {
-		(this).css('display', 'none');
-    });
-    var mydata = jQuery(".thumbs").data();
-	console.log(mydata);
+		var mydata = jQuery(this).data();
+		jQuery('#' + mydata.loc + ' .main').attr('src', mydata.src );
+	});
 });

@@ -1,13 +1,15 @@
 <?php
 /**
- * Page Template
+ * Template Name: Single Camp Page Template
  *
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
- * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * @author     Bill Olson <bolson@makermedia.com>
  * 
  */
-make_get_header() ?>
+?>
+
+<?php get_header('camp'); ?>
 		
 	<div class="single">
 	
@@ -24,7 +26,7 @@ make_get_header() ?>
 						<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 						
 					</div>
-		
+					<hr>
 				</div>
 			
 			</div>
@@ -35,8 +37,8 @@ make_get_header() ?>
 				
 					<article <?php post_class(); ?>>
 
-						<?php the_content(); ?>
-					
+						<?php the_content(); ?>		
+
 					</article>
 					
 					<?php endwhile; ?>
@@ -52,15 +54,14 @@ make_get_header() ?>
 						<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 					
 					<?php endif; ?>
-				</div>
-				
-				
-				<?php get_sidebar(); ?>
+				</div> <!-- END span8 -->
 					
-			</div>
+				<?php get_sidebar('camp'); ?>
+								
+			</div> <!-- END row -->
 
-		</div>
+		</div> <!-- END container -->
 
-	</div>
+	</div> <!-- END single -->
 
-<?php get_footer(); ?>
+<?php get_footer('camp'); ?>
