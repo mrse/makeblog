@@ -355,29 +355,7 @@ Template Name: Craft Home Page
 
 								<div class="grid-box boxy">
 
-									<?php
-
-										$args = array(
-											'tag_id' => 29038,
-											'posts_per_page'  => 1,
-											'no_found_rows' => true,
-											'post_type' => 'craft'
-										);
-										
-										$the_query = new WP_Query( $args );
-
-										while ( $the_query->have_posts() ) : $the_query->the_post();
-											echo '<a href="'.get_permalink().'">';
-											the_post_thumbnail('small-home-feature-boxes');
-											the_title('<h4>', '</h4>');
-											echo '<p>'.wp_trim_words(strip_shortcodes(get_the_content('...')), 12).'</p>';
-											echo '</a>';
-										endwhile;
-
-										// Reset Post Data
-										wp_reset_postdata();
-
-									?>
+									<?php echo make_craft_101(); ?>
 
 								</div>
 

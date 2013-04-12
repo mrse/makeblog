@@ -85,3 +85,38 @@ function make_get_header() {
 		get_header();
 	}
 }
+
+function make_craft_101() {
+
+	$craft_query = new WP_Query( array(
+		'tag_id' => 29038,
+		'posts_per_page'  => 20,
+		'no_found_rows' => true,
+		'post_type' => 'craft',
+		'fields' => 'ids',
+	) );
+	$craft_ids = $craft_query->get_posts();
+
+	if ( ! empty( $craft_ids ) ) :
+		shuffle( $craft_ids );
+		$craft_id = array_shift( $craft_ids );
+		$post = get_post( $craft_id );
+
+		$output = null;
+
+		if ( $post ) : setup_postdata( $post );
+			$output .= '<a href="' . get_permalink() . '">';
+			$output .= get_the_post_thumbnail( $post->ID, 'small-home-feature-boxes' );
+			$output .= '<h4>' . get_the_title( $post->ID ) . '</h4>';
+			$output .= '<p>'.wp_trim_words( strip_shortcodes( $post->post_content ), 12 ).'</p>';
+			$output .= '</a>';
+		endif;
+
+		return $output;
+
+	endif;
+
+	// Reset Post Data
+	wp_reset_postdata();
+
+}
