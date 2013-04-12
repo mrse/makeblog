@@ -478,12 +478,12 @@ Template Name: Home Page
 							</div>
 						</div>
 
-						<div id="myCarousel" class="slide">
+						<div id="myCarousel" class="carousel slide">
+							<ol class="carousel-indicators">
+								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+								<li data-target="#myCarousel" data-slide-to="1"></li>
+							</ol>
 							<div class="carousel-inner">
-								<ol class="carousel-indicators">
-									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-									<li data-target="#myCarousel" data-slide-to="1"></li>
-								</ol>
 								<div class="item active">
 									<a href="https://plus.google.com/communities/105413589856236995389">
 										<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Make_Forum_join_banner.jpg" alt="Join the +MAKE Forum">
@@ -495,11 +495,13 @@ Template Name: Home Page
 									</a>
 								</div>
 							</div>
+							<a class="pull-left badge" href="#myCarousel" data-slide="prev">&larr;</a>
+							<a class="pull-right badge" href="#myCarousel" data-slide="next">&rarr;</a>
 						</div>
 						<script type="text/javascript">
 							jQuery(document).ready(function(){
 								jQuery('#myCarousel').carousel({
-									interval: 10000
+									interval: false
 								})
 							});
 							jQuery('#myCarousel').on('slid', function () {

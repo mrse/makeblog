@@ -124,8 +124,7 @@
 						<li><a href="http://makezine.com/magazine">Magazine</a></li>
 						<li><a href="http://makeprojects.com">Projects</a></li>
 						<li><a href="http://kits.makezine.com">Reviews</a></li>
-						<li><a href="http://makershed.com">Shop</a></li>
-
+						<li><a href="http://www.makershed.com/?Click=19208">Shop</a></li>
 					</ul>
 
 				</div>
