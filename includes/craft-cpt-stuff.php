@@ -105,8 +105,8 @@ function make_craft_101() {
 		$output = null;
 
 		if ( $post ) : setup_postdata( $post );
-			$output .= '<a href="' . get_permalink() . '">';
-			$output .= get_the_post_thumbnail( $post->ID, 'small-home-feature-boxes' );
+			$output .= '<a href="' . get_permalink( $post->ID ) . '">';
+			$output .= get_the_image( array( 'post_id' => $post->ID, 'image_scan' => true, 'size' => 'small-home-feature-boxes', 'image_class' => 'hide-thumbnail' ) );
 			$output .= '<h4>' . get_the_title( $post->ID ) . '</h4>';
 			$output .= '<p>'.wp_trim_words( strip_shortcodes( $post->post_content ), 12 ).'</p>';
 			$output .= '</a>';

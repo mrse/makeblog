@@ -25,15 +25,7 @@
 			})();
 		</script>
 
-		<script type='text/javascript'>
-			googletag.cmd.push(function() {
-				var slot0 = googletag.defineSlot('/11548178/Makezine/Blog/Slideshow', [728, 90], 'div-gpt-ad-1346964762079-0').addService(googletag.pubads()).setTargeting('pos', 'atf');
-				var slot1 = googletag.defineSlot('/11548178/Makezine/Blog/Slideshow', [[300, 250], [300, 600]], 'div-gpt-ad-1346964762079-1').addService(googletag.pubads()).setTargeting('pos', 'atf');
-				//googletag.pubads().setTargeting('sponsor',['radioshack']);	
-				googletag.pubads().enableSingleRequest();
-				googletag.enableServices();
-			});
-		</script>
+		<?php get_template_part('dfp'); ?>
 
 		<!-- Le fav and touch icons -->
 		<link rel="shortcut icon" href="http://1.gravatar.com/blavatar/dab43acfe30c0e28a023bb3b7a700440?s=14">

@@ -84,7 +84,6 @@ global $post;
 			<?php } ?>
 		<?php } ?>
 		
-			googletag.pubads().enableSingleRequest();
 			<?php 
 				if (has_tag('project-remake')) {
 					echo "googletag.pubads().setTargeting('sponsor',['schick']);";
@@ -126,7 +125,6 @@ global $post;
 					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
 				}
 			?>
-			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
 			});
 		</script>

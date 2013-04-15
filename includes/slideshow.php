@@ -23,6 +23,7 @@ function make_register_cpt_slideshow() {
 		'labels' => $labels,
 		'hierarchical' => false,
 		'supports' => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions' ),
+		'taxonomies' => array( 'category', 'post_tag' ),
 		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => true,

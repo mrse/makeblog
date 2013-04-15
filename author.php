@@ -65,47 +65,6 @@ make_get_header() ?>
 
 	</div>
 	
-	<div class="grey">
-	
-		<div class="container">
-		
-			<div class="row">
-			
-				<div class="span8">
-					
-					<?php
-						$args = array(
-							'author'	=> get_queried_object_id(), // Likely the queried object ID
-							'title'		=> 'New from ' . $author->displayName,
-							'all'		=> true,
-							'limit'		=> 2
-						);
-						make_carousel( $args ); ?>
-					
-				</div>
-				
-				<div class="span4">
-					
-					<div class="sidebar-ad">
-
-						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
-						<div id='div-gpt-ad-664089004995786621-2'>
-							<script type='text/javascript'>
-								googletag.display('div-gpt-ad-664089004995786621-2');
-							</script>
-						</div>
-						<!-- End AdSlot 2 -->
-
-					</div>
-					
-				</div>
-				
-			</div>
-			
-		</div>
-		
-	</div>
-	
 	<div class="grey child">
 	
 		<div class="container">
