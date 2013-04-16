@@ -500,6 +500,9 @@ function make_new_gallery_shortcode($attr) {
 		'exclude'    => ''
 	), $attr));
 
+	
+	$rand = mt_rand( 0, $id );
+
 	$id = intval($id);
 	if ( 'RAND' == $order )
 		$orderby = 'none';
@@ -520,7 +523,7 @@ function make_new_gallery_shortcode($attr) {
 	if ( empty($attachments) )
 		return '';
 
-	$output = '<div id="myCarousel" class="carousel slide" data-interval=""><div class="carousel-inner">';
+	$output = '<div id="myCarousel-' . $rand . '" class="carousel slide" data-interval=""><div class="carousel-inner">';
 
 	$i = 0;
 	foreach( $attachments as $id => $attachment ) {
@@ -544,8 +547,8 @@ function make_new_gallery_shortcode($attr) {
 		
 	} //foreach
 	$output .= '</div>
-		<a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-		<a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+		<a class="left carousel-control" href="#myCarousel-' . $rand . '" data-slide="prev">‹</a>
+		<a class="right carousel-control" href="#myCarousel-' . $rand . '" data-slide="next">›</a>
 	</div>';
 	$output .= '<p class="pull-right"><span class="label viewall" style="cursor:pointer">View All</span></p>';
 	$output .= '

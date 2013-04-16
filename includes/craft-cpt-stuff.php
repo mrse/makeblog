@@ -73,7 +73,12 @@ $easy_cf = new Easy_CF($field_data);
 function make_get_header() {
 	if (is_single()) {
 		$primary_cat = get_the_category();
-		$primary_cat = $primary_cat[0]->term_id;
+		if ( $primary_cat != null ) {
+			$primary_cat = $primary_cat[0]->term_id;
+		} else {
+			$primary_cat = null;
+		}
+		
 	} elseif (is_category()) {
 		$primary_cat = get_queried_object_id();
 	} else {

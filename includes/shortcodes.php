@@ -330,4 +330,18 @@ function join_forum() {
 	return $output;
 }
 
-add_shortcode( 'join_forum', 'join_forum' );
+add_shortcode( 'join_forum', 'join_make_forum' );
+
+function vol_34() {
+	$output = '
+<div class="span3">
+<p><a href="http://makezine.com/34/"><img data-lazy-loaded="true" style="display: block;" class="alignleft size-full" title="Make Volume 34" alt="Cover to Make Volume 34" src="http://makezineblog.files.wordpress.com/2013/04/m34-cover1.jpg?w=148&#038;h=204" width="148" height="204" /></noscript></a></p>
+</div>
+<div class="span9">
+<h4><a title="Read MAKE Volume 34" href="http://makezine.com/34/">MAKE Volume 34</a>: Join the robot uprising!</h4>
+<p>As MAKE&#39;s Volume 34 makes clear, there’s never been a better time to delve into robotics, whether you’re a tinkerer or a more serious explorer. With the powerful tools and expertise now available, the next great leap in robot evolution is just as likely to come from your garage as a research lab. The current issue of MAKE will get you started. Explore robot prototyping systems, ride along with the inventors of the OpenROV submersible, and learn how you can 3D-print your own cutting-edge humanoid robot for half the price. Plus, build a coffee-can Arduino robot, a lip balm linear actuator, a smartphone servo controller, and much more</p><p><a href="http://www.makershed.com/MAKE_Volume_34_p/9781449327668.htm">Buy</a> or <a href="https://readerservices.makezine.com/MK/subscribe.aspx?PC=MK&amp;PK=M6FTR1">subscribe</a> today!</p>
+</div>';
+	return $output;
+}
+
+add_shortcode( 'vol_34', 'promote_volume_34' );

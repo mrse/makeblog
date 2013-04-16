@@ -135,7 +135,7 @@ get_header(); ?>
 							),
 							'projects_landing'	=> true,
 							'all'				=> true,
-							'posts_per_page'	=> 24
+							'posts_per_page'	=> 36
 						);
 
 						make_carousel($args);

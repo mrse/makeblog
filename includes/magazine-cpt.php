@@ -128,7 +128,7 @@ function make_post_loop( $args ) {
 
 	while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
-		<div <?php post_class( 'row-fluid'); ?>>
+		<div <?php post_class( 'row'); ?>>
 		
 			<div class="video-box">
 
@@ -216,26 +216,24 @@ function make_magazine_toc( $args ) {
 		echo '<h3>'. esc_html( $args['title']  ) .'</h3>';
 	}
 
-	while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+	while ( $the_query->have_posts() ) : $the_query->the_post(); setup_postdata( $post ); ?>
 
-		<article <?php post_class(); ?>>
+		<article <?php post_class('row'); ?>>
 
-			<div class="cat-thumb">
-
-				<?php get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb' ) ); ?>
-
-			</div>
-
-			<div class="cat-blurb">
-
-				<?php 
-					$link = get_post_custom_values( 'Link' );
-					if (!empty( $link ) ) {
-						echo '<h3><a class="red" href="' . esc_url( $link[0] ) .'">' . get_the_title() . '</a></h3>';
+			<div class="span2">
+				<?php
+					$image = get_post_custom_values('Image', $post->ID);
+					if ( !empty( $image[0] ) )  {
+						echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 140, 140 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
 					} else {
-						echo '<h3><a class="red" href="' . get_permalink($post->ID) . '">' . get_the_title() . '</a></h3>';
+						get_the_image( array( 'image_scan' => true, 'size' => 'new-thumb', 'image_class' => 'hide-thumbnail' ) );
 					}
 				?>
+			</div>
+
+			<div class="span6">
+
+				<?php echo '<h3><a class="red" href="' . get_permalink($post->ID) . '">' . get_the_title() . '</a></h3>'; ?>
 
 				<p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
 
@@ -255,11 +253,9 @@ function make_magazine_toc( $args ) {
 
 			</div>
 
-			<div class="clear"></div>
-			
-			<hr />
-
-		</article> 
+		</article>
+		
+		<hr> 
 
 	<?php endwhile;
 
@@ -272,8 +268,6 @@ function make_magazine_toc( $args ) {
 
 	// Reset Post Data
 	wp_reset_postdata();
-
-	echo '<div class="clear"></div>';
 
 }
 

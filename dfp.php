@@ -49,6 +49,9 @@ global $post;
 			var slot2= googletag.defineSlot('/11548178/Makezine/Craft/Blog<?php echo esc_js( make_get_category_name() ); ?>', [[300,250],[300,600]],'div-gpt-ad-664089004995786621-2').addService(googletag.pubads()).setTargeting('pos', 'atf');
 			var slot3= googletag.defineSlot('/11548178/Makezine/Craft/Blog<?php echo esc_js( make_get_category_name() ); ?>', [[300,250],[300,600]],'div-gpt-ad-664089004995786621-3').addService(googletag.pubads()).setTargeting('pos', 'btf');
 			var slot4= googletag.defineSlot('/11548178/Makezine/Craft/Blog<?php echo esc_js( make_get_category_name() ); ?>', [[728,90]],'div-gpt-ad-664089004995786621-4').addService(googletag.pubads()).setTargeting('pos', 'btf');
+		<?php } elseif ('slideshow' == get_post_type()) { ?>
+		 	var slot1= googletag.defineSlot('/11548178/Makezine/Blog/Slideshow', [[728,90]],'div-gpt-ad-664089004995786621-1').addService(googletag.pubads()).setTargeting('pos', 'atf');
+			var slot2= googletag.defineSlot('/11548178/Makezine/Blog/Slideshow', [[300,250],[300,600]],'div-gpt-ad-664089004995786621-2').addService(googletag.pubads()).setTargeting('pos', 'atf');
 		<?php } elseif ( ('volume' ) == get_post_type() ) { ?>
 		 	var slot1= googletag.defineSlot('/11548178/Makezine/Blog/Magazine', [[728,90]],'div-gpt-ad-664089004995786621-1').addService(googletag.pubads()).setTargeting('pos', 'atf');
 			var slot2= googletag.defineSlot('/11548178/Makezine/Blog/Magazine', [[300,250],[300,600]],'div-gpt-ad-664089004995786621-2').addService(googletag.pubads()).setTargeting('pos', 'atf');

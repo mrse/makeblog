@@ -26,7 +26,8 @@
 			<div class="row">		
 				<div class="span12">
 					<div class="home-intro">
-					    <h3> Have you ever wanted to learn about Arduino but are unsure on how to get started? Ever wanted to know how to create a keyless entry lock? Or intricately wire together a robot? Or design a monitoring system for the weather? Want to build a marshmallow blaster and wow your neighbors? Interested in deciphering the logic and language behind programming? Come learn with other makers like yourself.</h3>
+					    <h3>Have you ever wanted to: Learn about Arduino? Build a weather monitoring site? Build a marshmallow blaster to wow your neighbors? Learn what this making thing is all about?
+But don’t know where to start? Come learn with other makers like yourself.</h3>
 				    </div> <!-- END home-intro -->
 
 				</div> <!-- END span12 -->

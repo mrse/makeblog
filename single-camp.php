@@ -33,7 +33,7 @@
 									
 			<div class="row">
 			
-				<div class="span8">
+				<div class="span12">
 				
 					<article <?php post_class(); ?>>
 
@@ -54,10 +54,8 @@
 						<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 					
 					<?php endif; ?>
-				</div> <!-- END span8 -->
-					
-				<?php get_sidebar('camp'); ?>
-								
+				</div> <!-- END span12 -->
+													
 			</div> <!-- END row -->
 
 		</div> <!-- END container -->

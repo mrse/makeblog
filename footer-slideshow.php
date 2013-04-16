@@ -5,11 +5,13 @@
 
 				<div class="span12">
 
-					<div id='div-gpt-ad-1346964762079-0'>
+					<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[729,90]]  -->
+					<div id='div-gpt-ad-664089004995786621-1'>
 						<script type='text/javascript'>
-							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1346964762079-0'); });
+							googletag.display('div-gpt-ad-664089004995786621-1');
 						</script>
 					</div>
+					<!-- End AdSlot 2 -->
 
 				</div>
 
@@ -22,7 +24,7 @@
 				jQuery('a span.badge').addClass('badge-info');
 				jQuery('#nav-buttons a:first-child').addClass('prev').attr( 'target', '_self' );
 				jQuery('#nav-buttons a:last-child').addClass('next').attr( 'target', '_self' );
-				jQuery('.self a').attr( 'target', '_self' );
+				jQuery('.self a').attr( 'target', '_self' ).css('border', 'none');
 				jQuery('a.self').attr( 'target', '_self' );
 				jQuery(document).bind('keydown', 'left', function() {
 					var url = jQuery('.prev').attr('href');

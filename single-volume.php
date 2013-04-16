@@ -5,13 +5,9 @@
 
 get_header(); ?>
 		
-		<div class="clear"></div>
-
-		<div class="">
+		<div class="single">
 
 			<div class="container">
-			
-				<div class="content">
 				 
 				 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				 
@@ -21,33 +17,34 @@ get_header(); ?>
 				
 							<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
-							<div class="row-fluid">
+							<div class="row">
 							
 								<div class="span8">
 								
-									<div class="row-fluid">
+									<div class="row">
 									
 										<?php 
 											$video = get_post_custom_values('VideoURL');
 											if ($video[0]) {
 												echo '<div class="span12">';
-													echo make_youtube_iframe($video[0], 605, 340);
+													echo make_youtube_iframe($video[0], 620, 345);
 												echo '</div>';
 											}
 										?>
 										
 									</div>
 										
-									<div class="banner">
+									<div class="row">
 									
+										<hr>
 										<?php
 											$featuredposts = get_post_custom_values('FeaturedPosts');
 											$posts = array_map( 'get_post', explode( ',', $featuredposts[0] ) );
 											foreach ( $posts as $post ) { 
 												//print_r($post); ?>
-												<div class="teaser2">
+												<div class="span2">
 													<a href="<?php echo get_permalink($post->ID); ?>">
-														<?php echo get_the_post_thumbnail( $post->ID, 'volume-thumb', array('class' => 'thumbnail' ) ); ?>
+														<?php echo get_the_post_thumbnail( $post->ID, 'new-thumb', array('class' => 'hide-thumbnail' ) ); ?>
 														<?php echo get_the_title( $post->ID ); ?>
 													</a>
 												</div>
@@ -106,23 +103,13 @@ get_header(); ?>
 														
 								</div>
 								
-								<div class="span4">
-								
-									
-
-								</div>
-								
 							</div>
 
 					<?php } ?>
-				
-				</div>
 
 				<div class="row">
 
 					<div class="span8">
-
-						<div class="content">
 			
 							<article <?php post_class(); ?>>
 
@@ -187,7 +174,6 @@ get_header(); ?>
 							
 							<?php endif; ?>
 
-						</div>
 
 					</div>
 

@@ -10,6 +10,7 @@
 			}
 			?>" />
 
+		<meta name="p:domain_verify" content="c4e1096cb904ca6df87a2bb867715669" >
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -64,90 +65,105 @@
 					</div>
 					<div class="pull-right">
 						<form action="http://blog.makezine.com/search/" class="form navbar-search">
-							<input type="text" class="span2 search-query" name="q" placeholder="" />
+							<input type="text" class="span2 search-query" style="width:126px;" name="q" placeholder="" />
 							<input type="submit" class="btn btn-primary" style="height:28px" value="Search" />
 						</form>
 					</div>
+					<div class="clearfix"></div>
 				</div>
 			</div>
 		</div>
 
-		<div class="new-topad">
+		<div class="fix">
 
-			<div id='div-gpt-ad-664089004995786621-1'>
-				<script type='text/javascript'>
-					googletag.display('div-gpt-ad-664089004995786621-1');
-				</script>
-			</div>
-			
-		</div>
-		
-		<header>
-
-			<div class="container">
-			
-				<div class="row">
-					
-					<div class="span3">
+			<div id="header">
 				
-						<h1><a href="http://makezine.com/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/new-logo-make.jpg" alt="MAKE" title="MAKE"></a></h1>
-						
-					</div>
+				<div class="container">
 					
-					<div class="span7">
-					
-						<?php 
-						$top_menu = array(
-							'theme_location'  => 'main_bar',
-							'container'       => 'nav',
-							'container_class' => '',
-							'container_id'    => '',
-							'menu_class'      => 'menu',
-							'menu_id'         => '',
-							'echo'            => true,
-							'fallback_cb'     => 'wp_page_menu',
-							'before'          => '',
-							'after'           => '',
-							'link_before'     => '',
-							'link_after'      => '',
-							'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-							'depth'           => 0,
-							'walker'          => ''
-						);
+					<div class="row">
 
-						$cat_menu = array(
-							'theme_location'  => 'category_bar',
-							'container'       => 'nav',
-							'container_class' => '',
-							'container_id'    => '',
-							'menu_class'      => 'menu',
-							'menu_id'         => '',
-							'echo'            => true,
-							'fallback_cb'     => 'wp_page_menu',
-							'before'          => '',
-							'after'           => '',
-							'link_before'     => '',
-							'link_after'      => '',
-							'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-							'depth'           => 0,
-							'walker'          => ''
-						); ?>
+						<div class="span topad">
+							
+							<!-- Beginning Sync AdSlot 1 for Ad unit header ### size: [[728,90]]  -->
+							<div id='div-gpt-ad-664089004995786621-1'>
+								<script type='text/javascript'>
+									googletag.display('div-gpt-ad-664089004995786621-1');
+								</script>
+							</div>
+							<!-- End AdSlot 1 -->
+							
+						</div>
 
-						
-						<?php wp_nav_menu($top_menu); ?>
-						<div class="clearfix"></div>
-						<?php wp_nav_menu($cat_menu); ?>		
-						
-					</div>
-					
-					<div class="span2">
-						
-						<?php echo make_house_ad(); ?>	
-						
-					</div>
-						
-				</div>
+						<div class="biggins">
+
+							<?php
 								
+								$ad_query = new WP_Query( array(
+									'post_type' => 'house-ads',
+									'posts_per_page' => 20,
+									'fields' => 'ids',
+									'no_found_rows' => true,
+								) );
+								$ad_ids = $ad_query->get_posts();
+
+								if ( ! empty( $ad_ids ) ) :
+									shuffle( $ad_ids );
+									$ad_id = array_shift( $ad_ids );
+									$post = get_post( $ad_id );
+
+									if ( $post ) : setup_postdata( $post );
+										echo '<a href="'. esc_url( get_post_meta( $post->ID, 'LinkURL', true ) ).'">';
+										the_post_thumbnail('house-ad');
+										echo '</a>';
+									endif;
+								endif;
+
+								// Reset Post Data
+								wp_reset_postdata();
+
+							?>
+
+						</div>
+
+					</div>
+
+					<div class="clear"></div>
+
+					<h1><a href="http://makezine.com/"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/make.png" alt="MAKE" title="MAKE" /></a></h1>
+
+					<ul class="navi">
+						
+						<li class="active"><a href="http://blog.makezine.com">Blog</a></li>
+						<li><a href="http://makezine.com/magazine">Magazine</a></li>
+						<li><a href="http://makeprojects.com">Projects</a></li>
+						<li><a href="http://kits.makezine.com">Reviews</a></li>
+						<li><a href="http://www.makershed.com/?Click=19208">Shop</a></li>
+					</ul>
+
+				</div>
+
 			</div>
-			
-		</header>
+
+			<div class="header-bottom">
+
+				<div class="container">
+
+					<div class="topics">
+
+						<h5 class="blue">Hot Topics:</h5>
+
+						<?php echo wp_kses_post( stripslashes( make_get_cap_option( 'hot_topics' ) ) ); ?>
+
+					</div>
+
+					<div class="pull-right">
+
+						<a href="http://blog.makezine.com/topics"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/see_all_topics.png" alt="See All Topics" class="see pull-right" /></a><!--  -->
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
