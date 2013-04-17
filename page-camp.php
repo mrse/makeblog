@@ -26,8 +26,7 @@
 			<div class="row">		
 				<div class="span12">
 					<div class="home-intro">
-					    <h3>Have you ever wanted to: Learn about Arduino? Build a weather monitoring site? Build a marshmallow blaster to wow your neighbors? Learn what this making thing is all about?
-But don’t know where to start? Come learn with other makers like yourself.</h3>
+					    <h3>Learn about Arduino? Build a  weather monitoring site? Build a marshmallow blaster to wow your neighbors? Learn what this making thing is all about? But don’t know where to start? Come learn with other makers like yourself. .</h3>
 				    </div> <!-- END home-intro -->
 
 				</div> <!-- END span12 -->
@@ -44,19 +43,19 @@ But don’t know where to start? Come learn with other makers like yourself.</h3
 						<div class="span4">
 
 							<h2>SIGN UP TODAY!</h2>
-							<h3>Some other text here looks really nice</h3>
+							<h3>Join Make: Training Camp Mailing List</h3>
 
 							</h2>
 
 						</div> <!-- END span4 -->	
 
 						<div class="span8">
-
-							<div class="input-append">
-								<input class="span4" id="appendedInput" type="text" value="Enter your email" onfocus="value=''">
-								<span class="add-on">JOIN</span>
-							</div>	<!-- END input-append -->	
-
+							<form action="http://newsletter.makezine.com/t/r/s/jdilcj/" method="post" id="subForm">
+								<div class="input-append">
+									<input class="span4" name="cm-jdilcj-jdilcj" id="jdilcj-jdilcj" type="text" value="Enter your email" onfocus="value=''">
+									<span class="add-on"><input type="submit" value="JOIN" /></span>
+								</div>	<!-- END input-append -->	
+							</form>
 						</div> <!-- END span8 -->	
  
 					</div> <!-- END row -->	

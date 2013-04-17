@@ -13,12 +13,12 @@
 			<div class="container">
 
 				<ul class="nav">
-					<li class="active"><a href="http://blog.makezine.com/make-training-cam/">Home</a></li>
-					<li><a href="/make-training-camp/descriptions">About</a></li>
-					<li><a href="/make-training-camp/schedule">Schedule</a></li>
-					<li><a href="/make-training-camp/pricing">Pricing</a></li>
-					<li><a href="/make-training-camp/suggest-a-course">Suggest Course</a></li>
-					<li><a href="/make-training-camp/sign-up">Sign Up</a></li>
+							<li class="active"><a href="http://blog.makezine.com/trainingcamp/">Home</a></li>
+							<!-- <li><a href="/trainingcamp/descriptions">About</a></li>
+							<li><a href="/trainingcamp/schedule">Schedule</a></li>
+							<li><a href="/trainingcamp/pricing">Pricing</a></li>-->
+							<li><a href="/trainingcamp/suggest-a-course">Suggest Course</a></li>
+							<!--<li><a href="/trainingcamp/sign-up">Sign Up</a></li>-->
 				</ul>
 			
 			</div><!-- END container -->

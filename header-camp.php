@@ -37,37 +37,23 @@
 	<body <?php body_class('camp'); ?>>
 		<div class="fix">
 			<div id="header">
-                        <div id="slideshow-wrapper">
+                     <div id="slideshow-wrapper">
 							<div class="container">
 								<div class="row">
 									<div class="span">
 										<div id="myCarousel" class="carousel slide">
-											<div class="carousel-inner">
-												<div class="item">
-													<img src="http://placekitten.com/940/300" alt="">
-													<!-- <div class="carousel-caption">
-														<h4>First Thumbnail label</h4>
-														<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-													</div> -->
-												</div><!--END item -->
-												<div class="item">
-													<img src="http://placekitten.com/940/300" alt="">
-													<!-- <div class="carousel-caption">
-														<h4>First Thumbnail label</h4>
-														<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-													</div> -->
-												</div><!-- END item -->
+											<div class="carousel-inner">	
 												<div class="item active">
-													<img src="http://placekitten.com/940/300" alt="">
+													<img src="http://placekitten.com/940/300" alt="" />
 													<!-- <div class="carousel-caption">
 														<h4>First Thumbnail label</h4>
 														<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 													</div> -->
 												</div><!-- END item active -->
 											</div><!--END carousel-inner -->
-											<a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-											<a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-										</div> <!-- END myCarousel carousel slide;-->
+											<!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a> -->
+											<!-- <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a> -->
+										</div> <!-- END myCarousel carousel slide; -->
 									</div> <!-- END span -->
 								</div> <!-- END row -->
 							</div>	<!-- END container -->
@@ -83,12 +69,12 @@
 				<div class="container camp-main-nav">
 
 						<ul class="nav">
-							<li class="active"><a href="http://blog.makezine.com/make-training-camp/">Home</a></li>
-							<li><a href="/make-training-camp/descriptions">About</a></li>
-							<li><a href="/make-training-camp/schedule">Schedule</a></li>
-							<li><a href="/make-training-camp/pricing">Pricing</a></li>
-							<li><a href="/make-training-camp/suggest-a-course">Suggest Course</a></li>
-							<li><a href="/make-training-camp/sign-up">Sign Up</a></li>
+							<li class="active"><a href="http://blog.makezine.com/trainingcamp/">Home</a></li>
+							<!-- <li><a href="/trainingcamp/descriptions">About</a></li>
+							<li><a href="/trainingcamp/schedule">Schedule</a></li>
+							<li><a href="/trainingcamp/pricing">Pricing</a></li>-->
+							<li><a href="/trainingcamp/suggest-a-course">Suggest Course</a></li>
+							<!--<li><a href="/trainingcamp/sign-up">Sign Up</a></li>-->
 						</ul>
 
 				</div> <!-- END container -->

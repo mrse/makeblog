@@ -107,7 +107,7 @@ Template name: Header
 
 					<div class="topics">
 
-						<h5 class="blue">Hot Topics:</h5>
+						<h5 class="blue">Hot&nbsp;Topics:</h5>
 
 						<?php echo wp_kses_post( stripslashes( make_get_cap_option( 'hot_topics' ) ) ); ?>
 
