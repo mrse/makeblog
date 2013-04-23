@@ -26,7 +26,7 @@
 			<div class="row">		
 				<div class="span12">
 					<div class="home-intro">
-					    <h3>Learn about Arduino? Build a  weather monitoring site? Build a marshmallow blaster to wow your neighbors? Learn what this making thing is all about? But don’t know where to start? Come learn with other makers like yourself. .</h3>
+					    <h3>Have you ever wanted to:<br />Learn about Arduino? <br />Build a  weather monitoring site? <br />Build a marshmallow blaster to wow your neighbors?<br /> Learn what this making thing is all about? <br />But don’t know where to start? <br />Come learn with other makers like yourself.</h3>
 				    </div> <!-- END home-intro -->
 
 				</div> <!-- END span12 -->
@@ -40,7 +40,7 @@
 
 					<div class="row">
 					
-						<div class="span4">
+						<div class="span6">
 
 							<h2>SIGN UP TODAY!</h2>
 							<h3>Join Make: Training Camp Mailing List</h3>
@@ -49,7 +49,7 @@
 
 						</div> <!-- END span4 -->	
 
-						<div class="span8">
+						<div class="span6">
 							<form action="http://newsletter.makezine.com/t/r/s/jdilcj/" method="post" id="subForm">
 								<div class="input-append">
 									<input class="span4" name="cm-jdilcj-jdilcj" id="jdilcj-jdilcj" type="text" value="Enter your email" onfocus="value=''">

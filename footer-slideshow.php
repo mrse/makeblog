@@ -8,7 +8,7 @@
 					<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[729,90]]  -->
 					<div id='div-gpt-ad-664089004995786621-1'>
 						<script type='text/javascript'>
-							googletag.display('div-gpt-ad-664089004995786621-1');
+							googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-1')});
 						</script>
 					</div>
 					<!-- End AdSlot 2 -->

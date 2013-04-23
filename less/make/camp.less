@@ -1,53 +1,61 @@
 #camp-header {
     .container {
-        text-align:center;
+        text-align: center;
         h1 {
-            margin:0 auto;
+            margin: 0 auto;
         }
     }
 }
 .camp-newsletter-wrap {
-    height:71px;
-    width:100%;
+    height: 71px;
+    width: 100%;
     margin: 30px auto;
     background-image: url(http://makezineblog.files.wordpress.com/2013/04/camp-signup-bg-01.gif);
     .container {
         .row {
-            .span8 {
-                .input-append {
-                    padding-top:20px;
-                    span.add-on {
-                        font-size:21px;
-                        font-weight:bold;
-                        background-color:red;
-                        color:#fff;
-                        padding-left: 15px;
-                        padding-right: 15px;
-                    }
-                }
-            }
-            .span4 {
+            .span6 {
                 h3 {
-                    font-size:18px;
+                    font-size: 18px;
                     font-weight: normal;
                     line-height: 21px;
-                    text-transform:none;
-                    color:#333;
+                    text-transform: none;
+                    color: #333;
+                }
+                .input-append {
+                    padding-top: 20px;
+                    span.add-on {
+                        font-size: 21px !important;
+                        font-weight: bold;
+                        background-color: red;
+                        color: #fff;
+                        padding-left: 6px;
+                        padding-right: 6px;
+                    }
                 }
                 h2 {
-                    color:#000;
-                    line-height:42px;
+                    color: #000;
+                    line-height: 42px;
                 }
             }
         }
     }
 }
 body.camp {
-    margin-top:0px;
+    margin-top: 0px;
+}
+.camp .input-append .add-on, .camp .input-prepend .add-on {
+    height: 24px !important;
+    padding-top: 0 !important;
 }
 .camp-main-nav {
-    text-align:center;
+    text-align: center;
+    nav {
+        margin: 0 auto;
+    }
     ul.nav {
+        li.active {
+            color: #000;
+        }
         li {
             text-transform: uppercase;
             font-size: 19px;
@@ -60,59 +68,63 @@ body.camp {
             padding-top: 0;
             a:hover {
                 background-color: #fff;
-                color:red;
-            }
-            a:link {
-                color:#000;
+                color: red;
             }
             a:visited {
-                color:#000;
+                color: #000;
+            }
+            a:link {
+                color: #000;
             }
         }
-        li.active{
-        	color:#000;
-        }
     }
-    nav {
-        margin:0 auto;
-    }
+}
+.camp .input-append input, .camp .input-prepend input, .camp .input-append select, .camp .input-prepend select, .camp .input-append .uneditable-input, .camp .input-prepend .uneditable-input, .camp .input-append .dropdown-menu, .camp .input-prepend .dropdown-menu, .camp .input-append .popover, .camp .input-prepend .popover {
+    font-size: 21px !important;
 }
 .camp {
     .header-bottom {
-        border-color:red !important;
+        border-color: red !important;
         background-color: #fff !important;
     }
     .home-intro {
         h3 {
-            text-align:center;
+            text-align: center;
             font-size: 24px !important;
-            color:#1075a4 !important;
-            line-height:36px !important;
+            color: #1075a4 !important;
+            line-height: 36px !important;
             text-transform: none !important;
+            line-height: 30px;
         }
-
         h1 {
-        	width:100%;
-        	text-align:center;
-        	margin-top:0;
+            width: 100%;
+            text-align: center;
+            margin-top: 0;
         }
     }
     #slideshow-wrapper {
-        padding-top:10px;
+        padding-top: 10px;
         background-image: url(http://makezineblog.files.wordpress.com/2013/04/camp-slideshow-bg-01.gif);
     }
     .carousel {
-        margin-bottom:0 !important;
+        margin-bottom: 0 !important;
     }
     #header {
-        border-color:red !important;
-        margin-top:0 !important;
-        padding-top:0 !important;
+        border-color: red !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
         h1 {
-        	text-align:center;
-        	float: none;
+            text-align: center;
+            float: none;
         }
     }
+}
+.camp input[type="file"], .camp input[type="image"], .camp input[type="submit"], .camp input[type="reset"], .camp input[type="button"], .camp input[type="radio"], .camp input[type="checkbox"] {
+    background-color: transparent !important;
+    border: none !important;
+    color: #FFFFFF;
+    font-size: 21px !important;
+    font-weight: bold !important;
 }
 .camp-footer {
     background-image: url("/wp-content/themes/vip/makeblog/css/../img/header_bg.jpg");
@@ -122,8 +134,8 @@ body.camp {
     padding-top: 20px;
     text-align: center;
     width: 100%;
-    margin-top:30px;
-    clear:both;
+    margin-top: 30px;
+    clear: both;
     .container {
         ul.nav {
             li {
@@ -134,23 +146,19 @@ body.camp {
                 padding-left: 15px;
                 padding-right: 15px;
                 text-transform: uppercase;
+                .active {
+                    color: #000000 !important;
+                }
                 a:hover {
                     background-color: #fff;
-                    color:red !important;
+                    color: red !important;
+                }
+                a:visited {
+                    color: #000 !important;
                 }
                 a:link {
-                    color:#000 !important;
+                    color: #000 !important;
                 }
-
-                a:visited {
-                    color:#000 !important;
-                }             
-            
-            .active {
-                color: #000000 !important;
-                
-                }
-               
             }
         }
     }

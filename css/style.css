@@ -9348,33 +9348,44 @@ ul#tabs .current > a:hover {
   margin: 30px auto;
   background-image: url(http://makezineblog.files.wordpress.com/2013/04/camp-signup-bg-01.gif);
 }
-.camp-newsletter-wrap .container .row .span8 .input-append {
-  padding-top: 20px;
-}
-.camp-newsletter-wrap .container .row .span8 .input-append span.add-on {
-  font-size: 21px;
-  font-weight: bold;
-  background-color: red;
-  color: #fff;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-.camp-newsletter-wrap .container .row .span4 h3 {
+.camp-newsletter-wrap .container .row .span6 h3 {
   font-size: 18px;
   font-weight: normal;
   line-height: 21px;
   text-transform: none;
   color: #333;
 }
-.camp-newsletter-wrap .container .row .span4 h2 {
+.camp-newsletter-wrap .container .row .span6 .input-append {
+  padding-top: 20px;
+}
+.camp-newsletter-wrap .container .row .span6 .input-append span.add-on {
+  font-size: 21px !important;
+  font-weight: bold;
+  background-color: red;
+  color: #fff;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.camp-newsletter-wrap .container .row .span6 h2 {
   color: #000;
   line-height: 42px;
 }
 body.camp {
   margin-top: 0px;
 }
+.camp .input-append .add-on,
+.camp .input-prepend .add-on {
+  height: 24px !important;
+  padding-top: 0 !important;
+}
 .camp-main-nav {
   text-align: center;
+}
+.camp-main-nav nav {
+  margin: 0 auto;
+}
+.camp-main-nav ul.nav li.active {
+  color: #000;
 }
 .camp-main-nav ul.nav li {
   text-transform: uppercase;
@@ -9391,17 +9402,23 @@ body.camp {
   background-color: #fff;
   color: red;
 }
-.camp-main-nav ul.nav li a:link {
-  color: #000;
-}
 .camp-main-nav ul.nav li a:visited {
   color: #000;
 }
-.camp-main-nav ul.nav li.active {
+.camp-main-nav ul.nav li a:link {
   color: #000;
 }
-.camp-main-nav nav {
-  margin: 0 auto;
+.camp .input-append input,
+.camp .input-prepend input,
+.camp .input-append select,
+.camp .input-prepend select,
+.camp .input-append .uneditable-input,
+.camp .input-prepend .uneditable-input,
+.camp .input-append .dropdown-menu,
+.camp .input-prepend .dropdown-menu,
+.camp .input-append .popover,
+.camp .input-prepend .popover {
+  font-size: 21px !important;
 }
 .camp .header-bottom {
   border-color: red !important;
@@ -9413,6 +9430,7 @@ body.camp {
   color: #1075a4 !important;
   line-height: 36px !important;
   text-transform: none !important;
+  line-height: 30px;
 }
 .camp .home-intro h1 {
   width: 100%;
@@ -9435,6 +9453,19 @@ body.camp {
   text-align: center;
   float: none;
 }
+.camp input[type="file"],
+.camp input[type="image"],
+.camp input[type="submit"],
+.camp input[type="reset"],
+.camp input[type="button"],
+.camp input[type="radio"],
+.camp input[type="checkbox"] {
+  background-color: transparent !important;
+  border: none !important;
+  color: #FFFFFF;
+  font-size: 21px !important;
+  font-weight: bold !important;
+}
 .camp-footer {
   background-image: url("/wp-content/themes/vip/makeblog/css/../img/header_bg.jpg");
   border-top-color: red;
@@ -9455,16 +9486,16 @@ body.camp {
   padding-right: 15px;
   text-transform: uppercase;
 }
+.camp-footer .container ul.nav li .active {
+  color: #000000 !important;
+}
 .camp-footer .container ul.nav li a:hover {
   background-color: #fff;
   color: red !important;
 }
-.camp-footer .container ul.nav li a:link {
-  color: #000 !important;
-}
 .camp-footer .container ul.nav li a:visited {
   color: #000 !important;
 }
-.camp-footer .container ul.nav li .active {
-  color: #000000 !important;
+.camp-footer .container ul.nav li a:link {
+  color: #000 !important;
 }

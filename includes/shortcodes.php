@@ -99,6 +99,44 @@ function make_marketron_newsletter( $atts, $content = null ) {
 }
 add_shortcode( 'makerpro', 'make_marketron_newsletter' );
 
+function meetup_newsletter( $atts, $content = null ) {
+	return '
+		<form class="form-stacked" action="http://newsletter.makezine.com/t/r/s/jdhyjkj/" method="post" id="subForm">
+			<fieldset>
+				<legend>Enter your information to receive a free PDF of Make Volume 34</legend>
+				<div class="clearfix">
+					<label for="name">Name:</label>
+					<div class="input">
+						<input class="xlarge" id="name" name="cm-name" size="30" type="text">
+					</div>
+				</div>
+				<!-- /clearfix -->
+				<div class="clearfix">
+					<label for="jdhyjkj-jdhyjkj">Email:</label>
+					<div class="input">
+						<input class="xlarge" id="jdhyjkj-jdhyjkj" name="cm-jdhyjkj-jdhyjkj" size="30" type="text">
+					</div>
+				</div>
+				<!-- /clearfix -->
+				<div class="clearfix">
+					<div class="control-group">
+						<div class="controls">
+							<label class="checkbox" for="CRAFTNewsletter">CRAFT Newsletter<input type="checkbox" name="cm-ol-jjurhj" id="CRAFTNewsletter" /></label>
+							<label class="checkbox" for="MAKENewsletter">MAKE Newsletter<input type="checkbox" name="cm-ol-jjuylk" id="MAKENewsletter" /></label>
+							<label class="checkbox" for="MakerShed-MasterList">Maker Shed<input type="checkbox" name="cm-ol-tyvyh" id="MakerShed-MasterList" /></label>
+							<label class="checkbox" for="MakerProNewsletter">Maker Pro Newsletter<input type="checkbox" name="cm-ol-jjhuukr" id="MakerProNewsletter" /></label>
+						</div>
+					</div>
+				</div>
+				<!-- /clearfix -->
+			</fieldset>
+			<div class="actions">
+				<button type="submit" class="btn primary">Subscribe</button>
+			</div>
+		</form>';
+}
+add_shortcode( 'meetup', 'meetup_newsletter' );
+
 function youtube_playlist( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 		'width' => '370',
@@ -342,6 +380,8 @@ function promo_vol_34() {
 
 			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/MAKE_Volume_34_p/9781449327668.htm">Maker Shed</a></p>
 
+			<p><strong>Join MAKE for an <a href="http://www.meetup.com/makermeetup/Sebastopol-CA/928182/" target="_blank">International Robot Meetup</a> this Thursday, April 25 at 6pm PST.</strong></p>
+
 			<p><a class="btn btn-primary" href="http://www.makershed.com/MAKE_Volume_34_p/9781449327668.htm">Buy now!</a></p>
 
 		</div>';
@@ -349,3 +389,12 @@ function promo_vol_34() {
 }
 
 add_shortcode( 'promo_34', 'promo_vol_34' );
+
+
+function make_github_3d_viewer($atts) {
+	$output = '<iframe class="render-viewer" src="https://render.github.com/view/3d/?url=' . urlencode( esc_url( $atts['url'] ) ) . '" frameborder="0" sandbox="allow-scripts allow-same-origin" width="620" height="420">Viewer requires iframe.</iframe>';
+	return $output;
+
+}
+
+add_shortcode('github', 'make_github_3d_viewer');
