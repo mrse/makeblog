@@ -1,6 +1,6 @@
 <?php
 /**
- * Make Training Camp footer template.
+ * HIW footer template.
  *
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
@@ -9,19 +9,27 @@
  */
 ?>
 
-		<div class="camp-footer">
+		<div class="hiw-footer">
 			<div class="container">
-
-				<ul class="nav">
-							<li class="active"><a href="http://blog.makezine.com/trainingcamp/">Home</a></li>
-							<li><a href="http://blog.makezine.com/trainingcamp/current-camps">Camps</a></li>
-							<li><a href="http://blog.makezine.com/trainingcamp/teach-camp">Teach a Camp</a></li>
-							<li><a href="http://blog.makezine.com/trainingcamp/suggest-course">Suggest Course</a></li>
-							<li><a href="http://blog.makezine.com/trainingcamp/faq">FAQ</a></li>
+				<!-- HIDING FOOTER NAV AS ITS NOT USED ON ORIGINAL SITE
+				<ul class="hiw-footer-nav">
+						<li><a href="http://makezine.com/hardware-innovation-workshop/overview.html">Overview</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/register.html">Register</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/hotel.html">Hotel</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/agenda.html">Agenda at a Glance</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/keynotes.html">Speaker Roster</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/innovators.html">Showcase Innovators</a></li>  
+						<li><a href="http://makezine.com/hardware-innovation-workshop/research.html">Maker Market Research</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/press.html">Press</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/contact.html">Contact</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/overview-2012.html">Hardware Innovation Workshop 2012</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/agenda-2012.html">2012 Agenda</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/keynotes-2012.html">2012 Speaker Roster</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/innovators-2012.html">2012 Showcase Innovators</a></li>
 				</ul>
-			
+				-->	
 			</div><!-- END container -->
-		</div><!-- END camp-footer -->
+		</div><!-- END hiw-footer -->
 
 		<!-- Le javascript
 		================================================== -->

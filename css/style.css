@@ -9373,86 +9373,6 @@ ul#tabs .current > a:hover {
 body.camp {
   margin-top: 0px;
 }
-.camp .input-append .add-on,
-.camp .input-prepend .add-on {
-  height: 24px !important;
-  padding-top: 0 !important;
-}
-.camp-main-nav {
-  text-align: center;
-}
-.camp-main-nav nav {
-  margin: 0 auto;
-}
-.camp-main-nav ul.nav li.active {
-  color: #000;
-}
-.camp-main-nav ul.nav li {
-  text-transform: uppercase;
-  font-size: 19px;
-  font-weight: bold;
-  height: 20px;
-  margin-top: 10px;
-  padding-bottom: 0;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 0;
-}
-.camp-main-nav ul.nav li a:hover {
-  background-color: #fff;
-  color: red;
-}
-.camp-main-nav ul.nav li a:visited {
-  color: #000;
-}
-.camp-main-nav ul.nav li a:link {
-  color: #000;
-}
-.camp .input-append input,
-.camp .input-prepend input,
-.camp .input-append select,
-.camp .input-prepend select,
-.camp .input-append .uneditable-input,
-.camp .input-prepend .uneditable-input,
-.camp .input-append .dropdown-menu,
-.camp .input-prepend .dropdown-menu,
-.camp .input-append .popover,
-.camp .input-prepend .popover {
-  font-size: 21px !important;
-}
-.camp .header-bottom {
-  border-color: red !important;
-  background-color: #fff !important;
-}
-.camp .home-intro h3 {
-  text-align: center;
-  font-size: 24px !important;
-  color: #1075a4 !important;
-  line-height: 36px !important;
-  text-transform: none !important;
-  line-height: 30px;
-}
-.camp .home-intro h1 {
-  width: 100%;
-  text-align: center;
-  margin-top: 0;
-}
-.camp #slideshow-wrapper {
-  padding-top: 10px;
-  background-image: url(http://makezineblog.files.wordpress.com/2013/04/camp-slideshow-bg-01.gif);
-}
-.camp .carousel {
-  margin-bottom: 0 !important;
-}
-.camp #header {
-  border-color: red !important;
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-.camp #header h1 {
-  text-align: center;
-  float: none;
-}
 .camp input[type="file"],
 .camp input[type="image"],
 .camp input[type="submit"],
@@ -9465,6 +9385,125 @@ body.camp {
   color: #FFFFFF;
   font-size: 21px !important;
   font-weight: bold !important;
+}
+.camp .input-append .add-on,
+.camp .input-prepend .add-on {
+  height: 24px !important;
+  padding-top: 0 !important;
+}
+.camp-main-nav {
+  text-align: center;
+}
+.camp-main-nav .nav {
+  text-transform: uppercase;
+  font-size: 19px;
+  font-weight: bold;
+  height: 20px;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0;
+}
+.camp-main-nav .nav .active {
+  color: #000;
+}
+.camp-main-nav .nav a:hover {
+  background-color: #fff;
+  color: red;
+}
+.camp-main-nav .nav a:visited {
+  color: #000;
+}
+.camp-main-nav .nav a:link {
+  color: #000;
+}
+.camp-main-nav nav {
+  margin: 0 auto;
+}
+.camp .header-bottom {
+  border-color: red !important;
+  background-color: #fff !important;
+}
+.camp .header-bottom ul {
+  margin-bottom: auto;
+  margin-left: 220px;
+  margin-right: auto;
+  margin-top: 18px;
+}
+.camp .header-bottom ul li {
+  display: inherit;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.camp .btn-group {
+  display: inherit;
+}
+.camp .btn-group > .btn {
+  border: none;
+  background: transparent;
+}
+.camp .btn-group > .btn-large {
+  font-size: 19px;
+  font-weight: bold;
+}
+.camp .btn-group > .btn:first-child {
+  border: none;
+  margin-left: 0;
+}
+.camp .btn {
+  line-height: 15px;
+}
+.camp .home-intro {
+  padding-bottom: 20px;
+}
+.camp .home-intro h3 {
+  text-align: center;
+  font-size: 24px !important;
+  color: #1075a4 !important;
+  line-height: 32px !important;
+  text-transform: none !important;
+  line-height: 30px;
+}
+.camp .home-intro h1 {
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
+}
+.camp #slideshow-wrapper {
+  padding-top: 10px;
+  background-image: url(http://makezineblog.files.wordpress.com/2013/05/camp-hdr-bg-01.gif);
+}
+.camp .carousel {
+  margin-bottom: 0 !important;
+}
+.camp .fix #header {
+  background-image: none;
+  background-color: #fff;
+}
+.camp #header {
+  background-color: #fff !important;
+  border-color: red !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.camp #header h1 {
+  margin-top: 0;
+  text-align: center;
+  float: none;
+}
+.camp .input-append input,
+.camp .input-prepend input,
+.camp .input-append select,
+.camp .input-prepend select,
+.camp .input-append .uneditable-input,
+.camp .input-prepend .uneditable-input,
+.camp .input-append .dropdown-menu,
+.camp .input-prepend .dropdown-menu,
+.camp .input-append .popover,
+.camp .input-prepend .popover {
+  font-size: 21px !important;
 }
 .camp-footer {
   background-image: url("/wp-content/themes/vip/makeblog/css/../img/header_bg.jpg");
@@ -9480,11 +9519,11 @@ body.camp {
 .camp-footer .container ul.nav li {
   color: #000000;
   font-size: 16px;
-  display: inline-block;
   font-weight: bold;
   padding-left: 15px;
   padding-right: 15px;
   text-transform: uppercase;
+  display: inline-block;
 }
 .camp-footer .container ul.nav li .active {
   color: #000000 !important;

@@ -61,7 +61,7 @@ make_get_header() ?>
 					
 						<h2>About</h2>
 						
-						<p><strong>The MAKE Raspberry Pi Design Contest has ended. The Contest Judges are carefully reviewing all of the entries, and we will announce the winners no later than April 25th.</strong></p>
+						<p><strong>Congratulations to our <a href="http://blog.makezine.com/2013/04/26/announcing-the-winners-of-the-raspberry-pi-design-contest/">Winners</a>!</strong></p>
 						
 						<p>MAKE's Raspberry Pi Design Contest is a celebration of the innovation inspired by this affordable single-board computer that's taking the maker world by storm. Each entry should use the Raspberry Pi as an intrinsic part of the project, but may include other circuitry, software, mechanical, or sculptural parts as needed.</p>
 

@@ -64,6 +64,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/feed/rss'          => 'http://blog.makezine.com/feed/', // really old feeds
 		'/podcast'           => 'http://blog.makezine.com/video/', // Old podcast => video
 		//'/home-page-include' => 'http://makezine.com/', // Old podcast => video
+		'/2008/01/15/weekend-projects/' => 'http://blog.makezine.com/weekend-projects/' // Weekend Projects
 	) );
 }
 

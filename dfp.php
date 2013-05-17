@@ -91,9 +91,6 @@ global $post;
 				if (has_tag('project-remake')) {
 					echo "googletag.pubads().setTargeting('sponsor',['schick']);";
 				}
-				elseif ( has_category('raspberry-pi') || is_category( 'raspberry-pi' ) ) {
-					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
-				} 
 				elseif (has_tag('mcm')) {
 					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
 				}

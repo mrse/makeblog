@@ -35,8 +35,6 @@ make_get_header(); ?>
 						echo '<div class="span12">';
 					}
 				?>
-
-					<?php if (is_category( 'Raspberry Pi' )) { echo '<p class="pull-right"><img src="http://makezineblog.files.wordpress.com/2013/03/mcm.png" /></p>'; } ?>
 				
 					<h1 class="jumbo"><?php single_cat_title('', true); ?></h1>
 				

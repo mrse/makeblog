@@ -211,6 +211,7 @@ function make_enqueue_jquery() {
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.js', array( 'jquery' ) );
 	wp_enqueue_style( 'make-css', get_stylesheet_directory_uri() . '/css/style.css' );
+	wp_enqueue_style( 'make-print', get_stylesheet_directory_uri() . '/css/print.css', array(), false, 'print' );
 }
 
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
@@ -1053,8 +1054,8 @@ add_action( 'init', 'make_allow_data_atts' );
 function make_allow_data_atts() {
 	global $allowedposttags;
 
-	$tags = array( 'div,a,li,div' );
-	$new_attributes = array( 'contenteditable' => array() );
+	$tags = array( 'div,a,li' );
+	$new_attributes = array( 'data' => array() );
 
 	foreach ( $tags as $tag ) {
 		if ( isset( $allowedposttags[ $tag ] ) && is_array( $allowedposttags[ $tag ] ) )

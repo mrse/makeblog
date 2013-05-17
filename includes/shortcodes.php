@@ -137,6 +137,35 @@ function meetup_newsletter( $atts, $content = null ) {
 }
 add_shortcode( 'meetup', 'meetup_newsletter' );
 
+add_shortcode( 'newsletter', 'make_newsletter' );
+
+function maker_camp_list( $atts, $content = null ) {
+	return '
+		<form class="form-stacked" action="http://makermedia.createsend.com/t/r/s/jdilcj/" method="post" id="subForm">
+			<fieldset>
+				<legend>Join Make: Training Camp Mailing List</legend>
+				<div class="clearfix">
+					<label for="name">Name:</label>
+					<div class="input">
+						<input class="xlarge" id="name" name="cm-name" size="30" type="text">
+					</div>
+				</div>
+				<!-- /clearfix -->
+				<div class="clearfix">
+					<label for="jdilcj-jdilcj">Email:</label>
+					<div class="input">
+						<input class="xlarge" id="jrsydu-jrsydu" name="cm-jdilcj-jdilcj" size="30" type="text">
+					</div>
+				</div>
+				<!-- /clearfix -->
+			</fieldset>
+			<div class="actions">
+				<button type="submit" class="btn primary">Join</button>
+			</div>
+		</form>';
+}
+add_shortcode( 'maker-camp', 'maker_camp_list' );
+
 function youtube_playlist( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 		'width' => '370',
@@ -380,9 +409,7 @@ function promo_vol_34() {
 
 			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/MAKE_Volume_34_p/9781449327668.htm">Maker Shed</a></p>
 
-			<p><strong>Join MAKE for an <a href="http://www.meetup.com/makermeetup/Sebastopol-CA/928182/" target="_blank">International Robot Meetup</a> this Thursday, April 25 at 6pm PST.</strong></p>
-
-			<p><a class="btn btn-primary" href="http://www.makershed.com/MAKE_Volume_34_p/9781449327668.htm">Buy now!</a></p>
+			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=MMV34">Buy now!</a></p>
 
 		</div>';
 	return $output;
@@ -394,7 +421,6 @@ add_shortcode( 'promo_34', 'promo_vol_34' );
 function make_github_3d_viewer($atts) {
 	$output = '<iframe class="render-viewer" src="https://render.github.com/view/3d/?url=' . urlencode( esc_url( $atts['url'] ) ) . '" frameborder="0" sandbox="allow-scripts allow-same-origin" width="620" height="420">Viewer requires iframe.</iframe>';
 	return $output;
-
 }
 
 add_shortcode('github', 'make_github_3d_viewer');

@@ -32,40 +32,6 @@
 				</div> <!-- END span12 -->
 			   </div> <!-- END row -->
 
-			</div> <!-- END container -->
-
-			<div class="camp-newsletter-wrap">
-
-				<div class="container">   	
-
-					<div class="row">
-					
-						<div class="span6">
-
-							<h2>SIGN UP TODAY!</h2>
-							<h3>Join Make: Training Camp Mailing List</h3>
-
-							</h2>
-
-						</div> <!-- END span4 -->	
-
-						<div class="span6">
-							<form action="http://newsletter.makezine.com/t/r/s/jdilcj/" method="post" id="subForm">
-								<div class="input-append">
-									<input class="span4" name="cm-jdilcj-jdilcj" id="jdilcj-jdilcj" type="text" value="Enter your email" onfocus="value=''">
-									<span class="add-on"><input type="submit" value="JOIN" /></span>
-								</div>	<!-- END input-append -->	
-							</form>
-						</div> <!-- END span8 -->	
- 
-					</div> <!-- END row -->	
-
-				</div> <!-- container -->	
-
-			</div> <!-- END camp-newsletter-wrap -->	
-				
-		<div class="container">
-
 			<div class="row">
 			
 				<div class="span12">

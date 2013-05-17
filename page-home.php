@@ -448,36 +448,6 @@ Template Name: Home Page
 
 						</div>
 						
-						<div class="row" style="margin-top:20px;margin-bottom:20px;">
-							
-							<div class="span4">
-								
-								<a href="http://pubads.g.doubleclick.net/gampad/clk?id=29552218&iu=/11548178/Makezine">
-									
-									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/300x180.jpg" alt="Raspberry Pi Design Contest">
-									
-								</a>
-								
-							</div>
-							
-							<div class="span4">
-								
-								<a href="http://pubads.g.doubleclick.net/gampad/clk?id=29549218&iu=/11548178/Makezine">
-									
-									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Homepage Graphic_300x180.jpg" alt="Road to Maker Faire Challenge">
-									
-								</a>
-								
-							</div>
-							
-						</div>
-						
-						<div class="row">
-							<div class="span8">
-								
-							</div>
-						</div>
-
 						<div id="myCarousel" class="carousel slide">
 							<ol class="carousel-indicators">
 								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
