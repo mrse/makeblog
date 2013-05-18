@@ -4,91 +4,111 @@
  */
 
 $authors = array(
+	'fitzwillie' => array(
+		'name' => 'Ken Denmead',
+		'beat' => '',
+		'title' => 'Editorial Director',
+		'username' => 'fitzwillie',
+		),
 	'frauenfelder' => array(
 		'name' => 'Mark Frauenfelder',
-		'beat' => 'Engineering &amp; Arduino',
-		'title' => 'MAKE editor-in-chief',
-		'image' => 'http://cdn.makezine.com/make/makerfaire/newyork/2012/images/editors/mark.jpg',
+		'beat' => '',
+		'title' => 'Editor at large',
 		'username' => 'frauenfelder',
-		'id' => 17959432
 		),
-	'makeswallace' => array(
-		'name' => 'Shawn Wallace',
-		'beat' => '3D Printing',
-		'title' => 'MAKE contributing editor',
-		'image' => 'http://cdn.makezine.com/make/makerfaire/newyork/2012/images/editors/shawn.jpg',
-		'username' => 'makeswallace',
-		'id' => 30651874
+	'stettholbrook1234' => array(
+		'name' => 'Stett Holbrook',
+		'beat' => 'Food, Sustainability, and Young Makers',
+		'title' => 'Senior Editor',
+		'username' => 'stettholbrook1234',
 		),
-	'garethb2' => array(
-		'name' => 'Gareth Branwyn',
-		'beat' => 'Robots',
-		'title' => 'MAKE editorial director',
-		'image' => 'http://cdn.makezine.com/make/makerfaire/newyork/2012/images/editors/garethb2.jpg',
-		'username' => 'garethb2',
-		'id' => 15536991
+	'snowgoli' => array(
+		'name' => 'Goli Mohammadi',
+		'beat' => 'Art and Craft',
+		'title' => 'Senior Editor',
+		'username' => 'snowgoli',
+		),
+	'khammondoreillycom' => array(
+		'name' => 'Andrew Terranova',
+		'beat' => 'Alternative Transportation, Alternative Energy, Outdoor, and DIY Space',
+		'title' => 'Projects Editor',
+		'username' => 'khammondoreillycom',
+		),
+	'ignoblegnome' => array(
+		'name' => 'Andrew Terranova',
+		'beat' => 'Robotics',
+		'title' => 'Contributing Writer',
+		'username' => 'ignoblegnome',
+		),
+	'aallan' => array(
+		'name' => 'Alasdair Allan',
+		'beat' => 'Electronics and Arduino',
+		'title' => 'Contributing Editor',
+		'username' => 'aallan',
+		),
+	'seanmichaelragan' => array(
+		'name' => 'Sean Ragan',
+		'beat' => 'Science and 3D Printing',
+		'title' => 'MAKE technical editor',
+		'username' => 'seanmichaelragan',
+		),
+	'lauracochrane' => array(
+		'name' => 'Laura Cochrane',
+		'beat' => 'Craft and Young Makers',
+		'title' => 'Assistant Editor',
+		'username' => 'lauracochrane',
 		),
 	'makemattr' => array(
 		'name' => 'Matt Richardson',
 		'beat' => 'Electronics &amp; Embedded Platforms',
 		'title' => 'MAKE contributing editor',
-		'image' => 'http://cdn.makezine.com/make/makerfaire/newyork/2012/images/editors/matt.jpg',
 		'username' => 'makemattr',
-		'id' => 30651872
 		),
-	'seanmichaelragan' => array(
-		'name' => 'Sean Ragan',
-		'beat' => 'Science',
-		'title' => 'MAKE technical editor',
-		'image' => 'http://cdn.makezine.com/make/makerfaire/newyork/2012/images/editors/sean.jpg',
-		'username' => 'seanmichaelragan',
-		'id' => 17959513
+	'devinck' => array(
+		'name' => 'Marc de Vinck',
+		'beat' => '3D Printing, Robotics',
+		'title' => 'Contributing Writer',
+		'username' => 'devinck',
 		),
-	'stettholbrook1234' => array(
-		'name' => 'Stett Holbrook',
-		'beat' => 'Food',
-		'title' => 'MAKE senior editor',
-		'image' => 'http://cdn.makezine.com/make/makerfaire/newyork/2012/images/editors/stett.jpg',
-		'username' => 'stettholbrook1234',
-		'id' => 39736872
+	'skotcroshere' => array(
+		'name' => 'Skot Croshere',
+		'beat' => 'Arduino and Electronics',
+		'title' => 'Contributing Writer',
+		'username' => 'skotcroshere',
 		),
-	'blakemaloof' => array(
-		'name' => 'Blake Maloof',
-		'beat' => 'Gaming',
-		'title' => 'MAKE contributing writer',
-		'image' => 'http://cdn.makezine.com/make/makerfaire/newyork/2012/images/editors/blake.jpg',
-		'username' => 'blakemaloof',
-		'id' => 9837715
+	'pushtheotherbutton' => array(
+		'name' => 'Michael Colombo',
+		'beat' => 'Workshop',
+		'title' => 'Contributing Writer',
+		'username' => 'pushtheotherbutton',
 		),
-	'makesabrinamerlo' => array(
-		'name' => 'Sabrina Merlo',
-		'beat' => 'Design',
-		'title' => 'Maker Faire program director',
-		'image' => 'http://cdn.makezine.com/make/makerfaire/newyork/2012/images/editors/sabrina.jpg',
-		'username' => 'makesabrinamerlo',
-		'id' => 30651884
+	'travisgood' => array(
+		'name' => 'Travis Good',
+		'beat' => 'Maker Pro and Makerspaces',
+		'title' => 'Contributing Writer',
+		'username' => 'travisgood',
 		),
-	'thezenofmaking' => array(
-		'name' => 'Haley Pierson-Cox',
-		'beat' => 'Craft',
-		'title' => 'CRAFT editor',
-		'image' => 'http://cdn.makezine.com/make/makerfaire/newyork/2012/images/editors/haley.jpg',
-		'username' => 'thezenofmaking',
-		'id' => 23472991
+	'dcdenison' => array(
+		'name' => 'D.C. Denison',
+		'beat' => 'Maker Pro',
+		'title' => 'Contributing Writer',
+		'username' => 'dcdenison',
 		),
 	);
 
-foreach ($authors as $author) {
-
-	echo '<div class="row-fluid" style="margin-bottom:20px;">';
-	echo '<div class="span4">';
-		 echo '<a href="http://blog.makezine.com/author/'.$author['username'].'/"><img src="'.$author['image'].'" alt="'.$author['name'].'" class="thumbnail" /></a>';
+foreach ( $authors as $author ) {
+	
+	$user = get_user_by( 'login', $author['username'] );
+	$user_id = ( isset( $user->data->ID ) ) ? $user->data->ID : '';
+	echo '<div class="row" style="margin-bottom:20px;">';
+	echo '<div class="span2">';
+		echo ( $user ) ? '<a href="' . get_author_link( false, $user_id ) . '">' . get_avatar( $user->data->user_email, '140', '', $user_id ) . '</a>' : '';
 	echo '</div>';	
-	echo '<div class="span8">';
-		echo '<h3><a href="http://blog.makezine.com/author/'.$author['username'].'/">'.$author['name'].'</a> <small>'.$author['title'].'</small></h3>';
-		echo '<h4>Beat: '.$author['beat'].'</h5>';
+	echo '<div class="span6">';
+		echo ( $user ) ? '<h3><a href="' . get_author_link( false, $user_id ) . '">' . esc_html( $author['name'] ) . '</a> <small>' . esc_html( $author['title'] ) . '</small></h3>' : '';
+		echo ( !empty( $author['beat'] ) ) ? '<h4>Beat: ' . esc_html( $author['beat'] ) . '</h4>' : '' ;
 		$args = array(
-			'author' => $author['id'],
+			'author' => $user_id,
 			'posts_per_page' => 5,
 			'post_type' => array( 'post', 'craft' ),
 			'no_found_rows' => true,
@@ -96,9 +116,9 @@ foreach ($authors as $author) {
 		echo '<ul>';
 		$the_query = new WP_Query( $args );
 		while ( $the_query->have_posts() ) : $the_query->the_post();
-			echo '<li><a href="'.get_permalink().'">'.get_the_title().'</a></li>';
+			echo '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
 		endwhile;
 		echo '</ul>';
-		echo '<p><a href="' . esc_url( 'http://blog.makezine.com/author/'.$author['username'].'/' ) .'">Read more &rarr;</a></p>';
+		echo '<p><a href="' . get_author_link( false, $user_id ) . '">Read more &rarr;</a></p>';
 	echo '</div></div>';
 }

@@ -210,7 +210,6 @@ function make_magazine_toc( $args ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	$the_query = new WP_Query( $args );
-
 	// Need a way to filter out the title if there are no results in the query.
 	if($post->post_parent == 0 && !empty($the_query->posts) ) {
 		echo '<h3>'. esc_html( $args['title']  ) .'</h3>';
@@ -392,4 +391,50 @@ function make_column_action( $column ) {
 			}
 			break;
 	}
+}
+
+add_shortcode( 'make_projects_projects', 'make_maker_projects_projects' );
+
+function make_maker_projects_projects() {
+	$args = array(
+		'post__in'			=> array( 308202, 307019, 307584, 269342, 268475, 306681, 308288, 308202, 268757, 306781 ),
+		'post_type' 		=> 'any',
+		'title'			 	=> 'Electronics',
+		);
+	make_magazine_toc($args);
+
+	$args = array(
+		'post__in'			=> array( 267847, 307395, 308366, 269299, 267499, 307643, 267868, 269644, 308316, 267475 ),
+		'post_type' 		=> 'any',
+		'title'			 	=> 'Home',
+		);
+	make_magazine_toc($args);
+
+	$args = array(
+		'post__in'			=> array( 269424, 306655, 268163, 267478, 308356, 26748, 268570, 269242, 267959 ),
+		'post_type' 		=> 'any',
+		'title'			 	=> 'Workshop',
+		);
+	make_magazine_toc($args);
+
+	$args = array(
+		'post__in'			=> array( 267740, 268439, 268935, 267650, 267632, 269113, 267599 ),
+		'post_type' 		=> 'any',
+		'title'			 	=> 'Science',
+		);
+	make_magazine_toc($args);
+
+	$args = array(
+		'post__in'			=> array( 307336, 268529, 268641, 307350, 268779, 268369, 268976, 307649 ),
+		'post_type' 		=> 'any',
+		'title'			 	=> 'Craft',
+		);
+	make_magazine_toc($args);
+
+	$args = array(
+		'post__in'			=> array( 267724, 267430, 268575, 306948, 268067, 268174, 268390, 267777, 268082 ),
+		'post_type' 		=> 'any',
+		'title'			 	=> 'Art &amp; Design',
+		);
+	make_magazine_toc($args);
 }
