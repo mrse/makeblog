@@ -126,7 +126,7 @@ get_header(); ?>
 										'post_parent'		=> $post->ID,
 										'order' 			=> 'asc',
 										);
-									make_magazine_toc($args);
+									echo make_magazine_toc($args);
 
 									$args = array(
 										'post_type' 		=> 'magazine',
@@ -134,7 +134,7 @@ get_header(); ?>
 										'post_parent'		=> $post->ID,
 										'order' 			=> 'asc',
 										);
-									make_magazine_toc($args);
+									echo make_magazine_toc($args);
 
 									$args = array(
 										'post_type'			=> 'projects',
@@ -142,7 +142,7 @@ get_header(); ?>
 										'post_parent'		=> $post->ID,
 										'order'				=> 'asc',
 										);
-									make_magazine_toc($args);
+									echo make_magazine_toc($args);
 
 								?>
 
