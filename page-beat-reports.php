@@ -29,7 +29,7 @@ $authors = array(
 		'username' => 'snowgoli',
 		),
 	'khammondoreillycom' => array(
-		'name' => 'Andrew Terranova',
+		'name' => 'Keith Hammond',
 		'beat' => 'Alternative Transportation, Alternative Energy, Outdoor, and DIY Space',
 		'title' => 'Projects Editor',
 		'username' => 'khammondoreillycom',
