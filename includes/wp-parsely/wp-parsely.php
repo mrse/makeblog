@@ -394,8 +394,12 @@ class Parsely {
     */
     private function getTopLevelCategory($categoryId) {
         $categories = get_category_parents($categoryId, FALSE, ",");
-        $categories = split(",", $categories);
-        $topLevel = $categories[0];
+        if ( is_wp_error( $categories ) ) {
+            $topLevel = 1;
+        } else {
+            $categories = split(",", $categories);
+            $topLevel = $categories[0];    
+        }
         return $topLevel;
     }
 
