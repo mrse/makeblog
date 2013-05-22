@@ -187,6 +187,7 @@
 
 		// Load our Parts
 		$parts = make_magazine_get_project_data( 'parts' );
+		//echo '<pre>'; print_r($parts); echo '</pre>';
 		wp_nonce_field( 'make-mag-projects-metabox-nonce', 'meta_box_nonce' ); ?>
 		<div class="step parts sortable group">
 			<input type="button" value="Add A Part" class="button add-part alignright" />
@@ -252,7 +253,7 @@
 							<ul class="two-column reset-list">
 								<li>
 									<label for="parts-type">Type</label>
-									<input type="text" name="parts-type-<?php echo $parts_num; ?>" id="parts-type" class="widefat" value="<?php echo ( ! empty( $part['type'] ) ) ? esc_attr( $part['type'] ) : ''; ?>" />
+									<input type="text" name="parts-type-<?php echo $parts_num; ?>" id="parts-type" class="widefat" value="<?php echo ( ! empty( $part['type'] ) ) ? esc_attr( htmlspecialchars_decode( $part['type'] ) ) : ''; ?>" />
 								</li>
 								<li>
 									<label for="parts-notes">Notes</label>
@@ -473,8 +474,8 @@
 
 		// update_post_meta() will serialize our data for us... and add/update our tools roew :)
 		update_post_meta( $post_id, 'Steps', $step_object );
-		update_post_meta( $post_id, 'parts', $parts_object );
-		update_post_meta( $post_id, 'tools', $tools_object );
+		// update_post_meta( $post_id, 'parts', $parts_object );
+		// update_post_meta( $post_id, 'tools', $tools_object );
 
 	}
 	add_action('save_post', 'make_magazine_projects_save_step_manager');
