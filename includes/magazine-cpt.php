@@ -210,60 +210,67 @@ function make_magazine_toc( $args ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	$the_query = new WP_Query( $args );
+	$output = '';
+
 	// Need a way to filter out the title if there are no results in the query.
+
 	if($post->post_parent == 0 && !empty($the_query->posts) ) {
-		echo '<h3>'. esc_html( $args['title']  ) .'</h3>';
+		$output .= '<h3>'. esc_html( $args['title']  ) .'</h3>';
 	}
 
-	while ( $the_query->have_posts() ) : $the_query->the_post(); setup_postdata( $post ); ?>
+	while ( $the_query->have_posts() ) : $the_query->the_post(); setup_postdata( $post );
 
-		<article <?php post_class('row'); ?>>
+		$post_class = get_post_class( 'row' );
+		$classes = '';
+		foreach ($post_class as $class) { 
+			$classes .= ' ' . $class;
+		}
 
-			<div class="span2">
-				<?php
+		$output .= '<article  class="' . $classes .  '">';
+
+			$output .= '<div class="span2">';
 					$image = get_post_custom_values('Image', $post->ID);
 					if ( !empty( $image[0] ) )  {
-						echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 140, 140 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+						$output .= '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 140, 140 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
 					} else {
-						get_the_image( array( 'image_scan' => true, 'size' => 'new-thumb', 'image_class' => 'hide-thumbnail' ) );
+						$output .= get_the_image( array( 'image_scan' => true, 'size' => 'new-thumb', 'image_class' => 'hide-thumbnail', 'echo' => false ) );
 					}
-				?>
-			</div>
+			$output .= '</div>';
 
-			<div class="span6">
+			$output .= '<div class="span6">';
 
-				<?php echo '<h3><a class="red" href="' . get_permalink($post->ID) . '">' . get_the_title() . '</a></h3>'; ?>
+				$output .= '<h3><a class="red" href="' . get_permalink($post->ID) . '">' . get_the_title() . '</a></h3>';
 
-				<p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
+				$output .= '<p>' . wp_trim_words(get_the_excerpt(), 30, '...') . '</p>';
 
-				<p class="meta">
-					<?php 
+				$output .= '<p class="meta">';
 					if(function_exists('coauthors_posts_links')) {
-						echo 'By ';
-						coauthors();
+						$output .= coauthors_posts_links( ', ', ', and ', 'By ', null, false );
 					} else { 
-						echo 'By ';
-						the_author_posts_link();
+						$output .= 'By <a href="' .  get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . the_author_meta( 'display_name' ) . '</a>';
 					} 
-					echo make_page_number();
-					?>
-				</p>
-				<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
+					$output .= make_page_number();
+				$output .= '</p>';
+				$categories = get_the_category();
+				$separator = ' ';
+				$cats = '';
+				if( $categories ){
+					foreach( $categories as $category ) {
+						$cats .= '<a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator;
+					}
+					$output .= '<p>Categories: ' . trim($cats, $separator) . '</p>';
+				}
 
-			</div>
+			$output .= '</div>';
 
-		</article>
+		$output .= '</article>';
 		
-		<hr> 
+		
 
-	<?php endwhile;
 
-	// This isn't working with the categories. Going to fix this soon...
-	// if (isset($cat)) {
-	// 	$cat = explode(',', $cat);
-	// 	//print_r($cat);
-	// 	echo '<p><a href="' . get_term_link( $cat[0], 'category') .'" class="btn btn-primary pull-right">Read more &rarr;</a></p>';
-	// }
+	endwhile;
+
+	return $output;
 
 	// Reset Post Data
 	wp_reset_postdata();
@@ -396,45 +403,47 @@ function make_column_action( $column ) {
 add_shortcode( 'make_projects_projects', 'make_maker_projects_projects' );
 
 function make_maker_projects_projects() {
+	$output = '';
 	$args = array(
-		'post__in'			=> array( 308202, 307019, 307584, 269342, 268475, 306681, 308288, 308202, 268757, 306781 ),
-		'post_type' 		=> 'any',
+		'post__in'			=> array( 308202, 307019, 307584, 269342, 268475, 306681, 308288, 268757, 306781 ),
+		'post_type' 		=> array( 'projects', 'review', 'magazine', 'volume', 'post' ),
 		'title'			 	=> 'Electronics',
 		);
-	make_magazine_toc($args);
+	$output .= make_magazine_toc($args);
 
 	$args = array(
 		'post__in'			=> array( 267847, 307395, 308366, 269299, 267499, 307643, 267868, 269644, 308316, 267475 ),
-		'post_type' 		=> 'any',
+		'post_type' 		=> array( 'projects', 'review', 'magazine', 'volume', 'post' ),
 		'title'			 	=> 'Home',
 		);
-	make_magazine_toc($args);
+	$output .= make_magazine_toc($args);
 
 	$args = array(
 		'post__in'			=> array( 269424, 306655, 268163, 267478, 308356, 26748, 268570, 269242, 267959 ),
-		'post_type' 		=> 'any',
+		'post_type' 		=> array( 'projects', 'review', 'magazine', 'volume', 'post' ),
 		'title'			 	=> 'Workshop',
 		);
-	make_magazine_toc($args);
+	$output .= make_magazine_toc($args);
 
 	$args = array(
 		'post__in'			=> array( 267740, 268439, 268935, 267650, 267632, 269113, 267599 ),
-		'post_type' 		=> 'any',
+		'post_type' 		=> array( 'projects', 'review', 'magazine', 'volume', 'post' ),
 		'title'			 	=> 'Science',
 		);
-	make_magazine_toc($args);
+	$output .= make_magazine_toc($args);
 
 	$args = array(
 		'post__in'			=> array( 307336, 268529, 268641, 307350, 268779, 268369, 268976, 307649 ),
-		'post_type' 		=> 'any',
+		'post_type' 		=> array( 'projects', 'review', 'magazine', 'volume', 'post' ),
 		'title'			 	=> 'Craft',
 		);
-	make_magazine_toc($args);
+	$output .= make_magazine_toc($args);
 
 	$args = array(
 		'post__in'			=> array( 267724, 267430, 268575, 306948, 268067, 268174, 268390, 267777, 268082 ),
-		'post_type' 		=> 'any',
+		'post_type' 		=> array( 'projects', 'review', 'magazine', 'volume', 'post' ),
 		'title'			 	=> 'Art &amp; Design',
 		);
-	make_magazine_toc($args);
+	$output .= make_magazine_toc($args);
+	return $output;
 }
