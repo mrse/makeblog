@@ -74,7 +74,6 @@
 
 		// Load our Projects steps
 		$steps = make_magazine_get_project_data( 'Steps' );
-		echo '<pre>'; print_r( $steps ); echo '</pre>';
 		wp_nonce_field( 'make-mag-projects-metabox-nonce', 'meta_box_nonce' ); ?>
 		<div class="step group">
 			<input type="button" value="Add A Step" class="button add-step alignright" />
@@ -319,7 +318,7 @@
 				<?php $tools_num = 1; foreach( $tools as $tool ) : 
 
 					// Unserialize our Tools here as each array is serialized while the parent isn't.
-					$tool = unserialize( $tool ); ?>?>
+					$tool = unserialize( $tool ); ?>
 					<div id="tool-<?php echo $tools_num; ?>" class="tools-wrapper">
 						<input type="hidden" name="tool-number-<?php echo $tools_num; ?>" value="<?php echo ( ! empty( $tool['number'] ) ) ? $tool['number'] : $tools_num; ?>">
 						<div class="tool-title">
