@@ -29,7 +29,7 @@
 
 					<h4>Follow us:</h4>
 
-					<ul class="social left-nav">
+					<ul class="left-nav">
 						<li><a href="https://twitter.com/#!/makeHIW">Twitter</a></li>
 						<li><a href="https://www.facebook.com/MakeHIW">Facebook</a></li>  
 						<li><a href="https://plus.google.com/u/0/b/106948221845841665405/106948221845841665405/posts">Google+</a></li>
