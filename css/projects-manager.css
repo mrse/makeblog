@@ -30,7 +30,8 @@
 /****** [ Parts & Tools Manager ] *****/
 .parts label, .tools label { display:block; font-weight:bold; font-size:1.1em; }
 .parts .step-contents input, .parts .step-contents textarea, .tools .step-contents input, .tools .step-contents textarea { width:90%; font-size:1.1em; padding:5px }
-.parts .step-contents textarea, .tools .step-contents textarea { min-height:82px; }
+.parts .step-contents textarea { min-height:82px; }
+.tools .step-contents textarea { min-height:153px; }
 
 /****** [ Misc ] *****/
 .group:after { content:""; display:table; clear:both; }

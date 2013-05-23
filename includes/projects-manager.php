@@ -56,7 +56,7 @@
 	function make_magazine_get_project_data( $key ) {
 		$data = get_post_custom_values( $key );
 
-		if ( $key == 'Steps' )
+		if ( $key == 'Steps' || $key == 'Tools' )
 			$data = unserialize( $data[0] );
 
 		return $data;
@@ -187,7 +187,6 @@
 
 		// Load our Parts
 		$parts = make_magazine_get_project_data( 'parts' );
-		//echo '<pre>'; print_r($parts); echo '</pre>';
 		wp_nonce_field( 'make-mag-projects-metabox-nonce', 'meta_box_nonce' ); ?>
 		<div class="step parts sortable group">
 			<input type="button" value="Add A Part" class="button add-part alignright" />
@@ -262,7 +261,16 @@
 							</ul>
 						</div><!--[END .step-contents]-->
 					</div><!--[END step-wrapper]-->
-					<?php $parts_num++; ?>
+					<?php // Setup some hidden fields to still handle old data just in case we need it. Other wise, we'll loose the data.
+						if ( isset( $part['part_id'] ) && ! empty( $part['part_id'] ) )
+							echo '<input type="hidden" name="part_id-' . $parts_num . '" value="' . intval( $part['part_id'] ) . '">';
+						if ( isset( $part['pid'] ) && ! empty( $part['pid'] ) )
+							echo '<input type="hidden" name="pid-' . $parts_num . '" value="' . intval( $part['pid'] ) . '" />';
+						if ( isset( $part['post_ID'] ) )
+							echo '<input type="hidden" name="post_ID-' . $parts_num . '" value="' . intval( $part['post_ID'] ) . '" />';
+						// Increase the parts number...
+						$parts_num++;
+					?>
 				<?php endforeach; ?>
 			<?php endif; ?>
 		</div><!--[END .step.parts.group]-->
@@ -278,7 +286,7 @@
 	 */
 	function make_magazine_tools_step_manager_mb() {
 		// Load our tools
-		$tools = make_magazine_get_project_data( 'tools' );
+		$tools = make_magazine_get_project_data( 'Tools' );
 		wp_nonce_field( 'make-mag-projects-metabox-nonce', 'meta_box_nonce' ); ?>
 		<div class="step tools sortable group">
 			<input type="button" value="Add A Tool" class="button add-tool alignright" />
@@ -295,18 +303,14 @@
 							<input type="text" name="tools-name-0" id="tools-name" class="widefat" value="" />
 						</li>
 						<li>
-							<label for="tools-qty">Quantity</label>
-							<input type="text" name="tools-qty-0" id="tools-qty" class="widefat" value="" />
-						</li>
-						<li>
 							<label for="tools-url">URL</label>
 							<input type="text" name="tools-url-0" id="tools-url" class="widefat" value="" />
 						</li>
 					</ul><!--[END .step-contents]-->
 					<ul class="two-column reset-list">
 						<li>
-							<label for="tools-type">Type</label>
-							<input type="text" name="tools-type-0" id="tools-type" class="widefat" value="" />
+							<label for="tools-thumb">Thumbnail</label>
+							<input type="text" name="tools-thumb-0" id="tools-thumb" class="widefat" value="" />
 						</li>
 						<li>
 							<label for="tools-notes">Notes</label>
@@ -316,12 +320,9 @@
 				</div><!--[END .step-contents]-->
 			</div><!--[END .tools-template]-->
 			<?php if( isset( $tools ) && is_array( $tools ) ) : ?>
-				<?php $tools_num = 1; foreach( $tools as $tool ) : 
-
-					// Unserialize our Tools here as each array is serialized while the parent isn't.
-					$tool = unserialize( $tool ); ?>
+				<?php $tools_num = 1; foreach( $tools as $tool ) : ?>
 					<div id="tool-<?php echo $tools_num; ?>" class="tools-wrapper">
-						<input type="hidden" name="tool-number-<?php echo $tools_num; ?>" value="<?php echo ( ! empty( $tool['number'] ) ) ? $tool['number'] : $tools_num; ?>">
+						<input type="hidden" name="tool-number-<?php echo $tools_num; ?>" value="<?php echo ( ! empty( $tool->number ) ) ? $tool->number : $tools_num; ?>">
 						<div class="tool-title">
 							<h3>Tool <?php echo $tools_num; ?></h3>
 							<div class="remove-tool"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-remove.png"></div>
@@ -330,25 +331,21 @@
 							<ul class="two-column reset-list">
 								<li>
 									<label for="tools-name">Name</label>
-									<input type="text" name="tools-name-<?php echo $tools_num; ?>" id="tools-name" class="widefat" value="<?php echo ( ! empty( $tool['text'] ) ) ? esc_attr( $tool['text'] ) : ''; ?>" />
-								</li>
-								<li>
-									<label for="tools-qty">Quantity</label>
-									<input type="text" name="tools-qty-<?php echo $tools_num; ?>" id="tools-qty" class="widefat" value="<?php echo ( ! empty( $tool['quantity'] ) ) ? intval( $tool['quantity'] ) : ''; ?>" />
+									<input type="text" name="tools-name-<?php echo $tools_num; ?>" id="tools-name" class="widefat" value="<?php echo ( ! empty( $tool->text ) ) ? esc_attr( $tool->text ) : ''; ?>" />
 								</li>
 								<li>
 									<label for="tools-url">URL</label>
-									<input type="text" name="tools-url-<?php echo $tools_num; ?>" id="tools-url" class="widefat" value="<?php echo ( ! empty( $tool['url'] ) ) ? esc_url( $tool['url'] ) : ''; ?>" />
+									<input type="text" name="tools-url-<?php echo $tools_num; ?>" id="tools-url" class="widefat" value="<?php echo ( ! empty( $tool->url ) ) ? esc_url( $tool->url ) : ''; ?>" />
+								</li>
+								<li>
+									<label for="tools-thumb">Thumbnail</label>
+									<input type="text" name="tools-thumb-<?php echo $tools_num; ?>" id="tools-thumb" class="widefat" value="<?php echo ( ! empty( $tool->thumbnail ) ) ? esc_attr( $tool->thumbnail ) : ''; ?>" />
 								</li>
 							</ul><!--[END .step-contents]-->
 							<ul class="two-column reset-list">
 								<li>
-									<label for="tools-type">Type</label>
-									<input type="text" name="tools-type-<?php echo $tools_num; ?>" id="tools-type" class="widefat" value="<?php echo ( ! empty( $tool['type'] ) ) ? esc_attr( $tool['type'] ) : ''; ?>" />
-								</li>
-								<li>
 									<label for="tools-notes">Notes</label>
-									<textarea name="tools-notes-<?php echo $tools_num; ?>" id="tools-notes" rows="4"><?php echo ( ! empty( $tool['notes'] ) ) ? esc_html( $tool['notes'] ) : ''; ?></textarea>
+									<textarea name="tools-notes-<?php echo $tools_num; ?>" id="tools-notes" rows="4"><?php echo ( ! empty( $tool->notes ) ) ? esc_html( $tool->notes ) : ''; ?></textarea>
 								</li>
 							</ul>
 						</div><!--[END .step-contents]-->
@@ -368,14 +365,14 @@
 	 *
 	 * @version 1.0
 	 */
-	function make_magazine_projects_save_step_manager($post_id) {
-		if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
-		if(!isset($_POST['meta_box_nonce']) || !wp_verify_nonce($_POST['meta_box_nonce'], 'make-mag-projects-metabox-nonce')) return;
-		if(!current_user_can('edit_post')) return;
+	function make_magazine_projects_save_step_manager( $post_id ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+		if ( ! isset( $_POST['meta_box_nonce'] ) || ! wp_verify_nonce( $_POST['meta_box_nonce'], 'make-mag-projects-metabox-nonce' ) ) return;
+		if ( ! current_user_can( 'edit_post' ) ) return;
 
 
 		// Check if any of our "Step" data exists and isn't empty. Then, loop through each step and create an object for each by looping through the number of total steps sent through the $_POST array.
-		if ( isset( $_POST['total-steps'] ) && ! empty( $_POST['total-steps'] ) ) {
+		if ( $_POST['total-steps'] != '-1' ) {
 			for ( $i = 1; $i <= intval( $_POST['total-steps'] ); $i++ ) {
 				// Define a new $step array. Other wise, we'll end up getting duplicate content...
 				$step = array();
@@ -416,14 +413,30 @@
 				$step_object[] = (object) $step;
 
 			}
+
+			// Update our post meta for Steps.
+			update_post_meta( $post_id, 'Steps', $step_object );
 		}
 
 
 		// Check if any of our "Parts" data exists and isn't empty. Then, loop through each part and create an array for each by looping through the number of total parts sent through the $_POST array.
-		if ( isset( $_POST['total-parts'] ) && ! empty( $_POST['total-parts'] ) ) {
+		if ( $_POST['total-parts'] != '-1' ) {
+			
+			// We need to check if post meta already exists.
+			$post_meta = get_post_meta( $post_id, 'parts' );
+
+			// If our data exists, delete it, otherwise, we'll get dupes.
+			if ( ! empty( $post_meta ) || is_array( $post_meta ) )
+				delete_post_meta( $post_id, 'parts' );
+
+			// Loop through all of our parts.
 			for ( $i = 1; $i <= intval( $_POST['total-parts'] ); $i++ ) {
 				// Define a new $parts array. Other wise, we'll end up getting duplicate content...
 				$parts = array();
+
+				// Check if old data exists and add it to the array
+				if ( isset( $_POST['part_id-' . $i ] ) )
+					$parts['part_id'] = intval( $_POST['part_id-' . $i ] );
 
 				// Add our Name to the array
 				$parts['text'] = wp_filter_post_kses( $_POST[ 'parts-name-' . $i ] );
@@ -440,14 +453,24 @@
 				// Add our URL to the array
 				$parts['url'] = esc_url( $_POST[ 'parts-url-' . $i ] );
 
-				// Contain each parts into a multidimensional array
-				$parts_object[] = (array) $parts;
+				// Check if old data exists and add it to the array
+				if ( isset( $_POST['pid-' . $i ] ) )
+					$parts['pid'] = intval( $_POST['pid-' . $i ] );
+
+				// Check if old data exists and add it to the array
+				if ( isset( $_POST['post_ID-' . $i ] ) )
+					$parts['post_ID'] = intval( $_POST['post_ID-' . $i ] );
+
+				// Save each part as a new post meta with matching keys. Unlike Steps and Tools, we need a new key for every part...
+				add_post_meta( $post_id, 'parts', $parts );
 			}
 		}
 
 
 		// Check if any of our "Tools" data exists and isn't empty. Then, loop through each tool and create an array for each by looping through the number of total tools sent through the $_POST array.
-		if ( isset( $_POST['total-tools'] ) && ! empty( $_POST['total-tools'] ) ) { 
+		if ( $_POST['total-tools'] != '-1' )  {
+
+			// Loop through all of our tools.
 			for ( $i = 1; $i <= intval( $_POST['total-tools'] ); $i++ ) {
 				// Define a new $tools array. Other wise, we'll end up getting duplicate content...
 				$tools = array();
@@ -458,25 +481,19 @@
 				// Add our Notes to the array
 				$tools['notes'] = wp_filter_post_kses( $_POST[ 'tools-notes-' . $i ] );
 
-				// Add our Type to the array
-				$tools['type'] = wp_filter_post_kses( $_POST[ 'tools-type-' . $i ] );
-
-				// Add our Quantity to the array
-				$tools['quantity'] = intval( $_POST[ 'tools-qty-' . $i ] );
-
 				// Add our URL to the array
 				$tools['url'] = esc_url( $_POST[ 'tools-url-' . $i ] );
 
-				// Contain each tools into a multidimensional array
-				$tools_object[] = (array) $tools;
+				// Add our Thumbnail to the array
+				$tools['thumbnail'] = esc_url( $_POST[ 'tools-thumb-' . $i ] );
+
+				// Contain the whole $steps array into an object
+				$tools_object[] = (object) $tools;
 			}
+
+			// Update our post meta for Steps. Unlike Parts and Tools, we want one meta key.
+			update_post_meta( $post_id, 'Tools', $tools_object );
 		}
-
-		// update_post_meta() will serialize our data for us... and add/update our tools roew :)
-		update_post_meta( $post_id, 'Steps', $step_object );
-		// update_post_meta( $post_id, 'parts', $parts_object );
-		// update_post_meta( $post_id, 'tools', $tools_object );
-
 	}
 	add_action('save_post', 'make_magazine_projects_save_step_manager');
 

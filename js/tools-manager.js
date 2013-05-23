@@ -26,14 +26,11 @@ jQuery(document).ready(function($) {
 		// Update the the number in the name field
 		$('#tool-' + num + ' input[name="tools-name-0"]').attr('name', 'tools-name-' + num);
 
-		// Update the the number in the quantity field
-		$('#tool-' + num + ' input[name="tools-qty-0"]').attr('name', 'tools-qty-' + num);
-
 		// Update the the number in the URL field
 		$('#tool-' + num + ' input[name="tools-url-0"]').attr('name', 'tools-url-' + num);
 
-		// Update the the number in the type field
-		$('#tool-' + num + ' input[name="tools-type-0"]').attr('name', 'tools-type-' + num);
+		// Update the the number in the thumbnail field
+		$('#tool-' + num + ' input[name="tools-thumb-0"]').attr('name', 'tools-thumb-' + num);
 
 		// Update the the number in the notes field
 		$('#tool-' + num + ' textarea[name="tools-notes-0"]').attr('name', 'tools-notes-' + num);
@@ -150,14 +147,11 @@ function make_tools_manager_update_tools() {
 		// Update the the number in the name field
 		jQuery('#tool-' + i + ' input#tools-name').attr('name', 'tools-name-' + i);
 
-		// Update the the number in the quantity field
-		jQuery('#tool-' + i + ' input#tools-qty').attr('name', 'tools-qty-' + i);
-
 		// Update the the number in the URL field
 		jQuery('#tool-' + i + ' input#tools-url').attr('name', 'tools-url-' + i);
 
-		// Update the the number in the type field
-		jQuery('#tool-' + i + ' input#tools-type').attr('name', 'tools-type-' + i);
+		// Update the the number in the thumbnail field
+		jQuery('#tool-' + i + ' input#tools-thumb').attr('name', 'tools-thumb-' + i);
 
 		// Update the the number in the notes field
 		jQuery('#tool-' + i + ' textarea#tools-notes').attr('name', 'tools-notes-' + i);
