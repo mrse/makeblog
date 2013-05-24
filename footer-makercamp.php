@@ -102,7 +102,7 @@
 								</div> 
 							<!-- END span3 about-us -->
 							</div>
-							<div class="span subscribe">
+							<div class="span subscribe hidden-phone">
 								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB">
 									<img src="http://makezine.com/images/footer/current-volume-footer.gif" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
 								</a>
