@@ -80,7 +80,7 @@
 						    	<li><a href="http://blog.makezine.com/trainingcamp/design-for-desktop-3d-printing/">Design for Desktop 3D Printing</a></li>
 						    </ul>
 					    <a class="btn btn-large" href="http://blog.makezine.com/trainingcamp/teach-camp/">Teach a Camp</a>
-					    <a class="btn btn-large" href="http://blog.makezine.com/trainingcamp/suggest-course/">Suggest Course</a>
+					    <a class="btn btn-large" href="http://blog.makezine.com/trainingcamp/suggest-course/">Suggest Camp</a>
 					    <a class="btn btn-large" href="http://blog.makezine.com/trainingcamp/frequently-asked-questions/">FAQ</a>
 				    </div>
 				</div> <!-- END container -->
