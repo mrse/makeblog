@@ -14,9 +14,9 @@
 
 				<ul class="nav">
 							<li class="active"><a href="http://blog.makezine.com/trainingcamp/">Home</a></li>
-							<li><a href="http://blog.makezine.com/trainingcamp/current-camps">Camps</a></li>
+							<li><a href="http://blog.makezine.com/trainingcamp/current-camps">Sign Up for Camps </a></li>
 							<li><a href="http://blog.makezine.com/trainingcamp/teach-camp">Teach a Camp</a></li>
-							<li><a href="http://blog.makezine.com/trainingcamp/suggest-course">Suggest Course</a></li>
+							<li><a href="http://blog.makezine.com/trainingcamp/suggest-course">Suggest Camp</a></li>
 							<li><a href="http://blog.makezine.com/trainingcamp/faq">FAQ</a></li>
 				</ul>
 			
