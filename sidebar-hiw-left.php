@@ -37,12 +37,12 @@
 					</ul>
 
 					<!--<img src="http://cdn.makezine.com/make/bootstrap/img/etc/quote.png" alt="Quote" class="quote"/> -->
-
+				<div class="row">
 					<blockquote>
 						<p><strong>New! Maker Pro Digital Manufacturing Workshop</strong></p>
 						<p>This year we've added a half-day session for maker pros looking for guidance and insight into getting their projects and ideas to the next stage. Beginning at 10am to 1pm, Tuesday, May 14, the three-hour manufacturing deep dive is designed for makers exploring options for getting to scale with their final prototypes. Presented by experts who can facilitate the transition and have extensive experience in small, medium, and large scale manufacturing for startups. Participants are encouraged to bring their designs and prototypes to the workshop.</p>
 					</blockquote>
-
+				</div><!-- END row-->
 					<div class="clear"></div>
 			
 				</div> <!-- END span3 sidebar-left -->	
