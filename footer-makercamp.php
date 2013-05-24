@@ -29,7 +29,7 @@
 								</ul>
 							</div>
 
-							<div class="span newsletter">
+							<div class="span newsletter visible-desktop">
 								<h5>Get our Newsletters</h5>  
 								<form action="http://makermedia.createsend.com/t/r/s/jrsydu/" method="post" id="subForm">
 
@@ -66,7 +66,7 @@
 								</form>
 							<!-- END span newsletter -->
 							</div>
-							<div class="span about-us">
+							<div class="span about-us hidden-phone">
 								<h5>About <a href="http://makermedia.com">Maker Media</a></h5>
 								<div class="span about-column-01">
 									<ul>
@@ -137,6 +137,11 @@
 		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/bootstrap-collapse.js"></script>
 		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/bootstrap-carousel.js"></script>
 		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/bootstrap-typeahead.js"></script>
+		<script>
+			jQuery(document).ready(function($) {
+				$('.collapse').collapse();
+			});
+		</script>
 
 		<!-- Place this tag after the last badge tag. -->
 		<script type="text/javascript">

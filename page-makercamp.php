@@ -11,19 +11,19 @@
 
 <?php get_header( 'makercamp' ); ?>
 		
-	<div class="container">
+	<div class="container top-header">
 
 		<div class="row">
 
-			<div class="span6">
+			<div class="span6 mc-logo">
 				<img src="http://makezineblog.files.wordpress.com/2013/05/maker-camp-logo2.png?w=570" alt="Maker Camp - On Google+" width="570" height="175">
 			</div>
 
-			<div class="span6">
+			<div class="span6 mc-description">
 
 				<h2>Cool Projects, Epic Field Trips &amp; Awesome Makers</h2>
 				<h3>July 8th - August 16th, 2013</h3>
-				<p style="font-size: 20px;">Maker Camp is a free virtual summer camp for teens on Google+.</p>
+				<p style="font-size: 20px;" class="hidden-phone">Maker Camp is a free virtual summer camp for teens on Google+.</p>
 			</div>
 
 			<!-- <div class="span1">
@@ -42,11 +42,11 @@
 
 			<div class="row">
 
-				<div class="span6">
+				<div class="span6 hidden-phone">
 				
 					<div class="blue">
 						
-						<iframe width="570" height="321" src="http://www.youtube.com/embed/AfsQbW3xBPU" frameborder="0" allowfullscreen></iframe>
+						<iframe width="100%" height="321" src="http://www.youtube.com/embed/AfsQbW3xBPU" frameborder="0" allowfullscreen></iframe>
 						
 						<h4>Watch the Wrap Up of Maker Camp 2012</h4>
 						
@@ -56,13 +56,15 @@
 
 				<div class="span6">
 
+					<a href="http://google.com/+make" class="button big block visible-phone" style="position:relative; top:56px;">To Join, Follow MAKE on Google+</a>
+
 					<h3><span class="cap">Build at Home</span> Follow along as we post fun DIY projects for campers to build on their own or with friends.</h3>
 
 					<h3><span class="cap">Hangout with Us</span> Join our daily Google+ Hangouts, where we'll share tips and tricks on the projects, and go on virtual Field Trips to amazing places.</h3>
 
 					<h3 class="last"><span class="cap">Share Projects</span> See what other Maker Campers are building, and share your own project photos and videos on Google+</h3>
 
-					<a href="http://google.com/+make" class="button big block" style="position:relative; top:56px;">To Join, Follow MAKE on Google+</a>
+					<a href="http://google.com/+make" class="button big block hidden-phone" style="position:relative; top:56px;">To Join, Follow MAKE on Google+</a>
 
 				</div>
 
@@ -72,7 +74,7 @@
 
 	</section>
 
-	<section class="white-bg">
+	<section class="white-bg hidden-phone">
 
 		<div class="container">
 
@@ -140,13 +142,21 @@
 						<h2>Join us for the kickoff event on July 8th!</h2>
 					</div>
 					<div class="span3">
-						<a href="https://plus.google.com/events/cto8o7u5tecs625c5656ge9dg8s" class="button pull-right" target="_blank" style="font-size:22px;">RSVP on Google+</a>
+						<a href="https://plus.google.com/events/cto8o7u5tecs625c5656ge9dg8s" class="button pull-right" target="_blank">RSVP on Google+</a>
 					</div>
 				</div>
 			</div>	
 		</div><!--[END .join]-->
 
 	</section><!--[END .white-bg]-->
+
+	<section class="mobile-schedule visible-phone">
+		<div class="container">
+			<div class="row">
+				<a href="http://makezine.com/maker-camp/schedule.html" class="button blue large-button">Check Out the Schedule of Events</a>
+			</div>
+		</div>
+	</section>
 
 	<section class="lower-gradation">
 
@@ -199,7 +209,7 @@
 				</div>
 			</div><!--[END .row]-->
 
-			<div class="row">
+			<div class="row hidden-phone">
 				<div class="span4">
 
 					<div class="windows feature-box">

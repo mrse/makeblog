@@ -511,16 +511,16 @@
 
   .brand,
   .nav > li > a {
-    color: @navbarBlueLinkColor;
+    color: @navbarBlueLinkColor !important;
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     &:hover,
     &:focus {
-      color: @navbarBlueLinkColorHover;
+      color: black !important;
     }
   }
 
   .brand {
-    color: @navbarBlueBrandColor;
+    color: @navbarBlueBrandColor !important;
   }
 
   .navbar-text {
@@ -541,7 +541,7 @@
   }
 
   // Inline text links
-  .navbar-link {
+  .navbar-link, .nav-collapse {
     color: @navbarBlueLinkColor;
     &:hover,
     &:focus {
@@ -605,6 +605,10 @@
   // Navbar collapse button
   .btn-navbar {
     .buttonBackground(darken(@navbarBlueBackgroundHighlight, 5%), darken(@navbarBlueBackground, 5%));
+  }
+
+  .nav-collapse {
+    background:darken(@navbarBlueBackgroundHighlight, 5%);
   }
 
 }

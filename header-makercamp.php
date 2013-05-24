@@ -28,20 +28,22 @@
 
 		<?php wp_head( 'makercamp' ); ?>
 
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/responsive.css">
+
 	</head>
 	<body <?php body_class( 'makercamp' ); ?>>
 		<header>
 			<div class="navbar navbar-blue navbar-fixed-top">
 				<div class="navbar-inner">
-					<div class="container">
+					<nav class="container">
 						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</a>
 						<a class="brand" href="#">MAKE</a>
-						<div class="nav-collapse">
-							<ul class="nav">
+						<div class="nav-collapse in collapse">
+							<ul class="nav clearfix">
 								<li class="active"><a href="#">Magazine</a></li>
 								<li><a href="#about">Blog</a></li>
 								<li><a href="#contact">Maker Faire</a></li>
@@ -51,11 +53,11 @@
 								<input type="text" class="search-query" placeholder="Search">
 							</form>
 						</div><!--/.nav-collapse -->
-					</div>
+					</nav>
 				</div>
 			</div>
 
-			<div class="black-bar">
+			<div class="black-bar hidden-phone">
 				<div class="container">
 					<ul class="nav nav-inline pull-left">
 						<li><a href="faq.html">FAQs</a></li>

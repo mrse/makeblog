@@ -4247,17 +4247,17 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar-blue .brand,
 .navbar-blue .nav > li > a {
-  color: #ffffff;
+  color: #ffffff !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 .navbar-blue .brand:hover,
 .navbar-blue .nav > li > a:hover,
 .navbar-blue .brand:focus,
 .navbar-blue .nav > li > a:focus {
-  color: #ffffff;
+  color: black !important;
 }
 .navbar-blue .brand {
-  color: #ed1c24;
+  color: #ed1c24 !important;
 }
 .navbar-blue .navbar-text {
   color: #ffffff;
@@ -4273,11 +4273,14 @@ input[type="submit"].btn.btn-mini {
   color: #ffffff !important;
   background-color: #172e50 !important;
 }
-.navbar-blue .navbar-link {
+.navbar-blue .navbar-link,
+.navbar-blue .nav-collapse {
   color: #ffffff;
 }
 .navbar-blue .navbar-link:hover,
-.navbar-blue .navbar-link:focus {
+.navbar-blue .nav-collapse:hover,
+.navbar-blue .navbar-link:focus,
+.navbar-blue .nav-collapse:focus {
   color: #ffffff;
 }
 .navbar-blue .divider-vertical {
@@ -4374,6 +4377,9 @@ input[type="submit"].btn.btn-mini {
 .navbar-blue .btn-navbar:active,
 .navbar-blue .btn-navbar.active {
   background-color: #060c15 \9;
+}
+.navbar-blue .nav-collapse {
+  background: #26374d;
 }
 .black-bar {
   background-color: #000000;
@@ -9716,6 +9722,8 @@ body.camp {
   color: #000 !important;
 }
 body.makercamp {
+  /* apply a natural box layout model to all elements. sadly this breaks everything when it should fix... */
+
   background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat-x;
   text-rendering: optimizeLegibility;
   padding-bottom: 0 !important;
@@ -9870,6 +9878,9 @@ body.makercamp .join {
 body.makercamp .join > .span9 {
   margin-left: 0;
 }
+body.makercamp .join a {
+  font-size: 22px;
+}
 body.makercamp .white-bg {
   background-color: #fff;
   color: black;
@@ -9894,7 +9905,7 @@ body.makercamp .white-bg .featured {
   padding: 30px 0;
   margin-left: 6px;
   float: left;
-  width: 182px;
+  width: 18.9617021%;
   height: auto !important;
 }
 body.makercamp .white-bg .featured h4 {
@@ -9969,7 +9980,7 @@ body.makercamp .feature-box h5 {
   font-weight: normal;
 }
 body.makercamp .feature-box .button.blue {
-  width: 190px;
+  width: 79.16666671%;
   font-size: 24px ;
   line-height: 32px;
   font-weight: 600;
@@ -9992,4 +10003,163 @@ body.makercamp .new-footer h5 {
   font-weight: bold;
   text-transform: none;
   color: #000;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  body.makercamp .container,
+  body.admin-bar .container,
+  body.makercamp .navbar-static-top .container,
+  body.admin-bar .navbar-static-top .container,
+  body.makercamp .navbar-fixed-top .container,
+  body.admin-bar .navbar-fixed-top .container,
+  body.makercamp .navbar-fixed-bottom .container,
+  body.admin-bar .navbar-fixed-bottom .container {
+    width: 724px !important;
+  }
+  body.makercamp header,
+  body.admin-bar header {
+    margin: 0 0 40px !important;
+  }
+  body.makercamp .navbar-fixed-top,
+  body.admin-bar .navbar-fixed-top {
+    margin-bottom: 0;
+  }
+  body.makercamp .navbar-blue .navbar-search .search-query,
+  body.admin-bar .navbar-blue .navbar-search .search-query {
+    width: 97% !important;
+  }
+  body.makercamp .waist,
+  body.admin-bar .waist {
+    background-position: 40.0817996% bottom;
+  }
+  body.makercamp .button.big,
+  body.admin-bar .button.big {
+    font-size: 1.5em;
+  }
+  body.makercamp .join h2,
+  body.admin-bar .join h2 {
+    font-size: 1.8em;
+  }
+  body.makercamp .join a,
+  body.admin-bar .join a {
+    font-size: 1.357142857em;
+  }
+  body.makercamp .feature-box h4,
+  body.admin-bar .feature-box h4 {
+    line-height: 1em;
+  }
+  body.makercamp .feature-box h5,
+  body.admin-bar .feature-box h5 {
+    font-size: 1.5em;
+  }
+  body.makercamp .feature-box .button.blue,
+  body.admin-bar .feature-box .button.blue {
+    font-size: 1.285714286em;
+  }
+  body.makercamp .new-footer .main,
+  body.admin-bar .new-footer .main {
+    margin: 5px auto;
+  }
+}
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+  body.makercamp,
+  body.makercamp.admin-bar {
+    padding: 0;
+    margin: 0;
+  }
+  body.makercamp .container,
+  body.makercamp.admin-bar .container,
+  body.makercamp .navbar-static-top .container,
+  body.makercamp.admin-bar .navbar-static-top .container,
+  body.makercamp .navbar-fixed-top .container,
+  body.makercamp.admin-bar .navbar-fixed-top .container,
+  body.makercamp .navbar-fixed-bottom .container,
+  body.makercamp.admin-bar .navbar-fixed-bottom .container {
+    width: 100% !important;
+  }
+  body.makercamp .top-header,
+  body.makercamp.admin-bar .top-header,
+  body.makercamp .waist .container,
+  body.makercamp.admin-bar .waist .container,
+  body.makercamp .lower-gradation .container,
+  body.makercamp.admin-bar .lower-gradation .container,
+  body.makercamp .new-footer .container,
+  body.makercamp.admin-bar .new-footer .container {
+    width: 90% !important;
+    margin: 0 auto !important;
+  }
+  body.makercamp .button.blue,
+  body.makercamp.admin-bar .button.blue {
+    font-size: 1.428571429em;
+  }
+  body.makercamp .top-header h2,
+  body.makercamp.admin-bar .top-header h2 {
+    font-size: 2em;
+  }
+  body.makercamp .top-header h3,
+  body.makercamp.admin-bar .top-header h3 {
+    font-size: 1.5em;
+  }
+  body.makercamp header,
+  body.makercamp.admin-bar header {
+    margin: 0 0 40px !important;
+  }
+  body.makercamp .navbar-fixed-top,
+  body.makercamp.admin-bar .navbar-fixed-top {
+    margin-bottom: 0;
+  }
+  body.makercamp .navbar-blue .navbar-search .search-query,
+  body.makercamp.admin-bar .navbar-blue .navbar-search .search-query {
+    width: 97% !important;
+  }
+  body.makercamp .mc-logo,
+  body.makercamp.admin-bar .mc-logo,
+  body.makercamp .mc-description,
+  body.makercamp.admin-bar .mc-description {
+    text-align: center;
+    color: #fff;
+  }
+  body.makercamp .mc-description,
+  body.makercamp.admin-bar .mc-description {
+    color: #FDC153;
+  }
+  body.makercamp .waist,
+  body.makercamp.admin-bar .waist {
+    margin-top: 20px;
+    background-position: 31.0818% bottom;
+  }
+  body.makercamp .waist a,
+  body.makercamp.admin-bar .waist a {
+    top: 0 !important;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+  body.makercamp .waist .cap,
+  body.makercamp.admin-bar .waist .cap {
+    display: block;
+    font-size: 1.285714286em !important;
+  }
+  body.makercamp .lower-gradation .span2,
+  body.makercamp.admin-bar .lower-gradation .span2 {
+    float: left;
+    width: 25%;
+  }
+  body.makercamp .lower-gradation .span4 h4,
+  body.makercamp.admin-bar .lower-gradation .span4 h4 {
+    font-weight: normal;
+    font-size: 1.1em;
+    line-height: 1.2em;
+  }
+  body.makercamp .mobile-schedule .container.row,
+  body.makercamp.admin-bar .mobile-schedule .container.row {
+    margin: 0;
+  }
+  body.makercamp .mobile-schedule a,
+  body.makercamp.admin-bar .mobile-schedule a {
+    width: 100%;
+  }
+  body.makercamp .new-footer .main,
+  body.makercamp.admin-bar .new-footer .main {
+    margin: 5px auto;
+  }
 }

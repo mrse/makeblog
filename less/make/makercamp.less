@@ -1,4 +1,7 @@
 body.makercamp {
+	/* apply a natural box layout model to all elements. sadly this breaks everything when it should fix... */
+	//* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 	background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat-x;
 	text-rendering: optimizeLegibility;
 	padding-bottom: 0 !important;
@@ -139,6 +142,7 @@ body.makercamp {
 		> .span9 {
 			margin-left:0;
 		}
+		a { font-size:22px; }
 	}
 
 	.white-bg {
@@ -164,7 +168,7 @@ body.makercamp {
 			padding: 30px 0;
 			margin-left: 6px;
 			float:left;
-			width: 182px;
+			width: 18.9617021%;
 			height:auto !important;
 			h4 {
 				color:@gray;
@@ -245,7 +249,7 @@ body.makercamp {
 			font-weight: normal;
 		}
 		.button.blue {
-			width:190px;
+			width:79.16666671%;
 			font-size:24px ;
 			line-height:32px;
 			font-weight:600;
@@ -275,5 +279,103 @@ body.makercamp {
 			text-transform:none;
 			color:#000;
 		}
+	}
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	body.makercamp, body.admin-bar {
+
+		// Override some styles from Makezine
+		.container,
+		.navbar-static-top .container,
+		.navbar-fixed-top .container,
+		.navbar-fixed-bottom .container {
+			width: 724px !important;
+		}
+
+		// Navbar Styles
+		header { margin:0 0 40px !important; }
+		.navbar-fixed-top { margin-bottom:0; }
+		.navbar-blue .navbar-search .search-query { width:97% !important; }
+
+		// Waist
+		.waist {
+			background-position: 40.0817996% bottom;
+		}
+		.button.big {
+			font-size:1.5em;
+		}
+
+		// Join Bar
+		.join {
+			h2 { font-size:1.8em; }
+			a { font-size:1.357142857em; }
+		}
+
+		.feature-box {
+			h4 { line-height:1em; }
+			h5 { font-size:1.5em; }
+			.button.blue {
+				font-size:1.285714286em;
+			}
+		}
+
+		// Footer
+		.new-footer .main { margin:5px auto;}
+	}
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	body.makercamp, body.makercamp.admin-bar {
+
+		padding:0; margin:0;
+
+		// Override some styles from Makezine
+		.container,
+		.navbar-static-top .container,
+		.navbar-fixed-top .container,
+		.navbar-fixed-bottom .container {
+			width: 100% !important;
+		}
+	
+		.top-header, .waist .container, .lower-gradation .container, .new-footer .container { width:90% !important; margin:0 auto !important; }
+		.button.blue { font-size:1.428571429em; }
+
+		// Navbar Styles
+		.top-header {
+			h2 { font-size:2em; }
+			h3 { font-size:1.5em; }
+		}
+		header { margin:0 0 40px !important; }
+		.navbar-fixed-top { margin-bottom:0; }
+		.navbar-blue .navbar-search .search-query { width:97% !important; }
+	
+		// Home Header
+		.mc-logo, .mc-description { text-align:center; color:#fff; }
+		.mc-description { color:#FDC153; }
+
+		// Waist
+		.waist {
+			margin-top:20px;
+			background-position: 31.0818% bottom;
+			a { top:0 !important; font-size:1.5em; margin-bottom:30px; }
+			.cap { display:block; font-size:1.285714286em !important; }
+		}
+
+		// Lower Gradiation
+		.lower-gradation {
+			.span2 { float:left; width:25%; }
+			.span4 h4 { font-weight:normal; font-size:1.1em; line-height:1.2em; }
+		}
+
+		// Mobile Schedule
+		.mobile-schedule {
+			.container.row { margin:0; }
+			a { width:100%; }
+		}
+
+		// Footer
+		.new-footer .main { margin:5px auto;}
 	}
 }
