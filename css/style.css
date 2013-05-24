@@ -9,14 +9,14 @@ License: GNU General Public License
 License URI: license.txt
 */
 /*!
- * Bootstrap v2.3.1
- *
- * Copyright 2012 Twitter, Inc
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Designed and built with all the love in the world @twitter by @mdo and @fat.
- */
+* Bootstrap v2.3.1
+*
+* Copyright 2012 Twitter, Inc
+* Licensed under the Apache License v2.0
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Designed and built with all the love in the world @twitter by @mdo and @fat.
+*/
 .clearfix {
   *zoom: 1;
 }
@@ -199,7 +199,7 @@ textarea {
   img {
     max-width: 100% !important;
   }
-  @page  {
+  @page {
     margin: 0.5cm;
   }
   p,
@@ -1991,7 +1991,7 @@ table th[class*="span"],
   background-image: url("../img/glyphicons-halflings-white.png");
 }
 .icon-glass {
-  background-position: 0      0;
+  background-position: 0 0;
 }
 .icon-music {
   background-position: -24px 0;
@@ -4232,6 +4232,189 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .btn-navbar.active {
   background-color: #000000 \9;
 }
+.navbar-blue .navbar-inner {
+  background-color: #253b58;
+  background-image: -moz-linear-gradient(top, #2e435e, #172e50);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2e435e), to(#172e50));
+  background-image: -webkit-linear-gradient(top, #2e435e, #172e50);
+  background-image: -o-linear-gradient(top, #2e435e, #172e50);
+  background-image: linear-gradient(to bottom, #2e435e, #172e50);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2e435e', endColorstr='#ff172e50', GradientType=0);
+  border-color: #275392;
+  font-weight: normal;
+  margin-bottom: 0 !important;
+}
+.navbar-blue .brand,
+.navbar-blue .nav > li > a {
+  color: #ffffff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.navbar-blue .brand:hover,
+.navbar-blue .nav > li > a:hover,
+.navbar-blue .brand:focus,
+.navbar-blue .nav > li > a:focus {
+  color: black !important;
+}
+.navbar-blue .brand {
+  color: #ed1c24 !important;
+}
+.navbar-blue .navbar-text {
+  color: #ffffff;
+}
+.navbar-blue .nav > li > a:focus,
+.navbar-blue .nav > li > a:hover {
+  background-color: transparent;
+  color: #ffffff;
+}
+.navbar-blue .nav .active > a,
+.navbar-blue .nav .active > a:hover,
+.navbar-blue .nav .active > a:focus {
+  color: #ffffff !important;
+  background-color: #172e50 !important;
+}
+.navbar-blue .navbar-link,
+.navbar-blue .nav-collapse {
+  color: #ffffff;
+}
+.navbar-blue .navbar-link:hover,
+.navbar-blue .nav-collapse:hover,
+.navbar-blue .navbar-link:focus,
+.navbar-blue .nav-collapse:focus {
+  color: #ffffff;
+}
+.navbar-blue .divider-vertical {
+  border-left-color: #172e50;
+  border-right-color: #2e435e;
+}
+.navbar-blue .nav li.dropdown.open > .dropdown-toggle,
+.navbar-blue .nav li.dropdown.active > .dropdown-toggle,
+.navbar-blue .nav li.dropdown.open.active > .dropdown-toggle {
+  background-color: #172e50;
+  color: #ffffff;
+}
+.navbar-blue .nav li.dropdown > a:hover .caret,
+.navbar-blue .nav li.dropdown > a:focus .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+.navbar-blue .nav li.dropdown > .dropdown-toggle .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+.navbar-blue .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar-blue .nav li.dropdown.active > .dropdown-toggle .caret,
+.navbar-blue .nav li.dropdown.open.active > .dropdown-toggle .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+.navbar-blue .navbar-search .search-query {
+  color: #ffffff;
+  background-color: #1d3964;
+  border-color: #172e50;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15);
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15);
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  -webkit-transition: none 1s linear;
+  -moz-transition: none 1s linear;
+  -o-transition: none 1s linear;
+  -ms-transition: none 1s linear;
+  transition: none 1s linear;
+}
+.navbar-blue .navbar-search .search-query:-moz-placeholder {
+  color: #cccccc;
+}
+.navbar-blue .navbar-search .search-query:-ms-input-placeholder {
+  color: #cccccc;
+}
+.navbar-blue .navbar-search .search-query::-webkit-input-placeholder {
+  color: #cccccc;
+}
+.navbar-blue .navbar-search .search-query:focus,
+.navbar-blue .navbar-search .search-query.focused {
+  padding: 5px 15px;
+  color: #333333;
+  text-shadow: 0 1px 0 #ffffff;
+  background-color: #ffffff;
+  border: 0;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  outline: 0;
+}
+.navbar-blue .btn-navbar {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #1d2f46;
+  background-image: -moz-linear-gradient(top, #26374d, #11233c);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#26374d), to(#11233c));
+  background-image: -webkit-linear-gradient(top, #26374d, #11233c);
+  background-image: -o-linear-gradient(top, #26374d, #11233c);
+  background-image: linear-gradient(to bottom, #26374d, #11233c);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff26374d', endColorstr='#ff11233c', GradientType=0);
+  border-color: #11233c #11233c #000001;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #11233c;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.navbar-blue .btn-navbar:hover,
+.navbar-blue .btn-navbar:focus,
+.navbar-blue .btn-navbar:active,
+.navbar-blue .btn-navbar.active,
+.navbar-blue .btn-navbar.disabled,
+.navbar-blue .btn-navbar[disabled] {
+  color: #ffffff;
+  background-color: #11233c;
+  *background-color: #0c1728;
+}
+.navbar-blue .btn-navbar:active,
+.navbar-blue .btn-navbar.active {
+  background-color: #060c15 \9;
+}
+.navbar-blue .nav-collapse {
+  background: #26374d;
+}
+.black-bar {
+  background-color: #000000;
+  padding: 5px 0;
+}
+.black-bar .nav {
+  margin: 0px;
+}
+.black-bar .nav-inline {
+  margin: 6px 0;
+}
+.black-bar .nav-inline li {
+  display: block;
+  float: left;
+  margin-right: 20px;
+  font-size: 18px;
+}
+.black-bar .nav-inline li a {
+  color: #fff;
+}
+.black-bar p {
+  color: #999999;
+  font-size: 18px;
+  margin-top: 6px;
+  margin-bottom: 0px;
+}
+.black-bar a {
+  color: #acd3fc !important;
+  font-size: 18px;
+  margin: 0;
+}
+.black-bar a:hover {
+  background-color: transparent !important;
+  text-decoration: underline !important;
+}
 .breadcrumb {
   padding: 8px 15px;
   margin: 0 0 20px;
@@ -5326,9 +5509,9 @@ body.single-slideshow {
   margin-top: 0px;
   margin-bottom: 0px;
   /*background-image: url('../img/arduino.jpg');
-	background-attachment: fixed;
-	background-position: top center;
-	background-repeat: no-repeat;*/
+background-attachment: fixed;
+background-position: top center;
+background-repeat: no-repeat;*/
 
 }
 body.single-slideshow #wpadminbar {
@@ -5632,7 +5815,7 @@ article h4 a:hover {
   background-image: url('../img/shadow1.png');
   background-repeat: no-repeat;
   /*background-position-x:286px;
-	background-position-y:50px;*/
+background-position-y:50px;*/
 
 }
 .posts article {
@@ -5926,17 +6109,17 @@ Time for a Dr. Pepper?
 
 *********************/
 .blue-box {
-  /* background: -moz-linear-gradient(top,  rgba(22,157,202,0.65) 0%, rgba(0,0,0,0) 100%); FF3.6+ */
+  /* background: -moz-linear-gradient(top, rgba(22,157,202,0.65) 0%, rgba(0,0,0,0) 100%); FF3.6+ */
 
   /* background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(22,157,202,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
 
-  /* background: -webkit-linear-gradient(top,  rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+  /* background: -webkit-linear-gradient(top, rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
 
-  /* background: -o-linear-gradient(top,  rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+  /* background: -o-linear-gradient(top, rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
 
-  /* background: -ms-linear-gradient(top,  rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+  /* background: -ms-linear-gradient(top, rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
 
-  /* background: linear-gradient(top,  rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
+  /* background: linear-gradient(top, rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
 
   /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6169dca', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 
@@ -6410,87 +6593,87 @@ p.comment-form-comment {
   background: linear-gradient(top, #fafcfd 0%, #eeeff0 100%);
   padding: 10px;
 }
-/* Of note, all of these will be background-position:top right; 
+/* Of note, all of these will be background-position:top right;
 
-.cat-robotskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-robots.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+.cat-robotskills {
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-robots.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
-.cat-electronskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-electronics.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+.cat-electronskills {
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-electronics.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
-.cat-woodskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-woodworking.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+.cat-woodskills {
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-woodworking.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
-.cat-machine  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-machining-1.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+.cat-machine {
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-machining-1.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
-.cat-metalskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-metalworking.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+.cat-metalskills {
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-metalworking.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
-.cat-foodskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-food-1.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+.cat-foodskills {
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-food-1.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
-.cat-bikeshop  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-bikes-1.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+.cat-bikeshop {
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-bikes-1.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
-.cat-plasticskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-plastics.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+.cat-plasticskills {
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-plastics.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-hobby {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-hobby.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-hobby.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-photoskills {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-photography.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-photography.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
-.cat-mechanicskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-machining-2.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+.cat-mechanicskills {
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-machining-2.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 /*
@@ -6501,153 +6684,153 @@ Remaining Skill Builders
 
 
 .cat-print {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/desktop-man.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/desktop-man.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-computer {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/computer-mobile.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/computer-mobile.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-electronics {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/electronics-1.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/electronics-1.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-flight {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/flight.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/flight.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-kids {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/kids.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/kids.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-makers {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/makers.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/makers.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-arduino {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/microcontrollers.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/microcontrollers.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-robots {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/robots.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/robots.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-science {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/science.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/science.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-shop {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/shop-craft.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/shop-craft.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-tools {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/workshop.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/workshop.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-vehicles {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/vehicles.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/vehicles.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-toys {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/rockets.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/rockets.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-imaging {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/imaging.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/imaging.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-recreation {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/recreation.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/recreation.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-home {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/home-garden.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/home-garden.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-energy {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/energy.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/energy.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }
 
 .cat-events {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/events.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
+background-image:url('http://makezineblog.files.wordpress.com/2012/07/events.png');
+background-repeat:no-repeat;
+background-position:top right;
+margin-bottom:-10px;
+padding-bottom:10px;
 }*/
 /*
 Remaining Topics
-.cat-art 
-.cat-green 
-.cat-crafts 
+.cat-art
+.cat-green
+.cat-crafts
 */
 .cat a {
   color: #045876;
@@ -6821,31 +7004,31 @@ hr {
   padding: 10px 0;
 }
 /* h4.left {
-	text-align:left !important;
+text-align:left !important;
 } */
 .thumbs {
   margin-bottom: 20px;
 }
 /*div.left {
-	width:130px;
-	float:left;
-	margin-right:20px;
-	margin-left:5px;
+width:130px;
+float:left;
+margin-right:20px;
+margin-left:5px;
 }*/
 /* span.right {
-	margin-right:20px;
+margin-right:20px;
 } */
 /*div.right {
-	width:130px;
-	float:left;
+width:130px;
+float:left;
 }*/
 /* div.left h4, div.right h4 {
-	margin:10px 0 0;
-	height:42px;
+margin:10px 0 0;
+height:42px;
 } */
 /* .page-template-page-kids-php div.left h4, div.right h4 {
-	margin:20px 0 0;
-	height:20px;
+margin:20px 0 0;
+height:20px;
 } */
 .superpage article .row {
   margin-left: -20px;
@@ -7158,18 +7341,18 @@ blockquote p {
   margin-top: 9px;
   margin-left: 7px;
 }
-/* .tax-image, 
+/* .tax-image,
 #taxonomy-image {
-	float:right;
-	width:200px;
+float:right;
+width:200px;
 }
 
 .taxonomy-image {
-	float:right;
-	width:200px;
-	margin-top:-16px;
+float:right;
+width:200px;
+margin-top:-16px;
 }
- */
+*/
 .craft .waist {
   background-color: #9acc67;
   background-image: none;
@@ -7459,7 +7642,7 @@ img#wpstats {
   margin: 10px 0;
 }
 /* .next {
-	left:544px !important;
+left:544px !important;
 } */
 [class*="paged"] .next {
   left: 496px !important;
@@ -7882,7 +8065,7 @@ body#shop {
 #make-subcription-form #sub-info control group {
   border-top: 1px solid #CCC;
   border-bottom: 1px solid #CCC
-	;
+;
   margin-top: 15px;
   line-height: 110px;
 }
@@ -8951,23 +9134,23 @@ ul#tabs .current > a:hover {
   position: relative;
 }
 /* .carousel {
-	.item {
-		-webkit-transition: opacity 1s;
-		-moz-transition: opacity 1s; 
-		-ms-transition: opacity 1s; 
-		-o-transition: opacity 1s;
-		 transition: opacity 1s;
-		}
-	.active.left {
-		left:0;
-		opacity:0;
-		z-index:2;
-	}
-	.next {
-		left:0;
-		opacity:1;
-		z-index:1;
-	}
+.item {
+-webkit-transition: opacity 1s;
+-moz-transition: opacity 1s;
+-ms-transition: opacity 1s;
+-o-transition: opacity 1s;
+transition: opacity 1s;
+}
+.active.left {
+left:0;
+opacity:0;
+z-index:2;
+}
+.next {
+left:0;
+opacity:1;
+z-index:1;
+}
 } */.single {
   background: url('../img/dots.png');
   background-color: url('../img/dots.png');
@@ -9336,6 +9519,128 @@ ul#tabs .current > a:hover {
 .page-id-271492 .clearer:after {
   clear: both;
 }
+
+body.hiw {
+  background-color: #eee;
+}
+.hiw .header-bottom {
+  background-color: transparent;
+  border: none;
+  height: auto;
+}
+.hiw .header-bottom .container .row .span9 h2 {
+  color: #ED1D24;
+  font-size: 24px;
+  line-height: 28px;
+  padding-top: 15px;
+}
+.hiw ul.left-nav {
+  margin-left: 0;
+}
+.hiw ul.left-nav li {
+  font-size: 16px;
+  line-height: 130%;
+  border-bottom-color: #999999;
+  border-bottom-style: dashed;
+  border-bottom-width: 1px;
+  list-style-type: none;
+  padding-bottom: 5px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 5px;
+}
+.hiw blockquote {
+  border: none;
+}
+.hiw ul.social li {
+  background-image: none;
+  display: block;
+  border-bottom-color: #999999;
+  border-bottom-style: dashed;
+  border-bottom-width: 1px;
+  list-style-type: none;
+  padding-bottom: 5px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 5px;
+}
+.hiw ul.social li a:link {
+  color: #ED1D24;
+}
+.hiw .right-sidebar img {
+  margin-bottom: 10px;
+}
+.hiw .right-sidebar h3 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 5px;
+  margin-top:10px;
+  line-height: 20px;
+  text-transform: none;
+}
+.hiw .right-sidebar p {
+  font-size: 16px;
+  line-height: 130%;
+}
+.hiw .single {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: transparent;
+  background-image: none;
+  background-origin: padding-box;
+  background-position: 0 0;
+  background-repeat: repeat-x;
+  background-size: auto auto;
+  border-bottom-color: -moz-use-text-color;
+  border-bottom-style: none;
+  border-bottom-width: 0;
+  font-family: "proxima-nova", sans-serif;
+  padding-top: 0;
+}
+.hiw .single .container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.hiw .single .container ul li {
+  font-size: 18px;
+  line-height: 140%;
+}
+.hiw .fix .header-bottom .container .row {
+  border-bottom-color: #00AEEF;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-top-color: #00AEEF;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align: center;
+  margin-left: 0;
+}
+.hiw .fix .header-bottom .container .row .span9 {
+  width: 680px;
+}
+.hiw .fix .header-bottom .container .row .span9 h2 span {
+  font-size: 22px;
+}
+.hiw #header {
+  background-image: none;
+  border: none;
+  padding-top: 0;
+  padding-top: 0;
+}
+.hiw #header h1 {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.hiw .container {
+  background-color: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.hiw .navbar .navbar-inner .container {
+  background-color: #2E435E;
+
 #camp-header .container {
   text-align: center;
 }
@@ -9538,124 +9843,445 @@ body.camp {
 .camp-footer .container ul.nav li a:link {
   color: #000 !important;
 }
+body.makercamp {
+  /* apply a natural box layout model to all elements. sadly this breaks everything when it should fix... */
 
-body.hiw {
-  background-color: #eee;
-}
-.hiw .header-bottom {
-  background-color: transparent;
-  border: none;
-  height: auto;
-}
-.hiw .header-bottom .container .row .span9 h2 {
-  color: #ED1D24;
-  font-size: 24px;
-  line-height: 28px;
-  padding-top: 15px;
-}
-.hiw ul.left-nav {
-  margin-left: 0;
-}
-.hiw ul.left-nav li {
-  font-size: 16px;
-  line-height: 130%;
-  border-bottom-color: #999999;
-  border-bottom-style: dashed;
-  border-bottom-width: 1px;
-  list-style-type: none;
-  padding-bottom: 5px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 5px;
-}
-.hiw blockquote {
-  border: none;
-}
-.hiw ul.social li {
-  background-image: none;
-  display: block;
-  border-bottom-color: #999999;
-  border-bottom-style: dashed;
-  border-bottom-width: 1px;
-  list-style-type: none;
-  padding-bottom: 5px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 5px;
-}
-.hiw ul.social li a:link {
-  color: #ED1D24;
-}
-.hiw .right-sidebar img {
-  margin-bottom: 10px;
-}
-.hiw .right-sidebar h3 {
-  color: #333;
-  font-size: 18px;
-  margin-bottom: 5px;
-  margin-top:10px;
+  background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat-x;
+  text-rendering: optimizeLegibility;
+  padding-bottom: 0 !important;
+  margin: 0;
+  font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
   line-height: 20px;
-  text-transform: none;
+  color: #fff;
 }
-.hiw .right-sidebar p {
-  font-size: 16px;
-  line-height: 130%;
+body.makercamp h1,
+body.makercamp h2,
+body.makercamp h3,
+body.makercamp h4,
+body.makercamp h5,
+body.makercamp h6 {
+  margin: 10px 0 !important;
 }
-.hiw .single {
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-color: transparent;
-  background-image: none;
-  background-origin: padding-box;
-  background-position: 0 0;
-  background-repeat: repeat-x;
-  background-size: auto auto;
-  border-bottom-color: -moz-use-text-color;
-  border-bottom-style: none;
-  border-bottom-width: 0;
-  font-family: "proxima-nova", sans-serif;
-  padding-top: 0;
+body.makercamp h3 {
+  line-height: 40px !important;
 }
-.hiw .single .container {
-  padding-top: 20px;
-  padding-bottom: 20px;
+body.makercamp iframe {
+  max-width: 100%;
 }
-.hiw .single .container ul li {
-  font-size: 18px;
-  line-height: 140%;
-}
-.hiw .fix .header-bottom .container .row {
-  border-bottom-color: #00AEEF;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-top-color: #00AEEF;
-  border-top-style: solid;
-  border-top-width: 1px;
-  padding-bottom: 20px;
-  padding-top: 20px;
+body.makercamp .button {
+  display: inline;
+  display: inline-block;
   text-align: center;
-  margin-left: 0;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-right-radius: 3px;
+  background-color: #c7171d;
+  border-bottom: 3px solid #8A1D24;
+  padding: 10px;
+  color: #fff;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-decoration: none;
 }
-.hiw .fix .header-bottom .container .row .span9 {
-  width: 680px;
+body.makercamp .button:hover {
+  background-color: #b3151b !important;
+  color: #fff !important;
+  text-decoration: none;
 }
-.hiw .fix .header-bottom .container .row .span9 h2 span {
-  font-size: 22px;
-}
-.hiw #header {
-  background-image: none;
-  border: none;
-  padding-top: 0;
-  padding-top: 0;
-}
-.hiw #header h1 {
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
-.hiw .container {
-  background-color: #fff;
+body.makercamp .button.blue {
+  background-color: #95cbf9;
+  border-bottom: 3px solid #666666;
+  padding: 10px;
+  color: #2d2c54;
+  font-size: 24px ;
+  line-height: 32px;
+  font-weight: 600;
   padding-left: 20px;
   padding-right: 20px;
 }
-.hiw .navbar .navbar-inner .container {
-  background-color: #2E435E;
+body.makercamp .button.green {
+  background-color: #51B926;
+  border-bottom: 3px solid #316B17;
+  padding: 10px;
+  color: #ffffff;
+}
+body.makercamp .button.block {
+  display: block;
+}
+body.makercamp .button.big {
+  font-size: 1.7em;
+  padding: 12px 0;
+}
+body.makercamp #footer.white-bg {
+  margin: 0;
+  padding: 30px 0 20px;
+}
+body.makercamp #footer h3 {
+  display: inline-block;
+}
+body.makercamp #footer .g-plus {
+  margin-top: 10px;
+}
+body.makercamp #footer .nav-list {
+  margin-bottom: 20px;
+  list-style: none;
+}
+body.makercamp #footer .nav-list li {
+  float: left;
+  margin-right: 49px;
+}
+body.makercamp #footer .nav-list li.last {
+  margin-right: 0;
+}
+body.makercamp .search-query {
+  width: 206px !important;
+}
+body.makercamp .red {
+  color: #c7171d;
+}
+body.makercamp header {
+  margin-top: 48px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+body.makercamp header h2 {
+  font-size: 33px;
+  line-height: 45px;
+  margin-bottom: 10px;
+}
+body.makercamp header h3 {
+  font-weight: 200;
+  font-size: 28px;
+  line-height: 100%;
+}
+body.makercamp.admin-bar header {
+  margin-top: 44px;
+}
+body.makercamp .waist {
+  background-image: url(http://makezineblog.files.wordpress.com/2013/05/hills.png);
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  padding-bottom: 120px;
+  margin-top: 40px;
+  border: none;
+}
+body.makercamp .waist h3 {
+  margin: 5px 0 40px 0 !important;
+  font-size: 17px;
+  line-height: 30px !important;
+  color: #acd3fc;
+  font-weight: normal;
+}
+body.makercamp .waist h3 .cap {
+  text-transform: uppercase;
+  font-size: 27px !important;
+  margin-right: 5px;
+  font-weight: bold !important;
+  font-family: inherit !important;
+}
+body.makercamp .waist h3.last {
+  margin-bottom: 0;
+}
+body.makercamp .waist .blue {
+  background-color: #032042;
+  color: #acd3fc;
+  text-align: center;
+}
+body.makercamp .waist .blue h4 {
+  padding-bottom: 12px;
+}
+body.makercamp .join {
+  margin: 20px 0;
+}
+body.makercamp .join > .span9 {
+  margin-left: 0;
+}
+body.makercamp .join a {
+  font-size: 22px;
+}
+body.makercamp .white-bg {
+  background-color: #fff;
+  color: black;
+}
+body.makercamp .white-bg h4 {
+  font-size: 28px;
+}
+body.makercamp .white-bg h5 {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #6e6e6e;
+  font-weight: normal;
+}
+body.makercamp .white-bg h6 {
+  font-size: 18px;
+}
+body.makercamp .white-bg h6 a {
+  color: #acd3fc !important;
+  text-decoration: none;
+}
+body.makercamp .white-bg .featured {
+  padding: 30px 0;
+  margin-left: 6px;
+  float: left;
+  width: 18.9617021%;
+  height: auto !important;
+}
+body.makercamp .white-bg .featured h4 {
+  color: #555555;
+  margin: 10px;
+  font-size: 16px;
+  /* height:40px; */
+
+  height: 54px;
+}
+body.makercamp .white-bg a.small-button {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 12px !important;
+  padding: 10px 15px !important;
+  margin-right: 10px;
+}
+body.makercamp .windows {
+  background-color: #E3EFF6;
+  border-top: 6px solid #72CFFD;
+  padding: 20px 0;
+  color: #333333;
+  height: 110px;
+}
+body.makercamp .windows .span2 {
+  text-align: center;
+}
+body.makercamp .windows .nobg {
+  background-color: none;
+}
+body.makercamp .windows #subForm input[type="text"] {
+  margin: 14px 0;
+  padding: 8px;
+  width: 82%;
+  border: 1px solid #2e7085;
+  font-size: 1.3em;
+}
+body.makercamp .windows #subForm input[type="submit"] {
+  width: 90%;
+}
+body.makercamp .window.yellow {
+  border-top: 6px solid #DBC52D;
+}
+body.makercamp .test {
+  height: 20px;
+}
+body.makercamp .lower-area {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+body.makercamp .lower-area h4 {
+  font-size: 24px;
+  line-height: 32px;
+}
+body.makercamp .feature-box {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  min-height: 350px;
+  text-align: center;
+}
+body.makercamp .feature-box p {
+  font-size: 18px;
+  line-height: 24px;
+}
+body.makercamp .feature-box h4 {
+  font-size: 28px;
+}
+body.makercamp .feature-box h5 {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: normal;
+}
+body.makercamp .feature-box .button.blue {
+  width: 79.16666671%;
+  font-size: 24px ;
+  line-height: 32px;
+  font-weight: 600;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+body.makercamp .features-box-content {
+  min-height: 275px;
+  margin-bottom: 20px;
+}
+body.makercamp .lower-gradation {
+  background: #0f5b99 url('http://makezineblog.files.wordpress.com/2013/05/background-gradient-02.jpg') 0 0 repeat;
+  padding-bottom: 20px;
+}
+body.makercamp .new-footer .subscribe h5 {
+  margin-top: -20px !important;
+}
+body.makercamp .new-footer h5 {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: none;
+  color: #000;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  body.makercamp .container,
+  body.admin-bar .container,
+  body.makercamp .navbar-static-top .container,
+  body.admin-bar .navbar-static-top .container,
+  body.makercamp .navbar-fixed-top .container,
+  body.admin-bar .navbar-fixed-top .container,
+  body.makercamp .navbar-fixed-bottom .container,
+  body.admin-bar .navbar-fixed-bottom .container {
+    width: 724px !important;
+  }
+  body.makercamp header,
+  body.admin-bar header {
+    margin: 0 0 40px !important;
+  }
+  body.makercamp .navbar-fixed-top,
+  body.admin-bar .navbar-fixed-top {
+    margin-bottom: 0;
+  }
+  body.makercamp .navbar-blue .navbar-search .search-query,
+  body.admin-bar .navbar-blue .navbar-search .search-query {
+    width: 97% !important;
+  }
+  body.makercamp .waist,
+  body.admin-bar .waist {
+    background-position: 40.0817996% bottom;
+  }
+  body.makercamp .button.big,
+  body.admin-bar .button.big {
+    font-size: 1.5em;
+  }
+  body.makercamp .join h2,
+  body.admin-bar .join h2 {
+    font-size: 1.8em;
+  }
+  body.makercamp .join a,
+  body.admin-bar .join a {
+    font-size: 1.357142857em;
+  }
+  body.makercamp .feature-box h4,
+  body.admin-bar .feature-box h4 {
+    line-height: 1em;
+  }
+  body.makercamp .feature-box h5,
+  body.admin-bar .feature-box h5 {
+    font-size: 1.5em;
+  }
+  body.makercamp .feature-box .button.blue,
+  body.admin-bar .feature-box .button.blue {
+    font-size: 1.285714286em;
+  }
+  body.makercamp .new-footer .main,
+  body.admin-bar .new-footer .main {
+    margin: 5px auto;
+  }
+}
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+  body.makercamp,
+  body.makercamp.admin-bar {
+    padding: 0;
+    margin: 0;
+  }
+  body.makercamp .container,
+  body.makercamp.admin-bar .container,
+  body.makercamp .navbar-static-top .container,
+  body.makercamp.admin-bar .navbar-static-top .container,
+  body.makercamp .navbar-fixed-top .container,
+  body.makercamp.admin-bar .navbar-fixed-top .container,
+  body.makercamp .navbar-fixed-bottom .container,
+  body.makercamp.admin-bar .navbar-fixed-bottom .container {
+    width: 100% !important;
+  }
+  body.makercamp .top-header,
+  body.makercamp.admin-bar .top-header,
+  body.makercamp .waist .container,
+  body.makercamp.admin-bar .waist .container,
+  body.makercamp .lower-gradation .container,
+  body.makercamp.admin-bar .lower-gradation .container,
+  body.makercamp .new-footer .container,
+  body.makercamp.admin-bar .new-footer .container {
+    width: 90% !important;
+    margin: 0 auto !important;
+  }
+  body.makercamp .button.blue,
+  body.makercamp.admin-bar .button.blue {
+    font-size: 1.428571429em;
+  }
+  body.makercamp .top-header h2,
+  body.makercamp.admin-bar .top-header h2 {
+    font-size: 2em;
+  }
+  body.makercamp .top-header h3,
+  body.makercamp.admin-bar .top-header h3 {
+    font-size: 1.5em;
+  }
+  body.makercamp header,
+  body.makercamp.admin-bar header {
+    margin: 0 0 40px !important;
+  }
+  body.makercamp .navbar-fixed-top,
+  body.makercamp.admin-bar .navbar-fixed-top {
+    margin-bottom: 0;
+  }
+  body.makercamp .navbar-blue .navbar-search .search-query,
+  body.makercamp.admin-bar .navbar-blue .navbar-search .search-query {
+    width: 97% !important;
+  }
+  body.makercamp .mc-logo,
+  body.makercamp.admin-bar .mc-logo,
+  body.makercamp .mc-description,
+  body.makercamp.admin-bar .mc-description {
+    text-align: center;
+    color: #fff;
+  }
+  body.makercamp .mc-description,
+  body.makercamp.admin-bar .mc-description {
+    color: #FDC153;
+  }
+  body.makercamp .waist,
+  body.makercamp.admin-bar .waist {
+    margin-top: 20px;
+    background-position: 31.0818% bottom;
+  }
+  body.makercamp .waist a,
+  body.makercamp.admin-bar .waist a {
+    top: 0 !important;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+  body.makercamp .waist .cap,
+  body.makercamp.admin-bar .waist .cap {
+    display: block;
+    font-size: 1.285714286em !important;
+  }
+  body.makercamp .lower-gradation .span2,
+  body.makercamp.admin-bar .lower-gradation .span2 {
+    float: left;
+    width: 25%;
+  }
+  body.makercamp .lower-gradation .span4 h4,
+  body.makercamp.admin-bar .lower-gradation .span4 h4 {
+    font-weight: normal;
+    font-size: 1.1em;
+    line-height: 1.2em;
+  }
+  body.makercamp .mobile-schedule .container.row,
+  body.makercamp.admin-bar .mobile-schedule .container.row {
+    margin: 0;
+  }
+  body.makercamp .mobile-schedule a,
+  body.makercamp.admin-bar .mobile-schedule a {
+    width: 100%;
+  }
+  body.makercamp .new-footer .main,
+  body.makercamp.admin-bar .new-footer .main {
+    margin: 5px auto;
+  }
+}

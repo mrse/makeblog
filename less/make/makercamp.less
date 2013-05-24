@@ -1,279 +1,381 @@
 body.makercamp {
-	background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat-x;
-	text-rendering: optimizeLegibility;
-	padding-bottom: 0 !important;
-	margin: 0;
-	font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
-	line-height: 20px;
-	color: #fff;
-	h1, h2, h3, h4, h5, h6 {
-		margin:10px 0 !important;
-	}
-	h3 {
-		line-height:40px !important;
-	}
-	iframe { 
-		max-width:100%;
-	}
+/* apply a natural box layout model to all elements. sadly this breaks everything when it should fix... */
+//* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-	.button {
-		display: inline;
-		display: inline-block;
-		text-align: center;
-		.border-top-left-radius(3px);
-		.border-top-right-radius(3px);
-		background-color: #c7171d;
-		border-bottom:3px solid #8A1D24;
-		padding:10px;
-		color:#fff;
-		margin-top:5px;
-		margin-bottom:10px;
-		text-decoration: none;
-		&:hover {
-			background-color: #b3151b !important;
-			color:#fff !important;
-			text-decoration: none;
-		}
-		&.blue {
-			background-color: #95cbf9;
-			border-bottom:3px solid #666666;
-			padding:10px;
-			color:#2d2c54;
-			font-size:24px ;
-			line-height:32px;
-			font-weight:600;
-			padding-left:20px;
-			padding-right:20px;
-		}
-		&.green {
-			background-color: #51B926;
-			border-bottom:3px solid #316B17;
-			padding:10px;
-			color: @white;    
-		}
-		&.block {
-			display: block;
-		}
-		&.big {
-			font-size:1.7em;
-			padding:12px 0;
-		}
-	}
-	#footer {
-		&.white-bg {
-			margin:0;
-			padding:30px 0 20px;
-		}
-		h3 {
-			display:inline-block;
-		}
-		.g-plus {
-			margin-top:10px;
-		}
-		.nav-list {
-			margin-bottom:20px;
-			list-style:none;
-			li { float:left; margin-right:49px; 
-				&.last { margin-right:0; }
-			}
-		}
-	}
-	.search-query {
-		width:206px !important;
-	}
-	.red {
-		color:#c7171d;
-	}
-	header {
-		margin-top:48px;
-		margin-bottom:40px;
-		color:#fff;
-		h2 {
-		  font-size:33px;
-		  line-height:45px;
-		  margin-bottom:10px;
-		}
-		h3 {
-		  font-weight:200;
-		  font-size:28px;
-		  line-height:100%;
-		}
-	}
-	&.admin-bar header { margin-top:44px; }
-	.waist {
-	  background-image:url(http://makezineblog.files.wordpress.com/2013/05/hills.png);
-	  background-repeat:no-repeat;
-	  background-position:bottom center;
-	  padding-bottom:120px;
-	  margin-top:40px;
-	  border:none;
-		h3 {
-			margin: 5px 0 40px 0 !important;
-			font-size: 17px;
-			line-height: 30px !important;
-			color: #acd3fc;
-			font-weight: normal;
-			.cap {
-			  	text-transform: uppercase;
-			  	font-size: 27px !important;
-			  	margin-right:5px;
-			  	font-weight: bold !important;
-			  	font-family:inherit !important;
-			}
-			&.last {
-				margin-bottom:0;
-			}
-		}
-		.blue {
-			background-color: #032042;
-			color: #acd3fc;
-			text-align: center;
-			h4 {
-				padding-bottom:12px;
-			}
-		}
-	}
-	.join {
-		margin:20px 0;
-		> .span9 {
-			margin-left:0;
-		}
-	}
+background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat-x;
+text-rendering: optimizeLegibility;
+padding-bottom: 0 !important;
+margin: 0;
+font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 20px;
+color: #fff;
+h1, h2, h3, h4, h5, h6 {
+margin:10px 0 !important;
+}
+h3 {
+line-height:40px !important;
+}
+iframe {
+max-width:100%;
+}
 
-	.white-bg {
-		background-color: #fff;
-		color: black;
-		h4 {
-			font-size: 28px;
-		}
-		h5 {
-		  font-size:20px;
-		  text-transform:uppercase;
-		  color:#6e6e6e;
-		  font-weight:normal;
-		}
-		h6 { 
-			font-size:18px;
-			a {
-				color: #acd3fc !important;
-				text-decoration: none;
-			}
-		}
-		.featured {
-			padding: 30px 0;
-			margin-left: 6px;
-			float:left;
-			width: 182px;
-			height:auto !important;
-			h4 {
-				color:@gray;
-				margin:10px;
-				font-size:16px;
-				/* height:40px; */
-				height:54px;
-			}
-		}
-		a.small-button {
-			font-size: 16px !important;
-		    font-weight: 600 !important;
-		    line-height: 12px !important;
-		    padding:10px 15px !important;
-		    margin-right:10px;	
-		}
-	}
+.button {
+display: inline;
+display: inline-block;
+text-align: center;
+.border-top-left-radius(3px);
+.border-top-right-radius(3px);
+background-color: #c7171d;
+border-bottom:3px solid #8A1D24;
+padding:10px;
+color:#fff;
+margin-top:5px;
+margin-bottom:10px;
+text-decoration: none;
+&:hover {
+background-color: #b3151b !important;
+color:#fff !important;
+text-decoration: none;
+}
+&.blue {
+background-color: #95cbf9;
+border-bottom:3px solid #666666;
+padding:10px;
+color:#2d2c54;
+font-size:24px ;
+line-height:32px;
+font-weight:600;
+padding-left:20px;
+padding-right:20px;
+}
+&.green {
+background-color: #51B926;
+border-bottom:3px solid #316B17;
+padding:10px;
+color: @white;
+}
+&.block {
+display: block;
+}
+&.big {
+font-size:1.7em;
+padding:12px 0;
+}
+}
+#footer {
+&.white-bg {
+margin:0;
+padding:30px 0 20px;
+}
+h3 {
+display:inline-block;
+}
+.g-plus {
+margin-top:10px;
+}
+.nav-list {
+margin-bottom:20px;
+list-style:none;
+li { float:left; margin-right:49px;
+&.last { margin-right:0; }
+}
+}
+}
+.search-query {
+width:206px !important;
+}
+.red {
+color:#c7171d;
+}
+header {
+margin-top:48px;
+margin-bottom:40px;
+color:#fff;
+h2 {
+font-size:33px;
+line-height:45px;
+margin-bottom:10px;
+}
+h3 {
+font-weight:200;
+font-size:28px;
+line-height:100%;
+}
+}
+&.admin-bar header { margin-top:44px; }
+.waist {
+background-image:url(http://makezineblog.files.wordpress.com/2013/05/hills.png);
+background-repeat:no-repeat;
+background-position:bottom center;
+padding-bottom:120px;
+margin-top:40px;
+border:none;
+h3 {
+margin: 5px 0 40px 0 !important;
+font-size: 17px;
+line-height: 30px !important;
+color: #acd3fc;
+font-weight: normal;
+.cap {
+text-transform: uppercase;
+font-size: 27px !important;
+margin-right:5px;
+font-weight: bold !important;
+font-family:inherit !important;
+}
+&.last {
+margin-bottom:0;
+}
+}
+.blue {
+background-color: #032042;
+color: #acd3fc;
+text-align: center;
+h4 {
+padding-bottom:12px;
+}
+}
+}
+.join {
+margin:20px 0;
+> .span9 {
+margin-left:0;
+}
+a { font-size:22px; }
+}
 
-	.windows {
-		background-color:#E3EFF6;
-		border-top:6px solid #72CFFD;
-		padding:20px 0;
-		color: @grayDark;
-		height:110px;
-		.span2 {
-			text-align: center;
-		}
-		.nobg {
-			background-color: none;
-		}
-		#subForm {
-			input[type="text"] {
-				margin:14px 0;
-				padding:8px;
-				width:82%;
-				border: 1px solid #2e7085;
-				font-size:1.3em;
-			}
-			input[type="submit"] {
-				width:90%;
-			}
-		}
-	}
-	.window.yellow {
-		border-top:6px solid #DBC52D;
-	}
+.white-bg {
+background-color: #fff;
+color: black;
+h4 {
+font-size: 28px;
+}
+h5 {
+font-size:20px;
+text-transform:uppercase;
+color:#6e6e6e;
+font-weight:normal;
+}
+h6 {
+font-size:18px;
+a {
+color: #acd3fc !important;
+text-decoration: none;
+}
+}
+.featured {
+padding: 30px 0;
+margin-left: 6px;
+float:left;
+width: 18.9617021%;
+height:auto !important;
+h4 {
+color:@gray;
+margin:10px;
+font-size:16px;
+/* height:40px; */
+height:54px;
+}
+}
+a.small-button {
+font-size: 16px !important;
+font-weight: 600 !important;
+line-height: 12px !important;
+padding:10px 15px !important;
+margin-right:10px;	
+}
+}
+
+.windows {
+background-color:#E3EFF6;
+border-top:6px solid #72CFFD;
+padding:20px 0;
+color: @grayDark;
+height:110px;
+.span2 {
+text-align: center;
+}
+.nobg {
+background-color: none;
+}
+#subForm {
+input[type="text"] {
+margin:14px 0;
+padding:8px;
+width:82%;
+border: 1px solid #2e7085;
+font-size:1.3em;
+}
+input[type="submit"] {
+width:90%;
+}
+}
+}
+.window.yellow {
+border-top:6px solid #DBC52D;
+}
 
 
-	.test {
-		height:20px;
-	}
+.test {
+height:20px;
+}
 
-	.lower-area {
-		margin-top:30px;
-		margin-bottom:50px;
-		h4 {
-			font-size:24px;
-			line-height:32px;
-		}
-	}
+.lower-area {
+margin-top:30px;
+margin-bottom:50px;
+h4 {
+font-size:24px;
+line-height:32px;
+}
+}
 
-	.feature-box {
-		padding-left:30px;
-		padding-right:30px;
-		padding-bottom:50px;
-		min-height: 350px;
-		text-align: center;
-		p {
-			font-size: 18px;
-		    line-height: 24px;
-		}
-		h4 {
-			font-size:28px;
-		}
-		h5 {
-			font-size:24px;
-			line-height: 28px;
-			font-weight: normal;
-		}
-		.button.blue {
-			width:190px;
-			font-size:24px ;
-			line-height:32px;
-			font-weight:600;
-			padding-left:25px;
-			padding-right:25px;
-		}
-	}
+.feature-box {
+padding-left:30px;
+padding-right:30px;
+padding-bottom:50px;
+min-height: 350px;
+text-align: center;
+p {
+font-size: 18px;
+line-height: 24px;
+}
+h4 {
+font-size:28px;
+}
+h5 {
+font-size:24px;
+line-height: 28px;
+font-weight: normal;
+}
+.button.blue {
+width:79.16666671%;
+font-size:24px ;
+line-height:32px;
+font-weight:600;
+padding-left:25px;
+padding-right:25px;
+}
+}
 
-	.features-box-content {
-		min-height: 275px;
-		margin-bottom:20px;
-	}
+.features-box-content {
+min-height: 275px;
+margin-bottom:20px;
+}
 
-	.lower-gradation {
-		background:#0F5B99 url('http://makezineblog.files.wordpress.com/2013/05/background-gradient-02.jpg') 0 0 repeat; 
-		padding-bottom:20px;
-	}
-	.new-footer {
-		.subscribe {
-			h5 {
-				margin-top:-20px !important;
-			}
-		}
-		h5 {
-			font-size:16px;
-			font-weight:bold;
-			text-transform:none;
-			color:#000;
-		}
-	}
+.lower-gradation {
+background:#0F5B99 url('http://makezineblog.files.wordpress.com/2013/05/background-gradient-02.jpg') 0 0 repeat;
+padding-bottom:20px;
+}
+.new-footer {
+.subscribe {
+h5 {
+margin-top:-20px !important;
+}
+}
+h5 {
+font-size:16px;
+font-weight:bold;
+text-transform:none;
+color:#000;
+}
+}
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+body.makercamp, body.admin-bar {
+
+// Override some styles from Makezine
+.container,
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+width: 724px !important;
+}
+
+// Navbar Styles
+header { margin:0 0 40px !important; }
+.navbar-fixed-top { margin-bottom:0; }
+.navbar-blue .navbar-search .search-query { width:97% !important; }
+
+// Waist
+.waist {
+background-position: 40.0817996% bottom;
+}
+.button.big {
+font-size:1.5em;
+}
+
+// Join Bar
+.join {
+h2 { font-size:1.8em; }
+a { font-size:1.357142857em; }
+}
+
+.feature-box {
+h4 { line-height:1em; }
+h5 { font-size:1.5em; }
+.button.blue {
+font-size:1.285714286em;
+}
+}
+
+// Footer
+.new-footer .main { margin:5px auto;}
+}
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+body.makercamp, body.makercamp.admin-bar {
+
+padding:0; margin:0;
+
+// Override some styles from Makezine
+.container,
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+width: 100% !important;
+}
+
+.top-header, .waist .container, .lower-gradation .container, .new-footer .container { width:90% !important; margin:0 auto !important; }
+.button.blue { font-size:1.428571429em; }
+
+// Navbar Styles
+.top-header {
+h2 { font-size:2em; }
+h3 { font-size:1.5em; }
+}
+header { margin:0 0 40px !important; }
+.navbar-fixed-top { margin-bottom:0; }
+.navbar-blue .navbar-search .search-query { width:97% !important; }
+
+// Home Header
+.mc-logo, .mc-description { text-align:center; color:#fff; }
+.mc-description { color:#FDC153; }
+
+// Waist
+.waist {
+margin-top:20px;
+background-position: 31.0818% bottom;
+a { top:0 !important; font-size:1.5em; margin-bottom:30px; }
+.cap { display:block; font-size:1.285714286em !important; }
+}
+
+// Lower Gradiation
+.lower-gradation {
+.span2 { float:left; width:25%; }
+.span4 h4 { font-weight:normal; font-size:1.1em; line-height:1.2em; }
+}
+
+// Mobile Schedule
+.mobile-schedule {
+.container.row { margin:0; }
+a { width:100%; }
+}
+
+// Footer
+.new-footer .main { margin:5px auto;}
+}
 }
