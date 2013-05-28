@@ -102,7 +102,7 @@
 					<!-- END span3 about-us -->
 					</div>
 					<div class="span subscribe">
-						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/33.jpg" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover"></a>
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.jpg" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover"></a>
 						<img src="https://s2.wp.com/wp-content/themes/vip/makeblog/img/arrow-footer.png" width="80" height="48" id="mag-arrow">
 						<h5>Subscribe<br /> to MAKE!</h5>
 						<p>Get print and the digital version when you join!</p>
