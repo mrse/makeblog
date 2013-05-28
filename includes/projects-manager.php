@@ -252,11 +252,11 @@
 							<ul class="two-column reset-list">
 								<li>
 									<label for="parts-type">Type</label>
-									<input type="text" name="parts-type-<?php echo $parts_num; ?>" id="parts-type" class="widefat" value="<?php echo ( ! empty( $part['type'] ) ) ? esc_attr( htmlspecialchars_decode( $part['type'] ) ) : ''; ?>" />
+									<input type="text" name="parts-type-<?php echo $parts_num; ?>" id="parts-type" class="widefat" value="<?php echo ( ! empty( $part['type'] ) ) ? htmlspecialchars_decode( esc_attr( $part['type'] ) ) : ''; ?>" />
 								</li>
 								<li>
 									<label for="parts-notes">Notes</label>
-									<textarea name="parts-notes-<?php echo $parts_num; ?>" id="parts-notes" rows="4"><?php echo ( ! empty( $part['notes'] ) ) ? esc_html( $part['notes'] ) : ''; ?></textarea>
+									<textarea name="parts-notes-<?php echo $parts_num; ?>" id="parts-notes" rows="4"><?php echo ( ! empty( $part['notes'] ) ) ? htmlspecialchars_decode( esc_html( $part['notes'] ) ) : ''; ?></textarea>
 								</li>
 							</ul>
 						</div><!--[END .step-contents]-->

@@ -566,26 +566,28 @@ function make_projects_steps( $steps ) {
  */
 function make_projects_parts( $parts ) {
 	$output = '<ul class="lists">';
-	foreach($parts as $part) {
+
+	foreach ( $parts as $part ) {
 		$notes = null;
-		if( !empty( $part['notes'] ) ) {
+
+		if( ! empty( $part['notes'] ) ) {
 			$notes = $part['notes'];
 		}
 		if ( strpos( $part['url'], 'makeprojects' ) != true ) {
-			$output .='<li><a href="' . esc_url( $part['url'] ) . '" data-toggle="tooltip" title="' . esc_attr( $notes ) .'">' . esc_html( $part['text'] );
+			$output .='<li><a href="' . esc_url( $part['url'] ) . '" data-toggle="tooltip" title="' . esc_attr( $notes ) .'">' . $part['text'];
 		} else {
 			$output .='<li><a href="#" data-toggle="tooltip" title="' . esc_attr( $notes ) .'">' . esc_html( $part['text'] );
 		}
 
 		$output .= ' <span class="muted">';
 
-		if( !empty( $part['type'] ) ) {
-			$output .= esc_html($part['type']);
+		if( ! empty( $part['type'] ) ) {
+			$output .= htmlspecialchars_decode( esc_html( $part['type'] ) );
 		}
 
-		if( !empty( $part['quantity'] ) ) {
+		if( ! empty( $part['quantity'] ) ) {
 			$output .= ' (';
-			$output .= esc_html($part['quantity']);
+			$output .= esc_html( $part['quantity'] );
 			$output .= ')';
 		}
 
@@ -593,6 +595,8 @@ function make_projects_parts( $parts ) {
 
 		$output .= '</a></li>';
 	}
+
 	$output .= '</ul>';
+
 	return $output;
 }
