@@ -8229,10 +8229,7 @@ textarea.radio-narrow,
 }
 /* NEW FOOTER STYLES BY BILL OLSON*/
 .new-footer {
-  /*border-top:5px solid #033045;*/
-
   background-color: transparent;
-  width: 100%;
 }
 .new-footer .control-group {
   margin-bottom: 8px;
@@ -8255,7 +8252,6 @@ textarea.radio-narrow,
 }
 .new-footer {
   padding-top: 20px;
-  width: 100%;
   text-align: center;
   border-top: 3px solid #A0B0B8;
   background-image: url('../img/header_bg.jpg');
@@ -8267,34 +8263,25 @@ textarea.radio-narrow,
   margin-top: 0;
 }
 .new-footer .container {
-  width: 940px;
-  margin: 0 auto;
   padding-top: 20px;
   text-align: left;
 }
 .new-footer .main {
-  width: 940px;
-  margin-left: 0;
   margin-top: 5px;
 }
-.new-footer h5 {
-  margin-bottom: 0;
-}
-.new-footer .container .row {
-  margin-left: 0;
+.new-footer h1, .new-footer h2, .new-footer h3, .new-footer h4, .new-footer h5, .new-footer h6 {
+    margin-bottom: 10px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
 }
 .new-footer .trending,
 .new-footer .newsletter,
 .new-footer .about-us,
 .new-footer .subscribe {
-  width: 220px;
-  float: left;
   border-top: 1px solid #ccc;
   text-align: left;
   padding-top: 10px;
-}
-.new-footer .trending {
-  margin-left: 0;
 }
 .new-footer .email-area controls {
   width: 130px;
@@ -8302,32 +8289,35 @@ textarea.radio-narrow,
   margin: 0;
   padding: 0;
 }
-.new-footer .container .row .span.main .span.about-us .span.about-column-02 {
-  float: left;
-  width: 130px;
-  margin-left: 0;
+.new-footer .about-column-01 {
+  float:left;
 }
-.new-footer .container .row .span.main .span.about-us .span.about-column-01 {
-  width: 90px;
-  float: left;
-  margin-left: 0;
-}
-.new-footer .container .row .span.main .span.about-us .span.socialArea {
-  width: 220px;
-  margin-left: 0;
+.new-footer .about-column-02 {
+  float:left;
+  padding-left:15px;
 }
 .new-footer .subscribe img#mag-cover {
-  width: 128px;
-  float: right;
   border: 1px solid #ccc;
-  margin-top: -20px;
+  margin-top: -20px !important;
+}
+.new-footer .subscribe h5 {
+    color: #F60B29 !important;
+    margin-top: -20px !important;
+}
+.new-footer .subscribe p {
+    font-weight: bold;
+    margin-top: 3px;
+    padding-right: 3px;
+}
+.new-footer .subscribe hr{
+  background-color: #F60B29;
+  color: #F60B29;
+  height: 7px;
+  width: 85px;
 }
 .new-footer .subscribe img#mag-arrow {
-  width: 95px;
-  border: 1px solid #ccc;
   margin-top: -40px;
   margin-left: -20px;
-  border: none;
 }
 .new-footer label.checkbox {
   font-weight: bold;
@@ -8343,22 +8333,6 @@ textarea.radio-narrow,
   font-family: sans-serif;
   font-size: 16px;
   font-weight: bold;
-}
-.new-footer .container .row .span .span.subscribe h5 {
-  color: #F60B29;
-  margin-top: -20px;
-}
-.new-footer .container .row .span .span.subscribe p {
-  font-weight: bold;
-  margin-top: 3px;
-  padding-right: 3px;
-}
-.new-footer .container .row .span .span.subscribe hr {
-  border: none;
-  background-color: #F60B29;
-  color: #F60B29;
-  height: 7px;
-  width: 85px;
 }
 .new-footer .controls > .radio:first-child,
 .controls > .checkbox:first-child {
@@ -10002,16 +9976,17 @@ body.makercamp .new-footer h5 {
   font-size: 16px;
   font-weight: bold;
   text-transform: none;
-  color: #000;
+  color: #333;
 }
+
 @media (min-width: 1200px) {
-  .new-footer .container {
+  body.makercamp .new-footer .container {
     width: 1170px !important;
   }
-  .new-footer .main {
+  body.makercamp .new-footer .main {
     width: 1000px !important;
   }
-}
+} 
 @media (min-width: 768px) and (max-width: 979px) {
   body.makercamp .container,
   body.admin-bar .container,

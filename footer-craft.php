@@ -8,26 +8,19 @@
  * 
  */
 ?>
-				<div class="footer-ad" style="padding-top:30px;">
-				
+				<div class="footer-ad" style="padding-top:30px;">			
 					<div class="" style="width:728px; margin:0 auto;">
-
 						<!-- Beginning Sync AdSlot 4 for Ad unit header ### size: [[728,90]]  -->
 						<div id='div-gpt-ad-664089004995786621-4'>
 							<script type='text/javascript'>
 								googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-4')});
 							</script>
 						</div>
-						<!-- End AdSlot 4 -->
-						
+						<!-- End AdSlot 4 -->					
 					</div>
-
-				</div>
-			
+				</div>		
 			</div>
-
 		</div>
-
 <div class="new-footer">
 		<div class="container">
 			<img src="<?php bloginfo('stylesheet_directory'); ?>/img/craft-logo1.png" alt="MAKE">
@@ -110,8 +103,8 @@
 					<!-- END span3 about-us -->
 					</div>
 					<div class="span subscribe">
-						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.jpg" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
-						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/arrow-footer.png" width="80" height="48" id="mag-arrow">
+						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/arrow-footer.png" width="95" height="46" id="mag-arrow">
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.jpg" alt="MAKE Magazine Cover" width="128" height="181" id="mag-cover">
 						<h5>Subscribe<br /> to MAKE!</h5>
 						<p>Get print and the digital version when you join!</p>
 						<hr />
@@ -125,10 +118,7 @@
 		</div>
 	<!-- END new-footer -->
 	</div>
-	
 	</div>
-
-
 		<!-- Le javascript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
