@@ -12,7 +12,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="span12">	
-						<img src="http://localhost:8888/wp-content/themes/makeblog/img/make-160-footer.png" alt="MAKE">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-160-footer.png" alt="MAKE">
 						<!-- END span12 -->
 						</div>
 					<!-- END row -->
@@ -107,7 +107,7 @@
 						<!-- END span3 about-us -->
 						</div>
 						<div class="span3 subscribe hidden-phone">
-							<img src="http://localhost:8888/wp-content/themes/makeblog/img/arrow-footer.png" width="95" height="46" id="mag-arrow">
+							<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/arrow-footer.png" width="95" height="46" id="mag-arrow">
 							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M**NEWB">
 								<img class="pull-right" src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.jpg" alt="MAKE Magazine Cover" width="128" height="181" id="mag-cover">
 							</a>
