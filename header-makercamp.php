@@ -41,13 +41,13 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</a>
-						<a class="brand" href="#">MAKE</a>
+						<a class="brand" href="http://makezine.com/">MAKE</a>
 						<div class="nav-collapse in collapse">
 							<ul class="nav clearfix">
-								<li class="active"><a href="#">Magazine</a></li>
-								<li><a href="#about">Blog</a></li>
-								<li><a href="#contact">Maker Faire</a></li>
-								<li><a href="#">Maker Shed</a></li>
+								<li class="active"><a href="http://blog.makezine.com/volume/make-34/">Magazine</a></li>
+								<li><a href="http://blog.makezine.com/">Blog</a></li>
+								<li><a href="http://makerfaire.com/">Maker Faire</a></li>
+								<li><a href="http://www.makershed.com/Default.asp">Maker Shed</a></li>
 							</ul>
 							<form class="navbar-search pull-right">
 								<input type="text" class="search-query" placeholder="Search">
@@ -59,10 +59,14 @@
 
 			<div class="black-bar hidden-phone">
 				<div class="container">
-					<ul class="nav nav-inline pull-left">
-						<li><a href="faq.html">FAQs</a></li>
-						<li><a href="mailto:makercampinfo@makezine.com">Contact</a></li>
-					</ul>
+					<?php
+						// all Navigational items are controlled in Appearance > Menus : Maker Camp Nav
+						wp_nav_menu( array(
+							'theme_location' => 'mc-header-menu',
+							'container' => '',
+							'menu_class' => 'nav nav-inline pull-left',
+						) );
+					?>
 					<p class="pull-right"><a href="register-summer-program.html">Include Maker Camp in your Summer Program</a></p>
 				</div>
 			</div>

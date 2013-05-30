@@ -8,7 +8,7 @@
  * 
  */
 ?>
-							<section id="footer" class="white-bg new-footer">		
+			<section id="footer" class="white-bg new-footer">
 				<div class="container">
 					<div class="row">
 						<div class="span12">	
@@ -123,15 +123,6 @@
 			</section>	
 			
 		</div> <!-- /container -->
-
-		<!-- Le javascript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster. jQuery loaded by WordPress -->
-		<script>
-			jQuery(document).ready(function($) {
-				$('.collapse').collapse();
-			});
-		</script>
 
 		<!-- Place this tag after the last badge tag. -->
 		<script type="text/javascript">
