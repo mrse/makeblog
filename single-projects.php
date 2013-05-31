@@ -96,9 +96,9 @@ get_header(); ?>
 								
 									<?php 
 										$old_parts = get_the_terms( $post->ID, 'parts' );
-										$parts = get_post_meta( $post->ID , 'parts');
+										$parts = get_post_meta( $post->ID , 'parts' );
 										$tools = get_the_terms( $post->ID, 'tools' );
-										if ( !empty( $old_parts ) or !empty( $tools ) ) {
+										if ( ! empty( $old_parts ) || ! empty( $parts) || ! empty( $tools ) ) {
 									?>
 								
 									<div class="parts-tools">
