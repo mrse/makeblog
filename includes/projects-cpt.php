@@ -560,6 +560,7 @@ function make_projects_steps( $steps ) {
 		}
 	}
 }
+
 /**
  * Get all of the post meta that has parts as the ID, and then output an unordered list
  *
@@ -592,6 +593,36 @@ function make_projects_parts( $parts ) {
 		}
 
 		$output .= '</span>';
+
+		$output .= '</a></li>';
+	}
+
+	$output .= '</ul>';
+
+	return $output;
+}
+
+
+/**
+ * Get all of the post meta that has tools as the ID, and then output an unordered list
+ * Due to the com
+ *
+ */
+function make_projects_tools( $tools ) {
+	$output = '<ul class="lists">';
+
+	// The array is complicated, thus this foreach is complicated... $tool is an object.
+	foreach ( $tools[0] as $tool ) {
+		$notes = null;
+
+		if( ! empty( $tool->notes ) ) {
+			$notes = $tool->notes;
+		}
+		if ( strpos( $tool->url, 'makeprojects' ) != true ) {
+			$output .='<li><a href="' . esc_url( $tool->url ) . '" data-toggle="tooltip" title="' . esc_attr( $notes ) .'">' . $tool->text;
+		} else {
+			$output .='<li><a href="#" data-toggle="tooltip" title="' . esc_attr( $notes ) .'">' . esc_html( $tool->text );
+		}
 
 		$output .= '</a></li>';
 	}

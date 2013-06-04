@@ -125,7 +125,7 @@ get_header(); ?>
 
 						$args = array(
 							'post_type'			=> 'projects',
-							'title'				=> '<a href="http://blog.makezine.com/weekend-projects/">Weekend Projects</a>',
+							'title'				=> '<a href="http://blog.makezine.com/the-weekend-projects/">Weekend Projects</a>',
 							'tax_query' => array(
 								array(
 									'taxonomy' => 'flags',
