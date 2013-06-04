@@ -24,7 +24,7 @@
 				'post_status' => 'publish',
 				'posts_per_page' => 5,
 				'ignore_sticky_posts' => 1,
-				'tag' => 'mfba13'
+				'tag' => 'maker-faire'
 			);
 			
 			$query = new WP_Query($args);
