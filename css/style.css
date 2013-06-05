@@ -218,7 +218,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  color: #333333;
+  color: #252525;
   background-color: #ffffff;
 }
 a {
@@ -10325,3 +10325,86 @@ body.makercamp .button.small-button {
 
 
 /*** Amy's Maker Camp Styles ***/
+
+.black-bar {background-color:#002641;}
+
+.mc-description {color: #f6ba65;}
+
+body.makercamp .join {margin: 10px 0;}
+
+body.makercamp .waist h3 {
+margin: 5px 0 20px 0 !important;
+font-size: 17px;
+line-height: 30px !important;
+color: #acd3fc;
+font-weight: normal;
+}
+
+body.makercamp .white-bg h6 a {color: #005d8f !important;}
+body.makercamp .white-bg h6:hover {text-decoration:underline;}
+
+body.makercamp .button{
+background-color: #e01b23;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+box-shadow: 0 5px 0 0 #8d1216;
+-webkit-box-shadow: 0 5px 0 0 #8d1216;
+-moz-box-shadow: 0 5px 0 0 #8d1216;
+border-bottom:none;
+padding: 10px;
+color: #fff;
+margin-top: 5px;
+margin-bottom: 10px;
+text-decoration: none;
+}
+
+body.makercamp .white-bg a.small-button {padding: 12px 15px 8px!important;}
+
+body.makercamp .button.blue { background-color: #8ed5f6;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+box-shadow: 0 5px 0 0 #4d97c5;
+-webkit-box-shadow: 0 5px 0 0 #4d97c5;
+-moz-box-shadow: 0 5px 0 0 #4d97c5;
+border:none;
+color:#033978;
+}
+
+body.makercamp .button.blue:hover{ color:#033978!important; background-color: #73c1e6!important; }
+
+body.makercamp .windows { background-color:#FFF;
+border-top:none;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;}
+
+body.makercamp .white-bg .featured {
+padding: 30px 0 0;}
+
+body.makercamp .schedule-content #schedule a {
+background: #8ed5f6;
+color: #033978;}
+
+/* Schedule page*/
+
+body.makercamp .schedule-content #schedule a:hover {
+text-decoration: underline!important;
+color: #033978!important;}
+
+body.makercamp .schedule-content #schedule a {
+background: #8ed5f6;
+color: #033978;}
+
+body.makercamp .schedule-content .maker .more-info .title:hover {
+color: #005d8f; text-decoration: underline;}
+
+body.makercamp .schedule-content .maker .project-type {
+font-weight: 100;}
+
+body.makercamp .schedule-content .maker-description {
+border-top: 1px solid #ababab;
+box-shadow: 0 15px 17px -3px rgba(0, 0, 0, 0.3);}
+
+
