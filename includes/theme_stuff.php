@@ -1055,7 +1055,11 @@ function make_allow_data_atts() {
 	global $allowedposttags;
 
 	$tags = array( 'div,a,li' );
-	$new_attributes = array( 'data' => array() );
+	$new_attributes = array( 
+		'data-toggle'	=> true,
+		'data-dismiss'	=> true,
+		'data-slide'	=> true,
+		);
 
 	foreach ( $tags as $tag ) {
 		if ( isset( $allowedposttags[ $tag ] ) && is_array( $allowedposttags[ $tag ] ) )
