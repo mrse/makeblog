@@ -364,10 +364,10 @@ function make_rpi() {
 		</p>
 		<h4>Enter Your Project In Our Raspberry Pi Design Contest</h4>
 		<ul>
-	        <li>Over $3,500 in prizes from MCM Electronics</li>
-	        <li>Best In Show wins a Printrbot Jr.</li>
-	        <li>Four Categories: Artistic, Utility, Education and Enclosures</li>
-	        <li>Submissions due by April 11th, 2013</li>
+			<li>Over $3,500 in prizes from MCM Electronics</li>
+			<li>Best In Show wins a Printrbot Jr.</li>
+			<li>Four Categories: Artistic, Utility, Education and Enclosures</li>
+			<li>Submissions due by April 11th, 2013</li>
 		</ul>
 		<a class="btn btn-primary" href="http://pubads.g.doubleclick.net/gampad/clk?id=29978938&iu=/11548178/Makezine">Enter Today!</a>
 	</div>';
@@ -424,3 +424,49 @@ function make_github_3d_viewer($atts) {
 }
 
 add_shortcode('github', 'make_github_3d_viewer');
+
+/**
+ * Modal Window Builder
+ */
+function make_modal_builder( $atts, $content = null ) {
+	
+	extract( shortcode_atts( array(
+		'launch' 	=> 'Launch Window',
+		'title' 	=> 'Modal Title',
+	), $atts ) );
+
+	$number = mt_rand();
+	$args = array( 
+		'a' => array(
+			'href' => array(),
+			'title' => array()
+		),
+		'br' => array(),
+		'em' => array(),
+		'strong' => array(),
+		'iframe' => array( 
+			'src' => array(),
+			'height' => array(),
+			'border' => array(),
+			'frameborder' => array(),
+			'width' => array(),
+			'allowfullscreen' => array(),
+			)
+	);
+	$output = '<a class="btn" data-toggle="modal" href="#modal-' . $number . '">' . esc_html( $launch ) . '</a>';
+	$output .= '<div id="modal-' . $number . '" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
+	$output .= '	<div class="modal-header">';
+	$output .= '		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+	$output .= '		<h3>' . esc_html( $title ) . '</h3>';
+	$output .= '	</div>';
+	$output .= '	<div class="modal-body">';
+	$output .= 			wp_kses( $content, $args );
+	$output .= '	</div>';
+	$output .= '	<div class="modal-footer">';
+	$output .= '		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>';
+	$output .= '	</div>';
+	$output .= '</div>';
+
+	return $output;
+}
+add_shortcode( 'modal', 'make_modal_builder' );
