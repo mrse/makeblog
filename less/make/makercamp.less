@@ -67,7 +67,7 @@ body.makercamp {
 	  margin-top:40px;
 	  border:none;
 		h3 {
-			margin: 5px 0 40px 0 !important;
+			margin: 5px 0 20px 0 !important;
 			font-size: 17px;
 			line-height: 30px !important;
 			color: #acd3fc;
@@ -93,7 +93,7 @@ body.makercamp {
 		}
 	}
 	.join {
-		margin:20px 0;
+		margin:10px 0;
 		> .span9 {
 			margin-left:0;
 		}
@@ -115,16 +115,18 @@ body.makercamp {
 		h6 { 
 			font-size:18px;
 			a {
-				color: #033978 !important;
+				color: #005d8f !important;
 				text-decoration: none;
 			}
+			&:hover { text-decoration:underline; }
 		}
 		.featured {
-			padding: 30px 0;
-			margin-left: 6px;
+			padding:30px 0 0;
+			margin-left:6px;
 			float:left;
-			width: 18.9617021%;
+			width:18.9617021%;
 			height:auto !important;
+
 			h4 {
 				color:@gray;
 				margin:10px;
@@ -137,17 +139,21 @@ body.makercamp {
 			font-size: 16px !important;
 		    font-weight: 600 !important;
 		    line-height: 12px !important;
-		    padding:10px 15px !important;
+		    padding:12px 15px 8px !important;
 		    margin-right:10px;	
 		}
 	}
 
 	.windows {
-		background-color:#E3EFF6;
-		border-top:6px solid #72CFFD;
+		background-color:#fff;
+		border-top:none;
 		padding:20px 0;
 		color: @grayDark;
 		height:110px;
+		.border-radius(5px);
+		border-radius:5px;
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
 		.span2 {
 			text-align: center;
 		}
@@ -170,7 +176,6 @@ body.makercamp {
 	.window.yellow {
 		border-top:6px solid #DBC52D;
 	}
-
 
 	.test {
 		height:20px;
@@ -250,13 +255,14 @@ body.makercamp {
 			margin-top:-39px;
 			border:none;
 			a {
-				background:#acd3fc;
-				color:#043b7a;
+				background:#8ed5f6;
+				color:#033978;
 				font-weight:bold;
 				font-size:1.142857143em;
 				&:hover, &:active {
 					border-color:#acd3fc;
-					color:#000;
+					background:#8ed5f6;
+					color:#033978;
 				}
 			}
 			.active a {
@@ -276,11 +282,16 @@ body.makercamp {
 			}
 			h5 { margin-bottom:0 !important; }
 			h6 { margin-top:0 !important; }
-			.project-type { text-transform:uppercase; }
+			.project-type {
+				text-transform:uppercase;
+				font-weight:100;
+			}
 			.more-info { 
 				cursor:pointer;
 				.title { color:#005d8f; }
 				&:hover {
+					color:#005d8f;
+					text-decoration:underline;
 					.title { color:#000; }
 				}
 			}
@@ -292,7 +303,8 @@ body.makercamp {
 			background:#fff;
 			background:rgba(255,255,255,.9);
 			border:1px solid #e0e0e0;
-			border-top:2px solid #ababab;
+			border-top: 1px solid #ababab;
+			box-shadow: 0 15px 17px -3px rgba(0, 0, 0, 0.3);
 			padding:10px;
 			box-shadow:0 8px 17px -3px rgba(0,0,0,.3);
 			width:96%;
@@ -333,30 +345,43 @@ body.makercamp {
 		display: inline;
 		display: inline-block;
 		text-align: center;
-		.border-top-left-radius(3px);
-		.border-top-right-radius(3px);
-		background-color: #c7171d;
-		border-bottom:3px solid #8A1D24;
+		.border-radius(5px);
 		padding:10px;
 		color:#fff;
 		margin-top:5px;
 		margin-bottom:10px;
 		text-decoration: none;
+		background-color: #e01b23;
+		box-shadow: 0 5px 0 0 #8d1216;
+		-webkit-box-shadow: 0 5px 0 0 #8d1216;
+		-moz-box-shadow: 0 5px 0 0 #8d1216;
+		border-bottom:none;
 		&:hover {
 			background-color: #b3151b !important;
 			color:#fff !important;
 			text-decoration: none;
 		}
 		&.blue {
-			background-color: #95cbf9;
-			border-bottom:3px solid #666666;
+			background-color: #8ed5f6;
+			border:none;
 			padding:10px;
-			color:#2d2c54;
+			color:#033978;
 			font-size:24px ;
 			line-height:32px;
 			font-weight:600;
 			padding-left:20px;
 			padding-right:20px;
+			.border-radius(5px);
+			border-radius: 5px;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			box-shadow: 0 5px 0 0 #4d97c5;
+			-webkit-box-shadow: 0 5px 0 0 #4d97c5;
+			-moz-box-shadow: 0 5px 0 0 #4d97c5;
+			&:hover {
+				color:#033978 !important;
+				background-color:#73c1e6 !important;
+			}
 		}
 		&.green {
 			background-color: #51B926;
@@ -467,7 +492,7 @@ body.makercamp {
 	
 		// Home Header
 		.mc-logo, .mc-description { text-align:center; color:#fff; }
-		.mc-description { color:#FDC153; }
+		.mc-description { color:#f6ba65; }
 
 		// Waist
 		.waist {
