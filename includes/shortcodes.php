@@ -462,7 +462,7 @@ function make_modal_builder( $atts, $content = null ) {
 	$output .= '		<h3>' . esc_html( $title ) . '</h3>';
 	$output .= '	</div>';
 	$output .= '	<div class="modal-body">';
-	$output .= ( !empty( $embed ) ) ? wp_oembed_get( esc_url( $embed ), array( 'width' => 530 ) ) : '';
+	$output .= ( !empty( $embed ) ) ? wpcom_vip_wp_oembed_get( esc_url( $embed ), array( 'width' => 530 ) ) : '';
 	$output .= 			wp_kses( $content, $args );
 	$output .= '	</div>';
 	$output .= '	<div class="modal-footer">';
