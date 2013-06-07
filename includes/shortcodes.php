@@ -433,7 +433,8 @@ function make_modal_builder( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 		'launch' 	=> 'Launch Window',
 		'title' 	=> 'Modal Title',
-		'btn_class'	=> ''
+		'btn_class'	=> '',
+		'embed'	=> ''
 	), $atts ) );
 
 	$number = mt_rand();
@@ -461,6 +462,7 @@ function make_modal_builder( $atts, $content = null ) {
 	$output .= '		<h3>' . esc_html( $title ) . '</h3>';
 	$output .= '	</div>';
 	$output .= '	<div class="modal-body">';
+	$output .= ( !empty( $embed ) ) ? wp_oembed_get( esc_url( $embed ), array( 'width' => 530 ) ) : '';
 	$output .= 			wp_kses( $content, $args );
 	$output .= '	</div>';
 	$output .= '	<div class="modal-footer">';
