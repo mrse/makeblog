@@ -24,145 +24,111 @@ Table of Contents
 // 1. Error Reporting
 
 // error_reporting(E_ALL);
-
 if ( defined( 'WP_CLI' ) && WP_CLI )
-	include_once dirname(__file__) . '/includes/class-make-cli.php';
+	include_once dirname( __FILE__ ) . '/includes/class-make-cli.php';
 
 // 2. WordPress.com VIP Hosting Stuff
-
-include_once dirname(__file__) . '/includes/vip.php';
+include_once dirname( __FILE__ ) . '/includes/vip.php';
 
 // 3. NUMBERED PAGE NAVIGATION
-
-include_once dirname(__file__) . '/includes/pagenavi.php';
+include_once dirname( __FILE__ ) . '/includes/pagenavi.php';
 
 // 4. Comments Function
-
-include_once dirname(__file__) . '/includes/comment.php';
+include_once dirname( __FILE__ ) . '/includes/comment.php';
 
 // 5. Shortcodes
-
-include_once dirname(__file__) . '/includes/shortcodes.php';
+include_once dirname( __FILE__ ) . '/includes/shortcodes.php';
 
 // 6. Theme Stuff
-
-include_once dirname(__file__) . '/includes/theme_stuff.php';
+include_once dirname( __FILE__ ) . '/includes/theme_stuff.php';
 
 // 7. Custom Taxonomies
-
-include_once dirname(__file__) . '/includes/taxonomies.php';
+include_once dirname( __FILE__ ) . '/includes/taxonomies.php';
 
 // 8. Page 2 - Custom Post Type
-
-include_once dirname(__file__) . '/includes/page_2.php';
+include_once dirname( __FILE__ ) . '/includes/page_2.php';
 
 // 9. YouTube Embed Function 
-
-include_once dirname(__file__) . '/includes/youtube.php';
+include_once dirname( __FILE__ ) . '/includes/youtube.php';
 
 // 10. Contribute Function
-
-include_once dirname(__file__) . '/includes/contribute.php';
+include_once dirname( __FILE__ ) . '/includes/contribute.php';
 
 // 11. Scheduled Posts
-
-include_once dirname(__file__) . '/includes/wordpress-scheduled-time.php';
+include_once dirname( __FILE__ ) . '/includes/wordpress-scheduled-time.php';
 
 // 12. From the Maker Shed
-
-include_once dirname(__file__) . '/includes/ftms.php';
+include_once dirname( __FILE__ ) . '/includes/ftms.php';
 
 // 13. Search Engine
-
-include_once dirname(__file__) . '/includes/search-terms.php';
+include_once dirname( __FILE__ ) . '/includes/search-terms.php';
 
 // 14. Search Terms Custom Post Type
-
-include_once dirname(__file__) . '/includes/search-terms-cpt.php';
+include_once dirname( __FILE__ ) . '/includes/search-terms-cpt.php';
 
 // 15. Search Terms Custom Post Type
-
-include_once dirname(__file__) . '/includes/featured-makers.php';
+include_once dirname( __FILE__ ) . '/includes/featured-makers.php';
 
 // 16. Search Terms Custom Post Type
-
-include_once dirname(__file__) . '/includes/cheezcap-config.php';
+include_once dirname( __FILE__ ) . '/includes/cheezcap-config.php';
 
 // 17. House Ads Custom Post Type
-
-include_once dirname(__file__) . '/includes/house-ads-cpt.php';
+include_once dirname( __FILE__ ) . '/includes/house-ads-cpt.php';
 
 // 18. Parse.ly Dash
-
-include_once dirname(__file__) . '/includes/wp-parsely/wp-parsely.php';
+include_once dirname( __FILE__ ) . '/includes/wp-parsely/wp-parsely.php';
 
 // 19. Magazine Articles
-
-include_once dirname(__file__) . '/includes/magazine-cpt.php';
+include_once dirname( __FILE__ ) . '/includes/magazine-cpt.php';
 
 // 20. Craft Feed Meta Box
-
-include_once dirname(__file__) . '/includes/craft-cpt-stuff.php';
+include_once dirname( __FILE__ ) . '/includes/craft-cpt-stuff.php';
 
 // 21. Slideshow CPT
-
-include_once dirname(__file__) . '/includes/slideshow.php';
+include_once dirname( __FILE__ ) . '/includes/slideshow.php';
 
 // 22. Reviews CPT
-
-include_once dirname(__file__) . '/includes/reviews.php';
+include_once dirname( __FILE__ ) . '/includes/reviews.php';
 
 // 23. Dash API Stuff
-
-include_once dirname(__file__) . '/includes/dash.php';
+include_once dirname( __FILE__ ) . '/includes/dash.php';
 
 // 24. Projects CPT
- 
-include_once dirname(__file__) . '/includes/projects-cpt.php';
+include_once dirname( __FILE__ ) . '/includes/projects-cpt.php';
 
 // 25. Video CPT
- 
-include_once dirname(__file__) . '/includes/video-cpt.php';
+include_once dirname( __FILE__ ) . '/includes/video-cpt.php';
 
 // 26. Order Bender
- 
-include_once dirname(__file__) . '/includes/order-bender.php';
+include_once dirname( __FILE__ ) . '/includes/order-bender.php';
 
 // 27. Errata CPT
- 
-include_once dirname(__file__) . '/includes/errata-cpt.php';
+include_once dirname( __FILE__ ) . '/includes/errata-cpt.php';
 
 // 28. Contextly
- 
-include_once dirname(__file__) . '/includes/contextly-related-links/contextly-linker.php';
+include_once dirname( __FILE__ ) . '/includes/contextly-related-links/contextly-linker.php';
 
 // 28. Markdown
- 
-include_once dirname(__file__) . '/includes/markdown/markdown.php';
+include_once dirname( __FILE__ ) . '/includes/markdown/markdown.php';
 
 // 29. Categories
- 
-include_once dirname(__file__) . '/includes/categories.php';
+include_once dirname( __FILE__ ) . '/includes/categories.php';
 
 // 30. JSON Endpoint
- 
-include_once dirname(__file__) . '/includes/json-endpoint.php';
+include_once dirname( __FILE__ ) . '/includes/json-endpoint.php';
 
 // 31. Projects Step Manager
-
-include_once dirname(__file__) . '/includes/projects-manager.php';
+include_once dirname( __FILE__ ) . '/includes/projects-manager.php';
 
 // 31. Maker Camp
-	
-include_once dirname(__file__) . '/includes/maker-camp.php';
+include_once dirname( __FILE__ ) . '/includes/maker-camp.php';
 
 // 33. CLI CSV
+if ( defined('WP_CLI') && WP_CLI )
+	include_once dirname( __FILE__ ) . '/includes/wp-cli.php';
 
-if ( defined('WP_CLI') && WP_CLI ) {
-
-	include_once dirname(__file__) . '/includes/wp-cli.php';
-
-}
+// 34. Author Bio
+include_once dirname(  __FILE__  ) . '/includes/class-author-bio.php';
 
 
 ?>

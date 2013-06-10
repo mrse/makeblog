@@ -9127,6 +9127,14 @@ ul#tabs .current > a:hover {
 .links li:last-child:after {
   content: "";
 }
+.author-bio {
+  border-top: 2px solid #ccc;
+  padding-top: 20px;
+  margin-left: 0;
+}
+.author-bio .author-photo {
+  margin-left: 0;
+}
 .carousel-inner .carousel-caption {
   position: absolute;
 }
