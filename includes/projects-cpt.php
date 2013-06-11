@@ -593,7 +593,7 @@ function make_projects_parts( $parts ) {
 		$output .= '</a> ';
 		
 		$output .= ' <span class="muted">';
-		$output .= $notes;
+		$output .= esc_html( $notes );
 		$output .= '</span>';
 
 		$output .= '</li>';
