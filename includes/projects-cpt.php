@@ -580,10 +580,8 @@ function make_projects_parts( $parts ) {
 			$output .='<li><a href="#" data-toggle="tooltip" title="' . esc_attr( $notes ) .'">' . esc_html( $part['text'] );
 		}
 
-		$output .= ' <span class="muted">';
-
 		if( ! empty( $part['type'] ) ) {
-			$output .= htmlspecialchars_decode( esc_html( $part['type'] ) );
+			$output .= ', ' . htmlspecialchars_decode( esc_html( $part['type'] ) );
 		}
 
 		if( ! empty( $part['quantity'] ) ) {
@@ -592,9 +590,13 @@ function make_projects_parts( $parts ) {
 			$output .= ')';
 		}
 
+		$output .= '</a> ';
+		
+		$output .= ' <span class="muted">';
+		$output .= $notes;
 		$output .= '</span>';
 
-		$output .= '</a></li>';
+		$output .= '</li>';
 	}
 
 	$output .= '</ul>';
