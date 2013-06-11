@@ -37,9 +37,9 @@
 	function make_magazine_projects_add_scripts() {
 		if(is_admin() && ('projects' == get_post_type())) {
 			wp_enqueue_media();
-			wp_enqueue_script( 'make-projects-custom-js', get_stylesheet_directory_uri() . '/js/projects-manager.min.js', array('jquery' ), '1.0' );
-			wp_enqueue_script( 'make-parts-custom-js', get_stylesheet_directory_uri() . '/js/parts-manager.min.js', array( 'jquery' ), '1.0' );
-			wp_enqueue_script( 'make-tools-custom-js', get_stylesheet_directory_uri() . '/js/tools-manager.min.js', array( 'jquery' ), '1.0' );
+			wp_enqueue_script( 'make-projects-custom-js', get_stylesheet_directory_uri() . '/js/projects-manager.js', array('jquery' ), '1.0' );
+			wp_enqueue_script( 'make-parts-custom-js', get_stylesheet_directory_uri() . '/js/parts-manager.js', array( 'jquery' ), '1.0' );
+			wp_enqueue_script( 'make-tools-custom-js', get_stylesheet_directory_uri() . '/js/tools-manager.js', array( 'jquery' ), '1.0' );
 			wp_localize_script( 'make-projects-custom-js', 'make_projects_js', array(
 				'stylesheet_uri' => get_stylesheet_directory_uri(),
 			) );
