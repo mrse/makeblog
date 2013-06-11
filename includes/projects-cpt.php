@@ -593,7 +593,7 @@ function make_projects_parts( $parts ) {
 		$output .= '</a> ';
 		
 		$output .= ' <span class="muted">';
-		$output .= esc_html( $notes );
+		$output .= wp_kses_post( $notes );
 		$output .= '</span>';
 
 		$output .= '</li>';
@@ -615,15 +615,17 @@ function make_projects_tools( $tools ) {
 
 	// The array is complicated, thus this foreach is complicated... $tool is an object.
 	foreach ( $tools[0] as $tool ) {
+
+		$output .='<li>';
+		if ( ! empty( $tool->url ) ) {
+			$output .= '<a href="' . esc_url( $tool->url ) . '" data-toggle="tooltip" title="' . esc_attr( $tool->text ) .'">' . $tool->text . '</a>';
+		} else {
+			$output .= esc_html( $tool->text );
+		}
 		$notes = null;
 
 		if( ! empty( $tool->notes ) ) {
-			$notes = $tool->notes;
-		}
-		if ( ! empty( $tool->url ) ) {
-			$output .='<li><a href="' . esc_url( $tool->url ) . '" data-toggle="tooltip" title="' . esc_attr( $notes ) .'">' . $tool->text . '</a></li>';
-		} else {
-			$output .='<li>' . esc_html( $tool->text ) . '</li>';
+			$output .= '  <span class="muted">' . wp_kses_post( $tool->notes ) . '</span>';
 		}
 	}
 
