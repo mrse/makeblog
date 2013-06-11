@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
 
 		// Check when sort has been completed and move our add button to the last sub-list
 		update: function(event, ui) { make_projects_manager_sort_updated(this); }
-	}).disableSelection();
+	});
 
 
 	// Call our "Add List" function.
