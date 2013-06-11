@@ -8699,7 +8699,7 @@ textarea.radio-narrow,
 }
 .projects-masthead h2 {
   line-height: 100%;
-  margin-bottom: -10px;
+  margin-bottom: 0px;
   font-size: 36px;
 }
 .projects-masthead h1 {
@@ -9212,8 +9212,9 @@ ul#tabs .current > a:hover {
   color: #005d8f;
   font-weight: bold;
 }
-.single .post ul li {
-  font-size: 16px;
+.single .post ul li,
+.single .post ol li {
+  font-size: 18px;
 }
 .widget {
   margin: 20px 0;
@@ -9229,6 +9230,9 @@ ul#tabs .current > a:hover {
 }
 .tab-content h3 {
   margin-bottom: 10px;
+}
+.sidebar .badge.badge-info {
+  display: inline;
 }
 .page-id-286853,
 .page-id-271492 {
@@ -10411,4 +10415,7 @@ body.makercamp .button.small-button {
 }
 .archive .projects-masthead h2 {
   line-height: 100%;
+}
+.home .single .article {
+  margin-bottom: 25px;
 }
