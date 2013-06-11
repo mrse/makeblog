@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
 	$('#make_magazine_projects_step_manager h3.hndle').prepend('<span class="steps-ico"></span>');
 
 	// Add our remove button for images uploaded to the Projects Manager
-	$('#image-list .has-image').prepend('<img src="' + stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
+	$('#image-list .has-image').prepend('<img src="' + make_projects_js.stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
 
 	// Call our image removal and hover state
 	make_projects_manager_image_removal();
@@ -175,7 +175,7 @@ function make_projects_manager_remove_list() {
 
 			// If add_btn does not return with 1 (AKA true), then we will add a new one.
 			if(add_btn === 0) {
-				parent_ul.find('li:last').append('<img src="' + stylesheet_uri + '/images/icon-add.png" class="project-button add">');
+				parent_ul.find('li:last').append('<img src="' + make_projects_js.stylesheet_uri + '/images/icon-add.png" class="project-button add">');
 			}
 
 			// Call our add list functions again so we don't lose the click events after we append. I'm sure there's a better way to this.
@@ -272,9 +272,6 @@ function make_projects_manager_sort_updated(selector) {
 	$(function() {
 		$.fn.make_projects_manager = function(options) {
 
-			// Get the HTML element or object.
-			var selector = $(this).selector;
-
 			// Set the default options.
 			var defaults = {
 				'button': '.steps-image', // Button and preview select the image container.
@@ -330,7 +327,7 @@ function make_projects_manager_sort_updated(selector) {
 
 				// Once everything is complete, we'll add some needed UI stuff like the image removal button
 				// TO DO: Contain all the following code here into a function for simplicity and DRY programming.
-				$(this).parent().addClass('has-image').prepend('<img src="' + stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
+				$(this).parent().addClass('has-image').prepend('<img src="' + make_projects_js.stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
 
 				// Call our image removal and hover state
 				make_projects_manager_image_removal();

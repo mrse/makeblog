@@ -80,7 +80,7 @@ jQuery(document).ready(function($) {
 
 		// Check when sort has been completed and update the list numerically
 		update: function(event, ui) { make_tools_manager_sort_update( this ); }
-	}).disableSelection();
+	});
 });
 
 
@@ -130,7 +130,6 @@ function make_tools_manager_sort_update(selector) {
 function make_tools_manager_update_tools() {
 	var i = 0;
 	jQuery('.tools-wrapper').each( function(e, v) {
-		// console.log('tool');
 
 		// Update the tool ID
 		jQuery(this).attr('id', 'tool-' + i);
