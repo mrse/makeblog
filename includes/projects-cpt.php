@@ -541,7 +541,7 @@ function make_projects_steps( $steps ) {
 					echo '<img src="' . esc_url( make_projects_to_s3( $images[0]->text ) ) . '" data-loc="js-step-' . esc_attr( $step->number ) . ' alt="' . esc_attr( the_title('', '', false ) ) . '" class="' . esc_attr( $images[0]->imageid ) . ' ' . esc_attr( $images[0]->orderby ) .'" />';
 				}
 			}
-			if ( $images[1]->text ) {
+			if ( isset( $images[1]->text ) ) {
 				echo '<span class="row smalls" style="display:block">';
 				foreach ($images as $image) {
 					echo '<span class="span2">';

@@ -397,7 +397,7 @@ class Parsely {
         if ( is_wp_error( $categories ) ) {
             $topLevel = 1;
         } else {
-            $categories = split(",", $categories);
+            $categories = explode(",", $categories);
             $topLevel = $categories[0];    
         }
         return $topLevel;
