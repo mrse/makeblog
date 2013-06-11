@@ -73,15 +73,19 @@ function make_the_dash_shares_widget($type, $hits = null, $limit = 5, $size = 80
 					$content .= '<img src="http://1.gravatar.com/blavatar/dab43acfe30c0e28a023bb3b7a700440?s=70" class="thumbnail media-object" alt="' . esc_attr($item->title) . '" />';
 				}				
 			}
-			$content .= '</a></div><div class="media-body"><div class="media-heading"><h5>';
-			$content .= '<a href="' . esc_url( $url ) . '">' . esc_html($item->title) . '</a>';
-			$content .= '</h5></div><ul class="unstyled"><li>By: ' . esc_html($item->author)  . '</li>';
+			
+			$content .= '</a>';
+			$content .= '<div class="media-body">';
+			$content .= '<div class="media-heading"><h5><a href="' . esc_url( $url ) . '">' . esc_html($item->title) . '</a></h5></div>';
+			$content .= '<ul class="unstyled">';
+			$content .= '<li>By: ' . esc_html($item->author)  . '</li>';
 			if ($type == 'shares' && $hits != null) {
 				$content .= '<li>'  . $hits .' <span class="badge badge-info">'.  esc_html($item->_shares) . '</span></li>';
 			} elseif ($hits != null) {
 				$content .= '<li>'  . $hits .' <span class="badge badge-info">'.  esc_html($item->_hits) . '</span></li>';
 			}
-			$content .= '</ul></div></div>';
+			$content .= '</ul>';
+			$content .= '</div></div>';
 		}
 	}
 

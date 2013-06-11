@@ -41,11 +41,11 @@
 
 						</div>
 
-						<div class="tabbable content">
+						<div class="tabbable">
 							<ul class="nav nav-pills">
 								<li class="active"><a href="#1" data-toggle="tab">Trending</a></li>
 								<li><a href="#2" data-toggle="tab">Shared</a></li>
-								<li class=""><a href="#3" data-toggle="tab">Commented</a></li>
+								<li><a href="#3" data-toggle="tab">Commented</a></li>
 							</ul>
 							<div class="tab-content">
 								<div class="tab-pane active" id="1">
