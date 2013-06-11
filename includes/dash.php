@@ -53,29 +53,29 @@ function make_the_dash_shares_widget($type, $hits = null, $limit = 5, $size = 80
 			$rand = mt_rand();
 
 			$pos = strpos( $url, $slideshow );
-			$content .= '<div class="row-fluid item"><div class="span4">';
-			$content .= '<a href="' . esc_url( $url ) . '">';
+			$content .= '<div class="media">';
+			$content .= '<a href="' . esc_url( $url ) . '" class="pull-left">';
 
 			if ( $type == 'realtime' && ( isset( $item->image_url ) ) ) {
 				if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
-					$content .= '<img src="' . wpcom_vip_get_resized_remote_image_url( $item->image_url, $size, $size ) . '" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
+					$content .= '<img src="' . wpcom_vip_get_resized_remote_image_url( $item->image_url, $size, $size ) . '" class="thumbnail media-object" alt="' . esc_attr($item->title) . '" />';
 				} else {
-					$content .= '<img src="' . esc_url($item->image_url) . '" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
+					$content .= '<img src="' . esc_url($item->image_url) . '" class="thumbnail media-object" alt="' . esc_attr($item->title) . '" />';
 				}
 			} else {
 				if (isset($item->thumb_url_medium)) {
 					if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
-						$content .= '<img src="' . wpcom_vip_get_resized_remote_image_url( $item->thumb_url_medium, $size, $size ) . '" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
+						$content .= '<img src="' . wpcom_vip_get_resized_remote_image_url( $item->thumb_url_medium, $size, $size ) . '" class="thumbnail media-object" alt="' . esc_attr($item->title) . '" />';
 					} else {
-						$content .= '<img src="' . esc_url($item->thumb_url_medium) . '" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
+						$content .= '<img src="' . esc_url($item->thumb_url_medium) . '" class="thumbnail media-object" alt="' . esc_attr($item->title) . '" />';
 					}
 				} else {
-					$content .= '<img src="http://1.gravatar.com/blavatar/dab43acfe30c0e28a023bb3b7a700440?s=70" class="thumbnail" alt="' . esc_attr($item->title) . '" />';
+					$content .= '<img src="http://1.gravatar.com/blavatar/dab43acfe30c0e28a023bb3b7a700440?s=70" class="thumbnail media-object" alt="' . esc_attr($item->title) . '" />';
 				}				
 			}
-			$content .= '</a></div><div class="span8"><h5>';
+			$content .= '</a></div><div class="media-body"><div class="media-heading"><h5>';
 			$content .= '<a href="' . esc_url( $url ) . '">' . esc_html($item->title) . '</a>';
-			$content .= '</h5><ul class="unstyled"><li>By: ' . esc_html($item->author)  . '</li>';
+			$content .= '</h5></div><ul class="unstyled"><li>By: ' . esc_html($item->author)  . '</li>';
 			if ($type == 'shares' && $hits != null) {
 				$content .= '<li>'  . $hits .' <span class="badge badge-info">'.  esc_html($item->_shares) . '</span></li>';
 			} elseif ($hits != null) {
