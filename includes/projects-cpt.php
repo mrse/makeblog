@@ -618,7 +618,7 @@ function make_projects_tools( $tools ) {
 
 		$output .='<li>';
 		if ( ! empty( $tool->url ) ) {
-			$output .= '<a href="' . esc_url( $tool->url ) . '" data-toggle="tooltip" title="' . esc_attr( $tool->text ) .'">' . $tool->text . '</a>';
+			$output .= '<a href="' . esc_url( $tool->url ) . '" data-toggle="tooltip" title="' . esc_attr( $tool->text ) .'">' . esc_html( $tool->text ) . '</a>';
 		} else {
 			$output .= esc_html( $tool->text );
 		}
