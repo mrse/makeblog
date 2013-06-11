@@ -306,12 +306,12 @@
 							<label for="tools-url">URL</label>
 							<input type="text" name="tools-url-0" id="tools-url" class="widefat" value="" />
 						</li>
-					</ul><!--[END .step-contents]-->
-					<ul class="two-column reset-list">
 						<li>
 							<label for="tools-thumb">Thumbnail</label>
 							<input type="text" name="tools-thumb-0" id="tools-thumb" class="widefat" value="" />
 						</li>
+					</ul><!--[END .step-contents]-->
+					<ul class="two-column reset-list">
 						<li>
 							<label for="tools-notes">Notes</label>
 							<textarea name="tools-notes-0" id="tools-notes" rows="4"></textarea>

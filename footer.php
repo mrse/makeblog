@@ -9,7 +9,7 @@
  */
 ?>
 				</div>				
-				<div class="footer-ad" style="margin-top:30px;clear:both;">				
+				<div class="footer-ad">
 					<div class="" style="width:728px; margin:0 auto;">
 						<!-- Beginning Sync AdSlot 4 for Ad unit header ### size: [[728,90]]  -->
 						<div id='div-gpt-ad-664089004995786621-4'>

@@ -110,10 +110,10 @@ get_header(); ?>
 												if ( $parts || $old_parts ) {
 													echo '<li class="active"><a href="#1" data-toggle="tab">Parts</a></li>';
 												} 
-												if ( ( $parts || $old_parts ) && $old_tools) {
+												if ( ( $parts || $old_parts ) && ( $tools || $old_tools ) ) {
 													echo '<li class="divider"> / </li>';
 												}
-												if ( $old_tools ) {
+												if ( $tools || $old_tools ) {
 													echo '<li><a href="#2" data-toggle="tab">Tools</a></li>';
 												}
 											?>
@@ -143,6 +143,8 @@ get_header(); ?>
 															echo '<li>' . esc_html( $tool->name ) . '</li>';
 														}
 														echo '</ul>';
+													} else {
+														echo 'no parts';
 													}
 												?>
 											</div>

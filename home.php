@@ -1,66 +1,87 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Home Page Template
+ *
+ * @package    makeblog
+ * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
+ * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * 
+ */
+make_get_header() ?>
 		
-		<div class="clear"></div>
+	<div class="single">
+	
+		<div class="container">
 
-		<div class="sand">
+			<div class="row">
 
-			<div class="container">
-
-				<div class="row">
-
-					<div class="span8">
-
-						<div class="content">
-
-							 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+				<div class="span8">
+					
+					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			
-							 	<article <?php post_class(); ?>>
-
-							 		<div class="cat-thumb">
-
-							 			<?php get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb' ) ); ?>
-
-
-							 		</div>
-
-							 		<div class="cat-blurb">
-
-							 			<h3><a class="red" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-
-										<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
-
-										<p class="meta">By <?php if( function_exists( 'coauthors_posts_links' ) ) { coauthors_posts_links(); } else { the_author_posts_link(); } ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>
-										<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
-
-									</div>
-
-									<div class="clear"></div>
-									
-									<hr />
-
-								</article>
-
-							<?php endwhile; ?>
-
-							<ul class="pager">
-							
-								<li class="previous"><?php previous_posts_link('&larr; Previous Page'); ?></li>
-								<li class="next"><?php next_posts_link('Next Page &rarr;'); ?></li>
-							
-							</ul>
-
-							<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
+					<div class="projects-masthead">
 						
-							<?php else: ?>
-							
-								<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-							
-							<?php endif; ?>
-
-						</div>
-
+						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+						
 					</div>
+					
+					<ul class="projects-meta">
+						<li>
+							By <?php 
+							if( function_exists( 'coauthors_posts_links' ) ) {	
+								coauthors_posts_links(); 
+							} else { 
+								the_author_posts_link(); 
+							} ?>
+						</li>
+						<li>
+							Posted <span class="blue"><?php the_date('Y/m/d \@ g:i a'); ?></span>
+						</li>
+						<li>
+							Category <?php the_category(', '); ?>
+						</li>
+					</ul>
+				
+					<article <?php post_class(); ?>>
+						
+						<div class="media">
+							
+							<a href="<?php the_permalink(); ?>" class="pull-left">
+								<?php the_post_thumbnail( 'archive-thumb', array( 'class' => 'media-object' ) ); ?>
+							</a>
+							
+							<div class="media-body">
+								<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
+							</div>
+							
+							
+						</div>
+					
+					</article>
 
-					<?php get_sidebar(); ?>
+					<?php endwhile; ?>
 
-			<?php get_footer(); ?>
+					<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
+
+					<div class="comments">
+						<?php comments_template(); ?>
+					</div>
+					
+					<?php else: ?>
+					
+						<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+					
+					<?php endif; ?>
+				</div>
+				
+				
+				<?php get_sidebar(); ?>
+					
+					
+			</div>
+
+		</div>
+
+	</div>
+
+<?php get_footer(); ?>

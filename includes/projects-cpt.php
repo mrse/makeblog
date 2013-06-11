@@ -618,13 +618,11 @@ function make_projects_tools( $tools ) {
 		if( ! empty( $tool->notes ) ) {
 			$notes = $tool->notes;
 		}
-		if ( strpos( $tool->url, 'makeprojects' ) != true ) {
-			$output .='<li><a href="' . esc_url( $tool->url ) . '" data-toggle="tooltip" title="' . esc_attr( $notes ) .'">' . $tool->text;
+		if ( ! empty( $tool->url ) ) {
+			$output .='<li><a href="' . esc_url( $tool->url ) . '" data-toggle="tooltip" title="' . esc_attr( $notes ) .'">' . $tool->text . '</a></li>';
 		} else {
-			$output .='<li><a href="#" data-toggle="tooltip" title="' . esc_attr( $notes ) .'">' . esc_html( $tool->text );
+			$output .='<li>' . esc_html( $tool->text ) . '</li>';
 		}
-
-		$output .= '</a></li>';
 	}
 
 	$output .= '</ul>';
