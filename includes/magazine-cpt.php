@@ -214,7 +214,7 @@ function make_magazine_toc( $args ) {
 
 	// Need a way to filter out the title if there are no results in the query.
 
-	if($post->post_parent == 0 && !empty($the_query->posts) ) {
+	if( !empty( $the_query->posts ) ) {
 		$output .= '<h3>'. esc_html( $args['title']  ) .'</h3>';
 	}
 
