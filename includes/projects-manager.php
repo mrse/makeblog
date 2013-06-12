@@ -399,11 +399,14 @@
 
 				// Set our images array and contain each image as an object in the Steps object
 				$int = 0;
+				// echo '<pre>'; print_r($_POST['step-images-' . $i ]); echo '</pre>';
 				foreach( $_POST[ 'step-images-' . $i ] as $image ) {
+					
+					$image_url = ( ! empty( $image ) ) ? esc_url_raw( $image ) : '';
 					$step['images'][ $int ] = (object) array(
 						'imageid' => $post_id,
 						'orderby' => $int,
-						'text'    => esc_url_raw( $image )
+						'text'    => $image_url
 					);
 					$int++; // Only increase the integer variable when we encounter a non-empty image value
 				}
@@ -413,6 +416,8 @@
 
 				// Contain the whole $steps array into an object
 				$step_object[] = (object) $step;
+				
+				// echo '<pre>'; print_r($step_object); echo '</pre>';
 
 			}
 
