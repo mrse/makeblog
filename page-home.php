@@ -154,8 +154,8 @@ Template Name: Home Page
 
 					<div class="span12">
 
-						<a href="https://readerservices.makezine.com//mk/subscribe.aspx?PC=MK&PK=M36BN07">
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/940-x-39-belt-3495-price.jpg" alt="Subscribe to MAKE magazine" />
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M36BN09">
+							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Belt-2995-PDF.jpg" alt="Subscribe to MAKE magazine" />
 						</a>
 
 					</div>
