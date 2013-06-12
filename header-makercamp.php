@@ -67,7 +67,6 @@
 							'menu_class' => 'nav nav-inline pull-left',
 						) );
 					?>
-					<p class="pull-right"><a href="register-summer-program.html">Include Maker Camp in your Summer Program</a></p>
 				</div>
 			</div>
 		</header>

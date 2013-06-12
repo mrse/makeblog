@@ -19,6 +19,10 @@ body.makercamp {
 	iframe { 
 		max-width:100%;
 	}
+	.main-content {
+		a:link, a:visited { color:#acd3fc; }
+		a:hover, a:active { color:#acd3fc; text-decoration:underline !important; }
+	}
 
 	#footer {
 		&.white-bg {
@@ -210,12 +214,13 @@ body.makercamp {
 		}
 		.button.blue {
 			width:79.16666671%;
-			font-size:24px ;
+			font-size:17px ;
 			line-height:32px;
 			font-weight:600;
 			padding-left:25px;
 			padding-right:25px;
 		}
+		img.register { margin:70px 0; }
 	}
 
 	.features-box-content {
@@ -225,7 +230,7 @@ body.makercamp {
 
 	.lower-gradation {
 		background:#0F5B99 url('http://makezineblog.files.wordpress.com/2013/05/background-gradient-02.jpg') 0 0 repeat; 
-		padding-bottom:20px;
+		padding:20px 0;
 	}
 	.new-footer {
 		.subscribe {
@@ -301,7 +306,7 @@ body.makercamp {
 			position:absolute;
 			left:0;
 			background:#fff;
-			background:rgba(255,255,255,.9);
+			background:rgba(255,255,255,.95);
 			border:1px solid #e0e0e0;
 			border-top: 1px solid #ababab;
 			box-shadow: 0 15px 17px -3px rgba(0, 0, 0, 0.3);
@@ -336,18 +341,48 @@ body.makercamp {
 		}
 	}
 
+	// FAQs
+	.faq-content {
+		margin-bottom:20px;
+		ul { margin-bottom:25px !important; }
+	}
+
+	// Register Summer Program
+	.ss-form {
+		form {
+			background:#fff;
+			padding:15px 10px 10px 20px;
+			color:#6e6e6e;
+			margin:20px 20px 0 0;
+		}
+		label.ss-q-title { font-weight:bold; }
+		input, textarea { width:95%; }
+	}
+	.ss-form-entry input.button {
+		margin-top:-5px;
+		width:100%;
+		text-align:center;
+		padding:10px;
+		font-size:25px;
+		border:0;
+	}
+
 	// Misc styles
 	.orange { color:#f6ba65 !important; }
 	.red { color:#c7171d; }
+	.blue { color:#acd3fc; }
+	ul.stars {
+		list-style-image: url(../img/makercamp/stars.png); 
+		li { margin: 15px 15px 5px 0; }
+	}
 
 	// Buttons
-	.button {
+	.button, a.button {
 		display: inline;
 		display: inline-block;
 		text-align: center;
-		.border-radius(5px);
 		padding:10px;
-		color:#fff;
+		color:#fff !important;
 		margin-top:5px;
 		margin-bottom:10px;
 		text-decoration: none;
@@ -365,13 +400,12 @@ body.makercamp {
 			background-color: #8ed5f6;
 			border:none;
 			padding:10px;
-			color:#033978;
+			color:#033978 !important;
 			font-size:24px ;
 			line-height:32px;
 			font-weight:600;
 			padding-left:20px;
 			padding-right:20px;
-			.border-radius(5px);
 			border-radius: 5px;
 			-webkit-border-radius: 5px;
 			-moz-border-radius: 5px;
@@ -403,18 +437,31 @@ body.makercamp {
 }
 
 @media (min-width: 1200px) {
-	.new-footer .container { width:1170px !important; }
-	.new-footer .main { width:1000px !important; }
+	body.makercamp, body.makercamp.admin-bar {
+		.new-footer {
+			.container { width:1170px !important; }
+			.main { width:1000px !important; }
+			.trending, .newsletter, .about-us, .subscribe { width:270px !important; }
+		}
 
-	// Schedule Page
-	.schedule-content {
-		.maker { margin-right:29px !important; }
-		.maker-description { width:93% !important; }
+		// Schedule Page
+		.schedule-content {
+			.maker { margin-right:29px !important; }
+			.maker-description { width:96% !important; }
+		}
+
+		.waist {
+			.button.big { top:14px !important; }
+		}
+		.feature-box {
+			.button.blue { font-size:22px !important; }
+			img.register { margin:64px 0 !important; }
+		}
 	}
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
-	body.makercamp, body.admin-bar {
+	body.makercamp, body.makercamp.admin-bar {
 
 		// Override some styles from Makezine
 		.container,
@@ -446,9 +493,7 @@ body.makercamp {
 		.feature-box {
 			h4 { line-height:1em; }
 			h5 { font-size:1.5em; }
-			.button.blue {
-				font-size:1.285714286em;
-			}
+			img.register { margin:52px 0; }
 		}
 
 		// Schedule Page
@@ -493,6 +538,10 @@ body.makercamp {
 		// Home Header
 		.mc-logo, .mc-description { text-align:center; color:#fff; }
 		.mc-description { color:#f6ba65; }
+
+		.feature-box {
+			img.register { margin:30px 0 !important; }
+		}
 
 		// Waist
 		.waist {
