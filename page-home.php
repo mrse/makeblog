@@ -186,7 +186,7 @@ Template Name: Home Page
 
 						<?php 
 							$args = array(
-								'posts_per_page'  => 7,
+								'posts_per_page'  => 6,
 								'no_found_rows' => true,
 							);
 
