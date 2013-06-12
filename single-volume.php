@@ -119,11 +119,13 @@ get_header(); ?>
 										$blurb = get_post_custom_values( 'PostsBlurb' );
 										echo make_magazine_toc('post', $blurb[0], $categories[0], 0, 4, 'date', 'dsc' );
 									}
+
+									$parent = $post->ID;
 								
 									$args = array(
 										'post_type' 		=> 'review',
 										'title'			 	=> 'Reviews',
-										'post_parent'		=> $post->ID,
+										'post_parent'		=> $parent,
 										'order' 			=> 'asc',
 										);
 									echo make_magazine_toc($args);
@@ -131,7 +133,7 @@ get_header(); ?>
 									$args = array(
 										'post_type' 		=> 'magazine',
 										'title'			 	=> 'Articles',
-										'post_parent'		=> $post->ID,
+										'post_parent'		=> $parent,
 										'order' 			=> 'asc',
 										);
 									echo make_magazine_toc($args);
@@ -139,7 +141,7 @@ get_header(); ?>
 									$args = array(
 										'post_type'			=> 'projects',
 										'title'				=> 'Projects',
-										'post_parent'		=> $post->ID,
+										'post_parent'		=> $parent,
 										'order'				=> 'asc',
 										);
 									echo make_magazine_toc($args);
