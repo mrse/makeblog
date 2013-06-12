@@ -17,4 +17,4 @@
 			<?php the_content(); ?>
 		</div>
 	<?php endwhile; endif; ?>
-<?php get_footer( 'makercamp' ); ?>	
+<?php get_footer( 'makercamp' ); ?>
