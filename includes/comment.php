@@ -45,8 +45,6 @@ function make_comments( $comment, $args, $depth ) {
 					<br />
 				<?php endif; ?>
 
-			</footer>
-
 			<div class="comment-content"><?php comment_text(); ?></div>
 
 			<div class="reply">
