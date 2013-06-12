@@ -101,20 +101,38 @@ jQuery(document).ready(function($) {
 		$(this).parent().parent().slideUp(500, function() {
 
 			// Remove this element
-			jQuery(this).remove();
+			$(this).remove();
 
-			// Change the Step number in each .step-title.
-			var count = 0;
-			$('.step-title h3').each(function() {
-				$(this).html('Step ' + count);
-				count++;
-			});
 
-			// Update the #step-$num value for each step section
-			count = 0;
-			$('.inside .step .step-wrapper').each(function() {
-				$(this).attr('id', 'step-' + count).children('input[type="hidden"]').attr({'name': 'step-number-' + count, 'value': count});
-				count++;
+			var i = 0;
+			$('.step-wrapper').each( function(e, v) {
+
+				// Update the step ID
+				$(this).attr('id', 'step-' + i);
+
+				// Update the hidden field
+				$('#step-' + i + ' > input[type="hidden"]').attr({
+					name: 'step-number-' + i,
+					value: i
+				});
+
+				// Update the title
+				$('#step-' + i + ' .step-title h3').html('Step ' + i);
+
+				// Update the step images
+				$('#step-' + i + ' #image-list input[type="hidden"]').each(function() {
+					$(this).attr('name', 'step-images-' + i + '[]');
+				});
+
+				// Update the step title
+				$('#step-' + i + ' #project-header').attr('name', 'step-title-' + i);
+
+				// Update the step images
+				$('#step-' + i + ' #sub-lists textarea').each(function() {
+					$(this).attr('name', 'step-lines-' + i + '[]');
+				});
+
+				i++;
 			});
 
 			// Count how many steps we have and update the total-steps field. This is needed to compile our onject upon save.
