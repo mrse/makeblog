@@ -227,7 +227,7 @@
 			</div><!--[END .parts-template]-->
 			<?php if( isset( $parts ) && is_array( $parts ) ) : ?>
 				<?php $parts_num = 1; foreach( $parts as $part ) : 
-
+					echo '<pre>'; print_r( unserialize( $part ) ); echo '</pre>';
 					// Unserialize our Parts here as each array is serialized while the parent isn't.
 					$part = unserialize( $part ); ?>
 					<div id="part-<?php echo $parts_num; ?>" class="parts-wrapper">
@@ -254,7 +254,7 @@
 							<ul class="two-column reset-list">
 								<li>
 									<label for="parts-type">Type</label>
-									<input type="text" name="parts-type-<?php echo $parts_num; ?>" id="parts-type" class="widefat" value="<?php echo ( ! empty( $part['type'] ) ) ? htmlspecialchars_decode( esc_attr( $part['type'] ) ) : ''; ?>" />
+									<input type="text" name="parts-type-<?php echo $parts_num; ?>" id="parts-type" class="widefat" value="<?php echo ( ! empty( $part['type'] ) ) ? htmlspecialchars_decode( esc_attr( $part['type'] ), ENT_NOQUOTES ) : ''; ?>" />
 								</li>
 								<li>
 									<label for="parts-notes">Notes</label>
@@ -452,7 +452,7 @@
 				$parts['notes'] = wp_filter_post_kses( $_POST[ 'parts-notes-' . $i ] );
 
 				// Add our Type to the array
-				$parts['type'] = wp_filter_post_kses( $_POST[ 'parts-type-' . $i ] );
+				$parts['type'] = $_POST[ 'parts-type-' . $i ];
 
 				// Add our Quantity to the array
 				$parts['quantity'] = ( isset( $_POST[ 'parts-qty-' . $i ] ) ) ? intval( $_POST[ 'parts-qty-' . $i ] ) : '';
