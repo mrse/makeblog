@@ -227,7 +227,6 @@
 			</div><!--[END .parts-template]-->
 			<?php if( isset( $parts ) && is_array( $parts ) ) : ?>
 				<?php $parts_num = 1; foreach( $parts as $part ) : 
-					echo '<pre>'; print_r( unserialize( $part ) ); echo '</pre>';
 					// Unserialize our Parts here as each array is serialized while the parent isn't.
 					$part = unserialize( $part ); ?>
 					<div id="part-<?php echo $parts_num; ?>" class="parts-wrapper">
@@ -452,7 +451,7 @@
 				$parts['notes'] = wp_filter_post_kses( $_POST[ 'parts-notes-' . $i ] );
 
 				// Add our Type to the array
-				$parts['type'] = $_POST[ 'parts-type-' . $i ];
+				$parts['type'] = wp_filter_post_kses( $_POST[ 'parts-type-' . $i ] );
 
 				// Add our Quantity to the array
 				$parts['quantity'] = ( isset( $_POST[ 'parts-qty-' . $i ] ) ) ? intval( $_POST[ 'parts-qty-' . $i ] ) : '';
