@@ -239,7 +239,6 @@ function make_carousel( $args ) {
 		'posts_per_page'	=> 8,				// Need to have this divisable by 8, ideally.
 		'no_found_rows'		=> true,			// Helps to keep the query fast.
 		'title'				=> 'New Posts!',	// To be changed, immediately.
-		'post_type'			=> 'post',
 		'all'				=> null,
 		'limit'				=> 4,
 		'projects_landing'	=> false,
