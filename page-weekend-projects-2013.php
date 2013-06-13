@@ -97,7 +97,7 @@ get_header(); ?>
 							'all'				=> true,
 							'posts_per_page'	=> 36,
 							'orderby'			=> 'date',
-							'order'				=> 'asc'
+							'order'				=> 'dsc'
 						);
 
 						make_carousel($args);
@@ -116,12 +116,13 @@ get_header(); ?>
 						$args = array(
 							'post_type'			=> 'post',
 							'title'				=> 'Weekend Projects Blog Posts',
-							'tag'				=> 'weekend-project',
+							'tag'				=> 'weekend-projects',
 							'projects_landing'	=> true,
 							'all'				=> true,
 							'posts_per_page'	=> 36,
 							'orderby'			=> 'date',
-							'order'				=> 'asc'
+							'order'				=> 'dsc',
+							'debug'				=> false
 						);
 
 						make_carousel($args);
@@ -144,28 +145,48 @@ get_header(); ?>
 		</div>
 		
 	</div>
-				
-	<?php
 
-		if ($catslugs) {
-			echo '<div class="grey dots topper"><div class="container"><div class="row"><div class="span12"><h2>Projects by Category</h2></div></div></div></div>';
-			foreach ($catslugs as $category) {
-				$category = wpcom_vip_get_term_by('name', $category, 'category');
+	<div class="grey dots topper">
+		
+		<div class="container">
+			<div class="row">
+				
+				<div class="span12">
+				
+					<h2>Weekend Projects by Difficulty</h2>
+				
+				</div>
+				
+			</div>
+		
+		</div>
+	
+		<?php
+
+			$difficulties = array('easy', 'moderate', 'difficult' );
+
+			foreach ($difficulties as $difficulty) {
 				echo '<div class="grey"><div class="container"><div class="row"><div class="span12">';							
 				$args = array(
 					'post_type'			=> 'projects',
-					'category__in'		=> $category->term_id,
-					'title'				=> $category->name,
+					'difficulty'		=> $difficulty,
+					'category__in'		=> 0,
 					'projects_landing'	=> true,
-					'all'				=> true
+					'all'				=> true,
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'flags',
+							'field' => 'slug',
+							'terms' => 'weekend-project'
+						)
+					),
 
 				);
 				make_carousel( $args );
-				echo '</div></div></div>';
-			} 
-		} 
-	?>
+				echo '</div></div></div></div>';
+			}
+		?>
 
-</div>
+	</div>
 
 	<?php get_footer(); ?>
