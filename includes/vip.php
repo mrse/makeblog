@@ -33,8 +33,6 @@ wpcom_vip_load_plugin( 'simply-show-ids' );
 //wpcom_vip_load_plugin( 'wpcom-related-posts' );
 wpcom_vip_load_plugin( 'view-all-posts-pages' );
 wpcom_vip_load_plugin( 'co-authors-plus' );
-wpcom_vip_load_plugin( 'zoninator' );
-
 
 if (is_page('contribute')) {
 	wpcom_vip_load_plugin( 'wp-frontend-uploader' );	
