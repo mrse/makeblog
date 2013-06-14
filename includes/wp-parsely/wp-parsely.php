@@ -43,11 +43,11 @@ class Parsely {
     private $MENU_PAGE_TITLE        = "Parse.ly - Dash > Settings"; // Text shown in <title></title> when the settings screen is viewed
     private $OPTIONS_KEY            = "parsely";                    // Defines the key used to store options in the WP database
     private $CAPABILITY             = "manage_options";             // The capability required for the user to administer settings
-    private $GA_ACCOUNT             = "UA-5989141-8";
     private $OPTION_DEFAULTS        = array("apikey" => "",
                                             "tracker_implementation" => "standard",
                                             "content_id_prefix" => "",
                                             "use_top_level_cats" => false,
+                                            "child_cats_as_tags" => false,
                                             "track_authenticated_users" => true,
                                             "lowercase_tags" => true);
 
@@ -131,6 +131,12 @@ class Parsely {
                 $options["use_top_level_cats"] = $_POST["use_top_level_cats"] === "true" ? true : false;
             }
 
+            if ($_POST["child_cats_as_tags"] !== "true" && $_POST["child_cats_as_tags"] !== "false") {
+                array_push($errors, "Value passed for child_cats_as_tags must be either 'true' or 'false'.");
+            } else {
+                $options["child_cats_as_tags"] = $_POST["child_cats_as_tags"] === "true" ? true : false;
+            }
+
             if ($_POST["track_authenticated_users"] !== "true" && $_POST["track_authenticated_users"] !== "false") {
                 array_push($errors, "Value passed for track_authenticated_users must be either 'true' or 'false'.");
             } else {
@@ -212,7 +218,7 @@ class Parsely {
             $parselyPage["pub_date"]    = gmdate("Y-m-d\TH:i:s\Z", get_post_time('U', true));
             $parselyPage["section"]     = $category;
             $parselyPage["author"]      = $author;
-            $parselyPage["tags"]        = $this->getTagsAsString($post->ID);
+            $parselyPage["tags"]        = array_merge($this->getTagsAsString($post->ID), $this->getCategoriesAsTags($post, $parselyOptions));
         } elseif (is_page() && $post->post_status == "publish") {
             $parselyPage["type"]        = "sectionpage";
             $parselyPage["title"]       = $this->getCleanParselyPageValue(get_the_title());
@@ -224,8 +230,8 @@ class Parsely {
             $parselyPage["title"]       = $this->getCleanParselyPageValue("Author - ".$author->data->display_name);
             $parselyPage["link"]        = $currentURL;
         } elseif (is_category()) {
-            $category = get_queried_object();
-            //$category = $category[0];
+            $category = get_the_category();
+            $category = $category[0];
             $parselyPage["type"]        = "sectionpage";
             $parselyPage["title"]       = $this->getCleanParselyPageValue($category->name);
             $parselyPage["link"]        = $currentURL;
@@ -375,11 +381,52 @@ class Parsely {
     }
 
     /**
+     * Returns an array of all the child categories for the current post delimited by a '/' if instructed
+     * to do so via the `child_cats_as_tags` option.
+     */
+    private function getCategoriesAsTags($postObj, $parselyOptions) {
+        $tags = array();
+        if (!$parselyOptions["child_cats_as_tags"]) {
+            return $tags;
+        }
+
+        $categories = get_the_category($postObj->ID);
+        $sectionName = $this->getCategoryName($postObj, $parselyOptions);
+
+        if (!$categories) {
+            return $tags;
+        }
+        foreach($categories as $category) {
+            $delimiter = "--||--";
+            $hierarchy = get_category_parents($category, FALSE, $delimiter);
+            $hierarchy = explode($delimiter, $hierarchy);
+            $hierarchy = array_filter($hierarchy, function ($val) {
+                return $val != '';
+            });
+            if (sizeof($hierarchy) == 1) {
+                // Don't take top level categories
+                continue;
+            }
+            $hierarchy = join("/", $hierarchy);
+            if ($hierarchy == $sectionName) {
+                // Don't take the main section name
+                continue;
+            }
+
+            array_push($tags, $this->getCleanParselyPageValue($hierarchy));
+        }
+        $tags = array_unique($tags);
+
+        return $tags;
+    }
+
+    /**
     * Returns a properly cleaned category name and will optionally use the top-level category name if so instructed
     * to via the `use_top_level_cats` option.
     */
     private function getCategoryName($postObj, $parselyOptions) {
         $category   = get_the_category($postObj->ID);
+        $category   = $parselyOptions["use_top_level_cats"] ? $this->getTopLevelCategory($category[0]->cat_ID) : $category[0]->name;
         // Prevent undefinxed index errors on volume pages.
         if ( in_array( get_post_type(), array('post', 'review', 'project', 'craft' ) ) ) {
             $category   = $parselyOptions["use_top_level_cats"] ? $this->getTopLevelCategory($category[0]->cat_ID) : $category[0]->name;   
@@ -397,12 +444,8 @@ class Parsely {
     */
     private function getTopLevelCategory($categoryId) {
         $categories = get_category_parents($categoryId, FALSE, ",");
-        if ( is_wp_error( $categories ) ) {
-            $topLevel = 1;
-        } else {
-            $categories = explode(",", $categories);
-            $topLevel = $categories[0];    
-        }
+        $categories = explode(",", $categories);
+        $topLevel = $categories[0];
         return $topLevel;
     }
 
