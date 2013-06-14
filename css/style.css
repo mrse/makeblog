@@ -7006,9 +7006,6 @@ hr {
 /* h4.left {
 	text-align:left !important;
 } */
-.thumbs {
-  margin-bottom: 20px;
-}
 /*div.left {
 	width:130px;
 	float:left;
@@ -9013,8 +9010,11 @@ ul#tabs .current > a:hover {
 .tab-content .black {
   display: inline;
 }
-.jsteps {
+.jstep {
   margin-bottom: 40px;
+}
+.jstep ul {
+  margin: 20px 0px 20px 20px;
 }
 .themes {
   margin-left: 30px;
