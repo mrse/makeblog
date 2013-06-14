@@ -8,7 +8,7 @@ jQuery(document).ready(function(){
 		googletag.pubads().refresh();
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, like a boss.');
-		urlref = location.href;
+		var urlref = location.href;
 		PARSELY.beacon.trackPageView({
 			url: urlref,
 			urlref: urlref,
@@ -27,7 +27,7 @@ jQuery(document).ready(function(){
 		googletag.pubads().refresh();
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, like a boss.');
-		urlref = location.href;
+		var urlref = location.href;
 		PARSELY.beacon.trackPageView({
 			url: urlref,
 			urlref: urlref,
@@ -42,7 +42,7 @@ jQuery(document).ready(function(){
 		googletag.pubads().refresh();
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, like a boss.');
-		urlref = location.href;
+		var urlref = location.href;
 		PARSELY.beacon.trackPageView({
 			url: urlref,
 			urlref: urlref,
@@ -55,7 +55,7 @@ jQuery(document).ready(function(){
 		googletag.pubads().refresh();
 		_gaq.push(['_trackPageview']);
 		console.log('Pushed a pageview, and an ad refresh, like a boss.');
-		urlref = location.href;
+		var urlref = location.href;
 		PARSELY.beacon.trackPageView({
 			url: urlref,
 			urlref: urlref,
