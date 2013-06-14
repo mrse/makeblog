@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title><?php bloginfo('name'); ?> | <?php is_home() ? bloginfo('description') : wp_title(''); ?></title>
 		<meta name="description" content="<?php if ( is_single() ) {
-				echo wp_trim_words(strip_shortcodes(get_the_excerpt('...')), 20);
+				echo wp_trim_words( strip_shortcodes( $post->post_content ), 20 );
 			} else {
 				bloginfo('name'); echo " - "; bloginfo('description');
 			}
