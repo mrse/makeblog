@@ -149,4 +149,30 @@ class MAKE_WP_CLI_Command extends WP_CLI_Command {
 			}
 		endwhile;
 	}
+
+	/**
+	 * Inserts the Go: Redirects
+	 *
+	 * @subcommand go
+	 * 
+	 */
+	public function make_go_links_import() {
+		include_once 'post-types/redirects.php';
+		foreach ($redirects as $redirect) {
+			$post = array(
+				'post_title'    => $redirect['title'],
+				'post_name'		=> $redirect['name'],
+				'post_type'  	=> 'go',
+				'post_status'   => 'publish',
+				'post_author'   => 0,
+			);
+			$post_id = wp_insert_post( $post );
+			$meta_id = update_post_meta( $post_id, 'url', $redirect['url'] );
+			if ( !$post_id ) {
+				WP_CLI::warning( "Couldn't insert post" );
+			} else {
+				WP_CLI::success( "Inserted redirect " . $post_id );
+			}
+		}
+	}
 }
