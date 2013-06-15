@@ -133,5 +133,7 @@ include_once dirname(  __FILE__  ) . '/includes/class-author-bio.php';
 // 35. Go Links
 include_once dirname(  __FILE__  ) . '/includes/post-types/go.php';
 
+// 36. Bit.ly Functions
+include_once dirname(  __FILE__  ) . '/includes/bitly.php';
 
 ?>
