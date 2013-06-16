@@ -60,6 +60,7 @@ $field_data = array (
 	'advanced_testgroup' => array (
 		'fields' => array(
 			'url'				=> array(),
+			'bitly_url'			=> array(),
 
 	),
 	'title'		=> 'URL',
