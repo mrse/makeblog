@@ -22,7 +22,23 @@ function make_bitly_url( $url ) {
 
 	// Decode the JSON
 	$json = json_decode( $response, true );
-
 	// Return the URL
 	return $json['results'][$url]['shortUrl'];
+}
+
+/**
+ * Look for the Bit.ly URL, if it doesn't exist, create one
+ */
+function make_generate_redirect_url( $id ) {
+	$redir_url = get_post_meta( $id, 'bitly_url', true );
+	var_dump( $redir_url );
+	if ( !$redir_url ) {
+		$url = get_post_meta( $id, 'url', true );
+		$bitlyurl = make_bitly_url( esc_url( $url ) );
+		if ( $bitlyurl == null ) {
+			$redir_url = $url;
+		} else {
+			$new_bitly_url = update_post_meta( $id, 'bitly_url', $bitlyurl );
+		}	
+	}
 }
