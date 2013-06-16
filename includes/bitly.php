@@ -31,7 +31,6 @@ function make_bitly_url( $url ) {
  */
 function make_generate_redirect_url( $id ) {
 	$redir_url = get_post_meta( $id, 'bitly_url', true );
-	var_dump( $redir_url );
 	if ( !$redir_url ) {
 		$url = get_post_meta( $id, 'url', true );
 		$bitlyurl = make_bitly_url( esc_url( $url ) );
@@ -41,4 +40,5 @@ function make_generate_redirect_url( $id ) {
 			$new_bitly_url = update_post_meta( $id, 'bitly_url', $bitlyurl );
 		}	
 	}
+	return $redir_url;
 }
