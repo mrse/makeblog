@@ -11,4 +11,4 @@
  */
 
 header ('HTTP/1.1 301 Moved Permanently');
-header ('Location: ' . make_bitly_url ( esc_url( get_post_meta( get_the_ID(), 'url', true ) ) ) );
+header ('Location: ' . make_generate_redirect_url( get_the_ID() ) );
