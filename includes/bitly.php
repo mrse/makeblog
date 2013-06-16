@@ -38,6 +38,7 @@ function make_generate_redirect_url( $id ) {
 			$redir_url = $url;
 		} else {
 			$new_bitly_url = update_post_meta( $id, 'bitly_url', $bitlyurl );
+			$redir_url = $bitlyurl;
 		}	
 	}
 	return $redir_url;
