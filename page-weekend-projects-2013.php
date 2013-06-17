@@ -19,7 +19,7 @@ get_header(); ?>
 
 				<div class="span12">
 				
-					<img src="http://placekitten.com/940/320" alt="Placeholder" style="margin-bottom:20px;">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/projects-banner.png" alt="Weekend Projects" style="margin-bottom:-10px;">
 					
 				</div>
 				
@@ -85,7 +85,7 @@ get_header(); ?>
 
 						$args = array(
 							'post_type'			=> 'projects',
-							'title'				=> '<a href="http://blog.makezine.com/the-weekend-projects/">Current Weekend Projects</a>',
+							'title'				=> '<a href="http://blog.makezine.com/the-weekend-projects/">Latest Weekend Projects</a>',
 							'tax_query' => array(
 								array(
 									'taxonomy' => 'flags',
@@ -94,7 +94,7 @@ get_header(); ?>
 								)
 							),
 							'projects_landing'	=> true,
-							'all'				=> true,
+							'all'				=> false,
 							'posts_per_page'	=> 36,
 							'orderby'			=> 'date',
 							'order'				=> 'dsc'
@@ -118,7 +118,7 @@ get_header(); ?>
 							'title'				=> 'Weekend Projects Blog Posts',
 							'tag'				=> 'weekend-projects',
 							'projects_landing'	=> true,
-							'all'				=> true,
+							'all'				=> false,
 							'posts_per_page'	=> 36,
 							'orderby'			=> 'date',
 							'order'				=> 'dsc',
