@@ -19,7 +19,7 @@ get_header(); ?>
 
 				<div class="span12">
 				
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/projects-banner.png" alt="Weekend Projects" style="margin-top:-20px;margin-bottom:-10px;">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/projects-banner.png" alt="Weekend Projects" style="margin-top:-20px;margin-bottom:-20px;">
 					
 				</div>
 				
@@ -37,7 +37,7 @@ get_header(); ?>
 			
 				<div class="span12">
 					
-					<h3 class="heading">Featured Weekend Projects</h3>
+					<h3 class="heading">Featured Project</h3>
 					
 				</div>
 			
@@ -58,8 +58,10 @@ get_header(); ?>
 				</div>
 				
 				<div class="span4">
-				
-					<img src="http://placekitten.com/300/250" alt="" style="margin-bottom:20px;">
+					
+					<a href="http://makezine.com/maker-camp">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/makercamp_300x250.jpg" alt="Maker Camp!" style="margin-bottom:20px;">
+					</a>
 					
 					<div class="sidebar-ad">
 
@@ -115,7 +117,7 @@ get_header(); ?>
 
 						$args = array(
 							'post_type'			=> 'post',
-							'title'				=> 'Weekend Projects Blog Posts',
+							'title'				=> 'Weekend Projects News',
 							'tag'				=> 'weekend-projects',
 							'projects_landing'	=> true,
 							'all'				=> false,
@@ -136,7 +138,7 @@ get_header(); ?>
 			
 				<div class="span12">
 				
-					
+					<?php if ( function_exists( 'sharing_display') ) echo sharing_display(); ?> 
 					
 				</div>
 			
@@ -172,7 +174,7 @@ get_header(); ?>
 					'difficulty'		=> $difficulty,
 					'category__in'		=> 0,
 					'projects_landing'	=> true,
-					'all'				=> true,
+					'all'				=> false,
 					'tax_query' => array(
 						array(
 							'taxonomy' => 'flags',
