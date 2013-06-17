@@ -19,7 +19,7 @@ get_header(); ?>
 
 				<div class="span12">
 				
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/projects-banner.png" alt="Weekend Projects" style="margin-bottom:-10px;">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/projects-banner.png" alt="Weekend Projects" style="margin-top:-20px;margin-bottom:-10px;">
 					
 				</div>
 				
