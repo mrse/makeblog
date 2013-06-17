@@ -113,8 +113,9 @@
 					</div><!--[END #list]-->
 				</div><!--[END .step-contents]-->
 			</div><!--[END .steps-template]-->
+			<?php $step_num = 1; ?>
 			<?php if ( isset( $steps ) && is_array( $steps ) ) : ?>
-				<?php $step_num = 1; foreach( $steps as $step ) : ?>
+				<?php foreach( $steps as $step ) : ?>
 					<div id="step-<?php echo $step_num; ?>" class="step-wrapper">
 						<input type="hidden" name="step-number-<?php echo $step_num; ?>" value="<?php echo ( ! empty( $step->number ) ) ? $step->number : $step_num; ?>">
 						<div class="step-title">
