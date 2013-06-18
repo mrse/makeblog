@@ -10206,6 +10206,27 @@ body.makercamp .button.small-button,
 body.makercamp a.button.small-button {
   line-height: inherit !important;
 }
+body.makercamp .map-wrapper {
+  background: #fff;
+  padding: 20px;
+}
+body.makercamp .map-title {
+  background: #636363;
+  margin: 0 !important;
+  font-size: 24.5px;
+}
+body.makercamp .map-list {
+  color: #333;
+  margin-top: 20px;
+  border: 1px solid #333;
+}
+body.makercamp .map-list th {
+  color: #fff;
+  border-bottom: 1px solid #333;
+}
+body.makercamp .map-list-header {
+  background-color: #636363 !important;
+}
 @media (min-width: 1200px) {
   body.makercamp .new-footer .container,
   body.makercamp.admin-bar .new-footer .container {
