@@ -519,7 +519,7 @@ function make_makercamp_register_summer_program_gf() {
         <div class="errorbox-good">
            <div class="ss-item ss-item-required ss-text">
               <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_1">Program Google+ Link <span class="ss-required-asterisk">*</span></label> <label class="ss-q-help" for="entry_1">Don\'t have a Google+ account for your program? <br/><a href="https://plus.google.com/up/" target="_blank">Create an account</a></label> <input type="text" name="entry.1.single" value="" class="ss-q-short" id="entry_1">
+                 <label class="ss-q-title" for="entry_1">Program Google+ Link </label> <input type="text" name="entry.1.single" value="" class="ss-q-short" id="entry_1">
               </div>
            </div>
         </div>

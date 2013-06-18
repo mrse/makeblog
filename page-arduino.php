@@ -31,7 +31,7 @@
 
 								<h3 class="red">Arduino on the Blog</h3>	
 
-								<div class="new-grid top">
+								<div class="top">
 
 									<div class="row">
 
@@ -53,7 +53,7 @@
 
 													<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 													
-													<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
+													<p><?php echo wp_trim_words( strip_shortcodes( get_the_excerpt() ), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
 
 													<p class="meta">By <?php the_author_posts_link(); ?>, <?php the_date(); ?> @ <?php the_time(); ?></p>
 												
@@ -90,7 +90,7 @@
 
 								<h3 class="red">Arduino Projects</h3>
 
-								<div class="new-grid top">
+								<div class="top">
 
 									<div class="row">
 
@@ -111,7 +111,7 @@
 												<div class="blurb-blurb">
 
 													<h4><a class="aqua" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-													<p><?php echo wp_trim_words(get_the_content(), 16, '...') ; ?></p>
+													<p><?php echo wp_trim_words( strip_shortcodes( get_the_content() ), 16, '...' ); ?></p>
 												
 												</div>
 											

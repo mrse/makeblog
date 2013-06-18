@@ -10502,55 +10502,6 @@ body.makercamp a.button.small-button {
 .home .single .article {
   margin-bottom: 25px;
 }
-<<<<<<< .mine
-
-/*Additional tweaks for footer by Bill Olson*/
-
-body.makercamp .new-footer .about-column-01 {
-width: 90px;
-float: left;
-margin-left: -30px;
-}
-
-body.makercamp .new-footer .about-column-02 {
-float: left;
-width: 130px;
-margin-left: 0;
-}
-
-body.makercamp .new-footer h5 {
-  color:#333;
-  margin-bottom: 0 !important;
-  margin-top: 0 !important;
-}
-
-body.makercamp .new-footer .subscribe h5 {
-  color:#F60B29;
-}
-
-body.makercamp .new-footer p {
-  color:#333;
-font-weight: bold;
-margin-top: 3px;
-padding-right: 3px;
-}
-
-body.makercamp .new-footer .subscribe hr {
-border: none;
-background-color: #F60B29;
-color: #F60B29;
-height: 7px;
-margin-right:3px;
-}
-
-body.makercamp .new-footer a:link, body.makercamp .new-footer a:visited{
-  color:#005D8F
-}
-
-body.makercamp .new-footer .container .row .span12 img {
-  margin-left:-30px;
-  margin-bottom:5px;
-}
 
 /*Additional tweaks for footer by Bill Olson*/
 
