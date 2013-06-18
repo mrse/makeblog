@@ -4,7 +4,7 @@ Plugin Name: Parse.ly - Dash
 Plugin URI: http://www.parsely.com/
 Description: This plugin makes it a snap to add Parse.ly tracking code to your WordPress blog.
 Author: Mike Sukmanowsky (mike@parsely.com)
-Version: 1.4
+Version: 1.5
 Requires at least: 3.0.0
 Author URI: http://www.parsely.com/
 License: GPL2
@@ -35,7 +35,7 @@ Authors: Mike Sukmanowsky (mike@parsely.com)
 */
 
 class Parsely {
-    public static $VERSION          = "1.4";
+    public static $VERSION          = "1.5";
 
     private $NAME;
     private $MENU_SLUG              = "parsely-dash";               // Defines the page param passed to options-general.php
@@ -43,13 +43,14 @@ class Parsely {
     private $MENU_PAGE_TITLE        = "Parse.ly - Dash > Settings"; // Text shown in <title></title> when the settings screen is viewed
     private $OPTIONS_KEY            = "parsely";                    // Defines the key used to store options in the WP database
     private $CAPABILITY             = "manage_options";             // The capability required for the user to administer settings
-    private $GA_ACCOUNT             = "UA-5989141-8";
     private $OPTION_DEFAULTS        = array("apikey" => "",
                                             "tracker_implementation" => "standard",
                                             "content_id_prefix" => "",
                                             "use_top_level_cats" => false,
+                                            "child_cats_as_tags" => false,
                                             "track_authenticated_users" => true,
                                             "lowercase_tags" => true);
+    private $CATEGORY_DELIMITER     = "~-|@|!{-~";
 
     public $IMPLEMENTATION_OPTS     = array("standard" => "Standard",
                                             "dom_free" => "DOM-Free");
@@ -129,6 +130,12 @@ class Parsely {
                 array_push($errors, "Value passed for use_top_level_cats must be either 'true' or 'false'.");
             } else {
                 $options["use_top_level_cats"] = $_POST["use_top_level_cats"] === "true" ? true : false;
+            }
+
+            if ($_POST["child_cats_as_tags"] !== "true" && $_POST["child_cats_as_tags"] !== "false") {
+                array_push($errors, "Value passed for child_cats_as_tags must be either 'true' or 'false'.");
+            } else {
+                $options["child_cats_as_tags"] = $_POST["child_cats_as_tags"] === "true" ? true : false;
             }
 
             if ($_POST["track_authenticated_users"] !== "true" && $_POST["track_authenticated_users"] !== "false") {
@@ -212,7 +219,8 @@ class Parsely {
             $parselyPage["pub_date"]    = gmdate("Y-m-d\TH:i:s\Z", get_post_time('U', true));
             $parselyPage["section"]     = $category;
             $parselyPage["author"]      = $author;
-            $parselyPage["tags"]        = $this->getTagsAsString($post->ID);
+            $parselyPage["tags"]        = array_merge($this->getTagsAsString($post->ID, $parselyOptions),
+                                                      $this->getCategoriesAsTags($post, $parselyOptions));
         } elseif (is_page() && $post->post_status == "publish") {
             $parselyPage["type"]        = "sectionpage";
             $parselyPage["title"]       = $this->getCleanParselyPageValue(get_the_title());
@@ -224,8 +232,8 @@ class Parsely {
             $parselyPage["title"]       = $this->getCleanParselyPageValue("Author - ".$author->data->display_name);
             $parselyPage["link"]        = $currentURL;
         } elseif (is_category()) {
-            $category = get_queried_object();
-            //$category = $category[0];
+            $category = get_the_category();
+            $category = $category[0];
             $parselyPage["type"]        = "sectionpage";
             $parselyPage["title"]       = $this->getCleanParselyPageValue($category->name);
             $parselyPage["link"]        = $currentURL;
@@ -346,12 +354,11 @@ class Parsely {
     /**
     * Returns an array of strings associated with this page or post
     */
-    private function getTagsAsString($postId) {
-        $options = $this->getOptions();
+    private function getTagsAsString($postId, $parselyOptions) {
         $wpTags = wp_get_post_tags($postId);
         $tags = array();
         foreach ($wpTags as $wpTag) :
-            if ($options["lowercase_tags"] === true) :
+            if ($parselyOptions["lowercase_tags"] === true) :
                 $wpTag->name = strtolower($wpTag->name);
             endif;
             array_push($tags, $this->getCleanParselyPageValue($wpTag->name));
@@ -375,20 +382,58 @@ class Parsely {
     }
 
     /**
+     * Returns an array of all the child categories for the current post delimited by a '/' if instructed
+     * to do so via the `child_cats_as_tags` option.
+     */
+    private function getCategoriesAsTags($postObj, $parselyOptions) {
+        $tags = array();
+        if (!$parselyOptions["child_cats_as_tags"]) {
+            return $tags;
+        }
+
+        $categories = get_the_category($postObj->ID);
+        $sectionName = $this->getCategoryName($postObj, $parselyOptions);
+
+        if (empty($categories)) {
+            return $tags;
+        }
+        foreach($categories as $category) {
+            $hierarchy = get_category_parents($category, FALSE, $this->CATEGORY_DELIMITER);
+            $hierarchy = explode($this->CATEGORY_DELIMITER, $hierarchy);
+            $hierarchy = array_filter($hierarchy, function ($val) {
+                return $val != '';
+            });
+            if (sizeof($hierarchy) == 1 && $hierarchy[0] == $sectionName) {
+                // Don't take top level categories if we're already tracking
+                // using a section
+                continue;
+            }
+            $hierarchy = join("/", $hierarchy);
+            if ($parselyOptions["lowercase_tags"] === true) {
+                $hierarchy = strtolower($hierarchy);
+            }
+
+            array_push($tags, $this->getCleanParselyPageValue($hierarchy));
+        }
+        $tags = array_unique($tags);
+
+        return $tags;
+    }
+
+    /**
     * Returns a properly cleaned category name and will optionally use the top-level category name if so instructed
     * to via the `use_top_level_cats` option.
     */
     private function getCategoryName($postObj, $parselyOptions) {
         $category   = get_the_category($postObj->ID);
-        // Prevent undefinxed index errors on volume pages.
-        if ( in_array( get_post_type(), array('post', 'review', 'project', 'craft' ) ) ) {
-            $category   = $parselyOptions["use_top_level_cats"] ? $this->getTopLevelCategory($category[0]->cat_ID) : $category[0]->name;   
-        }
-        // For some odd reason we apparently can still get nulls for a category
-        // so we add this last check and assign a WordPress appropriate default
-        if (is_null($category)) {
+
+        // Customers with different post types may not have categories
+        if (!empty($category)) {
+            $category   = $parselyOptions["use_top_level_cats"] ? $this->getTopLevelCategory($category[0]->cat_ID) : $category[0]->name;
+        } else {
             $category = "Uncategorized";
         }
+
         return $this->getCleanParselyPageValue($category);
     }
 
@@ -396,13 +441,9 @@ class Parsely {
     * Returns the top most category in the hierarchy given a category ID.
     */
     private function getTopLevelCategory($categoryId) {
-        $categories = get_category_parents($categoryId, FALSE, ",");
-        if ( is_wp_error( $categories ) ) {
-            $topLevel = 1;
-        } else {
-            $categories = explode(",", $categories);
-            $topLevel = $categories[0];    
-        }
+        $categories = get_category_parents($categoryId, FALSE, $this->CATEGORY_DELIMITER);
+        $categories = explode($this->CATEGORY_DELIMITER, $categories);
+        $topLevel = $categories[0];
         return $topLevel;
     }
 
@@ -411,7 +452,6 @@ class Parsely {
     * firstname + lastname, and finally the nickname.
     */
     private function getAuthorName($postObj) {
-        $author = get_user_meta($postObj->post_author, 'display_name', true);
         $author = coauthors( null, null, null, null, false );
         if (!empty($author)) {
             return $this->getCleanParselyPageValue($author);
@@ -471,9 +511,13 @@ class Parsely {
         }
         update_option($this->OPTIONS_KEY, $options);
     }
-    
+
     private function upgradePluginToVersion1_4($options) {
         $this->upgradePluginToVersion1_3($options);
+    }
+
+    private function upgradePluginToVersion1_5($options) {
+        $this->upgradePluginToVersion1_4($options);
     }
 }
 

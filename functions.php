@@ -130,6 +130,12 @@ if ( defined('WP_CLI') && WP_CLI )
 // 34. Author Bio
 include_once dirname(  __FILE__  ) . '/includes/class-author-bio.php';
 
-// 35. Maker Camp Map
+// 35. Go Links
+include_once dirname(  __FILE__  ) . '/includes/post-types/go.php';
+
+// 36. Bit.ly Functions
+include_once dirname(  __FILE__  ) . '/includes/bitly.php';
+
+// 37. Maker Camp Map
 include_once dirname( __FILE__ ) . '/includes/google-maps.php';
 ?>

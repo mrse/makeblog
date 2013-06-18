@@ -606,5 +606,3 @@ function make_makercamp_register_summer_program_gf() {
 add_shortcode('makercamp_register_summer_program_form', 'make_makercamp_register_summer_program_gf' );
 
 
-
-
