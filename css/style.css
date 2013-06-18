@@ -10502,3 +10502,255 @@ body.makercamp a.button.small-button {
 .home .single .article {
   margin-bottom: 25px;
 }
+<<<<<<< .mine
+
+/*Additional tweaks for footer by Bill Olson*/
+
+body.makercamp .new-footer .about-column-01 {
+width: 90px;
+float: left;
+margin-left: -30px;
+}
+
+body.makercamp .new-footer .about-column-02 {
+float: left;
+width: 130px;
+margin-left: 0;
+}
+
+body.makercamp .new-footer h5 {
+  color:#333;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+body.makercamp .new-footer .subscribe h5 {
+  color:#F60B29;
+}
+
+body.makercamp .new-footer p {
+  color:#333;
+font-weight: bold;
+margin-top: 3px;
+padding-right: 3px;
+}
+
+body.makercamp .new-footer .subscribe hr {
+border: none;
+background-color: #F60B29;
+color: #F60B29;
+height: 7px;
+margin-right:3px;
+}
+
+body.makercamp .new-footer a:link, body.makercamp .new-footer a:visited{
+  color:#005D8F
+}
+
+body.makercamp .new-footer .container .row .span12 img {
+  margin-left:-30px;
+  margin-bottom:5px;
+}
+
+/*Additional tweaks for footer by Bill Olson*/
+
+body.makercamp .new-footer .about-column-01 {
+width: 90px;
+float: left;
+margin-left: -30px;
+}
+
+body.makercamp .new-footer .about-column-02 {
+float: left;
+width: 130px;
+margin-left: 0;
+}
+
+body.makercamp .new-footer h5 {
+  color:#333;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+body.makercamp .new-footer .subscribe h5 {
+  color:#F60B29;
+}
+
+body.makercamp .new-footer p {
+  color:#333;
+font-weight: bold;
+margin-top: 3px;
+padding-right: 3px;
+}
+
+body.makercamp .new-footer .subscribe hr {
+border: none;
+background-color: #F60B29;
+color: #F60B29;
+height: 7px;
+margin-right:3px;
+}
+
+body.makercamp .new-footer a:link, body.makercamp .new-footer a:visited{
+  color:#005D8F
+}
+
+body.makercamp .new-footer .container .row .span12 img {
+  margin-left:-30px;
+  margin-bottom:5px;
+}
+
+.contact-form label {
+  display: block;
+  *zoom: 1;
+}
+.contact-form label:before,
+.contact-form label:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.contact-form label:after {
+  clear: both;
+}
+.contact-form div {
+  *zoom: 1;
+}
+.contact-form div:before,
+.contact-form div:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.contact-form div:after {
+  clear: both;
+}
+.contact-form .pushbutton-wide {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  *background-color: #e6e6e6;
+  border: 1px solid #cccccc;
+  *border: 0;
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  *margin-left: .3em;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #006dcc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #0044cc;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.contact-form .pushbutton-wide:hover,
+.contact-form .pushbutton-wide:focus,
+.contact-form .pushbutton-wide:active,
+.contact-form .pushbutton-wide.active,
+.contact-form .pushbutton-wide.disabled,
+.contact-form .pushbutton-wide[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+.contact-form .pushbutton-wide:active,
+.contact-form .pushbutton-wide.active {
+  background-color: #cccccc \9;
+}
+.contact-form .pushbutton-wide:first-child {
+  *margin-left: 0;
+}
+.contact-form .pushbutton-wide:hover,
+.contact-form .pushbutton-wide:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+  -webkit-transition: background-position 0.1s linear 1s linear;
+  -moz-transition: background-position 0.1s linear 1s linear;
+  -o-transition: background-position 0.1s linear 1s linear;
+  -ms-transition: background-position 0.1s linear 1s linear;
+  transition: background-position 0.1s linear 1s linear;
+}
+.contact-form .pushbutton-wide:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.contact-form .pushbutton-wide.active,
+.contact-form .pushbutton-wide:active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+}
+.contact-form .pushbutton-wide.disabled,
+.contact-form .pushbutton-wide[disabled] {
+  cursor: default;
+  background-image: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.contact-form .pushbutton-wide .label,
+.contact-form .pushbutton-wide .badge {
+  position: relative;
+  top: -1px;
+}
+.contact-form .pushbutton-wide:hover,
+.contact-form .pushbutton-wide:focus,
+.contact-form .pushbutton-wide:active,
+.contact-form .pushbutton-wide.active,
+.contact-form .pushbutton-wide.disabled,
+.contact-form .pushbutton-wide[disabled] {
+  color: #ffffff;
+  background-color: #0044cc;
+  *background-color: #003bb3;
+}
+.contact-form .pushbutton-wide:active,
+.contact-form .pushbutton-wide.active {
+  background-color: #003399 \9;
+}
+.contact-form .pushbutton-wide .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}

@@ -605,6 +605,25 @@ function make_makercamp_register_summer_program_gf() {
 }
 add_shortcode('makercamp_register_summer_program_form', 'make_makercamp_register_summer_program_gf' );
 
+// Maker Camp Sign Up Form
 
+function maker_camp_sign_up( $atts, $content = null ) {
+	return '
+		      <form action="http://newsletter.makezine.com/t/r/s/jkeiit/" method="post" id="subForm sign-up">
+         <div>
+            <span class="label"><label for="name">Name:</label></span>
+            <span><input type="text" name="cm-name" id="name" size="25" /></span>
+         </div>
+         <div>
+            <span class="label"><label for="jkeiit-jkeiit">Email Address:</label></span>
+            <span><input type="text" name="cm-jkeiit-jkeiit" id="jkeiit-jkeiit" size="25" /></span>
+         </div>
+         <span class="button blue">
+         <input" type="submit" value="Sign Up for Camp" /></span>
+   </div>
+</div>
+</form>';
+}
+add_shortcode( 'maker-camp-sign-up', 'maker_camp_sign_up' );
 
 
