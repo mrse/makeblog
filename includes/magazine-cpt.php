@@ -128,26 +128,26 @@ function make_post_loop( $args ) {
 
 	while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
-		<div <?php post_class( 'row'); ?>>
+		<div <?php post_class(); ?>>
 		
-			<div class="video-box">
+			<div class="media video-box">
 
-				<div class="span4">
+				<div class="media-object pull-left">
 					<?php $type = get_post_type( $post ); ?>
 					<?php echo '<span class="' . $type .'-icon"></span>';
 					$image = get_post_custom_values('Image', $post->ID);
 					if ( !empty( $image[0] ) )  {
 						echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
 					} else {
-						get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb', 'image_class' => 'hide-thumbnail' ) );
+						get_the_image( array( 'image_scan' => true, 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail pull-left' ) );
 					} ?>
 				</div>
 
-				<div class="span8">
+				<div class="media-body">
 
 					<h4><a class="" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
-					<p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
+					<p><?php echo wp_trim_words(get_the_excerpt(), 8, '...'); ?></p>
 
 					<p class="meta">
 						<?php 
@@ -178,8 +178,6 @@ function make_post_loop( $args ) {
 					<? }	?>
 					
 				</div>
-				
-				<div class="clearfix"></div>
 			
 			</div>
 			
