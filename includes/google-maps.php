@@ -12,7 +12,7 @@
 			wp_enqueue_script( 'make-google-maps-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAujQEAqvu3Mrv4_E1ySsKuyk650i9HhzQ&sensor=true', array( 'jquery' ) );
 			wp_enqueue_script( 'make-makercamp-google-maps', get_stylesheet_directory_uri() . '/js/google-maps.js', array( 'make-google-maps-api' ), '1.0' );
 			wp_localize_script( 'make-makercamp-google-maps', 'makercamp', array(
-				'addresses' => str_replace( '&quot;', '"', esc_attr( $addresses[0] ) ),
+				'addresses' => esc_attr( $addresses[0] ),
 			) );
 		}
 	}

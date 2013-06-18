@@ -56,7 +56,6 @@
 								?>
 							</tbody>
 						</table>
-						<?php //echo '<pre>'; var_dump(  $addresses ); echo '</pre>'; ?>
 					</div>
 				</div>
 			</div>
