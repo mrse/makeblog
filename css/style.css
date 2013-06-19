@@ -10028,19 +10028,35 @@ body.makercamp .schedule-content #schedule .active a {
 }
 body.makercamp .schedule-content .maker {
   position: relative;
+  display: block;
 }
 body.makercamp .schedule-content .maker .project-photo {
   float: left;
-  width: 20%;
+  width: 17%;
 }
 body.makercamp .schedule-content .maker .project-body {
   float: left;
-  width: 80%;
+  width: 61%;
+  margin-right: 22px;
 }
-body.makercamp .schedule-content .maker .materials-link {
-  position: absolute;
-  top: 0;
-  right: 0;
+body.makercamp .schedule-content .maker .project-body .project-title {
+  font-size: 1.285714286em;
+  line-height: 1em;
+  color: #005d8f;
+  margin: 5px 0 !important;
+}
+body.makercamp .schedule-content .maker .project-body .date,
+body.makercamp .schedule-content .maker .project-body .mentor {
+  font-size: 1.142857143em;
+  line-height: 1em;
+  font-weight: normal;
+  color: #252525;
+  margin: 5px 0 !important;
+  display: inline-block;
+}
+body.makercamp .schedule-content .maker .project-link {
+  float: left;
+  width: 20%;
 }
 body.makercamp .faq-content {
   margin-bottom: 20px;

@@ -69,8 +69,13 @@
 	 */
 	function make_mc_project_schedule_item( $atts, $content ) {
 		extract( shortcode_atts( array(
+			'date'  => '',        // String. The date as you want it to appear
 			'img'   => '', 		  // String. URL to the project image
 			'title' => '', 		  // String. Enter the title of the project
+			'mentor' => '', 	  // String. Enter the name of the mentot
+			'mentor_link' => '',  // URL.    Enter the mentors URL to link to.
+			'link'  => '', 		  // String. Add in the URL to where you want the far right button to link to
+			'link_title' => 'View on G+',    // URL. This variable takes the text that will display in the button on the far right
 			'class' => '', 		  // String. Allows you to add extra classes. Separate each class with a space.
 		), $atts ) );
 
@@ -83,9 +88,9 @@
 
 		// Check if new classes are tossed at us.
 		if ( ! empty( $class ) ) {
-			$output = '<div class="maker ' . esc_attr( $class ) . '">';
+			$output = '<div class="maker ' . esc_attr( $class ) . ' clearfix">';
 		} else {
-			$output = '<div class="maker">';
+			$output = '<div class="maker clearfix">';
 		}
 
 		// Load the project photo
@@ -98,9 +103,52 @@
 		if ( ! empty( $title ) )
 			$output .= '<h2 class="project-title">' . esc_attr( $title ) . '</h2>';
 
+		if ( ! empty( $date ) )
+			$output .= '<h3 class="date">' . esc_attr( $date ) . '</h3> ';
+
+		if ( ! empty( $mentor ) ) {
+			$output .= '<h3 class="mentor">';
+
+			$output .= ' &mdash; Make Mentor: ';
+
+			if ( ! empty( $mentor_link ) )
+				$output .= '<a href="' . esc_url( $mentor_link ) . '">';
+
+			$output .= $mentor;
+
+			if ( ! empty( $mentor_link ) )
+				$output .= '</a>';
+
+			$output .= '</h3>';
+		}
+
+		// Add the main body paragraph
 		$output .= wp_kses_post( do_shortcode( $content ) );
 
 		// Close the project body
+		$output .= '</div>';
+
+		$output .= '<div class="project-link">';
+
+		// Check if a link is set or not and display the right HTML
+		if ( ! empty( $link ) ) {
+			$output .= '<a href="' . esc_url( $link ) . '" class="button blue small-button';
+		} else {
+			$output .= '<p class="button blue small-button';
+		}
+
+		$output .= '">';
+
+		$output .= esc_attr( $link_title );
+
+		// Check again and close the needed HTML if a link is set or not
+		if ( ! empty( $link ) ) {
+			$output .= '</a>';
+		} else {
+			$output .= '</p>';
+		}
+
+		// Close the project link
 		$output .= '</div>';
 		
 		// Put an end to this madness. Close the .maker class
@@ -135,7 +183,7 @@
 		);
 
 		if ( ! empty( $content ) ) {
-			$output .= '<a href="#TB_inline?width=' . $width . '&amp;height=' . $height . '&amp;inlineId=' . $link_id . '" class="button small-button red pull-right thickbox materials-link';
+			$output .= '<a href="#TB_inline?width=' . $width . '&amp;height=' . $height . '&amp;inlineId=' . $link_id . '" class="thickbox materials-link';
 
 			// Check if we have a class to add
 			if ( ! empty( $class ) )
