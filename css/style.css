@@ -9991,13 +9991,42 @@ body.makercamp .lower-gradation {
   padding: 20px 0;
 }
 body.makercamp .new-footer .subscribe h5 {
+  color: #F60B29;
   margin-top: -20px !important;
+}
+body.makercamp .new-footer .subscribe hr {
+  border: none;
+  background-color: #F60B29;
+  color: #F60B29;
+  height: 7px;
+  margin-right: 5px;
+}
+body.makercamp .new-footer a:link,
+body.makercamp .new-footer body.makercamp .new-footer a:visited {
+  color: #005d8f;
+}
+body.makercamp .new-footer p {
+  color: #333;
+  font-weight: bold;
+  margin-top: 3px;
+  padding-right: 3px;
 }
 body.makercamp .new-footer h5 {
   font-size: 16px;
   font-weight: bold;
   text-transform: none;
-  color: #000;
+  color: #333;
+  margin-bottom: 0 !important;
+}
+body.makercamp .new-footer .about-column-01 {
+  width: 90px;
+  float: left;
+  margin-left: -30px;
+}
+body.makercamp .new-footer .about-column-02 {
+  width: 130px;
+  float: left;
+  margin-left: 0;
 }
 body.makercamp .schedule-content {
   background: #fff;
@@ -10033,77 +10062,20 @@ body.makercamp .schedule-content #schedule .active a {
   padding-bottom: 9px;
 }
 body.makercamp .schedule-content .maker {
-  margin-right: 22px !important;
-  margin-left: 0 !important;
+  position: relative;
 }
-body.makercamp .schedule-content .maker.first {
-  margin-left: 0px !important;
-}
-body.makercamp .schedule-content .maker.open .more-info .title {
-  color: #000;
-}
-body.makercamp .schedule-content .maker h5 {
-  margin-bottom: 0 !important;
-}
-body.makercamp .schedule-content .maker h6 {
-  margin-top: 0 !important;
-}
-body.makercamp .schedule-content .maker .project-type {
-  text-transform: uppercase;
-  font-weight: 100;
-}
-body.makercamp .schedule-content .maker .more-info {
-  cursor: pointer;
-}
-body.makercamp .schedule-content .maker .more-info .title {
-  color: #005d8f;
-}
-body.makercamp .schedule-content .maker .more-info:hover {
-  color: #005d8f;
-  text-decoration: underline;
-}
-body.makercamp .schedule-content .maker .more-info:hover .title {
-  color: #000;
-}
-body.makercamp .schedule-content .maker-description {
-  display: none;
-  position: absolute;
-  left: 0;
-  background: #fff;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #e0e0e0;
-  border-top: 1px solid #ababab;
-  box-shadow: 0 15px 17px -3px rgba(0, 0, 0, 0.3);
-  padding: 10px;
-  box-shadow: 0 8px 17px -3px rgba(0, 0, 0, 0.3);
-  width: 96%;
-}
-body.makercamp .schedule-content .maker-description.active {
-  display: block;
-}
-body.makercamp .schedule-content .maker-description .desc-body {
+body.makercamp .schedule-content .maker .project-photo {
   float: left;
-  width: 78%;
+  width: 20%;
 }
-body.makercamp .schedule-content .maker-description .desc-body .close-btn {
+body.makercamp .schedule-content .maker .project-body {
+  float: left;
+  width: 80%;
+}
+body.makercamp .schedule-content .maker .materials-link {
   position: absolute;
-  right: 11px;
-  bottom: 17px;
-  color: #005d8f;
-  color: rgba(0, 93, 143, 0.5);
-}
-body.makercamp .schedule-content .maker-description .desc-feat {
-  float: right;
-  width: 19%;
-}
-body.makercamp .schedule-content .maker-description .desc-feat .button.small-button {
-  font-size: 1.1em;
-}
-body.makercamp .schedule-content .maker-description .desc-feat .close-description {
-  cursor: pointer;
-  padding: 30px;
-  font-weight: bold;
-  color: #043b7a;
+  top: 0;
+  right: 0;
 }
 body.makercamp .faq-content {
   margin-bottom: 20px;
@@ -10232,6 +10204,40 @@ body.makercamp .map-list th {
 body.makercamp .map-list-header {
   font-weight: normal;
   background-color: #011f43 !important;
+}
+/*Footer tweaks by Bill Olson*/
+body.makercamp .new-footer .about-column-01 {
+width: 90px;
+float: left;
+margin-left: -30px;
+}
+body.makercamp .new-footer .about-column-02 {
+float: left;
+width: 130px;
+margin-left: 0;
+}
+body.makercamp .new-footer h5 {
+  color:#333;
+  margin-bottom: 0 !important;
+}
+body.makercamp .new-footer .subscribe h5 {
+  color:#F60B29;
+}
+body.makercamp .new-footer p {
+  color:#333;
+font-weight: bold;
+margin-top: 3px;
+padding-right: 3px;
+}
+body.makercamp .new-footer .subscribe hr {
+border: none;
+background-color: #F60B29;
+color: #F60B29;
+height: 7px;
+margin-right:3px;
+}
+body.makercamp .new-footer a:link, body.makercamp .new-footer a:visited{
+  color:#005D8F
 }
 @media (min-width: 1200px) {
   body.makercamp .new-footer .container,

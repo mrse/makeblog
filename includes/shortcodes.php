@@ -607,23 +607,28 @@ add_shortcode('makercamp_register_summer_program_form', 'make_makercamp_register
 
 // Maker Camp Sign Up Form
 
-function maker_camp_sign_up( $atts, $content = null ) {
+function maker_camp_registration( $atts, $content = null ) {
 	return '
-		      <form action="http://newsletter.makezine.com/t/r/s/jkeiit/" method="post" id="subForm sign-up">
-         <div>
-            <span class="label"><label for="name">Name:</label></span>
-            <span><input type="text" name="cm-name" id="name" size="25" /></span>
-         </div>
-         <div>
-            <span class="label"><label for="jkeiit-jkeiit">Email Address:</label></span>
-            <span><input type="text" name="cm-jkeiit-jkeiit" id="jkeiit-jkeiit" size="25" /></span>
-         </div>
-         <span class="button blue">
-         <input" type="submit" value="Sign Up for Camp" /></span>
-   </div>
-</div>
-</form>';
+		<form class="form-stacked" action="http://newsletter.makezine.com/t/r/s/jkeiit/" method="post" id="subForm sign-up">
+			<fieldset>
+				<div class="clearfix">
+					<label for="name">Name:</label>
+					<div class="input">
+						<input class="xlarge" id="name" name="cm-name" size="30" type="text">
+					</div>
+				</div>
+				<!-- /clearfix -->
+				<div class="clearfix">
+					<label for="jkeiit-jkeiit">Email:</label>
+					<div class="input">
+						<input class="xlarge" id="jkeiit-jkeiit" name="cm-jkeiit-jkeiit" size="30" type="text">
+					</div>
+				</div>
+				<!-- /clearfix -->
+			</fieldset>
+			<div class="actions">
+				<button type="submit" class="button blue">Sign Up for Camp</button>
+			</div>
+		</form>';
 }
-add_shortcode( 'maker-camp-sign-up', 'maker_camp_sign_up' );
-
-
+add_shortcode( 'maker_camp_sign_up', 'maker_camp_registration' );

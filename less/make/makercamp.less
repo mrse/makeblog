@@ -235,15 +235,43 @@ body.makercamp {
 	.new-footer {
 		.subscribe {
 			h5 {
+				color:#F60B29;
 				margin-top:-20px !important;
 			}
+			hr {
+				border: none;
+				background-color: #F60B29;
+				color: #F60B29;
+				height: 7px;
+				margin-right:5px;
+				}
 		}
+		a:link, body.makercamp .new-footer a:visited{
+		    color:#005D8F
+		    }
+		p {
+			color:#333;
+			font-weight: bold;
+			margin-top: 3px;
+			padding-right: 3px;
+			}
 		h5 {
 			font-size:16px;
 			font-weight:bold;
 			text-transform:none;
-			color:#000;
+			color:#333;
+			margin-bottom: 0 !important;
 		}
+		.about-column-01{
+		width: 90px;
+		float: left;
+		margin-left: -30px;	
+		}
+		.about-column-02{
+		width: 130px;
+		float: left;
+		margin-left: 0;	
+		}  
 	}
 
 	// Schedule Page
@@ -279,64 +307,19 @@ body.makercamp {
 			}
 		}
 		.maker {
-			margin-right:22px !important;
-			margin-left:0 !important;
-			&.first { margin-left:0px !important; }
-			&.open {
-				.more-info .title { color:#000; }
+			position:relative;
+			.project-photo {
+				.pull-left;
+				width:20%;
 			}
-			h5 { margin-bottom:0 !important; }
-			h6 { margin-top:0 !important; }
-			.project-type {
-				text-transform:uppercase;
-				font-weight:100;
+			.project-body {
+				.pull-left;
+				width:80%;
 			}
-			.more-info { 
-				cursor:pointer;
-				.title { color:#005d8f; }
-				&:hover {
-					color:#005d8f;
-					text-decoration:underline;
-					.title { color:#000; }
-				}
-			}
-		}
-		.maker-description {
-			display:none;
-			position:absolute;
-			left:0;
-			background:#fff;
-			background:rgba(255,255,255,.95);
-			border:1px solid #e0e0e0;
-			border-top: 1px solid #ababab;
-			box-shadow: 0 15px 17px -3px rgba(0, 0, 0, 0.3);
-			padding:10px;
-			box-shadow:0 8px 17px -3px rgba(0,0,0,.3);
-			width:96%;
-			&.active { display:block; }
-			.desc-body {
-				float:left;
-				width:78%;
-				.close-btn {
-					position:absolute;
-					right:11px;
-					bottom:17px;
-					color:#005d8f;
-					color:rgba(0,93,143,.5);
-				}
-			}
-			.desc-feat {
-				float:right;
-				width:19%;
-				.button.small-button {
-					font-size:1.1em;
-				}
-				.close-description {
-					cursor:pointer;
-					padding:30px;
-					font-weight:bold;
-					color:#043b7a;
-				}
+			.materials-link {
+				position:absolute;
+				top:0;
+				right:0;
 			}
 		}
 	}
