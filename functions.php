@@ -136,4 +136,6 @@ include_once dirname(  __FILE__  ) . '/includes/post-types/go.php';
 // 36. Bit.ly Functions
 include_once dirname(  __FILE__  ) . '/includes/bitly.php';
 
+// 37. Maker Camp Map
+include_once dirname( __FILE__ ) . '/includes/google-maps.php';
 ?>
