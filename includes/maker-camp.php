@@ -186,14 +186,14 @@
 		);
 
 		if ( ! empty( $content ) ) {
-			$output .= '<a href="#TB_inline?width=' . $width . '&amp;height=' . $height . '&amp;inlineId=' . $link_id . '" class="thickbox materials-link';
+			$output .= '<a href="#TB_inline?width=' . esc_url( $width ) . '&amp;height=' . esc_url( $height ) . '&amp;inlineId=' . esc_url( $link_id ) . '" class="thickbox materials-link';
 
 			// Check if we have a class to add
 			if ( ! empty( $class ) )
-				$output .= ' ' . $class;
+				$output .= ' ' . esc_attr( $class );
 
-			$output .= '">' . $link_name . '</a>';
-			$output .= '<div id="' . $link_id . '" class="hidden materials-modal">';
+			$output .= '">' . esc_html( $link_name ) . '</a>';
+			$output .= '<div id="' . esc_attr( $link_id ) . '" class="hidden materials-modal">';
 				$output .= wp_kses_post( do_shortcode( $content ) );
 			$output .= '</div>';
 
