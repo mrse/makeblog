@@ -55,7 +55,7 @@
 					<div class="pull-left">
 						<ul class="nav">
 							<li class="active"><a href="http://makezine.com">MAKE</a></li>
-							<li class=""><a href="http://blog.makezine.com">Blog</a></li>
+							<li class=""><a href="http://makezine.com/blog/">Blog</a></li>
 							<li class=""><a href="http://makezine.com/magazine">Magazine</a></li>
 							<li class=""><a href="http://makerfaire.com">Maker Faire</a></li>
 							<li class=""><a href="http://makeprojects.com">Make: Projects</a></li>
@@ -64,7 +64,7 @@
 						</ul>
 					</div>
 					<div class="pull-right">
-						<form action="http://blog.makezine.com/search/" class="form navbar-search">
+						<form action="http://makezine.com/search/" class="form navbar-search">
 							<input type="text" class="span2 search-query" style="width:126px;" name="q" placeholder="" />
 							<input type="submit" class="btn btn-primary" style="height:28px" value="Search" />
 						</form>
@@ -133,9 +133,9 @@
 
 					<ul class="navi">
 						
-						<li class="active"><a href="http://blog.makezine.com">Blog</a></li>
+						<li class="active"><a href="http://makezine.com/blog/">Blog</a></li>
 						<li><a href="http://makezine.com/magazine">Magazine</a></li>
-						<li><a href="http://makeprojects.com">Projects</a></li>
+						<li><a href="http://makezine.com/projects">Projects</a></li>
 						<li><a href="http://kits.makezine.com">Reviews</a></li>
 						<li><a href="http://www.makershed.com/?Click=19208">Shop</a></li>
 					</ul>
@@ -158,7 +158,7 @@
 
 					<div class="pull-right">
 
-						<a href="http://blog.makezine.com/topics"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/see_all_topics.png" alt="See All Topics" class="see pull-right" /></a><!--  -->
+						<a href="http://makezine.com/topics"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/see_all_topics.png" alt="See All Topics" class="see pull-right" /></a><!--  -->
 
 					</div>
 

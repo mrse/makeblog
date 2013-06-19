@@ -43,7 +43,7 @@
 					<div class="pull-left">
 						<ul class="nav">
 							<li class="active"><a href="http://makezine.com">MAKE</a></li>
-							<li class=""><a href="http://blog.makezine.com">Blog</a></li>
+							<li class=""><a href="http://makezine.com/blog/">Blog</a></li>
 							<li class=""><a href="http://makezine.com/magazine">Magazine</a></li>
 							<li class=""><a href="http://makerfaire.com">Maker Faire</a></li>
 							<li class=""><a href="http://makezine.com">Make: Projects</a></li>
@@ -119,8 +119,8 @@
 					<h1><a href="http://blog.makezine.com/craftzine"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/craft-logo.png" alt="MAKE" title="MAKE" /></a></h1>
 
 					<ul class="navi">
-						<li class="active blog-link"><a href="http://blog.makezine.com/craft/"><small>Craft</small><br />Blog</a></li>
-						<li class="blog-link"><a href="http://blog.makezine.com"><small>Make</small><br />Blog</a></li>
+						<li class="active blog-link"><a href="http://makezine.com/craft/"><small>Craft</small><br />Blog</a></li>
+						<li class="blog-link"><a href="http://makezine.com/blog/"><small>Make</small><br />Blog</a></li>
 						<li><a href="http://makezine.com/magazine">Magazine</a></li>
 						<li><a href="http://makeprojects.com">Projects</a></li>
 						<li><a href="http://kits.makezine.com">Reviews</a></li>
@@ -145,7 +145,7 @@
 
 					<div class="pull-right">
 
-						<a href="http://blog.makezine.com/topics"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/see_all_topics.png" alt="See All Topics" class="see pull-right" /></a><!--  -->
+						<a href="http://makezine.com/topics"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/see_all_topics.png" alt="See All Topics" class="see pull-right" /></a><!--  -->
 
 					</div>
 
