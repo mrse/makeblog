@@ -19,7 +19,6 @@
 		<div class="main-content">
 			<div class="container map-wrapper">
 				<div class="row">
-					<div class="span12"><h1 class="map-title text-center">Find A Maker Camp Near You</h1></div>
 					<?php the_content(); ?>
 				</div>
 				<div class="row">
@@ -29,10 +28,10 @@
 								<tr>
 									<th style="width:55px;">Country</th>
 									<th style="width:75px;">State</th>
-									<th style="width:140px;">Program</th>
-									<th style="width:180px;">Organization</th>
-									<th style="width:228px;">Address</th>
-									<th style="width:81px;">City</th>
+									<th style="width:140px;">City</th>
+									<th style="width:180px;">Address</th>
+									<th style="width:228px;">Organization</th>
+									<th style="width:81px;">Program Name</th>
 									<th style="width:25px;">&nbsp;</th>
 								</tr>
 							</thead>
@@ -43,13 +42,11 @@
 											<tr>
 												<td><?php echo esc_attr( $address['Work Country'] ); ?></td>
 												<td><?php echo esc_attr( $address['Work State'] ); ?></td>
-												<td><?php echo esc_attr( $address['Program Name'] ); ?></td>
-												<td>
-													<?php echo esc_attr( $address['Company'] ); ?>
-												</td>
-												<td><?php echo esc_attr( $address['Work Address 1'] ); ?></td>
 												<td><?php echo esc_attr( $address['Work City'] ); ?></td>
-												<td></td>
+												<td><?php echo esc_attr( $address['Work Address 1'] ); ?></td>
+												<td><?php echo esc_attr( $address['Company'] ); ?></td>
+												<td><?php echo esc_attr( $address['Program Name'] ); ?></td>
+												<td><a href="<?php echo esc_attr( $address['google-plus'] ); ?>"><img src="http://makezineblog.files.wordpress.com/2013/06/google-plus.png"></a></td>
 											</tr>
 										<?php endforeach;
 									endif;
