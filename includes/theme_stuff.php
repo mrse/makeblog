@@ -1079,3 +1079,14 @@ function make_filter_tiny_mce_before_init( $options ) {
 
 	return $options; 
 }
+
+add_filter( 'wpcom_sitemap_post_types', 'make_sitemap_add_gallery_post_type' );
+
+function make_sitemap_add_gallery_post_type( $post_types ) {
+	$post_types[] = 'gallery';
+	$post_types[] = 'video';
+	$post_types[] = 'craft';
+	$post_types[] = 'review';
+	$post_types[] = 'projects';
+	return $post_types;
+}
