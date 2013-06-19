@@ -9947,17 +9947,14 @@ body.makercamp .lower-area h4 {
   line-height: 32px;
 }
 body.makercamp .feature-box {
-<<<<<<< .mine
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 60px;
   min-height: 355px;
-=======
   padding-left: 25px;
   padding-right: 25px;
   padding-bottom: 50px;
   min-height: 330px;
->>>>>>> .r109434
   text-align: center;
 }
 body.makercamp .feature-box p {
@@ -9984,11 +9981,9 @@ body.makercamp .feature-box img.register {
   margin: 70px 0;
 }
 body.makercamp .features-box-content {
-<<<<<<< .mine
   min-height: 285px;
-=======
   min-height: 253px;
->>>>>>> .r109434
+  min-height: 253px;
   margin-bottom: 20px;
 }
 body.makercamp .lower-gradation {
