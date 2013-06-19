@@ -835,7 +835,7 @@ function make_get_better_tag_title() {
 function make_rss_post_thumbnail($content) {
 	global $post;
 	if( has_post_thumbnail($post->ID) ) {
-		$content =  '<a href="' . get_permalink() . '">' . get_the_post_thumbnail($post->ID, 'archive-thumb', array( 'style' => 'float:left; margin:0 15px 15px 0;' ) ) . '</a>' . get_the_excerpt() . '<p><a href="' . get_permalink() . '">Read the full article on MAKE</a></p>';
+		$content =  '<a href="' . get_permalink() . '">' . get_the_post_thumbnail($post->ID, 'archive-thumb', array( 'style' => 'float:left; margin:0 15px 15px 0;' ) ) . '</a>' . get_the_excerpt() . '<p><a href="' . get_permalink() . '">Read more on MAKE</a></p>';
 	}
 	return $content;
 }
