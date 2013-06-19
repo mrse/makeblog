@@ -66,6 +66,58 @@ if ( function_exists( 'vip_redirects' ) ) {
 	) );
 }
 
+if ( function_exists( 'vip_redirects' ) ) {
+	$redirects = array(
+		'/subscribe' 				=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
+		'/renew'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
+		'/paybill'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
+		'/account'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
+		'/premier'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
+		'/coolgifts'				=> 'https://readerservices.makezine.com/backissue/subbi.aspx?PC=MK&AN=&Zp=&PK=',
+		'/gift'						=> 'https://readerservices.makezine.com/mk/SubGiftSplash.aspx',
+		'/04/strobe/indstrobe.mov'	=> 'http://downloads.oreilly.com/make/04/indstrobe.mov',
+		'/04/flash/caps.mov'		=> 'http://downloads.oreilly.com/make/04/caps.mov',
+		'/save'						=> 'https://readerservices.makezine.com//MK/Subnew.aspx?PC=MK&PK=0EBSPL',
+		'/offer'					=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
+		'/bonus'					=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
+		'/talk'						=> 'http://forums.makezine.com/',
+		'/fair'						=> 'http://makezine.com/faire/',
+		'/faire'					=> 'http://makerfaire.com/',
+		'/makerfaire'				=> 'http://makerfaire.com/',
+		'/06/legosoccer/focal'		=> 'http://digital.ni.com/public.nsf/allkb/29D716D6F4F1FBC386256AE700727AF6',
+		'/suboffer'					=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
+		'/weekendprojects'			=> 'http://blog.makezine.com/the-weekend-projects/',
+		'/sff'						=> 'http://store.makezine.com/ProductDetails.asp?ProductCode=0596529201',
+		'/pdf'						=> 'http://www.makezine.com/blog/archive/make_pdf/',
+		'/store'					=> 'http://makershed.com/',
+		'/3D'						=> 'http://www.makezine.com/3d',
+		'/elementsofhumanity'		=> 'http://elementsofhumanity.com/',
+		'/pub/au/Terrie_Miller'		=> 'http://makezine.com/pub/au/Terrie_Schweitzer',
+		'/GO/HIW'					=> 'http://makezine.com/hardware-innovation-workshop/',
+		'/3Dspecial'				=> 'https://readerservices.makezine.com/MK/subscribe.aspx?PC=MK&PK=M25SCHO',
+		'/tellus/survey'			=> 'http://www.opinionpath.net/mke/cgi-bin/ciwweb.pl?studyname=mke',
+		'/mf2012'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?PC=MK&PK=M25MFIS&DO=R',
+		'/v/31'						=> 'http://makezine.com/31/',
+		'/craft/blog'				=> 'http://blog.makezine.com/craftzine/',
+		'/move'						=> 'https://pubservice.com/SubGiftv2.aspx?PC=MK&PK=M2XBUS',
+		'/241'						=> 'https://www.pubservice.com/subgiftcombo.aspx?PC=MK&PK=42M241',
+		'/holidaygift'				=> 'https://pubservice.com/Subgiftcombo.aspx?PC=MK&PK=429HOL9',
+		'/bogo'						=> 'https://www.pubservice.com/subgiftcombo.aspx?PC=MK&PK=42BBN03',
+		'/PM241'					=> 'https://pubservice.com/Subgiftcombo.aspx?PC=MK&PK=42MPM24',
+		'/3Dfree'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=B31BLB',
+		'/3Dbonus'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=B31BIN',
+		'/33'						=> 'http://blog.makezine.com/volume/make-33/',
+		'/5issues'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M34AIR',
+		'/3DPDF'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
+		'/3dpdf'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
+		'/trainingcamp'				=> 'http://blog.makezine.com/trainingcamp/',
+		'/magazine'					=> 'http://blog.makezine.com/volume/make-34/',
+		'/34'						=> 'http://blog.makezine.com/volume/make-34/',
+		'/maker-projects'			=> 'http://blog.makezine.com/maker-projects/'
+	);
+	vip_redirects( $redirects );
+}
+
 /**
  * Handle URLs with underscores in the post_name. Turn:
  *      http://blog.makezine.com/2009/01/toolbox_from_miserable_old_box_to_w/
@@ -127,3 +179,11 @@ function makeblog_filter_the_content_shortlink( $ret, $post_id ) {
 }
 
 vip_main_feed_redirect( 'http://feeds.feedburner.com/makezineonline' );
+
+
+add_action( 'init', function() {
+    if ( 0 === strpos( $_SERVER['REQUEST_URI'], '/pub/' ) ) {
+        wp_redirect( esc_url_raw( 'http://archive.makezine.com' . $_SERVER['REQUEST_URI'] ) );
+        exit;
+    }
+} );

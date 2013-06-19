@@ -416,7 +416,7 @@ function itunes_feed() {
 
 add_action('template_redirect', 'itunes_feed');
 
-add_action('pre_get_posts', 'make_mf_remove_tag_from_home' );
+// add_action('pre_get_posts', 'make_mf_remove_tag_from_home' );
 
 /**
  * Take Maker Faire posts that don't have MF tag, and remove from the main query.
@@ -1078,4 +1078,15 @@ function make_filter_tiny_mce_before_init( $options ) {
 	$options['extended_valid_elements'] .= ',div[data*|class|id|style]';
 
 	return $options; 
+}
+
+add_filter( 'wpcom_sitemap_post_types', 'make_sitemap_add_gallery_post_type' );
+
+function make_sitemap_add_gallery_post_type( $post_types ) {
+	$post_types[] = 'gallery';
+	$post_types[] = 'video';
+	$post_types[] = 'craft';
+	$post_types[] = 'review';
+	$post_types[] = 'projects';
+	return $post_types;
 }
