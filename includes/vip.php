@@ -67,7 +67,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 }
 
 if ( function_exists( 'vip_redirects' ) ) {
-	$redirects = (
+	$redirects = array(
 		'/subscribe' 				=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
 		'/renew'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
 		'/paybill'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
