@@ -1090,3 +1090,14 @@ function make_sitemap_add_gallery_post_type( $post_types ) {
 	$post_types[] = 'projects';
 	return $post_types;
 }
+
+/**
+ * Adds a menu field to the menus section of the admin area for the topbar
+ * @return void
+ *
+ * @version  1.0
+ */
+function make_topbar_register_menu() {
+	register_nav_menu( 'topbar', __( 'Top Bar' ) );
+}
+add_action( 'init', 'make_topbar_register_menu' );
