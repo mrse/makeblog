@@ -110,7 +110,6 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/5issues'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M34AIR',
 		'/3DPDF'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
 		'/3dpdf'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
-		'/trainingcamp'				=> 'http://makezine.com/trainingcamp/',
 		'/magazine'					=> 'http://makezine.com/volume/make-34/',
 		'/34'						=> 'http://makezine.com/volume/make-34/',
 		'/maker-projects'			=> 'http://makezine.com/maker-projects/',
