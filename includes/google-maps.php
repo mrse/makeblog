@@ -26,7 +26,7 @@
 	 * @return String
 	 */
 	function make_makercamp_map_shortcode( $atts, $content ) {
-		$output .= '<div id="map-canvas" class="span12" style="height:751px;"></div>';
+		$output .= '<div id="map-canvas" style="height:464px; width:100%;"></div>';
 
 		return $output;
 	}
@@ -82,4 +82,3 @@
 	}
 	add_action( 'save_post', 'make_map_data_save' );
 
-	
