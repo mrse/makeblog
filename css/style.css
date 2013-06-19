@@ -9888,7 +9888,7 @@ body.makercamp .white-bg .featured {
   padding: 30px 0 0;
   margin-left: 6px;
   float: left;
-  width: 18.9617021%;
+  width: 15.801418417%;
   height: auto !important;
 }
 body.makercamp .white-bg .featured h4 {
@@ -9947,10 +9947,17 @@ body.makercamp .lower-area h4 {
   line-height: 32px;
 }
 body.makercamp .feature-box {
-  padding-left: 30px;
-  padding-right: 30px;
+<<<<<<< .mine
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 60px;
+  min-height: 355px;
+=======
+  padding-left: 25px;
+  padding-right: 25px;
   padding-bottom: 50px;
   min-height: 330px;
+>>>>>>> .r109434
   text-align: center;
 }
 body.makercamp .feature-box p {
@@ -9977,7 +9984,11 @@ body.makercamp .feature-box img.register {
   margin: 70px 0;
 }
 body.makercamp .features-box-content {
-  min-height: 275px;
+<<<<<<< .mine
+  min-height: 285px;
+=======
+  min-height: 253px;
+>>>>>>> .r109434
   margin-bottom: 20px;
 }
 body.makercamp .lower-gradation {
@@ -10206,6 +10217,27 @@ body.makercamp .button.small-button,
 body.makercamp a.button.small-button {
   line-height: inherit !important;
 }
+body.makercamp .map-title {
+  background: #011f43;
+  margin: 0 !important;
+  font-size: 1.637142857em;
+  font-family: sans-serif;
+  font-weight: normal;
+}
+body.makercamp .map-list {
+  background: #fff;
+  color: #333;
+  margin-top: 20px;
+  border: 1px solid #333;
+}
+body.makercamp .map-list th {
+  color: #fff;
+  border-bottom: 1px solid #333;
+}
+body.makercamp .map-list-header {
+  font-weight: normal;
+  background-color: #011f43 !important;
+}
 @media (min-width: 1200px) {
   body.makercamp .new-footer .container,
   body.makercamp.admin-bar .new-footer .container {
@@ -10240,10 +10272,6 @@ body.makercamp a.button.small-button {
   body.makercamp .feature-box .button.blue,
   body.makercamp.admin-bar .feature-box .button.blue {
     font-size: 22px !important;
-  }
-  body.makercamp .feature-box img.register,
-  body.makercamp.admin-bar .feature-box img.register {
-    margin: 64px 0 !important;
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
@@ -10502,55 +10530,6 @@ body.makercamp a.button.small-button {
 .home .single .article {
   margin-bottom: 25px;
 }
-
-/*Additional tweaks for footer by Bill Olson*/
-
-body.makercamp .new-footer .about-column-01 {
-width: 90px;
-float: left;
-margin-left: -30px;
-}
-
-body.makercamp .new-footer .about-column-02 {
-float: left;
-width: 130px;
-margin-left: 0;
-}
-
-body.makercamp .new-footer h5 {
-  color:#333;
-  margin-bottom: 0 !important;
-  margin-top: 0 !important;
-}
-
-body.makercamp .new-footer .subscribe h5 {
-  color:#F60B29;
-}
-
-body.makercamp .new-footer p {
-  color:#333;
-font-weight: bold;
-margin-top: 3px;
-padding-right: 3px;
-}
-
-body.makercamp .new-footer .subscribe hr {
-border: none;
-background-color: #F60B29;
-color: #F60B29;
-height: 7px;
-margin-right:3px;
-}
-
-body.makercamp .new-footer a:link, body.makercamp .new-footer a:visited{
-  color:#005D8F
-}
-
-body.makercamp .new-footer .container .row .span12 img {
-  margin-left:-30px;
-  margin-bottom:5px;
-}
-
 .contact-form label {
   display: block;
   *zoom: 1;
@@ -10704,4 +10683,43 @@ body.makercamp .new-footer .container .row .span12 img {
 .contact-form .pushbutton-wide .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
+}
+
+/*Hardware Innovation Workshop by bolson*/
+
+body.hiw #header {
+  border:none;
+}
+
+body.hiw .header-wrap {
+margin-left:20px;
+margin-right:20px;
+border-top: 1px solid #00AEEF;
+border-bottom: 1px solid #00AEEF;
+text-align:center;
+padding-top:20px;
+padding-bottom:50px;
+}
+
+body.hiw .header-wrap h2 {
+color: #ED1D24;
+width: 660px;
+font-size: 24px;
+line-height: 28px;
+padding-top: 25px;
+}
+
+body.hiw ul.left-nav li {
+font-size: 18px;
+line-height: 130%;
+border-bottom:1px dashed #999;
+padding: 5px 0;
+}
+body.hiw ul.left-nav li {
+list-style-type: none;
+}
+
+body.hiw h3, body.hiw h4, body.hiw h5, body.hiw h6 {
+line-height: 20px;
+margin-bottom: 16px;
 }
