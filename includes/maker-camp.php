@@ -27,7 +27,11 @@
 	 * @version  1.0
 	 */
 	function make_mc_load_resources() {
-		wp_enqueue_script( 'maker-camp-js', get_stylesheet_directory_uri() . '/js/maker-camp.min.js', array('jquery'), '1.0', true );
+		if ( is_page_template( 'page-makercamp.php' || is_page_template( 'page-makercamp-map.php' ) ) ) {
+			wp_enqueue_style( 'thickbox' );
+			wp_enqueue_script( 'thickbox' );
+			wp_enqueue_script( 'maker-camp-js', get_stylesheet_directory_uri() . '/js/maker-camp.min.js', array('jquery'), '1.0', true );
+		}
 	}
 	add_action( 'wp_enqueue_scripts', 'make_mc_load_resources' );
 
@@ -57,17 +61,15 @@
 	 * Displays all the code needed for displaying an event or "project" in the schedule page.
 	 *
 	 * Use the attributes to add custom information and wrap the body description with this tag.
-	 * @param  Array  $atts an array of any options we'll be sending
+	 * @param  Array  $atts    An array of any options we'll be sending
+	 * @param  String $content The string that holds our content wrapped in our shortcode
 	 * @return String
 	 *
 	 * @version 1.0
 	 */
 	function make_mc_project_schedule_item( $atts, $content ) {
 		extract( shortcode_atts( array(
-			'url'   => '', 		  // String. Will format all data tossed in through esc_url()
 			'img'   => '', 		  // String. URL to the project image
-			'type'  => 'Project', // String. Enter the project type. Defaults to "Project"
-			'date'  => '', 		  // String. Enter the date like "Monday, July 8th"
 			'title' => '', 		  // String. Enter the title of the project
 			'class' => '', 		  // String. Allows you to add extra classes. Separate each class with a space.
 		), $atts ) );
@@ -81,44 +83,25 @@
 
 		// Check if new classes are tossed at us.
 		if ( ! empty( $class ) ) {
-			$output = '<div class="maker span ' . esc_attr( $class ) . '">';
+			$output = '<div class="maker ' . esc_attr( $class ) . '">';
 		} else {
-			$output = '<div class="maker span">';
+			$output = '<div class="maker">';
 		}
 
-		// Check that an image is entered
-		if ( ! empty( $img ) ) {
-			// Add our clickable region to display the description body
-			$output .= '<div class="more-info">';
-			$output .= '<img src="' . esc_url( $img ) . '"';
+		// Load the project photo
+		if ( ! empty( $img ) )
+			$output .= '<div class="project-photo"><img src="' . esc_url( $img ) . '" /></div>';
 
-			// Additionally, check that a title was entered
-			if ( ! empty( $title ) )
-				$output .= ' alt="Coke Mentos Rocket Car"';
+		$output .= '<div class="project-body">';
 
-			// Close the img tag.
-			$output .= '>';
-
-			// Close the .more-info class
-			$output .= '</div>';
-		}
-		
-		// Load the project type. Default is "Project"
-		$output .= '<h5><span class="project-type">' . esc_attr( $type ) . '</span>';
-
-		// Check that a date is set.
-		if ( ! empty( $date ) )
-			$output .= esc_attr( $date );
-
-		// Now we can close the H5 for the title and date and start the opening tag for the title
-		$output .= '</h5>';
-
-		// Check we have a title. We want to check this independently of the URL.
+		// Load the project title
 		if ( ! empty( $title ) )
-			$output .= '<div class="more-info"><h6 class="title">' . wp_kses( $title, $allowed ) . '</h6></div>';
+			$output .= '<h2 class="project-title">' . esc_attr( $title ) . '</h2>';
 
-		// Add our body description. This is the area that is hidden by default but slides out when the event is clicked.
-		$output .= '<div class="maker-description"><div class="desc-body"><a href="#" class="close-btn">Close Window</a>' . $content . '</div><div class="desc-feat text-right"><a href="' . esc_url( $url ) . '" class="button blue small-button">Attend the Event</a></div></div>';
+		$output .= wp_kses_post( do_shortcode( $content ) );
+
+		// Close the project body
+		$output .= '</div>';
 		
 		// Put an end to this madness. Close the .maker class
 		$output .= '</div>';
@@ -127,4 +110,44 @@
 		return $output;
 	}
 	add_shortcode( 'maker-camp-project', 'make_mc_project_schedule_item' );
+
+
+	/**
+	 * The shortcode to displaying the project materials link and modal window
+	 * @param  Array  $atts    An array of any options we'll be sending
+	 * @param  String $content The string that holds our content wrapped in our shortcode
+	 * @return String
+	 */
+	function make_mc_project_schedule_materials( $atts, $content ) {
+		extract( shortcode_atts( array(
+			'link_id'   => '',
+			'link_name' => 'Materials and Instructions',
+			'class'     => '',
+			'width'     => 600,
+			'height'    => 550,
+		), $atts ) );
+
+		// wp_kses allow html array
+		$allowed = array(
+			'br' 	 => array(),
+			'em' 	 => array(),
+			'strong' => array(),
+		);
+
+		if ( ! empty( $content ) ) {
+			$output .= '<a href="#TB_inline?width=' . $width . '&amp;height=' . $height . '&amp;inlineId=' . $link_id . '" class="button small-button red pull-right thickbox materials-link';
+
+			// Check if we have a class to add
+			if ( ! empty( $class ) )
+				$output .= ' ' . $class;
+
+			$output .= '">' . $link_name . '</a>';
+			$output .= '<div id="' . $link_id . '" class="hidden materials-modal">';
+				$output .= wp_kses_post( do_shortcode( $content ) );
+			$output .= '</div>';
+
+			return $output;
+		}
+	}
+	add_shortcode( 'maker-camp-project-materials', 'make_mc_project_schedule_materials' );
 	
