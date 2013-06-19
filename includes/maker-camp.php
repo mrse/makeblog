@@ -94,8 +94,11 @@
 		}
 
 		// Load the project photo
-		if ( ! empty( $img ) )
+		if ( ! empty( $img ) ) {
 			$output .= '<div class="project-photo"><img src="' . esc_url( $img ) . '" /></div>';
+		} else {
+			$output .= '<div class="project-photo"><img src="' . get_stylesheet_directory_uri() . '/img/makercamp/schedule-placeholder.png" /></div>';
+		}
 
 		$output .= '<div class="project-body">';
 
