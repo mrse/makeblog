@@ -9960,7 +9960,7 @@ body.makercamp .new-footer .subscribe hr {
 }
 body.makercamp .new-footer a,
 body.makercamp .new-footer body.makercamp .new-footer a:visited {
-  color: #005d8f;
+  color: #005D8F !important;
 }
 body.makercamp .new-footer p {
   color: #333;
