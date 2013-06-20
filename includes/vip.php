@@ -148,6 +148,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/faq/index.html'			=> 'http://makezine.com/faq/',
 		'/community/index.html'		=> 'http://archive.makezine.com/community/index.html',
 		'/help/index.html'			=> 'http://archive.makezine.com/help/index.html',
+		'/hardware-innovation-workshop/videos.html', 	'http://archive.makezine.com/hardware-innovation-workshop/videos.html',
 	);
 	vip_redirects( $redirects );
 }
