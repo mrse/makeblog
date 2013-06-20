@@ -53,6 +53,7 @@ if ( function_exists( 'vip_regex_redirects' ) ) {
 		'|/archive/category/([a-zA-Z_]+)/index.xml$|' => '|/category/$1/feed/', // MT category feed
 		'|/archive/category/([a-zA-Z_]+)/feed|' => '|/category/$1/feed/', // Old WordPress Podcast feeds
 		'|/archive/category/([a-zA-Z]+)/([0-9]+)\.html$|' => '|/category/$1/page/$2/', // MT paginated category structure
+		'|/([0-9]{2})/([^/]+)|' => 'http://archive.makezine.com|/$1/$2|', // CS Articles...
 	);
 	vip_regex_redirects( $redirects );
 }
