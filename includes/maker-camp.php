@@ -28,8 +28,9 @@
 	 */
 	function make_mc_load_resources() {
 		if ( is_page_template( 'page-makercamp.php' || is_page_template( 'page-makercamp-map.php' ) ) ) {
-			wp_enqueue_style( 'thickbox' );
-			wp_enqueue_script( 'thickbox' );
+			// wp_enqueue_style( 'thickbox' );
+			// wp_enqueue_script( 'thickbox' );
+			wp_enqueue_script( 'bootstrap' );
 			wp_enqueue_script( 'maker-camp-js', get_stylesheet_directory_uri() . '/js/maker-camp.min.js', array('jquery'), '1.0', true );
 		}
 	}
@@ -95,7 +96,7 @@
 
 		// Load the project photo
 		if ( ! empty( $img ) ) {
-			$output .= '<div class="project-photo"><img src="' . esc_url( $img ) . '" /></div>';
+			$output .= '<div class="project-photo"><img src="' . wpcom_vip_get_resized_remote_image_url( esc_url( $img ), 166, 107 ) . '" /></div>';
 		} else {
 			$output .= '<div class="project-photo"><img src="' . get_stylesheet_directory_uri() . '/img/makercamp/schedule-placeholder.png" /></div>';
 		}
@@ -186,16 +187,17 @@
 		);
 
 		if ( ! empty( $content ) ) {
-			$output .= '<a href="#TB_inline?width=' . esc_url( $width ) . '&amp;height=' . esc_url( $height ) . '&amp;inlineId=' . esc_url( $link_id ) . '" class="thickbox materials-link';
-
-			// Check if we have a class to add
-			if ( ! empty( $class ) )
-				$output .= ' ' . esc_attr( $class );
-
-			$output .= '">' . esc_html( $link_name ) . '</a>';
-			$output .= '<div id="' . esc_attr( $link_id ) . '" class="hidden materials-modal">';
-				$output .= wp_kses_post( do_shortcode( $content ) );
-			$output .= '</div>';
+			$output = '<h4><a class="' . esc_attr( $class ) . '" data-toggle="modal" href="#' . esc_attr( $link_id ) . '">' . esc_html( $link_name ) . '</a></h4>
+			<div class="modal hide fade" id="' .esc_attr( $link_id ) . '">
+				<div class="modal-header">
+					<a class="close" data-dismiss="modal">&times;</a>
+					<h3>' . esc_html( $link_name ) . '</h3>
+				</div>
+				<div class="modal-body">' . wp_kses_post( do_shortcode( $content ) ) . '</div>
+				<div class="modal-footer">
+					<a class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+				</div>
+			</div>';
 
 			return $output;
 		}
