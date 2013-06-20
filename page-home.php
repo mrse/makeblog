@@ -218,7 +218,7 @@ Template Name: Home Page
 
 						<?php endwhile; wp_reset_postdata(); ?>
 
-						<p><a href="http://blog.makezine.com/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
+						<p><a href="http://makezine.com/blog/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
 
 					</div>
 					<!--<div class="shadow"></div>-->
