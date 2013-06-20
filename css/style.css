@@ -7430,7 +7430,7 @@ blockquote p {
 }
 .admin-bardebug-bar-maximized .navbar-fixed-top,
 .admin-bar .navbar-fixed-top {
-  top: 28px;
+  top: 32px;
 }
 .blue {
   color: #00315d;
@@ -9799,7 +9799,7 @@ body.makercamp header h3 {
   line-height: 100%;
 }
 body.makercamp.admin-bar header {
-  margin-top: 44px;
+  margin-top: 40px;
 }
 body.makercamp .waist {
   background-image: url(http://makezineblog.files.wordpress.com/2013/05/hills.png);
