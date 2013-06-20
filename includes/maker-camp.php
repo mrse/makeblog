@@ -88,20 +88,16 @@
 		);
 
 		// Check if new classes are tossed at us.
-		if ( ! empty( $class ) ) {
-			$output = '<div class="maker ' . esc_attr( $class ) . ' clearfix">';
-		} else {
-			$output = '<div class="maker clearfix">';
-		}
+		$output  = ( ! empty( $class ) ) ? '<div class="row maker ' . esc_attr( $class ) . '">' : '<div class="row maker">' ;
 
 		// Load the project photo
 		if ( ! empty( $img ) ) {
-			$output .= '<div class="project-photo"><img src="' . wpcom_vip_get_resized_remote_image_url( esc_url( $img ), 166, 107 ) . '" /></div>';
+			$output .= '<div class="span3 project-photo"><img src="' . wpcom_vip_get_resized_remote_image_url( esc_url( $img ), 166, 107 ) . '" /></div>';
 		} else {
-			$output .= '<div class="project-photo"><img src="' . get_stylesheet_directory_uri() . '/img/makercamp/schedule-placeholder.png" /></div>';
+			$output .= '<div class="span3 project-photo"><img src="' . get_stylesheet_directory_uri() . '/img/makercamp/schedule-placeholder.png" /></div>';
 		}
 
-		$output .= '<div class="project-body">';
+		$output .= '<div class="span6 project-body">';
 
 		// Load the project title
 		if ( ! empty( $title ) )
@@ -132,7 +128,7 @@
 		// Close the project body
 		$output .= '</div>';
 
-		$output .= '<div class="project-link">';
+		$output .= '<div class="span3 project-link">';
 
 		// Check if a link is set or not and display the right HTML
 		if ( ! empty( $link ) ) {
