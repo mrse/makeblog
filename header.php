@@ -66,8 +66,9 @@
 									'menu_class'      => 'nav clearfix',
 									'depth'           => 1 ) );
 								?>
-								<form class="navbar-search pull-right">
-									<input type="text" class="search-query" placeholder="Search">
+								<form action="http://makezine.com/search/" class="form pull-right navbar-search">
+									<input type="text" class="span2 search-query" name="q" placeholder="" />
+									<input type="submit" class="btn btn-primary" style="margin-top:0px;" value="Search" />
 								</form>
 							</div><!--/.nav-collapse -->
 						</nav>
