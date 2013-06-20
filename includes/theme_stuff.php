@@ -1101,3 +1101,33 @@ function make_topbar_register_menu() {
 	register_nav_menu( 'topbar', __( 'Top Bar' ) );
 }
 add_action( 'init', 'make_topbar_register_menu' );
+
+add_filter( 'wp_kses_allowed_html', 'mf_allow_data_atts', 10, 2 );
+function mf_allow_data_atts( $allowedposttags, $context ) {
+	$tags = array( 'div', 'a', 'li' );
+	$new_attributes = array( 
+		'data-toggle' 	=> true,
+		'data-dismiss' 	=> true,
+		);
+ 
+	foreach ( $tags as $tag ) {
+		if ( isset( $allowedposttags[ $tag ] ) && is_array( $allowedposttags[ $tag ] ) )
+			$allowedposttags[ $tag ] = array_merge( $allowedposttags[ $tag ], $new_attributes );
+	}
+	
+	return $allowedposttags;
+}
+
+
+add_filter('tiny_mce_before_init', 'mf_filter_tiny_mce_before_init'); 
+function mf_filter_tiny_mce_before_init( $options ) { 
+
+	if ( ! isset( $options['extended_valid_elements'] ) ) 
+		$options['extended_valid_elements'] = ''; 
+
+	$options['extended_valid_elements'] .= ',a[data*|class|id|style|href]';
+	$options['extended_valid_elements'] .= ',li[data*|class|id|style]';
+	$options['extended_valid_elements'] .= ',div[data*|class|id|style]';
+
+	return $options; 
+}
