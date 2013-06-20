@@ -7401,24 +7401,6 @@ blockquote p {
 .navbar-search {
   margin-top: 0px;
 }
-.navbar-inner {
-  background-color: #2E435E;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#2e435e), to(#172e50));
-  background-image: -moz-linear-gradient(top, #2e435e, #172e50);
-  background-image: -ms-linear-gradient(top, #2e435e, #172e50);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2e435e), color-stop(100%, #172e50));
-  background-image: -webkit-linear-gradient(top, #2e435e, #172e50);
-  background-image: -o-linear-gradient(top, #2e435e, #172e50);
-  background-image: linear-gradient(top, #2e435e, #172e50);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e435e', endColorstr='#172e50', GradientType=0);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #275392;
-  border-top: 1px solid #1E242D;
-  font-weight: bold;
-}
 .navbar .nav > li > a {
   color: #fff;
 }
@@ -9750,7 +9732,7 @@ body.makercamp h3 {
 body.makercamp iframe {
   max-width: 100%;
 }
-body.makercamp .main-content a:link,
+body.makercamp .main-content a,
 body.makercamp .main-content a:visited {
   color: #acd3fc;
 }
@@ -9859,7 +9841,8 @@ body.makercamp .white-bg h5 {
 body.makercamp .white-bg h6 {
   font-size: 18px;
 }
-body.makercamp .white-bg h6 a {
+body.makercamp .white-bg h6 a,
+body.makercamp .white-bg h6 a:visited {
   color: #005d8f !important;
   text-decoration: none;
 }
@@ -9978,7 +9961,7 @@ body.makercamp .new-footer .subscribe hr {
   height: 7px;
   margin-right: 5px;
 }
-body.makercamp .new-footer a:link,
+body.makercamp .new-footer a,
 body.makercamp .new-footer body.makercamp .new-footer a:visited {
   color: #005d8f;
 }
@@ -10040,35 +10023,19 @@ body.makercamp .schedule-content #schedule .active a {
 }
 body.makercamp .schedule-content .maker {
   position: relative;
-  display: block;
 }
 body.makercamp .schedule-content .maker .project-photo {
   float: left;
-  width: 17%;
+  width: 20%;
 }
 body.makercamp .schedule-content .maker .project-body {
   float: left;
-  width: 61%;
-  margin-right: 22px;
+  width: 80%;
 }
-body.makercamp .schedule-content .maker .project-body .project-title {
-  font-size: 1.285714286em;
-  line-height: 1em;
-  color: #005d8f;
-  margin: 5px 0 !important;
-}
-body.makercamp .schedule-content .maker .project-body .date,
-body.makercamp .schedule-content .maker .project-body .mentor {
-  font-size: 1.142857143em;
-  line-height: 1em;
-  font-weight: normal;
-  color: #252525;
-  margin: 5px 0 !important;
-  display: inline-block;
-}
-body.makercamp .schedule-content .maker .project-link {
-  float: left;
-  width: 20%;
+body.makercamp .schedule-content .maker .materials-link {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 body.makercamp .faq-content {
   margin-bottom: 20px;

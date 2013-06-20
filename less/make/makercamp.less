@@ -20,7 +20,7 @@ body.makercamp {
 		max-width:100%;
 	}
 	.main-content {
-		a:link, a:visited { color:#acd3fc; }
+		a, a:visited { color:#acd3fc; }
 		a:hover, a:active { color:#acd3fc; text-decoration:underline !important; }
 	}
 
@@ -118,7 +118,7 @@ body.makercamp {
 		}
 		h6 { 
 			font-size:18px;
-			a {
+			a, a:visited {
 				color: #005d8f !important;
 				text-decoration: none;
 			}
@@ -247,7 +247,7 @@ body.makercamp {
 				margin-right:5px;
 				}
 		}
-		a:link, body.makercamp .new-footer a:visited{
+		a, body.makercamp .new-footer a:visited{
 		    color:#005D8F
 		    }
 		p {
@@ -309,33 +309,18 @@ body.makercamp {
 		}
 		.maker {
 			position:relative;
-			display:block;
 			.project-photo {
 				.pull-left;
-				width:17%;
+				width:20%;
 			}
 			.project-body {
 				.pull-left;
-				width:61%;
-				margin-right:22px;
-				.project-title {
-					font-size:1.285714286em;
-					line-height:1em;
-					color:#005d8f;
-					margin:5px 0 !important;
-				}
-				.date, .mentor {
-					font-size:1.142857143em;
-					line-height:1em;
-					font-weight:normal;
-					color:#252525;
-					margin:5px 0 !important;
-					display:inline-block;
-				}
+				width:80%;
 			}
-			.project-link {
-				.pull-left;
-				width:20%;
+			.materials-link {
+				position:absolute;
+				top:0;
+				right:0;
 			}
 		}
 	}
