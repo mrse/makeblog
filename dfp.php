@@ -97,7 +97,7 @@ global $post;
 				elseif (has_tag( array( 'greatcreate', 'Weekend Projects' )) || is_page( array( 286853, 271492, 313151 ) ) ) {
 					echo "googletag.pubads().setTargeting('sponsor',['radioshack']);";
 				} 
-				elseif ( has_tag('esurance') || is_page( 323098 ) ) {
+				elseif ( has_tag('esurance') || is_page( 313086 ) ) {
 					echo "googletag.pubads().setTargeting('sponsor',['esurance']);";
 				}
 				elseif (has_tag('tinkernation')) {
