@@ -9960,7 +9960,7 @@ body.makercamp .new-footer .subscribe hr {
 }
 body.makercamp .new-footer a,
 body.makercamp .new-footer body.makercamp .new-footer a:visited {
-  color: #005D8F !important;
+  color: #005d8f;
 }
 body.makercamp .new-footer p {
   color: #333;
@@ -10027,12 +10027,23 @@ body.makercamp .schedule-content .maker .project-photo {
 }
 body.makercamp .schedule-content .maker .project-body {
   float: left;
-  width: 80%;
+  width: 61%;
+  margin-right: 22px;
 }
-body.makercamp .schedule-content .maker .materials-link {
-  position: absolute;
-  top: 0;
-  right: 0;
+body.makercamp .schedule-content .maker .project-title {
+  font-size: 1.285714286em;
+  line-height: 1em;
+  color: #005d8f;
+  margin: 5px 0 !important;
+}
+body.makercamp .schedule-content .maker .date,
+body.makercamp .schedule-content .maker .mentor {
+  font-size: 1.142857143em;
+  line-height: 1em;
+  font-weight: normal;
+  color: #252525;
+  margin: 5px 0 !important;
+  display: inline-block;
 }
 body.makercamp .faq-content {
   margin-bottom: 20px;
