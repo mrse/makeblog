@@ -48,125 +48,64 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-		<header>
-			<div class="navbar navbar-blue navbar-fixed-top">
-					<div class="navbar-inner">
-						<nav class="container">
-							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</a>
-							<a class="brand" href="http://makezine.com/">MAKE</a>
-							<div class="nav-collapse in collapse">
-								<?php wp_nav_menu( array(
-									'theme_location'  => 'topbar',
-									'menu'            => 'topbar', 
-									'container'       => false, 
-									'menu_class'      => 'nav clearfix',
-									'depth'           => 1 ) );
-								?>
-								<form action="http://makezine.com/search/" class="form pull-right navbar-search">
-									<input type="text" class="span2 search-query" name="q" placeholder="" />
+		<div class="container">
+			<div class="row">
+				<div id="div-gpt-ad-664089004995786621-1" class="text-center">
+					<script type='text/javascript'>
+						googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-1')});
+					</script>
+				</div>
+			</div>
+		</div>
+		<heade class="top-navigation-wrapper">
+			<div class="main-header">
+				<div class="container">
+					<div class="row">
+						<div class="logo span2">
+							<a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png" /></a>
+						</div>
+						<nav role="navigation" class="span10 site-navigation main-navigation">
+							<ul class="nav menu-primary-nav">
+								<li><a href="#">Electronics</a></li>
+								<li><a href="#">Workshop</a></li>
+								<li><a href="#">Craft</a></li>
+								<li><a href="#">Science</a></li>
+								<li><a href="#">Home</a></li>
+								<li><a href="#">Art &amp; Design</a></li>
+							</ul>
+						</nav>
+						<div class="additional-content">
+							<div class="subscribe">
+								<a href="#">Subscribe</a>
+							</div>
+							<div class="search-make">
+								<form action="<?php echo home_url(); ?>/search/" class="search">
+									<input type="text" class="search-query" name="q" placeholder="" />
 									<input type="submit" class="btn btn-primary" style="margin-top:0px;" value="Search" />
 								</form>
-							</div><!--/.nav-collapse -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="secondary-header">
+				<div class="container">
+					<div class="row">
+						<nav class="span12 site-navigation secondary-navigation">
+							<ul class="nav menu-secondary-nav">
+								<li><a href="#">Projects</a></li>
+								<li><a href="#">Featuers</a></li>
+								<li><a href="#">Blog</a></li>
+								<li><a href="#">Magazine</a></li>
+								<li><a href="#">Videos</a></li>
+								<li><a href="#">Reviews</a></li>
+								<li><a href="#">Events</a></li>
+								<li><a href="#">Shop</a></li>
+								<li><a href="#">Forums</a></li>
+								<li><a href="#">Education</a></li>
+							</ul>
 						</nav>
 					</div>
 				</div>
 			</div>
 		</header>
-
-		<div class="fix">
-
-			<div id="header">
-				
-				<div class="container">
-					
-					<div class="row">
-
-						<div class="span topad">
-							
-							<!-- Beginning Sync AdSlot 1 for Ad unit header ### size: [[728,90]]  -->
-							<div id='div-gpt-ad-664089004995786621-1'>
-								<script type='text/javascript'>
-									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-1')});
-								</script>
-							</div>
-							<!-- End AdSlot 1 -->
-							
-						</div>
-
-						<div class="biggins">
-
-							<?php
-								
-								$ad_query = new WP_Query( array(
-									'post_type' => 'house-ads',
-									'posts_per_page' => 20,
-									'fields' => 'ids',
-									'no_found_rows' => true,
-								) );
-								$ad_ids = $ad_query->get_posts();
-
-								if ( ! empty( $ad_ids ) ) :
-									shuffle( $ad_ids );
-									$ad_id = array_shift( $ad_ids );
-									$post = get_post( $ad_id );
-
-									if ( $post ) : setup_postdata( $post );
-										echo '<a href="'. esc_url( get_post_meta( $post->ID, 'LinkURL', true ) ).'">';
-										the_post_thumbnail('house-ad');
-										echo '</a>';
-									endif;
-								endif;
-
-								// Reset Post Data
-								wp_reset_postdata();
-
-							?>
-
-						</div>
-
-					</div>
-
-					<div class="clear"></div>
-
-					<h1><a href="http://makezine.com/"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/make.png" alt="MAKE" title="MAKE" /></a></h1>
-
-					<ul class="navi">
-						
-						<li class="active"><a href="http://makezine.com/blog/">Blog</a></li>
-						<li><a href="http://makezine.com/magazine">Magazine</a></li>
-						<li><a href="http://makezine.com/projects">Projects</a></li>
-						<li><a href="http://kits.makezine.com">Reviews</a></li>
-						<li><a href="http://www.makershed.com/?Click=19208">Shop</a></li>
-					</ul>
-
-				</div>
-
-			</div>
-
-			<div class="header-bottom">
-
-				<div class="container">
-
-					<div class="topics">
-
-						<h5 class="blue">Hot&nbsp;Topics:</h5>
-
-						<?php echo wp_kses_post( stripslashes( make_get_cap_option( 'hot_topics' ) ) ); ?>
-
-					</div>
-
-					<div class="pull-right">
-
-						<a href="http://makezine.com/topics"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/see_all_topics.png" alt="See All Topics" class="see pull-right" /></a><!--  -->
-
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>

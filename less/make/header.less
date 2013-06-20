@@ -1,92 +1,45 @@
-.new-topad {
-	width:728px;
-	margin:60px auto 20px;
-}
+.top-navigation-wrapper { font-family:@font; }
 
-header {
-	.container {
-		border-top:1px solid @border-color;
-		padding:10px 0 0;
-		.span3 {
-			padding-top:15px;
-		}
+.main-header {
+	margin-top:20px;
+	padding:10px 0;
+	border-top:@the-border solid @red;
+	border-bottom:@the-border solid #a4a4a4;
+	.row { position:relative; }
+	.additional-content { display:none;
+		position:absolute;
+		top:0;
+		right:0;
+		.subscribe, .search-make, { .pull-left; }
 	}
-	border-bottom:7px solid #005C8D;
 }
 
-nav {
-	display: block;
+.secondary-header {
+	background:#ebebeb;
+	.box-shadow( inset 0 10px 18px -10px #a4a4a4 );
 }
-.menu-main-menu-container, .menu-category-bar-container {
-	font-family: "bebas-neue", sans-serif;
-	display: block;
-	width: 100%;
+
+.site-navigation {
+	li { .pull-left; }
 	a {
-		color:#203655;
-	}
-	#menu-main-menu {
-		font-size:38px;
-		margin-left:0px;
-		margin-bottom:20px;
-		margin-top:25px;
-		li {
-			line-height: 38px;
-			.pull-left;
-			list-style-type: none;
-			margin-right:10px;
+		color:@blue;
+		background:none; 
+		&:hover {
+			text-decoration:underline !important;
+			background:none !important;
 		}
-		li.current-menu-item{
-			border-top:3px solid #005C8D;
-			margin-top:-3px;
-		}
-	}
-	#menu-category-bar {
-		border-top:1px solid @border-color;
-		padding-top:8px;
-		margin-left:0px;
-		font-size:22px;
-		li {
-			.pull-left;
-			margin-right:9px;
-			list-style-type: none;
-			a {
-				color:#6b6e74;
-			}
-		}
-		li.current-menu-item {
-			a {
-				color:#203655;
-			}
-		}
-	}
-	 
-}
-
-.current-nav {
-	border-top:3px solid #005C8D;
-	margin-top:-3px;		
-}
-
-.single-post,
-.category {
-	.menu-item-271399 {
-		.current-nav;
 	}
 }
 
-.single-projects,
-.post-type-archive-projects {
-	.menu-item-271399 {
-		border:0px;
-		margin:0px;
-	}
-	.menu-item-271401 {
-		.current-nav;	
-	}
+.main-navigation {
+	font-size:22px;
+	font-weight:bold;
+	position:relative;
+	top:25px;
+	li { margin-right:22px; }
 }
 
-@media (min-width: 1200px) {
-
-
-
+.secondary-navigation {
+	font-size:18px;
+	a { padding:10px 20px 10px 0; }
 }
