@@ -192,3 +192,4 @@
 	}
 	add_shortcode( 'maker-camp-project-materials', 'make_mc_project_schedule_materials' );
 	
+}
