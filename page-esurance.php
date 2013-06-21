@@ -65,14 +65,14 @@ make_get_header() ?>
 					<div class="tab-pane" id="enter">
 						
 						<iframe src = "http://app.wizehive.com/webform/makermedia2013" scrolling="auto" frameborder="0" width="940px" height="2000px"></iframe>
-						<p><a href=”http://www.wizehive.com/photo-contest-software”>Photo Contest Software</a> provided by WizeHive</p>
+						<p><a href="http://www.wizehive.com/photo-contest-software">Photo Contest Software</a> provided by WizeHive</p>
 						
 					</div>
 					
 					<div class="tab-pane" id="entries">
 					
 						<script src="http://app.wizehive.com/js/portaliframe.js" type="text/javascript"></script><script type="text/javascript">displayPortal('makermedia2013');</script>
-						<p><a href=”http://www.wizehive.com/photo-contest-software”>Photo Contest Software</a> provided by WizeHive</p>
+						<p><a href="http://www.wizehive.com/photo-contest-software">Photo Contest Software</a> provided by WizeHive</p>
 						
 					</div>
 					
