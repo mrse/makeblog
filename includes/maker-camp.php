@@ -28,8 +28,6 @@
 	 */
 	function make_mc_load_resources() {
 		if ( is_page_template( 'page-makercamp.php' || is_page_template( 'page-makercamp-map.php' ) ) ) {
-			// wp_enqueue_style( 'thickbox' );
-			// wp_enqueue_script( 'thickbox' );
 			wp_enqueue_script( 'bootstrap' );
 			wp_enqueue_script( 'maker-camp-js', get_stylesheet_directory_uri() . '/js/maker-camp.min.js', array('jquery'), '1.0', true );
 		}
@@ -73,7 +71,7 @@
 			'date'  => '',        // String. The date as you want it to appear
 			'img'   => '', 		  // String. URL to the project image
 			'title' => '', 		  // String. Enter the title of the project
-			'mentor' => '', 	  // String. Enter the name of the mentot
+			'mentor' => '', 	  // String. Enter the name of the mentor
 			'mentor_link' => '',  // URL.    Enter the mentors URL to link to.
 			'link'  => '', 		  // String. Add in the URL to where you want the far right button to link to
 			'link_title' => 'View on G+',    // URL. This variable takes the text that will display in the button on the far right
@@ -101,7 +99,19 @@
 
 		// Load the project title
 		if ( ! empty( $title ) )
-			$output .= '<h2 class="project-title">' . esc_attr( $title ) . '</h2>';
+			$output .= '<h2 class="project-title">';
+
+			// Do we have a link?
+			if ( ! empty( $link ) )
+				$output .= '<a href="' . esc_url( $link ) . '">';
+
+			$output .= esc_attr( $title );
+				
+			// Close the link if it exists
+			if ( ! empty( $link ) )
+				$output .= '</a>';
+
+			$output .= '</h2>';
 
 		// Look for a date
 		if ( ! empty( $date ) )
@@ -109,7 +119,7 @@
 
 		// Is there a mentor?
 		if ( ! empty( $mentor ) ) {
-			$output .= ' &mdash; Make Mentor: ';
+			$output .= ' &mdash; Makers: ';
 
 			// Is there a link to the mentor?
 			if ( ! empty( $mentor_link ) )
@@ -138,6 +148,7 @@
 		// Start the right sidebar
 		$output .= '<div class="span3 project-link">';
 		$output .= '<a href="';
+
 		// Check if a link is set or not and display the right HTML
 		$output .= ( ! empty( $link ) ) ? esc_url( $link ) : 'http://google.com/+make';
 		$output .= '" class="button blue small-button">';

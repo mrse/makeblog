@@ -9738,6 +9738,9 @@ body.makercamp .main-content a:active {
   color: #acd3fc;
   text-decoration: underline !important;
 }
+body.makercamp .black-bar .nav-inline li {
+  margin-right: 30px !important;
+}
 body.makercamp #footer.white-bg {
   margin: 0;
   padding: 30px 0 20px;
@@ -10017,6 +10020,9 @@ body.makercamp .schedule-content #schedule .active a {
   background: #fff;
   color: #000;
   padding-bottom: 9px;
+}
+body.makercamp .schedule-content .maker a {
+  color: #005d8f;
 }
 body.makercamp .schedule-content .maker .project-title {
   font-size: 1.285714286em;

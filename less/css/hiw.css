@@ -63,6 +63,33 @@ body.hiw .right-sidebar p {
   font-size: 16px;
   line-height: 130%;
 }
+body.hiw #header {
+  background-image: none;
+  border: none;
+  padding-top: 0;
+}
+body.hiw #header h1 {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+body.hiw .fix .header-bottom .container .row {
+  border-bottom-color: #00AEEF;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-top-color: #00AEEF;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align: center;
+  margin-left: 0;
+}
+body.hiw .fix .header-bottom .container .row .span9 {
+  width: 680px;
+}
+body.hiw .fix .header-bottom .container .row .span9 h2 span {
+  font-size: 22px;
+}
 body.hiw .single {
   background-attachment: scroll;
   background-clip: border-box;
@@ -86,41 +113,6 @@ body.hiw .single .container ul li {
   font-size: 18px;
   line-height: 140%;
 }
-body.hiw .fix .header-bottom .container .row {
-  border-bottom-color: #00AEEF;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-top-color: #00AEEF;
-  border-top-style: solid;
-  border-top-width: 1px;
-  padding-bottom: 20px;
-  padding-top: 20px;
-  text-align: center;
-  margin-left: 0;
-}
-body.hiw .fix .header-bottom .container .row .span9 {
-  width: 680px;
-}
-body.hiw .fix .header-bottom .container .row .span9 h2 span {
-  font-size: 22px;
-}
-body.hiw #header {
-  background-image: none;
-  border: none;
-  padding-top: 0;
-}
-body.hiw #header h1 {
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
-body.hiw .container {
-  background-color: #fff;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-body.hiw .navbar .navbar-inner .container {
-  background-color: #2E435E;
-}
 body.hiw .header-wrap {
   margin-left: 20px;
   margin-right: 20px;
@@ -136,6 +128,14 @@ body.hiw .header-wrap h2 {
   font-size: 24px;
   line-height: 28px;
   padding-top: 25px;
+}
+body.hiw .navbar .navbar-inner .container {
+  background-color: #2E435E;
+}
+body.hiw .container {
+  background-color: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 body.hiw h3,
 body.hiw h4,
