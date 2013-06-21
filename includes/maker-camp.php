@@ -88,20 +88,16 @@
 		);
 
 		// Check if new classes are tossed at us.
-		if ( ! empty( $class ) ) {
-			$output = '<div class="maker ' . esc_attr( $class ) . ' clearfix">';
-		} else {
-			$output = '<div class="maker clearfix">';
-		}
+		$output  = ( ! empty( $class ) ) ? '<div class="row maker ' . esc_attr( $class ) . '">' : '<div class="row maker">' ;
 
 		// Load the project photo
 		if ( ! empty( $img ) ) {
-			$output .= '<div class="project-photo"><img src="' . wpcom_vip_get_resized_remote_image_url( esc_url( $img ), 166, 107 ) . '" /></div>';
+			$output .= '<div class="span3 project-photo"><img src="' . wpcom_vip_get_resized_remote_image_url( esc_url( $img ), 166, 107 ) . '" /></div>';
 		} else {
-			$output .= '<div class="project-photo"><img src="' . get_stylesheet_directory_uri() . '/img/makercamp/schedule-placeholder.png" /></div>';
+			$output .= '<div class="span3 project-photo"><img src="' . get_stylesheet_directory_uri() . '/img/makercamp/schedule-placeholder.png" /></div>';
 		}
 
-		$output .= '<div class="project-body">';
+		$output .= '<div class="span6 project-body">';
 
 		// Load the project title
 		if ( ! empty( $title ) )
@@ -118,7 +114,7 @@
 			if ( ! empty( $mentor_link ) )
 				$output .= '<a href="' . esc_url( $mentor_link ) . '">';
 
-			$output .= $mentor;
+			$output .= esc_attr( $mentor );
 
 			if ( ! empty( $mentor_link ) )
 				$output .= '</a>';
@@ -132,25 +128,17 @@
 		// Close the project body
 		$output .= '</div>';
 
-		$output .= '<div class="project-link">';
+		$output .= '<div class="span3 project-link">';
 
 		// Check if a link is set or not and display the right HTML
 		if ( ! empty( $link ) ) {
-			$output .= '<a href="' . esc_url( $link ) . '" class="button blue small-button';
-		} else {
-			$output .= '<p class="button blue small-button';
-		}
-
-		$output .= '">';
+			$output .= '<a href="' . esc_url( $link ) . '" class="button blue small-button">';
 
 		$output .= esc_attr( $link_title );
 
 		// Check again and close the needed HTML if a link is set or not
-		if ( ! empty( $link ) ) {
+		if ( ! empty( $link ) )
 			$output .= '</a>';
-		} else {
-			$output .= '</p>';
-		}
 
 		// Close the project link
 		$output .= '</div>';
@@ -188,7 +176,7 @@
 
 		if ( ! empty( $content ) ) {
 			$output = '<h4><a class="' . esc_attr( $class ) . '" data-toggle="modal" href="#' . esc_attr( $link_id ) . '">' . esc_html( $link_name ) . '</a></h4>
-			<div class="modal hide fade" id="' .esc_attr( $link_id ) . '">
+			<div class="modal hide fade" id="' . esc_attr( $link_id ) . '">
 				<div class="modal-header">
 					<a class="close" data-dismiss="modal">&times;</a>
 					<h3>' . esc_html( $link_name ) . '</h3>
@@ -204,3 +192,4 @@
 	}
 	add_shortcode( 'maker-camp-project-materials', 'make_mc_project_schedule_materials' );
 	
+}

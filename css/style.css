@@ -4381,7 +4381,7 @@ input[type="submit"].btn.btn-mini {
   background-color: #060c15 \9;
 }
 .navbar-blue .nav-collapse {
-  background: #26374d;
+  background: transparent;
 }
 .black-bar {
   background-color: #002641;
@@ -10018,23 +10018,10 @@ body.makercamp .schedule-content #schedule .active a {
   color: #000;
   padding-bottom: 9px;
 }
-body.makercamp .schedule-content .maker {
-  position: relative;
-}
-body.makercamp .schedule-content .maker .project-photo {
-  float: left;
-  width: 20%;
-}
-body.makercamp .schedule-content .maker .project-body {
-  float: left;
-  width: 61%;
-  margin-right: 22px;
-}
 body.makercamp .schedule-content .maker .project-title {
   font-size: 1.285714286em;
   line-height: 1em;
   color: #005d8f;
-  margin: 5px 0 !important;
 }
 body.makercamp .schedule-content .maker .date,
 body.makercamp .schedule-content .maker .mentor {
@@ -10194,7 +10181,7 @@ body.makercamp .map-list-header {
   }
   body.makercamp .schedule-content .maker,
   body.makercamp.admin-bar .schedule-content .maker {
-    margin-right: 29px !important;
+    /* margin-right:29px !important; */
   }
   body.makercamp .schedule-content .maker-description,
   body.makercamp.admin-bar .schedule-content .maker-description {
@@ -10266,7 +10253,7 @@ body.makercamp .map-list-header {
   }
   body.makercamp .schedule-content .maker,
   body.makercamp.admin-bar .schedule-content .maker {
-    margin-right: 15px !important;
+    /* margin-right:15px !important; */
   }
   body.makercamp .new-footer .main,
   body.makercamp.admin-bar .new-footer .main {
