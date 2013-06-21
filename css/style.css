@@ -10377,11 +10377,6 @@ body.makercamp .map-list-header {
   body.makercamp.admin-bar .schedule-content .tab-content > .active {
     padding: 0 20px;
   }
-  body.makercamp .schedule-content .tab-content [class*="span"],
-  body.makercamp.admin-bar .schedule-content .tab-content [class*="span"] {
-    float: left;
-    width: 149px;
-  }
   body.makercamp .schedule-content .desc-body,
   body.makercamp.admin-bar .schedule-content .desc-body,
   body.makercamp .schedule-content .desc-feat,
