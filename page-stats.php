@@ -2,23 +2,28 @@
 /**
  * Template Name: Stats Tool
  * Used to grab stats for tweets/plusses/likes
+ *
+ * @package    makeblog
+ * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
+ * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * 
  */
 
 //$url = 'http://makeprojects.com/Project/Kitty-Twitty-Cat-Toy/1439/1';
 
-if ($_POST) {
-	$url = $_POST["url"];
+if ( $_POST ) {
+	$url = esc_url( $_POST["url"] );
 }
 
-function make_get_tweets($url) {
+function make_get_tweets( $url ) {
  
-	$json_string = wpcom_vip_file_get_contents('http://urls.api.twitter.com/1/urls/count.json?url=' . $url);
+	$json_string = wpcom_vip_file_get_contents( 'http://urls.api.twitter.com/1/urls/count.json?url=' . $url );
 	$json = json_decode($json_string, true);
  
 	return intval( $json['count'] );
 }
  
-function make_get_likes($url) {
+function make_get_likes( $url ) {
  
 	$json_string = wpcom_vip_file_get_contents('http://graph.facebook.com/?ids=' . $url);
 	$json = json_decode($json_string, true);
@@ -26,7 +31,7 @@ function make_get_likes($url) {
 	return intval( $json[$url]['shares'] );
 }
 
-function make_get_plusones($url) {
+function make_get_plusones( $url ) {
  
 	$args = array(
 			'method' => 'POST',
@@ -55,13 +60,13 @@ function make_get_plusones($url) {
 		);
  
 	// retrieves JSON with HTTP POST method for current URL
-	$json_string = wp_remote_post("https://clients6.google.com/rpc", $args);
+	$json_string = wp_remote_post( "https://clients6.google.com/rpc", $args );
  
-	if (is_wp_error($json_string)){
+	if ( is_wp_error( $json_string ) ) {
 		// return zero if response is error
 		return "0";
 	} else {
-		$json = json_decode($json_string['body'], true);
+		$json = json_decode( $json_string['body'], true );
 		// return count of Google +1 for requsted URL
 		return intval( $json['result']['metadata']['globalCounts']['count'] );
 	}
@@ -100,7 +105,7 @@ function make_get_plusones($url) {
 
 			<div class="span6 offset3">
 		
-				<div class="content">
+				<div class="">
 					
 					<form action="" method="post" class="form-inline">
 						<input type="text" class="span3" placeholder="url…" name="url">
@@ -111,13 +116,13 @@ function make_get_plusones($url) {
 			
 						if ($_POST) {
 
-							echo '<table class="table table-striped table-bordered"><thead><tr><th></th><th>Count</th></tr></thead><tbody>';
+							echo '<table class="table table-striped table-bordered"><thead><tr><th>Site</th><th>Count</th></tr></thead><tbody>';
 							echo '<tr><td>Twitter Tweets</td>';
-							echo '<td>' . get_tweets($url). '</td></tr>';
+							echo '<td>' . make_get_tweets( $url ) . '</td></tr>';
 							echo '<tr><td>Facebook Likes</td>';
-							echo '<td>' . get_likes($url) . '</td></tr>';
+							echo '<td>' . make_get_likes( $url ) . '</td></tr>';
 							echo '<tr><td>Google Plusses</td>';
-							echo '<td>' . get_plusones($url) . '</td></tr>';
+							echo '<td>' . make_get_plusones( $url ) . '</td></tr>';
 							echo '</tbody></table>';
 						}
 					?>
@@ -133,7 +138,7 @@ function make_get_plusones($url) {
 			<div class="span6 offset3">
 
 				<footer>
-					<p>&copy; MAKE 2012</p>
+					<p>&copy; <?php echo bloginfo( 'name' ) . ' ' . date( 'Y' ); ?></p>
 				</footer>
 
 			</div>
