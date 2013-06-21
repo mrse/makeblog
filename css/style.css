@@ -4381,7 +4381,7 @@ input[type="submit"].btn.btn-mini {
   background-color: #060c15 \9;
 }
 .navbar-blue .nav-collapse {
-  background: #26374d;
+  background: transparent;
 }
 .black-bar {
   background-color: #002641;
