@@ -632,3 +632,38 @@ function maker_camp_registration( $atts, $content = null ) {
 		</form>';
 }
 add_shortcode( 'maker_camp_sign_up', 'maker_camp_registration' );
+
+
+/**
+ * Adds a campaign monitor form to the post content
+ * @param  Array  $atts    The array of attributes passed through the shortcode
+ * @param  String $content The string of content wrapped inside the shortcode
+ * @return String
+ */
+function make_campaign_monitor_form( $atts, $content = null ) {
+	extract( shortcode_atts( array(
+		'url' 		  => '',
+		'class' 	  => '',
+		'submit_text' => 'Subscribe',
+	), $atts ) );
+
+	if ( ! empty( $class ) ) {
+		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="subForm" class="' . esc_attr( $class ) . '">';
+	} else {
+		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="subForm">';
+	}
+		$output .=	'<div>
+			<label for="name">Name:</label><input type="text" name="cm-name" id="name" /><br />
+			<label for="jkdduth-jkdduth">Email:</label><input type="text" name="cm-jkdduth-jkdduth" id="jkdduth-jkdduth" /><br />
+
+			<input type="submit" value="' . esc_attr( $submit_text ) . '" />
+		</div>
+	</form>';
+
+	return $output;
+}
+add_shortcode( 'make-compagin-monitor', 'make_campaign_monitor_form' );
+
+
+
+
