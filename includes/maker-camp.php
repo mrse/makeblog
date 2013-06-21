@@ -132,21 +132,13 @@
 
 		// Check if a link is set or not and display the right HTML
 		if ( ! empty( $link ) ) {
-			$output .= '<a href="' . esc_url( $link ) . '" class="button blue small-button';
-		} else {
-			$output .= '<p class="button blue small-button';
-		}
-
-		$output .= '">';
+			$output .= '<a href="' . esc_url( $link ) . '" class="button blue small-button">';
 
 		$output .= esc_attr( $link_title );
 
 		// Check again and close the needed HTML if a link is set or not
-		if ( ! empty( $link ) ) {
+		if ( ! empty( $link ) )
 			$output .= '</a>';
-		} else {
-			$output .= '</p>';
-		}
 
 		// Close the project link
 		$output .= '</div>';
