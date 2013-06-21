@@ -151,6 +151,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/help/index.html'			=> 'http://archive.makezine.com/help/index.html',
 		'/hardware-innovation-workshop/videos.html'	=> 'http://archive.makezine.com/hardware-innovation-workshop/videos.html',
 		'/magazine/newsletter/makerpro' => 'http://archive.makezine.com/magazine/newsletter/makerpro/index.html',
+		'/groups'					=> 'http://archive.makezine.com/groups',
 
 	);
 	vip_redirects( $redirects );
