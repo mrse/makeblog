@@ -47,12 +47,13 @@ if ( ! jetpack_is_mobile() ) {
  */
 if ( function_exists( 'vip_regex_redirects' ) ) {
 	$redirects = array(
-		'|/archive/([0-9]{4})/([0-9]{2})/([^/]+)\.html|' => '|/$1/$2/$3/|', // MT articles
-		'|/([0-9]+)\.html$|' => '|/$1/|', // MT page structure - just redirect to postname and WordPress will resolve
-		'|/archive/category/([a-zA-Z_]+)|' => '|/category/$1/|', // MT category
-		'|/archive/category/([a-zA-Z_]+)/index.xml$|' => '|/category/$1/feed/', // MT category feed
-		'|/archive/category/([a-zA-Z_]+)/feed|' => '|/category/$1/feed/', // Old WordPress Podcast feeds
-		'|/archive/category/([a-zA-Z]+)/([0-9]+)\.html$|' => '|/category/$1/page/$2/', // MT paginated category structure
+		'|^/archive/([0-9]{4})/([0-9]{2})/([^/]+)\.html|' => '|/$1/$2/$3/|', // MT articles
+		'|^/([0-9]+)\.html$|' => '|/$1/|', // MT page structure - just redirect to postname and WordPress will resolve
+		'|^/archive/category/([a-zA-Z_]+)|' => '|/category/$1/|', // MT category
+		'|^/archive/category/([a-zA-Z_]+)/index.xml$|' => '|/category/$1/feed/', // MT category feed
+		'|^/archive/category/([a-zA-Z_]+)/feed|' => '|/category/$1/feed/', // Old WordPress Podcast feeds
+		'|^/archive/category/([a-zA-Z]+)/([0-9]+)\.html$|' => '|/category/$1/page/$2/', // MT paginated category structure
+		'|^/([0-9]{2})/([^/]+)/?$|' => 'http://archive.makezine.com|/$1/$2|',
 	);
 	vip_regex_redirects( $redirects );
 }
