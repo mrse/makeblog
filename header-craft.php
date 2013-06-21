@@ -36,30 +36,34 @@
 	</head>
 
 	<body <?php body_class('craft'); ?>>
-
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<div class="pull-left">
-						<ul class="nav">
-							<li class="active"><a href="http://makezine.com">MAKE</a></li>
-							<li class=""><a href="http://makezine.com/blog/">Blog</a></li>
-							<li class=""><a href="http://makezine.com/magazine">Magazine</a></li>
-							<li class=""><a href="http://makerfaire.com">Maker Faire</a></li>
-							<li class=""><a href="http://makezine.com">Make: Projects</a></li>
-							<li class=""><a href="http://makershed.com">Maker Shed</a></li>
-							<li class=""><a href="http://kits.makezine.com">Kits</a></li>
-						</ul>
-					</div>
-					<div class="pull-right">
-						<form action="http://blog.makezine.com/search/" class="form navbar-search">
-							<input type="text" class="span2 search-query" name="q" placeholder="" />
-							<input type="submit" class="btn btn-primary" style="height:28px" value="Search" />
-						</form>
+		<header>
+			<div class="navbar navbar-blue navbar-fixed-top">
+					<div class="navbar-inner">
+						<nav class="container">
+							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</a>
+							<a class="brand" href="http://makezine.com/">MAKE</a>
+							<div class="nav-collapse in collapse">
+								<?php wp_nav_menu( array(
+									'theme_location'  => 'topbar',
+									'menu'            => 'topbar', 
+									'container'       => false, 
+									'menu_class'      => 'nav clearfix',
+									'depth'           => 1 ) );
+								?>
+								<form action="http://makezine.com/search/" class="form pull-right navbar-search">
+									<input type="text" class="span2 search-query" name="q" placeholder="" />
+									<input type="submit" class="btn btn-primary" style="margin-top:0px;" value="Search" />
+								</form>
+							</div><!--/.nav-collapse -->
+						</nav>
 					</div>
 				</div>
 			</div>
-		</div>
+		</header>
 
 		<div class="fix">
 
