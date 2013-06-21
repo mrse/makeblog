@@ -57,7 +57,7 @@
 				</div>
 			</div>
 		</div>
-		<heade class="top-navigation-wrapper">
+		<header class="top-navigation-wrapper">
 			<div class="main-header">
 				<div class="container">
 					<div class="row">
@@ -66,7 +66,15 @@
 						</div>
 						<nav role="navigation" class="span10 site-navigation main-navigation">
 							<ul class="nav menu-primary-nav">
-								<li><a href="#">Electronics</a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Electronics</a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Arduino</a></li>
+										<li><a href="#">Computers &amp; Mobile</a></li>
+										<li><a href="#">Raspberri Pi</a></li>
+										<li><a href="#">Robotics</a></li>
+									</ul>
+								</li>
 								<li><a href="#">Workshop</a></li>
 								<li><a href="#">Craft</a></li>
 								<li><a href="#">Science</a></li>
@@ -75,15 +83,11 @@
 							</ul>
 						</nav>
 						<div class="additional-content">
-							<div class="subscribe">
-								<a href="#">Subscribe</a>
-							</div>
-							<div class="search-make">
-								<form action="<?php echo home_url(); ?>/search/" class="search">
-									<input type="text" class="search-query" name="q" placeholder="" />
-									<input type="submit" class="btn btn-primary" style="margin-top:0px;" value="Search" />
-								</form>
-							</div>
+							<a href="#" class="subscribe">Subscribe</a>
+							<form action="<?php echo home_url(); ?>/search/" class="search-make">
+								<input type="text" class="search-query" name="q" placeholder="" />
+								<input type="submit" style="margin-top:0px;" value="Search" />
+							</form>
 						</div>
 					</div>
 				</div>
@@ -93,13 +97,19 @@
 					<div class="row">
 						<nav class="span12 site-navigation secondary-navigation">
 							<ul class="nav menu-secondary-nav">
-								<li><a href="#">Projects</a></li>
+								<li><a href="#" class="first">Projects</a></li>
 								<li><a href="#">Featuers</a></li>
 								<li><a href="#">Blog</a></li>
 								<li><a href="#">Magazine</a></li>
 								<li><a href="#">Videos</a></li>
 								<li><a href="#">Reviews</a></li>
-								<li><a href="#">Events</a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Events</a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Maker Faire</a></li>
+										<li><a href="#">Hardware Innovation Workshop</a></li>
+									</ul>
+								</li>
 								<li><a href="#">Shop</a></li>
 								<li><a href="#">Forums</a></li>
 								<li><a href="#">Education</a></li>
