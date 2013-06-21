@@ -26,9 +26,23 @@
 			.border-bottom-left-radius(5px);
 		}
 		.search-make {
-			input {
+			margin:0;
+			input[type="text"] {
+				padding:5px 0 4px 8px;
+				width:0 !important;
 				border:none;
-				.border-radius(0px);
+				color:#777;
+				&:focus { .box-shadow(0 0 0 transparent); }
+			}
+			input[type="image"] { margin:4px 8px 5px; }
+			&.open {
+				border:@the-border solid @red;
+				border-top:none;
+				.border-bottom-right-radius(5px);
+				.border-bottom-left-radius(5px);
+				input[type="text"] { 
+					padding:3px 0 3px 8px;
+				}
 			}
 		}
 	}
@@ -40,7 +54,14 @@
 }
 
 .site-navigation {
-	li { .pull-left; }
+	li {
+		.pull-left;
+		li.dropdown:hover {
+			> ul.dropdown-menu {
+				display:block; // Allows us to use hover on the dropdowns rather than click.
+			}
+		}
+	}
 	a, .dropdown-menu a {
 		color:@blue;
 		background:none; 
@@ -59,6 +80,11 @@
 		border-top:none;
 		.border-radius(2px);
 	}
+}
+
+
+ul.nav li.dropdown:hover > ul.dropdown-menu{
+    display: block;    
 }
 
 .main-navigation {

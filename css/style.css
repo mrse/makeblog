@@ -9224,11 +9224,35 @@ ul#tabs .current > a:hover {
   -moz-border-radius-bottomleft: 5px;
   border-bottom-left-radius: 5px;
 }
-.main-header .additional-content .search-make input {
+.main-header .additional-content .search-make {
+  margin: 0;
+}
+.main-header .additional-content .search-make input[type="text"] {
+  padding: 5px 0 4px 8px;
+  width: 0 !important;
   border: none;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
+  color: #777;
+}
+.main-header .additional-content .search-make input[type="text"]:focus {
+  -webkit-box-shadow: 0 0 0 transparent;
+  -moz-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
+}
+.main-header .additional-content .search-make input[type="image"] {
+  margin: 4px 8px 5px;
+}
+.main-header .additional-content .search-make.open {
+  border: 1px solid #ed1c24;
+  border-top: none;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-left-radius: 5px;
+}
+.main-header .additional-content .search-make.open input[type="text"] {
+  padding: 3px 0 3px 8px;
 }
 .secondary-header {
   background: #ebebeb;
@@ -9238,6 +9262,9 @@ ul#tabs .current > a:hover {
 }
 .site-navigation li {
   float: left;
+}
+.site-navigation li li.dropdown:hover > ul.dropdown-menu {
+  display: block;
 }
 .site-navigation a,
 .site-navigation .dropdown-menu a {
@@ -9260,6 +9287,9 @@ ul#tabs .current > a:hover {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+}
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+  display: block;
 }
 .main-navigation {
   font-size: 22px;

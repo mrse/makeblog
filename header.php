@@ -85,8 +85,8 @@
 						<div class="additional-content">
 							<a href="#" class="subscribe">Subscribe</a>
 							<form action="<?php echo home_url(); ?>/search/" class="search-make">
-								<input type="text" class="search-query" name="q" placeholder="" />
-								<input type="submit" style="margin-top:0px;" value="Search" />
+								<input type="text" class="search-field" name="q" placeholder="" />
+								<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-btn.png" alt="Search" class="disabled" />
 							</form>
 						</div>
 					</div>
