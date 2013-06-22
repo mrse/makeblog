@@ -9721,7 +9721,7 @@ body.camp {
 body.makercamp {
   /* apply a natural box layout model to all elements. sadly this breaks everything when it should fix... */
 
-  background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat-x;
+  background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat;
   text-rendering: optimizeLegibility;
   padding-bottom: 0 !important;
   margin: 0;
