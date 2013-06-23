@@ -1,28 +1,6 @@
 var geocoder;
 var map;
 
-// The function to go and get our geolocations
-function get_lat_long( address ) {
-
-   // Run the geo
-   geocoder.geocode({
-      'address': address
-   }, function( results, status ) {
-
-      // Make sure our geocode went well
-      if ( status === google.maps.GeocoderStatus.OK ) {
-
-         // map.setCenter( results[0].geometry.location );
-         var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-         });
-
-      }
-
-   });
-}
-
 // Load our map and center it on San Francisco
 function initialize() {
 
@@ -38,21 +16,33 @@ function initialize() {
    // Loop through each object
    jQuery.each( JSON.parse( makercamp.addresses ), function( key, value ) {
 
-      // Create a variable for each of our addresses
-      var address = value['Work Address 1'] + ' ' + value['Work City'] + ', ' + value['Work State'] + ' ' + value['Work Zip'];
-      var address2 = value['Work Address 2'] + ' ' + value['Work City'] + ', ' + value['Work State'] + ' ' + value['Work Zip'];
+      // Run the geocoding
+      geocoder.geocode({
+         'address':  value['Work City'] + ' ' + value['Work State'] + ' ' + value['Work Zip'] + ' ' + value['Work Country']
+      }, function( results, status ) {
 
-      // Check if our address starts with a number by checking the first character in the variable
-      if ( ! isNaN( address.charAt(0) ) ) {
+         // Make sure our geocode went well
+         if ( status === google.maps.GeocoderStatus.OK ) {
 
-         // Go and process our address into lat and long
-         get_lat_long( address );
+            // map.setCenter( results[0].geometry.location );
+            var marker = new google.maps.Marker({
+               map: map,
+               animation: google.maps.Animation.DROP,
+               position: results[0].geometry.location
+            });
 
-      } else if ( ! isNaN( address2.charAt(0) ) ) {
+            var infowindow = new google.maps.InfoWindow({
+               content: value['First Name']
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+               infowindow.open(map,marker);
+            });
 
-         // If we hit here it's because the first address wasn't a valid address
-         get_lat_long( address2 );
-      }
+         } else {
+            console.log( status );
+         }
+
+      });
 
    });
 

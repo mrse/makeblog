@@ -12,7 +12,8 @@
 			wp_enqueue_script( 'make-google-maps-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAujQEAqvu3Mrv4_E1ySsKuyk650i9HhzQ&sensor=true', array( 'jquery' ) );
 			wp_enqueue_script( 'make-makercamp-google-maps', get_stylesheet_directory_uri() . '/js/google-maps.js', array( 'make-google-maps-api' ), '1.0' );
 			wp_localize_script( 'make-makercamp-google-maps', 'makercamp', array(
-				'addresses' => esc_attr( $addresses[0] ),
+				// Use our server-side geocoder to get the data points
+				'addresses' => make_map_geocode( $addresses[0] ),
 			) );
 		}
 	}
@@ -38,12 +39,14 @@
 	 * @return Void
 	 */
 	function make_makercamp_map_data() {
-		$post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
-		$template_file = get_post_meta( $post_id,'_wp_page_template',true );
+		if ( isset( $_GET['post'] ) || isset( $_POST['post_ID'] ) ) {
+			$post_id = $_GET['post'] ? $_GET['post'] : intval( $_POST['post_ID'] ) ;
+			$template_file = get_post_meta( $post_id,'_wp_page_template',true );
+		}
 
-		  // check for a template type
-		  if ( $template_file == 'page-makercamp-map.php' )
-		    add_meta_box( 'make-maps-data', 'Map Data (JSON format only)', 'make_map_data_callback', 'page' );
+		// check for a template type
+		if ( $template_file == 'page-makercamp-map.php' && isset( $post_id ) )
+			add_meta_box( 'make-maps-data', 'Map Data (JSON format only)', 'make_map_data_callback', 'page' );
 	}
 	add_action( 'add_meta_boxes', 'make_makercamp_map_data' );
 
@@ -81,4 +84,44 @@
 			
 	}
 	add_action( 'save_post', 'make_map_data_save' );
+
+
+	/**
+	 * Allows use to geocode via server side. CLient-side has a max limit of 10 when done through a loop of static address.
+	 * Server-side will alos cache for us and Google will handle all of that.
+	 * @param  Array $address The array of address for us to Geocode
+	 * @return Array|Boolean
+	 */
+	function make_map_geocode( $addresses ) {
+
+		// Check if the WP_Http class is included
+		if ( ! class_exists( 'WP_Http' ) )
+			include_once( ABSPATH . WPINC . '/class-http.php' );
+
+		if ( is_array( $addresses ) ) {
+
+			$result = array();
+			$result = $addresses;
+			foreach( $addresses as $key => $value ) {
+
+				$result[] = $key;
+
+				// Set the Google Map Geocode URL
+				$url = 'http://maps.google.com/maps/api/geocode/json?sensor=false&address=' . urlencode( $address );
+
+				// Create a new WP HTTP class
+				$wp_http = new WP_Http;
+
+				// Fetch the data
+				//$result = $wp_http->request( $url );
+
+			}
+
+			// Return our findings as a JSON array
+			echo '<script type="text/javascript">/* <![CDATA[ */var makercamp = {"addresses":"' . json_encode( $result ) . '"};/* ]]> */</script>';
+
+		} else {
+			return 'adsf';
+		}
+	}
 
