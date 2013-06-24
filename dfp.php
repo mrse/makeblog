@@ -97,7 +97,7 @@ global $post;
 				elseif (has_tag( array( 'greatcreate', 'Weekend Projects' )) || is_page( array( 286853, 271492, 313151 ) ) ) {
 					echo "googletag.pubads().setTargeting('sponsor',['radioshack']);";
 				} 
-				elseif ( has_tag('esurance') || is_page( 313086 ) ) {
+				elseif (has_tag('esurance') || is_page( array(313086, 316119) ) ) {
 					echo "googletag.pubads().setTargeting('sponsor',['esurance']);";
 				}
 				elseif (has_tag('tinkernation')) {
@@ -121,7 +121,7 @@ global $post;
 				elseif (is_single(array(122348))) {
 					echo "googletag.pubads().setTargeting('sponsor',['element14']);";
 				}
-				elseif ( is_page( array( 289746,271575 ) ) ) {
+				elseif (is_page( array( 289746,271575 ) ) ) {
 					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
 				}
 			?>

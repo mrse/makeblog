@@ -9025,7 +9025,7 @@ ul#tabs .current > a:hover {
   padding: 0px;
 }
 .featured .blurb p {
-  padding: 0px;
+  padding: 0 10px 0 0;
 }
 .featured .blurb p small {
   margin-top: 5px;
