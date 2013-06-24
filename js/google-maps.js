@@ -1,53 +1,49 @@
-var geocoder;
-var map;
 
 // Load our map and center it on San Francisco
 function initialize() {
 
-   // initialize the Geocoder function
-   geocoder = new google.maps.Geocoder();
    var latlng = new google.maps.LatLng(39.8282, -98.5795);
    var mapOptions = {
       zoom: 4,
       center: latlng,
+      panControl: true,
+      scaleControl: true,
+      streetViewControl: false,
+      zoomControl: true,
+      zoomControlOptions: {
+         style: google.maps.ZoomControlStyle.SMALL
+      },
       mapTypeId: google.maps.MapTypeId.ROADMAP
    };
+   var map = new google.maps.Map( document.getElementById( 'map-canvas' ), mapOptions );
 
    // Loop through each object
    jQuery.each( JSON.parse( makercamp.addresses ), function( key, value ) {
 
-      // Run the geocoding
-      geocoder.geocode({
-         'address':  value['Work City'] + ' ' + value['Work State'] + ' ' + value['Work Zip'] + ' ' + value['Work Country']
-      }, function( results, status ) {
+      // Set up are markers
+      var contentString = '<div id="content">'+
+         '<div id="siteNotice"></div>'+
+            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+            '<div id="bodyContent">'+
+               '<p></p>'+
+               '<p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">http://en.wikipedia.org/w/index.php?title=Uluru</a> (last visited June 22, 2009).</p>'+
+            '</div>'+
+         '</div>';
+      var infowindow = new google.maps.InfoWindow({
+         content: contentString
+      });
+      var myLatLng = new google.maps.LatLng( value.Lat,value.Lng );
+      var marker = new google.maps.Marker({
+         position: myLatLng,
+         map: map
+      });
 
-         // Make sure our geocode went well
-         if ( status === google.maps.GeocoderStatus.OK ) {
-
-            // map.setCenter( results[0].geometry.location );
-            var marker = new google.maps.Marker({
-               map: map,
-               animation: google.maps.Animation.DROP,
-               position: results[0].geometry.location
-            });
-
-            var infowindow = new google.maps.InfoWindow({
-               content: value['First Name']
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-               infowindow.open(map,marker);
-            });
-
-         } else {
-            console.log( status );
-         }
-
+      google.maps.event.addListener( marker, 'click', function() {
+         infowindow.open( map,marker );
       });
 
    });
 
-   // Initialize the map with our markers
-   map = new google.maps.Map( document.getElementById( 'map-canvas' ), mapOptions );
 }
 
 // Load our initialize function on window load
