@@ -65,24 +65,16 @@
 					<div class="row">
 						<div class="span12">
 							<div class="clear"></div>
-							<h1><a href="http://blog.makezine.com/hardware-innovation-workshop/"><img style="margin:0 auto" src="http://makezineblog.files.wordpress.com/2013/04/hiw-website-header-940w.jpg" alt="Hardware Innovation Workshop - May 14-15, 2013 at College of San Mateo" title="Hardware Innovation Workshop - May 14-15, 2013 at College of San Mateo" /></a></h1>
+							<h1><a href="http://blog.makezine.com/hardware-innovation-workshop/"><img style="margin:0 auto" src="http://makezineblog.files.wordpress.com/2013/06/hiw_eventbrite_webheader_ny13.jpg?w=940" alt="Hardware Innovation Workshop - May 14-15, 2013 at College of San Mateo" title="Hardware Innovation Workshop - May 14-15, 2013 at College of San Mateo" /></a></h1>
 						</div> <!-- END span12 -->
 					</div> <!-- END row -->	
 				</div> <!-- END container -->		
 				</div> <!-- END header -->
-				<div class="header-wrap">
 					<div class="container">	
-						<div class="row">
-							<div class="tag-area">
-							<div class="span9">
+							<div class="header-wrap">
 								<h2>Thanks to all our great sponsors, presenters, and attendees for making the 2013 Hardware Innovation Workshop a success!</h2> 
-							</div> <!-- END span9 -->
-							<div class="span3">
-								<a href="http://www.foliomag.com/2013/make-magazine-s-hardware-innovation-workshop" target="_blank"><img src="http://makezineblog.files.wordpress.com/2013/03/pastedgraphic-1.jpg" alt="2012 Event received FAME award for Best First Time Event"></a>
-							</div> <!-- END span3 -->
-							</div> <!-- END tag-area-->		
-						</div> <!-- END row -->
-					</div> <!-- END header-wrap -->
+								<a href="http://www.foliomag.com/2013/make-magazine-s-hardware-innovation-workshop" target="_blank"><img style="pull-right" src="http://makezineblog.files.wordpress.com/2013/03/pastedgraphic-1.jpg" alt="2012 Event received FAME award for Best First Time Event"></a>
+						</div> <!-- END header-wrap -->
 				</div> <!-- END container -->
 				<div class="clear"></div>
 		</div> <!-- END fix -->
