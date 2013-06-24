@@ -15,7 +15,11 @@
 	 * @return String
 	 */
 	function make_makercamp_map_shortcode( $atts, $content ) {
-		$output .= '<div id="map-canvas" style="height:464px; width:100%;"></div>';
+		// Prefered method, but not ready for prime time.
+		// $output .= '<div id="map-canvas" style="height:464px; width:100%;"></div>';
+
+		// Current method. In time, use the custom map
+		$output = '<iframe src="http://mapsengine.google.com/map/u/0/view?mid=zNd3spMv9Udc.kAZJyZ7T6RB8" width="99.5%" height="464"></iframe>';
 
 		return $output;
 	}
