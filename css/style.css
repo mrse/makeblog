@@ -8493,6 +8493,9 @@ textarea.radio-narrow,
 .footer-ad {
   padding: 30px 0;
 }
+.carousel-control {
+  top: 15px !important;
+}
 .dots {
   background: url('../img/dots.png');
   background-repeat: repeat-x;
