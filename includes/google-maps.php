@@ -2,6 +2,9 @@
 
 	/**
 	 * Contains all the source code for running the Google Maps Marker Map found in Maker Camp
+	 *
+	 * Had major issues with integrating a custom map.. Out of time, taking the easy way out with Google Maps Engine Lite.
+	 * For now we'll save the source code, but will not load them until we are ready.
 	 */
 	function make_makercamp_add_gm_resources() {
 
@@ -17,7 +20,7 @@
 			) );
 		}
 	}
-	add_action( 'wp_enqueue_scripts', 'make_makercamp_add_gm_resources' );
+	//add_action( 'wp_enqueue_scripts', 'make_makercamp_add_gm_resources' );
 
 
 	/**
@@ -48,7 +51,7 @@
 		if ( $template_file == 'page-makercamp-map.php' && isset( $post_id ) )
 			add_meta_box( 'make-maps-data', 'Map Data (JSON format only)', 'make_map_data_callback', 'page' );
 	}
-	add_action( 'add_meta_boxes', 'make_makercamp_map_data' );
+	//add_action( 'add_meta_boxes', 'make_makercamp_map_data' );
 
 
 	/**
@@ -83,12 +86,12 @@
 			update_post_meta( $post_id, 'makercamp-maps-data', esc_attr( $_POST['makercamp-maps-data'] ) );
 			
 	}
-	add_action( 'save_post', 'make_map_data_save' );
+	//add_action( 'save_post', 'make_map_data_save' );
 
 
 	/**
 	 * Allows use to geocode via server side. CLient-side has a max limit of 10 when done through a loop of static address.
-	 * Server-side will alos cache for us and Google will handle all of that.
+	 * Server-side will also cache for us and Google will handle all of that.
 	 * @param  Array $address The array of address for us to Geocode
 	 * @return Array|Boolean
 	 */
