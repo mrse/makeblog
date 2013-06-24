@@ -33,7 +33,7 @@
 	function make_makercamp_add_gm_resources() {
 
 		// Only load these resources when we use the Maker Camp Map page template
-		if ( ! is_admin() && is_page_template( 'page-makercamp-map.php' ) ) {
+		if ( is_page_template( 'page-makercamp-map.php' ) ) {
 
 			$addresses = get_post_meta( get_the_ID(), 'makercamp-maps-data', true );
 			wp_enqueue_script( 'make-google-maps-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAujQEAqvu3Mrv4_E1ySsKuyk650i9HhzQ&sensor=true', array( 'jquery' ) );
@@ -52,7 +52,7 @@
 	 */
 	function make_makercamp_map_data() {
 		if ( isset( $_GET['post'] ) || isset( $_POST['post_ID'] ) ) {
-			$post_id = $_GET['post'] ? $_GET['post'] : intval( $_POST['post_ID'] ) ;
+			$post_id = $_GET['post'] ? absint( $_GET['post'] ) : absint( $_POST['post_ID'] ) ;
 			$template_file = get_post_meta( $post_id,'_wp_page_template',true );
 		}
 
