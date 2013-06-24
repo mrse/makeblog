@@ -153,6 +153,8 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/magazine/newsletter/makerpro' => 'http://archive.makezine.com/magazine/newsletter/makerpro/index.html',
 		'/groups'					=> 'http://archive.makezine.com/groups/',
 		'/make-newsletter'			=> 'http://makezine.com/newsletter/',
+		'/magazine/newsletter/subscribe/free-digital-magazine.html'			=> 'http://archive.makezine.com/magazine/newsletter/subscribe/free-digital-magazine.html',
+
 	);
 	vip_redirects( $redirects );
 }
