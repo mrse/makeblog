@@ -9962,7 +9962,7 @@ body.makercamp .new-footer .subscribe hr {
   margin-right: 5px;
 }
 body.makercamp .new-footer a,
-body.makercamp .new-footer body.makercamp .new-footer a:visited {
+body.makercamp .new-footer .new-footer a:visited {
   color: #005D8F !important;
 }
 body.makercamp .new-footer p {
@@ -10145,27 +10145,27 @@ body.makercamp .button.small-button,
 body.makercamp a.button.small-button {
   line-height: inherit !important;
 }
-.map-title {
+body.makercamp .map-title {
   background: #011f43;
   margin: 0 !important;
   font-size: 1.637142857em;
   font-family: sans-serif;
   font-weight: normal;
 }
-.map-list {
+body.makercamp .map-list {
   background: #fff;
   color: #333;
   margin-top: 20px;
   border: 1px solid #333;
 }
-.map-list th {
+body.makercamp .map-list th {
   color: #fff;
   border-bottom: 1px solid #333;
 }
-.map-list a {
+body.makercamp .map-list a {
   color: #005d8f !important;
 }
-.map-list .map-list-header {
+body.makercamp .map-list-header {
   font-weight: normal;
   background-color: #011f43 !important;
 }
