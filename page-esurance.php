@@ -16,7 +16,7 @@ make_get_header() ?>
 				
 				<div class="span8">
 					
-					<img src="http://placekitten.com/620/250" alt="Road to Maker Faire Challenge">
+					<img src="http://makezineblog.files.wordpress.com/2013/06/620x250-landing-page.jpg" alt="Road to Maker Faire Challenge">
 					
 				</div>
 				
