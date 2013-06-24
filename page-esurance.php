@@ -71,6 +71,9 @@ make_get_header() ?>
 					
 					<div class="tab-pane" id="entries">
 					
+						<iframe id="wizehiveportal" scrolling="auto" frameborder="0" width="940px" height="1800px"></iframe>
+						<script src="http://app.wizehive.com/js/portaliframe.js" type="text/javascript"></script><script type="text/javascript">displayPortal('makermedia2013');</script>
+						
 						<script src="http://app.wizehive.com/js/portaliframe.js" type="text/javascript"></script><script type="text/javascript">displayPortal('makermedia2013');</script>
 						<p><a href="http://www.wizehive.com/photo-contest-software">Photo Contest Software</a> provided by WizeHive</p>
 						
@@ -78,7 +81,21 @@ make_get_header() ?>
 					
 					<div class="tab-pane" id="winners">
 						
-						
+						<p>After two years of bringing the Road to Maker Faire Challenge to the Bay Area Maker Faire, we're pleased to bring the challenge to New York City for <a href="http://makerfaire.com/">World Maker Faire</a>! See the previous Winners and Runners-up below. Click any of the images to see more information about each project.</p>
+
+						<h3>2013 Bay Area winner:</h3>
+						[caption id="attachment_316225" align="alignnone" width="930"]<a href="http://makezine.com/2013/04/30/winners-on-the-road-to-maker-faire-bay-area/"><img src="http://makezineblog.files.wordpress.com/2013/06/rtmfcba2013_ghl2_crop.jpg?w=1024" alt="Greathouse Labs" width="1024" height="673" class="size-large wp-image-316225" /></a> Greathouse Labs[/caption]
+
+						<h3>2013 Bay Area runners-up:</h3>
+						[caption id="attachment_316228" align="alignleft" width="150"]<a href="http://makezine.com/2013/04/30/winners-on-the-road-to-maker-faire-bay-area/"><img src="http://makezineblog.files.wordpress.com/2013/06/rtmfcba2013_laserkaleidoscope02.jpg?w=150" alt="Laser Kaleidoscope" width="150" height="99" class="size-thumbnail wp-image-316228" /></a> Laser Kaleidoscope[/caption][caption id="attachment_316236" align="alignleft" width="150"]<a href="http://makezine.com/2013/04/30/winners-on-the-road-to-maker-faire-bay-area/"><img src="http://makezineblog.files.wordpress.com/2013/06/rtmfcba2013_modelbox-3d_.jpg?w=150" alt="ModelBox 3D" width="150" height="100" class="size-thumbnail wp-image-316236" /></a> ModelBox 3D[/caption]
+
+						<div style="clear:both;"></div><hr />
+
+						<h3>2012 Bay Area winner:</h3>
+						[caption id="attachment_316242" align="aligncenter" width="930"]<a href="http://makezine.com/2012/04/25/winners-on-the-road-to-maker-faire-challenge/"><img src="http://makezineblog.files.wordpress.com/2013/06/7225210940_312b4cdec9_h.jpg" alt="The Vardo" width="1024" height="1535" class="size-full wp-image-316242" /></a> The Vardo[/caption]
+
+						<h3>2012 Bay Area runners-up:</h3>
+						[caption id="attachment_316266" align="alignleft" width="143"]<a href="http://makezine.com/2012/04/25/winners-on-the-road-to-maker-faire-challenge/"><img src="http://makezineblog.files.wordpress.com/2013/06/plastic-injection-molding.jpg?w=143" alt="Plastic Injection Molding from Scratch" width="143" height="150" class="size-thumbnail wp-image-316266" /></a> Plastic Injection Molding from Scratch[/caption][caption id="attachment_316265" align="alignleft" width="150"]<a href="http://makezine.com/2012/04/25/winners-on-the-road-to-maker-faire-challenge/"><img src="http://makezineblog.files.wordpress.com/2013/06/midi-controlled-lighting.jpg?w=150" alt="Midi Controlled Lighting" width="150" height="84" class="size-thumbnail wp-image-316265" /></a> Midi Controlled Lighting[/caption]	
 						
 					</div>
 					
