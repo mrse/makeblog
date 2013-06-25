@@ -15,6 +15,8 @@ make_get_header() ?>
 			<div class="row">
 				
 				<div class="span8">
+
+					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					
 					<img src="http://makezineblog.files.wordpress.com/2013/06/620x250-landing-page.jpg" alt="Road to Maker Faire Challenge">
 					
@@ -37,6 +39,30 @@ make_get_header() ?>
 				</div>
 				
 			</div>
+
+				<div class="row">
+			
+				<div class="span12">
+
+					<h1><?php the_title(); ?></h1>
+				
+					<article <?php post_class(); ?>>
+
+						<?php the_content(); ?>
+					
+					</article>
+					
+					<?php endwhile; ?>
+					
+					<?php else: ?>
+					
+						<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+					
+					<?php endif; ?>
+				</div> <!-- END span12 -->				
+					
+			</div> <!-- END row -->	
+
 		</div>
 
 	</div>
