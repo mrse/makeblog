@@ -73,8 +73,6 @@ make_get_header() ?>
 					
 						<iframe id="wizehiveportal" scrolling="auto" frameborder="0" width="940px" height="1800px"></iframe>
 						<script src="http://app.wizehive.com/js/portaliframe.js" type="text/javascript"></script><script type="text/javascript">displayPortal('makermedia2013');</script>
-
-						<script src="http://app.wizehive.com/js/portaliframe.js" type="text/javascript"></script><script type="text/javascript">displayPortal('makermedia2013');</script>
 						<p><a href="http://www.wizehive.com/photo-contest-software" target="_blank">Photo Contest Software</a> provided by WizeHive</p>
 						
 					</div>
