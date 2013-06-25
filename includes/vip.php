@@ -154,6 +154,8 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/groups'					=> 'http://archive.makezine.com/groups/',
 		'/make-newsletter'			=> 'http://makezine.com/newsletter/',
 		'/magazine/newsletter/subscribe/free-digital-magazine.html'			=> 'http://archive.makezine.com/magazine/newsletter/subscribe/free-digital-magazine.html',
+		'/unsubscribe/makershed.csp'			=> 'http://archive.makezine.com/unsubscribe/makershed.html',
+		'/unsubscribe/makershed.html'			=> 'http://archive.makezine.com/unsubscribe/makershed.html',
 
 	);
 	vip_redirects( $redirects );
