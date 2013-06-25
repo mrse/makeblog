@@ -9189,6 +9189,9 @@ ul#tabs .current > a:hover {
 .sidebar .badge.badge-info {
   display: inline;
 }
+.top-navigation-wrapper .nav {
+  margin-bottom: 0;
+}
 .main-header {
   margin-top: 20px;
   padding: 10px 0;
@@ -9262,7 +9265,7 @@ ul#tabs .current > a:hover {
 .site-navigation li {
   float: left;
 }
-.site-navigation li li.dropdown:hover > ul.dropdown-menu {
+.site-navigation li.dropdown:hover > ul.dropdown-menu {
   display: block;
 }
 .site-navigation a,
@@ -9291,13 +9294,16 @@ ul#tabs .current > a:hover {
   font-size: 22px;
   font-weight: bold;
   position: relative;
-  top: 25px;
+  top: 23px;
 }
-.main-navigation li {
+.main-navigation ul > li {
   margin-right: 22px;
 }
+.main-navigation ul > li > a {
+  padding-bottom: 9px;
+}
 .main-navigation .dropdown-menu {
-  margin-top: 6px;
+  margin-top: 0px;
 }
 .secondary-navigation {
   font-size: 18px;

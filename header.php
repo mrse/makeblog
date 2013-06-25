@@ -65,28 +65,13 @@
 							<a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png" /></a>
 						</div>
 						<nav role="navigation" class="span10 site-navigation main-navigation">
-							<?php wp_nav_menu( array(
-								'theme_location'  => 'make-primary', 
-								'container'       => false, 
-								'menu_class'      => 'nav menu-primary-nav clearfix',
-								'depth'           => 1 ) );
+							<?php
+								wp_nav_menu( array(
+									'theme_location'  => 'make-primary', 
+									'container'       => false, 
+									'menu_class'      => 'nav menu-primary-nav clearfix',
+								) );
 							?>
-							<!-- <ul class="nav menu-primary-nav">
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Electronics</a>
-									<ul class="dropdown-menu">
-										<li><a href="#">Arduino</a></li>
-										<li><a href="#">Computers &amp; Mobile</a></li>
-										<li><a href="#">Raspberri Pi</a></li>
-										<li><a href="#">Robotics</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Workshop</a></li>
-								<li><a href="#">Craft</a></li>
-								<li><a href="#">Science</a></li>
-								<li><a href="#">Home</a></li>
-								<li><a href="#">Art &amp; Design</a></li>
-							</ul> -->
 						</nav>
 						<div class="additional-content">
 							<a href="<?php echo home_url(); ?>/go/subscribe2make" class="subscribe">Subscribe</a>

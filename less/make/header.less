@@ -3,7 +3,9 @@
 @secondary-color: #ebebeb;
 
 // Wrapper that contains both the main and secondary navigations
-.top-navigation-wrapper {  }
+.top-navigation-wrapper { 
+	.nav { margin-bottom:0; }
+}
 
 // Wrapper containing the main navigaiton
 .main-header {
@@ -60,12 +62,10 @@
 
 // Global Navigation styles
 .site-navigation {
-	li {
-		.pull-left;
-		li.dropdown:hover {
-			> ul.dropdown-menu {
-				display:block; // Allows us to use hover on the dropdowns rather than click.
-			}
+	li { .pull-left; }
+	li.dropdown:hover {
+		> ul.dropdown-menu {
+			display:block; // Allows us to use hover on the dropdowns rather than click.
 		}
 	}
 	a, .dropdown-menu a {
@@ -93,9 +93,13 @@
 	font-size:22px;
 	font-weight:bold;
 	position:relative;
-	top:25px;
-	li { margin-right:22px; }
-	.dropdown-menu { margin-top:6px; }
+	top:23px;
+	ul {
+		> li { margin-right:22px;
+			> a { padding-bottom:9px; }
+		}
+	}
+	.dropdown-menu { margin-top:0px; }
 }
 
 // Secondary Navigation

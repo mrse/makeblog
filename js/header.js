@@ -13,8 +13,16 @@ jQuery( document ).ready( function( $ ) {
 			});
 
 			$( '.open .search-field' ).focus();
+		}
+	});
 
-			console.log('clicked');
+	// Check each li item to see if it contains a ul, if so, add our dropdown class for Bootstrap's menu stuff
+	$( '.site-navigation li' ).each( function() {
+		if ( $(this).children( 'ul' ).length === 1 ) {
+
+			// Add our class to the parent LI, then a class and data attribute to the A tag and then a class on the UL
+			$(this).addClass( 'dropdown' ).children( 'a' ).addClass( 'dropdown-toggle' ).attr( 'data-toggle', 'dropdown' ).next().addClass( 'dropdown-menu' );
+
 		}
 	});
 });
