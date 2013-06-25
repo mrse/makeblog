@@ -18,13 +18,14 @@ make_get_header() ?>
 				<div class="span8 add30">
 					
 					<?php // create a new custom query so we can return posts, 
+						$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 						$query = new WP_Query( array(
 							'post_type' => array( 'post', 'projects', 'review', 'video', 'magazine' ),
+							'paged' => $paged,
 						) );
 
 						if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
 				
-					<?php echo get_post_type(); ?>
 					<div class="projects-masthead">
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						
