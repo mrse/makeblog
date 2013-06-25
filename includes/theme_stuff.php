@@ -1092,16 +1092,24 @@ function make_sitemap_add_gallery_post_type( $post_types ) {
 	return $post_types;
 }
 
+
 /**
  * Adds a menu field to the menus section of the admin area for the topbar
  * @return void
  *
- * @version  1.0
+ * @version  1.1
  */
-function make_topbar_register_menu() {
-	register_nav_menu( 'topbar', __( 'Top Bar' ) );
+function make_register_menu() {
+
+	// Leaving this menu in so we can migrate navigation smoothly. Will remove after menus are setup and running
+	register_nav_menu( 'topbar', __( 'Top Bar', 'make' ) );
+
+	// New Make Navigation menus
+	register_nav_menu( 'make-primary', __( 'Make Primary Nav', 'make' ) );
+	register_nav_menu( 'make-secondary', __( 'Make Secondary Nav', 'make' ) );
 }
-add_action( 'init', 'make_topbar_register_menu' );
+add_action( 'init', 'make_register_menu' );
+
 
 add_filter( 'wp_kses_allowed_html', 'mf_allow_data_atts', 10, 2 );
 function mf_allow_data_atts( $allowedposttags, $context ) {

@@ -65,7 +65,13 @@
 							<a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png" /></a>
 						</div>
 						<nav role="navigation" class="span10 site-navigation main-navigation">
-							<ul class="nav menu-primary-nav">
+							<?php wp_nav_menu( array(
+								'theme_location'  => 'make-primary', 
+								'container'       => false, 
+								'menu_class'      => 'nav menu-primary-nav clearfix',
+								'depth'           => 1 ) );
+							?>
+							<!-- <ul class="nav menu-primary-nav">
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Electronics</a>
 									<ul class="dropdown-menu">
@@ -80,10 +86,10 @@
 								<li><a href="#">Science</a></li>
 								<li><a href="#">Home</a></li>
 								<li><a href="#">Art &amp; Design</a></li>
-							</ul>
+							</ul> -->
 						</nav>
 						<div class="additional-content">
-							<a href="#" class="subscribe">Subscribe</a>
+							<a href="<?php echo home_url(); ?>/go/subscribe2make" class="subscribe">Subscribe</a>
 							<form action="<?php echo home_url(); ?>/search/" class="search-make">
 								<input type="text" class="search-field" name="q" placeholder="" />
 								<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-btn.png" alt="Search" class="disabled" />

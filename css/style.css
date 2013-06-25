@@ -9189,9 +9189,6 @@ ul#tabs .current > a:hover {
 .sidebar .badge.badge-info {
   display: inline;
 }
-.top-navigation-wrapper {
-  font-family: "proxima-nova", sans-serif;
-}
 .main-header {
   margin-top: 20px;
   padding: 10px 0;
@@ -9228,8 +9225,9 @@ ul#tabs .current > a:hover {
   margin: 0;
 }
 .main-header .additional-content .search-make input[type="text"] {
+  display: none;
   padding: 5px 0 4px 8px;
-  width: 0 !important;
+  width: 0;
   border: none;
   color: #777;
 }
@@ -9253,6 +9251,7 @@ ul#tabs .current > a:hover {
 }
 .main-header .additional-content .search-make.open input[type="text"] {
   padding: 3px 0 3px 8px;
+  margin-bottom: 0;
 }
 .secondary-header {
   background: #ebebeb;
@@ -9287,9 +9286,6 @@ ul#tabs .current > a:hover {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-}
-ul.nav li.dropdown:hover > ul.dropdown-menu {
-  display: block;
 }
 .main-navigation {
   font-size: 22px;
