@@ -1146,13 +1146,13 @@ function mf_filter_tiny_mce_before_init( $options ) {
 function make_get_author( $post_id, $prefix = 'By' ) {
 
 	// Return our post type name
-	$post_type = get_post_type( $post_id );
+	$post_type = get_post_type( absint( $post_id ) );
 
 	// We don't ever want to display an author for the videos post type.
 	if ( $post_type == 'video' )
 		return;
 
-	echo $prefix . ' ';
+	echo esc_attr( $prefix ) . ' ';
 
 	if ( $post_type == 'post' ) {
 		if( function_exists( 'coauthors_posts_links' ) ) {	
