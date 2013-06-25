@@ -43,6 +43,10 @@
 
 		<?php endif; ?>
 
+		<?php if ( is_page( 313086 ) ) ?>
+			<meta property="og:image" content="http://makezineblog.files.wordpress.com/2013/06/makercamp_300x250.jpg" />
+
+
 		<?php wp_head(); ?>
 
 	</head>
