@@ -103,14 +103,9 @@ make_get_header() ?>
 	});
 
 	// Javascript to enable tabs in Bootstrap via IDs in the URL
-	var url = document.location.toString();
-	if ( url.match( '#' ) ) {
-	    jQuery( '.nav-tabs a[href=#' + url.split( '#' )[1] + ']' ).tab( 'show' ) ;
-	} 
-
-	// Change hash for page-reload
-	jQuery( '.nav-tabs a' ).on( 'shown', function ( e ) {
-	    window.location.hash = e.target.hash;
+	jQuery(document).ready(function() {
+		var activeTab = jQuery('[href=' + location.hash + ']');
+		activeTab && activeTab.tab('show');
 	});
 
 </script>
