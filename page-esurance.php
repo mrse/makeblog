@@ -109,6 +109,11 @@ make_get_header() ?>
 		// Enable our Bootstrap Tab we
 		activeTab && activeTab.tab('show');
 
+		// Update the URL when clicking any of our tabs
+		jQuery('a[data-toggle="tab"]').click( function(e) {
+	    	history.pushState(null, null, jQuery(this).attr('href') );
+	    });
+
 	});
 
 	// Stop the page from jumping.. Yes there's a flicker but it works for now.
