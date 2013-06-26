@@ -188,6 +188,7 @@ Template Name: Home Page
 							$args = array(
 								'posts_per_page'  => 6,
 								'no_found_rows' => true,
+								'post_type' => array( 'post', 'projects', 'review', 'video', 'magazine' ),
 							);
 
 							$the_query = new WP_Query( $args );

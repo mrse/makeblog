@@ -1131,3 +1131,60 @@ function mf_filter_tiny_mce_before_init( $options ) {
 
 	return $options; 
 }
+
+
+/**
+ * Allows us to easily integrate different types of authors.
+ * This is needed because our blog feeds contain multiple types of posts.
+ * This will handle the display of those different kinds and apply the right data and styling.
+ * @param  string $post_id The post ID of the post we are returning this info for
+ * @param  string $prefix  The string to add in front of the autor name. Defaults to "By".
+ * @return String
+ *
+ * @version  1.0
+ */
+function make_get_author( $post_id, $prefix = 'By' ) {
+
+	// Return our post type name
+	$post_type = get_post_type( absint( $post_id ) );
+
+	// We don't ever want to display an author for the videos post type.
+	if ( $post_type == 'video' )
+		return;
+
+	echo esc_attr( $prefix ) . ' ';
+
+	if ( $post_type == 'post' ) {
+		if( function_exists( 'coauthors_posts_links' ) ) {	
+			coauthors_posts_links(); 
+		} else { 
+			the_author_posts_link(); 
+		}
+	} else {
+		if ( function_exists( 'coauthors' ) ) {
+			coauthors();
+		} else {
+			the_author();
+		}
+	}
+
+}
+
+
+/**
+ * Filter the query variables and make sure we are searching for the feed so we can include our custom post types like a boss.
+ * @param  array $query_var The query variables.
+ * @return array
+ *
+ * @version  1.0
+ */
+function make_add_post_types_to_feed( $query_var ) {
+
+	// Check that we are quering the RSS feed and post_type isn't being used.
+	if ( isset( $query_var['feed'] ) && ! isset( $query_var['post_type'] ) )
+		$query_var['post_type'] = array( 'post', 'projects', 'review', 'video', 'magazine' );
+
+	return $query_var;
+	
+}
+add_filter( 'request', 'make_add_post_types_to_feed' );
