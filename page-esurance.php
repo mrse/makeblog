@@ -105,7 +105,18 @@ make_get_header() ?>
 	// Javascript to enable tabs in Bootstrap via IDs in the URL
 	jQuery(document).ready(function() {
 		var activeTab = jQuery('[href=' + location.hash + ']');
+
+		// Enable our Bootstrap Tab we
 		activeTab && activeTab.tab('show');
+
+	});
+
+	// Stop the page from jumping.. Yes there's a flicker but it works for now.
+	jQuery(window).load(function() {
+		var activeTab = jQuery('[href=' + location.hash + ']');
+		if(activeTab.length === 1) {
+			jQuery(window).scrollTop(0);
+		}
 	});
 
 </script>
