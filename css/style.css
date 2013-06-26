@@ -10754,6 +10754,9 @@ body.hiw .header-wrap h2 {
   line-height: 28px;
   padding-top: 25px;
 }
+body.hiw .carousel-control {
+  top: 165px !important;
+}
 body.hiw h3,
 body.hiw h4,
 body.hiw h5,
