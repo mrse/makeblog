@@ -8486,6 +8486,25 @@ textarea.radio-narrow,
 .carousel-control {
   top: 15px !important;
 }
+/*subscription page styles by Bill Olson */
+.main-sub-area .form-horizontal .control-label {
+  width: 90px !important;
+}
+.main-sub-area .form-horizontal .controls {
+  margin-left: 95px !important;
+}
+.main-sub-area select {
+  width: 195px !important;
+}
+.main-sub-area .lower-sub-col-01 input {
+  width: 185px !important;
+}
+.main-sub-area #isBillShipAddrSame {
+  width: auto !important;
+}
+.main-sub-area #ccType {
+  width: 115px !important;
+}
 .dots {
   background: url('../img/dots.png');
   background-repeat: repeat-x;
@@ -10764,23 +10783,3 @@ body.hiw h6 {
   line-height: 20px;
   margin-bottom: 16px;
 }
-
-/*subscription page styles by Bill Olson */
-
-.main-sub-area .form-horizontal .control-label {
-width:90px !important
-}
-
-.main-sub-area .form-horizontal .controls {
-    margin-left: 95px !important;
-}
-
-.main-sub-area select  {
-width:195px !important;
-}
-
-.main-sub-area .lower-sub-col-01 input {width:185px !important;}
-
-.main-sub-area #isBillShipAddrSame {width:auto !important;}
-
-.main-sub-area #ccType {width:115px;float:left;padding-right:15px;}
