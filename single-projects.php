@@ -9,12 +9,18 @@
  */
 $steps = get_post_custom_values('Steps');
 get_header(); ?>
-		
+
 	<div class="category-top">
 	
 		<div class="container">
 
-			<div class="row">
+			<div class="row" style="position:relative;">
+
+				<?php if( has_term( 'Weekend Project', 'flags' ) ) : ?>
+					<div style="position:absolute; right:0; top:-20px;">
+						<img src="<?php echo get_template_directory_uri(); ?>/images/weekend-projects-btn.png" title="Weekend Projects Powered by Radio Shack" />
+					</div>
+				<?php endif; ?>
 
 				<div class="span12">
 					
