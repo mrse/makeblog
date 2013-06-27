@@ -642,21 +642,67 @@ add_shortcode( 'maker_camp_sign_up', 'maker_camp_registration' );
  */
 function make_campaign_monitor_form( $atts, $content = null ) {
 	extract( shortcode_atts( array(
-		'url' 		  => '',
-		'class' 	  => '',
-		'submit_text' => 'Subscribe',
+		'url' 		   => '',
+		'class' 	   => '',
+		'id'		   => 'subForm',
+		'title'        => '',
+		'name_id'	   => 'name',
+		'email_id'	   => '',
+		'name_class'   => '',
+		'email_class'  => '',
+		'name'		   => 'Name',
+		'email'		   => 'Email',
+		'submit_class' => '',
+		'submit'       => 'Subscribe',
 	), $atts ) );
 
 	if ( ! empty( $class ) ) {
-		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="subForm" class="' . esc_attr( $class ) . '">';
+		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="' . esc_attr( $id ) . '" class="' . esc_attr( $class ) . '">';
 	} else {
-		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="subForm">';
+		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="' . esc_attr( $id ) . '">';
 	}
-		$output .=	'<div>
-			<label for="name">Name:</label><input type="text" name="cm-name" id="name" /><br />
-			<label for="jkdduth-jkdduth">Email:</label><input type="text" name="cm-jkdduth-jkdduth" id="jkdduth-jkdduth" /><br />
+		$output .=	'<fieldset>';
 
-			<input type="submit" value="' . esc_attr( $submit_text ) . '" />
+			// Add a title to the CM form
+			if ( ! empty( $title ) )
+				$output .= '<legend>' . esc_attr( $title ) . '</legend>';
+
+			// Start our Name label and input fields
+			$output .= '<div class="clearfix">
+				<label for="' . esc_attr( $name_id ) . '">' . esc_attr( $name ) . ':</label>
+				<div class="input">
+					<input type="text" name="cm-' . esc_attr( $name_id ) . '" id="' . esc_attr( $name_id ) . '"';
+
+					// Add a class to the name field if needed
+					if ( ! empty( $name_class ) )
+						$output .= ' ' . esc_attr( $name_class );
+
+					$output .= ' />';
+				$output .= '</div>
+			</div>';
+
+			// Start our Email label and input fields
+			$output .= '<div class="clearfix">
+				<label for="' . esc_attr( $email_id ) . '">' . esc_attr( $email ) . ':</label>
+				<div class="input">
+					<input type="text" name="cm-' . esc_attr( $email_id ) . '" id="' . esc_attr( $email_id ) . '"';
+
+					// Add a class to the email field if needed
+					if ( ! empty( $email_class ) )
+						$output .= ' ' . esc_attr( $email_class );
+
+					$output .= ' />';
+				$output .= '</div>
+			</div>
+		</fieldset>
+		<div class="actions">
+			<input type="submit" value="' . esc_attr( $submit ) . '" ';
+
+				// Add a class to the submit field if needed
+				if ( ! empty( $submit_class ) )
+					$output .= 'class="' . esc_attr( $submit_class ) . '" ';
+
+			$output .= '/>
 		</div>
 	</form>';
 
