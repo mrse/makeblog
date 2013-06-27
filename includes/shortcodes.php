@@ -485,7 +485,7 @@ function make_makercamp_register_summer_program_gf() {
         <div class="errorbox-good">
            <div class="ss-item ss-item-required ss-text">
               <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_9">Program Type <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.9.single" value="" class="ss-q-short" id="entry_9">
+                 <label class="ss-q-title" for="entry_0">Program Name</label> <input type="text" name="entry.0.single" value="" class="ss-q-short" id="entry_0">
               </div>
            </div>
         </div>
@@ -493,7 +493,7 @@ function make_makercamp_register_summer_program_gf() {
         <div class="errorbox-good">
            <div class="ss-item ss-item-required ss-text">
               <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_0">Program Name <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.0.single" value="" class="ss-q-short" id="entry_0">
+                 <label class="ss-q-title" for="entry_10">Organization Name</label> <input type="text" name="entry.10.single" value="" class="ss-q-short" id="entry_10">
               </div>
            </div>
         </div>
@@ -501,15 +501,7 @@ function make_makercamp_register_summer_program_gf() {
         <div class="errorbox-good">
            <div class="ss-item ss-item-required ss-text">
               <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_10">Organization Name <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.10.single" value="" class="ss-q-short" id="entry_10">
-              </div>
-           </div>
-        </div>
-        <br>
-        <div class="errorbox-good">
-           <div class="ss-item ss-item-required ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_11">Program Description (25 words or less)<span class="ss-required-asterisk">*</span></label>
+                 <label class="ss-q-title" for="entry_11">Program Description (25 words or less)</label>
                  <textarea type="text" name="entry.11.single" value="" class="ss-q-short" id="entry_11" rows="4"></textarea>
                  <div style="clear:both;"></div>
               </div>
@@ -519,7 +511,7 @@ function make_makercamp_register_summer_program_gf() {
         <div class="errorbox-good">
            <div class="ss-item ss-item-required ss-text">
               <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_1">Program Google+ Link </label> <input type="text" name="entry.1.single" value="" class="ss-q-short" id="entry_1">
+                 <label class="ss-q-title" for="entry_1">Program Google+ Link<span class="ss-required-asterisk"> (optional)</span></label> <input type="text" name="entry.1.single" value="" class="ss-q-short" id="entry_1">
               </div>
            </div>
         </div>
@@ -527,7 +519,7 @@ function make_makercamp_register_summer_program_gf() {
         <div class="errorbox-good">
            <div class="ss-item ss-item-required ss-text">
               <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_5">Contact Name <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.5.single" value="" class="ss-q-short" id="entry_5">
+                 <label class="ss-q-title" for="entry_5">Contact Name</label> <input type="text" name="entry.5.single" value="" class="ss-q-short" id="entry_5">
               </div>
            </div>
         </div>
@@ -535,7 +527,7 @@ function make_makercamp_register_summer_program_gf() {
         <div class="errorbox-good">
            <div class="ss-item ss-item-required ss-text">
               <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_7">Email Address <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.7.single" value="" class="ss-q-short" id="entry_7">
+                 <label class="ss-q-title" for="entry_7">Email Address</label> <input type="text" name="entry.7.single" value="" class="ss-q-short" id="entry_7">
               </div>
            </div>
         </div>
@@ -543,7 +535,7 @@ function make_makercamp_register_summer_program_gf() {
         <div class="errorbox-good">
            <div class="ss-item ss-item-required ss-text">
               <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_2">City <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.2.single" value="" class="ss-q-short" id="entry_2">
+                 <label class="ss-q-title" for="entry_2">City <span class="ss-required-asterisk"></span></label><input type="text" name="entry.2.single" value="" class="ss-q-short" id="entry_2">
               </div>
            </div>
         </div>
@@ -551,7 +543,7 @@ function make_makercamp_register_summer_program_gf() {
         <div class="errorbox-good">
            <div class="ss-item ss-item-required ss-text">
               <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_3">State <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.3.single" value="" class="ss-q-short" id="entry_3">
+                 <label class="ss-q-title" for="entry_3">State <span class="ss-required-asterisk"></span></label> <input type="text" name="entry.3.single" value="" class="ss-q-short" id="entry_3">
               </div>
            </div>
         </div>
@@ -559,7 +551,7 @@ function make_makercamp_register_summer_program_gf() {
         <div class="errorbox-good">
            <div class="ss-item ss-item-required ss-text">
               <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_4">Zipcode <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.4.single" value="" class="ss-q-short" id="entry_4">
+                 <label class="ss-q-title" for="entry_4">Zipcode <span class="ss-required-asterisk"></span></label> <input type="text" name="entry.4.single" value="" class="ss-q-short" id="entry_4">
               </div>
            </div>
         </div>
@@ -567,7 +559,7 @@ function make_makercamp_register_summer_program_gf() {
         <div class="errorbox-good">
            <div class="ss-item ss-text">
               <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_6">Phone</label> <input type="text" name="entry.6.single" value="" class="ss-q-short" id="entry_6">
+                 <label class="ss-q-title" for="entry_6">Phone <span class="ss-required-asterisk">(optional)</span></label> <input type="text" name="entry.6.single" value="" class="ss-q-short" id="entry_6">
               </div>
            </div>
         </div>
@@ -632,3 +624,34 @@ function maker_camp_registration( $atts, $content = null ) {
 		</form>';
 }
 add_shortcode( 'maker_camp_sign_up', 'maker_camp_registration' );
+
+
+/**
+ * Adds a campaign monitor form to the post content
+ * @param  Array  $atts    The array of attributes passed through the shortcode
+ * @param  String $content The string of content wrapped inside the shortcode
+ * @return String
+ */
+function make_campaign_monitor_form( $atts, $content = null ) {
+	extract( shortcode_atts( array(
+		'url' 		  => '',
+		'class' 	  => '',
+		'submit_text' => 'Subscribe',
+	), $atts ) );
+
+	if ( ! empty( $class ) ) {
+		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="subForm" class="' . esc_attr( $class ) . '">';
+	} else {
+		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="subForm">';
+	}
+		$output .=	'<div>
+			<label for="name">Name:</label><input type="text" name="cm-name" id="name" /><br />
+			<label for="jkdduth-jkdduth">Email:</label><input type="text" name="cm-jkdduth-jkdduth" id="jkdduth-jkdduth" /><br />
+
+			<input type="submit" value="' . esc_attr( $submit_text ) . '" />
+		</div>
+	</form>';
+
+	return $output;
+}
+add_shortcode( 'make-compagin-monitor', 'make_campaign_monitor_form' );
