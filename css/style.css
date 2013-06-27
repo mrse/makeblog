@@ -10091,9 +10091,12 @@ body.makercamp a.button {
   margin-bottom: 10px;
   text-decoration: none;
   background-color: #e01b23;
-  box-shadow: 0 5px 0 0 #8d1216;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   -webkit-box-shadow: 0 5px 0 0 #8d1216;
   -moz-box-shadow: 0 5px 0 0 #8d1216;
+  box-shadow: 0 5px 0 0 #8d1216;
   border-bottom: none;
 }
 body.makercamp .button:hover,
@@ -10113,12 +10116,9 @@ body.makercamp a.button.blue {
   font-weight: 600;
   padding-left: 20px;
   padding-right: 20px;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  box-shadow: 0 5px 0 0 #4d97c5;
   -webkit-box-shadow: 0 5px 0 0 #4d97c5;
   -moz-box-shadow: 0 5px 0 0 #4d97c5;
+  box-shadow: 0 5px 0 0 #4d97c5;
 }
 body.makercamp .button.blue:hover,
 body.makercamp a.button.blue:hover {
