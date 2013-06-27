@@ -24,7 +24,6 @@ make_get_header() ?>
 
 						if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
 				
-					<?php echo get_post_type(); ?>
 					<div class="projects-masthead">
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						
@@ -34,6 +33,7 @@ make_get_header() ?>
 						<li><?php make_get_author( $post->ID ); ?></li>
 						<li>Posted <span class="blue"><?php the_time('Y/m/d \@ g:i a'); ?></span></li>
 						<li>Category <?php the_category(', '); ?></li>
+						<li>Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a></li>
 					</ul>
 				
 					<article <?php post_class(); ?>>

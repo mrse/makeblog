@@ -50,7 +50,7 @@ get_header(); ?>
 									Category: <?php the_category(', '); ?>
 								</li>
 								
-									<?php
+								<?php
 									$time = get_post_custom_values('TimeRequired');
 									if ($time[0]) {
 										echo '<li>Time Required: <span>' . esc_html( $time[0] ) . '</span></li>';
@@ -61,8 +61,10 @@ get_header(); ?>
 											echo '<li>Difficulty: <span>' . esc_html( $term->name ) . '</span></li>';
 										}
 									}
-									
-									?>
+								?>
+								<li>
+							Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a>
+						</li>
 							</ul>
 									
 							<div class="row">
