@@ -94,8 +94,8 @@ Template name: Header
 
 					<ul class="navi">
 						
-						<li class="active"><a href="http://blog.makezine.com">Blog</a></li>
-						<li><a href="http://makezine.com/magazine">Magazine</a></li>
+						<li><a href="http://blog.makezine.com">Blog</a></li>
+						<li class="active"><a href="http://makezine.com/magazine">Magazine</a></li>
 						<li><a href="http://makeprojects.com">Projects</a></li>
 						<li><a href="http://kits.makezine.com">Reviews</a></li>
 						<li><a href="http://makershed.com">Shop</a></li>
