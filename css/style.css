@@ -10106,6 +10106,7 @@ body.makercamp ul.stars {
 }
 body.makercamp ul.stars li {
   margin: 15px 15px 5px 0;
+  font-size: 16px !important;
 }
 body.makercamp .button,
 body.makercamp a.button {
