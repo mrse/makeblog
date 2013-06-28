@@ -28,7 +28,7 @@ function register_cpt_errata() {
 		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => true,
-		'menu_position' => 20,
+		'menu_position' => 50,
 		'show_in_nav_menus' => true,
 		'publicly_queryable' => true,
 		'exclude_from_search' => false,

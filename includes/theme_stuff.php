@@ -1188,3 +1188,43 @@ function make_add_post_types_to_feed( $query_var ) {
 	
 }
 add_filter( 'request', 'make_add_post_types_to_feed' );
+
+
+/**
+ * Allows us to create a separator within the WordPress Admin area. This is needed because we have CPT-itis.
+ * @param  string $position Contains the position of the separator. This will enable use to add more than
+ * @return void
+ *
+ * @version  1.0
+ */
+function make_add_admin_menu_separator( $position ) {
+	global $menu;
+
+	$index = 0;
+
+	foreach ( $menu as $offset => $section ) {
+		if ( substr( $section[2], 0, 9 ) == 'separator' )
+			$index++;
+
+		if ( $offset >= $position ) {
+			$menu[ $position ] = array( '', 'read', "separator{$index}", '', 'wp-menu-separator' );
+			break;
+		}
+	}
+
+	ksort( $menu );
+}
+
+
+/**
+ * Set a separator at line 50 so we can separate the Make CPT from WP
+ * @return void
+ *
+ * @version  1.0
+ */
+function make_admin_menu_separator() {
+
+	// Set the separator right where our CPT will be displayed
+	make_add_admin_menu_separator( 26 );
+}
+add_action( 'admin_menu', 'make_admin_menu_separator' );

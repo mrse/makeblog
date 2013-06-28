@@ -37,6 +37,7 @@ function make_register_cpt_search_term() {
 		'rewrite' => false,
 		'capability_type' => 'post',
 		'menu_icon' => get_stylesheet_directory_uri() .'/img/magnifier--plus.png',
+		'menu_position' => 50,
 	);
 
 	register_post_type( 'search_term', $args );
