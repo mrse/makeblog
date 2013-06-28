@@ -627,9 +627,24 @@ add_shortcode( 'maker_camp_sign_up', 'maker_camp_registration' );
 
 
 /**
- * Adds a campaign monitor form to the post content
+ * * Adds a campaign monitor form to the post content
  * @param  Array  $atts    The array of attributes passed through the shortcode
  * @param  String $content The string of content wrapped inside the shortcode
+ * @param  Shortcode attributes:
+ *         url           Insert the full URL as per the Campaign Monitor source code (IE http://newsletter.makezine.com/t/r/s/jkdduth/)
+ *         class         Insert any classes you wish to enter. Separate each class with spaces. EG button btn-primary
+ *         id            Insert any ID you want to use. By default this is set to 'subForm'.
+ *         title         Want to display a title? Enter one then! :)
+ *         name_id       This field will allow you to customize the ID field in the name and label tags for the name fields. Defaults to 'name'
+ *         email_id      This field will allow you to customize the ID field in the name and label tags for the email fields.
+ *         name_class    Sometime we want to add classes to the input fields. Use this attribute
+ *         email_class   As with the name_class above, apply custom classes to the email input field.
+ *         name          You can customize the default "Name" text in label with this.
+ *         email         You can customize the default "Email" text in label with this.
+ *         submit_class  Add a custom class to the submit button
+ *         submit        Change the default text of the submit button
+ *
+ * 		   EG of all fields in use [make-compagin-monitor url="http://newsletter.makezine.com/t/r/s/jkdduth/" class="my-form-class" id="my-form-id" title="My CM Title" name_id="name" email_id="jkdduth-jkdduth" name_class="input-class" email_class="input-class" name="Your Name" email="Your Email" submit_class="btn btn-primary" submit="Submit Your Application"]
  * @return String
  */
 function make_campaign_monitor_form( $atts, $content = null ) {
