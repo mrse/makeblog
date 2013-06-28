@@ -107,8 +107,26 @@ make_get_header() ?>
 				
 				<div class="span4 sidebar">
 
+					<?php
+						$side_query = new WP_Query( array(
+							'post_type'  => array( 'post', 'projects', 'review', 'video', 'magazine' ),
+							'post_count' => 4,
+							'posts_per_page' => 4, // Required or else WP will return 10.
+							'category'   => 'education',
+						) );
 
-
+						if ( $side_query->have_posts() ) : while ( $side_query->have_posts() ) : $side_query->the_post(); ?>
+							<article <?php post_class( 'side-post' ); ?>>
+								<div class="media">
+									<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'archive-thumb', array( 'class' => 'media-object' ) ); ?></a>
+								</div>
+								<div class="media-body">
+									<a href="<?php the_permalink(); ?>"><h4 class="side-title"><?php the_title(); ?></h4></a>
+									<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?></p>
+								</div>
+							</article>
+						<?php endwhile; endif;
+					?>
 				</div>
 					
 			</div>

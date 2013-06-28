@@ -9311,7 +9311,9 @@ ul#tabs .current > a:hover {
   text-decoration: underline !important;
   background: none !important;
 }
+.site-navigation .sub-menu,
 .site-navigation .dropdown-menu {
+  display: none;
   border-top: none;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -10799,6 +10801,15 @@ body.page-template-page-education-php .education-box .btn.blue {
 body.page-template-page-education-php .education-box .btn.blue:hover {
   color: #033978;
   background-color: #73c1e6;
+}
+body.page-template-page-education-php .side-post .side-title {
+  font-size: 16px;
+  margin-top: 5px;
+}
+body.page-template-page-education-php .side-post p {
+  color: #363636;
+  font-size: 16px;
+  line-height: 1.1em;
 }
 body.hiw {
   background-color: #eee;
