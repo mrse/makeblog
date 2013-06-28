@@ -73,11 +73,12 @@
 				<div class="container camp-main-nav">
 					<div class="btn-group nav">
 					    <a class="btn btn-large" href="http://blog.makezine.com/trainingcamp/">Home</a>
-					    <a class="btn btn-large dropdown-toggle" data-toggle="dropdown" href="#">Sign Up for Camps<span class="caret"></span></a>
+					    <a class="btn btn-large dropdown-toggle" data-toggle="dropdown" href="#">Sign Up for Camps <span class="caret"></span></a>
 						    <ul class="dropdown-menu">
-								<li><a href="http://blog.makezine.com/trainingcamp/introduction-to-arduino/">Introduction to Arduino</a></li>
-								<li><a href="http://blog.makezine.com/trainingcamp/introduction-to-raspberry-pi/">Introduction to Raspberry Pi</a></li>
-						    	<li><a href="http://blog.makezine.com/trainingcamp/design-for-desktop-3d-printing/">Design for Desktop 3D Printing</a></li>
+								<li><a href="http://blog.makezine.com/trainingcamp/introduction-to-arduino/"> Introduction to Arduino</a></li>
+								<li><a href="http://blog.makezine.com/trainingcamp/introduction-to-raspberry-pi/"> Introduction to Raspberry Pi</a></li>
+						    	<li><a href="http://blog.makezine.com/trainingcamp/design-for-desktop-3d-printing/"> Design for Desktop 3D Printing</a></li>
+						    	<li><a href="http://blog.makezine.com/trainingcamp/training-camp-moms/"> Making for Moms</a></li>
 						    </ul>
 					    <a class="btn btn-large" href="http://blog.makezine.com/trainingcamp/teach-camp/">Teach a Camp</a>
 					    <a class="btn btn-large" href="http://blog.makezine.com/trainingcamp/suggest-course/">Suggest Camp</a>

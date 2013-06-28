@@ -15,31 +15,27 @@ make_get_header() ?>
 
 			<div class="row">
 
-				<div class="span8">
+				<div class="span8 add30">
 					
-					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-			
+					<?php // create a new custom query so we can return posts, 
+						$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+						$query = new WP_Query( array(
+							'post_type' => array( 'post', 'projects', 'review', 'video', 'magazine' ),
+							'paged' => $paged,
+						) );
+
+						if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
+				
 					<div class="projects-masthead">
-						
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						
 					</div>
 					
 					<ul class="projects-meta">
-						<li>
-							By <?php 
-							if( function_exists( 'coauthors_posts_links' ) ) {	
-								coauthors_posts_links(); 
-							} else { 
-								the_author_posts_link(); 
-							} ?>
-						</li>
-						<li>
-							Posted <span class="blue"><?php the_time('Y/m/d \@ g:i a'); ?></span>
-						</li>
-						<li>
-							Category <?php the_category(', '); ?>
-						</li>
+						<li><?php make_get_author( $post->ID ); ?></li>
+						<li>Posted <span class="blue"><?php the_time('Y/m/d \@ g:i a'); ?></span></li>
+						<li>Category <?php the_category(', '); ?></li>
+						<li>Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a></li>
 					</ul>
 				
 					<article <?php post_class(); ?>>

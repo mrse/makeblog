@@ -2,7 +2,7 @@ body.makercamp {
 	/* apply a natural box layout model to all elements. sadly this breaks everything when it should fix... */
 	//* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-	background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat-x;
+	background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat;
 	text-rendering: optimizeLegibility;
 	padding-bottom: 0 !important;
 	margin: 0;
@@ -23,7 +23,7 @@ body.makercamp {
 		a, a:visited { color:#acd3fc; }
 		a:hover, a:active { color:#acd3fc; text-decoration:underline !important; }
 	}
-
+	.black-bar .nav-inline li { margin-right:30px !important; }
 	#footer {
 		&.white-bg {
 			margin:0;
@@ -247,8 +247,8 @@ body.makercamp {
 				margin-right:5px;
 				}
 		}
-		a, body.makercamp .new-footer a:visited{
-		    color:#005D8F
+		a, .new-footer a:visited {
+		    color: #005D8F !important;
 		    }
 		p {
 			color:#333;
@@ -308,21 +308,11 @@ body.makercamp {
 			}
 		}
 		.maker {
-			position:relative;
-			.project-photo {
-				.pull-left;
-				width:20%;
-			}
-			.project-body {
-				.pull-left;
-				width:61%;
-				margin-right:22px;
-			}
+			a { color:#005d8f; }
 			.project-title {
 				font-size:1.285714286em;
 				line-height:1em;
 				color:#005d8f;
-				margin:5px 0 !important;
 			}
 			.date, .mentor {
 				font-size:1.142857143em;
@@ -381,9 +371,8 @@ body.makercamp {
 		margin-bottom:10px;
 		text-decoration: none;
 		background-color: #e01b23;
-		box-shadow: 0 5px 0 0 #8d1216;
-		-webkit-box-shadow: 0 5px 0 0 #8d1216;
-		-moz-box-shadow: 0 5px 0 0 #8d1216;
+		.border-radius( 5px );
+		.box-shadow( 0 5px 0 0 #8d1216 );
 		border-bottom:none;
 		&:hover {
 			background-color: #b3151b !important;
@@ -400,12 +389,7 @@ body.makercamp {
 			font-weight:600;
 			padding-left:20px;
 			padding-right:20px;
-			border-radius: 5px;
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			box-shadow: 0 5px 0 0 #4d97c5;
-			-webkit-box-shadow: 0 5px 0 0 #4d97c5;
-			-moz-box-shadow: 0 5px 0 0 #4d97c5;
+			.box-shadow( 0 5px 0 0 #4d97c5 );
 			&:hover {
 				color:#033978 !important;
 				background-color:#73c1e6 !important;
@@ -431,7 +415,11 @@ body.makercamp {
 
 	// Map
 	.map-wrapper {
-
+		li {
+			margin:15px 15px 25px 0 !important;
+			font-size:18px;
+			line-height:1.3em;
+		}
 	}
 	.map-title {
 		background:#011f43;
@@ -449,6 +437,7 @@ body.makercamp {
 			color:#fff;
 			border-bottom:1px solid #333;
 		}
+		a { color:#005d8f !important; }
 	}
 	.map-list-header {
 		font-weight:normal;
@@ -466,7 +455,7 @@ body.makercamp {
 
 		// Schedule Page
 		.schedule-content {
-			.maker { margin-right:29px !important; }
+			.maker { /* margin-right:29px !important; */ }
 			.maker-description { width:96% !important; }
 		}
 
@@ -520,7 +509,7 @@ body.makercamp {
 			#schedule { 
 				a { font-size:.9em; }
 			}
-			.maker { margin-right:15px !important; }
+			.maker { /* margin-right:15px !important; */ }
 		}
 
 		// Footer
@@ -587,10 +576,6 @@ body.makercamp {
 			.nav-tabs > li { width:100%; }
 			.tab-content {
 				h2.visible-phone, > .active, { padding:0 20px; }
-				[class*="span"] { 
-					float:left;
-					width:149px;
-				}
 			}
 			.desc-body, .desc-feat {
 				float:none;

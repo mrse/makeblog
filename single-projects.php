@@ -9,12 +9,18 @@
  */
 $steps = get_post_custom_values('Steps');
 get_header(); ?>
-		
+
 	<div class="category-top">
 	
 		<div class="container">
 
-			<div class="row">
+			<div class="row" style="position:relative;">
+
+				<?php if( has_term( 'Weekend Project', 'flags' ) ) : ?>
+					<div style="position:absolute; right:0; top:-20px;">
+						<img src="<?php echo get_template_directory_uri(); ?>/images/weekend-projects-btn.png" title="Weekend Projects Powered by Radio Shack" />
+					</div>
+				<?php endif; ?>
 
 				<div class="span12">
 					
@@ -50,7 +56,7 @@ get_header(); ?>
 									Category: <?php the_category(', '); ?>
 								</li>
 								
-									<?php
+								<?php
 									$time = get_post_custom_values('TimeRequired');
 									if ($time[0]) {
 										echo '<li>Time Required: <span>' . esc_html( $time[0] ) . '</span></li>';
@@ -61,8 +67,10 @@ get_header(); ?>
 											echo '<li>Difficulty: <span>' . esc_html( $term->name ) . '</span></li>';
 										}
 									}
-									
-									?>
+								?>
+								<li>
+							Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a>
+						</li>
 							</ul>
 									
 							<div class="row">

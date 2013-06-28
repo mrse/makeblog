@@ -35,54 +35,52 @@
 
 	</head>
 	<body <?php body_class('hiw'); ?>>
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<div class="pull-left">
-						<ul class="nav">
-							<li class="active"><a href="http://makezine.com">MAKE</a></li>
-							<li class=""><a href="http://blog.makezine.com">Blog</a></li>
-							<li class=""><a href="http://makezine.com/magazine">Magazine</a></li>
-							<li class=""><a href="http://makerfaire.com">Maker Faire</a></li>
-							<li class=""><a href="http://makeprojects.com">Make: Projects</a></li>
-							<li class=""><a href="http://makershed.com">Maker Shed</a></li>
-							<li class=""><a href="http://kits.makezine.com">Kits</a></li>
-						</ul>
+
+		<header>
+			<div class="navbar navbar-blue navbar-fixed-top">
+					<div class="navbar-inner">
+						<nav class="container">
+							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</a>
+							<a class="brand" href="http://makezine.com/">MAKE</a>
+							<div class="nav-collapse in collapse">
+								<?php wp_nav_menu( array(
+									'theme_location'  => 'topbar',
+									'menu'            => 'topbar', 
+									'container'       => false, 
+									'menu_class'      => 'nav clearfix',
+									'depth'           => 1 ) );
+								?>
+								<form action="http://makezine.com/search/" class="form pull-right navbar-search">
+									<input type="text" class="span2 search-query" name="q" placeholder="" />
+									<input type="submit" class="btn btn-primary" style="margin-top:0px;" value="Search" />
+								</form>
+							</div><!--/.nav-collapse -->
+						</nav>
 					</div>
-					<div class="pull-right">
-						<form action="http://blog.makezine.com/search/" class="form navbar-search">
-							<input type="text" class="span2 search-query" style="width:126px;" name="q" placeholder="" />
-							<input type="submit" class="btn btn-primary" style="height:28px" value="Search" />
-						</form>
-					</div>
-					<div class="clearfix"></div>
 				</div>
 			</div>
-		</div>
+		</header>
+
 		<div class="fix">
 			<div id="header">      
 				<div class="container">	
 					<div class="row">
 						<div class="span12">
 							<div class="clear"></div>
-							<h1><a href="http://blog.makezine.com/hardware-innovation-workshop/"><img style="margin:0 auto" src="http://makezineblog.files.wordpress.com/2013/04/hiw-website-header-940w.jpg" alt="Hardware Innovation Workshop - May 14-15, 2013 at College of San Mateo" title="Hardware Innovation Workshop - May 14-15, 2013 at College of San Mateo" /></a></h1>
+							<h1><img style="margin:0 auto" src="http://makezineblog.files.wordpress.com/2013/06/hiw_eventbrite_webheader_ny13.jpg?w=940" alt="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" title="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" /></a></h1>
 						</div> <!-- END span12 -->
 					</div> <!-- END row -->	
 				</div> <!-- END container -->		
 				</div> <!-- END header -->
-				<div class="header-wrap">
 					<div class="container">	
-						<div class="row">
-							<div class="tag-area">
-							<div class="span9">
+							<div class="header-wrap">
 								<h2>Thanks to all our great sponsors, presenters, and attendees for making the 2013 Hardware Innovation Workshop a success!</h2> 
-							</div> <!-- END span9 -->
-							<div class="span3">
-								<a href="http://www.foliomag.com/2013/make-magazine-s-hardware-innovation-workshop" target="_blank"><img src="http://makezineblog.files.wordpress.com/2013/03/pastedgraphic-1.jpg" alt="2012 Event received FAME award for Best First Time Event"></a>
-							</div> <!-- END span3 -->
-							</div> <!-- END tag-area-->		
-						</div> <!-- END row -->
-					</div> <!-- END header-wrap -->
+								<a href="http://www.foliomag.com/2013/make-magazine-s-hardware-innovation-workshop" target="_blank"><img style="pull-right" src="http://makezineblog.files.wordpress.com/2013/03/pastedgraphic-1.jpg" alt="2012 Event received FAME award for Best First Time Event"></a>
+						</div> <!-- END header-wrap -->
 				</div> <!-- END container -->
 				<div class="clear"></div>
 		</div> <!-- END fix -->

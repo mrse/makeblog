@@ -87,7 +87,7 @@ get_header(); ?>
 
 						$args = array(
 							'post_type'			=> 'projects',
-							'title'				=> '<a href="http://blog.makezine.com/the-weekend-projects/">Latest Weekend Projects</a>',
+							'title'				=> 'Latest Weekend Projects',
 							'tax_query' => array(
 								array(
 									'taxonomy' => 'flags',
@@ -102,9 +102,8 @@ get_header(); ?>
 							'order'				=> 'dsc'
 						);
 
-						make_carousel($args);
+						make_carousel($args, false);
 					?>
-					
 				</div>
 			
 			</div>
@@ -127,7 +126,7 @@ get_header(); ?>
 							'debug'				=> false
 						);
 
-						make_carousel($args);
+						make_carousel($args, false);
 					?>
 					
 				</div>
@@ -184,7 +183,7 @@ get_header(); ?>
 					),
 
 				);
-				make_carousel( $args );
+				make_carousel( $args, false );
 				echo '</div></div></div></div>';
 			}
 		?>
