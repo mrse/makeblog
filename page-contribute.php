@@ -145,8 +145,8 @@
 								
 									<?php wp_nonce_field('linksubform_submit','linksubform_subform'); ?> 
 
-									<div class="control-group">
-										<label class="control-label" for="linksub_title">Link Title</label>
+									<div class="control-group required">
+										<label class="control-label" for="linksub_title">Link Title*</label>
 										<div class="controls">
 											<input type="text" class="input-xlarge" id="linksub_title">
 											<p class="help-block">Please suggest a title for your submission.</p>
@@ -171,38 +171,38 @@
 
 									<?php if( !is_user_logged_in() ) { ?>
 
-									<div class="control-group">
-										<label class="control-label" for="linksub_name">Name</label>
-										<div class="controls">
-											<input type="text" class="input-xlarge" id="linksub_name">
-											<p class="help-block">Please provide your name as you like to see it spelled.</p>
+										<div class="control-group">
+											<label class="control-label" for="linksub_name">Name</label>
+											<div class="controls">
+												<input type="text" class="input-xlarge" id="linksub_name">
+												<p class="help-block">Please provide your name as you like to see it spelled.</p>
+											</div>
 										</div>
-									</div>
 
-									<div class="control-group">
-										<label class="control-label" for="linksub_email">Email</label>
-										<div class="controls">
-											<input type="text" class="input-xlarge" id="linksub_email">
-											<p class="help-block">We will not publish this information, but we would like to be able to contact you with follow-up questions.</p>
-										</div>
-									</div>										
+										<div class="control-group">
+											<label class="control-label" for="linksub_email">Email</label>
+											<div class="controls">
+												<input type="text" class="input-xlarge" id="linksub_email">
+												<p class="help-block">We will not publish this information, but we would like to be able to contact you with follow-up questions.</p>
+											</div>
+										</div>										
 
-									<div class="control-group">
-										<label class="control-label" for="linksub_website">Website</label>
-										<div class="controls">
-											<input type="text" class="input-xlarge" id="linksub_website">
-											<p class="help-block">We are happy to link to your personal online presence.</p>
+										<div class="control-group">
+											<label class="control-label" for="linksub_website">Website</label>
+											<div class="controls">
+												<input type="text" class="input-xlarge" id="linksub_website">
+												<p class="help-block">We are happy to link to your personal online presence.</p>
+											</div>
 										</div>
-									</div>
 
-									<div class="control-group">
-										<label class="control-label" for="linksub_bio">Bio</label>
-										<div class="controls">
-											<textarea class="input-xlarge" id="linksub_bio" rows="3"></textarea>
-											<p class="help-block">Please tell us a bit about yourself, for background
-											and context. And just because we care.</p>
+										<div class="control-group">
+											<label class="control-label" for="linksub_bio">Bio</label>
+											<div class="controls">
+												<textarea class="input-xlarge" id="linksub_bio" rows="3"></textarea>
+												<p class="help-block">Please tell us a bit about yourself, for background
+												and context. And just because we care.</p>
+											</div>
 										</div>
-									</div>
 
 									<?php } ?>
 

@@ -90,7 +90,7 @@ function makeblog_page2form (){
 
 		echo $make_post_id;
 
-		$email = array('jspurlock@oreilly.com','gareth@oreilly.com', 'sholbrook@oreilly.com');
+		$email = array( 'jspurlock@makermedia.com','kdenmead@makermedia.com', 'sholbrook@makermedia.com' );
 
 		$page2_title = "Page2 Submission: " . $post_title;
 
@@ -147,9 +147,9 @@ function makeblog_linksubform () {
 			
 		}
 
-		$email = 'onlineeditors@makezine.com';
+		$email = array( 'onlineeditors@makezine.com', 'x+6185406202074@mail.asana.com' );
 
-		$link_title = "User Link Submission: " . $link_title;
+		$link_title = "User Link: " . $link_title;
 
 		$link_email_content  = '<html><body>';
 		$link_email_content .= '<p>A summary of the content in the form you just submitted to MAKE.</p>';
@@ -217,9 +217,9 @@ function makeblog_articleform (){
 
 		}
 
-		$email = 'editors@makezine.com';
+		$email = array( 'editors@makezine.com', 'x+6185406202074@mail.asana.com' );
 
-		$article_title = "User Article Submission: " . sanitize_text_field($_POST['linksub_title']);
+		$article_title = 'Article/Project: ' . $article_title;
 
 		$article_content = '<html><body>';
 		$article_content .= '<p>A summary of the content in the form you just submitted to MAKE.</p>';
