@@ -117,6 +117,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/magazine'				=> 'http://makezine.com/volume/make-34/',
 		'/blog/34'						=> 'http://makezine.com/volume/make-34/',
 		'/blog/maker-projects'			=> 'http://makezine.com/maker-projects/',
+		'/blog/projects'				=> 'http://makezine.com/projects',
 		'/blog/01'						=> 'http://archive.makezine.com/01/',
 		'/blog/02'						=> 'http://archive.makezine.com/02/',
 		'/blog/03'						=> 'http://archive.makezine.com/03/',
