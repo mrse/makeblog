@@ -202,7 +202,6 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/3dpdf'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
 		'/magazine'					=> 'http://makezine.com/volume/make-34/',
 		'/34'						=> 'http://makezine.com/volume/make-34/',
-		'/maker-projects'			=> 'http://makezine.com/maker-projects/',
 		'/01'						=> 'http://archive.makezine.com/01/',
 		'/02'						=> 'http://archive.makezine.com/02/',
 		'/03'						=> 'http://archive.makezine.com/03/',
