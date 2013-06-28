@@ -165,7 +165,7 @@ function makeblog_linksubform () {
 		$link_email_content .= "</table>";
 		$link_email_content .= "</body></html>";
 
-		$headers = array( 'From: ' . $link_name .  ' <' . $link_email . '>'.  "\r\n" , 'Content-Type:text/html; charset=UTF-8' );
+		$headers = array( 'From: Editorial Submissions <submissions@makermedia.com>'.  "\r\n" , 'Content-Type:text/html; charset=UTF-8' );
 
 		wp_mail($email, $link_title, $link_email_content, $headers);
 
@@ -249,7 +249,7 @@ function makeblog_articleform (){
 		$article_content .= "</body></html>";
 		$article_content = stripslashes($article_content);
 
-		$headers = array( 'From: ' . $article_name .  ' <' . $article_email . '>'.  "\r\n" , 'Content-Type:text/html; charset=UTF-8' );
+		$headers = array( 'From: Editorial Submissions <submissions@makermedia.com>' .  "\r\n" , 'Content-Type:text/html; charset=UTF-8' );
 
 		wp_mail($email, $article_title, $article_content, $headers);
 
