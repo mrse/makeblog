@@ -424,7 +424,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3 class="red"><a href="http://blog.makezine.com/page-2/" class="red">Make: Page 2</a></h3>
+								<h3 class="red"><a href="http://makezine.com/page-2" class="red">Make: Page 2</a></h3>
 
 								<div class="grid-box boxy">
 
@@ -449,6 +449,13 @@ Template Name: Home Page
 
 							</div>
 
+						</div>
+
+						<div class="row">
+							<div class="span8">
+								<a href="http://makezine.com/the-weekend-projects/">
+								<img src="http://makezineblog.files.wordpress.com/2013/06/rswp_homepage_nav_button.png" alt=""></a>
+							</div>
 						</div>
 						
 						<div id="myCarousel" class="carousel slide">
