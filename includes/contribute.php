@@ -147,7 +147,7 @@ function makeblog_linksubform () {
 			
 		}
 
-		$email = array( 'onlineeditors@makezine.com', 'x+6185406202074@mail.asana.com' );
+		$email = 'x+6185406202074@mail.asana.com';
 
 		$link_title = "User Link: " . $link_title;
 
@@ -168,9 +168,6 @@ function makeblog_linksubform () {
 		$headers = array( 'From: Editorial Submissions <submissions@makermedia.com>'.  "\r\n" , 'Content-Type:text/html; charset=UTF-8' );
 
 		wp_mail($email, $link_title, $link_email_content, $headers);
-
-		if( $link_email !== false )
-			wp_mail($link_email, $link_title, $link_email_content, $headers[1]);
 
 	}
 
@@ -217,7 +214,7 @@ function makeblog_articleform (){
 
 		}
 
-		$email = array( 'editors@makezine.com', 'x+6185406202074@mail.asana.com' );
+		$email = 'x+6185406202074@mail.asana.com';
 
 		$article_title = 'Article/Project: ' . $article_title;
 
@@ -252,9 +249,6 @@ function makeblog_articleform (){
 		$headers = array( 'From: Editorial Submissions <submissions@makermedia.com>' .  "\r\n" , 'Content-Type:text/html; charset=UTF-8' );
 
 		wp_mail($email, $article_title, $article_content, $headers);
-
-		if( $article_email !== false )
-			wp_mail($article_email, $article_title, $article_content, $headers[1]);
 
 	}
 
