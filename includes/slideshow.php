@@ -380,7 +380,7 @@ function make_carousel( $args, $title_link = true ) {
 								}
 								$image = get_post_custom_values('Image', $post->ID);
 								if ( !empty( $image[0] ) )  {
-									echo '<a href="'. get_post_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" /></a>';
+									echo '<a href="'. get_post_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 218, 146 ) . '" alt="' . the_title_attribute( the_title('', '', false ) ) . '" /></a>';
 								} elseif ( $type == 'video' ) {
 									$link = get_post_custom_values( 'Link' , $post->ID );
 									$link = 'http://www.youtube.com/oembed?format=json&url=' . esc_url( $link[0] );
@@ -389,7 +389,7 @@ function make_carousel( $args, $title_link = true ) {
 										$json_output = json_decode($contents);
 										$img = $json_output->thumbnail_url;
 										update_post_meta( $post->ID, 'Image', $img );
-										echo '<a href="'. get_post_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( get_post_meta( $post->ID, 'Image', true ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" /></a>';
+										echo '<a href="'. get_post_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( get_post_meta( $post->ID, 'Image', true ), 218, 146 ) . '" alt="' . the_title_attribute( the_title('', '', false ) ) . '" /></a>';
 									}
 								} else {
 									echo '<a href="'. get_post_permalink( $post->ID ) . '">';
@@ -408,7 +408,7 @@ function make_carousel( $args, $title_link = true ) {
 								$image = get_post_custom_values('Image', $post->ID);
 								if ( !empty( $image[0] ) )  {
 									echo '<a href="'. get_post_permalink( $post->ID ) . '">';
-									echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 298, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
+									echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 298, 146 ) . '" alt="' . the_title_attribute( the_title('', '', false ) ) . '" />';
 									echo '</a>';
 								} else {
 									echo '<a href="'. get_post_permalink( $post->ID ) . '">';
