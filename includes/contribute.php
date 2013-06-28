@@ -250,9 +250,6 @@ function makeblog_articleform (){
 
 		wp_mail($email, $article_title, $article_content, $headers);
 
-		// if( $article_email !== false )
-		// 	wp_mail($article_email, $article_title, $article_content, $headers[1]);
-
 	}
 
 	exit;
