@@ -47,11 +47,11 @@
 	 */
 	function make_mc_logo( $atts ) {
 		extract( shortcode_atts( array(
-			'width'  => 570, // Only accepts integers
-			'height' => 175, // Only accepts integers
+			'width'  => 564, // Only accepts integers
+			'height' => 174, // Only accepts integers
 		), $atts ) );
 		
-		return '<img src="http://makezineblog.files.wordpress.com/2013/05/maker-camp-logo2.png?w=' . intval( $width ) . '" alt="Maker Camp - On Google+" width="' . intval( $width ) . '" height="' . intval( $height ) . '">';
+		return '<a href="http://google.com/+make" target="_blank"><img src="http://makezineblog.files.wordpress.com/2013/07/makercamp_whtlarge_logo.png?w=' . intval( $width ) . '" alt="Maker Camp - On Google+" width="' . intval( $width ) . '" height="' . intval( $height ) . '"></a>';
 	}
 	add_shortcode('maker-camp-logo', 'make_mc_logo' );
 
