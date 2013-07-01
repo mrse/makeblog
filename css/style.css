@@ -4417,6 +4417,76 @@ input[type="submit"].btn.btn-mini {
   background-color: transparent !important;
   text-decoration: underline !important;
 }
+.black-bar .navbar-inner {
+  background-color: #253b58;
+  background-image: -moz-linear-gradient(top, #2e435e, #172e50);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2e435e), to(#172e50));
+  background-image: -webkit-linear-gradient(top, #2e435e, #172e50);
+  background-image: -o-linear-gradient(top, #2e435e, #172e50);
+  background-image: linear-gradient(to bottom, #2e435e, #172e50);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2e435e', endColorstr='#ff172e50', GradientType=0);
+  border-color: #275392;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  border: none;
+}
+.black-bar .brand {
+  text-shadow: 0 0 0 transparent;
+  color: #ed1c24 !important;
+}
+.black-bar .brand:hover {
+  text-decoration: none !important;
+}
+.black-bar .nav-collapse {
+  background: transparent;
+}
+.black-bar .nav-collapse .nav > li > a,
+.black-bar .nav-collapse .dropdown-menu a {
+  text-shadow: 0 0 0 transparent;
+  color: #fff !important;
+}
+.black-bar .nav-collapse .nav > li > a:hover,
+.black-bar .nav-collapse .dropdown-menu a:hover {
+  text-decoration: none !important;
+}
+.black-bar .btn-navbar {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #1d2f46;
+  background-image: -moz-linear-gradient(top, #26374d, #11233c);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#26374d), to(#11233c));
+  background-image: -webkit-linear-gradient(top, #26374d, #11233c);
+  background-image: -o-linear-gradient(top, #26374d, #11233c);
+  background-image: linear-gradient(to bottom, #26374d, #11233c);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff26374d', endColorstr='#ff11233c', GradientType=0);
+  border-color: #11233c #11233c #000001;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #11233c;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.black-bar .btn-navbar:hover,
+.black-bar .btn-navbar:focus,
+.black-bar .btn-navbar:active,
+.black-bar .btn-navbar.active,
+.black-bar .btn-navbar.disabled,
+.black-bar .btn-navbar[disabled] {
+  color: #ffffff;
+  background-color: #11233c;
+  *background-color: #0c1728;
+}
+.black-bar .btn-navbar:active,
+.black-bar .btn-navbar.active {
+  background-color: #060c15 \9;
+}
+.navbar.black-bar {
+  background: transparent;
+  padding: 0;
+}
 .breadcrumb {
   padding: 8px 15px;
   margin: 0 0 20px;
@@ -9762,9 +9832,6 @@ body.makercamp #footer .nav-list li {
 body.makercamp #footer .nav-list li.last {
   margin-right: 0;
 }
-body.makercamp .search-query {
-  width: 206px !important;
-}
 body.makercamp header {
   margin-top: 41px;
   margin-bottom: 40px;
@@ -10210,6 +10277,10 @@ body.makercamp a.button.small-button {
   body.makercamp .feature-box .button.blue,
   body.makercamp.admin-bar .feature-box .button.blue {
     font-size: 22px !important;
+  }
+  body.makercamp .search-query,
+  body.makercamp.admin-bar .search-query {
+    width: 206px !important;
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
