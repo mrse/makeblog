@@ -385,7 +385,7 @@ jQuery(document).ready(function() {
 
 	function makeRedirectOnSucess(){
 
-		window.location = 'http://blog.makezine.com/submission/';
+		window.location = 'http://makezine.com/submission/';
 
 	}
 

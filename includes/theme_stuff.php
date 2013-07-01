@@ -205,17 +205,25 @@ add_filter( 'wp_feed_cache_transient_lifetime', create_function( '$a', 'return 9
 
 /**
  * Enqueue all scripts and stylesheets.
+ * @return void
+ *
+ * @version  1.1
  */
 function make_enqueue_jquery() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-header', get_stylesheet_directory_uri() . '/js/header.js', array( 'jquery' ) );
+
+	// display our map sort plugin for Maker Camp
+	if ( is_page( 315793 ) )
+		wp_enqueue_script( 'make-sort-table', get_stylesheet_directory_uri() . '/js/jquery.tablesorter.min.js', array( 'jquery' ) );
+
 	wp_enqueue_style( 'make-css', get_stylesheet_directory_uri() . '/css/style.css' );
 	wp_enqueue_style( 'make-print', get_stylesheet_directory_uri() . '/css/print.css', array(), false, 'print' );
 }
-
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
+
 
 /**
  * Catch a description for the OG protocol
@@ -1197,3 +1205,43 @@ function make_add_post_types_to_feed( $query_var ) {
 	
 }
 add_filter( 'request', 'make_add_post_types_to_feed' );
+
+
+/**
+ * Allows us to create a separator within the WordPress Admin area. This is needed because we have CPT-itis.
+ * @param  string $position Contains the position of the separator. This will enable use to add more than
+ * @return void
+ *
+ * @version  1.0
+ */
+function make_add_admin_menu_separator( $position ) {
+	global $menu;
+
+	$index = 0;
+
+	foreach ( $menu as $offset => $section ) {
+		if ( substr( $section[2], 0, 9 ) == 'separator' )
+			$index++;
+
+		if ( $offset >= $position ) {
+			$menu[ $position ] = array( '', 'read', "separator{$index}", '', 'wp-menu-separator' );
+			break;
+		}
+	}
+
+	ksort( $menu );
+}
+
+
+/**
+ * Set a separator at line 50 so we can separate the Make CPT from WP
+ * @return void
+ *
+ * @version  1.0
+ */
+function make_admin_menu_separator() {
+
+	// Set the separator right where our CPT will be displayed
+	make_add_admin_menu_separator( 26 );
+}
+add_action( 'admin_menu', 'make_admin_menu_separator' );

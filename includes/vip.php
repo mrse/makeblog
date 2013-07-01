@@ -55,7 +55,7 @@ if ( function_exists( 'vip_regex_redirects' ) ) {
 		'|^/archive/category/([a-zA-Z]+)/([0-9]+)\.html$|' => '|/category/$1/page/$2/', // MT paginated category structure
 		'|^/([0-9]{2})/([^/]+)/?$|' 					   => 'http://archive.makezine.com|/$1/$2|',
 		'|^/blog/category/([a-zA-Z_]+)|' 				   => '|/category/$1/|', // handle any redirects from blog.makezine with categories
-		'|^/blog/tag/([a-aA-Z_]+)|'					  	   => '|/tag/$1/|', // handle any redirects from blog.makezine with tags
+		'|^/blog/tag/([a-zA-Z_]+)|'					  	   => '|/tag/$1/|', // handle any redirects from blog.makezine with tags
 	);
 	vip_regex_redirects( $redirects );
 }
@@ -158,6 +158,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/magazine/newsletter/makerpro' => 'http://archive.makezine.com/magazine/newsletter/makerpro/index.html',
 		'/blog/groups'					=> 'http://archive.makezine.com/groups/',
 		'/blog/make-newsletter'			=> 'http://makezine.com/newsletter/',
+		'/blog/page-2/'					=> 'http://makezine.com/page-2/',
 
 		// Add redirects for instances that a blog folder isn't here.
 		'/subscribe' 				=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
