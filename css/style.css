@@ -9859,6 +9859,9 @@ body.makercamp #footer .nav-list li {
 body.makercamp #footer .nav-list li.last {
   margin-right: 0;
 }
+body.makercamp .search-query {
+  width: 110px !important;
+}
 body.makercamp header {
   margin-top: 41px;
   margin-bottom: 40px;
