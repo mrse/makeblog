@@ -1,6 +1,6 @@
-<?php
+ <?php
 /**
- * Template Name: Skill Builder
+ * Template Name: Skill Builder old
  */
 ?>
 

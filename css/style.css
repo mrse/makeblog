@@ -8665,6 +8665,73 @@ textarea.radio-narrow,
 #taxonomy-image {
   margin-top: 20px;
 }
+.dots {
+  background-color: url('../img/dots.png');
+  background-repeat: repeat-x;
+}
+.content-type {
+  background: url('../img/dots.png');
+  background-color: url('../img/dots.png');
+  background-repeat: repeat-x;
+  padding: 20px 0;
+  font-family: "proxima-nova", sans-serif;
+  border-bottom: 4px solid #DBDBDB;
+}
+.content-type .projects-art {
+  width: 940px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: -20px auto 0px;
+  background: url('../img/project_placeholder_smaller.png') no-repeat;
+  background-position: 641px 0px;
+}
+.content-type h1 {
+  font-size: 58px;
+  line-height: 58px;
+  color: #005d8f;
+}
+.content-type h3 {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #ed1c24;
+  margin-top: 10px;
+}
+.content-type p {
+  font-size: 18px;
+}
+.content-type p a {
+  color: #005d8f;
+  border-bottom: 1px solid #005d8f;
+}
+.content-type p a:hover {
+  text-decoration: none;
+}
+.content-type .subs {
+  margin: 0px 0px 20px;
+}
+.content-type .subs .dropdown {
+  float: left;
+  margin-right: 7px;
+}
+.content-type .subs li {
+  font-size: 18px;
+  display: inline;
+  margin-right: 10px;
+}
+.content-type .subs li a {
+  color: #005d8f;
+  font-weight: bold;
+}
+.content-type .subs li ul li {
+  display: list-item;
+  margin: 0px;
+}
+.content-type .subs li ul li a:hover {
+  color: #fff;
+}
+.content-type-top h3 a {
+  color: #ed1c24;
+}
 .projects-masthead {
   font-family: "proxima-nova", sans-serif;
   padding-top: 20px;
@@ -8913,7 +8980,7 @@ a {
   padding-bottom: 20px;
   margin: -20px auto 0px;
   background: url('../img/project_placeholder_smaller.png') no-repeat;
-  background-position: 641px -89px;
+  background-position: 641px 0px;
 }
 .projects-home h1 {
   font-size: 58px;
@@ -9335,7 +9402,8 @@ ul#tabs .current > a:hover {
   margin-top: 0px;
 }
 .secondary-navigation {
-  font-size: 18px;
+  font-size: 16px;
+  border-bottom: 1px solid lighter(#ebebeb);
 }
 .secondary-navigation a {
   padding: 10px;
@@ -9347,6 +9415,9 @@ ul#tabs .current > a:hover {
   background: #ebebeb;
   margin-top: -1px;
   border-color: lighter(#ebebeb);
+}
+.secondary-navigation .dropdown-menu li {
+  width: 100%;
 }
 .page-id-286853,
 .page-id-271492 {

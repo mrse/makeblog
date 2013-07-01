@@ -18,6 +18,7 @@ jQuery( document ).ready( function( $ ) {
 
 	// Check each li item to see if it contains a ul, if so, add our dropdown class for Bootstrap's menu stuff
 	$( '.site-navigation li' ).each( function() {
+
 		if ( $(this).children( 'ul' ).length === 1 ) {
 
 			// Add our class to the parent LI, then a class and data attribute to the A tag and then a class on the UL
@@ -25,4 +26,8 @@ jQuery( document ).ready( function( $ ) {
 
 		}
 	});
+
+	// Add a class of first to the first LI in the secondary nav
+	$( '.menu-secondary-nav li:first a').addClass( 'first' );
+
 });

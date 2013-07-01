@@ -90,24 +90,13 @@
 				<div class="container">
 					<div class="row">
 						<nav class="span12 site-navigation secondary-navigation">
-							<ul class="nav menu-secondary-nav">
-								<li><a href="#" class="first">Projects</a></li>
-								<li><a href="#">Featuers</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Magazine</a></li>
-								<li><a href="#">Videos</a></li>
-								<li><a href="#">Reviews</a></li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Events</a>
-									<ul class="dropdown-menu">
-										<li><a href="#">Maker Faire</a></li>
-										<li><a href="#">Hardware Innovation Workshop</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Shop</a></li>
-								<li><a href="#">Forums</a></li>
-								<li><a href="#">Education</a></li>
-							</ul>
+							<?php
+								wp_nav_menu( array(
+									'theme_location' => 'make-secondary',
+									'container'		 => false,
+									'menu_class' 	 => 'nav menu-secondary-nav clearfix',
+								) );
+							?>
 						</nav>
 					</div>
 				</div>
