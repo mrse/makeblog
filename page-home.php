@@ -258,9 +258,10 @@ Template Name: Home Page
 									<?php
 
 										$args = array(
-											'tag__in' => 70890180,
+											// 'tag__in' => 70890180,
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
+											'post_type' => 'projects',
 										);
 										
 										$proj_query = new WP_Query( $args );
@@ -453,8 +454,8 @@ Template Name: Home Page
 						</div>
 
 						<div class="row">
-							<div class="span8">
-								<a href="http://makezine.com/the-weekend-projects/">
+							<div class="span8 home-sponsor-ad">
+								<a href="http://pubads.g.doubleclick.net/gampad/clk?id=40516618&amp;iu=/11548178/Makezine">
 								<img src="http://makezineblog.files.wordpress.com/2013/06/rswp_homepage_nav_button.png" alt=""></a>
 							</div>
 						</div>
