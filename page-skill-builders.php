@@ -1,10 +1,13 @@
 <?php 
 
 /*
-Template Name: Skill Builders
+Template Name: Skill Builders Landing Page
 */
 
 global $catslugs;
+
+$post_types = array( 'post', 'projects', 'review', 'video', 'magazine' );
+
 get_header(); ?>
 		
 	<div class="content-type">
@@ -29,11 +32,11 @@ get_header(); ?>
 
 								<?php endwhile; endif; ?>
 								
-								<h3>Find Projects by Category:</h3>
+								<h3>Find <?php the_title(); ?> by Category:</h3>
 								
 								<ul class="subs">
 									
-									<?php echo make_category_li('true'); ?>		
+									<?php echo make_category_li( $post_types ); ?>		
 									
 								</ul>
 								
@@ -61,12 +64,13 @@ get_header(); ?>
 					
 					<?php
 						$args = array(
-							'post_type'			=> 'magazine',
-							'title'				=> 'Featured Projects',
-							'limit'				=> 2,
-							'tag'				=> 'features',
-							'projects_landing'	=> true,
-							'all'				=> true
+							'post_type'	=> $post_types,
+							'title'		=> 'Featured ' . get_the_title(),
+							'limit'		=> 2,
+							'tag'		=> 'featured',
+							'types'		=> 'technique',
+							'all'		=> false
+
 						);
 						make_carousel( $args ); ?>
 					
@@ -97,40 +101,12 @@ get_header(); ?>
 					<?php 
 
 						$args = array(
-							'post_type'			=> 'projects',
-							'title'				=> 'New Projects',
-							'projects_landing'	=> true,
-							'all'				=> true,
+							'post_type'	=> $post_types,
+							'title'		=> 'New ' . get_the_title(),
+							'types'		=> 'technique',
+							'all'		=> false,
 						);
 						
-						make_carousel($args);
-					?>
-					
-				</div>
-			
-			</div>
-			
-			<div class="row">
-			
-				<div class="span12">
-				
-					<?php 
-
-						$args = array(
-							'post_type'			=> 'projects',
-							'title'				=> '<a href="http://blog.makezine.com/the-weekend-projects/">Weekend Projects</a>',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'flags',
-									'field' => 'slug',
-									'terms' => 'weekend-project'
-								)
-							),
-							'projects_landing'	=> true,
-							'all'				=> true,
-							'posts_per_page'	=> 36
-						);
-
 						make_carousel($args);
 					?>
 					
@@ -144,17 +120,18 @@ get_header(); ?>
 				
 	<?php
 
-		if ($catslugs) {
-			echo '<div class="grey dots topper"><div class="container"><div class="row"><div class="span12"><h2>Projects by Category</h2></div></div></div></div>';
-			foreach ($catslugs as $category) {
-				$category = wpcom_vip_get_term_by('name', $category, 'category');
+		if ( $catslugs ) {
+			echo '<div class="grey dots topper"><div class="container"><div class="row"><div class="span12"><h2>' . get_the_title() . ' by Category</h2></div></div></div></div>';
+			foreach ( $catslugs as $category ) {
+				$category = wpcom_vip_get_term_by( 'name', $category, 'category' );
 				echo '<div class="grey"><div class="container"><div class="row"><div class="span12">';							
 				$args = array(
-					'post_type'			=> 'projects',
+					'post_type'			=> $post_types,
 					'category__in'		=> $category->term_id,
 					'title'				=> $category->name,
-					'projects_landing'	=> true,
-					'all'				=> true
+					'projects_landing'	=> false,
+					'all'				=> false,
+					'type'				=> 'technique',
 
 				);
 				make_carousel( $args );

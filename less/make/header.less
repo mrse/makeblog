@@ -20,14 +20,35 @@
 		right:0;
 		.subscribe, .search-make, { .pull-left; }
 		.subscribe {
-			margin-right:6px;
-			font-size:16px;
-			text-transform:uppercase;
-			background:@red;
-			color:#fff;
-			padding:5px;
-			.border-bottom-right-radius(5px);
-			.border-bottom-left-radius(5px);
+			> a {
+				margin-right:6px;
+				font-size:16px;
+				text-transform:uppercase;
+				background:@red;
+				color:#fff !important;
+				padding:5px 10px;
+				position:relative;
+				top:4px;
+				.border-bottom-right-radius(5px);
+				.border-bottom-left-radius(5px);
+			}
+			.dropdown-menu {
+				background:#fff;
+				border:1px solid @red;
+				margin-top:4px;
+				min-width:109px;
+				.border-radius(0px);
+				a {
+					color:#0c668d;
+					font-size:16px;
+					font-weight:bold;
+					padding:3px 9px;
+					&:hover {
+						background:transparent;
+						color:@red;
+					}
+				}
+			}
 		}
 		.search-make {
 			margin:0;

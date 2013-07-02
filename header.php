@@ -77,7 +77,14 @@
 							?>
 						</nav>
 						<div class="additional-content">
-							<a href="<?php echo home_url(); ?>/go/subscribe2make" class="subscribe">Subscribe</a>
+							<div class="subscribe dropdown clearfix">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Subscribe</a>
+								<ul class="dropdown-menu">
+									<li><a href="<?php home_url(); ?>/subscribe">Magazine</a></li>
+									<li><a href="<?php home_url(); ?>/newsletter">Newsletter</a></li>
+									<li><a href="<?php home_url(); ?>/feeds">RSS</a></li>
+								</ul>
+							</div>
 							<form action="<?php echo home_url(); ?>/search/" class="search-make">
 								<input type="text" class="search-field" name="q" placeholder="" />
 								<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-btn.png" alt="Search" class="disabled" />

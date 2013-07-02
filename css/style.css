@@ -8607,7 +8607,7 @@ textarea.radio-narrow,
 }
 .cat-carousel-control {
   position: absolute;
-  top: 30%;
+  top: 72px;
   left: -20px;
   width: 24px;
   height: 47px;
@@ -9304,19 +9304,40 @@ ul#tabs .current > a:hover {
 .main-header .additional-content .search-make {
   float: left;
 }
-.main-header .additional-content .subscribe {
+.main-header .additional-content .subscribe > a {
   margin-right: 6px;
   font-size: 16px;
   text-transform: uppercase;
   background: #ed1c24;
-  color: #fff;
-  padding: 5px;
+  color: #fff !important;
+  padding: 5px 10px;
+  position: relative;
+  top: 4px;
   -webkit-border-bottom-right-radius: 5px;
   -moz-border-radius-bottomright: 5px;
   border-bottom-right-radius: 5px;
   -webkit-border-bottom-left-radius: 5px;
   -moz-border-radius-bottomleft: 5px;
   border-bottom-left-radius: 5px;
+}
+.main-header .additional-content .subscribe .dropdown-menu {
+  background: #fff;
+  border: 1px solid #ed1c24;
+  margin-top: 4px;
+  min-width: 109px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+.main-header .additional-content .subscribe .dropdown-menu a {
+  color: #0c668d;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 3px 9px;
+}
+.main-header .additional-content .subscribe .dropdown-menu a:hover {
+  background: transparent;
+  color: #ed1c24;
 }
 .main-header .additional-content .search-make {
   margin: 0;

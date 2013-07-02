@@ -115,27 +115,33 @@ function make_category_list() {
 	}
 }
 
+
 /**
  * Generate the list items for categories, given a slug.
  *
  * @uses get_category_link() Returns the correct url for a given Category ID.
  * @uses wpcom_vip_get_term_by() Cached version of get_category_by_slug
  */
-function make_category_li( $project = false ) {
+function make_category_li( $post_type = '' ) {
 	global $catslugs;
+
 	$output = null;
-	foreach ($catslugs as $slug) {
+
+	if ( ! empty( $post_type ) && is_array( $post_type ) )
+		$post_type = implode( ',', $post_type );
+
+	foreach ( $catslugs as $slug ) {
 		$category = wpcom_vip_get_term_by('name', $slug, 'category');
-		if ( $project == true ) {
+		if ( ! empty( $post_type ) ) {
 			$output .= '<div class="dropdown">';
-			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=projects" title="' . sprintf( __( "View all posts in %s" ), esc_attr( $category->name ) ) . '" data-target="#" data-toggle="dropdown" class="dropdown-toggle" ' . '>' . esc_html( $category->name ) .'  <b class="caret"></b></a>';
+			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=' . $post_type . '" title="' . sprintf( __( 'View all posts in %s' ), esc_attr( $category->name ) ) . '" data-target="#" data-toggle="dropdown" class="dropdown-toggle" ' . '>' . esc_html( $category->name ) .'  <b class="caret"></b></a>';
 			$children = get_categories( $args = array( 'parent' => $category->term_id, ) );
 			if (isset($children)) {
 				$output .= '<ul class="dropdown-menu">';
-				$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=projects" title="' . sprintf( __( "View all posts in %s" ), esc_attr( $category->name ) ) . '"' . '>' . esc_html( $category->name ) .'</a>';
+				$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=' . $post_type . '" title="' . sprintf( __( 'View all posts in %s' ), esc_attr( $category->name ) ) . '"' . '>' . esc_html( $category->name ) .'</a>';
 				$output .= '<li class="divider"></li>';
 				foreach ( $children as $child ) {
-					$output .= '<li><a href="' . get_category_link( $child->term_id ) . '?post_type=projects" title="' . sprintf( __( "View all posts in %s" ), esc_attr( $child->name ) ) . '" ' . '>' . esc_html( $child->name ) .'</a>';
+					$output .= '<li><a href="' . get_category_link( $child->term_id ) . '?post_type=' . $post_type . '" title="' . sprintf( __( 'View all posts in %s' ), esc_attr( $child->name ) ) . '" ' . '>' . esc_html( $child->name ) .'</a>';
 				}
 				$output .= '</ul>';
 			}
@@ -143,11 +149,13 @@ function make_category_li( $project = false ) {
 			$output .= '</div>';
 
 		} else {
-			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), esc_attr( $category->name ) ) . '" ' . '>' . esc_html( $category->name ) .'</a></li>';
+			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( 'View all posts in %s' ), esc_attr( $category->name ) ) . '" ' . '>' . esc_html( $category->name ) .'</a></li>';
 		}
 	}
+	
 	return $output;
 }
+
 
 /**
  * Generate an ordered list, with bullets inbetween the links.

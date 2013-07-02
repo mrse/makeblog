@@ -36,7 +36,7 @@ get_header(); ?>
 									
 									<ul class="subs">
 										
-										<?php echo make_category_li('true'); ?>		
+										<?php echo make_category_li( 'projects' ); ?>		
 										
 									</ul>
 									

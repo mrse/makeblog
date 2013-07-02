@@ -1,4 +1,8 @@
-
+<?php
+/**
+ * Template Name: Skill Builder
+ */
+?>
 
 
 <?php get_header(); ?>

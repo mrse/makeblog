@@ -22,7 +22,7 @@ jQuery( document ).ready( function( $ ) {
 		if ( $(this).children( 'ul' ).length === 1 ) {
 
 			// Add our class to the parent LI, then a class and data attribute to the A tag and then a class on the UL
-			$(this).addClass( 'dropdown' ).children( 'a' ).addClass( 'dropdown-toggle' ).attr( 'data-toggle', 'dropdown' ).next().addClass( 'dropdown-menu' );
+			$(this).addClass( 'dropdown' ).children( 'a' ).addClass( 'dropdown-toggle' ).next().addClass( 'dropdown-menu' );
 
 		}
 	});
