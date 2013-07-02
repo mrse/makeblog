@@ -105,6 +105,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/mf2012'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?PC=MK&PK=M25MFIS&DO=R',
 		'/blog/v/31'					=> 'http://makezine.com/31/',
 		'/blog/craft/blog'				=> 'http://makezine.com/craftzine/',
+		'/blog/craft/'					=> 'http://makezine.com/craft/',
 		'/blog/move'					=> 'https://pubservice.com/SubGiftv2.aspx?PC=MK&PK=M2XBUS',
 		'/blog/241'						=> 'https://www.pubservice.com/subgiftcombo.aspx?PC=MK&PK=42M241',
 		'/blog/holidaygift'				=> 'https://pubservice.com/Subgiftcombo.aspx?PC=MK&PK=429HOL9',
