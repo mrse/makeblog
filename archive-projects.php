@@ -24,7 +24,7 @@ get_header(); ?>
 						
 							<div class="row">
 								
-								<div class="span8">
+								<div class="span9">
 									
 									<h1>Make: Projects</h1>
 									
@@ -42,7 +42,7 @@ get_header(); ?>
 									
 								</div>
 								
-								<div class="span4"></div>
+								<div class="span3"></div>
 								
 							</div>
 						
@@ -58,7 +58,7 @@ get_header(); ?>
 
 	</div>
 					
-	<div class="grey">
+	<div class="grey content">
 
 		<div class="container">
 		

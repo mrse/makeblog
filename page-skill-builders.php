@@ -22,7 +22,7 @@ get_header(); ?>
 					
 						<div class="row">
 							
-							<div class="span12">
+							<div class="span9">
 								
 								<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 										
@@ -41,6 +41,8 @@ get_header(); ?>
 								</ul>
 								
 							</div>
+							
+							<div class="span3"></div>
 							
 						</div>
 					

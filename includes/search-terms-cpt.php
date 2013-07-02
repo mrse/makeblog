@@ -26,7 +26,7 @@ function make_register_cpt_search_term() {
 		'supports' => array( 'title', 'thumbnail', 'custom-fields', 'revisions', 'editor' ),
 		'taxonomies' => array( 'search_terms' ),
 		'public' => false,
-		'show_ui' => true,
+		'show_ui' => false,
 		'show_in_menu' => true,
 		'show_in_nav_menus' => false,
 		'publicly_queryable' => false,

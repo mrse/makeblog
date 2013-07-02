@@ -27,7 +27,4 @@ jQuery( document ).ready( function( $ ) {
 		}
 	});
 
-	// Add a class of first to the first LI in the secondary nav
-	$( '.menu-secondary-nav li:first a').addClass( 'first' );
-
 });

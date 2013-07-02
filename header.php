@@ -67,7 +67,7 @@
 						<div class="logo span2">
 							<a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png" /></a>
 						</div>
-						<nav role="navigation" class="span10 site-navigation main-navigation">
+						<nav role="navigation" class="span10 site-navigation primary-navigation">
 							<?php
 								wp_nav_menu( array(
 									'theme_location'  => 'make-primary', 

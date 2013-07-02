@@ -35,63 +35,7 @@ make_get_header() ?>
 				
 					<article <?php post_class( 'row' ); ?>>
 
-						<div class="span8">
 						<?php the_content(); ?>
-					</div>
-
-						<div class="span4 education-box">
-							<h2>Collaborative Online Courses</h2>
-
-							<img src="http://localhost/wp-content/uploads/2013/06/maker-training-camps.png" alt="maker-training-camps" width="370" height="35" class="alignnone size-full wp-image-317194" />
-
-							<ul>
-								<li>Google+ makes it easy to work with other students and teachers.  Post questions in the online community or attend weekly office hours in a Hangout. Join Google+</li>
-								<li>Our teachers are writers for Make, professors, and business professionals using what they teach. Become a Teacher</li>
-								<li>Camps are one and five weeks in length with a lecture, office hours, and a project each week. Tuition costs range from free to $150. </li>
-							</ul>
-
-							<a href="#" class="btn btn-primary blue">Learn More</a>
-						</div>
-						<div class="span4 education-box">
-							<h2>Collaborative Online Courses</h2>
-
-							<img src="http://localhost/wp-content/uploads/2013/06/maker-training-camps.png" alt="maker-training-camps" width="370" height="35" class="alignnone size-full wp-image-317194" />
-
-							<ul>
-								<li>Google+ makes it easy to work with other students and teachers.  Post questions in the online community or attend weekly office hours in a Hangout. Join Google+</li>
-								<li>Our teachers are writers for Make, professors, and business professionals using what they teach. Become a Teacher</li>
-								<li>Camps are one and five weeks in length with a lecture, office hours, and a project each week. Tuition costs range from free to $150. </li>
-							</ul>
-
-							<a href="#" class="btn btn-primary blue">Learn More</a>
-						</div>
-						<div class="span4 education-box">
-							<h2>Collaborative Online Courses</h2>
-
-							<img src="http://localhost/wp-content/uploads/2013/06/maker-training-camps.png" alt="maker-training-camps" width="370" height="35" class="alignnone size-full wp-image-317194" />
-
-							<ul>
-								<li>Google+ makes it easy to work with other students and teachers.  Post questions in the online community or attend weekly office hours in a Hangout. Join Google+</li>
-								<li>Our teachers are writers for Make, professors, and business professionals using what they teach. Become a Teacher</li>
-								<li>Camps are one and five weeks in length with a lecture, office hours, and a project each week. Tuition costs range from free to $150. </li>
-							</ul>
-
-							<a href="#" class="btn btn-primary blue">Learn More</a>
-						</div>
-						<div class="span4 education-box">
-							<h2>Collaborative Online Courses</h2>
-
-							<img src="http://localhost/wp-content/uploads/2013/06/maker-training-camps.png" alt="maker-training-camps" width="370" height="35" class="alignnone size-full wp-image-317194" />
-
-							<ul>
-								<li>Google+ makes it easy to work with other students and teachers.  Post questions in the online community or attend weekly office hours in a Hangout. Join Google+</li>
-								<li>Our teachers are writers for Make, professors, and business professionals using what they teach. Become a Teacher</li>
-								<li>Camps are one and five weeks in length with a lecture, office hours, and a project each week. Tuition costs range from free to $150. </li>
-							</ul>
-
-							<a href="#" class="btn btn-primary blue">Learn More</a>
-						</div>
-
 						
 					</article>
 					

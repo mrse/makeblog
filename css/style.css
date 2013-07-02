@@ -8980,7 +8980,7 @@ a {
   padding-bottom: 20px;
   margin: -20px auto 0px;
   background: url('../img/project_placeholder_smaller.png') no-repeat;
-  background-position: 641px 0px;
+  background-position: 100% 0px;
 }
 .projects-home h1 {
   font-size: 58px;
@@ -9407,19 +9407,19 @@ ul#tabs .current > a:hover {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-.main-navigation {
-  font-size: 22px;
+.primary-navigation {
+  font-size: 22px !important;
   font-weight: bold;
   position: relative;
   top: 23px;
 }
-.main-navigation ul > li {
+.primary-navigation ul > li {
   margin-right: 22px;
 }
-.main-navigation ul > li > a {
+.primary-navigation ul > li > a {
   padding-bottom: 9px;
 }
-.main-navigation .dropdown-menu {
+.primary-navigation .dropdown-menu {
   margin-top: 0px;
 }
 .secondary-navigation {
@@ -10699,7 +10699,7 @@ body.makercamp a.button.small-button {
   color: #005d8f;
   font-weight: bold;
 }
-.archive ul li {
+.archive .content ul li {
   font-size: 16px;
 }
 .archive .projects-masthead h2 {
@@ -10863,7 +10863,7 @@ body.makercamp a.button.small-button {
   border-bottom-color: #ffffff;
 }
 body.page-template-page-education-php .education-box h2 {
-  font: 21px/26px "proxima-nova", sans-serif;
+  font: 17px/26px "proxima-nova", sans-serif;
   color: #363636;
   background: #e1e1e1;
   padding: 6px;
