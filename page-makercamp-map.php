@@ -15,6 +15,11 @@
 		$get_addresses = get_post_meta( get_the_ID(), 'makercamp-maps-data', false );
 		$addresses = json_decode( str_replace( '&quot;', '"', $get_addresses[0] ), true );
 	?>
+	<script>
+		jQuery(document).ready(function( $ ) {
+			$( '.map-list' ).tablesorter();
+		});
+	</script>
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<div class="main-content">
 			<div class="container map-wrapper">

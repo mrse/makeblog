@@ -43,9 +43,6 @@ body.makercamp {
 			}
 		}
 	}
-	.search-query {
-		width:206px !important;
-	}
 
 	header {
 		margin-top:41px;
@@ -351,6 +348,38 @@ body.makercamp {
 		border:0;
 	}
 
+	// Map
+	.map-wrapper {
+		li {
+			margin:15px 15px 25px 0 !important;
+			font-size:18px;
+			line-height:1.3em;
+		}
+	}
+	.map-title {
+		background:#011f43;
+		margin:0 !important;
+		font-size:1.637142857em;
+		font-family:sans-serif;
+		font-weight:normal;
+	}
+	.map-list {
+		background:#fff;
+		color:#333;
+		margin-top:20px;
+		border:1px solid #333;
+		th { 
+			color:#fff;
+			border-bottom:1px solid #333;
+			cursor:pointer;
+		}
+		a { color:#005d8f !important; }
+	}
+	.map-list-header {
+		font-weight:normal;
+		background-color: #011f43 !important;
+	}
+
 	// Misc styles
 	.orange { color:#f6ba65 !important; }
 	.red { color:#c7171d; }
@@ -415,37 +444,6 @@ body.makercamp {
 			line-height:inherit !important;
 		}
 	}
-
-	// Map
-	.map-wrapper {
-		li {
-			margin:15px 15px 25px 0 !important;
-			font-size:18px;
-			line-height:1.3em;
-		}
-	}
-	.map-title {
-		background:#011f43;
-		margin:0 !important;
-		font-size:1.637142857em;
-		font-family:sans-serif;
-		font-weight:normal;
-	}
-	.map-list {
-		background:#fff;
-		color:#333;
-		margin-top:20px;
-		border:1px solid #333;
-		th { 
-			color:#fff;
-			border-bottom:1px solid #333;
-		}
-		a { color:#005d8f !important; }
-	}
-	.map-list-header {
-		font-weight:normal;
-		background-color: #011f43 !important;
-	}
 }
 
 @media (min-width: 1200px) {
@@ -467,6 +465,9 @@ body.makercamp {
 		}
 		.feature-box {
 			.button.blue { font-size:22px !important; }
+		}
+		.search-query {
+			width:206px !important;
 		}
 	}
 }
