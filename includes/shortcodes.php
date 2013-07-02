@@ -378,11 +378,11 @@ add_shortcode( 'make_rpi', 'make_rpi' );
 
 function make_rtm() {
 	$output = '<div class="alert alert-info">
-		<a href="http://pubads.g.doubleclick.net/gampad/clk?id=29978218&amp;iu=/11548178/Makezine">
-			<img src="http://makezineblog.files.wordpress.com/2013/03/rtmfc_620x120.jpg" alt="RTMFC_620x120" width="620" height="120" style="margin-bottom:10px;" class="alignnone size-full wp-image-292301" />
+		<a href="http://pubads.g.doubleclick.net/gampad/clk?id=40563538&iu=/11548178/Makezine">
+			<img src="http://makezineblog.files.wordpress.com/2013/07/rtmfc_esurance_boilerplate.png?w=620" alt="RTMFC_620x120" width="620" height="120" style="margin-bottom:10px;" class="alignnone size-full wp-image-292301" />
 		</a>
-		<p>The <a href="http://pubads.g.doubleclick.net/gampad/clk?id=29978218&amp;iu=/11548178/Makezine">Road to Maker Faire Challenge</a> will award $2,500 to one winner to bring his or her project to Maker Faire Bay Area on May 18-19 in San Mateo, CA. Use the funding for materials, transport, or anything else you might need to get to Maker Faire. Applications are due by 11:59 PM PDT on April 8th, 2013.</p>
-		<p><a href="http://pubads.g.doubleclick.net/gampad/clk?id=29978218&amp;iu=/11548178/Makezine" class="btn btn-primary">Enter Now!</a></p>
+		<p>The <a href="http://pubads.g.doubleclick.net/gampad/clk?id=40563538&iu=/11548178/Makezine">Road to Maker Faire Challenge</a> The Road to Maker Faire Challenge will award $2,500 to one winner to bring his or her project to World Maker Faire on Sep. 21 & 22, 2013 in New York. Use the funding for materials, transport, or anything else you might need to get to Maker Faire. Applications are due by 11:59pm PT on August 5, 2013.</p>
+		<p><a href="http://pubads.g.doubleclick.net/gampad/clk?id=40563538&iu=/11548178/Makezine" class="btn btn-primary">Enter Now!</a></p>
 		</div>';
 	return $output;
 }
@@ -716,7 +716,3 @@ function make_campaign_monitor_form( $atts, $content = null ) {
 	return $output;
 }
 add_shortcode( 'make-compagin-monitor', 'make_campaign_monitor_form' );
-
-
-
-
