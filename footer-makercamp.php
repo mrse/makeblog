@@ -25,7 +25,8 @@
 									<li><a href="https://support.google.com/plus/answer/2407397?hl=en&topic=2409412&ctx=topic">G+ Teen Safety Guide</a></li>
 									<li><a href="http://www.google.com/intl/en/+/safety/">Safety Center</a></li>
 									<li><a href="https://support.google.com/plus/answer/2423637?hl=en&topic=2401644&ctx=topic">For Parents</a></li>
-									<li class="last"><a href="https://support.google.com/plus/answer/2403357?hl=en&topic=2401644&ctx=topic">For Education</a></li>
+									<li><a href="https://support.google.com/plus/answer/2403357?hl=en&topic=2401644&ctx=topic">For Education</a></li>
+									<li class="last"><a href="http://makezine.com/maker-camp/schedule-2012/">2012 Schedule</a></li>
 								</ul>
 						<!-- END trending -->
 						</div>
