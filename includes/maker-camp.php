@@ -71,6 +71,7 @@
 			'date'  => '',        // String. The date as you want it to appear
 			'img'   => '', 		  // String. URL to the project image
 			'title' => '', 		  // String. Enter the title of the project
+			'project_url' => '',  // String. Enter the url for title of the project
 			'mentor' => '', 	  // String. Enter the name of the mentor
 			'mentor_link' => '',  // URL.    Enter the mentors URL to link to.
 			'link'  => '', 		  // String. Add in the URL to where you want the far right button to link to
@@ -102,13 +103,13 @@
 			$output .= '<h2 class="project-title">';
 
 			// Do we have a link?
-			if ( ! empty( $link ) )
-				$output .= '<a href="' . esc_url( $link ) . '">';
+			if ( ! empty( $project_url ) )
+				$output .= '<a href="' . esc_url( $project_url ) . '">';
 
 			$output .= esc_attr( $title );
 				
 			// Close the link if it exists
-			if ( ! empty( $link ) )
+			if ( ! empty( $project_url ) )
 				$output .= '</a>';
 
 			$output .= '</h2>';
