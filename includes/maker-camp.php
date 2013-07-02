@@ -194,7 +194,7 @@
 		);
 
 		if ( ! empty( $content ) ) {
-			$output = '<h4><a class="' . esc_attr( $class ) . '" data-toggle="modal" href="#' . esc_attr( $link_id ) . '">' . esc_html( $link_name ) . '</a></h4>
+			$output = '<h5><a class="' . esc_attr( $class ) . '" data-toggle="modal" href="#' . esc_attr( $link_id ) . '">' . esc_html( $link_name ) . '</a></h5>
 			<div class="modal hide fade" id="' .esc_attr( $link_id ) . '">
 				<div class="modal-header">
 					<a class="close" data-dismiss="modal">&times;</a>
