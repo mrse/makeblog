@@ -41,8 +41,7 @@
 										
 										<ul id="sidebar">
 										
-											<?php if ( !function_exists('dynamic_sidebar')
-													|| !dynamic_sidebar() ) : ?>
+											<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar() ) : ?>
 											<?php endif; ?>
 										
 										</ul>
@@ -56,7 +55,7 @@
 						<div class="categories">
 
 							<ul class="categories">
-								<?php echo make_category_li(); ?>
+								<?php echo make_category_li( 'post' ); ?>
 							</ul>
 
 						</div>

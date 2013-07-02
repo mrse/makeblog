@@ -1,14 +1,15 @@
-<?php
-/**
- * Archive page template for projects custom post type.
- *
- * @package    makeblog
- * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
- * @author     Jake Spurlock <jspurlock@makermedia.com>
- * 
- */
+<?php 
+
+/*
+Template Name: Skill Builders Landing Page
+*/
+
 global $catslugs;
+
+$post_types = array( 'post', 'projects', 'review', 'video', 'magazine' );
+
 get_header(); ?>
+		
 	<div class="content-type">
 	
 		<div class="container">
@@ -22,21 +23,25 @@ get_header(); ?>
 						<div class="row">
 							
 							<div class="span9">
-										
-								<h1>Make: Videos</h1>
-									
-								<p>Seeing is believing, and often the best way to learn how to do something is watching others do it first. Park yourself here and browse our extensive collection of how-to and project videos.</p>
 								
-								<h3>Find Videos by Category:</h3>
+								<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+										
+									<h1>Make: <?php the_title(); ?></h1>
+										
+									<?php the_content(); ?>
+
+								<?php endwhile; endif; ?>
+								
+								<h3>Find <?php the_title(); ?> by Category:</h3>
 								
 								<ul class="subs">
 									
-									<?php echo make_category_li( 'video' ); ?>		
+									<?php echo make_category_li( $post_types ); ?>		
 									
 								</ul>
 								
 							</div>
-
+							
 							<div class="span3"></div>
 							
 						</div>
@@ -50,7 +55,7 @@ get_header(); ?>
 		</div>
 
 	</div>
-
+					
 	<div class="grey">
 
 		<div class="container">
@@ -61,12 +66,13 @@ get_header(); ?>
 					
 					<?php
 						$args = array(
-							'post_type'			=> 'video',
-							'title'				=> 'Featured Videos',
-							'limit'				=> 2,
-							'tag'				=> 'Featured',
-							'projects_landing'	=> false,
-							'all'				=> false
+							'post_type'	=> $post_types,
+							'title'		=> 'Featured ' . get_the_title(),
+							'limit'		=> 2,
+							'tag'		=> 'featured',
+							'types'		=> 'technique',
+							'all'		=> false
+
 						);
 						make_carousel( $args ); ?>
 					
@@ -97,10 +103,10 @@ get_header(); ?>
 					<?php 
 
 						$args = array(
-							'post_type'			=> 'video',
-							'title'				=> 'New Videos',
-							'projects_landing'	=> false,
-							'all'				=> false,
+							'post_type'	=> $post_types,
+							'title'		=> 'New ' . get_the_title(),
+							'types'		=> 'technique',
+							'all'		=> false,
 						);
 						
 						make_carousel($args);
@@ -116,17 +122,18 @@ get_header(); ?>
 				
 	<?php
 
-		if ($catslugs) {
-			echo '<div class="grey dots topper"><div class="container"><div class="row"><div class="span12"><h2>Videos by Category</h2></div></div></div></div>';
-			foreach ($catslugs as $category) {
-				$category = wpcom_vip_get_term_by('name', $category, 'category');
+		if ( $catslugs ) {
+			echo '<div class="grey dots topper"><div class="container"><div class="row"><div class="span12"><h2>' . get_the_title() . ' by Category</h2></div></div></div></div>';
+			foreach ( $catslugs as $category ) {
+				$category = wpcom_vip_get_term_by( 'name', $category, 'category' );
 				echo '<div class="grey"><div class="container"><div class="row"><div class="span12">';							
 				$args = array(
-					'post_type'			=> 'video',
+					'post_type'			=> $post_types,
 					'category__in'		=> $category->term_id,
 					'title'				=> $category->name,
 					'projects_landing'	=> false,
-					'all'				=> false
+					'all'				=> false,
+					'type'				=> 'technique',
 
 				);
 				make_carousel( $args );

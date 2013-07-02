@@ -205,11 +205,15 @@ add_filter( 'wp_feed_cache_transient_lifetime', create_function( '$a', 'return 9
 
 /**
  * Enqueue all scripts and stylesheets.
+ * @return void
+ *
+ * @version  1.1
  */
 function make_enqueue_jquery() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.js', array( 'jquery' ) );
+	wp_enqueue_script( 'make-header', get_stylesheet_directory_uri() . '/js/header.js', array( 'jquery' ) );
 
 	// display our map sort plugin for Maker Camp
 	if ( is_page( 315793 ) )
@@ -218,8 +222,8 @@ function make_enqueue_jquery() {
 	wp_enqueue_style( 'make-css', get_stylesheet_directory_uri() . '/css/style.css' );
 	wp_enqueue_style( 'make-print', get_stylesheet_directory_uri() . '/css/print.css', array(), false, 'print' );
 }
-
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
+
 
 /**
  * Catch a description for the OG protocol
@@ -1096,16 +1100,24 @@ function make_sitemap_add_gallery_post_type( $post_types ) {
 	return $post_types;
 }
 
+
 /**
  * Adds a menu field to the menus section of the admin area for the topbar
  * @return void
  *
- * @version  1.0
+ * @version  1.1
  */
-function make_topbar_register_menu() {
-	register_nav_menu( 'topbar', __( 'Top Bar' ) );
+function make_register_menu() {
+
+	// Leaving this menu in so we can migrate navigation smoothly. Will remove after menus are setup and running
+	register_nav_menu( 'topbar', __( 'Top Bar', 'make' ) );
+
+	// New Make Navigation menus
+	register_nav_menu( 'make-primary', __( 'Make Primary Nav', 'make' ) );
+	register_nav_menu( 'make-secondary', __( 'Make Secondary Nav', 'make' ) );
 }
-add_action( 'init', 'make_topbar_register_menu' );
+add_action( 'init', 'make_register_menu' );
+
 
 add_filter( 'wp_kses_allowed_html', 'mf_allow_data_atts', 10, 2 );
 function mf_allow_data_atts( $allowedposttags, $context ) {
@@ -1196,40 +1208,45 @@ add_filter( 'request', 'make_add_post_types_to_feed' );
 
 
 /**
- * Allows us to create a separator within the WordPress Admin area. This is needed because we have CPT-itis.
- * @param  string $position Contains the position of the separator. This will enable use to add more than
- * @return void
+ * Filter the default WP Admin Menu and order it to our preference
+ * @param  array $menu_order Contains all the order of the menu items by default
+ * @return array
  *
  * @version  1.0
  */
-function make_add_admin_menu_separator( $position ) {
-	global $menu;
+function make_custom_admin_menu_order( $menu_order ) {
 
-	$index = 0;
+	// Check if our menu order doesn't already exist
+	if ( ! $menu_order ) return true;
 
-	foreach ( $menu as $offset => $section ) {
-		if ( substr( $section[2], 0, 9 ) == 'separator' )
-			$index++;
-
-		if ( $offset >= $position ) {
-			$menu[ $position ] = array( '', 'read', "separator{$index}", '', 'wp-menu-separator' );
-			break;
-		}
-	}
-
-	ksort( $menu );
+	return array(
+		'index.php', 							  // Dashboard
+		'separator1', 							  // First separator
+		'edit.php', 							  // Posts
+		'edit.php?post_type=projects', 			  // Projects CPT
+		'edit.php?post_type=magazine', 			  // Magazine CPT
+		'edit.php?post_type=review',   			  // Review CPT
+		'edit.php?post_type=video',	   			  // Video CPT
+		'edit.php?post_type=craft',    			  // Craft CPT
+		'upload.php', 							  // Media
+		'link-manager.php', 					  // Links
+		'edit-comments.php', 					  // Comments
+		'edit.php?post_type=page', 				  // Pages
+		'edit.php?post_type=from-the-maker-shed', // From the Shed CPT
+		'edit.php?post_type=go',				  // Go Links CPT
+		'admin.php?page=polls', 				  // Polldaddy Polls
+		'edit.php?post_type=volume',			  // Volumes CPT
+		'edit.php?post_type=errata', 			  // Errata CPT
+		'edit.php?post_type=page_2',			  // Page 2 CPT
+		'edit.php?post_type=slideshow',			  // Slideshow CPT
+		'separator2', 							  // Second separator
+		'themes.php', 							  // Appearance
+		'plugins.php', 							  // Plugins
+		'users.php', 							  // Users
+		'tools.php', 							  // Tools
+		'options-general.php', 					  // Settings
+		'separator-last', 						  // Last separator
+	);
 }
-
-
-/**
- * Set a separator at line 50 so we can separate the Make CPT from WP
- * @return void
- *
- * @version  1.0
- */
-function make_admin_menu_separator() {
-
-	// Set the separator right where our CPT will be displayed
-	make_add_admin_menu_separator( 26 );
-}
-add_action( 'admin_menu', 'make_admin_menu_separator' );
+add_filter( 'custom_menu_order', 'make_custom_admin_menu_order' );
+add_filter( 'menu_order', 'make_custom_admin_menu_order' );

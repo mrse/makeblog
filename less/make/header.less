@@ -1,92 +1,139 @@
-.new-topad {
-	width:728px;
-	margin:60px auto 20px;
+
+// Set some variables that is only used in the main nav
+@secondary-color: #ebebeb;
+
+// Wrapper that contains both the main and secondary navigations
+.top-navigation-wrapper { 
+	.nav { margin-bottom:0; }
 }
 
-header {
-	.container {
-		border-top:1px solid @border-color;
-		padding:10px 0 0;
-		.span3 {
-			padding-top:15px;
-		}
-	}
-	border-bottom:7px solid #005C8D;
-}
-
-nav {
-	display: block;
-}
-.menu-main-menu-container, .menu-category-bar-container {
-	font-family: "bebas-neue", sans-serif;
-	display: block;
-	width: 100%;
-	a {
-		color:#203655;
-	}
-	#menu-main-menu {
-		font-size:38px;
-		margin-left:0px;
-		margin-bottom:20px;
-		margin-top:25px;
-		li {
-			line-height: 38px;
-			.pull-left;
-			list-style-type: none;
-			margin-right:10px;
-		}
-		li.current-menu-item{
-			border-top:3px solid #005C8D;
-			margin-top:-3px;
-		}
-	}
-	#menu-category-bar {
-		border-top:1px solid @border-color;
-		padding-top:8px;
-		margin-left:0px;
-		font-size:22px;
-		li {
-			.pull-left;
-			margin-right:9px;
-			list-style-type: none;
-			a {
-				color:#6b6e74;
+// Wrapper containing the main navigaiton
+.main-header {
+	margin-top:20px;
+	padding:10px 0;
+	border-top:@the-border solid @red;
+	border-bottom:@the-border solid #a4a4a4;
+	.row { position:relative; }
+	.additional-content {
+		position:absolute;
+		top:-10px;
+		right:0;
+		.subscribe, .search-make, { .pull-left; }
+		.subscribe {
+			> a {
+				margin-right:6px;
+				font-size:16px;
+				text-transform:uppercase;
+				background:@red;
+				color:#fff !important;
+				padding:5px 10px;
+				position:relative;
+				top:4px;
+				.border-bottom-right-radius(5px);
+				.border-bottom-left-radius(5px);
+			}
+			.dropdown-menu {
+				background:#fff;
+				border:1px solid @red;
+				margin-top:4px;
+				min-width:109px;
+				.border-radius(0px);
+				a {
+					color:#0c668d;
+					font-size:16px;
+					font-weight:bold;
+					padding:3px 9px;
+					&:hover {
+						background:transparent;
+						color:@red;
+					}
+				}
 			}
 		}
-		li.current-menu-item {
-			a {
-				color:#203655;
+		.search-make {
+			margin:0;
+			input[type="text"] {
+				display:none;
+				padding:5px 0 4px 8px;
+				width:0;
+				border:none;
+				color:#777;
+				&:focus { .box-shadow(0 0 0 transparent); }
+			}
+			input[type="image"] { margin:4px 8px 5px; }
+			&.open {
+				border:@the-border solid @red;
+				border-top:none;
+				.border-bottom-right-radius(5px);
+				.border-bottom-left-radius(5px);
+				input[type="text"] { 
+					padding:3px 0 3px 8px;
+					margin-bottom:0;
+				}
 			}
 		}
 	}
-	 
 }
 
-.current-nav {
-	border-top:3px solid #005C8D;
-	margin-top:-3px;		
+// Wrapper containing the secondary navigation
+.secondary-header {
+	background:@secondary-color;
+	.box-shadow( inset 0 10px 18px -10px #a4a4a4 );
 }
 
-.single-post,
-.category {
-	.menu-item-271399 {
-		.current-nav;
+// Global Navigation styles
+.site-navigation {
+	li { .pull-left; }
+	li.dropdown:hover {
+		> ul.dropdown-menu {
+			display:block; // Allows us to use hover on the dropdowns rather than click.
+		}
+	}
+	a, .dropdown-menu a {
+		color:@blue;
+		background:none; 
+		&:hover {
+			color:@blue !important;
+			text-decoration:underline !important;
+			background:none !important;
+		}
+	}
+	.open > a {
+		color:@blue !important;
+		text-decoration:underline !important;
+		background:none !important;
+	}
+	.sub-menu, .dropdown-menu {
+		display:none; // Add this so our subnav doesn't display before the Bootstrap classes are added.
+		border-top:none;
+		.border-radius(2px);
 	}
 }
 
-.single-projects,
-.post-type-archive-projects {
-	.menu-item-271399 {
-		border:0px;
-		margin:0px;
+// Main Navigation styles
+.primary-navigation {
+	font-size:22px !important;
+	font-weight:bold;
+	position:relative;
+	top:23px;
+	ul {
+		> li { margin-right:22px;
+			> a { padding-bottom:9px; }
+		}
 	}
-	.menu-item-271401 {
-		.current-nav;	
-	}
+	.dropdown-menu { margin-top:0px; }
 }
 
-@media (min-width: 1200px) {
-
-
-
+// Secondary Navigation
+.secondary-navigation {
+	font-size:16px;
+	border-bottom:1px solid lighter(@secondary-color);
+	a { padding:10px; }
+	a.first { padding-left:0; }
+	.dropdown-menu {
+		background:@secondary-color;
+		margin-top:-1px;
+		border-color:lighter(@secondary-color);
+		li { width:100%; }
+	}
 }

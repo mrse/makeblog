@@ -23,7 +23,7 @@ function register_cpt_house_ads() {
 		'labels' => $labels,
 		'supports' => array( 'title', 'thumbnail'  ),
 		'public' => true,
-		'show_ui' => true,
+		'show_ui' => false,
 		'show_in_menu' => true,
 		'show_in_nav_menus' => false,
 		'publicly_queryable' => false,

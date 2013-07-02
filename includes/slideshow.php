@@ -438,7 +438,7 @@ function make_carousel( $args, $title_link = true ) {
 							echo '">';
 							echo get_the_title( $post->ID );
 							echo '</a></h4>';
-							echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 15, '...' ) . '</p>';
+							echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_excerpt ), 15, '...' ) . '</p>';
 							echo '</div>'. "\n";
 							if ($type == 'video') {
 								echo '<div class="modal hide" id="myModal-' . $post->ID . '">
