@@ -9362,7 +9362,7 @@ ul#tabs .current > a:hover {
 }
 .main-header {
   margin-top: 20px;
-  padding: 10px 0;
+  padding: 15px 0 10px;
   border-top: 1px solid #ed1c24;
   border-bottom: 1px solid #a4a4a4;
 }
@@ -9371,7 +9371,7 @@ ul#tabs .current > a:hover {
 }
 .main-header .additional-content {
   position: absolute;
-  top: -10px;
+  top: -15px;
   right: 0;
 }
 .main-header .additional-content .subscribe,
