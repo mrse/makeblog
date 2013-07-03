@@ -10732,6 +10732,26 @@ body.makercamp a.button.small-button {
     margin: 5px auto;
     width: 100%;
   }
+  .maker-camp-sweepstakes legend {
+    color: #f6ba65;
+    border: none;
+    font-size: 24.5px;
+    margin: 10px 0;
+    font-weight: bold;
+    line-height: 40px;
+  }
+  .maker-camp-sweepstakes label {
+    font-size: 17.5px;
+    margin: 10px 0 !important;
+    line-height: 18px;
+    font-weight: bold;
+  }
+  .maker-camp-sweepstakes input {
+    width: 200px !important;
+  }
+  .maker-camp-sweepstakes input[type="submit"] {
+    width: 200px !important;
+  }
 }
 .archive {
   background: url('../img/dots.png');
