@@ -58,18 +58,18 @@
 	* @return Void
 	*/
 	function make_map_data_save( $post_id ) {
-	 // Bail if we're doing an auto save
-	 if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+		// Bail if we're doing an auto save
+		if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
 	 
-	 // if our nonce isn't there, or we can't verify it, bail
-	 if( !isset( $_POST['makercamp-nonce'] ) || !wp_verify_nonce( $_POST['makercamp-nonce'], basename( __FILE__ ) ) ) return;
+		// if our nonce isn't there, or we can't verify it, bail
+		if( !isset( $_POST['makercamp-nonce'] ) || !wp_verify_nonce( $_POST['makercamp-nonce'], basename( __FILE__ ) ) ) return;
 	 
-	 // if our current user can't edit this post, bail
-	 if( !current_user_can( 'edit_post' ) ) return;
+		// if our current user can't edit this post, bail
+		if( !current_user_can( 'edit_post', $post_id ) ) return; 
 
-	 // Make sure your data is set before trying to save it
-	 if( isset( $_POST['makercamp-maps-data'] ) )
-	   update_post_meta( $post_id, 'makercamp-maps-data', esc_attr( $_POST['makercamp-maps-data'] ) );
+		// Make sure your data is set before trying to save it
+		if( isset( $_POST['makercamp-maps-data'] ) )
+	  		update_post_meta( $post_id, 'makercamp-maps-data', sanitize_text_field( $_POST['makercamp-maps-data'] ) );
 	   
 	}
 	add_action( 'save_post', 'make_map_data_save' );
