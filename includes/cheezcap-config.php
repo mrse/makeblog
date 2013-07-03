@@ -15,6 +15,12 @@ $cap = new CheezCap( array(
 					'ribbon_title',
 					''
 				),
+				new CheezCapBooleanOption(
+					'Display Ribbon Title',
+					'Choose if you wish to display or hide the Ribbon Title.',
+					'ribbon_title_display',
+					'1'
+				),
 				new CheezCapTextOption(
 					'Main Item Title',
 					'This is the big image on the left...',

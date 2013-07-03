@@ -21,12 +21,14 @@ Template Name: Home Page
 								<div class="span4">
 
 									<div class="paddme">
-
-										<div class="ribbon"><?php echo esc_html( make_get_cap_option( 'ribbon_title' ) ); ?></div>
+										
+										<?php if ( make_get_cap_option( 'ribbon_title_display' ) ) : ?>
+											<div class="ribbon"><?php echo esc_html( make_get_cap_option( 'ribbon_title' ) ); ?></div>
+										<?php endif; ?>
 
 										<a href="<?php echo esc_html( make_get_cap_option( 'main_link' ) ); ?>">
 
-											<img src="<?php echo esc_url( make_get_cap_option( 'main_url' ) ); ?>" id="top-left" />
+											<img src="<?php echo esc_url( make_get_cap_option( 'main_url' ) ); ?>" <?php if ( make_get_cap_option( 'ribbon_title_display' ) ) echo 'id="top-left" '; ?>/>
 
 										</a>
 
