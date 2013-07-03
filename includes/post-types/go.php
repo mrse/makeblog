@@ -10,7 +10,7 @@ function go_init() {
 		'has_archive'         => true,
 		'query_var'           => true,
 		'rewrite'             => true,
-		'menu_position' 	  => 50,
+		'menu_position' 	  => 32,
 		'labels'              => array(
 			'name'                => __( 'Go Links', 'make' ),
 			'singular_name'       => __( 'Go Link', 'make' ),

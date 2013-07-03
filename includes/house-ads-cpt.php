@@ -33,7 +33,7 @@ function register_cpt_house_ads() {
 		'can_export' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'menu_position' => 50,
+		'menu_position' => 100,
 	);
 
 	register_post_type( 'house-ads', $args );

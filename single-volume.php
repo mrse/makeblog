@@ -121,7 +121,15 @@ get_header(); ?>
 									}
 
 									$parent = $post->ID;
-								
+									
+									$args = array(
+										'post_type'			=> 'errata',
+										'title'				=> 'Errata',
+										'post_parent'		=> $parent,
+										'order'				=> 'asc',
+									);
+									echo make_magazine_toc( $args );
+									
 									$args = array(
 										'post_type' 		=> 'review',
 										'title'			 	=> 'Reviews',
@@ -145,9 +153,7 @@ get_header(); ?>
 										'order'				=> 'asc',
 										);
 									echo make_magazine_toc($args);
-
 								?>
-
 								
 								<?php echo make_magazine_errata('Web Extras'); ?>
 

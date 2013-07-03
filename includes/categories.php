@@ -134,14 +134,14 @@ function make_category_li( $post_type = '' ) {
 		$category = wpcom_vip_get_term_by('name', $slug, 'category');
 		if ( ! empty( $post_type ) ) {
 			$output .= '<div class="dropdown">';
-			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=' . $post_type . '" title="' . sprintf( __( 'View all posts in %s' ), esc_attr( $category->name ) ) . '" data-target="#" data-toggle="dropdown" class="dropdown-toggle" ' . '>' . esc_html( $category->name ) .'  <b class="caret"></b></a>';
+			$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=' . urlencode( $post_type ) . '" title="' . sprintf( __( 'View all posts in %s' ), esc_attr( $category->name ) ) . '" data-target="#" data-toggle="dropdown" class="dropdown-toggle" ' . '>' . esc_html( $category->name ) .'  <b class="caret"></b></a>';
 			$children = get_categories( $args = array( 'parent' => $category->term_id, ) );
 			if (isset($children)) {
 				$output .= '<ul class="dropdown-menu">';
-				$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=' . $post_type . '" title="' . sprintf( __( 'View all posts in %s' ), esc_attr( $category->name ) ) . '"' . '>' . esc_html( $category->name ) .'</a>';
+				$output .= '<li><a href="' . get_category_link( $category->term_id ) . '?post_type=' . urlencode( $post_type ) . '" title="' . sprintf( __( 'View all posts in %s' ), esc_attr( $category->name ) ) . '"' . '>' . esc_html( $category->name ) .'</a>';
 				$output .= '<li class="divider"></li>';
 				foreach ( $children as $child ) {
-					$output .= '<li><a href="' . get_category_link( $child->term_id ) . '?post_type=' . $post_type . '" title="' . sprintf( __( 'View all posts in %s' ), esc_attr( $child->name ) ) . '" ' . '>' . esc_html( $child->name ) .'</a>';
+					$output .= '<li><a href="' . get_category_link( $child->term_id ) . '?post_type=' . urlencode( $post_type ) . '" title="' . sprintf( __( 'View all posts in %s' ), esc_attr( $child->name ) ) . '" ' . '>' . esc_html( $child->name ) .'</a>';
 				}
 				$output .= '</ul>';
 			}

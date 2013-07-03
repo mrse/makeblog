@@ -27,7 +27,6 @@ function make_register_cpt_slideshow() {
 		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => true,
-		'menu_position' => 50,
 		'show_in_nav_menus' => true,
 		'publicly_queryable' => true,
 		'exclude_from_search' => false,
@@ -35,7 +34,8 @@ function make_register_cpt_slideshow() {
 		'query_var' => true,
 		'can_export' => true,
 		'rewrite' => true,
-		'capability_type' => 'post'
+		'capability_type' => 'post',
+		'menu_position' => 36,
 	);
 
 	register_post_type( 'slideshow', $args );
@@ -390,12 +390,15 @@ function make_carousel( $args, $title_link = true ) {
 										$img = $json_output->thumbnail_url;
 										update_post_meta( $post->ID, 'Image', $img );
 										echo '<a href="'. get_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( get_post_meta( $post->ID, 'Image', true ), 218, 146 ) . '" alt="' . the_title_attribute( 'echo=0' ) . '" /></a>';
+									} elseif ( has_post_thumbnail() ) {
+										$image = the_post_thumbnail( array( '218', '146' ) );
+										echo '<a href="' . get_permalink( $post->ID ) . '">' . $image . '</a>';
 									}
 								} else {
 									echo '<a href="'. get_permalink( $post->ID ) . '">';
 									get_the_image( array( 'post_id' => $post->ID, 'image_scan' => true, 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail' ) );
 									echo '</a>';
-								} 
+								}
 							} elseif ($args['limit'] == 2) {
 								echo '<div class="span4 ' . $type . '">';
 								if ($type == 'video') {
