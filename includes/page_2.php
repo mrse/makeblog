@@ -27,10 +27,10 @@ function js_page_2_type() {
 			'has_archive'=> true,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
-			'menu_position' => 50,
 			'supports' => array( 'title', 'editor', 'excerpt', 'custom-fields', 'thumbnail', 'author', 'comments' ),
 			'rewrite' => array( 'slug' => 'page-2', 'with_front' => false ),
 			'taxonomies' => array( 'post_tag', 'category', 'maker', 'location'),
+			'menu_position' => 35,
 		)
 	);
 }
