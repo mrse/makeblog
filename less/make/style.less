@@ -8,7 +8,7 @@ a:hover {
 
 body {
 	/* background-image: url('../img/sand.png'); */
-	margin-top:40px;
+	margin-top:20px;
 	overflow-wrap: break-word;
 }
 
@@ -36,6 +36,20 @@ h1, h2, h3, h4, h5, h6 {
 
 h3 {
 	line-height: 24px;
+}
+
+// Blog styles
+.add30 {
+	width:590px;
+	margin-right:30px;
+}
+.blog {
+	.projects-masthead h2 { margin-bottom:-10px; }
+	.projects-meta {
+		color:#333;
+		font-weight:normal;
+	}
+	article { margin:20px 0 45px; }
 }
 
 #header {
@@ -184,7 +198,7 @@ h3 {
 
 .waist {
 	background-image: url('../img/blue_bg1.jpg');
-	border-top:1px solid #00335D;
+	// border-top:1px solid #00335D;
 	border-bottom:2px solid #b0b3b2;
 }
 
@@ -708,7 +722,7 @@ footer .pills a {
 
 /*********************
 
-Time for a Dr. Pepper?
+Time for a Dr. Pepper? #jakespurlocktakesthecake
 
 *********************/
 
@@ -3013,12 +3027,6 @@ body#shop {
 	padding:10px 10px 0;
 }
 
-.logo {
-	display: block;
-	float:left;
-	margin-right:11px;
-}
-
 .soci {
 	display: block;
 	float:left;
@@ -3342,5 +3350,29 @@ color:green;
 }
 
 .footer-ad {
-	margin:30px 0;
+	padding:30px 0;
 }
+
+// Bootstrap overrides
+// Change button position in the Bootstrap styles
+.carousel-control { top:15px !important; }
+
+/*subscription page styles by Bill Olson */
+
+.main-sub-area .form-horizontal .control-label {
+width:90px !important
+}
+
+.main-sub-area .form-horizontal .controls {
+    margin-left: 95px !important;
+}
+
+.main-sub-area select  {
+width:195px !important;
+}
+
+.main-sub-area .lower-sub-col-01 input {width:185px !important;}
+
+.main-sub-area #isBillShipAddrSame {width:auto !important;}
+
+.main-sub-area #ccType {width:115px !important;}

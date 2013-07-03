@@ -16,12 +16,12 @@
 						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/contact/">Contact</a></li>
 						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/overview/">2013 Hardware Innovation Workshop</a></li>
                         	<div style="padding-left:15px;">
-								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/agenda/">Agenda</a></li>
-								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/keynotes/">Speaker Roster</a></li>
-								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/innovators/">Showcase Innovators</a></li>  
-								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/master-class/">Master Class Workshop</a></li>
+								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/agenda/">2013 Agenda</a></li>
+								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/keynotes/">2013 Speaker Roster</a></li>
+								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/innovators/">2013 Showcase Innovators</a></li>  
+								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/master-class/">2013 Master Class Workshop</a></li>
                         	</div>  
-						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/overview-2012/">Hardware Innovation Workshop 2012</a></li>
+						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/overview-2012/">2012 Hardware Innovation Workshop</a></li>
                         	<div style="padding-left:15px;">
 							<li><a href="http://blog.makezine.com/hardware-innovation-workshop/overview-2012/agenda-2012/">2012 Agenda</a></li>
 							<li><a href="http://blog.makezine.com/hardware-innovation-workshop/overview-2012/speaker-roster-2012/">2012 Speaker Roster</a></li>

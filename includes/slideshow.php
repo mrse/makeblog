@@ -27,7 +27,6 @@ function make_register_cpt_slideshow() {
 		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => true,
-		'menu_position' => 5,
 		'show_in_nav_menus' => true,
 		'publicly_queryable' => true,
 		'exclude_from_search' => false,
@@ -35,7 +34,8 @@ function make_register_cpt_slideshow() {
 		'query_var' => true,
 		'can_export' => true,
 		'rewrite' => true,
-		'capability_type' => 'post'
+		'capability_type' => 'post',
+		'menu_position' => 49,
 	);
 
 	register_post_type( 'slideshow', $args );
@@ -232,7 +232,16 @@ function make_get_arg_title( $args, $title ) {
 	return $output;
 }
 
-function make_carousel( $args ) {
+
+/**
+ * Adds a cool little carousel. 
+ * @param  array   $args 	   The array of arguments
+ * @param  boolean $title_link The ability to enable or display links in the title. Some pages want it, others dont.
+ * @return mixed
+ *
+ * @version  1.1
+ */
+function make_carousel( $args, $title_link = true ) {
 
 	$defaults = array(
 		'cat'				=> 0, 				// Likely the queried object ID
@@ -263,194 +272,213 @@ function make_carousel( $args ) {
 
 	?>
 
-<div class="row-fluid">
-	<div class="span10">
-		<h3 class="heading">
+	<div class="row-fluid">
+		<div class="span10">
+			<h3 class="heading">
+				<?php
+					if ( isset( $args['difficulty'] ) ) {
+						if ( $title_link )
+							$output = '<a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '?cat=' . intval($args['category__in']) . '">';
+
+						$output .= $args['difficulty'];
+
+						if ( $title_link )
+							$output .= '</a>';
+
+						echo $output;
+					} elseif ( isset( $args['category__in'] ) ) {
+						if ( $title_link ) {
+							$output = '<a href="';
+							$output .= get_term_link( intval($args['category__in']), 'category', 'id');
+							if ($args['projects_landing'] != false ) {
+								$output .= '?post_type=projects">';	
+							} else {
+								$output .= '">';
+							}
+						}
+
+						$output .= $args['title'];
+
+						if ( $title_link )
+							$output .= '</a>';
+
+						echo $output;
+					} elseif ( isset($args['tag'] ) ) {
+						if ( $title_link ) {
+							$output = '<a href="';
+							$output .= get_term_link( $args['tag'], 'post_tag');
+							if ($args['projects_landing'] != false ) {
+								$output .= '?post_type=projects">';	
+							} else {
+								$output .= '">';
+							}
+						}
+
+						$output .= $args['title'];
+
+						if ( $title_link )
+							$output .= '</a>';
+						echo $output;
+					} else {
+						echo $args['title'];
+					}
+				?>
+			</h3>
+		</div>
+		<div class="span2">
 			<?php
-				if ( isset( $args['difficulty'] ) ) {
-					$output = '<a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '?cat=' . intval($args['category__in']) . '">';
-					$output .= $args['difficulty'];
-					$output .= '</a>';
-					echo $output;
-				} elseif ( isset( $args['category__in'] ) ) {
-					$output = '<a href="';
-					$output .= get_term_link( intval($args['category__in']), 'category', 'id');
-					if ($args['projects_landing'] != false ) {
-						$output .= '?post_type=projects">';	
-					} else {
-						$output .= '">';
+				if ($args['all'] != null ) {
+					if ( isset( $args['difficulty'] ) ) {
+						$output = '<p class="pull-right"><a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '?cat=' . intval($args['category__in']) . '" class="all">View All</p>';
+						echo $output;
+					} elseif ( isset($args['category__in']) && ($args['all']) == true ) {
+						$output = '<p class="pull-right"><a href="';
+						$output .= get_term_link( intval($args['category__in']), 'category', 'id');
+						$output .= '?post_type=projects" class="all">';
+						$output .= 'View All';
+						$output .= '</p>';	
+						echo $output;
+					} elseif ( isset($args['tag'] ) ) {
+						$output = '<p class="pull-right"><a href="';
+						$output .= get_term_link( $args['tag'], 'post_tag');
+						$output .= '?post_type=projects" class="all">View All</a></p>';
+						echo $output;
 					}
-					$output .= $args['title'];
-					$output .= '</a>';
-					echo $output;
-				} elseif ( isset($args['tag'] ) ) {
-					$output = '<a href="';
-					$output .= get_term_link( $args['tag'], 'post_tag');
-					if ($args['projects_landing'] != false ) {
-						$output .= '?post_type=projects">';	
-					} else {
-						$output .= '">';
-					}
-					$output .= $args['title'];
-					$output .= '</a>';
-					echo $output;
-				} else {
-					echo $args['title'];
 				}
 			?>
-		</h3>
+			
+		</div>
 	</div>
-	<div class="span2">
-		<?php
-			if ($args['all'] != null ) {
-				if ( isset( $args['difficulty'] ) ) {
-					$output = '<p class="pull-right"><a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '?cat=' . intval($args['category__in']) . '" class="all">View All</p>';
-					echo $output;
-				} elseif ( isset($args['category__in']) && ($args['all']) == true ) {
-					$output = '<p class="pull-right"><a href="';
-					$output .= get_term_link( intval($args['category__in']), 'category', 'id');
-					$output .= '?post_type=projects" class="all">';
-					$output .= 'View All';
-					$output .= '</p>';	
-					echo $output;
-				} elseif ( isset($args['tag'] ) ) {
-					$output = '<p class="pull-right"><a href="';
-					$output .= get_term_link( $args['tag'], 'post_tag');
-					$output .= '?post_type=projects" class="all">View All</a></p>';
-					echo $output;
-				}
-			}
-		?>
+
+	<div id="<?php echo $id ?>" class="carousel slide" data-interval="false">
+		<div class="carousel-inner">
 		
-	</div>
-</div>
+			<?php
 
-<div id="<?php echo $id ?>" class="carousel slide" data-interval="false">
-	<div class="carousel-inner">
-	
-		<?php
+				$arrays = array_chunk( $the_query->posts, $args['limit'], true );
 
-			$arrays = array_chunk( $the_query->posts, $args['limit'], true );
-
-			foreach( $arrays as $idx => $posts) {
-				
-				if ( $idx == 0 ) {
-					echo '<div class="item active">';	
-				} else {
-					echo '<div class="item">';
-				}
-				echo '<div class="row">';
-					global $post;
-					foreach ($posts as $post) {
-						setup_postdata( $post );
-						$type = get_post_type( $post );
-						if ($args['limit'] == 4 ) {
-							echo '<div class="span3 ' . $type . '">';
-							if ($type == 'video') {
-								echo '<a class="" data-toggle="modal" onclick="_gaq.push([\'_trackPageview\', \'' . get_post_permalink( $post->ID ) . '\']);" href="#myModal-' . $post->ID . '">';
-								echo '<span class="' . $type .'-icon"></span>';
-								echo '</a>';
-							} elseif ( $args['projects_landing'] == false ) {
-									echo '<a href="'. get_post_permalink( $post->ID ) . '"><span class="' . $type .'-icon"></span></a>';
-							}
-							$image = get_post_custom_values('Image', $post->ID);
-							if ( !empty( $image[0] ) )  {
-								echo '<a href="'. get_post_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" /></a>';
-							} elseif ( $type == 'video' ) {
-								$link = get_post_custom_values( 'Link' , $post->ID );
-								$link = 'http://www.youtube.com/oembed?format=json&url=' . esc_url( $link[0] );
-								$contents = wpcom_vip_file_get_contents( $link );
-								if ($contents != false) {
-									$json_output = json_decode($contents);
-									$img = $json_output->thumbnail_url;
-									update_post_meta( $post->ID, 'Image', $img );
-									echo '<a href="'. get_post_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( get_post_meta( $post->ID, 'Image', true ), 218, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" /></a>';
-								}
-							} else {
-								echo '<a href="'. get_post_permalink( $post->ID ) . '">';
-								get_the_image( array( 'post_id' => $post->ID, 'image_scan' => true, 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail' ) );
-								echo '</a>';
-							} 
-						} elseif ($args['limit'] == 2) {
-							echo '<div class="span4 ' . $type . '">';
-							if ($type == 'video') {
-								echo '<a class="" data-toggle="modal" onclick="_gaq.push([\'_trackPageview\', \'' . get_post_permalink( $post->ID ) . '\']);" href="#myModal-' . $post->ID . '">';
-								echo '<span class="' . $type .'-icon"></span>';
-								echo '</a>';
-							} else {
-								echo '<span class="' . $type .'-icon"></span>';
-							}
-							$image = get_post_custom_values('Image', $post->ID);
-							if ( !empty( $image[0] ) )  {
-								echo '<a href="'. get_post_permalink( $post->ID ) . '">';
-								echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 298, 146 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
-								echo '</a>';
-							} else {
-								echo '<a href="'. get_post_permalink( $post->ID ) . '">';
-								get_the_image( array( 'post_id' => $post->ID, 'image_scan' => true, 'size' => 'category-thumb', 'image_class' => 'hide-thumbnail' ) );
-								echo '</a>';
-
-							}  
-							
-						}
-						
-						if ( $args['projects_landing'] == true ) {
-							echo '<div class="project-meta"><ul>';
-							$time = get_post_custom_values('TimeRequired', $post->ID);
-							if ($time[0]) {
-								echo '<li>Time: <span>' . esc_html( $time[0] ) . '</span></li>';
-							}
-							$terms = get_the_terms( $post->ID, 'difficulty' );
-							if ($terms) {
-								foreach ($terms as $term) {
-									echo '<li>Difficulty: <span>' . esc_html( $term->name ) . '</span></li>';
-								}
-							}
-							echo '</ul></div>';
-						}
-						echo '<h4><a href="';
-						echo get_permalink( $post->ID );
-						echo '">';
-						echo get_the_title( $post->ID );
-						echo '</a></h4>';
-						echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 15, '...' ) . '</p>';
-						echo '</div>'. "\n";
-						if ($type == 'video') {
-							echo '<div class="modal hide" id="myModal-' . $post->ID . '">
-								<div class="modal-header">
-									<a class="close" data-dismiss="modal">&times;</a>
-									<h3>' . get_the_title( $post->ID ) . '</h3>
-								</div>
-								<div class="modal-body">';
-									$link = get_post_custom_values( 'Link' , $post->ID );
-									echo do_shortcode('[youtube='. esc_url( $link[0] ) .'&w=530]');
-									echo apply_filters('the_content', strip_shortcodes( $post->post_content ) );
-								echo '</div>
-								<div class="modal-footer">
-									<a href="#" class="btn" data-dismiss="modal">Close</a>
-								</div>
-							</div>';
-						}
+				foreach( $arrays as $idx => $posts) {
+					
+					if ( $idx == 0 ) {
+						echo '<div class="item active">';	
+					} else {
+						echo '<div class="item">';
 					}
+					echo '<div class="row">';
+						global $post;
+						foreach ($posts as $post) {
+							setup_postdata( $post );
+							$type = get_post_type( $post );
+							if ($args['limit'] == 4 ) {
+								echo '<div class="span3 ' . $type . '">';
+								if ($type == 'video') {
+									echo '<a class="" data-toggle="modal" onclick="_gaq.push([\'_trackPageview\', \'' . get_permalink( $post->ID ) . '\']);" href="#myModal-' . $post->ID . '">';
+									echo '<span class="' . $type .'-icon"></span>';
+									echo '</a>';
+								} elseif ( $args['projects_landing'] == false ) {
+										echo '<a href="'. get_permalink( $post->ID ) . '"><span class="' . $type .'-icon"></span></a>';
+								}
+								$image = get_post_custom_values('Image', $post->ID);
+								if ( !empty( $image[0] ) )  {
+									echo '<a href="'. get_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 218, 146 ) . '" alt="' . the_title_attribute( 'echo=0' ) . '" /></a>';
+								} elseif ( $type == 'video' ) {
+									$link = get_post_custom_values( 'Link' , $post->ID );
+									$link = 'http://www.youtube.com/oembed?format=json&url=' . esc_url( $link[0] );
+									$contents = wpcom_vip_file_get_contents( $link );
+									if ($contents != false) {
+										$json_output = json_decode($contents);
+										$img = $json_output->thumbnail_url;
+										update_post_meta( $post->ID, 'Image', $img );
+										echo '<a href="'. get_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( get_post_meta( $post->ID, 'Image', true ), 218, 146 ) . '" alt="' . the_title_attribute( 'echo=0' ) . '" /></a>';
+									} elseif ( has_post_thumbnail() ) {
+										$image = the_post_thumbnail( array( '218', '146' ) );
+										echo '<a href="' . get_permalink( $post->ID ) . '">' . $image . '</a>';
+									}
+								} else {
+									echo '<a href="'. get_permalink( $post->ID ) . '">';
+									get_the_image( array( 'post_id' => $post->ID, 'image_scan' => true, 'size' => 'category-thumb-small', 'image_class' => 'hide-thumbnail' ) );
+									echo '</a>';
+								}
+							} elseif ($args['limit'] == 2) {
+								echo '<div class="span4 ' . $type . '">';
+								if ($type == 'video') {
+									echo '<a class="" data-toggle="modal" onclick="_gaq.push([\'_trackPageview\', \'' . get_permalink( $post->ID ) . '\']);" href="#myModal-' . $post->ID . '">';
+									echo '<span class="' . $type .'-icon"></span>';
+									echo '</a>';
+								} else {
+									echo '<span class="' . $type .'-icon"></span>';
+								}
+								$image = get_post_custom_values('Image', $post->ID);
+								if ( !empty( $image[0] ) )  {
+									echo '<a href="'. get_permalink( $post->ID ) . '">';
+									echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 298, 146 ) . '" alt="' . the_title_attribute( 'echo=0' ) . '" />';
+									echo '</a>';
+								} else {
+									echo '<a href="'. get_permalink( $post->ID ) . '">';
+									get_the_image( array( 'post_id' => $post->ID, 'image_scan' => true, 'size' => 'category-thumb', 'image_class' => 'hide-thumbnail' ) );
+									echo '</a>';
+
+								}  
+								
+							}
+							
+							if ( $args['projects_landing'] == true ) {
+								echo '<div class="project-meta"><ul>';
+								$time = get_post_custom_values('TimeRequired', $post->ID);
+								if ($time[0]) {
+									echo '<li>Time: <span>' . esc_html( $time[0] ) . '</span></li>';
+								}
+								$terms = get_the_terms( $post->ID, 'difficulty' );
+								if ($terms) {
+									foreach ($terms as $term) {
+										echo '<li>Difficulty: <span>' . esc_html( $term->name ) . '</span></li>';
+									}
+								}
+								echo '</ul></div>';
+							}
+							echo '<h4><a href="';
+							echo get_permalink( $post->ID );
+							echo '">';
+							echo get_the_title( $post->ID );
+							echo '</a></h4>';
+							echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_excerpt ), 15, '...' ) . '</p>';
+							echo '</div>'. "\n";
+							if ($type == 'video') {
+								echo '<div class="modal hide" id="myModal-' . $post->ID . '">
+									<div class="modal-header">
+										<a class="close" data-dismiss="modal">&times;</a>
+										<h3>' . get_the_title( $post->ID ) . '</h3>
+									</div>
+									<div class="modal-body">';
+										$link = get_post_custom_values( 'Link' , $post->ID );
+										echo do_shortcode('[youtube='. esc_url( $link[0] ) .'&w=530]');
+										echo apply_filters('the_content', strip_shortcodes( $post->post_content ) );
+									echo '</div>
+									<div class="modal-footer">
+										<a href="#" class="btn" data-dismiss="modal">Close</a>
+									</div>
+								</div>';
+							}
+						}
+						echo '</div>';
 					echo '</div>';
-				echo '</div>';
 
 
-			}
+				}
 
-			// Reset Post Data
-			wp_reset_postdata();
+				// Reset Post Data
+				wp_reset_postdata();
 
-		?>
-	
+			?>
+		
+		</div>
+		
+	<?php if ( $the_query->post_count > 4 ) { ?>
+		<a class="left cat-carousel-control" href="#<?php echo $id ?>" data-slide="prev"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/larr.png" alt="Left"></a>
+		<a class="right cat-carousel-control" href="#<?php echo $id ?>" data-slide="next"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/rarr.png" alt="Left"></a>
+	<?php } ?>
+
 	</div>
-	
-<?php if ( $the_query->post_count > 4 ) { ?>
-	<a class="left cat-carousel-control" href="#<?php echo $id ?>" data-slide="prev"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/larr.png" alt="Left"></a>
-	<a class="right cat-carousel-control" href="#<?php echo $id ?>" data-slide="next"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/rarr.png" alt="Left"></a>
-<?php } ?>
-
-</div>
 	
 <?php }
 

@@ -90,7 +90,7 @@ function makeblog_page2form (){
 
 		echo $make_post_id;
 
-		$email = array('jspurlock@oreilly.com','gareth@oreilly.com', 'sholbrook@oreilly.com');
+		$email = array( 'jspurlock@makermedia.com','kdenmead@makermedia.com', 'sholbrook@makermedia.com' );
 
 		$page2_title = "Page2 Submission: " . $post_title;
 
@@ -147,9 +147,9 @@ function makeblog_linksubform () {
 			
 		}
 
-		$email = 'onlineeditors@makezine.com';
+		$email = 'x+6185406202074@mail.asana.com';
 
-		$link_title = "User Link Submission: " . $link_title;
+		$link_title = "User Link: " . $link_title;
 
 		$link_email_content  = '<html><body>';
 		$link_email_content .= '<p>A summary of the content in the form you just submitted to MAKE.</p>';
@@ -165,12 +165,9 @@ function makeblog_linksubform () {
 		$link_email_content .= "</table>";
 		$link_email_content .= "</body></html>";
 
-		$headers = array( 'From: ' . $link_name .  ' <' . $link_email . '>'.  "\r\n" , 'Content-Type:text/html; charset=UTF-8' );
+		$headers = array( 'From: Editorial Submissions <submissions@makermedia.com>'.  "\r\n" , 'Content-Type:text/html; charset=UTF-8' );
 
 		wp_mail($email, $link_title, $link_email_content, $headers);
-
-		if( $link_email !== false )
-			wp_mail($link_email, $link_title, $link_email_content, $headers[1]);
 
 	}
 
@@ -217,9 +214,9 @@ function makeblog_articleform (){
 
 		}
 
-		$email = 'editors@makezine.com';
+		$email = 'x+6185406202074@mail.asana.com';
 
-		$article_title = "User Article Submission: " . sanitize_text_field($_POST['linksub_title']);
+		$article_title = 'Article/Project: ' . $article_title;
 
 		$article_content = '<html><body>';
 		$article_content .= '<p>A summary of the content in the form you just submitted to MAKE.</p>';
@@ -249,12 +246,9 @@ function makeblog_articleform (){
 		$article_content .= "</body></html>";
 		$article_content = stripslashes($article_content);
 
-		$headers = array( 'From: ' . $article_name .  ' <' . $article_email . '>'.  "\r\n" , 'Content-Type:text/html; charset=UTF-8' );
+		$headers = array( 'From: Editorial Submissions <submissions@makermedia.com>' .  "\r\n" , 'Content-Type:text/html; charset=UTF-8' );
 
 		wp_mail($email, $article_title, $article_content, $headers);
-
-		if( $article_email !== false )
-			wp_mail($article_email, $article_title, $article_content, $headers[1]);
 
 	}
 

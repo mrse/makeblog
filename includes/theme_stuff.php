@@ -205,11 +205,15 @@ add_filter( 'wp_feed_cache_transient_lifetime', create_function( '$a', 'return 9
 
 /**
  * Enqueue all scripts and stylesheets.
+ * @return void
+ *
+ * @version  1.1
  */
 function make_enqueue_jquery() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.js', array( 'jquery' ) );
+	wp_enqueue_script( 'make-header', get_stylesheet_directory_uri() . '/js/header.js', array( 'jquery' ) );
 
 	// display our map sort plugin for Maker Camp
 	if ( is_page( 315793 ) )
@@ -218,8 +222,8 @@ function make_enqueue_jquery() {
 	wp_enqueue_style( 'make-css', get_stylesheet_directory_uri() . '/css/style.css' );
 	wp_enqueue_style( 'make-print', get_stylesheet_directory_uri() . '/css/print.css', array(), false, 'print' );
 }
-
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
+
 
 /**
  * Catch a description for the OG protocol
@@ -1096,16 +1100,24 @@ function make_sitemap_add_gallery_post_type( $post_types ) {
 	return $post_types;
 }
 
+
 /**
  * Adds a menu field to the menus section of the admin area for the topbar
  * @return void
  *
- * @version  1.0
+ * @version  1.1
  */
-function make_topbar_register_menu() {
-	register_nav_menu( 'topbar', __( 'Top Bar' ) );
+function make_register_menu() {
+
+	// Leaving this menu in so we can migrate navigation smoothly. Will remove after menus are setup and running
+	register_nav_menu( 'topbar', __( 'Top Bar', 'make' ) );
+
+	// New Make Navigation menus
+	register_nav_menu( 'make-primary', __( 'Make Primary Nav', 'make' ) );
+	register_nav_menu( 'make-secondary', __( 'Make Secondary Nav', 'make' ) );
 }
-add_action( 'init', 'make_topbar_register_menu' );
+add_action( 'init', 'make_register_menu' );
+
 
 add_filter( 'wp_kses_allowed_html', 'mf_allow_data_atts', 10, 2 );
 function mf_allow_data_atts( $allowedposttags, $context ) {
@@ -1136,3 +1148,61 @@ function mf_filter_tiny_mce_before_init( $options ) {
 
 	return $options; 
 }
+
+
+/**
+ * Allows us to easily integrate different types of authors.
+ * This is needed because our blog feeds contain multiple types of posts.
+ * This will handle the display of those different kinds and apply the right data and styling.
+ * @param  string $post_id The post ID of the post we are returning this info for
+ * @param  string $prefix  The string to add in front of the autor name. Defaults to "By".
+ * @return String
+ *
+ * @version  1.0
+ */
+function make_get_author( $post_id, $prefix = 'By' ) {
+
+	// Return our post type name
+	$post_type = get_post_type( absint( $post_id ) );
+
+	// We don't ever want to display an author for the videos post type.
+	if ( $post_type == 'video' )
+		return;
+
+	echo esc_attr( $prefix ) . ' ';
+
+	if ( $post_type == 'post' ) {
+		if( function_exists( 'coauthors_posts_links' ) ) {	
+			coauthors_posts_links(); 
+		} else { 
+			the_author_posts_link(); 
+		}
+	} else {
+		if ( function_exists( 'coauthors' ) ) {
+			coauthors();
+		} else {
+			the_author();
+		}
+	}
+
+}
+
+
+/**
+ * Filter the query variables and make sure we are searching for the feed so we can include our custom post types like a boss.
+ * @param  array $query_var The query variables.
+ * @return array
+ *
+ * @version  1.0
+ */
+function make_add_post_types_to_feed( $query_var ) {
+
+	// Check that we are quering the RSS feed and post_type isn't being used.
+	if ( isset( $query_var['feed'] ) && ! isset( $query_var['post_type'] ) )
+		$query_var['post_type'] = array( 'post', 'projects', 'review', 'video', 'magazine' );
+
+	return $query_var;
+	
+}
+add_filter( 'request', 'make_add_post_types_to_feed' );
+
