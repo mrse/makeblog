@@ -9503,7 +9503,7 @@ ul#tabs .current > a:hover {
 .secondary-navigation a {
   padding: 10px;
 }
-.secondary-navigation a.first {
+.secondary-navigation .first > a {
   padding-left: 0;
 }
 .secondary-navigation .dropdown-menu {
