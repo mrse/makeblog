@@ -36,7 +36,7 @@ function register_cpt_errata() {
 		'can_export' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'menu_position' => 34,
+		'menu_position' => 47,
 	);
 
 	register_post_type( 'errata', $args );

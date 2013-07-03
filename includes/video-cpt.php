@@ -37,7 +37,7 @@ function make_register_cpt_video() {
 		'can_export' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'menu_position' => 29,
+		'menu_position' => 43,
 	);
 
 	register_post_type( 'video', $args );

@@ -37,7 +37,7 @@ function register_cpt_review() {
 		'can_export' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'menu_position' => 28,
+		'menu_position' => 42,
 	);
 
 	register_post_type( 'review', $args );

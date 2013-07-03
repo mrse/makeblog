@@ -38,7 +38,7 @@ function register_cpt_article() {
 		'can_export' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'menu_position' => 27,
+		'menu_position' => 41,
 	);
 
 	register_post_type( 'magazine', $args );
@@ -80,7 +80,7 @@ function volume_register_cpt_article() {
 		'can_export' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'menu_position' => 33,
+		'menu_position' => 46,
 	);
 
 	register_post_type( 'volume', $args );

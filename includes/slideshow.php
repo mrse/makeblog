@@ -35,7 +35,7 @@ function make_register_cpt_slideshow() {
 		'can_export' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'menu_position' => 36,
+		'menu_position' => 49,
 	);
 
 	register_post_type( 'slideshow', $args );

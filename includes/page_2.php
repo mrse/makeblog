@@ -30,7 +30,7 @@ function js_page_2_type() {
 			'supports' => array( 'title', 'editor', 'excerpt', 'custom-fields', 'thumbnail', 'author', 'comments' ),
 			'rewrite' => array( 'slug' => 'page-2', 'with_front' => false ),
 			'taxonomies' => array( 'post_tag', 'category', 'maker', 'location'),
-			'menu_position' => 35,
+			'menu_position' => 48,
 		)
 	);
 }
