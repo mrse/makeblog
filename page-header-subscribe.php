@@ -55,15 +55,6 @@ Template name: Header
 
 	<body <?php body_class(); ?>>
 
-		<div class="container">
-			<div class="row">
-				<div id="div-gpt-ad-664089004995786621-1" class="text-center">
-					<script type='text/javascript'>
-						googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-1')});
-					</script>
-				</div>
-			</div>
-		</div>
 		<header class="top-navigation-wrapper">
 			<div class="main-header">
 				<div class="container">
@@ -124,5 +115,4 @@ Template name: Header
 						<div class="content" id="content">
 						
 							<!-- Content will go here -->
-
 						
