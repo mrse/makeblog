@@ -55,81 +55,64 @@ Template name: Header
 
 	<body <?php body_class(); ?>>
 
-		<header>
-			<div class="navbar navbar-blue navbar-fixed-top">
-					<div class="navbar-inner">
-						<nav class="container">
-							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</a>
-							<a class="brand" href="http://makezine.com/">MAKE</a>
-							<div class="nav-collapse in collapse">
-								<?php wp_nav_menu( array(
-									'theme_location'  => 'topbar',
-									'menu'            => 'topbar', 
+		<div class="container">
+			<div class="row">
+				<div id="div-gpt-ad-664089004995786621-1" class="text-center">
+					<script type='text/javascript'>
+						googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-1')});
+					</script>
+				</div>
+			</div>
+		</div>
+		<header class="top-navigation-wrapper">
+			<div class="main-header">
+				<div class="container">
+					<div class="row">
+						<div class="logo span2">
+							<a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png" /></a>
+						</div>
+						<nav role="navigation" class="span10 site-navigation primary-navigation">
+							<?php
+								wp_nav_menu( array(
+									'theme_location'  => 'make-primary', 
 									'container'       => false, 
-									'menu_class'      => 'nav clearfix',
-									'depth'           => 1 ) );
-								?>
-								<form action="http://makezine.com/search/" class="form pull-right navbar-search">
-									<input type="text" class="span2 search-query" name="q" placeholder="" />
-									<input type="submit" class="btn btn-primary" style="margin-top:0px;" value="Search" />
-								</form>
-							</div><!--/.nav-collapse -->
+									'menu_class'      => 'nav menu-primary-nav clearfix',
+								) );
+							?>
+						</nav>
+						<div class="additional-content">
+							<div class="subscribe dropdown clearfix">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Subscribe</a>
+								<ul class="dropdown-menu">
+									<li><a href="<?php home_url(); ?>/subscribe">Magazine</a></li>
+									<li><a href="<?php home_url(); ?>/newsletter">Newsletter</a></li>
+									<li><a href="<?php home_url(); ?>/feeds">RSS</a></li>
+								</ul>
+							</div>
+							<form action="<?php echo home_url(); ?>/search/" class="search-make">
+								<input type="text" class="search-field" name="q" placeholder="" />
+								<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-btn.png" alt="Search" class="disabled" />
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="secondary-header">
+				<div class="container">
+					<div class="row">
+						<nav class="span12 site-navigation secondary-navigation">
+							<?php
+								wp_nav_menu( array(
+									'theme_location' => 'make-secondary',
+									'container'		 => false,
+									'menu_class' 	 => 'nav menu-secondary-nav clearfix',
+								) );
+							?>
 						</nav>
 					</div>
 				</div>
 			</div>
 		</header>
-
-		<div class="fix">
-
-			<div id="header">
-				
-				<div class="container">
-
-					<h1><a href="http://makezine.com/"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/make.png" alt="MAKE" title="MAKE" /></a></h1>
-
-					<ul class="navi">
-						
-						<li><a href="http://blog.makezine.com">Blog</a></li>
-						<li class="active"><a href="http://makezine.com/magazine">Magazine</a></li>
-						<li><a href="http://makeprojects.com">Projects</a></li>
-						<li><a href="http://kits.makezine.com">Reviews</a></li>
-						<li><a href="http://makershed.com">Shop</a></li>
-
-					</ul>
-
-				</div>
-
-			</div>
-
-			<div class="header-bottom">
-
-				<div class="container">
-
-					<div class="topics">
-
-						<h5 class="blue">Hot&nbsp;Topics:</h5>
-
-						<?php echo wp_kses_post( stripslashes( make_get_cap_option( 'hot_topics' ) ) ); ?>
-
-					</div>
-
-					<div class="pull-right">
-
-						<a href="http://blog.makezine.com/topics"><img src="https://s0.wp.com/wp-content/themes/vip/makeblog/img/see_all_topics.png" alt="See All Topics" class="see pull-right" /></a><!--  -->
-
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-
 		<div class="sand">
 
 			<div class="container">
