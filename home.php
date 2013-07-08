@@ -50,6 +50,10 @@ make_get_header() ?>
 								<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
 							</div>
 							
+							<div class="jetpack-sharing">
+								<?php if ( function_exists( 'sharing_display') ) echo sharing_display(); ?> 
+							</div>
+							
 							
 						</div>
 					
