@@ -52,7 +52,7 @@
 		    $list_table = new Make_List_Table();
 
 		    //Fetch, prepare, sort, and filter our data...
-		    $list_table->prepare_items(); ?>
+		    // $list_table->prepare_items(); ?>
 		    <div class="wrap">
 		        
 		        <div id="icon-users" class="icon32"><br/></div>
@@ -61,36 +61,58 @@
 		        <form id="movies-filter" method="get">
 		            <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
 					<?php $list_table->search_box('search', 'search_id'); ?>
-		            <?php $list_table->display(); ?>
+		            <?php //$list_table->display(); ?>
 		            
 		        </form>
 	
-		        <?php //var_dump($list_table->example_data);
-		        // $ef_meta = '_ef_editorial_metadata';
+		        <?php
+		        global $wpdb;
+		   //      	// Query the database with the $wpdb class and return all the results for our class to manipulate
+	        $data = $wpdb->get_results( $wpdb->prepare( "SELECT {$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_status, {$wpdb->posts}.post_type, {$wpdb->posts}.post_author, {$wpdb->posts}.post_date , {$wpdb->posts}.post_parent
+	        											 FROM {$wpdb->posts}
+	        											 WHERE {$wpdb->posts}.post_type IN ( 'projects', 'magazine', 'review', 'errata', 'volume' ) 
+	        											 AND {$wpdb->posts}.post_status NOT IN ( 'publish', 'trash' ) 
+	        											 ORDER BY $orderby $order", $orderby ) );
+	        											 
+	        // $data = get_posts( array(
+	        // 	'posts_per_page' => -1,
+	        // 	'post_type' => array( 'projects', 'magazine', 'review', 'errata', 'volume' ),
+	        // 	'post_status' => 'any',
+	        // ) );
 
-		        // // foreach ( $results as $result ) {
+	    //     if ( is_array( $data ) ) {
+	    //     	$ef_meta = '_ef_editorial_meta';
+	    //     	$editflow_meta_names = array(
+	    //     		$ef_meta . '_number_pc', 
+					// $ef_meta . '_paragraph_assignment',
+					// $ef_meta . '_date_1st-deadline',
+					// $ef_meta . '_user_ed',
+					// $ef_meta . '_date_ed-deadline',
+					// $ef_meta . '_user_ce',
+					// $ef_meta . '_date_ce-deadline',
+					// $ef_meta . '_checkbox_tr',
+					// $ef_meta . '_checkbox_needs-video',
+					// $ef_meta . '_checkbox_needs-photo',
+					// $ef_meta . '_number_manuscript-estimate',
+					// $ef_meta . '_checkbox_invoice-received',
+					// $ef_meta . '_number_wc',
+	    //     	);
 
-		        // // }
-		        // // echo '<br />';
-		        // $data = get_posts( array(
-		        // 	'posts_per_page' => 20,
-		        // 	'post_type' => array( 'projects', 'magazine', 'review', 'errata', 'volume' ),
-		        // 	'post_status' => 'any',
-		   //      	'meta_key' => $ef_meta . '_number_pc',
-					// 'meta_key' => $ef_meta . '_paragraph_assignment',
-					// 'meta_key' => $ef_meta . '_date_1st-deadline',
-					// 'meta_key' => $ef_meta . '_user_ed',
-					// 'meta_key' => $ef_meta . '_date_ed-deadline',
-					// 'meta_key' => $ef_meta . '_user_ce',
-					// 'meta_key' => $ef_meta . '_date_ce-deadline',
-					// 'meta_key' => $ef_meta . '_checkbox_tr',
-					// 'meta_key' => $ef_meta . '_checkbox_needs-video',
-					// 'meta_key' => $ef_meta . '_checkbox_needs-photo',
-					// 'meta_key' => $ef_meta . '_number_manuscript-estimate',
-					// 'meta_key' => $ef_meta . '_checkbox_invoice-received',
-					// 'meta_key' => $ef_meta . '_number_wc',
-		        // ) );
-		        // var_dump( $data ); ?>
+	    //     	foreach ( $data as $data_post ) {
+
+	    //     		foreach ( $editflow_meta_names as $meta_name ) {
+		   //      		$meta = get_post_meta( $data_post->ID, $meta_name, true );
+
+		   //      		if ( ! empty( $meta ) )
+			  //       		$data_meta->$meta_name .= $meta;
+		   //      	}
+	    //     	}
+
+	    //     	// $data_done = array_merge( $data, $data_meta );
+	        	
+	    //     }
+	        var_dump( $data );
+		        ?>
 		        
 		    </div>
 		    <?php

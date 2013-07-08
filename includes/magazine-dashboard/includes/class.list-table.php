@@ -11,7 +11,8 @@
 	class Make_List_Table extends WP_List_Table {
 
 		// Set the name of the Editflow metakey prefix
-        public $ef_meta = '_ef_editorial_metadata';
+        public $ef_meta = '_ef_editorial_meta';
+        public 
 
 		/**
 		 * Reference the parent constuctor in WP_List_Table and set some default configurations.
@@ -90,7 +91,20 @@
 	        );
 	        
 	        //Return the title contents
-	        return sprintf( '<a href="%1$s" title="%2$s" class="row-title">%3$s <span style="color:silver; font-size:.8em;">(id:%4$s)</span>%5$s', admin_url() . 'post.php?post=' . $item->ID . '&action=edit', __( 'Edit this item', 'make' ), $item->post_title, $item->ID, $this->row_actions( $actions ) );
+	        return sprintf( '<a href="%1$s" title="%2$s" class="row-title">%3$s</a>%4$s', admin_url() . 'post.php?post=' . $item->ID . '&action=edit', __( 'Edit this item', 'make' ), $item->post_title, $this->row_actions( $actions ) );
+	    }
+
+
+	    /**
+	     * Get the post date and format it into something better.
+	     * @param  array  $item A singular item (one full row's worth of data)
+		 * @return string       Text to be placed inside the column <td> (post title only)
+	     */
+	    function column_post_date( $item ) {
+
+	    	$date = strtotime( $item->post_date );
+
+	    	return date( 'M d, Y', $date );
 	    }
 
 
@@ -279,13 +293,44 @@
 	        											 FROM {$wpdb->posts}
 	        											 WHERE {$wpdb->posts}.post_type IN ( 'projects', 'magazine', 'review', 'errata', 'volume' ) 
 	        											 AND {$wpdb->posts}.post_status NOT IN ( 'publish', 'trash' ) 
-	        											 ORDER BY %s $order", $orderby ) );
+	        											 ORDER BY $orderby $order", $orderby ) );
 	        											 
-	        // $data_posts = get_posts( array(
-	        // 	'posts_per_page' => 20,
+	        // $data = get_posts( array(
+	        // 	'posts_per_page' => -1,
 	        // 	'post_type' => array( 'projects', 'magazine', 'review', 'errata', 'volume' ),
 	        // 	'post_status' => 'any',
 	        // ) );
+
+	        if ( is_array( $data_posts ) ) {
+	        	$editflow_meta_names = array(
+	        		$ef_meta . '_number_pc', 
+					$ef_meta . '_paragraph_assignment',
+					$ef_meta . '_date_1st-deadline',
+					$ef_meta . '_user_ed',
+					$ef_meta . '_date_ed-deadline',
+					$ef_meta . '_user_ce',
+					$ef_meta . '_date_ce-deadline',
+					$ef_meta . '_checkbox_tr',
+					$ef_meta . '_checkbox_needs-video',
+					$ef_meta . '_checkbox_needs-photo',
+					$ef_meta . '_number_manuscript-estimate',
+					$ef_meta . '_checkbox_invoice-received',
+					$ef_meta . '_number_wc',
+	        	);
+
+	        	foreach ( $data_posts as $data_post ) {
+
+	        		foreach ( $editflow_meta_names as $meta_name ) {
+		        		$meta = get_post_meta( $data_post->ID, $meta_name, true );
+
+		        		if ( ! empty( $meta ) )
+			        		$data_meta->$meta_name .= $meta;
+		        	}
+	        	}
+
+	        	$data_done = array_merge( $data, $data_meta );
+	        	var_dump( $data_done );
+	        }
 	                
 	        // Figure out what page the user is currently looking at. We'll need this later, so this should always be included in it's own package classes.
 	        $current_page = $this->get_pagenum();
@@ -294,7 +339,7 @@
 	        $total_items = count( $data );
 	        
 	        // // The WP_List_Table class does not handle pagination for us, so we need to ensure that the data is trimmed to only the current page. We can use array_slice() too 
-	        // $data = array_slice( $data, ( ( $current_page - 1 ) * $per_page ), $per_page );
+	        $data = array_slice( $data, ( ( $current_page - 1 ) * $per_page ), $per_page );
 	        
 	        // Register our pagination options & calculations.
 	        $this->set_pagination_args( array(
