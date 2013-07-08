@@ -50,9 +50,11 @@ Template name: Header
 
 		<link rel="stylesheet" href="https://s0.wp.com/wp-content/themes/vip/makeblog/css/style.css">
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">;</script>
-        <script src="<?php echo esc_url( get_template_directory_uri() . '/js/bootstrap.js' ); ?>"></script>
-        <script src="<?php echo esc_url( get_template_directory_uri() . '/js/header.js' ); ?>"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+		<?php // Since this loads into https://readerservices.makezine.com, the get_template_directory_uri() fails to load https, so we need to hard code. ?>
+        <script src="https://s0.wp.com/wp-content/themes/vip/makeblog/js/bootstrap.js' ); ?>"></script>
+        <script src="https://s0.wp.com/wp-content/themes/vip/makeblog/js/header.js' ); ?>"></script>
 
 	</head>
 
