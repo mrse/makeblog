@@ -15,7 +15,13 @@
 	 */
 	
 
-	if ( ! class_exsists( 'Make_Content_Manager' ) )
-		require_once( 'includes/class.content-manager.php' );
+	// Load our list table class
+	if ( ! class_exists( 'Make_List_Table' ) )
+		require_once( 'includes/class.list-table.php' );
 
-	$make_content_manager = new Make_Content_Manager();
+	if ( ! class_exists( 'Make_Magazine_Dashboard' ) ) {
+		require_once( 'includes/class.magazine-dashboard.php' );
+
+		// Instantiate our content manager class
+		$make_magazine_dashboard = new Make_Magazine_Dashboard();
+	}
