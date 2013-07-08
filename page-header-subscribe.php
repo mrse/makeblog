@@ -49,8 +49,11 @@ Template name: Header
 		<?php endif; ?>
 
 		<link rel="stylesheet" href="https://s0.wp.com/wp-content/themes/vip/makeblog/css/style.css">
-		<link rel="text/javascript" href="https://s0.wp.com/wp-content/themes/vip/makeblog/js/bootstrap.js">
-		<link rel="text/javascript" href="https://s0.wp.com/wp-content/themes/vip/makeblog/js/header.js">
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">;</script>;
+        
+        <?php echo esc_url( get_template_directory_uri() . '/js/bootstrap.js' ); ?>
+        <?php echo esc_url( get_template_directory_uri() . '/js/header.js' ); ?>
 
 	</head>
 
