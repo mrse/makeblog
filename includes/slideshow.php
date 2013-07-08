@@ -251,6 +251,7 @@ function make_carousel( $args, $title_link = true ) {
 		'all'				=> null,
 		'limit'				=> 4,
 		'projects_landing'	=> false,
+		'debug'				=> false,
 		'post_type'			=> array( 
 								'post',
 								'video',
@@ -265,6 +266,10 @@ function make_carousel( $args, $title_link = true ) {
 	$id = 'newcarousel' . $rand;
 
 	$the_query = new WP_Query( $args );
+
+	if ( $args['debug'] == true ) {
+		var_dump( $the_query );
+	}
 
 	if ( $the_query->post_count == 0 ) {
 		return;
