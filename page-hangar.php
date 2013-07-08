@@ -11,26 +11,29 @@
 get_header(); ?>
 		
 	<div class="projects-home">
+	
+		<div class="container">
 							
-		<div class="row">
+			<div class="row">
+				
+				<div class="span9">
+					
+					<h1>Maker Hangar</h1>
+					
+					<p>Lucas Weakley is a 17-year-old Eagle Scout who will be a senior next year in the Engineering and Manufacturing Institute for Technology (EMIT) at Forest High School in Ocala, Fla. He's been fascinated with making things ever since he was little and played around with Lego (he still does). As he got older, Lucas became more interested in flight and got his first RC plane for his ninth birthday. Recently he’s been designing and building his own planes and now hosts a YouTube show called BusyBee TV, a biweekly show where he does reviews, how-tos, scratch builds, and other things related with the hobby.</p>
+					
+					<p>Lucas also has his own aerial videography company called TopView Aerials, where he gets hired to film real estate, events, and other activities with his multicopters and other aerial vehicles. When he graduates high school, Lucas hopes to attend Embry-Riddle Aeronautical College to study mechanical engineering with an aviation emphasis. He hopes to design, build, and fly real planes in the future. </p>
+					
+				</div>
+				
+				<div class="span3">
+					
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/lukas.jpg" alt="Lukas Weakley">
+					
+				</div>
 			
-			<div class="span9">
-				
-				<h1>Make: Projects</h1>
-				
-				<p>Explore our growing cookbook of DIY projects for the workshop, <a href="<?php echo home_url(); ?>/category/home/food-beverage/?post_type=projects">kitchen</a>, garage, and backyard. Learn new skills, find <a href="<?php echo home_url(); ?>/category/home/kids-family/?post_type=projects">family fun</a>, build a <a href="<?php echo home_url(); ?>/category/electronics/robotics/?post_type=projects">robot</a> or a <a href="<?php echo home_url(); ?>/category/home/fun-games/?post_type=projects&amp;tag=rockets">rocket</a>. <a href="<?php echo home_url(); ?>/category/electronics/?post_type=projects&amp;difficulty=easy">Get started in electronics</a> and use new platforms like <a href="<?php echo home_url(); ?>/category/electronics/raspberry-pi/?post_type=projects">Raspberry Pi</a> and <a href="<?php echo home_url(); ?>/category/electronics/arduino/?post_type=projects">Arduino</a> to power your inventions. Get inspired and start making something today.</p>
-
-				<p class="muted" style="font-size:15px;font-style:italic;">Welcome to the new Make: Projects! User accounts are temporarily disabled. If you contributed on our old platform, you can still view your projects here, and we're working on an easy way to edit them in the future. If you'd like access to update a project, email us at <a href="mailto:projects@makezine.com">projects@makezine.com</a>.</p>
-				
-				<h3>Find Projects by Category:</h3>
-				
-				<ul class="subs">
-					
-					<?php echo make_category_li( 'projects' ); ?>		
-					
-				</ul>
-				
-			</div>					
+			</div>
+		
 		</div>
 
 	</div>
@@ -81,12 +84,13 @@ get_header(); ?>
 					<?php 
 
 						$args = array(
-							'post_type'			=> 'projects',
-							'title'				=> 'New Projects',
-							'projects_landing'	=> true,
-							'all'				=> true,
+							'post_type'			=> 'video',
+							'title'				=> 'Recent Videos',
+							'projects_landing'	=> false,
+							'all'				=> false,
+							'playlist'			=> 'maker-hanger',
+							'debug'				=> false
 						);
-						
 						make_carousel($args);
 					?>
 					
