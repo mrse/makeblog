@@ -92,10 +92,10 @@ get_header(); ?>
 						$args = array(
 							'post_type'			=> 'post',
 							'title'				=> 'Maker Hangar Posts',
-							'limit'				=> 2,
-							'tag'				=> 'Featured',
-							'projects_landing'	=> true,
-							'all'				=> true
+							'limit'				=> 4,
+							'tag'				=> 'Hangar',
+							'projects_landing'	=> false,
+							'all'				=> false
 						);
 						make_carousel( $args ); ?>
 					
