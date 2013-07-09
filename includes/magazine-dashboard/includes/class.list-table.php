@@ -48,7 +48,7 @@
 				case 'post_parent':
 				case 'post_type':
 				case 'post_status':
-				// case 'section':
+				case 'section':
 				case 'post_title':
 				case 'post_author':
 				case 'post_date':
@@ -301,7 +301,7 @@
 	        // 	'post_status' => 'any',
 	        // ) );
 
-	        if ( is_array( $data_posts ) ) {
+	        if ( is_array( $data ) ) {
 	        	$editflow_meta_names = array(
 	        		$ef_meta . '_number_pc', 
 					$ef_meta . '_paragraph_assignment',
@@ -318,18 +318,15 @@
 					$ef_meta . '_number_wc',
 	        	);
 
-	        	foreach ( $data_posts as $data_post ) {
-
+	        	// Loop through each query and append postmeta info. 
+	        	foreach ( $data as $data_post ) {
 	        		foreach ( $editflow_meta_names as $meta_name ) {
 		        		$meta = get_post_meta( $data_post->ID, $meta_name, true );
 
 		        		if ( ! empty( $meta ) )
-			        		$data_meta->$meta_name .= $meta;
+			        		$data_post->$meta_name = $meta;
 		        	}
 	        	}
-
-	        	$data_done = array_merge( $data, $data_meta );
-	        	var_dump( $data_done );
 	        }
 	                
 	        // Figure out what page the user is currently looking at. We'll need this later, so this should always be included in it's own package classes.
