@@ -28,7 +28,7 @@ get_header(); ?>
 					<div class="thumbnail">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/_KW06134.jpg" alt="" >
 						<div style="padding:5px;color:#555;">
-							<p>Follow along with Lukas and build the Maker Trainer, a custom built RC plane.</p>
+							<p>Follow along with Lucas and build the Maker Trainer, a custom built RC plane.</p>
 						</div>
 					</div>
 					
@@ -69,7 +69,7 @@ get_header(); ?>
 				
 				<div class="span3">
 					
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/lukas.jpg" alt="Lukas Weakley">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/lukas.jpg" alt="Lucas Weakley">
 					<div style="height:20px;"></div>
 					
 				</div>
