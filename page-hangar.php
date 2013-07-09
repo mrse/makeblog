@@ -45,7 +45,7 @@ get_header(); ?>
 
 					<p>New installments will air every Tuesday and Thursday through August 29th!</p>
 
-					<p>Join us on the Maker Hangar Google+ Community page to share your ideas, comments, photos and video and details for your own RC plane project builds.</p>
+					<p>Join us on the <a href="https://plus.google.com/communities/111848781234483620161">Maker Hangar Google+ Community page</a> to share your ideas, comments, photos and video and details for your own RC plane project builds.</p>
 
 					<p>NOTE: Be sure to check out the parts list below for the materials you’ll need to build the Maker Trainer. </p>
 					
