@@ -53,9 +53,9 @@ make_get_header() ?>
 
 						if ( $contents != false ) {
 							$json_output = json_decode( $contents );								
-							$gauthor = $json_output->entry[0]; ?>
-					
-							<h1 class="jumbo"><a class="noborder" href="<?php echo home_url(); ?>/author/<?php if ( isset( $gauthor ) ) echo urlencode( $gauthor->requestHash ); ?>"><?php if ( isset( $gauthor->displayName ) ) echo esc_attr( $gauthor->displayName ); ?></a></h1>
+							$gauthor = $json_output->entry[0];
+							$gauthor_url = ( ! empty( $gauthor->requestHash ) ) ? $gauthor->requestHash : ''; ?>
+							<h1 class="jumbo"><a class="noborder" href="<?php echo esc_url( home_url( '/author/' . $gauthor_url ) ); ?>"><?php if ( isset( $gauthor->displayName ) ) echo esc_html( $gauthor->displayName ); ?></a></h1>
 						
 							<?php if ( isset( $gauthor->aboutMe ) )
 								echo markdown( $gauthor->aboutMe ); ?>
@@ -86,8 +86,9 @@ make_get_header() ?>
 									?>
 								</ul>
 							<?php }
-						} else { ?>
-							<h1 class="jumbo"><a class="noborder" href="<?php echo home_url(); ?>/author/<?php if ( isset( $author ) ) echo urlencode( $author->user_nicename ); ?>"><?php if ( isset( $author->display_name ) ) echo esc_attr( $author->display_name ); ?></a></h1>	
+						} else { 
+							$author_url = ( ! empty( $author ) ) ? $author->user_nicename : ''; ?>
+							<h1 class="jumbo"><a class="noborder" href="<?php echo esc_url( home_url( '/author/' . $author_url ) ); ?>"><?php if ( isset( $author->display_name ) ) echo esc_html( $author->display_name ); ?></a></h1>	
 						<?php } 
 					?>
 					
