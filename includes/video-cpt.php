@@ -85,6 +85,7 @@ $field_data = array (
 			'EmbedLink'					=> array(),
 			'Link'						=> array(),
 			'MakeProjectsGuideNumber'	=> array(),
+			'Image'						=> array(),
 	),
 	'title'		=> 'Video Meta',
 	'context'	=> 'side',
