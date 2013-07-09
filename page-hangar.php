@@ -47,7 +47,24 @@ get_header(); ?>
 
 					<p>Join us on the <a href="https://plus.google.com/communities/111848781234483620161">Maker Hangar Google+ Community page</a> to share your ideas, comments, photos and video and details for your own RC plane project builds.</p>
 
-					<p>NOTE: Be sure to check out the parts list below for the materials you’ll need to build the Maker Trainer. </p>
+					<p>NOTE: Be sure to check out the <a href="#parts" role="button" class="" data-toggle="modal">parts list</a> for the materials you’ll need to build the Maker Trainer. </p>
+					
+					<!-- Modal -->
+					<div id="parts" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h3 id="myModalLabel">Maker Trainer Parts</h3>
+						</div>
+						<div class="modal-body">
+							<?php 
+								$parts = get_post_meta( 320331, 'parts' );
+								echo make_projects_parts( $parts );
+							?>
+						</div>
+						<div class="modal-footer">
+							<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+						</div>
+					</div>
 					
 				</div>
 				
