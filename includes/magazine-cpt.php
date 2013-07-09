@@ -203,7 +203,7 @@ function make_magazine_toc( $args ) {
 		'posts_per_page' 	=> -1, 
 		'orderby' 			=> 'name', 
 		'order' 			=> 'asc',
-		'post_status'		=> array( 'published', 'published-in-mag' ),
+		'post_status'		=> array( 'publish', 'published-in-mag' ),
 		);
 	
 	$args = wp_parse_args( $args, $defaults );
