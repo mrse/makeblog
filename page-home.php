@@ -223,7 +223,7 @@ Template Name: Home Page
 
 						<p><a href="http://makezine.com/blog/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
 						<div class="home-promo-rtmfc">							
-							<a href="http://makezine.com/road-to-maker-faire-challenge/"><img src="http://makezineblog.files.wordpress.com/2013/06/300x180-badge_vs3-1.jpg" alt="Road to Maker Faire Challenge Contest" /></a>
+							<a href="http://pubads.g.doubleclick.net/gampad/clk?id=40517218&iu=/11548178/Makezine"><img src="http://makezineblog.files.wordpress.com/2013/06/300x180-badge_vs3-1.jpg" alt="Road to Maker Faire Challenge Contest" /></a>
 						</div>
 					</div>
 					<!--<div class="shadow"></div>-->
