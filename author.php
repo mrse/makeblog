@@ -55,7 +55,7 @@ make_get_header() ?>
 							$json_output = json_decode( $contents );								
 							$gauthor = $json_output->entry[0]; ?>
 					
-							<h1 class="jumbo"><a class="noborder" href="<?php echo home_url(); ?>/author/<?php if ( isset( $gauthor ) ) echo $gauthor->requestHash; ?>"><?php if ( isset( $gauthor->displayName ) ) echo $gauthor->displayName; ?></a></h1>
+							<h1 class="jumbo"><a class="noborder" href="<?php echo home_url(); ?>/author/<?php if ( isset( $gauthor ) ) echo urlencode( $gauthor->requestHash ); ?>"><?php if ( isset( $gauthor->displayName ) ) echo esc_attr( $gauthor->displayName ); ?></a></h1>
 						
 							<?php if ( isset( $gauthor->aboutMe ) )
 								echo markdown( $gauthor->aboutMe ); ?>
@@ -87,7 +87,7 @@ make_get_header() ?>
 								</ul>
 							<?php }
 						} else { ?>
-							<h1 class="jumbo"><a class="noborder" href="<?php echo home_url(); ?>/author/<?php if ( isset( $author ) ) echo $author->user_nicename; ?>"><?php if ( isset( $author->display_name ) ) echo $author->display_name; ?></a></h1>	
+							<h1 class="jumbo"><a class="noborder" href="<?php echo home_url(); ?>/author/<?php if ( isset( $author ) ) echo urlencode( $author->user_nicename ); ?>"><?php if ( isset( $author->display_name ) ) echo esc_attr( $author->display_name ); ?></a></h1>	
 						<?php } 
 					?>
 					
