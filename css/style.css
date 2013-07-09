@@ -9565,6 +9565,34 @@ ul#tabs .current > a:hover {
 .secondary-navigation .dropdown-menu li {
   width: 100%;
 }
+.make-popdown .wrapper-container {
+  background: #fff;
+}
+.make-popdown .large-text {
+  font-size: 20.99px;
+  font-weight: bold;
+  font-family: "proxima-nova", sans-serif;
+  color: #252525;
+  line-height: 23.99px;
+}
+.make-popdown .large-text a {
+  color: #005d8f;
+}
+.make-popdown .menu-button {
+  width: 87px;
+  margin: 0 auto;
+}
+.make-popdown .menu-button .popdown-btn {
+  background: #fff;
+  padding: 8px;
+  display: block;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-bottom-right-radius: 5px;
+}
 .page-id-286853,
 .page-id-271492 {
   /* 2012 Stuff */
@@ -10201,7 +10229,7 @@ body.makercamp .search-query {
   width: 110px !important;
 }
 body.makercamp header {
-  margin-top: 41px;
+  margin-top: 0;
   margin-bottom: 40px;
   color: #fff;
 }
@@ -10214,9 +10242,6 @@ body.makercamp header h3 {
   font-weight: 200;
   font-size: 28px;
   line-height: 100%;
-}
-body.makercamp.admin-bar header {
-  margin-top: 40px;
 }
 body.makercamp .waist {
   background-image: url(http://makezineblog.files.wordpress.com/2013/05/hills.png);
