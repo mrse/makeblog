@@ -25,16 +25,21 @@ get_header(); ?>
 					<div style="height:10px;"></div>
 					<img class="thumbnail" src="<?php echo get_stylesheet_directory_uri(); ?>/img/_KW06121.jpg" alt="" >
 					<div style="height:10px;"></div>
-					<img class="thumbnail" src="<?php echo get_stylesheet_directory_uri(); ?>/img/_KW06134.jpg" alt="" >
+					<div class="thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/_KW06134.jpg" alt="" >
+						<div style="padding:5px;color:#555;">
+							<p>Follow along with Lukas and build the Maker Trainer, a custom built RC plane.</p>
+						</div>
+					</div>
 					
 				</div>
 				
 				<div class="span9">
 					
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/makerhangar_500X150_bur01.jpg" width="700" alt="Hangar">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/makerhangarad_04.jpg" alt="Hangar">
 					<div style="height:20px;"></div>
 					
-					<p><strong>MAKE Magazine</strong> and Lucas Weakley have teamed up to bring you Maker Hangar, a 15-episode tutorial series that will teach you everything you need to know to build and fly this custom RC plane, the Maker Trainer.</p>
+					<p><strong>MAKE Magazine</strong> and <strong>Lucas Weakley</strong> have teamed up to bring you Maker Hangar, a 15-episode tutorial series that will teach you everything you need to know to build and fly this custom RC plane, the Maker Trainer.</p>
 
 					<p>The first installment airs July 11th and don’t miss Lucas Weakly on Maker Camp as a Guest Maker!</p>
 
