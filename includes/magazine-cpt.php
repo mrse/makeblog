@@ -202,7 +202,8 @@ function make_magazine_toc( $args ) {
 		'post_parent' 		=> null, 
 		'posts_per_page' 	=> -1, 
 		'orderby' 			=> 'name', 
-		'order' 			=> 'asc'
+		'order' 			=> 'asc',
+		'post_status'		=> array( 'published', 'published-in-mag' ),
 		);
 	
 	$args = wp_parse_args( $args, $defaults );
@@ -231,13 +232,21 @@ function make_magazine_toc( $args ) {
 					if ( !empty( $image[0] ) )  {
 						$output .= '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 140, 140 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
 					} else {
-						$output .= get_the_image( array( 'image_scan' => true, 'size' => 'new-thumb', 'image_class' => 'hide-thumbnail', 'echo' => false ) );
+						$output .= get_the_image( array( 'image_scan' => true, 'size' => 'new-thumb', 'image_class' => 'hide-thumbnail', 'echo' => false, 'link_to_post' => false ) );
 					}
 			$output .= '</div>';
 
 			$output .= '<div class="span6">';
 
-				$output .= '<h3><a class="red" href="' . get_permalink($post->ID) . '">' . get_the_title() . '</a></h3>';
+				$output .= '<h3>';
+
+				if ( $post->post_status != 'published-in-mag' ) {
+					$output .= '<a class="red" href="' . get_permalink($post->ID) . '">' . get_the_title() . '</a>';
+				} else {
+					$output .= get_the_title();
+				}
+				
+				$output .= '</h3>';
 
 				$output .= '<p>' . wp_trim_words(get_the_excerpt(), 30, '...') . '</p>';
 
