@@ -35,6 +35,7 @@
 
 	</head>
 	<body <?php body_class('camp'); ?>>
+		<?php make_popdown_menu(); ?>
 		<div class="fix">
 			<div id="header">
                     <div id="slideshow-wrapper">

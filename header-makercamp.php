@@ -33,7 +33,7 @@
 	</head>
 	<body <?php body_class( 'makercamp' ); ?>>
 		<header>
-			<div class="navbar navbar-blue navbar-fixed-top hidden-phone">
+			<!-- <div class="navbar navbar-blue navbar-fixed-top hidden-phone">
 					<div class="navbar-inner">
 						<nav class="container">
 							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -55,10 +55,12 @@
 									<input type="submit" class="btn btn-primary" style="margin-top:0px;" value="Search" />
 								</form>
 							</div><!--/.nav-collapse -->
-						</nav>
+						<!-- </nav>
 					</div>
 				</div>
-			</div>
+			</div> -->
+
+			<?php make_popdown_menu(); ?>
 
 			<div class="black-bar hidden-phone">
 				<div class="container">

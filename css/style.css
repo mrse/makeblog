@@ -9565,6 +9565,123 @@ ul#tabs .current > a:hover {
 .secondary-navigation .dropdown-menu li {
   width: 100%;
 }
+.make-popdown {
+  position: relative;
+  border-bottom: 2px solid #bbb;
+  -webkit-box-shadow: 0 5px 5px -5px #bbbbbb;
+  -moz-box-shadow: 0 5px 5px -5px #bbbbbb;
+  box-shadow: 0 5px 5px -5px #bbbbbb;
+}
+.make-popdown .wrapper-container {
+  background: #fff;
+  padding: 5px 0;
+}
+.make-popdown .wrapper-container .container {
+  display: none;
+  padding: 0;
+  background: transparent;
+}
+.make-popdown .wrapper-container.popdown-open {
+  padding: 18px 0;
+}
+.make-popdown .large-text {
+  font-size: 17px;
+  font-weight: bold;
+  font-family: "proxima-nova", sans-serif;
+  color: #252525;
+  line-height: 25px;
+}
+.make-popdown .large-text a {
+  color: #005d8f;
+  font-size: 14px;
+}
+.make-popdown .menu-button {
+  position: absolute;
+  left: 50%;
+  bottom: -31px;
+  padding: 0;
+}
+.make-popdown .menu-button .popdown-btn {
+  cursor: pointer;
+  position: relative;
+  left: -50%;
+}
+.make-popdown .border-bottom {
+  border-bottom: 2px solid #d7d7d7;
+  margin: 0 0 9px;
+  padding: 0 0 8px;
+}
+.make-popdown ul.nav {
+  font-family: "proxima-nova", sans-serif;
+  font-size: 14px;
+  margin: 0;
+  *zoom: 1;
+}
+.make-popdown ul.nav:before,
+.make-popdown ul.nav:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.make-popdown ul.nav:after {
+  clear: both;
+}
+.make-popdown ul.nav li {
+  float: left;
+  margin-right: 19px;
+}
+.make-popdown ul.nav li.last {
+  margin-right: 0 !important;
+}
+.make-popdown ul.nav.first a {
+  font-weight: bold;
+}
+.make-popdown ul.nav.last {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.make-popdown ul.nav a:hover {
+  background: transparent;
+}
+@media (min-width: 1200px) {
+  body.makercamp .make-popdown ul.nav {
+    font-size: 16px;
+  }
+  body.makercamp .make-popdown ul.nav li {
+    margin-right: 33px;
+  }
+}
+@media (max-width: 1200px) {
+  body.makercamp .make-popdown .large-text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  body.makercamp .make-popdown ul.nav {
+    font-size: 14px;
+  }
+  body.makercamp .make-popdown ul.nav li {
+    margin-right: 13px !important;
+  }
+  body.makercamp .make-popdown ul.nav li.last {
+    margin-right: 0 !important;
+  }
+}
+@media (max-width: 764px) {
+  body.makercamp .make-popdown {
+    text-align: center;
+  }
+  body.makercamp .make-popdown .wrapper-container {
+    padding: 5px 10px;
+  }
+  body.makercamp .make-popdown .side-column {
+    border-bottom: 2px solid #d7d7d7;
+    margin-bottom: 10px;
+  }
+  body.makercamp .make-popdown ul.nav.last {
+    margin-bottom: 10px !important;
+  }
+}
 .page-id-286853,
 .page-id-271492 {
   /* 2012 Stuff */
@@ -10114,7 +10231,7 @@ body.camp a.button.block {
   line-height: 15px;
 }
 .camp #slideshow-wrapper {
-  padding-top: 10px;
+  padding-top: 40px;
   background-image: url(http://makezineblog.files.wordpress.com/2013/05/camp-hdr-bg-01.gif);
 }
 .camp .carousel {
@@ -10261,6 +10378,9 @@ body.makercamp .main-content a:active {
   color: #acd3fc;
   text-decoration: underline !important;
 }
+body.makercamp .black-bar {
+  padding: 30px 0 5px !important;
+}
 body.makercamp .black-bar .nav-inline li {
   margin-right: 30px !important;
 }
@@ -10289,7 +10409,7 @@ body.makercamp .search-query {
   width: 110px !important;
 }
 body.makercamp header {
-  margin-top: 41px;
+  margin-top: 0;
   margin-bottom: 40px;
   color: #fff;
 }
@@ -10302,9 +10422,6 @@ body.makercamp header h3 {
   font-weight: 200;
   font-size: 28px;
   line-height: 100%;
-}
-body.makercamp.admin-bar header {
-  margin-top: 40px;
 }
 body.makercamp .waist {
   background-image: url(http://makezineblog.files.wordpress.com/2013/05/hills.png);
@@ -10810,6 +10927,10 @@ body.makercamp a.button.small-button {
     padding: 0;
     margin: 0;
   }
+  body.makercamp .black-bar,
+  body.makercamp.admin-bar .black-bar {
+    padding: 0 0 5px !important;
+  }
   body.makercamp .container,
   body.makercamp.admin-bar .container,
   body.makercamp .navbar-static-top .container,
@@ -11211,6 +11332,7 @@ body.page-template-page-education-php .side-post p {
 }
 body.hiw {
   background-color: #eee;
+  margin-top: 0;
 }
 body.hiw ul.left-nav {
   margin-left: 0;
