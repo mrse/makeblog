@@ -9989,6 +9989,9 @@ body.camp .camp-highlight-wrap:first-child {
   position: relative;
   margin-top: 10px;
 }
+body.camp .projects-masthead h1 a {
+  color: #ea2b1a;
+}
 .camp-newsletter-wrap {
   height: 71px;
   width: 100%;
