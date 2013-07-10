@@ -71,3 +71,30 @@ $field_data = array (
 );
 
 $easy_cf = new Easy_CF($field_data);
+
+function make_go_cpt_columns($columns) {
+
+	$new_columns = array(
+		'url' 		=> __('URL'),
+		'bitly_url' => __('Bit.ly Url'),
+		'slug' 		=> __('Slug'),
+	);
+    return array_merge($columns, $new_columns);
+}
+add_filter('manage_go_posts_columns' , 'make_go_cpt_columns');
+
+add_action( 'manage_posts_custom_column' , 'make_go_custom_columns', 10, 2 );
+
+function make_go_custom_columns( $column, $post_id ) {
+	switch ( $column ) {
+	case 'url' :
+		echo get_post_meta( $post_id, 'url', true );
+		break;
+	case 'bitly_url' :
+		echo get_post_meta( $post_id , 'bitly_url' , true ); 
+		break;
+	case 'slug' :
+		echo basename( get_permalink() );
+		break;
+    }
+}
