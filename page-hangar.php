@@ -147,8 +147,7 @@ get_header(); ?>
 							'title'				=> 'Recent Videos',
 							'projects_landing'	=> false,
 							'all'				=> false,
-							'playlist'			=> 'maker-hanger',
-							'debug'				=> false
+							'playlist'			=> 'maker-hangar',
 						);
 						make_carousel($args);
 					?>
