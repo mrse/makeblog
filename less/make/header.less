@@ -140,24 +140,111 @@
 
 // Popdown Menu
 .make-popdown {
-	.wrapper-container { background:#fff; }
+	position:relative;
+	border-bottom:2px solid #bbb;
+	.box-shadow(0 5px 5px -5px #bbb);
+	.wrapper-container {
+		background:#fff;
+		padding:5px 0;
+		.container { 
+			display:none;
+
+			// Style over rides from HIW pages
+			padding:0;
+			background:transparent;
+		}
+		&.popdown-open {
+			padding:18px 0;
+		}
+	}
 	.large-text {
-		font-size:20.99px;
+		font-size:17px;
 		font-weight:bold;
 		font-family:@font;
 		color:#252525;
-		line-height:23.99px;
-		a { color:#005d8f; }
+		line-height:25px;
+		a {
+			color:#005d8f;
+			font-size:14px;
+		}
 	}
 	.menu-button {
-		width:87px;
-		margin:0 auto;
+		position:absolute;
+		left:50%;
+		bottom:-31px;
+		padding:0;
 		.popdown-btn {
-			background:#fff;
-			padding:8px;
-			display:block;
-			.border-bottom-left-radius(5px);
-			.border-bottom-right-radius(5px);
+			cursor:pointer;
+			position:relative;
+			left:-50%;
 		}
+	}
+	.border-bottom { 
+		border-bottom:2px solid #d7d7d7;
+		margin:0 0 9px;
+		padding:0 0 8px;
+	}
+	ul.nav {
+		font-family:@font;
+		font-size:14px;
+		margin:0;
+		.clearfix;
+		li { 
+			.pull-left;
+			margin-right:19px;
+			&.last { margin-right:0 !important; }
+		}
+		&.first a {
+			font-weight:bold;
+		}
+		&.last {
+			border:none;
+			padding:0;
+			margin:0;
+		}
+		a:hover {
+			background:transparent;
+		}
+	}
+}
+
+// For now, only run our media queries on the Maker Camp pages as it trys to run on non-responsive pages...
+@media (min-width: 1200px) {
+	body.makercamp .make-popdown {
+		ul.nav {
+			font-size:16px;
+			li { margin-right:33px; }
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	body.makercamp .make-popdown {
+		.large-text {
+			font-size:16px;
+			line-height:20px;
+		}
+		ul.nav {
+			font-size:14px;
+			li {
+				margin-right:13px !important;
+				&.last { margin-right:0 !important; }
+			}
+		}
+	}
+}
+
+@media (max-width: 764px) {
+	body.makercamp .make-popdown {
+		text-align:center;
+		.wrapper-container { padding:5px 10px; }
+		.side-column { 
+			border-bottom:2px solid #d7d7d7;
+			margin-bottom:10px;
+		}
+		ul.nav {
+			&.last { margin-bottom:10px !important; }
+		}
+
 	}
 }

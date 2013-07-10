@@ -60,52 +60,7 @@
 				</div>
 			</div> -->
 
-			<div class="make-popdown">
-				<div class="wrapper-container">
-					<div class="container">
-						<div class="row">
-							<div class="span4 side-column">
-								<span class="row-fluid">
-									<img src="<?php echo get_template_directory_uri(); ?>/images/popdown-makebot.png" alt="" class="span4">
-									<div class="span8 side-text">
-										<p class="large-text">Where DIY professionals and hobbyists go to learn, create, and share<br /><a href="#">Subscribe to MAKE Magazine</a></p>
-									</div>
-								</span>
-							</div>
-							<nav class="span8 popdown-navigation">
-								<ul class="first">
-									<li><a href="#">Maker Shed</a></li>
-									<li><a href="#">Maker Faire</a></li>
-									<li><a href="#">Maker Camp</a></li>
-									<li><a href="#">Training Camp</a></li>
-									<li><a href="#">Hardware Innovation Workshop</a></li>
-								</ul>
-								<ul class="second">
-									<li><a href="#">Projects</a></li>
-									<li><a href="#">Features</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">Videos</a></li>
-									<li><a href="#">Reviews</a></li>
-									<li><a href="#">Forums</a></li>
-									<li><a href="#">Education</a></li>
-								</ul>
-								<ul class="last">
-									<li><a href="#">Electronics</a></li>
-									<li><a href="#">Workshop</a></li>
-									<li><a href="#">Craft</a></li>
-									<li><a href="#">Science</a></li>
-									<li><a href="#">Home</a></li>
-									<li><a href="#">Art &amp; Design</a></li>
-									<li><a href="#">Maker Pro</a></li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</div>
-				<div class="menu-button">
-					<a href="<?php echo home_url(); ?>" class="popdown-btn"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo-popdown.png" /></a>
-				</div>
-			</div>
+			<?php make_popdown_menu(); ?>
 
 			<div class="black-bar hidden-phone">
 				<div class="container">
