@@ -9877,6 +9877,118 @@ ul#tabs .current > a:hover {
 #camp-header .container h1 {
   margin: 0 auto;
 }
+.camp input[type="file"],
+.camp input[type="image"],
+.camp input[type="submit"],
+.camp input[type="reset"],
+.camp input[type="button"],
+.camp input[type="radio"],
+.camp input[type="checkbox"] {
+  background-color: transparent !important;
+  border: none !important;
+  color: #FFFFFF;
+  font-size: 21px !important;
+  font-weight: bold !important;
+}
+body.camp .button.blue:hover,
+body.camp a.button.blue:hover {
+  color: #033978 !important;
+  background-color: #73c1e6 !important;
+}
+body.camp {
+  margin-top: 0px;
+}
+body.camp .training-camp-sidebar {
+  background-color: #f4f4f4;
+  padding-bottom: 20px;
+}
+body.camp .training-camp-sidebar h5 {
+  padding: 5px;
+}
+body.camp .training-camp-sidebar p {
+  margin: auto 5px;
+}
+body.camp .training-camp-sidebar .sidebar-header {
+  background-color: #e1e1e1;
+  color: #000;
+}
+body.camp .training-camp-sidebar .sidebar-header h4 {
+  padding: 5px;
+}
+body.camp ul {
+  font-size: 16px;
+  margin: auto 25px 15px 25px auto;
+}
+body.camp h4 {
+  padding-top: 15px;
+}
+body.camp .call-out-box {
+  background-color: #eee;
+  padding: 30px 20px;
+}
+body.camp .call-out-box h3 {
+  color: #000;
+  padding-bottom: 15px;
+}
+body.camp .call-out-box h3 span.red {
+  color: red;
+}
+body.camp .call-out-box h3 span.blue {
+  color: #005d8f;
+}
+body.camp .call-out-box a {
+  font-weight: bold;
+  text-decoration: none;
+}
+body.camp .call-out-box p:first-child {
+  margin-bottom: 0;
+}
+body.camp .camp-highlight-star {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+body.camp .camp-testimonial {
+  background-color: #eee;
+  padding: 30px 20px;
+  position: relative;
+}
+body.camp .camp-testimonial .big-quote {
+  position: absolute;
+  top: 25px;
+  left: 15px;
+}
+body.camp .camp-testimonial p {
+  padding-left: 28px;
+}
+body.camp .camp-highlight-wrap {
+  position: relative;
+}
+body.camp .camp-highlight-wrap h3 {
+  margin-top: 0;
+  padding-top: 0;
+  padding-left: 42px;
+  font-size: 18px;
+  font-weight: normal;
+  text-transform: none;
+  color: #333;
+}
+body.camp p {
+  font-size: 16px;
+}
+body.camp .description-wrap {
+  height: 240px;
+}
+body.camp .description-wrap h3 {
+  color: #000;
+}
+body.camp .description-wrap h3 span.blue {
+  color: 005d8f;
+}
+body.camp .camp-highlight-wrap:first-child {
+  position: relative;
+  margin-top: 10px;
+}
 .camp-newsletter-wrap {
   height: 71px;
   width: 100%;
@@ -9905,91 +10017,9 @@ ul#tabs .current > a:hover {
   color: #000;
   line-height: 42px;
 }
-body.camp {
-  margin-top: 0px;
-}
-body.camp .button,
-body.camp a.button {
-  display: inline;
-  display: inline-block;
-  text-align: center;
-  padding: 10px;
-  color: #fff !important;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  text-decoration: none;
-  background-color: #e01b23;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 5px 0 0 #8d1216;
-  -moz-box-shadow: 0 5px 0 0 #8d1216;
-  box-shadow: 0 5px 0 0 #8d1216;
-  border-bottom: none;
-}
-body.camp .button:hover,
-body.camp a.button:hover {
-  background-color: #b3151b !important;
-  color: #fff !important;
-  text-decoration: none;
-}
-body.camp .button.blue,
-body.camp a.button.blue {
-  background-color: #8ed5f6;
-  border: none;
-  padding: 10px;
-  color: #033978 !important;
-  font-size: 24px ;
-  line-height: 32px;
-  font-weight: 600;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-shadow: 0 5px 0 0 #4d97c5;
-  -moz-box-shadow: 0 5px 0 0 #4d97c5;
-  box-shadow: 0 5px 0 0 #4d97c5;
-}
-body.camp .button.blue:hover,
-body.camp a.button.blue:hover {
-  color: #033978 !important;
-  background-color: #73c1e6 !important;
-}
-body.camp .button.green,
-body.camp a.button.green {
-  background-color: #51B926;
-  border-bottom: 3px solid #316B17;
-  padding: 10px;
-  color: #ffffff;
-}
-body.camp .button.block,
-body.camp a.button.block {
-  display: block;
-}
-body.camp .button.big,
-body.camp a.button.big {
-  font-size: 1.7em;
-  padding: 12px 0;
-}
 body.camp .button.small-button,
 body.camp a.button.small-button {
   line-height: inherit !important;
-}
-.camp input[type="file"],
-.camp input[type="image"],
-.camp input[type="submit"],
-.camp input[type="reset"],
-.camp input[type="button"],
-.camp input[type="radio"],
-.camp input[type="checkbox"] {
-  background-color: transparent !important;
-  border: none !important;
-  color: #FFFFFF;
-  font-size: 21px !important;
-  font-weight: bold !important;
-}
-.camp .input-append .add-on,
-.camp .input-prepend .add-on {
-  height: 24px !important;
-  padding-top: 0 !important;
 }
 .camp-main-nav {
   text-align: center;
@@ -10020,6 +10050,15 @@ body.camp a.button.small-button {
 }
 .camp-main-nav nav {
   margin: 0 auto;
+}
+.camp .input-append .add-on,
+.camp .input-prepend .add-on {
+  height: 24px !important;
+  padding-top: 0 !important;
+}
+body.camp .button.block,
+body.camp a.button.block {
+  display: block;
 }
 .camp .header-bottom {
   border-color: red !important;
@@ -10052,9 +10091,6 @@ body.camp a.button.small-button {
   border: none;
   margin-left: 0;
 }
-.camp .btn {
-  line-height: 15px;
-}
 .camp .home-intro {
   padding-bottom: 20px;
 }
@@ -10071,16 +10107,15 @@ body.camp a.button.small-button {
   text-align: center;
   margin-top: 0;
 }
+.camp .btn {
+  line-height: 15px;
+}
 .camp #slideshow-wrapper {
   padding-top: 10px;
   background-image: url(http://makezineblog.files.wordpress.com/2013/05/camp-hdr-bg-01.gif);
 }
 .camp .carousel {
   margin-bottom: 0 !important;
-}
-.camp .fix #header {
-  background-image: none;
-  background-color: #fff;
 }
 .camp #header {
   background-color: #fff !important;
@@ -10093,17 +10128,24 @@ body.camp a.button.small-button {
   text-align: center;
   float: none;
 }
-.camp .input-append input,
-.camp .input-prepend input,
-.camp .input-append select,
-.camp .input-prepend select,
-.camp .input-append .uneditable-input,
-.camp .input-prepend .uneditable-input,
-.camp .input-append .dropdown-menu,
-.camp .input-prepend .dropdown-menu,
-.camp .input-append .popover,
-.camp .input-prepend .popover {
-  font-size: 21px !important;
+.camp .fix #header {
+  background-image: none;
+  background-color: #fff;
+}
+body.camp .button,
+body.camp a.button {
+  display: inline;
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  color: #fff !important;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  background-color: #e01b23;
+  border-bottom: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 0 0 #8d1216;
 }
 .camp-footer {
   background-image: url("/wp-content/themes/vip/makeblog/css/../img/header_bg.jpg");
@@ -10137,6 +10179,49 @@ body.camp a.button.small-button {
 }
 .camp-footer .container ul.nav li a:link {
   color: #000 !important;
+}
+.camp .input-append input,
+.camp .input-prepend input,
+.camp .input-append select,
+.camp .input-prepend select,
+.camp .input-append .uneditable-input,
+.camp .input-prepend .uneditable-input,
+.camp .input-append .dropdown-menu,
+.camp .input-prepend .dropdown-menu,
+.camp .input-append .popover,
+.camp .input-prepend .popover {
+  font-size: 21px !important;
+}
+body.camp .button.big,
+body.camp a.button.big {
+  font-size: 1.7em;
+  padding: 12px 0;
+}
+body.camp .button:hover,
+body.camp a.button:hover {
+  background-color: #b3151b !important;
+  color: #fff !important;
+  text-decoration: none;
+}
+body.camp .button.blue,
+body.camp a.button.blue {
+  background-color: #8ed5f6;
+  border: none;
+  padding: 10px;
+  color: #033978 !important;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0 5px 0 0 #4d97c5;
+}
+body.camp .button.green,
+body.camp a.button.green {
+  background-color: #51B926;
+  border-bottom: 3px solid #316B17;
+  padding: 10px;
+  color: #ffffff;
 }
 body.makercamp {
   /* apply a natural box layout model to all elements. sadly this breaks everything when it should fix... */
@@ -10971,6 +11056,8 @@ body.makercamp a.button.small-button {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
   border: 1px solid #cccccc;
   *border: 0;
   border-bottom-color: #b3b3b3;
