@@ -10398,10 +10398,18 @@ body.makercamp .main-content a:active {
   text-decoration: underline !important;
 }
 body.makercamp .black-bar {
-  padding: 30px 0 5px !important;
+  background-color: #00315d;
+  padding: 5px 0 !important;
+  margin-top: 40px;
 }
 body.makercamp .black-bar .nav-inline li {
   margin-right: 30px !important;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+body.makercamp #menu-maker-camp-nav {
+  display: table;
+  margin: 0 auto;
 }
 body.makercamp #footer.white-bg {
   margin: 0;
@@ -10428,7 +10436,7 @@ body.makercamp .search-query {
   width: 110px !important;
 }
 body.makercamp header {
-  margin-top: 0;
+  margin-top: 41px;
   margin-bottom: 40px;
   color: #fff;
 }
@@ -10441,6 +10449,9 @@ body.makercamp header h3 {
   font-weight: 200;
   font-size: 28px;
   line-height: 100%;
+}
+body.makercamp.admin-bar header {
+  margin-top: 40px;
 }
 body.makercamp .waist {
   background-image: url(http://makezineblog.files.wordpress.com/2013/05/hills.png);
@@ -10945,10 +10956,6 @@ body.makercamp a.button.small-button {
   body.makercamp.admin-bar {
     padding: 0;
     margin: 0;
-  }
-  body.makercamp .black-bar,
-  body.makercamp.admin-bar .black-bar {
-    padding: 0 0 5px !important;
   }
   body.makercamp .container,
   body.makercamp.admin-bar .container,
