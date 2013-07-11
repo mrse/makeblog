@@ -17,7 +17,7 @@ get_header(); ?>
 			<div class="row" style="position:relative;">
 
 				<?php if( has_term( 'Weekend Project', 'flags' ) ) : ?>
-					<div style="position:absolute; right:0; top:-20px;">
+					<div style="position:absolute; right:0; top:0;">
 						<img src="<?php echo get_template_directory_uri(); ?>/images/weekend-projects-btn.png" title="Weekend Projects Powered by Radio Shack" />
 					</div>
 				<?php endif; ?>
