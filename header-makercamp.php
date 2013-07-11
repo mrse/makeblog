@@ -43,7 +43,7 @@
 						wp_nav_menu( array(
 							'theme_location' => 'mc-header-menu',
 							'container' => '',
-							'menu_class' => 'nav nav-inline pull-left',
+							'menu_class' => 'nav nav-inline',
 						) );
 					?>
 				</div>
@@ -64,7 +64,7 @@
 								wp_nav_menu( array(
 									'theme_location' => 'mc-header-menu',
 									'container' => '',
-									'menu_class' => 'nav nav-inline pull-left',
+									'menu_class' => 'nav nav-inline',
 								) );
 							?>
 						</div>
