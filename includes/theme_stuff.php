@@ -1109,12 +1109,14 @@ function make_sitemap_add_gallery_post_type( $post_types ) {
  */
 function make_register_menu() {
 
-	// Leaving this menu in so we can migrate navigation smoothly. Will remove after menus are setup and running
-	register_nav_menu( 'topbar', __( 'Top Bar', 'make' ) );
-
-	// New Make Navigation menus
+	// Make Navigation menus
 	register_nav_menu( 'make-primary', __( 'Make Primary Nav', 'make' ) );
 	register_nav_menu( 'make-secondary', __( 'Make Secondary Nav', 'make' ) );
+
+	// Popdown Menus
+	register_nav_menu( 'popdown-menu-top', __( 'Popdown Top', 'make' ) );
+	register_nav_menu( 'popdown-menu-middle', __( 'Popdown Middle', 'make' ) );
+	register_nav_menu( 'popdown-menu-last', __( 'Popdown Last', 'make' ) );
 }
 add_action( 'init', 'make_register_menu' );
 
@@ -1205,4 +1207,58 @@ function make_add_post_types_to_feed( $query_var ) {
 	
 }
 add_filter( 'request', 'make_add_post_types_to_feed' );
+
+
+
+/**
+ * Outputs the code for our Popdown menu found on all Make sites
+ * @return html
+ *
+ * @version  1.0
+ */
+function make_popdown_menu() { ?>
+	<div class="make-popdown">
+		<div class="wrapper-container">
+			<div class="container">
+				<div class="row">
+					<div class="span4 side-column">
+						<span class="row-fluid">
+							<a href="<?php echo home_url(); ?>" class="span4"><img src="<?php echo get_template_directory_uri(); ?>/images/popdown-makebot.png" alt=""></a>
+							<div class="span8 side-text">
+								<p class="large-text">Where DIY professionals and hobbyists go to learn, create, and share<br /><a href="<?php echo home_url( '/subscribe/' ); ?>">Subscribe to MAKE Magazine</a></p>
+							</div>
+						</span>
+					</div>
+					<nav class="span8 popdown-navigation">
+						<div class="border-bottom">
+							<?php wp_nav_menu( array(
+								'theme_location'  => 'popdown-menu-top',
+								'container'       => false, 
+								'menu_class'      => 'first nav',
+								'depth'           => 1 
+							) ); ?>
+						</div>
+						<div class="border-bottom">
+							<?php wp_nav_menu( array(
+								'theme_location'  => 'popdown-menu-middle',
+								'container'       => false, 
+								'menu_class'      => 'second nav',
+								'depth'           => 1 
+							) ); ?>
+						</div>
+						<?php wp_nav_menu( array(
+							'theme_location'  => 'popdown-menu-last',
+							'container'       => false, 
+							'menu_class'      => 'last nav',
+							'depth'           => 1 
+						) ); ?>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="menu-button">
+			<span class="popdown-btn"><img src="<?php echo get_template_directory_uri(); ?>/img/make-logo-popdown.png" /></span>
+		</div>
+	</div>
+<?php }
 

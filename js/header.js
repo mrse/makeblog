@@ -27,4 +27,10 @@ jQuery( document ).ready( function( $ ) {
 		}
 	});
 
+
+	// Add our popdown slide effect yea?
+	$( '.make-popdown .popdown-btn' ).click( function() {
+		$( '.make-popdown .container' ).slideToggle( 'fast' );
+	});
+
 });

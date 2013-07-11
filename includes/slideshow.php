@@ -35,7 +35,7 @@ function make_register_cpt_slideshow() {
 		'can_export' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'menu_position' => 36,
+		'menu_position' => 49,
 	);
 
 	register_post_type( 'slideshow', $args );
@@ -391,7 +391,7 @@ function make_carousel( $args, $title_link = true ) {
 										update_post_meta( $post->ID, 'Image', $img );
 										echo '<a href="'. get_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( get_post_meta( $post->ID, 'Image', true ), 218, 146 ) . '" alt="' . the_title_attribute( 'echo=0' ) . '" /></a>';
 									} elseif ( has_post_thumbnail() ) {
-										$image = the_post_thumbnail( array( '218', '146' ) );
+										$image = the_post_thumbnail( 'category-thumb-small' );
 										echo '<a href="' . get_permalink( $post->ID ) . '">' . $image . '</a>';
 									}
 								} else {

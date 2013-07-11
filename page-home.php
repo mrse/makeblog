@@ -21,12 +21,14 @@ Template Name: Home Page
 								<div class="span4">
 
 									<div class="paddme">
-
-										<div class="ribbon"><?php echo esc_html( make_get_cap_option( 'ribbon_title' ) ); ?></div>
+										
+										<?php if ( make_get_cap_option( 'ribbon_title_display' ) ) : ?>
+											<div class="ribbon"><?php echo esc_html( make_get_cap_option( 'ribbon_title' ) ); ?></div>
+										<?php endif; ?>
 
 										<a href="<?php echo esc_html( make_get_cap_option( 'main_link' ) ); ?>">
 
-											<img src="<?php echo esc_url( make_get_cap_option( 'main_url' ) ); ?>" id="top-left" />
+											<img src="<?php echo esc_url( make_get_cap_option( 'main_url' ) ); ?>" <?php if ( make_get_cap_option( 'ribbon_title_display' ) ) echo 'id="top-left" '; ?>/>
 
 										</a>
 
@@ -221,7 +223,7 @@ Template Name: Home Page
 
 						<p><a href="http://makezine.com/blog/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
 						<div class="home-promo-rtmfc">							
-							<a href="http://makezine.com/road-to-maker-faire-challenge/"><img src="http://makezineblog.files.wordpress.com/2013/06/300x180-badge_vs3-1.jpg" alt="Road to Maker Faire Challenge Contest" /></a>
+							<a href="http://pubads.g.doubleclick.net/gampad/clk?id=40517218&iu=/11548178/Makezine"><img src="http://makezineblog.files.wordpress.com/2013/06/300x180-badge_vs3-1.jpg" alt="Road to Maker Faire Challenge Contest" /></a>
 						</div>
 					</div>
 					<!--<div class="shadow"></div>-->

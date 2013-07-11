@@ -5565,7 +5565,7 @@ a:hover {
 body {
   /* background-image: url('../img/sand.png'); */
 
-  margin-top: 20px;
+  margin-top: 0;
   overflow-wrap: break-word;
 }
 body.single-slideshow {
@@ -5594,6 +5594,9 @@ h6 {
 }
 h3 {
   line-height: 24px;
+}
+#div-gpt-ad-664089004995786621-1 {
+  margin-top: 40px;
 }
 .add30 {
   width: 590px;
@@ -8579,7 +8582,7 @@ textarea.radio-narrow,
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 .category-top h1 {
   font-size: 38px;
@@ -9297,7 +9300,7 @@ ul#tabs .current > a:hover {
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
-  padding-top: 20px;
+  padding-top: 0px;
   border-bottom: 0px;
 }
 .single h1 {
@@ -9339,6 +9342,57 @@ ul#tabs .current > a:hover {
 .single .post ol li {
   font-size: 18px;
 }
+.gsc-cursor-page {
+  display: inline-block;
+  padding: 2px 4px;
+  font-size: 11.844px;
+  font-weight: bold;
+  line-height: 14px;
+  color: #ffffff;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #999999;
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+  color: white !important;
+}
+.gsc-cursor-page:empty {
+  display: none;
+}
+.gsc-cursor-page-important {
+  background-color: #b94a48;
+}
+.gsc-cursor-page-important[href] {
+  background-color: #953b39;
+}
+.gsc-cursor-page-warning {
+  background-color: #f89406;
+}
+.gsc-cursor-page-warning[href] {
+  background-color: #c67605;
+}
+.gsc-cursor-page-success {
+  background-color: #468847;
+}
+.gsc-cursor-page-success[href] {
+  background-color: #356635;
+}
+.gsc-cursor-page-info {
+  background-color: #3a87ad;
+}
+.gsc-cursor-page-info[href] {
+  background-color: #2d6987;
+}
+.gsc-cursor-page-inverse {
+  background-color: #333333;
+}
+.gsc-cursor-page-inverse[href] {
+  background-color: #1a1a1a;
+}
 .widget {
   margin: 20px 0;
 }
@@ -9362,7 +9416,7 @@ ul#tabs .current > a:hover {
 }
 .main-header {
   margin-top: 20px;
-  padding: 10px 0;
+  padding: 15px 0 10px;
   border-top: 1px solid #ed1c24;
   border-bottom: 1px solid #a4a4a4;
 }
@@ -9371,7 +9425,7 @@ ul#tabs .current > a:hover {
 }
 .main-header .additional-content {
   position: absolute;
-  top: -10px;
+  top: -15px;
   right: 0;
 }
 .main-header .additional-content .subscribe,
@@ -9513,6 +9567,123 @@ ul#tabs .current > a:hover {
 }
 .secondary-navigation .dropdown-menu li {
   width: 100%;
+}
+.make-popdown {
+  position: relative;
+  border-bottom: 2px solid #bbb;
+  -webkit-box-shadow: 0 5px 5px -5px #bbbbbb;
+  -moz-box-shadow: 0 5px 5px -5px #bbbbbb;
+  box-shadow: 0 5px 5px -5px #bbbbbb;
+}
+.make-popdown .wrapper-container {
+  background: #fff;
+  padding: 5px 0;
+}
+.make-popdown .wrapper-container .container {
+  display: none;
+  padding: 0;
+  background: transparent;
+}
+.make-popdown .wrapper-container.popdown-open {
+  padding: 18px 0;
+}
+.make-popdown .large-text {
+  font-size: 17px;
+  font-weight: bold;
+  font-family: "proxima-nova", sans-serif;
+  color: #252525;
+  line-height: 25px;
+}
+.make-popdown .large-text a {
+  color: #005d8f;
+  font-size: 14px;
+}
+.make-popdown .menu-button {
+  position: absolute;
+  left: 50%;
+  bottom: -31px;
+  padding: 0;
+}
+.make-popdown .menu-button .popdown-btn {
+  cursor: pointer;
+  position: relative;
+  left: -50%;
+}
+.make-popdown .border-bottom {
+  border-bottom: 2px solid #d7d7d7;
+  margin: 0 0 9px;
+  padding: 0 0 8px;
+}
+.make-popdown ul.nav {
+  font-family: "proxima-nova", sans-serif;
+  font-size: 14px;
+  margin: 0;
+  *zoom: 1;
+}
+.make-popdown ul.nav:before,
+.make-popdown ul.nav:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.make-popdown ul.nav:after {
+  clear: both;
+}
+.make-popdown ul.nav li {
+  float: left;
+  margin-right: 19px;
+}
+.make-popdown ul.nav li.last {
+  margin-right: 0 !important;
+}
+.make-popdown ul.nav.first a {
+  font-weight: bold;
+}
+.make-popdown ul.nav.last {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.make-popdown ul.nav a:hover {
+  background: transparent;
+}
+@media (min-width: 1200px) {
+  body.makercamp .make-popdown ul.nav {
+    font-size: 16px;
+  }
+  body.makercamp .make-popdown ul.nav li {
+    margin-right: 33px;
+  }
+}
+@media (max-width: 1200px) {
+  body.makercamp .make-popdown .large-text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  body.makercamp .make-popdown ul.nav {
+    font-size: 14px;
+  }
+  body.makercamp .make-popdown ul.nav li {
+    margin-right: 13px !important;
+  }
+  body.makercamp .make-popdown ul.nav li.last {
+    margin-right: 0 !important;
+  }
+}
+@media (max-width: 764px) {
+  body.makercamp .make-popdown {
+    text-align: center;
+  }
+  body.makercamp .make-popdown .wrapper-container {
+    padding: 5px 10px;
+  }
+  body.makercamp .make-popdown .side-column {
+    border-bottom: 2px solid #d7d7d7;
+    margin-bottom: 10px;
+  }
+  body.makercamp .make-popdown ul.nav.last {
+    margin-bottom: 10px !important;
+  }
 }
 .page-id-286853,
 .page-id-271492 {
@@ -9826,6 +9997,137 @@ ul#tabs .current > a:hover {
 #camp-header .container h1 {
   margin: 0 auto;
 }
+.camp input[type="file"],
+.camp input[type="image"],
+.camp input[type="submit"],
+.camp input[type="reset"],
+.camp input[type="button"],
+.camp input[type="radio"],
+.camp input[type="checkbox"] {
+  background-color: transparent !important;
+  border: none !important;
+  color: #FFFFFF;
+  font-size: 21px !important;
+  font-weight: bold !important;
+}
+body.camp .button.blue:hover,
+body.camp a.button.blue:hover {
+  color: #033978 !important;
+  background-color: #73c1e6 !important;
+}
+body.camp {
+  margin-top: 0px;
+}
+body.camp #myCarousel .carousel-control {
+  position: absolute;
+  top: 155px !important;
+}
+body.camp .training-camp-sidebar {
+  background-color: #f4f4f4;
+  padding-bottom: 20px;
+}
+body.camp .training-camp-sidebar h5 {
+  padding: 5px;
+}
+body.camp .training-camp-sidebar p {
+  margin: auto 5px;
+}
+body.camp .training-camp-sidebar .sidebar-header {
+  background-color: #e1e1e1;
+  color: #000;
+}
+body.camp .training-camp-sidebar .sidebar-header h4 {
+  padding: 5px;
+}
+body.camp ul {
+  font-size: 16px;
+  margin: auto 25px 15px 25px auto;
+}
+body.camp h4 {
+  padding-top: 15px;
+}
+body.camp h3 {
+  text-transform: none !important;
+}
+body.camp h1 {
+  font-size: 48px !important;
+  color: #ea2b1a;
+  line-height: 52px;
+}
+body.camp span.blue {
+  color: #005d8f;
+}
+body.camp .call-out-box {
+  height: 445px;
+  background-color: #eee;
+  padding: 30px 20px;
+}
+body.camp .call-out-box h3 {
+  color: #000;
+  padding-bottom: 15px;
+}
+body.camp .call-out-box h3 span.red {
+  color: red;
+}
+body.camp .call-out-box h3 span.blue {
+  color: #005d8f;
+}
+body.camp .call-out-box a {
+  font-weight: bold;
+  text-decoration: none !important;
+}
+body.camp .call-out-box p:first-child {
+  margin-bottom: 0;
+}
+body.camp .camp-highlight-star {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+body.camp .camp-testimonial {
+  background-color: #eee;
+  padding: 30px 20px;
+  margin-top: 20px;
+  position: relative;
+}
+body.camp .camp-testimonial .big-quote {
+  position: absolute;
+  top: 25px;
+  left: 15px;
+}
+body.camp .camp-testimonial p {
+  padding-left: 28px;
+}
+body.camp .camp-highlight-wrap {
+  position: relative;
+}
+body.camp .camp-highlight-wrap h3 {
+  margin-top: 0;
+  padding-top: 0;
+  padding-left: 42px;
+  font-size: 24px;
+  line-height: 26px;
+  font-weight: normal;
+  text-transform: none;
+  color: #333;
+}
+body.camp p {
+  font-size: 16px;
+}
+body.camp .description-wrap {
+  height: 210px;
+}
+body.camp .description-wrap h3 {
+  text-transform: none;
+  color: #000;
+}
+body.camp .camp-highlight-wrap:first-child {
+  position: relative;
+  margin-top: 10px;
+}
+body.camp .projects-masthead h1 a {
+  color: #ea2b1a;
+}
 .camp-newsletter-wrap {
   height: 71px;
   width: 100%;
@@ -9854,26 +10156,9 @@ ul#tabs .current > a:hover {
   color: #000;
   line-height: 42px;
 }
-body.camp {
-  margin-top: 0px;
-}
-.camp input[type="file"],
-.camp input[type="image"],
-.camp input[type="submit"],
-.camp input[type="reset"],
-.camp input[type="button"],
-.camp input[type="radio"],
-.camp input[type="checkbox"] {
-  background-color: transparent !important;
-  border: none !important;
-  color: #FFFFFF;
-  font-size: 21px !important;
-  font-weight: bold !important;
-}
-.camp .input-append .add-on,
-.camp .input-prepend .add-on {
-  height: 24px !important;
-  padding-top: 0 !important;
+body.camp .button.small-button,
+body.camp a.button.small-button {
+  line-height: inherit !important;
 }
 .camp-main-nav {
   text-align: center;
@@ -9904,6 +10189,15 @@ body.camp {
 }
 .camp-main-nav nav {
   margin: 0 auto;
+}
+.camp .input-append .add-on,
+.camp .input-prepend .add-on {
+  height: 24px !important;
+  padding-top: 0 !important;
+}
+body.camp .button.block,
+body.camp a.button.block {
+  display: block;
 }
 .camp .header-bottom {
   border-color: red !important;
@@ -9936,9 +10230,6 @@ body.camp {
   border: none;
   margin-left: 0;
 }
-.camp .btn {
-  line-height: 15px;
-}
 .camp .home-intro {
   padding-bottom: 20px;
 }
@@ -9955,16 +10246,15 @@ body.camp {
   text-align: center;
   margin-top: 0;
 }
+.camp .btn {
+  line-height: 15px;
+}
 .camp #slideshow-wrapper {
-  padding-top: 10px;
+  padding-top: 40px;
   background-image: url(http://makezineblog.files.wordpress.com/2013/05/camp-hdr-bg-01.gif);
 }
 .camp .carousel {
   margin-bottom: 0 !important;
-}
-.camp .fix #header {
-  background-image: none;
-  background-color: #fff;
 }
 .camp #header {
   background-color: #fff !important;
@@ -9977,17 +10267,24 @@ body.camp {
   text-align: center;
   float: none;
 }
-.camp .input-append input,
-.camp .input-prepend input,
-.camp .input-append select,
-.camp .input-prepend select,
-.camp .input-append .uneditable-input,
-.camp .input-prepend .uneditable-input,
-.camp .input-append .dropdown-menu,
-.camp .input-prepend .dropdown-menu,
-.camp .input-append .popover,
-.camp .input-prepend .popover {
-  font-size: 21px !important;
+.camp .fix #header {
+  background-image: none;
+  background-color: #fff;
+}
+body.camp .button,
+body.camp a.button {
+  display: inline;
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  color: #fff !important;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  background-color: #e01b23;
+  border-bottom: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 0 0 #8d1216;
 }
 .camp-footer {
   background-image: url("/wp-content/themes/vip/makeblog/css/../img/header_bg.jpg");
@@ -10021,6 +10318,49 @@ body.camp {
 }
 .camp-footer .container ul.nav li a:link {
   color: #000 !important;
+}
+.camp .input-append input,
+.camp .input-prepend input,
+.camp .input-append select,
+.camp .input-prepend select,
+.camp .input-append .uneditable-input,
+.camp .input-prepend .uneditable-input,
+.camp .input-append .dropdown-menu,
+.camp .input-prepend .dropdown-menu,
+.camp .input-append .popover,
+.camp .input-prepend .popover {
+  font-size: 21px !important;
+}
+body.camp .button.big,
+body.camp a.button.big {
+  font-size: 1.7em;
+  padding: 12px 0;
+}
+body.camp .button:hover,
+body.camp a.button:hover {
+  background-color: #b3151b !important;
+  color: #fff !important;
+  text-decoration: none;
+}
+body.camp .button.blue,
+body.camp a.button.blue {
+  background-color: #8ed5f6;
+  border: none;
+  padding: 5px;
+  color: #033978 !important;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0 5px 0 0 #4d97c5;
+}
+body.camp .button.green,
+body.camp a.button.green {
+  background-color: #51B926;
+  border-bottom: 3px solid #316B17;
+  padding: 10px;
+  color: #ffffff;
 }
 body.makercamp {
   /* apply a natural box layout model to all elements. sadly this breaks everything when it should fix... */
@@ -10057,6 +10397,9 @@ body.makercamp .main-content a:active {
   color: #acd3fc;
   text-decoration: underline !important;
 }
+body.makercamp .black-bar {
+  padding: 30px 0 5px !important;
+}
 body.makercamp .black-bar .nav-inline li {
   margin-right: 30px !important;
 }
@@ -10085,7 +10428,7 @@ body.makercamp .search-query {
   width: 110px !important;
 }
 body.makercamp header {
-  margin-top: 41px;
+  margin-top: 0;
   margin-bottom: 40px;
   color: #fff;
 }
@@ -10098,9 +10441,6 @@ body.makercamp header h3 {
   font-weight: 200;
   font-size: 28px;
   line-height: 100%;
-}
-body.makercamp.admin-bar header {
-  margin-top: 40px;
 }
 body.makercamp .waist {
   background-image: url(http://makezineblog.files.wordpress.com/2013/05/hills.png);
@@ -10606,6 +10946,10 @@ body.makercamp a.button.small-button {
     padding: 0;
     margin: 0;
   }
+  body.makercamp .black-bar,
+  body.makercamp.admin-bar .black-bar {
+    padding: 0 0 5px !important;
+  }
   body.makercamp .container,
   body.makercamp.admin-bar .container,
   body.makercamp .navbar-static-top .container,
@@ -10732,6 +11076,26 @@ body.makercamp a.button.small-button {
     margin: 5px auto;
     width: 100%;
   }
+  .maker-camp-sweepstakes legend {
+    color: #f6ba65;
+    border: none;
+    font-size: 24.5px;
+    margin: 10px 0;
+    font-weight: bold;
+    line-height: 40px;
+  }
+  .maker-camp-sweepstakes label {
+    font-size: 17.5px;
+    margin: 10px 0 !important;
+    line-height: 18px;
+    font-weight: bold;
+  }
+  .maker-camp-sweepstakes input {
+    width: 200px !important;
+  }
+  .maker-camp-sweepstakes input[type="submit"] {
+    width: 200px !important;
+  }
 }
 .archive {
   background: url('../img/dots.png');
@@ -10739,7 +11103,7 @@ body.makercamp a.button.small-button {
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
-  padding-top: 20px;
+  padding-top: 0px;
   border-bottom: 0px;
 }
 .archive h1 {
@@ -10987,6 +11351,7 @@ body.page-template-page-education-php .side-post p {
 }
 body.hiw {
   background-color: #eee;
+  margin-top: 0;
 }
 body.hiw ul.left-nav {
   margin-left: 0;

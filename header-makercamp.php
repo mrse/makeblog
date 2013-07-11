@@ -33,32 +33,8 @@
 	</head>
 	<body <?php body_class( 'makercamp' ); ?>>
 		<header>
-			<div class="navbar navbar-blue navbar-fixed-top hidden-phone">
-					<div class="navbar-inner">
-						<nav class="container">
-							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</a>
-							<a class="brand" href="http://makezine.com/">MAKE</a>
-							<div class="nav-collapse in collapse">
-								<?php wp_nav_menu( array(
-									'theme_location'  => 'topbar',
-									'menu'            => 'topbar', 
-									'container'       => false, 
-									'menu_class'      => 'nav clearfix',
-									'depth'           => 1 ) );
-								?>
-								<form action="http://makezine.com/search/" class="form pull-right navbar-search">
-									<input type="text" class="span2 search-query" name="q" placeholder="" />
-									<input type="submit" class="btn btn-primary" style="margin-top:0px;" value="Search" />
-								</form>
-							</div><!--/.nav-collapse -->
-						</nav>
-					</div>
-				</div>
-			</div>
+
+			<?php make_popdown_menu(); ?>
 
 			<div class="black-bar hidden-phone">
 				<div class="container">

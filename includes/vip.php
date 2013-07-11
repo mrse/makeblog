@@ -53,10 +53,10 @@ if ( function_exists( 'vip_regex_redirects' ) ) {
 		'|^/archive/category/([a-zA-Z_]+)/index.xml$|'	   => '|/category/$1/feed/', // MT category feed
 		'|^/archive/category/([a-zA-Z_]+)/feed|' 		   => '|/category/$1/feed/', // Old WordPress Podcast feeds
 		'|^/archive/category/([a-zA-Z]+)/([0-9]+)\.html$|' => '|/category/$1/page/$2/', // MT paginated category structure
-		'|^/([0-9]{2})/([^/]+)/?$|' 					   => 'http://archive.makezine.com|/$1/$2|',
+		'|^/([0-9]{2})/(.*)|'							   => 'http://archive.makezine.com/$1/$2|',
 		'|^/blog/category/([a-zA-Z0-9 -]+)|' 			   => '|/category/$1/|', // handle any redirects from blog.makezine with categories
 		'|^/blog/tag/([a-zA-Z0-9 -]+)|'				  	   => '|/tag/$1/|', // handle any redirects from blog.makezine with tags
-		'|^/blog/author/([a-zA-Z0-9 -]+)|'					   => '|/author/$1/', // handle any redirects from blog.makezine marked as authors
+		'|^/blog/author/([a-zA-Z0-9 -]+)|'				   => '|/author/$1/', // handle any redirects from blog.makezine marked as authors
 	);
 	vip_regex_redirects( $redirects );
 }

@@ -43,7 +43,7 @@ function register_cpt_craft() {
 		'rewrite' => true,
 		'capability_type' => 'post',
 		'menu_icon' => get_stylesheet_directory_uri() .'/img/cutter.png',
-		'menu_position' => 30,
+		'menu_position' => 43,
 	);
 
 	register_post_type( 'craft', $args );

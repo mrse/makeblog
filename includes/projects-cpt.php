@@ -51,7 +51,7 @@ function register_cpt_project() {
 		'can_export' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'menu_position' => 26,
+		'menu_position' => 40,
 	);
 
 	register_post_type( 'projects', $args );
