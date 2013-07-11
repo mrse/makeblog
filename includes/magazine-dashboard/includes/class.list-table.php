@@ -10,10 +10,6 @@
 	 */
 	class Make_List_Table extends WP_List_Table {
 
-		// Set the name of the Editflow metakey prefix
-        public $ef_meta = '_ef_editorial_meta';
-        public 
-
 		/**
 		 * Reference the parent constuctor in WP_List_Table and set some default configurations.
 		 *
@@ -27,7 +23,7 @@
 			parent::__construct( array(
 				'singular' => 'content',
 				'plural'   => 'contents',
-				'ajax'	   => false,
+				'ajax'	   => true,
 			) );
 		}
 
@@ -42,7 +38,6 @@
 		 * @since    1.0
 		 */
 		function column_default( $item, $column_name ) {
-			global $ef_meta;
 
 			switch ( $column_name ) {
 				case 'post_parent':
@@ -52,19 +47,19 @@
 				case 'post_title':
 				case 'post_author':
 				case 'post_date':
-				case '_ef_editorial_metadata_number_pc':
-				case '_ef_editorial_metadata_paragraph_assignment':
-				case '_ef_editorial_metadata_date_1st-deadline':
-				case '_ef_editorial_metadata_user_ed':
-				case '_ef_editorial_metadata_date_ed-deadline':
-				case '_ef_editorial_metadata_user_ce':
-				case '_ef_editorial_metadata_date_ce-deadline':
-				case '_ef_editorial_metadata_checkbox_tr':
-				case '_ef_editorial_metadata_checkbox_needs-video':
-				case '_ef_editorial_metadata_checkbox_needs-photo':
-				case '_ef_editorial_metadata_number_manuscript-estimate':
-				case '_ef_editorial_metadata_checkbox_invoice-received':
-				case '_ef_editorial_metadata_number_wc':
+				case 'ef_pc':
+				case 'ef_assignment':
+				case 'ef_first_deadline':
+				case 'ef_ed':
+				case 'ef_ed_deadline':
+				case 'ef_ce':
+				case 'ef_ce_deadline':
+				case 'ef_tr':
+				case 'ef_needs_video':
+				case 'ef_needs_photo':
+				case 'ef_manuscript_estimate':
+				case 'ef_invoice_received':
+				case 'ef_wc':
 					return $item->$column_name;
 				//default:
 					//return print_r( $item, true );
@@ -72,39 +67,16 @@
 		}
 
 
-		/**
-		 * Every time the class needs to render a column, it first looks for a method named column_{$column_title} - if it exists, that function is ran, or else column_default() is.
-		 *
-		 * This function will implment the "rollover" actions for editing and trashing a post.
-		 * @param  array  $item A singular item (one full row's worth of data)
-		 * @return string       Text to be placed inside the column <td> (post title only)
-		 *
-		 * @version  1.0
-		 * @since    1.0
-		 */
-		function column_post_title( $item ) {
-        
-	        //Build row actions
-	        $actions = array(
-	            'edit'      => sprintf( '<a href="%1$spost.php?post=%2$s&action=edit" title="%3$s">%4$s</a>', admin_url(), $item->ID, __( 'Edit this item', 'make' ), __( 'Edit', 'make' ) ),
-	            'delete'    => sprintf( '<a href="%1$spost.php?post=%2$s&action=trash&_wpnonce=111111" class="submitdelete" title="%3$s">%4$s</a>', admin_url(), $item->ID, __( 'Move this item to the Trash', 'make' ), __( 'Trash', 'make' ) ),
-	        );
-	        
-	        //Return the title contents
-	        return sprintf( '<a href="%1$s" title="%2$s" class="row-title">%3$s</a>%4$s', admin_url() . 'post.php?post=' . $item->ID . '&action=edit', __( 'Edit this item', 'make' ), $item->post_title, $this->row_actions( $actions ) );
-	    }
-
-
 	    /**
-	     * Get the post date and format it into something better.
+	     * The 'cb' column is given special treatment when columns are processed. This function will allow us to do that.
 	     * @param  array  $item A singular item (one full row's worth of data)
-		 * @return string       Text to be placed inside the column <td> (post title only)
+	     * @return string       Text to be placed inside the column <td> (post title only)
+	     *
+	     * @version  1.0
+	     * @since    1.0
 	     */
-	    function column_post_date( $item ) {
-
-	    	$date = strtotime( $item->post_date );
-
-	    	return date( 'M d, Y', $date );
+	    function column_cb( $item ) {
+	        return sprintf( '<input type="checkbox" name="%1$s[]" value="%2$s" />', $this->_args['singular'], absint( $item->ID ) );
 	    }
 
 
@@ -122,7 +94,7 @@
 
 	    	// Check if the post_parent isn't set to zero
 	    	if ( $item->post_parent != 0 )
-		    	$title = get_the_title( $item->post_parent );
+		    	$title = get_the_title( absint( $item->post_parent ) );
 
 	    	return $title;
 	    }
@@ -138,24 +110,130 @@
 		 * @version  1.0
 		 * @since    1.0
 		 */
-		function column_post_author( $item ) {
-
-			$user = get_userdata( $item->post_author );
-
-			return '<a href="' . get_author_posts_url( $item->post_author ) . '">' . $user->display_name . '</a>';
-		}
+		function column_post_title( $item ) {
+        
+	        //Build row actions
+	        $actions = array(
+	            'edit'      => sprintf( '<a href="%1$spost.php?post=%2$s&action=edit" title="%3$s">%4$s</a>', admin_url(), absint( $item->ID ), __( 'Edit this item', 'make' ), __( 'Edit', 'make' ) ),
+	            // 'delete'    => sprintf( '<a href="%1$s" class="submitdelete" title="%2$s">%3$s</a>', wp_nonce_url( admin_url( 'post.php?post=' . absint( $item->ID ) . '&action=trash' ) ), __( 'Move this item to the Trash', 'make' ), __( 'Trash', 'make' ) ),
+	        );
+	        
+	        //Return the title contents
+	        return sprintf( '<a href="%1$s" title="%2$s" class="row-title">%3$s</a>%4$s', admin_url( '/post.php?post=' . absint( $item->ID ) . '&action=edit' ), __( 'Edit this item', 'make' ), sanitize_text_field( $item->post_title ), $this->row_actions( $actions ) );
+	    }
 
 
 	    /**
-	     * The 'cb' column is given special treatment when columns are processed. This function will allow us to do that.
+		 * Every time the class needs to render a column, it first looks for a method named column_{$column_title} - if it exists, that function is ran, or else column_default() is.
+		 *
+		 * This function will implment the "rollover" actions for editing and trashing a post.
+		 * @param  array  $item A singular item (one full row's worth of data)
+		 * @return string       Text to be placed inside the column <td> (post title only)
+		 *
+		 * @version  1.0
+		 * @since    1.0
+		 */
+		function column_post_author( $item ) {
+			return $this->get_author( $item->post_author );
+		}
+
+
+	     /**
+	     * Get the post date and format it into something better.
 	     * @param  array  $item A singular item (one full row's worth of data)
-	     * @return string       Text to be placed inside the column <td> (post title only)
-	     *
-	     * @version  1.0
-	     * @since    1.0
+		 * @return string       Text to be placed inside the column <td> (post title only)
 	     */
-	    function column_cb( $item ) {
-	        return sprintf( '<input type="checkbox" name="%1$s[]" value="%2$s" />', $this->_args['singular'], $item->ID );
+	    function column_post_date( $item ) {
+	    	return $this->get_date( $item->post_date, true );
+	    }
+
+
+	    /**
+	     * Return a proper date for display
+	     * @param  array  $item A singular item (one full row's worth of data)
+		 * @return string       Text to be placed inside the column <td> (post title only)
+	     */
+	    function column_ef_first_deadline( $item ) {
+	    	return $this->get_date( $item->ef_first_deadline );
+	    }
+
+
+	    /**
+	     * Return a linked author URL and name
+	     * @param  array  $item A singular item (one full row's worth of data)
+		 * @return string       Text to be placed inside the column <td> (post title only)
+	     */
+	    function column_ef_ed( $item ) {
+	    	return $this->get_author( $item->ef_ed );
+	    }
+
+
+	    /**
+	     * Return a proper date for display
+	     * @param  array  $item A singular item (one full row's worth of data)
+		 * @return string       Text to be placed inside the column <td> (post title only)
+	     */
+	    function column_ef_ed_deadline( $item ) {
+	    	return $this->get_date( $item->ef_ed_deadline );
+	    }
+
+
+	    /**
+	     * Return a linked author URL and name
+	     * @param  array  $item A singular item (one full row's worth of data)
+		 * @return string       Text to be placed inside the column <td> (post title only)
+	     */
+	    function column_ef_ce( $item ) {
+	    	return $this->get_author( $item->ef_ce );
+	    }
+
+	    /**
+	     * Return a proper date for display
+	     * @param  array  $item A singular item (one full row's worth of data)
+		 * @return string       Text to be placed inside the column <td> (post title only)
+	     */
+	    function column_ef_ce_deadline( $item ) {
+	    	return $this->get_date( $item->ef_ce_deadline );
+	    }
+
+
+	    /**
+	     * Process the boolean value set in EditFlow into text
+	     * @param  array  $item A singular item (one full row's worth of data)
+		 * @return string       Text to be placed inside the column <td> (post title only)
+	     */
+	    function column_ef_tr( $item ) {
+	    	return $this->process_boolean_value( $item->ef_tr );
+	    }
+
+
+	    /**
+	     * Process the boolean value set in EditFlow into text
+	     * @param  array  $item A singular item (one full row's worth of data)
+		 * @return string       Text to be placed inside the column <td> (post title only)
+	     */
+	    function column_ef_needs_video( $item ) {
+	    	return $this->process_boolean_value( $item->ef_needs_video );
+	    }
+
+
+	    /**
+	     * Process the boolean value set in EditFlow into text
+	     * @param  array  $item A singular item (one full row's worth of data)
+		 * @return string       Text to be placed inside the column <td> (post title only)
+	     */
+	    function column_ef_needs_photo( $item ) {
+	    	return $this->process_boolean_value( $item->ef_needs_photo );
+	    }
+
+
+	    /**
+	     * Process the boolean value set in EditFlow into text
+	     * @param  array  $item A singular item (one full row's worth of data)
+		 * @return string       Text to be placed inside the column <td> (post title only)
+	     */
+	    function column_ef_invoice_received( $item ) {
+	    	return $this->process_boolean_value( $item->ef_invoice_received );
 	    }
 
 
@@ -168,7 +246,6 @@
 	     * @since    1.0
 	     */
 	    function get_columns() {
-	    	global $ef_meta;
 
 	        $columns = array(
 	            'cb'          => '<input type="checkbox" />', //Render a checkbox instead of text
@@ -179,22 +256,89 @@
 	            'post_title'  => __( 'Title', 'make' ),
 	            'post_author' => __( 'Author', 'make' ),
 	            'post_date'	  => __( 'Date', 'make' ),
-	            $ef_meta . '_number_pc' => __( 'PC', 'make' ), 
-				$ef_meta . '_paragraph_assignment' => __( 'Assignment', 'make' ),
-				$ef_meta . '_date_1st-deadline' => __( '1st Deadline', 'make' ),
-				$ef_meta . '_user_ed' => __( 'ED', 'make' ),
-				$ef_meta . '_date_ed-deadline' => __( 'ED Deadline', 'make' ),
-				$ef_meta . '_user_ce' => __( 'CE', 'make' ),
-				$ef_meta . '_date_ce-deadline' => __( 'CE Deadline', 'make' ),
-				$ef_meta . '_checkbox_tr' => __( 'TR', 'make' ),
-				$ef_meta . '_checkbox_needs-video' => __( 'Needs Video', 'make' ),
-				$ef_meta . '_checkbox_needs-photo' => __( 'Needs Photo', 'make' ),
-				$ef_meta . '_number_manuscript-estimate' => __( 'Manuscript Estimate', 'make' ),
-				$ef_meta . '_checkbox_invoice-received' => __( 'Invoice Recived', 'make' ),
-				$ef_meta . '_number_wc' => __( 'WC', 'make' ),
+	            'ef_pc' => __( 'PC', 'make' ), 
+				'ef_assignment' => __( 'Assignment', 'make' ),
+				'ef_first_deadline' => __( '1st Deadline', 'make' ),
+				'ef_ed' => __( 'ED', 'make' ),
+				'ef_ed_deadline' => __( 'ED Deadline', 'make' ),
+				'ef_ce' => __( 'CE', 'make' ),
+				'ef_ce_deadline' => __( 'CE Deadline', 'make' ),
+				'ef_tr' => __( 'TR', 'make' ),
+				'ef_needs_video' => __( 'Needs Video', 'make' ),
+				'ef_needs_photo' => __( 'Needs Photo', 'make' ),
+				'ef_manuscript_estimate' => __( 'Manuscript Estimate', 'make' ),
+				'ef_invoice_received' => __( 'Invoice Recived', 'make' ),
+				'ef_wc' => __( 'WC', 'make' ),
 	        );
 
 	        return $columns;
+	    }
+
+
+	    /**
+	     * Formats strings or other time formates to something prettier
+	     * @param  string  $date      The date to convert
+	     * @param  boolean $is_string Sometime we may need to convert a string to a time format. Setting this to true will do that.
+	     * @return string
+	     *
+	     * @version  1.0
+	     * @since    1.0
+	     */
+	    function get_date( $date, $is_string = false ) {
+
+	    	// Did we pass a date of some sort?
+	    	if ( empty( $date ) )
+	    		return;
+
+	    	// Convert our string to time
+	    	if ( $is_string )
+	    		$date = strtotime( $date );
+
+	    	return date( 'M d, Y', $date );
+	    }
+
+
+	    /**
+	     * An easy to use function to return an author linked based on the ID
+	     * @param  integer $author_id The author ID
+	     * @return string
+	     *
+	     * @version  1.0
+	     * @since    1.0
+	     */
+	    function get_author( $author_id ) {
+
+	    	// Make sure we actually passed some data..
+	    	if ( empty( $author_id ) )
+	    		return;
+
+	    	$user = get_userdata( absint( $author_id ) );
+
+			return '<a href="' . get_author_posts_url( absint( $author_id ) ) . '">' . sanitize_text_field( $user->display_name ) . '</a>';
+	    }
+
+
+	    /**
+	     * Return a text version of a boolean
+	     * @param  boolean $boolean The value of a true or false value in a numeric value
+	     * @return string
+	     *
+	     * @version  1.0
+	     * @since    1.0
+	     */
+	    function process_boolean_value( $boolean ) {
+
+	    	// Make sure we are actually passing a numeric value
+	    	if ( empty( $boolean ) || ! absint( $boolean ) )
+	    		return;
+
+	    	if ( $boolean ) {
+	    		$bool = 'Yes';
+	    	} else {
+	    		$bool = 'No';
+	    	}
+
+	    	return $bool;
 	    }
 
 
@@ -227,7 +371,7 @@
 	     */
 	    function get_bulk_actions() {
 	        $actions = array(
-	            'trash'    => __( 'Trash', 'make' ),
+	            'delete'    => __( 'Delete', 'make' ),
 	        );
 	        return $actions;
 	    }
@@ -243,10 +387,21 @@
 	    function process_bulk_action() {
         
 	        //D etect when a bulk action is being triggered...
-	        if ( 'trash' === $this->current_action() ) {
-	            wp_die( 'Items deleted (or they would be if we had items to delete)!' );
-	        }
+	        // if ( 'trash' === $this->current_action() ) {
+	        //     wp_die( 'Items deleted (or they would be if we had items to delete)!' );
+	        // }
+	        // 
+	        // return $this->
 	        
+	    }
+
+
+	    function get_views() {
+	    	$views = array(
+	    		'all' => '<a href="#">ALL</a>',
+	    	);
+
+	    	return $views;
 	    }
 
 
@@ -260,13 +415,13 @@
 	     * @since    1.0
 	     */
 	    function prepare_items() {
-	        global $wpdb, $post, $_wp_column_headers, $ef_meta;
+	        global $wpdb, $post, $_wp_column_headers;
 
 	        // The current screen object
 	        $screen = get_current_screen();
 
 	        // Ordering parameters
-	        $orderby = ! empty( $_GET['orderby'] ) ? urlencode( $_GET['orderby'] ) : 'post_date';
+	        $orderby = ! empty( $_GET['orderby'] ) ? esc_html( $_GET['orderby'] ) : 'post_date';
 	        if ( isset( $_GET['order'] ) && ( $_GET['order'] == 'ASC' ) ) {
 	        	$order = 'ASC';
 	        } else {
@@ -275,15 +430,9 @@
 
 	        // Display only 20 results per page.
 	        $per_page = 20;
-
-	        // Define our column headers. This includes a complete array of columns to be displayed (slugs & titles), a list of columns to keep hidden, and a list of columns that are sortable.
-	        $columns = $this->get_columns();
-	        $hidden = array();
-	        $sortable = $this->get_sortable_columns();
-	        $_wp_column_headers[ $screen->id ] = $columns;
 	        
 	        // Build an array to be used by the class for column header. Send in the three arrays we defined eariler in this function
-	        $this->_column_headers = array( $columns, $hidden, $sortable );
+	        $this->_column_headers = $this->get_column_info();
 	        
 	        // Process our bulk actions function
 	        $this->process_bulk_action();
@@ -303,28 +452,28 @@
 
 	        if ( is_array( $data ) ) {
 	        	$editflow_meta_names = array(
-	        		$ef_meta . '_number_pc', 
-					$ef_meta . '_paragraph_assignment',
-					$ef_meta . '_date_1st-deadline',
-					$ef_meta . '_user_ed',
-					$ef_meta . '_date_ed-deadline',
-					$ef_meta . '_user_ce',
-					$ef_meta . '_date_ce-deadline',
-					$ef_meta . '_checkbox_tr',
-					$ef_meta . '_checkbox_needs-video',
-					$ef_meta . '_checkbox_needs-photo',
-					$ef_meta . '_number_manuscript-estimate',
-					$ef_meta . '_checkbox_invoice-received',
-					$ef_meta . '_number_wc',
+	        		'_ef_editorial_meta_number_pc' => 'ef_pc', 
+					'_ef_editorial_meta_paragraph_assignment' => 'ef_assignment',
+					'_ef_editorial_meta_date_1st-deadline' => 'ef_first_deadline',
+					'_ef_editorial_meta_user_ed' => 'ef_ed',
+					'_ef_editorial_meta_date_ed-deadline' => 'ef_ed_deadline',
+					'_ef_editorial_meta_user_ce' => 'ef_ce',
+					'_ef_editorial_meta_date_ce-deadline' => 'ef_ce_deadline',
+					'_ef_editorial_meta_checkbox_tr' => 'ef_tr',
+					'_ef_editorial_meta_checkbox_needs-video' => 'ef_needs_video',
+					'_ef_editorial_meta_checkbox_needs-photo' => 'ef_needs_photo',
+					'_ef_editorial_meta_number_manuscript-estimate' => 'ef_manuscript_estimate',
+					'_ef_editorial_meta_checkbox_invoice-received' => 'ef_invoice_received',
+					'_ef_editorial_meta_number_wc' => 'ef_wc',
 	        	);
 
 	        	// Loop through each query and append postmeta info. 
 	        	foreach ( $data as $data_post ) {
-	        		foreach ( $editflow_meta_names as $meta_name ) {
+	        		foreach ( $editflow_meta_names as $meta_name => $new_meta_name ) {
 		        		$meta = get_post_meta( $data_post->ID, $meta_name, true );
 
 		        		if ( ! empty( $meta ) )
-			        		$data_post->$meta_name = $meta;
+			        		$data_post->$new_meta_name = $meta;
 		        	}
 	        	}
 	        }
@@ -344,6 +493,8 @@
 	            'per_page'    => $per_page,                     	// Number of items to show per page
 	            'total_pages' => ceil( $total_items / $per_page )   // Calculate the total number of pages
 	        ) );
+
+	        // var_dump($data);
 
 	        // Now we can add our sorted data to the items property, where it can be used by the rest of the class.
 	        $this->items = $data;

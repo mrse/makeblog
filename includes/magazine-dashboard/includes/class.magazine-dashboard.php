@@ -33,10 +33,12 @@
 		public function __construct() {
 
 			// Register our custom admin page
-			$page_hook = add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
+			add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
 
 			// Load screen options stuff ONLY on the page we need it
-			add_action( 'load-' . $page_hook, 'add_options' );
+			add_action( 'load-volume_page_manager', array( $this, 'add_options' ) );
+
+			add_filter( 'set-screen-option', 'table_set_option' );
 
 		}
 
@@ -46,7 +48,7 @@
 		}
 
 
-		function admin_menu_callback() {
+		public function admin_menu_callback() {
     
 		    // Create an instance of our package class...
 		    $list_table = new Make_List_Table();
@@ -104,9 +106,12 @@
 	    //     		foreach ( $editflow_meta_names as $meta_name ) {
 		   //      		$meta = get_post_meta( $data_post->ID, $meta_name, true );
 
-		   //      		if ( ! empty( $meta ) )
+		   //      		// if ( ! empty( $meta ) )
 			  //       		$data_post->$meta_name = $meta;
+			  //       	// echo $meta_name;
 		   //      	}
+
+		   //      	// var_dump($data_post);
 	    //     	}
 	        	
 	    //     }
@@ -115,5 +120,25 @@
 		        
 		    </div>
 		    <?php
+		}
+
+
+		public function add_options() {
+			global $list_table;
+
+			$option = 'per_page';
+			$args   = array(
+				'label' => 'Results',
+				'default' => 20,
+				'option' => 'results_per_page',
+			);
+			//add_screen_option( $option, $args );
+
+			$list_table = new Make_List_Table();
+		}
+
+
+		public function table_set_option( $status, $option, $value ) {
+			return $value;
 		}
 	}

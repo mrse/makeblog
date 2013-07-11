@@ -24,4 +24,5 @@
 
 		// Instantiate our content manager class
 		$make_magazine_dashboard = new Make_Magazine_Dashboard();
+
 	}
