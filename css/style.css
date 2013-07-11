@@ -5565,7 +5565,7 @@ a:hover {
 body {
   /* background-image: url('../img/sand.png'); */
 
-  margin-top: 20px;
+  margin-top: 0;
   overflow-wrap: break-word;
 }
 body.single-slideshow {
@@ -5594,6 +5594,9 @@ h6 {
 }
 h3 {
   line-height: 24px;
+}
+#div-gpt-ad-664089004995786621-1 {
+  margin-top: 40px;
 }
 .add30 {
   width: 590px;
@@ -8579,7 +8582,7 @@ textarea.radio-narrow,
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 .category-top h1 {
   font-size: 38px;
@@ -9297,7 +9300,7 @@ ul#tabs .current > a:hover {
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
-  padding-top: 20px;
+  padding-top: 0px;
   border-bottom: 0px;
 }
 .single h1 {
@@ -11100,7 +11103,7 @@ body.makercamp a.button.small-button {
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
-  padding-top: 20px;
+  padding-top: 0px;
   border-bottom: 0px;
 }
 .archive h1 {
@@ -11196,6 +11199,8 @@ body.makercamp a.button.small-button {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
   border: 1px solid #cccccc;
   *border: 0;
   border-bottom-color: #b3b3b3;
