@@ -19,6 +19,10 @@ body.camp .button.blue:hover,body.camp a.button.blue:hover {
 }
 body.camp {
     margin-top: 0px;
+	#myCarousel .carousel-control {
+		position: absolute;
+		top:155px !important;
+	}
     .training-camp-sidebar {
         background-color:#f4f4f4;
         padding-bottom:20px;
@@ -43,7 +47,19 @@ body.camp {
     h4 {
         padding-top:15px;
     }
+    h3 {
+    	text-transform: none !important;
+    }
+    h1 {
+    	font-size: 48px !important;
+    	color:#ea2b1a;
+    	line-height:52px;
+    }
+    span.blue{
+        color:#005d8f;
+     }
     .call-out-box {
+    	height:445px;
         background-color:#eee;
         padding:30px 20px;
         h3 {
@@ -58,7 +74,7 @@ body.camp {
         }
         a {
         	font-weight:bold;
-            text-decoration:none;
+            text-decoration:none !important;
         }
         p:first-child {
             margin-bottom:0;
@@ -72,6 +88,7 @@ body.camp {
     .camp-testimonial {
         background-color:#eee;
         padding:30px 20px;
+        margin-top:20px;
         position:relative;
         .big-quote {
             position:absolute;
@@ -88,7 +105,8 @@ body.camp {
             margin-top:0;
             padding-top:0;
             padding-left:42px;
-            font-size:18px;
+            font-size:24px;
+            line-height: 26px;
             font-weight:normal;
             text-transform:none;
             color:#333;
@@ -98,12 +116,10 @@ body.camp {
         font-size:16px;
     }
     .description-wrap {
-        height:240px;
+        height:210px;
         h3 {
-            color:#000;
-            span.blue {
-                color:005d8f;
-            }
+        	text-transform:none;
+            color:#000;          
         }
     }
     .camp-highlight-wrap:first-child {

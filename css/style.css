@@ -10015,6 +10015,10 @@ body.camp a.button.blue:hover {
 body.camp {
   margin-top: 0px;
 }
+body.camp #myCarousel .carousel-control {
+  position: absolute;
+  top: 155px !important;
+}
 body.camp .training-camp-sidebar {
   background-color: #f4f4f4;
   padding-bottom: 20px;
@@ -10039,7 +10043,19 @@ body.camp ul {
 body.camp h4 {
   padding-top: 15px;
 }
+body.camp h3 {
+  text-transform: none !important;
+}
+body.camp h1 {
+  font-size: 48px !important;
+  color: #ea2b1a;
+  line-height: 52px;
+}
+body.camp span.blue {
+  color: #005d8f;
+}
 body.camp .call-out-box {
+  height: 445px;
   background-color: #eee;
   padding: 30px 20px;
 }
@@ -10055,7 +10071,7 @@ body.camp .call-out-box h3 span.blue {
 }
 body.camp .call-out-box a {
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 body.camp .call-out-box p:first-child {
   margin-bottom: 0;
@@ -10068,6 +10084,7 @@ body.camp .camp-highlight-star {
 body.camp .camp-testimonial {
   background-color: #eee;
   padding: 30px 20px;
+  margin-top: 20px;
   position: relative;
 }
 body.camp .camp-testimonial .big-quote {
@@ -10085,7 +10102,8 @@ body.camp .camp-highlight-wrap h3 {
   margin-top: 0;
   padding-top: 0;
   padding-left: 42px;
-  font-size: 18px;
+  font-size: 24px;
+  line-height: 26px;
   font-weight: normal;
   text-transform: none;
   color: #333;
@@ -10094,13 +10112,11 @@ body.camp p {
   font-size: 16px;
 }
 body.camp .description-wrap {
-  height: 240px;
+  height: 210px;
 }
 body.camp .description-wrap h3 {
+  text-transform: none;
   color: #000;
-}
-body.camp .description-wrap h3 span.blue {
-  color: 005d8f;
 }
 body.camp .camp-highlight-wrap:first-child {
   position: relative;
