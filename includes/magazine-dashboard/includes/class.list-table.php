@@ -10,6 +10,9 @@
 	 */
 	class Make_List_Table extends WP_List_Table {
 
+
+		private $manager_uri = 'edit.php?post_type=volume&page=manager';
+
 		/**
 		 * Reference the parent constuctor in WP_List_Table and set some default configurations.
 		 *
@@ -397,14 +400,66 @@
 
 
 	    function get_views() {
-	    	$views = array(
-	    		'all' => '<a href="#">ALL</a>',
-	    	);
+	    	$status_links = array();
+	    	$class = '';
+	    	$num_posts = '';
 
-	    	return $views;
+	    	$status_links['all']	  = '<a href="' . esc_url( admin_url( $this->manager_uri ) ) . '">All</a> ' . $this->post_count . '</a>';
+   			$status_links['projects'] = '<a href="' . esc_url( admin_url( $this->manager_uri ) ) . '&filter=projects">Projects ' . $this->post_count . '</a>';
+   			$status_links['magazine'] = '<a href="' . esc_url( admin_url( $this->manager_uri ) ) . '&filter=magazine">Magazine ' . $this->post_count . '</a>';
+   			$status_links['review']   = '<a href="' . esc_url( admin_url( $this->manager_uri ) ) . '&filter=review">Review ' . $this->post_count . '</a>';
+   			$status_links['errata']   = '<a href="' . esc_url( admin_url( $this->manager_uri ) ) . '&filter=errata">Errata ' . $this->post_count . '</a>';
+   			$status_links['volume']   = '<a href="' . esc_url( admin_url( $this->manager_uri ) ) . '&filter=volume">Volume ' . $this->post_count . '</a>';
+
+   			return $status_links;
 	    }
 
 
+	    function get_data() {
+	    	global $wpdb;
+
+	    	$paged = ( isset( $_GET['paged'] ) ) ? absint( $_GET['paged'] ) : 1;
+	    	parse_str( $_SERVER['QUERY_STRING'], $args );
+
+	    	// Ordering parameters
+	        $orderby = ! empty( $_GET['orderby'] ) ? esc_html( $_GET['orderby'] ) : 'post_date';
+	        if ( isset( $_GET['order'] ) && ( $_GET['order'] == 'ASC' ) ) {
+	        	$order = 'ASC';
+	        } else {
+	        	$order = 'DESC';
+	        }
+
+
+	        // Check if we are filtering results with the status links
+	    	if ( isset( $args['filter'] ) ) {
+	    		$post_type = $args['filter'];
+
+	    		$data = $wpdb->get_results( $wpdb->prepare( "SELECT ID, post_title, post_status, post_type, post_author, post_date , post_parent
+	        											 	 FROM {$wpdb->posts}
+	        											 	 WHERE post_type = %s
+	        											 	 AND post_status NOT IN ( 'publish', 'trash' ) 
+	        											 	 ORDER BY post_date DESC", $post_type ) );
+	    	} elseif ( $args['s'] ) {
+
+	    	} else {
+		    	// Default query the database with the $wpdb class and return all the results for our class to manipulate
+		        // $data = $wpdb->get_results( $wpdb->prepare( "SELECT ID, post_title, post_status, post_type, post_author, post_date , post_parent
+	        											 	 // FROM {$wpdb->posts}
+	        											 	 // WHERE post_type IN ( 'projects', 'magazine', 'review', 'errata', 'volume' ) 
+	        											 	 // AND post_status NOT IN ( 'publish', 'trash' ) 
+	        											 	 // ORDER BY $orderby $order", $orderby ) );
+	        											 	 // 
+	    		$data = new WP_Query( array(
+	    			'post_type' => array( 'projects', 'magazine', 'review', 'errata', 'volume' ),
+	    			'post_status' => 'any',
+	    			'post_per_page' => 20,
+	    			
+	    		) );
+		    }
+
+		    // Return our results...
+		    return $data;
+	    }
 	    /**
 	     * Prepare our data for display.
 	     *
@@ -420,14 +475,6 @@
 	        // The current screen object
 	        $screen = get_current_screen();
 
-	        // Ordering parameters
-	        $orderby = ! empty( $_GET['orderby'] ) ? esc_html( $_GET['orderby'] ) : 'post_date';
-	        if ( isset( $_GET['order'] ) && ( $_GET['order'] == 'ASC' ) ) {
-	        	$order = 'ASC';
-	        } else {
-	        	$order = 'DESC';
-	        }
-
 	        // Display only 20 results per page.
 	        $per_page = 20;
 	        
@@ -437,15 +484,11 @@
 	        // Process our bulk actions function
 	        $this->process_bulk_action();
 
-	        // Query the database with the $wpdb class and return all the results for our class to manipulate
-	        $data = $wpdb->get_results( $wpdb->prepare( "SELECT {$wpdb->posts}.ID, {$wpdb->posts}.post_title, {$wpdb->posts}.post_status, {$wpdb->posts}.post_type, {$wpdb->posts}.post_author, {$wpdb->posts}.post_date , {$wpdb->posts}.post_parent
-	        											 FROM {$wpdb->posts}
-	        											 WHERE {$wpdb->posts}.post_type IN ( 'projects', 'magazine', 'review', 'errata', 'volume' ) 
-	        											 AND {$wpdb->posts}.post_status NOT IN ( 'publish', 'trash' ) 
-	        											 ORDER BY $orderby $order", $orderby ) );
+	        // Returns the proper query when needed
+	        $data = $this->get_data();
 	        											 
 	        // $data = get_posts( array(
-	        // 	'posts_per_page' => -1,
+	        // 	'posts_per_page' => 20,
 	        // 	'post_type' => array( 'projects', 'magazine', 'review', 'errata', 'volume' ),
 	        // 	'post_status' => 'any',
 	        // ) );

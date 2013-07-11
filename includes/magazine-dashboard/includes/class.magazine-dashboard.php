@@ -59,65 +59,15 @@
 		        
 		        <div id="icon-users" class="icon32"><br/></div>
 		        <h2><?php echo $this->plugin_name; ?></h2>
-		        
+		        <?php $list_table->get_data(); ?>
 		        <form id="movies-filter" method="get">
-		            <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
+		        	<?php $list_table->views(); ?>
+		            <input type="hidden" name="page" value="<?php echo admin_url() . 'edit.php?post_type=' . $_GET['post_type'] . '&page=' .$_REQUEST['page']; ?>" />
 					<?php $list_table->search_box('search', 'search_id'); ?>
 		            <?php $list_table->display(); ?>
 		            
 		        </form>
 	
-		        <?php
-		   //      global $wpdb;
-		   // //      	// Query the database with the $wpdb class and return all the results for our class to manipulate
-	    //     $data = $wpdb->get_results( $wpdb->prepare( "SELECT ID, post_title, post_status, post_type, post_author, post_date, post_parent
-	    //     											 FROM {$wpdb->posts}
-	    //     											 WHERE post_type IN ( 'projects', 'magazine', 'review', 'errata', 'volume' ) 
-	    //     											 AND post_status NOT IN ( 'publish', 'trash' ) 
-	    //     											 ORDER BY post_date DESC", null ) );
-	        											 
-	    //     // $data = get_posts( array(
-	    //     // 	'posts_per_page' => -1,
-	    //     // 	'post_type' => array( 'projects', 'magazine', 'review', 'errata', 'volume' ),
-	    //     // 	'post_status' => 'any',
-	    //     // ) );
-
-	    //     if ( is_array( $data ) ) {
-	    //     	$ef_meta = '_ef_editorial_meta';
-	    //     	$editflow_meta_names = array(
-	    //     		$ef_meta . '_number_pc', 
-					// $ef_meta . '_paragraph_assignment',
-					// $ef_meta . '_date_1st-deadline',
-					// $ef_meta . '_user_ed',
-					// $ef_meta . '_date_ed-deadline',
-					// $ef_meta . '_user_ce',
-					// $ef_meta . '_date_ce-deadline',
-					// $ef_meta . '_checkbox_tr',
-					// $ef_meta . '_checkbox_needs-video',
-					// $ef_meta . '_checkbox_needs-photo',
-					// $ef_meta . '_number_manuscript-estimate',
-					// $ef_meta . '_checkbox_invoice-received',
-					// $ef_meta . '_number_wc',
-	    //     	);
-
-	        		
-	    //     	// Loop through each query and append postmeta info. 
-	    //     	foreach ( $data as $data_post ) {
-	    //     		foreach ( $editflow_meta_names as $meta_name ) {
-		   //      		$meta = get_post_meta( $data_post->ID, $meta_name, true );
-
-		   //      		// if ( ! empty( $meta ) )
-			  //       		$data_post->$meta_name = $meta;
-			  //       	// echo $meta_name;
-		   //      	}
-
-		   //      	// var_dump($data_post);
-	    //     	}
-	        	
-	    //     }
-	    //     var_dump( $data );
-		        ?>
-		        
 		    </div>
 		    <?php
 		}
