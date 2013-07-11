@@ -14,18 +14,12 @@
 	<div class="single">
 	
 		<div class="container">
-
-			<div class="row">
-				<div class="span12">
 					
-					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-		
-				</div> <!-- END span12 -->		
-			</div> <!-- END row -->
-
 			<div class="row">
 			
 				<div class="span12">
+
+					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				
 					<article <?php post_class(); ?>>
 
