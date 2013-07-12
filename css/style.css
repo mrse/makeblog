@@ -10388,6 +10388,9 @@ body.makercamp h3 {
 body.makercamp iframe {
   max-width: 100%;
 }
+body.makercamp header {
+  margin: 0 0 40px !important;
+}
 body.makercamp .main-content a,
 body.makercamp .main-content a:visited {
   color: #acd3fc;
