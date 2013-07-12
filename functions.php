@@ -138,4 +138,7 @@ include_once dirname(  __FILE__  ) . '/includes/bitly.php';
 
 // 37. Maker Camp Map
 include_once dirname( __FILE__ ) . '/includes/google-maps.php';
+
+// 38. Content Manager
+include_once dirname( __FILE__ ) . '/includes/magazine-dashboard/magazine-dashboard.php';
 ?>
