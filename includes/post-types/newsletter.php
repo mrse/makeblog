@@ -6,7 +6,7 @@ function newsletter_init() {
 		'public'				=> true,
 		'show_in_nav_menus'		=> true,
 		'show_ui'				=> true,
-		'supports'				=> array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'trackbacks', 'custom-fields', 'comments', 'revisions' ),
+		'supports'				=> array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'trackbacks', 'comments', 'revisions', 'page-attributes' ),
 		'has_archive'			=> true,
 		'query_var'				=> true,
 		'rewrite'				=> true,
