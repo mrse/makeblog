@@ -1169,7 +1169,7 @@ function make_get_author( $post_id, $prefix = 'By' ) {
 
 	// We don't ever want to display an author for the videos post type.
 	if ( $post_type == 'video' )
-		return;
+		return false;
 
 	echo esc_attr( $prefix ) . ' ';
 
@@ -1221,43 +1221,46 @@ function make_popdown_menu() { ?>
 		<div class="wrapper-container">
 			<div class="container">
 				<div class="row">
-					<div class="span4 side-column">
-						<span class="row-fluid">
-							<a href="<?php echo home_url(); ?>" class="span4"><img src="<?php echo get_template_directory_uri(); ?>/images/popdown-makebot.png" alt=""></a>
-							<div class="span8 side-text">
-								<p class="large-text">Where DIY professionals and hobbyists go to learn, create, and share<br /><a href="<?php echo home_url( '/subscribe/' ); ?>">Subscribe to MAKE Magazine</a></p>
+					<div class="span3 offset2 border-right">
+						<div class="row-fluid">
+							<a href="<?php echo home_url( '/subscribe' ); ?>" class="span4"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
+							<div class="span7 side-text">
+								<a href="<?php echo home_url( '/subscribe' ); ?>">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
 							</div>
-						</span>
+						</div>
 					</div>
-					<nav class="span8 popdown-navigation">
-						<div class="border-bottom">
-							<?php wp_nav_menu( array(
-								'theme_location'  => 'popdown-menu-top',
-								'container'       => false, 
-								'menu_class'      => 'first nav',
-								'depth'           => 1 
-							) ); ?>
-						</div>
-						<div class="border-bottom">
-							<?php wp_nav_menu( array(
-								'theme_location'  => 'popdown-menu-middle',
-								'container'       => false, 
-								'menu_class'      => 'second nav',
-								'depth'           => 1 
-							) ); ?>
-						</div>
+					<div class="span2 border-right">
+						<?php wp_nav_menu( array(
+							'theme_location'  => 'popdown-menu-top',
+							'container'       => false, 
+							'menu_class'      => 'first nav',
+							'depth'           => 1 
+						) ); ?>
+					</div>
+					<div class="span4">
+						<?php wp_nav_menu( array(
+							'theme_location'  => 'popdown-menu-middle',
+							'container'       => false, 
+							'menu_class'      => 'second nav',
+							'depth'           => 1 
+						) ); ?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span9 offset2 menu-bottom">
+						<p>What's Hot on Makezine.com:</p>
 						<?php wp_nav_menu( array(
 							'theme_location'  => 'popdown-menu-last',
 							'container'       => false, 
 							'menu_class'      => 'last nav',
 							'depth'           => 1 
 						) ); ?>
-					</nav>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="menu-button">
-			<span class="popdown-btn"><img src="<?php echo get_template_directory_uri(); ?>/img/make-logo-popdown.png" /></span>
+			<span class="popdown-btn"></span>
 		</div>
 	</div>
 <?php }
