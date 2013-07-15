@@ -3,51 +3,45 @@
 /**
  * Function to count the statuses of Maker Faire applications
  */
-function make_count_post_status( $all_count = '' ) {
-	$get_post_status = wp_cache_get( 'dashboard_post_statuses' );
-
+function make_count_post_status() {
+	$s = ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '';
 	$results = array();
-
 	$output = '';
-	$output .= '<li><a href="edit.php?post_type=volume&page=manager">All</a><span class="count">(' . absint( $all_count ) . ')</span></li>';
 
-	if ( ! $get_post_status ) {
-		$post_type = array( 
-			'Projects'			=> 'projects', 
-			'Magazine'			=> 'magazine', 
-			'Reviews'			=> 'review', 
-			'Errata'			=> 'errata', 
-			'Volume'			=> 'volume',
+	$post_type = array(
+		'All'	   => 'all',
+		'Projects' => 'projects', 
+		'Magazine' => 'magazine', 
+		'Reviews'  => 'review', 
+		'Errata'   => 'errata', 
+		'Volume'   => 'volume',
+	);
+	foreach ( $post_type as $k => $type ) {
+		// $k['all'] = array( 'projects', 'magazine', 'review', 'errata', 'volume' );
+		$args = array( 
+			'post_type'		 => ( $type == 'all' ) ? array( 'projects', 'magazine', 'review', 'errata', 'volume' ) : $type,
+			'post_status'	 => make_post_statuses(),
+			'posts_per_page' => 0,
+			'return_fields'	 => 'ids',
+			's'				 => $s,	
 		);
-		foreach ( $post_type as $k => $type ) {
-			$args = array( 
-				'post_type'			=> $type,
-				'post_status'		=> 'any',
-				'posts_per_page' 	=> 0,
-				'return_fields'		=> 'ids',
-			);
-			$query = new WP_Query( $args );
+		$query = new WP_Query( $args );
 
-			$query_results = array(
-				'post_type'  => $k,
-				'type_uri'   => $type,
-				'post_count' => $query->found_posts,
-			);
+		$query_results = array(
+			'post_type'  => $k,
+			'type_uri'   => $type,
+			'post_count' => $query->found_posts,
+		);
 
-			array_push( $results, $query_results );
-			
-		}
-		wp_cache_set( 'dashboard_post_statuses', $results, null, '500' );
+		array_push( $results, $query_results );
 		
-	} else {
-		$results[] = $get_post_status;
 	}
 
 	foreach ( $results as $result ) {
 		$output .= ' | <li><a href="edit.php?post_type=volume&page=manager&filter=' . sanitize_text_field( $result['type_uri'] ) . '">' . sanitize_text_field( $result['post_type'] ) . '</a><span class="count">(' . absint( $result['post_count'] ) . ')</span> </li>';
 	}
 
-	return $output;
+	return substr( $output, 2 );
 }
 
 /**
@@ -269,10 +263,10 @@ function make_magazine_dashboard_page() {
 	$filter = ( isset( $_GET['filter'] ) ) ? sanitize_text_field( $_GET['filter'] ) : '';
 
 	// Check if we are filtering our results by post type.
-	if ( ! empty( $filter ) ) {
-		$post_types = $filter;
-	} else {
+	if ( empty( $filter ) || $filter == 'all' ) {
 		$post_types = array( 'projects', 'magazine', 'review', 'errata', 'volume' );
+	} else {
+		$post_types = $filter;
 	}
 
 	$args = array( 
@@ -280,30 +274,30 @@ function make_magazine_dashboard_page() {
 		'post_status'		=> make_post_statuses(),
 		'posts_per_page' 	=> 20,
 		'paged'				=> $paged,
-		's'					=> $s
+		's'					=> $s,
 	);
 	$query = new WP_Query( $args ); ?>
 	<div class="wrap">
 		<h1>Magazine Dashboard</h1>
 		<ul class="subsubsub">
-			<?php echo make_count_post_status( $query->found_posts ); ?>
+			<?php echo make_count_post_status(); ?>
 		</ul>
 		
 		<div class="tablenav top">
 
-			<div class="tablenav-pages one-page">
-				<span class="displaying-num"><?php echo $query->found_posts; ?></span>
+			<div class="tablenav-pages">
+				<span class="displaying-num"><?php echo $query->found_posts; ?> Items</span>
 				<?php echo make_get_pagination_link( $query->max_num_pages, $paged ); ?>
 			</div>
 			
 			<form class="" type="get">
+				<input type="hidden" name="post_type" value="volume" />
 				<input type="hidden" name="page" value="<?php echo sanitize_text_field( $_REQUEST['page'] ); ?>" />
-				<input type="hidden" name="post_type" value="mf_form" />
 				<?php //echo mf_restrict_listings_by_type( $type ); ?>
 				<?php //echo mf_generate_dropdown( 'category', $cat ); ?>
 				<?php //echo make_post_status_dropdown(); ?>
 				<label class="screen-reader-text" for="post-search-input">Search Applications:</label>
-				<input type="search" id="post-search-input" name="s" placeholder="<?php echo ! empty( $s ) ? esc_html( $s ) : ''; ?>" value="">
+				<input type="search" id="post-search-input" name="s" placeholder="Search..." value="<?php echo sanitize_text_field( $s ); ?>">
 				<input type="submit" name="" id="search-submit" class="button" value="Search Dashboard"></p>
 			</form>
 			
@@ -408,7 +402,25 @@ function make_magazine_dashboard_page() {
 			</tbody>
 			
 		</table>
-		
+		<div class="tablenav bottom">
+
+			<div class="tablenav-pages">
+				<span class="displaying-num"><?php echo $query->found_posts; ?> Items</span>
+				<?php echo make_get_pagination_link( $query->max_num_pages, $paged ); ?>
+			</div>
+			
+			<form class="" type="get">
+				<input type="hidden" name="page" value="<?php echo sanitize_text_field( $_REQUEST['page'] ); ?>" />
+				<input type="hidden" name="post_type" value="mf_form" />
+				<?php //echo mf_restrict_listings_by_type( $type ); ?>
+				<?php //echo mf_generate_dropdown( 'category', $cat ); ?>
+				<?php //echo make_post_status_dropdown(); ?>
+				<label class="screen-reader-text" for="post-search-input">Search Applications:</label>
+				<input type="search" id="post-search-input" name="s" placeholder="<?php echo ! empty( $s ) ? esc_html( $s ) : ''; ?>" value="">
+				<input type="submit" name="" id="search-submit" class="button" value="Search Dashboard"></p>
+			</form>
+			
+		</div>
 	</div>
 
 <?php
