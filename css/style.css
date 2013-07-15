@@ -8550,9 +8550,7 @@ textarea.radio-narrow,
 .footer-ad {
   padding: 30px 0;
 }
-.carousel-control {
-  top: 15px !important;
-}
+/* .carousel-control { top:15px !important; } */
 /*subscription page styles by Bill Olson */
 .main-sub-area .form-horizontal .control-label {
   width: 90px !important;
@@ -10465,6 +10463,70 @@ body.makercamp .black-bar .nav-inline li {
 body.makercamp #menu-maker-camp-nav {
   display: table;
   margin: 0 auto;
+}
+body.makercamp #menu-maker-camp-nav #menu-item-315883 {
+  position: relative;
+}
+body.makercamp #menu-maker-camp-nav #menu-item-315883:hover .sub-menu {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  border: 0px;
+  box-shadow: 0px;
+  left: -20px;
+  background-color: #00315d;
+  display: block;
+}
+body.makercamp #menu-maker-camp-nav #menu-item-315883:hover .sub-menu li a {
+  color: #acd3fc !important;
+}
+body.makercamp #menu-maker-camp-nav .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+body.makercamp #menu-maker-camp-nav .sub-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+body.makercamp #menu-maker-camp-nav .sub-menu .divider {
+  *width: 100%;
+  height: 1px;
+  margin: 9px 1px;
+  *margin: -5px 0 5px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #ffffff;
+}
+body.makercamp #menu-maker-camp-nav .sub-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 20px;
+  color: #333333;
+  white-space: nowrap;
 }
 body.makercamp #footer.white-bg {
   margin: 0;
