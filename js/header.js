@@ -30,6 +30,13 @@ jQuery( document ).ready( function( $ ) {
 
 	// Add our popdown slide effect yea?
 	$( '.make-popdown .popdown-btn' ).click( function() {
+
+		if ( $(this).hasClass('open') ) {
+			$(this).removeClass('open');
+		} else {
+			$(this).addClass('open');
+		}
+
 		$( '.make-popdown .container' ).slideToggle( 'fast' );
 	});
 
