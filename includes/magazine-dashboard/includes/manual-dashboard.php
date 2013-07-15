@@ -72,7 +72,6 @@ function make_post_status_dropdown() {
 	$output = '<select name="post_status" id="post_Status">';
 	$output .= '<option value="">Application Status</option>';
 
-	// var_dump($wp_post_statuses);
 	foreach ( $wp_post_statuses as $status => $obj) {
 		if ( $status != 'trash' && $status != 'publish' && $status != 'auto-draft' )
 			$output .= '<option value="' . $obj->name . '">' . $obj->label . '</option>';
