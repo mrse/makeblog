@@ -5567,6 +5567,7 @@ body {
 
   margin-top: 0;
   overflow-wrap: break-word;
+  padding-top: 0 !important;
 }
 body.single-slideshow {
   margin-top: 0px;
@@ -8580,7 +8581,7 @@ textarea.radio-narrow,
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
-  padding-top: 0px;
+  padding-top: 20px;
 }
 .category-top h1 {
   font-size: 38px;
@@ -9298,7 +9299,7 @@ ul#tabs .current > a:hover {
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
-  padding-top: 0px;
+  padding-top: 20px;
   border-bottom: 0px;
 }
 .single h1 {
@@ -10318,7 +10319,6 @@ body.camp a.button.block {
   margin-top: 0;
   text-align: center;
   float: none;
-  padding-top: 30px;
 }
 .camp .fix #header {
   background-image: none;
@@ -11230,7 +11230,7 @@ body.makercamp a.button.small-button {
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
-  padding-top: 0px;
+  padding-top: 20px;
   border-bottom: 0px;
 }
 .archive h1 {
