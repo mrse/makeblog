@@ -565,7 +565,7 @@ function make_new_gallery_shortcode($attr) {
 			$output .= '<div class="carousel-caption">';
 			$output .= '<h4>' . $attachment->post_title . '</h4>';
 			if (isset($attachment->post_excerpt)) {
-				$output .= '<p>' . $attachment->post_excerpt . '</p>';
+				$output .= Markdown( $attachment->post_excerpt );
 			}
 			$output .= '</div>';
 			

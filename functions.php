@@ -141,4 +141,8 @@ include_once dirname( __FILE__ ) . '/includes/google-maps.php';
 
 // 38. Content Manager
 include_once dirname( __FILE__ ) . '/includes/magazine-dashboard/magazine-dashboard.php';
+
+// 39. Newsletter Post Type
+include_once dirname(  __FILE__  ) . '/includes/post-types/newsletter.php';
+
 ?>
