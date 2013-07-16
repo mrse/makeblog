@@ -9340,6 +9340,9 @@ ul#tabs .current > a:hover {
 .single .post ol li {
   font-size: 18px;
 }
+.single .tag-weekend-projects {
+  margin-top: 10px;
+}
 .gsc-cursor-page {
   display: inline-block;
   padding: 2px 4px;
@@ -10310,7 +10313,6 @@ body.camp a.button.block {
   background-color: #fff !important;
   border-color: red !important;
   margin-top: 0 !important;
-  padding-top: 0 !important;
 }
 .camp #header h1 {
   margin-top: 0;
@@ -11570,7 +11572,7 @@ body.hiw .fix .header-wrap .container .row .span9 h2 span {
 body.hiw #header {
   background-image: none;
   border: none;
-  padding-top: 0;
+  padding-top: 45px;
 }
 body.hiw #header h1 {
   padding-bottom: 20px;
