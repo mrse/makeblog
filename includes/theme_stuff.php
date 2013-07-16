@@ -225,6 +225,15 @@ function make_enqueue_jquery() {
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
 
 
+function make_enqueue_resources_admin() {
+	$screen = get_current_screen();
+
+	if ( $screen->id == 'volume_page_manager' )
+		wp_enqueue_script( 'make-dashboard', get_stylesheet_directory_uri() . '/includes/magazine-dashboard/js/dashboard-scripts.js', array( 'jquery' ) );
+}
+add_action( 'admin_enqueue_scripts', 'make_enqueue_resources_admin' );
+
+
 /**
  * Catch a description for the OG protocol
  * 

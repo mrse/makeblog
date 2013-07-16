@@ -1,11 +1,29 @@
 <?php
 
+
+/**
+ * Centeralize all of our query variables into an easy to use array
+ * @return array
+ */
+function make_get_query_vars() {
+	$query_vars = array(
+		'paged' => ( isset( $_GET['paged'] ) ) ? absint( $_GET['paged'] ) : 1,
+		'search' => ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '',
+		'filter' => ( isset( $_GET['filter'] ) ) ? sanitize_text_field( $_GET['filter'] ) : '',
+		'volume' => ( isset( $_GET['volume'] ) ) ? sanitize_text_field( $_GET['volume'] ) : '',
+		'post_status' => ( isset( $_GET['post_status'] ) && $_GET['post_status'] != '' && $_GET['post_status'] != 'all' ) ? sanitize_text_field( $_GET['post_status'] ) : make_post_statuses(),
+		'posts_per_page' => ( isset( $_GET['posts_per_page'] ) ) ? absint( $_GET['posts_per_page'] ) : 20,
+	);
+
+	return $query_vars;
+}
+
+
 /**
  * Function to count the statuses of Maker Faire applications
  */
 function make_count_post_status() {
-	$s = ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '';
-	$filter = ( isset( $_GET['filter'] ) ) ? sanitize_text_field( $_GET['filter'] ) : '';
+	$query_vars = make_get_query_vars();
 	$results = array();
 	$output = '';
 
@@ -20,10 +38,10 @@ function make_count_post_status() {
 	foreach ( $post_type as $k => $type ) {
 		$args = array( 
 			'post_type'		 => ( $type == 'all' ) ? array( 'projects', 'magazine', 'review', 'errata', 'volume' ) : $type,
-			'post_status'	 => make_post_statuses(),
+			'post_status'	 => $query_vars['post_status'],
 			'posts_per_page' => 0,
 			'return_fields'	 => 'ids',
-			's'				 => $s,	
+			's'				 => $query_vars['serach'],	
 		);
 		$query = new WP_Query( $args );
 
@@ -42,7 +60,13 @@ function make_count_post_status() {
 		// Check the current results and apply our current class if we are currently filtering by that post type.
 		$class = ( ( $result['type_uri'] == $filter ) || $result['type_uri'] == 'all' && empty( $filter ) ) ? ' class="current"' : '';
 
-		$output .= ' | <li><a href="edit.php?post_type=volume&page=manager&filter=' . sanitize_text_field( $result['type_uri'] ) . '"' . $class . '>' . sanitize_text_field( $result['post_type'] ) . '</a><span class="count">(' . absint( $result['post_count'] ) . ')</span> </li>';
+		// Append other query variables in our filters if they are present
+		$query_vars = '';
+
+		if ( ! is_array( $status ) )
+			$query_vars .= '&post_status=' . $status;
+
+		$output .= ' | <li><a href="' . esc_url( 'edit.php?post_type=volume&page=manager&filter=' . sanitize_text_field( $result['type_uri'] ) ) . sanitize_text_field( $query_vars ) . '"' . $class . '>' . esc_html( $result['post_type'] ) . '</a><span class="count">(' . absint( $result['post_count'] ) . ')</span> </li>';
 	}
 
 	return substr( $output, 2 );
@@ -69,17 +93,62 @@ function make_get_pagination_link( $total, $paged ) {
 function make_post_status_dropdown() {
 	global $wp_post_statuses;
 
-	$output = '<select name="post_status" id="post_Status">';
-	$output .= '<option value="">Application Status</option>';
+	$query_vars = make_get_query_vars();
+
+	$output = '<select name="post_status" id="post_status">';
+	$output .= '<option value="all">Show All Statuses</option>';
 
 	foreach ( $wp_post_statuses as $status => $obj) {
 		if ( $status != 'trash' && $status != 'publish' && $status != 'auto-draft' )
-			$output .= '<option value="' . $obj->name . '">' . $obj->label . '</option>';
+			$output .= '<option value="' . esc_attr( $obj->name ) . '"' . selected( sanitize_text_field( $query_vars['post_status'] ), esc_attr( $obj->name ), false ) . '>' . esc_html( $obj->label ) . '</option>';
 	}
 
 	$output .= '</select>';
 
 	return $output;
+}
+
+
+/**
+ * Generates a dropdown of our volumes we can filter by
+ * @return html
+ */
+function make_volumes_dropdown() {
+
+	$query_vars = make_get_query_vars();
+
+	$pages = wp_dropdown_pages( array(
+		'post_type' => 'volume',
+		'selected'  => $query_vars['volume'],
+		'name'      => 'volume',
+		'show_option_none' => 'Select Volume',
+		'sort_column' => 'menu_order, post_title',
+		'echo' => false,
+	) );
+
+	if ( ! empty( $pages ) )
+		echo $pages;
+}
+
+
+/**
+ * Generates a dropdown of how many pages we want to display on each page
+ * @param  array $posts_per_page an array of integers to be outputted as options
+ * @return html
+ */
+function make_posts_per_page_dropdown( $posts_per_page ) {
+	$query_vars = make_get_query_vars();
+
+	$output = 'Posts Per Page <select name="posts_per_page" id="posts-per-page">';
+	$output .= '<option value="20">20</option>';
+
+	foreach ( $posts_per_page as $post_count ) {
+		$output .= '<option value="' . absint( $post_count ) . '"' . selected( absint( $query_vars['posts_per_page'] ), absint( $post_count ), false ) . '>' . absint( $post_count ) . '</option>';
+	}
+
+	$output .= '</select>';
+
+	echo $output;
 }
 
 
@@ -249,8 +318,9 @@ function make_convert_author_id( $author_id ) {
 
 	$user = get_userdata( absint( $author_id ) );
 
-	return '<a href="' . get_author_posts_url( absint( $author_id ) ) . '">' . sanitize_text_field( $user->display_name ) . '</a>';
+	return '<a href="' . get_author_posts_url( absint( $author_id ) ) . '">' . esc_html( $user->display_name ) . '</a>';
 }
+
 
 /**
  * Current Faire Page
@@ -261,25 +331,23 @@ function make_magazine_dashboard_page() {
 	if ( ! current_user_can( 'manage_options' ) )
 		wp_die( __( 'You do not have sufficient permissions to access this page.', 'make' ) );
 
-	// Set variable magix
-	$paged = ( isset( $_GET['paged'] ) ) ? absint( $_GET['paged'] ) : 1;
-	$post_status = ( isset( $_GET['post_status'] ) ) ? sanitize_text_field( $_GET['post_status'] ) : '';
-	$s = ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '';
-	$filter = ( isset( $_GET['filter'] ) ) ? sanitize_text_field( $_GET['filter'] ) : '';
+	// Get any query variables if set
+	$query_vars = make_get_query_vars();
 
 	// Check if we are filtering our results by post type.
-	if ( empty( $filter ) || $filter == 'all' ) {
+	if ( empty( $query_vars['filter'] ) || $query_vars['filter'] == 'all' ) {
 		$post_types = array( 'projects', 'magazine', 'review', 'errata', 'volume' );
 	} else {
-		$post_types = $filter;
+		$post_types = $query_vars['filter'];
 	}
 
 	$args = array( 
 		'post_type'		 => $post_types,
-		'post_status'	 => make_post_statuses(),
-		'posts_per_page' => 20,
-		'paged'			 => $paged,
-		's'				 => $s,
+		'post_status'	 => $query_vars['post_status'],
+		'posts_per_page' => $query_vars['posts_per_page'],
+		'paged'			 => $query_vars['paged'],
+		'post_parent'	 => $query_vars['volume'],
+		's'				 => $query_vars['search'],
 	);
 	$query = new WP_Query( $args ); ?>
 	<div class="wrap">
@@ -288,21 +356,28 @@ function make_magazine_dashboard_page() {
 			<?php echo make_count_post_status(); ?>
 		</ul>
 
-		<form action="" method="get" class="posts-filter"></form>	
+		<form method="get" class="posts-filter">
+			<input type="hidden" name="post_type" value="volume" />
+			<input type="hidden" name="page" value="<?php echo esc_attr( $_REQUEST['page'] ); ?>" />
+			<?php wp_nonce_field( 'dashboard-form-save', 'make-magazine-dashboard', false ); ?>
+			
 			<p class="search-box">
 				<label for="post-search-input" class="screen-reader-text">Search Dashboard</label>
-				<input type="search" id="post-search-input" name="s" value="<?php echo ( isset( $s ) ) ? $s : ''; ?>">
-				<input type="submit" name="" id="search-submit" class="button" value="Search Dashboard"></p>
+				<input type="search" id="post-search-input" name="s" value="<?php echo ( isset( $query_vars['search'] ) ) ? esc_attr( $query_vars['search'] ) : ''; ?>">
+				<input type="submit" name="" id="search-submit" class="button" value="Search Dashboard">
 			</p>
-			<input type="hidden" name="post_type" value="volume" />
-			<input type="hidden" name="page" value="<?php echo sanitize_text_field( $_REQUEST['page'] ); ?>" />
-			<?php wp_nonce_field( 'dashboard-form-save', 'make-magazine-dashboard' ); ?>
+			<p class="search-box page-count">
+				Current Page Count <span class="pc-number">0</span> | &nbsp;
+			</p>
 
 			<div class="tablenav top">
-				<?php //echo make_post_status_dropdown(); ?>
+				<?php echo make_post_status_dropdown(); ?>
+				<?php echo make_volumes_dropdown(); ?>
+				<?php echo make_posts_per_page_dropdown( array( 30, 40, 50, 60, 70, 80, 90, 100 ) ); ?>
+				<input type="submit" name="" id="filter-submit" class="button" value="Filter Dashboard">
 				<div class="tablenav-pages">
-					<span class="displaying-num"><?php echo $query->found_posts; ?> Items</span>
-					<?php echo make_get_pagination_link( $query->max_num_pages, $paged ); ?>
+					<span class="displaying-num"><?php echo absint( $query->found_posts ); ?> Items</span>
+					<?php echo make_get_pagination_link( $query->max_num_pages, $query_vars['paged'] ); ?>
 				</div>
 				
 			</div>
@@ -376,8 +451,8 @@ function make_magazine_dashboard_page() {
 									echo '<tr>';
 								}
 								echo '<td>' . $volume . '</td>';
-								echo '<td>' . $post->post_type . '</td>';
-								echo '<td>' . $post->post_status . '</td>';
+								echo '<td>' . get_post_type() . '</td>';
+								echo '<td>' . get_post_status() . '</td>';
 								echo '<td>' . $sections . '</td>';
 								echo '<td><strong><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">' . get_the_title() . '</a></strong>
 										<div class="row-actions">
@@ -387,8 +462,8 @@ function make_magazine_dashboard_page() {
 									 </td>';
 								echo '<td>' . make_convert_author_id( $post->post_author ) . '</td>';
 								echo '<td>' . make_convert_to_pretty_time( $post->post_date, true ) . '</td>';
-								echo '<td>' . make_convert_author_id( $meta['_ef_editorial_meta_number_pc'][0] ) . '</td>';
-								echo '<td>' . $meta['_ef_editorial_meta_paragraph_assignment'][0] . '</td>';
+								echo '<td class="ef_pc_count">' . absint( $meta['_ef_editorial_meta_number_pc'][0] ) . '</td>';
+								echo '<td>' . esc_html( $meta['_ef_editorial_meta_paragraph_assignment'][0] ) . '</td>';
 								echo '<td>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_1st-deadline'][0] ) . '</td>';
 								echo '<td>' . make_convert_author_id( $meta['_ef_editorial_meta_user_ed'][0] ) . '</td>';
 								echo '<td>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_ed-deadline'][0] ) . '</td>';
@@ -397,9 +472,9 @@ function make_magazine_dashboard_page() {
 								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_tr'][0] ) . '</td>';
 								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-video'][0] ) . '</td>';
 								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-photo'][0] ) . '</td>';
-								echo '<td>' . $meta['_ef_editorial_meta_number_manuscript-estimate'][0] . '</td>';
-								echo '<td>' . $meta['_ef_editorial_meta_checkbox_invoice-received'][0] . '</td>';
-								echo '<td>' . $meta['_ef_editorial_meta_number_wc'][0] . '</td>';
+								echo '<td>' . absint( $meta['_ef_editorial_meta_number_manuscript-estimate'][0] ) . '</td>';
+								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_invoice-received'][0] ) . '</td>';
+								echo '<td>' . absint( $meta['_ef_editorial_meta_number_wc'][0] ) . '</td>';
 								echo '</tr>';
 								$i++;
 							}
@@ -410,8 +485,8 @@ function make_magazine_dashboard_page() {
 			<div class="tablenav bottom">
 
 				<div class="tablenav-pages">
-					<span class="displaying-num"><?php echo $query->found_posts; ?> Items</span>
-					<?php echo make_get_pagination_link( $query->max_num_pages, $paged ); ?>
+					<span class="displaying-num"><?php echo absint( $query->found_posts ); ?> Items</span>
+					<?php echo make_get_pagination_link( $query->max_num_pages, $query_vars['paged'] ); ?>
 				</div>
 				
 			</div>
