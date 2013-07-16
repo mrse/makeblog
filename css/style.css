@@ -9340,6 +9340,9 @@ ul#tabs .current > a:hover {
 .single .post ol li {
   font-size: 18px;
 }
+.single .tag-weekend-projects {
+  margin-top: 10px;
+}
 .gsc-cursor-page {
   display: inline-block;
   padding: 2px 4px;
