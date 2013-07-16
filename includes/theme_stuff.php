@@ -1169,7 +1169,7 @@ function make_get_author( $post_id, $prefix = 'By' ) {
 
 	// We don't ever want to display an author for the videos post type.
 	if ( $post_type == 'video' )
-		return;
+		return false;
 
 	echo esc_attr( $prefix ) . ' ';
 
