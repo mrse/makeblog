@@ -504,12 +504,7 @@ function make_magazine_dashboard_page() {
 								$sections  = get_the_term_list( absint( $post->ID ), 'section' );
 								$post_type = ( get_post_type() == 'magazine' ) ? 'articles' : get_post_type();
 
-								// Add alternating stripes. Like a zebra.
-								// if ( $i % 2 != 0 ) {
-								// 	echo '<tr class="alternate">';
-								// } else {
-									echo '<tr>';
-								// }
+								echo '<tr>';
 								echo '<td>' . $volume . '</td>';
 								echo '<td>' . $post_type . '</td>';
 								echo '<td>' . get_post_status() . '</td>';
@@ -524,7 +519,7 @@ function make_magazine_dashboard_page() {
 								echo '<td>' . make_convert_to_pretty_time( $post->post_date, true ) . '</td>';
 								echo '<td class="ef_pc_count">' . make_get_integer( $meta['_ef_editorial_meta_number_pc'][0] ) . '</td>';
 								// echo '<td>' . esc_html( $meta['_ef_editorial_meta_paragraph_assignment'][0] ) . '</td>';
-								//echo '<td>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_1st-deadline'][0] ) . '</td>';
+								// echo '<td>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_1st-deadline'][0] ) . '</td>';
 								echo '<td>' . make_convert_author_id( $meta['_ef_editorial_meta_user_ed'][0] ) . '</td>';
 								echo '<td style="color:#ff0000;">' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_ed-deadline'][0] ) . '</td>';
 								echo '<td>' . make_convert_author_id( $meta['_ef_editorial_meta_user_ce'][0] ) . '</td>';

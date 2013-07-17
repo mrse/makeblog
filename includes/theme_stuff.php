@@ -225,6 +225,10 @@ function make_enqueue_jquery() {
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
 
 
+/**
+ * Adds scripts and styles to particular pages in the admin areas.
+ * @return void
+ */
 function make_enqueue_resources_admin() {
 	$screen = get_current_screen();
 

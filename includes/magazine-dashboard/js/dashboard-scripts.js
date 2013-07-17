@@ -11,11 +11,11 @@ jQuery( document ).ready( function( $ ) {
 	$( '.page-count .pc-number' ).text( pc );
 
 
-	// Sort the custom table
-	$.tablesorter.defaults.widgets = ['zebra']; 
+	// Sort the custom table and enable zebra stripes
+	$.tablesorter.defaults.widgets = ['zebra'];
 	$( 'table#magazine-dashboard' ).tablesorter({
 		headers: { // Disable sorting on these columns
-            0: { sorter: false }, 
+            0: { sorter: false },
             4: { sorter: false },
             5: { sorter: false },
             7: { sorter: false },
@@ -30,18 +30,7 @@ jQuery( document ).ready( function( $ ) {
             16: { sorter: false },
             17: { sorter: false },
             18: { sorter: false },
-            19: { sorter: false },
-        } 
+            19: { sorter: false }
+        }
 	});
-
-	// $('table#magazine-dashboard').bind("sortEnd",function() { 
- //        $('table#magazine-dashboard tr').each(function(e) {
- //        	console.log('TR');
- //        	$('this').hide();
- //        });
- //    }); 
-	
-	
-
-	console.log($( '#magazine-dashboard' ).length);
 });
