@@ -37,32 +37,7 @@
 	<body <?php body_class('hiw'); ?>>
 
 		<header>
-			<div class="navbar navbar-blue navbar-fixed-top">
-					<div class="navbar-inner">
-						<nav class="container">
-							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</a>
-							<a class="brand" href="http://makezine.com/">MAKE</a>
-							<div class="nav-collapse in collapse">
-								<?php wp_nav_menu( array(
-									'theme_location'  => 'topbar',
-									'menu'            => 'topbar', 
-									'container'       => false, 
-									'menu_class'      => 'nav clearfix',
-									'depth'           => 1 ) );
-								?>
-								<form action="http://makezine.com/search/" class="form pull-right navbar-search">
-									<input type="text" class="span2 search-query" name="q" placeholder="" />
-									<input type="submit" class="btn btn-primary" style="margin-top:0px;" value="Search" />
-								</form>
-							</div><!--/.nav-collapse -->
-						</nav>
-					</div>
-				</div>
-			</div>
+			<?php make_popdown_menu(); ?>
 		</header>
 
 		<div class="fix">
@@ -71,14 +46,14 @@
 					<div class="row">
 						<div class="span12">
 							<div class="clear"></div>
-							<h1><img style="margin:0 auto" src="http://makezineblog.files.wordpress.com/2013/06/hiw_eventbrite_webheader_ny13.jpg?w=940" alt="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" title="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" /></a></h1>
+							<h1><img style="margin:0 auto" src="http://makezineblog.files.wordpress.com/2013/07/hiw_eventbrite_webheader_ny13_-register-today-199.jpg?w=940" alt="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" title="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" /></a></h1>
 						</div> <!-- END span12 -->
 					</div> <!-- END row -->	
 				</div> <!-- END container -->		
 				</div> <!-- END header -->
 					<div class="container">	
 							<div class="header-wrap">
-								<h2>Thanks to all our great sponsors, presenters, and attendees for making the 2013 Hardware Innovation Workshop a success!</h2> 
+								<h2>Miss the May 2013 event in San Mateo? Don't worry, we are coming to New York for a one-day event on September 18th, 2013! </h2> 
 								<a href="http://www.foliomag.com/2013/make-magazine-s-hardware-innovation-workshop" target="_blank"><img style="pull-right" src="http://makezineblog.files.wordpress.com/2013/03/pastedgraphic-1.jpg" alt="2012 Event received FAME award for Best First Time Event"></a>
 						</div> <!-- END header-wrap -->
 				</div> <!-- END container -->
