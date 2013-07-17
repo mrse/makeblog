@@ -9,7 +9,7 @@ function newsletter_init() {
 		'supports'				=> array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'trackbacks', 'comments', 'revisions', 'page-attributes' ),
 		'has_archive'			=> true,
 		'query_var'				=> true,
-		'rewrite'				=> true,
+		'rewrite'				=> array( 'slug' => 'newsletters' ),
 		'taxonomies'			=> array( 'category', 'post_tag', 'maker' ),
 		'labels'				=> array(
 			'name'					=> __( 'Newsletters', 'makeblog' ),
