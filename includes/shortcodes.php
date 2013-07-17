@@ -235,7 +235,7 @@ function make_volume_blurb() {
 
 			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/Make_Volume_33_p/mmv33.htm">Maker Shed</a></p>
 
-			<p><a class="btn btn-primary" href="http://www.makershed.com/Make_Volume_33_p/mmv33.htm">Buy now!</a></p>
+			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=9781449327651-P">Buy now!</a></p>
 
 		</div>';
 	return $output;
@@ -409,7 +409,7 @@ function promo_vol_34() {
 
 			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/MAKE_Volume_34_p/9781449327668.htm">Maker Shed</a></p>
 
-			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=MMV34">Buy now!</a></p>
+			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=9781449327668-P">Buy now!</a></p>
 
 		</div>';
 	return $output;
