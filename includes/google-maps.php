@@ -16,7 +16,7 @@
 	 */
 	function make_makercamp_map_shortcode( $atts, $content ) {
 
-		$output = '<iframe src="http://mapsengine.google.com/map/u/0/view?mid=zNd3spMv9Udc.kAZJyZ7T6RB8" width="99.5%" height="464"></iframe>';
+		$output = '<iframe src="http://mapsengine.google.com/map/u/0/embed?mid=z6jknjwOuQEA.kwp_h1l1fm4s" width="99.5%" height="464"></iframe>';
 
 		return $output;
 	}
@@ -50,3 +50,27 @@
 		$map_data = get_post_meta( $post->ID, 'makercamp-maps-data', false );
 		echo '<textarea name="makercamp-maps-data" id="makercamp-map-data" style="width:100%; height:90px;">' . esc_attr( $map_data[0] ) . '</textarea>';
 	}
+
+
+	/**
+	* Hook and save our custom meta box on post save
+	* @param  String $post_id Contains the current posts ID
+	* @return Void
+	*/
+	function make_map_data_save( $post_id ) {
+		// Bail if we're doing an auto save
+		if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	 
+		// if our nonce isn't there, or we can't verify it, bail
+		if( !isset( $_POST['makercamp-nonce'] ) || !wp_verify_nonce( $_POST['makercamp-nonce'], basename( __FILE__ ) ) ) return;
+	 
+		// if our current user can't edit this post, bail
+		if( !current_user_can( 'edit_post', $post_id ) ) return; 
+
+		// Make sure your data is set before trying to save it
+		if( isset( $_POST['makercamp-maps-data'] ) )
+	  		update_post_meta( $post_id, 'makercamp-maps-data', sanitize_text_field( $_POST['makercamp-maps-data'] ) );
+	   
+	}
+	add_action( 'save_post', 'make_map_data_save' );
+	

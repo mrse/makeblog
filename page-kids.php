@@ -61,7 +61,7 @@
 
 											<?php endwhile; wp_reset_postdata(); ?>
 
-											<p><a href="http://blog.makezine.com/category/kids/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
+											<p><a href="<?php echo home_url(); ?>/category/kids/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
 
 										</div>
 
@@ -148,7 +148,7 @@
 
 									<ul>
 						
-										<?php echo make_category_li(); ?>
+										<?php echo make_category_li( 'post' ); ?>
 										
 									</ul>
 

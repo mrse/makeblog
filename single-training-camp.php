@@ -1,13 +1,15 @@
 <?php
 /**
- * Single Page Template
+ * Template Name: Single Camp Page Template
  *
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
- * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * @author     Bill Olson <bolson@makermedia.com>
  * 
  */
-make_get_header() ?>
+?>
+
+<?php get_header('camp'); ?>
 		
 	<div class="single">
 	
@@ -24,39 +26,19 @@ make_get_header() ?>
 						<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 						
 					</div>
-					
-					<ul class="projects-meta">
-						<li>
-							By <?php 
-							if( function_exists( 'coauthors_posts_links' ) ) {	
-								coauthors_posts_links(); 
-							} else { 
-								the_author_posts_link(); 
-							} ?>
-						</li>
-						<li>
-							Posted <span class="blue"><?php the_date(); ?></span>
-						</li>
-						<li>
-							Category <?php the_category(', '); ?>
-						</li>
-						<li>
-							Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a>
-						</li>
-					</ul>
-		
+					<hr>
 				</div>
 			
 			</div>
 									
 			<div class="row">
 			
-				<div class="span8">
+				<div class="span12">
 				
 					<article <?php post_class(); ?>>
 
-						<?php the_content(); ?>
-					
+						<?php the_content(); ?>		
+
 					</article>
 					
 					<?php endwhile; ?>
@@ -72,16 +54,12 @@ make_get_header() ?>
 						<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 					
 					<?php endif; ?>
-				</div>
-				
-				
-				<?php get_sidebar(); ?>
-					
-					
-			</div>
+				</div> <!-- END span12 -->
+													
+			</div> <!-- END row -->
 
-		</div>
+		</div> <!-- END container -->
 
-	</div>
+	</div> <!-- END single -->
 
-<?php get_footer(); ?>
+<?php get_footer('camp'); ?>

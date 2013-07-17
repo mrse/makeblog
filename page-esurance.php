@@ -71,7 +71,8 @@ make_get_header() ?>
 					
 					<div class="tab-pane" id="entries">
 					
-						<iframe src="http://app.wizehive.com/voting/makermedia2013" style="width:940px; height: 1800px;" scrolling="auto" frameborder="0"></iframe>						<script src="http://app.wizehive.com/js/portaliframe.js" type="text/javascript"></script><script type="text/javascript">displayPortal('makermedia2013');</script>
+						<iframe id="wizehiveportal" scrolling="auto" frameborder="0" width="940px" height="1800px"></iframe>
+						<script src="http://app.wizehive.com/js/portaliframe.js" type="text/javascript"></script><script type="text/javascript">displayPortal('makermedia2013');</script>
 						<p><a href="http://www.wizehive.com/photo-contest-software" target="_blank">Photo Contest Software</a> provided by WizeHive</p>
 						
 					</div>
@@ -207,7 +208,23 @@ make_get_header() ?>
 	// Javascript to enable tabs in Bootstrap via IDs in the URL
 	jQuery(document).ready(function() {
 		var activeTab = jQuery('[href=' + location.hash + ']');
+
+		// Enable our Bootstrap Tab we
 		activeTab && activeTab.tab('show');
+
+		// Update the URL when clicking any of our tabs
+		jQuery('a[data-toggle="tab"]').click( function(e) {
+	    	history.pushState(null, null, jQuery(this).attr('href') );
+	    });
+
+	});
+
+	// Stop the page from jumping.. Yes there's a flicker but it works for now.
+	jQuery(window).load(function() {
+		var activeTab = jQuery('[href=' + location.hash + ']');
+		if(activeTab.length === 1) {
+			jQuery(window).scrollTop(0);
+		}
 	});
 
 </script>

@@ -33,7 +33,7 @@
 	</head>
 	<body <?php body_class( 'makercamp' ); ?>>
 		<header>
-			<div class="navbar navbar-blue navbar-fixed-top">
+			<div class="navbar navbar-blue navbar-fixed-top hidden-phone">
 					<div class="navbar-inner">
 						<nav class="container">
 							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -67,9 +67,32 @@
 						wp_nav_menu( array(
 							'theme_location' => 'mc-header-menu',
 							'container' => '',
-							'menu_class' => 'nav nav-inline pull-left',
+							'menu_class' => 'nav nav-inline',
 						) );
 					?>
+				</div>
+			</div>
+
+			<div class="navbar black-bar visible-phone">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</a>
+						<a class="brand" href="http://makezine.com/maker-camp">Menu</a>
+						<div class="nav-collapse in collapse">
+							<?php
+								// all Navigational items are controlled in Appearance > Menus : Maker Camp Nav
+								wp_nav_menu( array(
+									'theme_location' => 'mc-header-menu',
+									'container' => '',
+									'menu_class' => 'nav nav-inline',
+								) );
+							?>
+						</div>
+					</div>
 				</div>
 			</div>
 		</header>

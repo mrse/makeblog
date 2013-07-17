@@ -182,7 +182,7 @@ Template Name: Home Page
 
 					<div class="span4 posts">
 
-						<h3><a href="http://blog.makezine.com">Blog Feed</a></h3>	
+						<h3><a href="http://makezine.com/blog/">Blog Feed</a></h3>	
 
 						<?php 
 							$args = array(
@@ -220,7 +220,9 @@ Template Name: Home Page
 						<?php endwhile; wp_reset_postdata(); ?>
 
 						<p><a href="http://makezine.com/blog/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
-
+						<div class="home-promo-rtmfc">							
+							<a href="http://makezine.com/road-to-maker-faire-challenge/"><img src="http://makezineblog.files.wordpress.com/2013/06/300x180-badge_vs3-1.jpg" alt="Road to Maker Faire Challenge Contest" /></a>
+						</div>
 					</div>
 					<!--<div class="shadow"></div>-->
 
@@ -249,16 +251,17 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3><a class="red" href="http://blog.makezine.com/tag/diy-projects/">New Projects</a></h3>
+								<h3><a class="red" href="http://makezine.com/tag/diy-projects/">New Projects</a></h3>
 
 								<div class="grid-box boxy">
 
 									<?php
 
 										$args = array(
-											'tag__in' => 70890180,
+											// 'tag__in' => 70890180,
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
+											'post_type' => 'projects',
 										);
 										
 										$proj_query = new WP_Query( $args );
@@ -314,7 +317,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3 class="red"><a href="http://blog.makezine.com/?cat=296748" class="red">Meet the Makers</a></h3>
+								<h3 class="red"><a href="http://makezine.com/category/makers/" class="red">Meet the Makers</a></h3>
 
 								<div class="grid-box boxy">
 
@@ -350,7 +353,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3 class="red"><a href="http://blog.makezine.com/tag/maker-faire/" class="red">Maker Faire News</a></h3>
+								<h3 class="red"><a href="http://makezine.com/tag/maker-faire/" class="red">Maker Faire News</a></h3>
 
 								<div class="grid-box boxy">
 
@@ -388,7 +391,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3 class="red"><a href="http://blog.makezine.com/tag/component-of-the-month/" class="red">Skill Builder</a></h3>
+								<h3 class="red"><a href="http://makezine.com/tag/component-of-the-month/" class="red">Skill Builder</a></h3>
 
 								<div class="grid-box boxy">
 
@@ -422,7 +425,8 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3 class="red"><a href="http://blog.makezine.com/page-2/" class="red">Make: Page 2</a></h3>
+
+								<h3 class="red"><a href="http://makezine.com/page-2/" class="red">Make: Page 2</a></h3>
 
 								<div class="grid-box boxy">
 
@@ -447,6 +451,13 @@ Template Name: Home Page
 
 							</div>
 
+						</div>
+
+						<div class="row">
+							<div class="span8 home-sponsor-ad">
+								<a href="http://pubads.g.doubleclick.net/gampad/clk?id=40516618&amp;iu=/11548178/Makezine">
+								<img src="http://makezineblog.files.wordpress.com/2013/06/rswp_homepage_nav_button.png" alt=""></a>
+							</div>
 						</div>
 						
 						<div id="myCarousel" class="carousel slide">

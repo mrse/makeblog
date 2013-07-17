@@ -650,4 +650,27 @@
       text-decoration:underline !important
     }
   }
+  .navbar-inner {
+    #gradient > .vertical(@navbarBlueBackgroundHighlight, @navbarBlueBackground);
+    border-color: @navbarBlueBorder;
+    .border-radius(0px);
+    border:none;
+  }
+  .brand {
+    text-shadow:0 0 0 transparent;
+    color:@red !important;
+    &:hover { text-decoration:none !important; }
+  }
+  .nav-collapse {
+    background: transparent;
+    .nav > li > a, .dropdown-menu a {
+      text-shadow:0 0 0 transparent;
+      color:#fff !important;
+      &:hover { text-decoration:none !important; }
+    }
+  }
+  .btn-navbar {
+    .buttonBackground(darken(@navbarBlueBackgroundHighlight, 5%), darken(@navbarBlueBackground, 5%));
+  }
 }
+.navbar.black-bar { background:transparent; padding:0; }

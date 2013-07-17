@@ -378,11 +378,11 @@ add_shortcode( 'make_rpi', 'make_rpi' );
 
 function make_rtm() {
 	$output = '<div class="alert alert-info">
-		<a href="http://pubads.g.doubleclick.net/gampad/clk?id=29978218&amp;iu=/11548178/Makezine">
-			<img src="http://makezineblog.files.wordpress.com/2013/03/rtmfc_620x120.jpg" alt="RTMFC_620x120" width="620" height="120" style="margin-bottom:10px;" class="alignnone size-full wp-image-292301" />
+		<a href="http://pubads.g.doubleclick.net/gampad/clk?id=40563538&iu=/11548178/Makezine">
+			<img src="http://makezineblog.files.wordpress.com/2013/07/rtmfc_esurance_boilerplate.png?w=620" alt="RTMFC_620x120" width="620" height="120" style="margin-bottom:10px;" class="alignnone size-full wp-image-292301" />
 		</a>
-		<p>The <a href="http://pubads.g.doubleclick.net/gampad/clk?id=29978218&amp;iu=/11548178/Makezine">Road to Maker Faire Challenge</a> will award $2,500 to one winner to bring his or her project to Maker Faire Bay Area on May 18-19 in San Mateo, CA. Use the funding for materials, transport, or anything else you might need to get to Maker Faire. Applications are due by 11:59 PM PDT on April 8th, 2013.</p>
-		<p><a href="http://pubads.g.doubleclick.net/gampad/clk?id=29978218&amp;iu=/11548178/Makezine" class="btn btn-primary">Enter Now!</a></p>
+		<p>The <a href="http://pubads.g.doubleclick.net/gampad/clk?id=40563538&iu=/11548178/Makezine">Road to Maker Faire Challenge</a> will award $2,500 to one winner to bring his or her project to World Maker Faire on Sep. 21 & 22, 2013 in New York. Use the funding for materials, transport, or anything else you might need to get to Maker Faire. Applications are due by 11:59pm PT on August 5, 2013.</p>
+		<p><a href="http://pubads.g.doubleclick.net/gampad/clk?id=40563538&iu=/11548178/Makezine" class="btn btn-primary">Enter Now!</a></p>
 		</div>';
 	return $output;
 }
@@ -480,105 +480,97 @@ add_shortcode( 'modal', 'make_modal_builder' );
 function make_makercamp_register_summer_program_gf() {
 	$output = '<script type="text/javascript">var submitted=false;</script>';
 	$output = '<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){window.location="' . home_url() . '/maker-camp/thank-you/";}"></iframe>
-     <form action="https://docs.google.com/spreadsheet/formResponse?formkey=dGJINmxpaVdpWEk2c0pBY1JuNTY5RlE6MQ" method="post" target="_blank" onsubmit="submitted=true;">
-        <br>
-        <div class="errorbox-good">
-           <div class="ss-item ss-item-required ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_9">Program Type <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.9.single" value="" class="ss-q-short" id="entry_9">
-              </div>
-           </div>
-        </div>
-        <br>
-        <div class="errorbox-good">
-           <div class="ss-item ss-item-required ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_0">Program Name <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.0.single" value="" class="ss-q-short" id="entry_0">
-              </div>
-           </div>
-        </div>
-        <br>
-        <div class="errorbox-good">
-           <div class="ss-item ss-item-required ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_10">Organization Name <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.10.single" value="" class="ss-q-short" id="entry_10">
-              </div>
-           </div>
-        </div>
-        <br>
-        <div class="errorbox-good">
-           <div class="ss-item ss-item-required ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_11">Program Description (25 words or less)<span class="ss-required-asterisk">*</span></label>
-                 <textarea type="text" name="entry.11.single" value="" class="ss-q-short" id="entry_11" rows="4"></textarea>
-                 <div style="clear:both;"></div>
-              </div>
-           </div>
-        </div>
-        <br> 
-        <div class="errorbox-good">
-           <div class="ss-item ss-item-required ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_1">Program Google+ Link </label> <input type="text" name="entry.1.single" value="" class="ss-q-short" id="entry_1">
-              </div>
-           </div>
-        </div>
-        <br>
-        <div class="errorbox-good">
-           <div class="ss-item ss-item-required ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_5">Contact Name <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.5.single" value="" class="ss-q-short" id="entry_5">
-              </div>
-           </div>
-        </div>
-        <br>
-        <div class="errorbox-good">
-           <div class="ss-item ss-item-required ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_7">Email Address <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.7.single" value="" class="ss-q-short" id="entry_7">
-              </div>
-           </div>
-        </div>
-        <br>
-        <div class="errorbox-good">
-           <div class="ss-item ss-item-required ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_2">City <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.2.single" value="" class="ss-q-short" id="entry_2">
-              </div>
-           </div>
-        </div>
-        <br>
-        <div class="errorbox-good">
-           <div class="ss-item ss-item-required ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_3">State <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.3.single" value="" class="ss-q-short" id="entry_3">
-              </div>
-           </div>
-        </div>
-        <br>
-        <div class="errorbox-good">
-           <div class="ss-item ss-item-required ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_4">Zipcode <span class="ss-required-asterisk">*</span></label> <input type="text" name="entry.4.single" value="" class="ss-q-short" id="entry_4">
-              </div>
-           </div>
-        </div>
-        <br>
-        <div class="errorbox-good">
-           <div class="ss-item ss-text">
-              <div class="ss-form-entry">
-                 <label class="ss-q-title" for="entry_6">Phone</label> <input type="text" name="entry.6.single" value="" class="ss-q-short" id="entry_6">
-              </div>
-           </div>
-        </div>
-        <br>
-        <input type="hidden" name="pageNumber" value="0"> <input type="hidden" name="backupCache" value="">
-        <div class="ss-item ss-navigate">
-           <div class="ss-form-entry">
-              <input class="button" type="submit" name="Submit" value="Register Your Program">
-           </div>
-        </div>
-     </form>
+ <form action="https://docs.google.com/spreadsheet/formResponse?formkey=dGJINmxpaVdpWEk2c0pBY1JuNTY5RlE6MQ" method="post" target="_blank" onsubmit="submitted=true;">
+    <br>
+    <div class="errorbox-good">
+       <div class="ss-item ss-item-required ss-text">
+          <div class="ss-form-entry">
+             <label class="ss-q-title" for="entry_0">Program Name</label> <input type="text" name="entry.0.single" value="" class="ss-q-short" id="entry_0">
+          </div>
+       </div>
+    </div>
+    <br>
+    <div class="errorbox-good">
+       <div class="ss-item ss-item-required ss-text">
+          <div class="ss-form-entry">
+             <label class="ss-q-title" for="entry_10">Organization Name</label> <input type="text" name="entry.10.single" value="" class="ss-q-short" id="entry_10">
+          </div>
+       </div>
+    </div>
+    <br>
+    <div class="errorbox-good">
+       <div class="ss-item ss-item-required ss-text">
+          <div class="ss-form-entry">
+             <label class="ss-q-title" for="entry_11">Program Description (25 words or less)</label>
+             <textarea type="text" name="entry.11.single" value="" class="ss-q-short" id="entry_11" rows="4"></textarea>
+             <div style="clear:both;"></div>
+          </div>
+       </div>
+    </div>
+    <br> 
+    <div class="errorbox-good">
+       <div class="ss-item ss-item-required ss-text">
+          <div class="ss-form-entry">
+             <label class="ss-q-title" for="entry_1">Program Google+ Link<span class="ss-required-asterisk"> (optional)</span></label> <input type="text" name="entry.1.single" value="" class="ss-q-short" id="entry_1">
+          </div>
+       </div>
+    </div>
+    <br>
+    <div class="errorbox-good">
+       <div class="ss-item ss-item-required ss-text">
+          <div class="ss-form-entry">
+             <label class="ss-q-title" for="entry_5">Contact Name</label> <input type="text" name="entry.5.single" value="" class="ss-q-short" id="entry_5">
+          </div>
+       </div>
+    </div>
+    <br>
+    <div class="errorbox-good">
+       <div class="ss-item ss-item-required ss-text">
+          <div class="ss-form-entry">
+             <label class="ss-q-title" for="entry_7">Email Address</label> <input type="text" name="entry.7.single" value="" class="ss-q-short" id="entry_7">
+          </div>
+       </div>
+    </div>
+    <br>
+    <div class="errorbox-good">
+       <div class="ss-item ss-item-required ss-text">
+          <div class="ss-form-entry">
+             <label class="ss-q-title" for="entry_2">City <span class="ss-required-asterisk"></span></label><input type="text" name="entry.2.single" value="" class="ss-q-short" id="entry_2">
+          </div>
+       </div>
+    </div>
+    <br>
+    <div class="errorbox-good">
+       <div class="ss-item ss-item-required ss-text">
+          <div class="ss-form-entry">
+             <label class="ss-q-title" for="entry_3">State <span class="ss-required-asterisk"></span></label> <input type="text" name="entry.3.single" value="" class="ss-q-short" id="entry_3">
+          </div>
+       </div>
+    </div>
+    <br>
+    <div class="errorbox-good">
+       <div class="ss-item ss-item-required ss-text">
+          <div class="ss-form-entry">
+             <label class="ss-q-title" for="entry_4">Zipcode <span class="ss-required-asterisk"></span></label> <input type="text" name="entry.4.single" value="" class="ss-q-short" id="entry_4">
+          </div>
+       </div>
+    </div>
+    <br>
+    <div class="errorbox-good">
+       <div class="ss-item ss-text">
+          <div class="ss-form-entry">
+             <label class="ss-q-title" for="entry_6">Phone <span class="ss-required-asterisk">(optional)</span></label> <input type="text" name="entry.6.single" value="" class="ss-q-short" id="entry_6">
+          </div>
+       </div>
+    </div>
+    <br>
+    <input type="hidden" name="pageNumber" value="0"> <input type="hidden" name="backupCache" value="">
+    <div class="ss-item ss-navigate">
+       <div class="ss-form-entry">
+          <input class="button" type="submit" name="Submit" value="Register Your Program">
+       </div>
+    </div>
+</form>
      <script type="text/javascript">
         (function() {
         var divs = document.getElementById(\'ss-form\').getElementsByTagName(\'div\');
@@ -635,35 +627,92 @@ add_shortcode( 'maker_camp_sign_up', 'maker_camp_registration' );
 
 
 /**
- * Adds a campaign monitor form to the post content
+ * * Adds a campaign monitor form to the post content
  * @param  Array  $atts    The array of attributes passed through the shortcode
  * @param  String $content The string of content wrapped inside the shortcode
+ * @param  Shortcode attributes:
+ *         url           Insert the full URL as per the Campaign Monitor source code (IE http://newsletter.makezine.com/t/r/s/jkdduth/)
+ *         class         Insert any classes you wish to enter. Separate each class with spaces. EG button btn-primary
+ *         id            Insert any ID you want to use. By default this is set to 'subForm'.
+ *         title         Want to display a title? Enter one then! :)
+ *         name_id       This field will allow you to customize the ID field in the name and label tags for the name fields. Defaults to 'name'
+ *         email_id      This field will allow you to customize the ID field in the name and label tags for the email fields.
+ *         name_class    Sometime we want to add classes to the input fields. Use this attribute
+ *         email_class   As with the name_class above, apply custom classes to the email input field.
+ *         name          You can customize the default "Name" text in label with this.
+ *         email         You can customize the default "Email" text in label with this.
+ *         submit_class  Add a custom class to the submit button
+ *         submit        Change the default text of the submit button
+ *
+ * 		   EG of all fields in use [make-compagin-monitor url="http://newsletter.makezine.com/t/r/s/jkdduth/" class="my-form-class" id="my-form-id" title="My CM Title" name_id="name" email_id="jkdduth-jkdduth" name_class="input-class" email_class="input-class" name="Your Name" email="Your Email" submit_class="btn btn-primary" submit="Submit Your Application"]
  * @return String
  */
 function make_campaign_monitor_form( $atts, $content = null ) {
 	extract( shortcode_atts( array(
-		'url' 		  => '',
-		'class' 	  => '',
-		'submit_text' => 'Subscribe',
+		'url' 		   => '',
+		'class' 	   => '',
+		'id'		   => 'subForm',
+		'title'        => '',
+		'name_id'	   => 'name',
+		'email_id'	   => '',
+		'name_class'   => '',
+		'email_class'  => '',
+		'name'		   => 'Name',
+		'email'		   => 'Email',
+		'submit_class' => '',
+		'submit'       => 'Subscribe',
 	), $atts ) );
 
 	if ( ! empty( $class ) ) {
-		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="subForm" class="' . esc_attr( $class ) . '">';
+		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="' . esc_attr( $id ) . '" class="' . esc_attr( $class ) . '">';
 	} else {
-		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="subForm">';
+		$output .= '<form action="' . esc_url( $url ) . '" method="post" id="' . esc_attr( $id ) . '">';
 	}
-		$output .=	'<div>
-			<label for="name">Name:</label><input type="text" name="cm-name" id="name" /><br />
-			<label for="jkdduth-jkdduth">Email:</label><input type="text" name="cm-jkdduth-jkdduth" id="jkdduth-jkdduth" /><br />
+		$output .=	'<fieldset>';
 
-			<input type="submit" value="' . esc_attr( $submit_text ) . '" />
+			// Add a title to the CM form
+			if ( ! empty( $title ) )
+				$output .= '<legend>' . esc_attr( $title ) . '</legend>';
+
+			// Start our Name label and input fields
+			$output .= '<div class="clearfix">
+				<label for="' . esc_attr( $name_id ) . '">' . esc_attr( $name ) . ':</label>
+				<div class="input">
+					<input type="text" name="cm-' . esc_attr( $name_id ) . '" id="' . esc_attr( $name_id ) . '"';
+
+					// Add a class to the name field if needed
+					if ( ! empty( $name_class ) )
+						$output .= ' ' . esc_attr( $name_class );
+
+					$output .= ' />';
+				$output .= '</div>
+			</div>';
+
+			// Start our Email label and input fields
+			$output .= '<div class="clearfix">
+				<label for="' . esc_attr( $email_id ) . '">' . esc_attr( $email ) . ':</label>
+				<div class="input">
+					<input type="text" name="cm-' . esc_attr( $email_id ) . '" id="' . esc_attr( $email_id ) . '"';
+
+					// Add a class to the email field if needed
+					if ( ! empty( $email_class ) )
+						$output .= ' ' . esc_attr( $email_class );
+
+					$output .= ' />';
+				$output .= '</div>
+			</div>
+		</fieldset>
+		<div class="actions">
+			<input type="submit" value="' . esc_attr( $submit ) . '" ';
+
+				// Add a class to the submit field if needed
+				if ( ! empty( $submit_class ) )
+					$output .= 'class="' . esc_attr( $submit_class ) . '" ';
+
+			$output .= '/>
 		</div>
 	</form>';
 
 	return $output;
 }
 add_shortcode( 'make-compagin-monitor', 'make_campaign_monitor_form' );
-
-
-
-
