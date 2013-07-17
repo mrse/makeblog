@@ -11,7 +11,7 @@
 				<div class="span3 sidebar-left">
 					<ul class="left-nav">
 						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/">Home</a></li>
-						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/research/">Maker Market Research</a></li>
+						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/research/">Maker Market ResearcH</a></li>
 						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/press/">Press</a></li>
 						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/contact/">Contact</a></li>
 						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/overview/">2013 Hardware Innovation Workshop</a></li>
