@@ -11,6 +11,10 @@
 				<div class="span3 sidebar-left">
 					<ul class="left-nav">
 						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/">Home</a></li>
+						<li><a href="http://makezine.com/hardware-innovation-workshop/2013-new-york-event/">2013 New York Event</a></li>
+							<div style="padding-left:15px;">
+								<li><a href="http://makezine.com/hardware-innovation-workshop/2013-new-york-event/tickets/">Tickets</a></li>
+                        	</div>  
 						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/research/">Maker Market Research</a></li>
 						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/press/">Press</a></li>
 						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/contact/">Contact</a></li>
