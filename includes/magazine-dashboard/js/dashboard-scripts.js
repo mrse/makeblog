@@ -9,4 +9,39 @@ jQuery( document ).ready( function( $ ) {
 
 	// Append our page count to the Page Count area :)
 	$( '.page-count .pc-number' ).text( pc );
+
+
+	// Sort the custom table
+	$.tablesorter.defaults.widgets = ['zebra']; 
+	$( 'table#magazine-dashboard' ).tablesorter({
+		headers: { // Disable sorting on these columns
+            0: { sorter: false }, 
+            4: { sorter: false },
+            5: { sorter: false },
+            7: { sorter: false },
+            8: { sorter: false },
+            9: { sorter: false },
+            10: { sorter: false },
+            11: { sorter: false },
+            12: { sorter: false },
+            13: { sorter: false },
+            14: { sorter: false },
+            15: { sorter: false },
+            16: { sorter: false },
+            17: { sorter: false },
+            18: { sorter: false },
+            19: { sorter: false },
+        } 
+	});
+
+	// $('table#magazine-dashboard').bind("sortEnd",function() { 
+ //        $('table#magazine-dashboard tr').each(function(e) {
+ //        	console.log('TR');
+ //        	$('this').hide();
+ //        });
+ //    }); 
+	
+	
+
+	console.log($( '#magazine-dashboard' ).length);
 });

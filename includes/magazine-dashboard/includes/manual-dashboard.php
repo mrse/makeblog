@@ -10,8 +10,9 @@ function make_get_query_vars() {
 		'paged' => ( isset( $_GET['paged'] ) ) ? absint( $_GET['paged'] ) : 1,
 		'search' => ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '',
 		'filter' => ( isset( $_GET['filter'] ) ) ? sanitize_text_field( $_GET['filter'] ) : '',
-		'volume' => ( isset( $_GET['volume'] ) ) ? sanitize_text_field( $_GET['volume'] ) : '',
+		'volume' => ( isset( $_GET['volume'] ) && $_GET['volume'] != 'all' ) ? sanitize_text_field( $_GET['volume'] ) : '',
 		'post_status' => ( isset( $_GET['post_status'] ) && $_GET['post_status'] != '' && $_GET['post_status'] != 'all' ) ? sanitize_text_field( $_GET['post_status'] ) : make_post_statuses(),
+		'section' => ( isset( $_GET['section'] ) && $_GET['section'] != 'all' ) ? sanitize_text_field( $_GET['section'] ) : '',
 		'posts_per_page' => ( isset( $_GET['posts_per_page'] ) ) ? absint( $_GET['posts_per_page'] ) : 20,
 	);
 
@@ -30,7 +31,7 @@ function make_count_post_status() {
 	$post_type = array(
 		'All'	   => 'all',
 		'Projects' => 'projects', 
-		'Magazine' => 'magazine', 
+		'Articles' => 'magazine', 
 		'Reviews'  => 'review', 
 		'Errata'   => 'errata', 
 		'Volume'   => 'volume',
@@ -39,6 +40,8 @@ function make_count_post_status() {
 		$args = array( 
 			'post_type'		 => ( $type == 'all' ) ? array( 'projects', 'magazine', 'review', 'errata', 'volume' ) : $type,
 			'post_status'	 => $query_vars['post_status'],
+			'post_parent'	 => $query_vars['volume'],
+			'section'		 => $query_vars['section'],
 			'posts_per_page' => 0,
 			'return_fields'	 => 'ids',
 			's'				 => $query_vars['serach'],	
@@ -58,15 +61,28 @@ function make_count_post_status() {
 	foreach ( $results as $result ) {
 
 		// Check the current results and apply our current class if we are currently filtering by that post type.
-		$class = ( ( $result['type_uri'] == $filter ) || $result['type_uri'] == 'all' && empty( $filter ) ) ? ' class="current"' : '';
+		$class = ( ( $result['type_uri'] == $query_vars['filter'] ) || $result['type_uri'] == 'all' && empty( $query_vars['filter'] ) ) ? ' class="current"' : '';
+
+		$additionals = '';
 
 		// Append other query variables in our filters if they are present
-		$query_vars = '';
+		if ( ! empty( $query_vars['search'] ) )
+			$additionals .= '&s=' . $query_vars['search'];
 
-		if ( ! is_array( $status ) )
-			$query_vars .= '&post_status=' . $status;
+		if ( ! empty( $query_vars['post_status'] ) && ! is_array( $query_vars['post_status'] ) )
+			$additionals .= '&post_status=' . $query_vars['post_status'];
 
-		$output .= ' | <li><a href="' . esc_url( 'edit.php?post_type=volume&page=manager&filter=' . sanitize_text_field( $result['type_uri'] ) ) . sanitize_text_field( $query_vars ) . '"' . $class . '>' . esc_html( $result['post_type'] ) . '</a><span class="count">(' . absint( $result['post_count'] ) . ')</span> </li>';
+		if ( ! empty( $query_vars['volume'] ) )
+			$additionals .= '&volume=' . $query_vars['volume'];
+
+		if ( ! empty( $query_vars['section'] ) )
+			$additionals .= '&section=' . $query_vars['section'];
+
+		if ( ! empty( $query_vars['posts_per_page'] ) )
+			$additionals .= '&posts_per_page=' . $query_vars['posts_per_page'];
+
+
+		$output .= ' | <li><a href="' . esc_url( 'edit.php?post_type=volume&page=manager&filter=' . sanitize_text_field( $result['type_uri'] ) ) . sanitize_text_field( $additionals ) . '"' . $class . '>' . esc_html( $result['post_type'] ) . '</a><span class="count">(' . absint( $result['post_count'] ) . ')</span> </li>';
 	}
 
 	return substr( $output, 2 );
@@ -96,10 +112,10 @@ function make_post_status_dropdown() {
 	$query_vars = make_get_query_vars();
 
 	$output = '<select name="post_status" id="post_status">';
-	$output .= '<option value="all">Show All Statuses</option>';
+	$output .= '<option value="all">All Statuses</option>';
 
 	foreach ( $wp_post_statuses as $status => $obj) {
-		if ( $status != 'trash' && $status != 'publish' && $status != 'auto-draft' )
+		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' )
 			$output .= '<option value="' . esc_attr( $obj->name ) . '"' . selected( sanitize_text_field( $query_vars['post_status'] ), esc_attr( $obj->name ), false ) . '>' . esc_html( $obj->label ) . '</option>';
 	}
 
@@ -121,7 +137,8 @@ function make_volumes_dropdown() {
 		'post_type' => 'volume',
 		'selected'  => $query_vars['volume'],
 		'name'      => 'volume',
-		'show_option_none' => 'Select Volume',
+		'show_option_none' => 'All Volumes',
+		'option_none_value' => 'all',
 		'sort_column' => 'menu_order, post_title',
 		'echo' => false,
 	) );
@@ -153,6 +170,28 @@ function make_posts_per_page_dropdown( $posts_per_page ) {
 
 
 /**
+ * Generate a dropdown to filter the sections. Duh.
+ * @return html
+ */
+function make_section_dropdown() {
+
+	$query_vars = make_get_query_vars();
+	$terms = get_terms( 'section' );
+
+	$output = '<select name="section" id="section-dropdown">';
+	$output .= '<option value="all">All Sections</option>';
+
+	foreach ( $terms as $term ) {
+		$output .= '<option value="' . sanitize_text_field( $term->slug ) . '"' . selected( sanitize_text_field( $query_vars['section'] ), sanitize_text_field( $term->slug ), false ) . '>' . esc_html( $term->name ) . '</option>';
+	}
+
+	$output .= '</select>';
+
+	return $output;
+}
+
+
+/**
  * Return a list of all the post statuses
  * @return array
  */
@@ -160,7 +199,7 @@ function make_post_statuses() {
 	global $wp_post_statuses;
 
 	foreach ( $wp_post_statuses as $status => $name ) {
-		if ( $status != 'trash' && $status != 'publish' && $status != 'auto-draft' )
+		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' )
 			$statuses[] = $status;
 	}
 
@@ -215,10 +254,10 @@ function make_display_screen_options() { ?>
 					<input type="checkbox" class="hide-column-tog" id="ef_pc-hide" name="ef_pc-hide" value="ef_pc" checked="checked"> PC
 				</label>
 				<label for="ef_assignment-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_assignment-hide" name="ef_assignment-hide" value="ef_assignment" checked="checked"> Assignment
+					<input type="checkbox" class="hide-column-tog" id="ef_assignment-hide" name="ef_assignment-hide" value="ef_assignment"> Assignment
 				</label>
 				<label for="ef_first_deadline-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_first_deadline-hide" name="ef_first_deadline-hide" value="ef_first_deadline" checked="checked"> 1st Deadline
+					<input type="checkbox" class="hide-column-tog" id="ef_first_deadline-hide" name="ef_first_deadline-hide" value="ef_first_deadline"> 1st Deadline
 				</label>
 				<label for="ef_ed-hide">
 					<input type="checkbox" class="hide-column-tog" id="ef_ed-hide" name="ef_ed-hide" value="ef_ed" checked="checked"> ED
@@ -233,22 +272,22 @@ function make_display_screen_options() { ?>
 					<input type="checkbox" class="hide-column-tog" id="ef_ce_deadline-hide" name="ef_ce_deadline-hide" value="ef_ce_deadline" checked="checked"> CE Deadline
 				</label>
 				<label for="ef_tr-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_tr-hide" name="ef_tr-hide" value="ef_tr" checked="checked"> TR
+					<input type="checkbox" class="hide-column-tog" id="ef_tr-hide" name="ef_tr-hide" value="ef_tr"> TR
 				</label>
 				<label for="ef_needs_video-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_needs_video-hide" name="ef_needs_video-hide" value="ef_needs_video" checked="checked"> Needs Video
+					<input type="checkbox" class="hide-column-tog" id="ef_needs_video-hide" name="ef_needs_video-hide" value="ef_needs_video"> Needs Video
 				</label>
 				<label for="ef_needs_photo-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_needs_photo-hide" name="ef_needs_photo-hide" value="ef_needs_photo" checked="checked"> Needs Photo
+					<input type="checkbox" class="hide-column-tog" id="ef_needs_photo-hide" name="ef_needs_photo-hide" value="ef_needs_photo"> Needs Photo
 				</label>
 				<label for="ef_manuscript_estimate-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_manuscript_estimate-hide" name="ef_manuscript_estimate-hide" value="ef_manuscript_estimate" checked="checked"> Manuscript Estimate
+					<input type="checkbox" class="hide-column-tog" id="ef_manuscript_estimate-hide" name="ef_manuscript_estimate-hide" value="ef_manuscript_estimate" checked="checked"> Fee
 				</label>
 				<label for="ef_invoice_received-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_invoice_received-hide" name="ef_invoice_received-hide" value="ef_invoice_received" checked="checked"> Invoice Received
+					<input type="checkbox" class="hide-column-tog" id="ef_invoice_received-hide" name="ef_invoice_received-hide" value="ef_invoice_received"> Invoice Received
 				</label>
 				<label for="ef_wc-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_wc-hide" name="ef_wc-hide" value="ef_wc" checked="checked"> WC
+					<input type="checkbox" class="hide-column-tog" id="ef_wc-hide" name="ef_wc-hide" value="ef_wc"> WC
 				</label>
 			</div>
 			<div class="screen-options"></div>
@@ -282,7 +321,7 @@ function make_convert_to_pretty_time( $time, $is_string = false ) {
 	if ( $is_string )
 		$time = strtotime( $time );
 
-	return date( 'M d, Y', absint( $time ) );
+	return date( 'm/d/y', absint( $time ) );
 }
 
 
@@ -323,6 +362,23 @@ function make_convert_author_id( $author_id ) {
 
 
 /**
+ * Helper function to process integers and return numbers or an empty string. We use this function because absint will return 0 other wise.. and we don't always want that.
+ * @param  string $integer The integer we want to process. If the string is empty, we return nothing rather than 0
+ * @return integer/void
+ */
+function make_get_integer( $integer ) {
+
+	// Check is we are actuall passing something or if the string is NOT an integer.
+	if ( empty( $integer ) || ! absint( $integer ) )
+		return;
+
+	$integer = ( $integer != 0 ) ? absint( $integer ) : '';
+
+	return $integer;
+}
+
+
+/**
  * Current Faire Page
  */
 function make_magazine_dashboard_page() {
@@ -341,12 +397,13 @@ function make_magazine_dashboard_page() {
 		$post_types = $query_vars['filter'];
 	}
 
-	$args = array( 
+	$args = array(
 		'post_type'		 => $post_types,
 		'post_status'	 => $query_vars['post_status'],
 		'posts_per_page' => $query_vars['posts_per_page'],
 		'paged'			 => $query_vars['paged'],
 		'post_parent'	 => $query_vars['volume'],
+		'section'		 => $query_vars['section'],
 		's'				 => $query_vars['search'],
 	);
 	$query = new WP_Query( $args ); ?>
@@ -373,8 +430,10 @@ function make_magazine_dashboard_page() {
 			<div class="tablenav top">
 				<?php echo make_post_status_dropdown(); ?>
 				<?php echo make_volumes_dropdown(); ?>
+				<?php echo make_section_dropdown(); ?>
 				<?php echo make_posts_per_page_dropdown( array( 30, 40, 50, 60, 70, 80, 90, 100 ) ); ?>
 				<input type="submit" name="" id="filter-submit" class="button" value="Filter Dashboard">
+				<button class="button"><a href="<?php echo esc_url( admin_url( 'edit.php?post_type=volume&page=manager' ) ); ?>">Reset Filters</a></button>
 				<div class="tablenav-pages">
 					<span class="displaying-num"><?php echo absint( $query->found_posts ); ?> Items</span>
 					<?php echo make_get_pagination_link( $query->max_num_pages, $query_vars['paged'] ); ?>
@@ -382,53 +441,53 @@ function make_magazine_dashboard_page() {
 				
 			</div>
 			
-			<table class="wp-list-table widefat fixed pages">
+			<table id="magazine-dashboard" class="wp-list-table widefat fixed pages">
 				<thead>
 					<tr>
 						<th scope="col" id="post_parent" class="manage-column column-post_parent">Volume</th>
-						<th scope="col" id="post_type" class="manage-column column-post_type sortable desc">Content Type</th>
-						<th scope="col" id="post_status" class="manage-column column-post_status sortable desc">Status</th>
-						<th scope="col" id="section" class="manage-column column-section sortable desc">Section</th>
+						<th scope="col" id="post_type" class="manage-column column-post_type sortable">Content Type</th>
+						<th scope="col" id="post_status" class="manage-column column-post_status sortable">Status</th>
+						<th scope="col" id="section" class="manage-column column-section sortable">Section</th>
 						<th scope="col" id="post_title" class="manage-column column-post_title">Title</th>
 						<th scope="col" id="post_author" class="manage-column column-post_author">Author</th>
-						<th scope="col" id="post_date" class="manage-column column-post_date sortabel desc">Date</th>
+						<th scope="col" id="post_date" class="manage-column column-post_date sortable">Date</th>
 						<th scope="col" id="ef_pc" class="manage-column column-ef_pc">PC</th>
-						<th scope="col" id="ef_assignment" class="manage-column column-ef_assignment">Assignment</th>
-						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline">1st Deadline</th>
+						<!-- <th scope="col" id="ef_assignment" class="manage-column column-ef_assignment">Assignment</th>
+						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline">1st Deadline</th> -->
 						<th scope="col" id="ef_ed" class="manage-column column-ef_ed">ED</th>
 						<th scope="col" id="ef_ed_deadline" class="manage-column column-ef_ed_deadline">ED Deadline</th>
 						<th scope="col" id="ef_ce" class="manage-column column-ef_ce">CE</th>
 						<th scope="col" id="ef_ce_deadline" class="manage-column column-ef_ce_deadline">CE Deadline</th>
-						<th scope="col" id="ef_tr" class="manage-column column-ef_tr">TR</th>
-						<th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video">Needs Video</th>
-						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo">Needs Photo</th>
-						<th scope="col" id="ef_manuscript_estimate" class="manage-column column-ef_manuscript_estimate">Manuscript Estimate</th>
-						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received">Invoice Received</th>
-						<th scope="col" id="ef_wc" class="manage-column column-ef_wc">WC</th>
+						<!-- <th scope="col" id="ef_tr" class="manage-column column-ef_tr">TR</th> -->
+						<!-- <th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video">Needs Video</th>
+						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo">Needs Photo</th> -->
+						<th scope="col" id="ef_manuscript_estimate" class="manage-column column-ef_manuscript_estimate">Fee</th>
+						<!-- <th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received">Invoice Received</th>
+						<th scope="col" id="ef_wc" class="manage-column column-ef_wc">WC</th> -->
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
 						<th scope="col" id="post_parent" class="manage-column column-post_parent">Volume</th>
-						<th scope="col" id="post_type" class="manage-column column-post_type sortable desc">Content Type</th>
-						<th scope="col" id="post_status" class="manage-column column-post_status sortable desc">Status</th>
-						<th scope="col" id="section" class="manage-column column-section sortable desc">Section</th>
+						<th scope="col" id="post_type" class="manage-column column-post_type sortable">Content Type</th>
+						<th scope="col" id="post_status" class="manage-column column-post_status sortable">Status</th>
+						<th scope="col" id="section" class="manage-column column-section sortable">Section</th>
 						<th scope="col" id="post_title" class="manage-column column-post_title">Title</th>
 						<th scope="col" id="post_author" class="manage-column column-post_author">Author</th>
-						<th scope="col" id="post_date" class="manage-column column-post_date sortabel desc">Date</th>
+						<th scope="col" id="post_date" class="manage-column column-post_date sortabel">Date</th>
 						<th scope="col" id="ef_pc" class="manage-column column-ef_pc">PC</th>
-						<th scope="col" id="ef_assignment" class="manage-column column-ef_assignment">Assignment</th>
-						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline">1st Deadline</th>
+						<!-- <th scope="col" id="ef_assignment" class="manage-column column-ef_assignment">Assignment</th>
+						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline">1st Deadline</th> -->
 						<th scope="col" id="ef_ed" class="manage-column column-ef_ed">ED</th>
 						<th scope="col" id="ef_ed_deadline" class="manage-column column-ef_ed_deadline">ED Deadline</th>
 						<th scope="col" id="ef_ce" class="manage-column column-ef_ce">CE</th>
 						<th scope="col" id="ef_ce_deadline" class="manage-column column-ef_ce_deadline">CE Deadline</th>
-						<th scope="col" id="ef_tr" class="manage-column column-ef_tr">TR</th>
-						<th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video">Needs Video</th>
-						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo">Needs Photo</th>
-						<th scope="col" id="ef_manuscript_estimate" class="manage-column column-ef_manuscript_estimate">Manuscript Estimate</th>
-						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received">Invoice Received</th>
-						<th scope="col" id="ef_wc" class="manage-column column-ef_wc">WC</th>
+						<!-- <th scope="col" id="ef_tr" class="manage-column column-ef_tr">TR</th> -->
+						<!-- <th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video">Needs Video</th>
+						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo">Needs Photo</th> -->
+						<th scope="col" id="ef_manuscript_estimate" class="manage-column column-ef_manuscript_estimate">Fee</th>
+						<!-- <th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received">Invoice Received</th>
+						<th scope="col" id="ef_wc" class="manage-column column-ef_wc">WC</th> -->
 					</tr>
 				</tfoot>
 				<tbody id="the-list">
@@ -440,18 +499,19 @@ function make_magazine_dashboard_page() {
 								setup_postdata( $post );
 
 								// Set some variables....
-								$volume   = ( $post->post_parent != 0 ) ? get_the_title( absint( $post->post_parent ) ) : '';
-								$meta     = get_post_custom( absint( $post->ID ) );
-								$sections = get_the_term_list( absint( $post->ID ), 'section' );
+								$volume    = ( $post->post_parent != 0 ) ? get_the_title( absint( $post->post_parent ) ) : '';
+								$meta      = get_post_custom( absint( $post->ID ) );
+								$sections  = get_the_term_list( absint( $post->ID ), 'section' );
+								$post_type = ( get_post_type() == 'magazine' ) ? 'articles' : get_post_type();
 
 								// Add alternating stripes. Like a zebra.
-								if ( $i % 2 != 0 ) {
-									echo '<tr class="alternate">';
-								} else {
+								// if ( $i % 2 != 0 ) {
+								// 	echo '<tr class="alternate">';
+								// } else {
 									echo '<tr>';
-								}
+								// }
 								echo '<td>' . $volume . '</td>';
-								echo '<td>' . get_post_type() . '</td>';
+								echo '<td>' . $post_type . '</td>';
 								echo '<td>' . get_post_status() . '</td>';
 								echo '<td>' . $sections . '</td>';
 								echo '<td><strong><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">' . get_the_title() . '</a></strong>
@@ -459,23 +519,24 @@ function make_magazine_dashboard_page() {
 											<span class="inline hide-if-no-js"><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">Edit</a> | </span>
 											<span class="trash"><a class="submitdelete" href="' . get_delete_post_link( absint( $post->ID ) ) . '">Trash</a></span>
 										</div>
-									 </td>';
+									  </td>';
 								echo '<td>' . make_convert_author_id( $post->post_author ) . '</td>';
 								echo '<td>' . make_convert_to_pretty_time( $post->post_date, true ) . '</td>';
-								echo '<td class="ef_pc_count">' . absint( $meta['_ef_editorial_meta_number_pc'][0] ) . '</td>';
-								echo '<td>' . esc_html( $meta['_ef_editorial_meta_paragraph_assignment'][0] ) . '</td>';
-								echo '<td>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_1st-deadline'][0] ) . '</td>';
+								echo '<td class="ef_pc_count">' . make_get_integer( $meta['_ef_editorial_meta_number_pc'][0] ) . '</td>';
+								// echo '<td>' . esc_html( $meta['_ef_editorial_meta_paragraph_assignment'][0] ) . '</td>';
+								//echo '<td>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_1st-deadline'][0] ) . '</td>';
 								echo '<td>' . make_convert_author_id( $meta['_ef_editorial_meta_user_ed'][0] ) . '</td>';
-								echo '<td>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_ed-deadline'][0] ) . '</td>';
+								echo '<td style="color:#ff0000;">' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_ed-deadline'][0] ) . '</td>';
 								echo '<td>' . make_convert_author_id( $meta['_ef_editorial_meta_user_ce'][0] ) . '</td>';
-								echo '<td>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_ce-deadline'][0] ) . '</td>';
-								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_tr'][0] ) . '</td>';
-								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-video'][0] ) . '</td>';
-								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-photo'][0] ) . '</td>';
-								echo '<td>' . absint( $meta['_ef_editorial_meta_number_manuscript-estimate'][0] ) . '</td>';
-								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_invoice-received'][0] ) . '</td>';
-								echo '<td>' . absint( $meta['_ef_editorial_meta_number_wc'][0] ) . '</td>';
+								echo '<td style="color:#ff0000;">' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_ce-deadline'][0] ) . '</td>';
+								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_tr'][0] ) . '</td>';
+								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-video'][0] ) . '</td>';
+								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-photo'][0] ) . '</td>';
+								echo '<td>' . make_get_integer( $meta['_ef_editorial_meta_number_manuscript-estimate'][0] ) . '</td>';
+								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_invoice-received'][0] ) . '</td>';
+								// echo '<td>' . absint( $meta['_ef_editorial_meta_number_wc'][0] ) . '</td>';
 								echo '</tr>';
+
 								$i++;
 							}
 						}?>
