@@ -1232,7 +1232,7 @@ function make_popdown_menu() { ?>
 				<div class="row">
 					<div class="span3 offset2 border-right">
 						<div class="row-fluid">
-							<a href="<?php echo home_url( '/subscribe' ); ?>" class="span4"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
+							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" class="span4"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
 							<div class="span7 side-text">
 								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
 							</div>
