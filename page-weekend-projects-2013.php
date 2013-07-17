@@ -115,7 +115,7 @@ get_header(); ?>
 					<?php 
 
 						$args = array(
-							'post_type'			=> 'post',
+							'post_type'			=> array( 'post', 'video' ),
 							'title'				=> 'Weekend Projects News',
 							'tag'				=> 'weekend-projects',
 							'projects_landing'	=> true,
