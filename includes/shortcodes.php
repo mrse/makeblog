@@ -716,3 +716,19 @@ function make_campaign_monitor_form( $atts, $content = null ) {
 	return $output;
 }
 add_shortcode( 'make-compagin-monitor', 'make_campaign_monitor_form' );
+
+/**
+ * New Shortcode for articles. Kind of a big tease with the images of the cover.
+ */
+function make_volume_tease( $atts, $content = null ) {
+	extract( shortcode_atts( array(
+		'volume'	=> '35',
+		'url'		=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK'	
+	), $atts ) );
+
+	$output = '<div class"tease">';
+	$output .= '</div>';
+
+	return $output;
+
+}
