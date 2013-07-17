@@ -454,3 +454,11 @@ function make_maker_projects_projects() {
 	$output .= make_magazine_toc($args);
 	return $output;
 }
+
+/**
+ * Get a volume cover image
+ */
+function make_get_cover_image( $number = 34 ) {
+	$url = esc_url( 'http://cdn.makezine.com/make/covers/MAKE_V' . absint( $number ) . '_high.jpg' );
+	return $url;
+ }
