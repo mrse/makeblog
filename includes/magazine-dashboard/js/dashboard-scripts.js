@@ -33,4 +33,20 @@ jQuery( document ).ready( function( $ ) {
             19: { sorter: false }
         }
 	});
+
+
+	// Setup Ajax for our screen options
+	$( '#magazine-dashboard-screen-options input:checkbox' ).on( 'click', function() {
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: ajaxurl,
+			data: { 
+				'action' : 'mag_dash_screen_opt',
+				'data'   : $( '#magazine-dashboard-screen-options' ).serialize() },
+			success: function( results ) {
+				console.log(results);
+			}
+		});
+	});
 });

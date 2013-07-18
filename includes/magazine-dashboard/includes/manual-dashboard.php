@@ -20,6 +20,12 @@ function make_get_query_vars() {
 }
 
 
+function make_magazine_dashboard_ajax() {
+
+}
+add_action( 'wp_ajax_nopriv_mag_dash_screen_opt', 'make_magazine_dashboard_ajax' );
+
+
 /**
  * Function to count the statuses of Maker Faire applications
  */
@@ -93,10 +99,10 @@ function make_count_post_status() {
  */
 function make_get_pagination_link( $total, $paged ) {
 	$links = paginate_links( array(
-		'base' 		=> get_pagenum_link() . '%_%',
-		'format' 	=> '&paged=%#%',
-		'current' 	=> max( 1, sanitize_text_field( $paged ) ),
-		'total' 	=> absint( $total )
+			'base' 		=> get_pagenum_link() . '%_%',
+			'format' 	=> '&paged=%#%',
+			'current' 	=> max( 1, sanitize_text_field( $paged ) ),
+			'total' 	=> absint( $total )
 		) 
 	);
 
@@ -226,7 +232,8 @@ add_action( 'admin_head', 'make_init_screen_options' );
  */
 function make_display_screen_options() { ?>
 	<div id="screen-options-wrap" class="hidden" tabindex="-1" aria-label="Screen Options Tab">
-		<form name="make_dashboard_options" method="get">
+		<form id="magazine-dashboard-screen-options" name="make_dashboard_options" method="get">
+			<?php wp_nonce_field( 'dashboard-screen-save', 'make-magazine-dashboard', false ); ?>
 			<h5>Show on screen</h5>
 			<div class="metabox-prefs">
 				<label for="post_parent-hide">
@@ -300,11 +307,15 @@ function make_display_screen_options() { ?>
  * The function to save anything happening in Screen Options. Might not need this? At the moment it does nothing yet.
  */
 function make_save_screen_options() {
-	if ( isset( $_POST['make_dashboard_options'] ) && $_POST['make_dashboard_options'] == 1 ) {
-
+	if ( isset( $_POST['make_dashboard_options'] ) && ! wp_verify_nonce( $_POST['make-magazine-dashboard'], 'dashboard-screen-save' ) ) {
+		// echo json_encode( array(
+		// 				'loggedin' => false,
+		// 				'message'  => __( 'Wrong Username or Password!', 'geissinger-wpml' ),
+		// 			) );
+		// 			
+		echo json_encode( array( 'asdf' => false ) );//$_POST;
 	}
 }
-add_action( 'admin_init', 'make_save_screen_options' );
 
 
 /**
@@ -452,42 +463,42 @@ function make_magazine_dashboard_page() {
 						<th scope="col" id="post_author" class="manage-column column-post_author">Author</th>
 						<th scope="col" id="post_date" class="manage-column column-post_date sortable">Date</th>
 						<th scope="col" id="ef_pc" class="manage-column column-ef_pc">PC</th>
-						<!-- <th scope="col" id="ef_assignment" class="manage-column column-ef_assignment">Assignment</th>
-						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline">1st Deadline</th> -->
+						<th scope="col" id="ef_assignment" class="manage-column column-ef_assignment">Assignment</th>
+						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline">1st Deadline</th>
 						<th scope="col" id="ef_ed" class="manage-column column-ef_ed">ED</th>
 						<th scope="col" id="ef_ed_deadline" class="manage-column column-ef_ed_deadline">ED Deadline</th>
 						<th scope="col" id="ef_ce" class="manage-column column-ef_ce">CE</th>
 						<th scope="col" id="ef_ce_deadline" class="manage-column column-ef_ce_deadline">CE Deadline</th>
-						<!-- <th scope="col" id="ef_tr" class="manage-column column-ef_tr">TR</th> -->
-						<!-- <th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video">Needs Video</th>
-						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo">Needs Photo</th> -->
+						<th scope="col" id="ef_tr" class="manage-column column-ef_tr">TR</th>
+						<th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video">Needs Video</th>
+						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo">Needs Photo</th>
 						<th scope="col" id="ef_manuscript_estimate" class="manage-column column-ef_manuscript_estimate">Fee</th>
-						<!-- <th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received">Invoice Received</th>
-						<th scope="col" id="ef_wc" class="manage-column column-ef_wc">WC</th> -->
+						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received">Invoice Received</th>
+						<th scope="col" id="ef_wc" class="manage-column column-ef_wc">WC</th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
 						<th scope="col" id="post_parent" class="manage-column column-post_parent">Volume</th>
-						<th scope="col" id="post_type" class="manage-column column-post_type sortable">Content Type</th>
-						<th scope="col" id="post_status" class="manage-column column-post_status sortable">Status</th>
-						<th scope="col" id="section" class="manage-column column-section sortable">Section</th>
+						<th scope="col" id="post_type" class="manage-column column-post_type">Content Type</th>
+						<th scope="col" id="post_status" class="manage-column column-post_status">Status</th>
+						<th scope="col" id="section" class="manage-column column-section">Section</th>
 						<th scope="col" id="post_title" class="manage-column column-post_title">Title</th>
 						<th scope="col" id="post_author" class="manage-column column-post_author">Author</th>
-						<th scope="col" id="post_date" class="manage-column column-post_date sortabel">Date</th>
+						<th scope="col" id="post_date" class="manage-column column-post_date">Date</th>
 						<th scope="col" id="ef_pc" class="manage-column column-ef_pc">PC</th>
-						<!-- <th scope="col" id="ef_assignment" class="manage-column column-ef_assignment">Assignment</th>
-						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline">1st Deadline</th> -->
+						<th scope="col" id="ef_assignment" class="manage-column column-ef_assignment">Assignment</th>
+						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline">1st Deadline</th>
 						<th scope="col" id="ef_ed" class="manage-column column-ef_ed">ED</th>
 						<th scope="col" id="ef_ed_deadline" class="manage-column column-ef_ed_deadline">ED Deadline</th>
 						<th scope="col" id="ef_ce" class="manage-column column-ef_ce">CE</th>
 						<th scope="col" id="ef_ce_deadline" class="manage-column column-ef_ce_deadline">CE Deadline</th>
-						<!-- <th scope="col" id="ef_tr" class="manage-column column-ef_tr">TR</th> -->
-						<!-- <th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video">Needs Video</th>
-						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo">Needs Photo</th> -->
+						<th scope="col" id="ef_tr" class="manage-column column-ef_tr">TR</th>
+						<th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video">Needs Video</th>
+						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo">Needs Photo</th>
 						<th scope="col" id="ef_manuscript_estimate" class="manage-column column-ef_manuscript_estimate">Fee</th>
-						<!-- <th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received">Invoice Received</th>
-						<th scope="col" id="ef_wc" class="manage-column column-ef_wc">WC</th> -->
+						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received">Invoice Received</th>
+						<th scope="col" id="ef_wc" class="manage-column column-ef_wc">WC</th>
 					</tr>
 				</tfoot>
 				<tbody id="the-list">
@@ -518,18 +529,18 @@ function make_magazine_dashboard_page() {
 								echo '<td>' . make_convert_author_id( $post->post_author ) . '</td>';
 								echo '<td>' . make_convert_to_pretty_time( $post->post_date, true ) . '</td>';
 								echo '<td class="ef_pc_count">' . make_get_integer( $meta['_ef_editorial_meta_number_pc'][0] ) . '</td>';
-								// echo '<td>' . esc_html( $meta['_ef_editorial_meta_paragraph_assignment'][0] ) . '</td>';
-								// echo '<td>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_1st-deadline'][0] ) . '</td>';
+								echo '<td>' . esc_html( $meta['_ef_editorial_meta_paragraph_assignment'][0] ) . '</td>';
+								echo '<td>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_1st-deadline'][0] ) . '</td>';
 								echo '<td>' . make_convert_author_id( $meta['_ef_editorial_meta_user_ed'][0] ) . '</td>';
 								echo '<td style="color:#ff0000;">' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_ed-deadline'][0] ) . '</td>';
 								echo '<td>' . make_convert_author_id( $meta['_ef_editorial_meta_user_ce'][0] ) . '</td>';
 								echo '<td style="color:#ff0000;">' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_ce-deadline'][0] ) . '</td>';
-								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_tr'][0] ) . '</td>';
-								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-video'][0] ) . '</td>';
-								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-photo'][0] ) . '</td>';
+								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_tr'][0] ) . '</td>';
+								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-video'][0] ) . '</td>';
+								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-photo'][0] ) . '</td>';
 								echo '<td>' . make_get_integer( $meta['_ef_editorial_meta_number_manuscript-estimate'][0] ) . '</td>';
-								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_invoice-received'][0] ) . '</td>';
-								// echo '<td>' . absint( $meta['_ef_editorial_meta_number_wc'][0] ) . '</td>';
+								echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_invoice-received'][0] ) . '</td>';
+								echo '<td>' . absint( $meta['_ef_editorial_meta_number_wc'][0] ) . '</td>';
 								echo '</tr>';
 
 								$i++;
