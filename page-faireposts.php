@@ -20,7 +20,7 @@
 		
 		<?php 
 			$args = array(
-				'post_type' => array( 'post', 'craft' ),
+				'post_type' => array( 'post', 'craft', 'magazine', 'video', 'projects' ),
 				'post_status' => 'publish',
 				'posts_per_page' => 5,
 				'ignore_sticky_posts' => 1,
