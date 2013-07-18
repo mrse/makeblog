@@ -21,7 +21,14 @@ function make_get_query_vars() {
 
 
 function make_magazine_dashboard_ajax() {
-
+	if ( isset( $_POST['make_dashboard_options'] ) && ! wp_verify_nonce( $_POST['make-magazine-dashboard'], 'dashboard-screen-save' ) ) {
+		// echo json_encode( array(
+		// 				'loggedin' => false,
+		// 				'message'  => __( 'Wrong Username or Password!', 'geissinger-wpml' ),
+		// 			) );
+		// 			
+		echo json_encode( array( 'asdf' => false ) );//$_POST;
+	}
 }
 add_action( 'wp_ajax_nopriv_mag_dash_screen_opt', 'make_magazine_dashboard_ajax' );
 
@@ -301,21 +308,6 @@ function make_display_screen_options() { ?>
 		</form>
 	</div>
 <?php }
-
-
-/**
- * The function to save anything happening in Screen Options. Might not need this? At the moment it does nothing yet.
- */
-function make_save_screen_options() {
-	if ( isset( $_POST['make_dashboard_options'] ) && ! wp_verify_nonce( $_POST['make-magazine-dashboard'], 'dashboard-screen-save' ) ) {
-		// echo json_encode( array(
-		// 				'loggedin' => false,
-		// 				'message'  => __( 'Wrong Username or Password!', 'geissinger-wpml' ),
-		// 			) );
-		// 			
-		echo json_encode( array( 'asdf' => false ) );//$_POST;
-	}
-}
 
 
 /**
