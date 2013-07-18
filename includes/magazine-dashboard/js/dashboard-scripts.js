@@ -17,7 +17,9 @@ jQuery( document ).ready( function( $ ) {
 
 
 	// Setup Ajax for our screen options
-	$( '#magazine-dashboard-screen-options input:checkbox' ).on( 'click', function() {
+	$( 'input.hide-column-tog:checkbox' ).on( 'click', function() {
+
+		// Save our new options to the database
 		$.ajax({
 			type: 'POST',
 			dataType: 'json',
@@ -27,9 +29,17 @@ jQuery( document ).ready( function( $ ) {
 				'nonce' : $( '#magazine-dashboard-screen-options input#make-magazine-dashboard' ).val(),
 				'submission' : $( '#magazine-dashboard-screen-options input[name="submission"]:hidden' ).val(),
 				'data'   : $( '#magazine-dashboard-screen-options input:checked' ).serialize()
-			},
-			success: function( results ) {
-				console.log(results);
+			}
+		});
+
+		// show or hide our columns on click
+		var column = '.column-' + $(this).val();
+
+		$( column ).each( function() {
+			if ( $(this).is(':visible') ) {
+				$(this).hide();
+			} else {
+				$(this).show();
 			}
 		});
 	});
