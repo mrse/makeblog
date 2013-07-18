@@ -108,7 +108,7 @@ $easy_cf = new Easy_CF($field_data);
 $field_data = array (
 	'magazine_author' => array (
 		'fields' => array(
-			'AuthorBio'			=> array( 'type' => 'textarea' ),
+			'AuthorBio'			=> array( 'type' => 'textarea', 'label' => 'Author Bio' ),
 			'Phone'				=> array(),
 			'Email'				=> array(),
 	),
