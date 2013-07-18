@@ -7,12 +7,13 @@
  */
 function make_get_query_vars() {
 	$query_vars = array(
-		'paged' => ( isset( $_GET['paged'] ) ) ? absint( $_GET['paged'] ) : 1,
-		'search' => ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '',
-		'filter' => ( isset( $_GET['filter'] ) ) ? sanitize_text_field( $_GET['filter'] ) : '',
-		'volume' => ( isset( $_GET['volume'] ) && $_GET['volume'] != 'all' ) ? sanitize_text_field( $_GET['volume'] ) : '',
-		'post_status' => ( isset( $_GET['post_status'] ) && $_GET['post_status'] != '' && $_GET['post_status'] != 'all' ) ? sanitize_text_field( $_GET['post_status'] ) : make_post_statuses(),
-		'section' => ( isset( $_GET['section'] ) && $_GET['section'] != 'all' ) ? sanitize_text_field( $_GET['section'] ) : '',
+		'paged' 		 => ( isset( $_GET['paged'] ) ) ? absint( $_GET['paged'] ) : 1,
+		'search' 		 => ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '',
+		'filter' 		 => ( isset( $_GET['filter'] ) ) ? sanitize_text_field( $_GET['filter'] ) : '',
+		'volume' 		 => ( isset( $_GET['volume'] ) && $_GET['volume'] != 'all' ) ? sanitize_text_field( $_GET['volume'] ) : '',
+		'post_status' 	 => ( isset( $_GET['post_status'] ) && $_GET['post_status'] != '' && $_GET['post_status'] != 'all' ) ? sanitize_text_field( $_GET['post_status'] ) : make_post_statuses(),
+		'section' 		 => ( isset( $_GET['section'] ) && $_GET['section'] != 'all' ) ? sanitize_text_field( $_GET['section'] ) : '',
+		'tag'			 => ( isset( $_GET['tag'] ) && $_GET['tag'] != '' ) ? sanitize_text_field( $_GET['tag'] ) : '',
 		'posts_per_page' => ( isset( $_GET['posts_per_page'] ) ) ? absint( $_GET['posts_per_page'] ) : 20,
 	);
 
@@ -21,16 +22,22 @@ function make_get_query_vars() {
 
 
 function make_magazine_dashboard_ajax() {
-	if ( isset( $_POST['make_dashboard_options'] ) && ! wp_verify_nonce( $_POST['make-magazine-dashboard'], 'dashboard-screen-save' ) ) {
+	if ( isset( $_POST['submission'] ) && $_POST['submission'] == 'submit-dashboard-screen-options' && wp_verify_nonce( $_POST['nonce'], 'dashboard-screen-save' ) ) {
 		// echo json_encode( array(
 		// 				'loggedin' => false,
 		// 				'message'  => __( 'Wrong Username or Password!', 'geissinger-wpml' ),
 		// 			) );
 		// 			
-		echo json_encode( array( 'asdf' => false ) );//$_POST;
+		// echo json_encode( array( 'data' => false ) );//$_POST;
+		// var_dump($_POST);
+		parse_str( $_POST['data'], $data );
+
+		var_dump($data);
 	}
+
+	var_dump($_POST);
 }
-add_action( 'wp_ajax_nopriv_mag_dash_screen_opt', 'make_magazine_dashboard_ajax' );
+add_action( 'wp_ajax_mag_dash_screen_opt', 'make_magazine_dashboard_ajax' );
 
 
 /**
@@ -55,6 +62,7 @@ function make_count_post_status() {
 			'post_status'	 => $query_vars['post_status'],
 			'post_parent'	 => $query_vars['volume'],
 			'section'		 => $query_vars['section'],
+			'tag'			 => str_replace( ' ', '-', $query_vars['tag'] ),
 			'posts_per_page' => 0,
 			'return_fields'	 => 'ids',
 			's'				 => $query_vars['serach'],	
@@ -101,6 +109,7 @@ function make_count_post_status() {
 	return substr( $output, 2 );
 }
 
+
 /**
  * Function to generate the pagination links. Just a wrapper for paginate links
  */
@@ -128,7 +137,7 @@ function make_post_status_dropdown() {
 	$output .= '<option value="all">All Statuses</option>';
 
 	foreach ( $wp_post_statuses as $status => $obj) {
-		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' )
+		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' && $status != 'spam' )
 			$output .= '<option value="' . esc_attr( $obj->name ) . '"' . selected( sanitize_text_field( $query_vars['post_status'] ), esc_attr( $obj->name ), false ) . '>' . esc_html( $obj->label ) . '</option>';
 	}
 
@@ -189,7 +198,7 @@ function make_posts_per_page_dropdown( $posts_per_page ) {
 function make_section_dropdown() {
 
 	$query_vars = make_get_query_vars();
-	$terms = get_terms( 'section' );
+	$terms = get_terms( 'section', array( 'hide_empty' => false ) );
 
 	$output = '<select name="section" id="section-dropdown">';
 	$output .= '<option value="all">All Sections</option>';
@@ -212,7 +221,7 @@ function make_post_statuses() {
 	global $wp_post_statuses;
 
 	foreach ( $wp_post_statuses as $status => $name ) {
-		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' )
+		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' && $status != 'spam' )
 			$statuses[] = $status;
 	}
 
@@ -241,6 +250,7 @@ function make_display_screen_options() { ?>
 	<div id="screen-options-wrap" class="hidden" tabindex="-1" aria-label="Screen Options Tab">
 		<form id="magazine-dashboard-screen-options" name="make_dashboard_options" method="get">
 			<?php wp_nonce_field( 'dashboard-screen-save', 'make-magazine-dashboard', false ); ?>
+			<input type="hidden" name="submission" value="submit-dashboard-screen-options">
 			<h5>Show on screen</h5>
 			<div class="metabox-prefs">
 				<label for="post_parent-hide">
@@ -407,6 +417,7 @@ function make_magazine_dashboard_page() {
 		'paged'			 => $query_vars['paged'],
 		'post_parent'	 => $query_vars['volume'],
 		'section'		 => $query_vars['section'],
+		'tag'			 => str_replace( ' ', '-', $query_vars['tag'] ),
 		's'				 => $query_vars['search'],
 	);
 	$query = new WP_Query( $args ); ?>
@@ -435,6 +446,7 @@ function make_magazine_dashboard_page() {
 				<?php echo make_volumes_dropdown(); ?>
 				<?php echo make_section_dropdown(); ?>
 				<?php echo make_posts_per_page_dropdown( array( 30, 40, 50, 60, 70, 80, 90, 100 ) ); ?>
+				<input type="text" name="tag" placeholder="Filter by Tag" value="<?php echo $query_vars['tag']; ?>">
 				<input type="submit" name="" id="filter-submit" class="button" value="Filter Dashboard">
 				<button class="button"><a href="<?php echo esc_url( admin_url( 'edit.php?post_type=volume&page=manager' ) ); ?>">Reset Filters</a></button>
 				<div class="tablenav-pages">
@@ -447,26 +459,26 @@ function make_magazine_dashboard_page() {
 			<table id="magazine-dashboard" class="wp-list-table widefat fixed pages">
 				<thead>
 					<tr>
-						<th scope="col" id="post_parent" class="manage-column column-post_parent">Volume</th>
-						<th scope="col" id="post_type" class="manage-column column-post_type sortable">Content Type</th>
-						<th scope="col" id="post_status" class="manage-column column-post_status sortable">Status</th>
-						<th scope="col" id="section" class="manage-column column-section sortable">Section</th>
-						<th scope="col" id="post_title" class="manage-column column-post_title">Title</th>
-						<th scope="col" id="post_author" class="manage-column column-post_author">Author</th>
-						<th scope="col" id="post_date" class="manage-column column-post_date sortable">Date</th>
-						<th scope="col" id="ef_pc" class="manage-column column-ef_pc">PC</th>
-						<th scope="col" id="ef_assignment" class="manage-column column-ef_assignment">Assignment</th>
-						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline">1st Deadline</th>
-						<th scope="col" id="ef_ed" class="manage-column column-ef_ed">ED</th>
-						<th scope="col" id="ef_ed_deadline" class="manage-column column-ef_ed_deadline">ED Deadline</th>
-						<th scope="col" id="ef_ce" class="manage-column column-ef_ce">CE</th>
-						<th scope="col" id="ef_ce_deadline" class="manage-column column-ef_ce_deadline">CE Deadline</th>
-						<th scope="col" id="ef_tr" class="manage-column column-ef_tr">TR</th>
-						<th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video">Needs Video</th>
-						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo">Needs Photo</th>
-						<th scope="col" id="ef_manuscript_estimate" class="manage-column column-ef_manuscript_estimate">Fee</th>
-						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received">Invoice Received</th>
-						<th scope="col" id="ef_wc" class="manage-column column-ef_wc">WC</th>
+						<th scope="col" id="post_parent" class="manage-column column-post_parent table-sortable">Volume</th>
+						<th scope="col" id="post_type" class="manage-column column-post_type table-sortable">Content Type</th>
+						<th scope="col" id="post_status" class="manage-column column-post_status table-sortable">Status</th>
+						<th scope="col" id="section" class="manage-column column-section table-sortable">Section</th>
+						<th scope="col" id="post_title" class="manage-column column-post_title table-sortable">Title</th>
+						<th scope="col" id="post_author" class="manage-column column-post_author table-sortable">Author</th>
+						<th scope="col" id="post_date" class="manage-column column-post_date table-sortable table-sortable">Date</th>
+						<th scope="col" id="ef_pc" class="manage-column column-ef_pc table-sortable">PC</th>
+						<th scope="col" id="ef_assignment" class="manage-column column-ef_assignment table-sortable">Assignment</th>
+						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline table-sortable">1st Deadline</th>
+						<th scope="col" id="ef_ed" class="manage-column column-ef_ed table-sortable">ED</th>
+						<th scope="col" id="ef_ed_deadline" class="manage-column column-ef_ed_deadline table-sortable">ED Deadline</th>
+						<th scope="col" id="ef_ce" class="manage-column column-ef_ce table-sortable">CE</th>
+						<th scope="col" id="ef_ce_deadline" class="manage-column column-ef_ce_deadline table-sortable">CE Deadline</th>
+						<th scope="col" id="ef_tr" class="manage-column column-ef_tr table-sortable">TR</th>
+						<th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video table-sortable">Needs Video</th>
+						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo table-sortable">Needs Photo</th>
+						<th scope="col" id="ef_manuscript_estimate" class="manage-column column-ef_manuscript_estimate table-sortable">Fee</th>
+						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received table-sortable">Invoice Received</th>
+						<th scope="col" id="ef_wc" class="manage-column column-ef_wc table-sortable">WC</th>
 					</tr>
 				</thead>
 				<tfoot>
@@ -496,7 +508,7 @@ function make_magazine_dashboard_page() {
 				<tbody id="the-list">
 					<?php
 						global $post;
-						if( $query ) {
+						if( ! empty( $query->posts ) ) {
 							$i = 0;
 							foreach ( $query->posts as $post ) {
 								setup_postdata( $post );
@@ -504,7 +516,7 @@ function make_magazine_dashboard_page() {
 								// Set some variables....
 								$volume    = ( $post->post_parent != 0 ) ? get_the_title( absint( $post->post_parent ) ) : '';
 								$meta      = get_post_custom( absint( $post->ID ) );
-								$sections  = get_the_term_list( absint( $post->ID ), 'section' );
+								$sections  = get_the_term_list( absint( $post->ID ), 'section', '', ', ' );
 								$post_type = ( get_post_type() == 'magazine' ) ? 'articles' : get_post_type();
 
 								echo '<tr>';
@@ -537,7 +549,9 @@ function make_magazine_dashboard_page() {
 
 								$i++;
 							}
-						}?>
+						} else {
+							echo '<tr class="no-items"><td class="colspanchange" colspan="20">No content found.</td></tr>';
+						} ?>
 				</tbody>
 				
 			</table>
