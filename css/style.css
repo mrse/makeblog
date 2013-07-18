@@ -9447,6 +9447,9 @@ ul#tabs .current > a:hover {
 .tab-content h3 {
   margin-bottom: 10px;
 }
+.sidebar .media img {
+  max-width: 70px;
+}
 .sidebar .badge.badge-info {
   display: inline;
 }
