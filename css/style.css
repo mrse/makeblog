@@ -11723,3 +11723,36 @@ a.button.big {
 a.button.small-button {
   line-height: inherit !important;
 }
+.single-newsletter article section {
+  background-color: inherit;
+  -webkit-transition: background-color 0.5s ease;
+  -moz-transition: background-color 0.5s ease;
+  -o-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+  -webkit-transition: background-color 0.5s ease 1s linear;
+  -moz-transition: background-color 0.5s ease 1s linear;
+  -o-transition: background-color 0.5s ease 1s linear;
+  -ms-transition: background-color 0.5s ease 1s linear;
+  transition: background-color 0.5s ease 1s linear;
+}
+.single-newsletter article section .comment-link {
+  margin-bottom: 10px;
+}
+.single-newsletter article section .comment-link a {
+  color: transparent;
+  -webkit-transition: color 0.5s ease;
+  -moz-transition: color 0.5s ease;
+  -o-transition: color 0.5s ease;
+  transition: color 0.5s ease;
+  -webkit-transition: color 0.5s ease 1s linear;
+  -moz-transition: color 0.5s ease 1s linear;
+  -o-transition: color 0.5s ease 1s linear;
+  -ms-transition: color 0.5s ease 1s linear;
+  transition: color 0.5s ease 1s linear;
+}
+.single-newsletter article section:hover {
+  background-color: rgba(100, 100, 100, 0.15);
+}
+.single-newsletter article section:hover .comment-link a {
+  color: #0088cc;
+}

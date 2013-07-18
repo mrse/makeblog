@@ -56,3 +56,41 @@ function newsletter_updated_messages( $messages ) {
 	return $messages;
 }
 add_filter( 'post_updated_messages', 'newsletter_updated_messages' );
+
+
+function make_get_newsletter_children( $id ) {
+	$args = array(
+		'post_parent'	=> $id,
+		'post_status'	=> 'published',
+		'post_type'		=> 'newsletter',
+		'orderby'		=> 'menu_order',
+		'order'			=> 'ASC'
+
+	);
+	// Get the kids
+	$kids = new WP_Query( $args );
+	// Drop them off at the pool...
+	$output = '';
+	global $post;
+	while ( $kids->have_posts() ) : $kids->the_post();
+		$post_ID = $post->ID;
+		$output .= '<section>';
+		$output .= '<h2>' . get_the_title() . '</h2>';
+		$output .= apply_filters( 'the_content', get_the_content() );
+		$output .= '<div class="comment-link"><a href="' . get_comments_link( $post_ID ) . '">Leave a comment on this section</a></div>';
+		$output .= '</section>';
+	endwhile;
+	// Get ready for the next round.
+	wp_reset_postdata();
+	return $output;
+}
+
+function make_add_children($content) {
+	global $post;
+	if ('newsletter' == get_post_type() ) {
+		$content = $content . make_get_newsletter_children( get_the_ID() );
+	}
+	return $content;
+}
+
+add_filter( 'the_content', 'make_add_children', 15 );
