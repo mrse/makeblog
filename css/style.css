@@ -11609,12 +11609,15 @@ body.hiw .fix .header-wrap .container .row {
 body.hiw .fix .header-wrap .container .row .span9 h2 span {
   font-size: 22px;
 }
-body.hiw #header {
+body.hiw #header-area {
   background-image: none;
   border: none;
   padding-top: 45px;
 }
-body.hiw #header h1 {
+body.hiw #header-area .header-image img {
+  margin: 0 auto;
+}
+body.hiw #header-area h1 {
   padding-bottom: 20px;
   padding-top: 20px;
 }
