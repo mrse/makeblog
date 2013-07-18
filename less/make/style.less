@@ -3048,174 +3048,161 @@ body#shop {
 /* NEW FOOTER STYLES BY BILL OLSON*/
 
 .new-footer {
-  /*border-top:5px solid #033045;*/
-	background-color:transparent; 
-	width:100%;
-}
-
-.new-footer .control-group {margin-bottom:8px;}
-
-.craft .new-footer {
-	background-color:transparent;
-	border-width: 1px;
-}
-
-.new-footer ul li {
-	display: list-item;
-}
-
-.new-footer .text a {
-	color:#000;
-}
-
-.new-footer .clearfix { 
-	clear:both;
-	height:0;
-	font-size: 1px;
-	line-height: 0px;
-}
-
-.new-footer {
-	padding-top:20px;
+    background-color:transparent;
+    width:100%;
+    padding-top:20px;
     width: 100%;
-	text-align:center;
-	border-top: 3px solid #A0B0B8;
-	background-image: url('../img/header_bg.jpg');
+    text-align:center;
+    border-top: 3px solid #A0B0B8;
+    background-image: url('../img/header_bg.jpg');
+    label {
+        display: block;
+        margin-bottom: 0;
+        margin-top:0;
+    }
+    label.checkbox {
+        font-weight:bold;
+    }
+    .about-column-01 {
+        width: 90px;
+        float:left;
+        margin-left:0;
+    }
+    .about-column-02 {
+        float:left;
+        width:130px;
+        margin-left:0;
+    }
+    .email-area {
+        #appendedInputButton {
+            border-radius: 0;
+            height:16px;
+        }
+        controls {
+            width:130px;
+            float:left;
+            margin:0;
+            padding:0;
+        }
+        .btn {
+            background-color:#F60B29;
+            color:#fff;
+            font-weight:400;
+            font-size:18px;
+            border-radius: 0;
+            background-image: none;
+            height:26px;
+            padding-top:2px;
+            border: 1px solid #ccc;
+            box-shadow: none;
+        }
+    }
+    ul {
+        li {
+            display: list-item;
+        }
+    }
+    .control-group {
+        margin-bottom:8px;
+    }
+    h5 {
+        margin-bottom:0;
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .clearfix {
+        clear:both;
+        height:0;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    .logo {
+        margin-bottom:5px;
+        h5 {
+            float:left;
+            padding-top:32px;
+        }
+        img {
+            float:left;
+            padding-right:5px;
+        }
+    }
+    .terms {
+        margin-top:0;
+    }
+    .main {
+        width:940px;
+        margin-top:5px;
+    }
+    .text {
+        margin-top:0;
+        a {
+            color:#000;
+        }
+    }
+    .subscribe {
+        img#mag-arrow {
+            width: 95px;
+            border: 1px solid #ccc;
+            margin-top: -40px;
+            margin-left: -20px;
+            border: none;
+        }
+        img#mag-cover {
+            width: 128px;
+            float: right;
+            border: 1px solid #ccc;
+            margin-top: -20px;
+        }
+    }
+    .container {
+        width: 940px;
+        margin: 0 auto;
+        text-align: left;
+        ul {
+            margin-left:15px;
+        }
+        .row {
+            .subscribe {
+                h5 {
+                    color: #F60B29;
+                    margin-top:-20px;
+                }
+                p {
+                    font-weight: bold;
+                    margin-top:3px;
+                    padding-right:3px;
+                }
+                hr {
+                    border: none;
+                    background-color: #F60B29;
+                    color: #F60B29;
+                    height: 7px;
+                    width:85px;
+                }
+            }
+        }
+    }
 }
-
-.new-footer .text {margin-top:0;}
-
-.new-footer .terms {margin-top:0;}
-
-.new-footer .container {
-	width: 940px;
-	margin: 0 auto;
-	padding-top: 20px;
-	text-align: left;
+.new-footer .controls &>.radio:first-child, .controls &>.checkbox:first-child {
+    padding-top: 0;
 }
-	
-.new-footer .main {
-	width:940px;
-	margin-left:0; 
-	margin-top:5px;
+.craft {
+    .new-footer {
+        background-color:transparent;
+        border-width: 1px;
+    }
 }
-
-.new-footer h5 {margin-bottom:0;}
-
-.new-footer .container .row {margin-left:0;}
-
-.new-footer .trending, .new-footer .newsletter, .new-footer .about-us, .new-footer .subscribe  {
-	width:220px;
-	float:left;
-	border-top:1px solid #ccc;
-	text-align:left;
-	padding-top:10px;
-}
-
-.new-footer .trending {margin-left:0;}
-
-.new-footer .email-area controls {
-	width:130px;
-	float:left;
-	margin:0;
-	padding:0;
-}
-
-.new-footer .container .row .span.main .span.about-us .span.about-column-02 {
-	float:left;
-	width:130px;
-	margin-left:0;
-}
-
-.new-footer .container .row .span.main .span.about-us .span.about-column-01 {
-	width: 90px;
-	float:left;
-	margin-left:0;
-}
-
-.new-footer .container .row .span.main .span.about-us .span.socialArea {
-	 width:220px;
-	 margin-left:0;
-}
-
-.new-footer .subscribe img#mag-cover {
-	width: 128px;
-	float: right;
-	border: 1px solid #ccc;
-	margin-top: -20px;
-}
-
-.new-footer .subscribe img#mag-arrow {
-	width: 95px;
-	border: 1px solid #ccc;
-	margin-top: -40px;
-	margin-left: -20px;
-	border: none;
-}
-
-.new-footer label.checkbox {
-	font-weight:bold;
-}
-
-.new-footer .container ul {
-	margin-left:15px;
-}
-
-
 .new-footer input[type="radio"], .new-footer input[type="checkbox"] {
     margin: 0;
 }
-
-.new-footer h5 {
-	font-family: sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-}
-.new-footer .container .row .span .span.subscribe h5 {
-	color: #F60B29;
-	margin-top:-20px;
-}
-.new-footer .container .row .span .span.subscribe p {
-	font-weight: bold;
-	margin-top:3px;
-	padding-right:3px;
-}
-
-.new-footer .container .row .span .span.subscribe hr {
-	border: none;
-	background-color: #F60B29;
-	color: #F60B29;
-	height: 7px;
-	width:85px;
-}
-
-.new-footer .controls > .radio:first-child, .controls > .checkbox:first-child {
-    padding-top: 0;
-}
-
-.new-footer label {
-    display: block;
-    margin-bottom: 0;
-    margin-top:0;
-}
-
-
-.new-footer .email-area .btn {
-	background-color:#F60B29;
-	color:#fff;
-	font-weight:400;
-	font-size:18px;
-	border-radius: 0;
-	background-image: none;
-	height:26px;
-	padding-top:2px;
-	border: 1px solid #ccc;  
-	box-shadow: none;
-}
-
-.new-footer .email-area #appendedInputButton{
-	border-radius: 0;
-	height:16px;
+.new-footer .trending, .new-footer .newsletter, .new-footer .about-us, .new-footer .subscribe {
+    width:220px;
+    float:left;
+    border-top:1px solid #ccc;
+    text-align:left;
+    padding-top:10px;
 }
 
 /* HEADER MAIN BLOG LINK*/
