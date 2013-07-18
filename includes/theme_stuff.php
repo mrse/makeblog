@@ -1184,10 +1184,12 @@ function make_get_author( $post_id, $prefix = 'By' ) {
 	// Return our post type name
 	$post_type = get_post_type( absint( $post_id ) );
 
-	// We don't ever want to display an author for the videos post type.
-	if ( $post_type == 'video' )
+	// Check that we are not loading a video CPT. If we are, return false so we don't echo anything
+	if ( $post_type == 'video')
 		return false;
 
+	// If we want to echo our results, we'll do that here.
+	echo '<li>';
 	echo esc_attr( $prefix ) . ' ';
 
 	if ( $post_type == 'post' ) {
@@ -1203,6 +1205,8 @@ function make_get_author( $post_id, $prefix = 'By' ) {
 			the_author();
 		}
 	}
+
+	echo '</li>';
 
 }
 
