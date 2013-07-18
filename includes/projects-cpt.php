@@ -633,3 +633,17 @@ function make_projects_tools( $tools ) {
 
 	return $output;
 }
+
+
+$field_data = array (
+	'Resources' => array (
+		'fields' => array(
+			'RequiredResources'	=> array( 'type' => 'textarea', 'label' => 'Required Resources' ),
+			'ExtraResources'	=> array( 'type' => 'textarea', 'label' => 'Extra Resources' ),
+	),
+	'title'		=> 'Resources',
+	'pages'		=> array( 'projects' ),
+	),
+);
+
+$easy_cf = new Easy_CF($field_data);
