@@ -95,8 +95,24 @@ $field_data = array (
 			'PageNumber'		=> array(),
 			'ProjectsTeaser'	=> array(),
 			'Byline' 			=> array(),
+			'Conclusion'		=> array( 'type' => 'textarea' ),
 	),
 	'title'		=> 'Magazine Meta',
+	'context'	=> 'side',
+	'pages'		=> array( 'magazine', 'review', 'projects' ),
+	),
+);
+
+$easy_cf = new Easy_CF($field_data);
+
+$field_data = array (
+	'magazine_author' => array (
+		'fields' => array(
+			'AuthorBio'			=> array( 'type' => 'textarea' ),
+			'Phone'				=> array(),
+			'Email'				=> array(),
+	),
+	'title'		=> 'Magazine Author',
 	'context'	=> 'side',
 	'pages'		=> array( 'magazine', 'review', 'projects' ),
 	),
