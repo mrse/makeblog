@@ -89,10 +89,12 @@ function volume_register_cpt_article() {
 $field_data = array (
 	'magazine_meta' => array (
 		'fields' => array(
-			'Hed'		=> array(),
-			'Dek'		=> array(),
-			'PullQuotes'	=> array(),
-			'PageNumber'	=> array(),
+			'Hed'				=> array(),
+			'Dek'				=> array(),
+			'PullQuotes'		=> array(),
+			'PageNumber'		=> array(),
+			'ProjectsTeaser'	=> array(),
+			'Byline' 			=> array(),
 	),
 	'title'		=> 'Magazine Meta',
 	'context'	=> 'side',
