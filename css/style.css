@@ -9591,6 +9591,7 @@ ul#tabs .current > a:hover {
 }
 .primary-navigation .dropdown-menu {
   margin-top: 0px;
+  font-size: 18px !important;
 }
 .secondary-navigation {
   font-size: 18px;
