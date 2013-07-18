@@ -17,29 +17,27 @@ make_get_header() ?>
 
 				<div class="span8 add30">
 					
-					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-			
+					<?php // create a new custom query so we can return posts, 
+						$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+						$query = new WP_Query( array(
+							'post_type' => array( 'post', 'projects', 'review', 'video', 'magazine' ),
+							'paged' => $paged,
+						) );
+
+						if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
+				
 					<div class="projects-masthead">
-						
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						
 					</div>
 					
 					<ul class="projects-meta">
-						<li>
-							By <?php 
-							if( function_exists( 'coauthors_posts_links' ) ) {	
-								coauthors_posts_links(); 
-							} else { 
-								the_author_posts_link(); 
-							} ?>
-						</li>
-						<li>
-							Posted <span class="blue"><?php the_time('Y/m/d \@ g:i a'); ?></span>
-						</li>
-						<li>
-							Category <?php the_category(', '); ?>
-						</li>
+						<?php if (make_get_author( $post->ID )){ ?>
+							<li><?php make_get_author( $post->ID ); ?></li>
+						<?php } ?>
+						<li>Posted <span class="blue"><?php the_time('Y/m/d \@ g:i a'); ?></span></li>
+						<li>Category <?php the_category(', '); ?></li>
+						<li>Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a></li>
 					</ul>
 				
 					<article <?php post_class(); ?>>
@@ -52,6 +50,10 @@ make_get_header() ?>
 							
 							<div class="media-body">
 								<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
+							</div>
+							
+							<div class="jetpack-sharing">
+								<?php if ( function_exists( 'sharing_display') ) echo sharing_display(); ?> 
 							</div>
 							
 							

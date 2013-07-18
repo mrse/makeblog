@@ -47,11 +47,11 @@
 	 */
 	function make_mc_logo( $atts ) {
 		extract( shortcode_atts( array(
-			'width'  => 570, // Only accepts integers
-			'height' => 175, // Only accepts integers
+			'width'  => 564, // Only accepts integers
+			'height' => 174, // Only accepts integers
 		), $atts ) );
 		
-		return '<img src="http://makezineblog.files.wordpress.com/2013/05/maker-camp-logo2.png?w=' . intval( $width ) . '" alt="Maker Camp - On Google+" width="' . intval( $width ) . '" height="' . intval( $height ) . '">';
+		return '<a href="http://google.com/+make" target="_blank"><img src="http://makezineblog.files.wordpress.com/2013/07/makercamp_whtlarge_logo.png?w=' . intval( $width ) . '" alt="Maker Camp - On Google+" width="' . intval( $width ) . '" height="' . intval( $height ) . '"></a>';
 	}
 	add_shortcode('maker-camp-logo', 'make_mc_logo' );
 
@@ -71,6 +71,7 @@
 			'date'  => '',        // String. The date as you want it to appear
 			'img'   => '', 		  // String. URL to the project image
 			'title' => '', 		  // String. Enter the title of the project
+			'project_url' => '',  // String. Enter the url for title of the project
 			'mentor' => '', 	  // String. Enter the name of the mentor
 			'mentor_link' => '',  // URL.    Enter the mentors URL to link to.
 			'link'  => '', 		  // String. Add in the URL to where you want the far right button to link to
@@ -102,13 +103,13 @@
 			$output .= '<h2 class="project-title">';
 
 			// Do we have a link?
-			if ( ! empty( $link ) )
-				$output .= '<a href="' . esc_url( $link ) . '">';
+			if ( ! empty( $project_url ) )
+				$output .= '<a href="' . esc_url( $project_url ) . '">';
 
 			$output .= esc_attr( $title );
 				
 			// Close the link if it exists
-			if ( ! empty( $link ) )
+			if ( ! empty( $project_url ) )
 				$output .= '</a>';
 
 			$output .= '</h2>';
@@ -193,7 +194,7 @@
 		);
 
 		if ( ! empty( $content ) ) {
-			$output = '<h4><a class="' . esc_attr( $class ) . '" data-toggle="modal" href="#' . esc_attr( $link_id ) . '">' . esc_html( $link_name ) . '</a></h4>
+			$output = '<h5><a class="' . esc_attr( $class ) . '" data-toggle="modal" href="#' . esc_attr( $link_id ) . '">' . esc_html( $link_name ) . '</a></h5>
 			<div class="modal hide fade" id="' .esc_attr( $link_id ) . '">
 				<div class="modal-header">
 					<a class="close" data-dismiss="modal">&times;</a>

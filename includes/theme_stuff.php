@@ -205,16 +205,42 @@ add_filter( 'wp_feed_cache_transient_lifetime', create_function( '$a', 'return 9
 
 /**
  * Enqueue all scripts and stylesheets.
+ * @return void
+ *
+ * @version  1.1
  */
 function make_enqueue_jquery() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.js', array( 'jquery' ) );
+	wp_enqueue_script( 'make-header', get_stylesheet_directory_uri() . '/js/header.js', array( 'jquery' ) );
+
+	// display our map sort plugin for Maker Camp
+	if ( is_page( 315793 ) )
+		wp_enqueue_script( 'make-sort-table', get_stylesheet_directory_uri() . '/js/jquery.tablesorter.min.js', array( 'jquery' ) );
+
 	wp_enqueue_style( 'make-css', get_stylesheet_directory_uri() . '/css/style.css' );
 	wp_enqueue_style( 'make-print', get_stylesheet_directory_uri() . '/css/print.css', array(), false, 'print' );
 }
-
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
+
+
+/**
+ * Adds scripts and styles to particular pages in the admin areas.
+ * @return void
+ */
+function make_enqueue_resources_admin() {
+	$screen = get_current_screen();
+
+	if ( $screen->id == 'volume_page_manager' ) {
+		wp_enqueue_style( 'make-dashboard-css', get_stylesheet_directory_uri() . '/includes/magazine-dashboard/css/dashboard.css' );
+
+		wp_enqueue_script( 'make-sort-table', get_stylesheet_directory_uri() . '/js/jquery.tablesorter.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'make-dashboard', get_stylesheet_directory_uri() . '/includes/magazine-dashboard/js/dashboard-scripts.js', array( 'make-sort-table' ) );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'make_enqueue_resources_admin' );
+
 
 /**
  * Catch a description for the OG protocol
@@ -1091,16 +1117,26 @@ function make_sitemap_add_gallery_post_type( $post_types ) {
 	return $post_types;
 }
 
+
 /**
  * Adds a menu field to the menus section of the admin area for the topbar
  * @return void
  *
- * @version  1.0
+ * @version  1.1
  */
-function make_topbar_register_menu() {
-	register_nav_menu( 'topbar', __( 'Top Bar' ) );
+function make_register_menu() {
+
+	// Make Navigation menus
+	register_nav_menu( 'make-primary', __( 'Make Primary Nav', 'make' ) );
+	register_nav_menu( 'make-secondary', __( 'Make Secondary Nav', 'make' ) );
+
+	// Popdown Menus
+	register_nav_menu( 'popdown-menu-top', __( 'Popdown Top', 'make' ) );
+	register_nav_menu( 'popdown-menu-middle', __( 'Popdown Middle', 'make' ) );
+	register_nav_menu( 'popdown-menu-last', __( 'Popdown Last', 'make' ) );
 }
-add_action( 'init', 'make_topbar_register_menu' );
+add_action( 'init', 'make_register_menu' );
+
 
 add_filter( 'wp_kses_allowed_html', 'mf_allow_data_atts', 10, 2 );
 function mf_allow_data_atts( $allowedposttags, $context ) {
@@ -1131,3 +1167,118 @@ function mf_filter_tiny_mce_before_init( $options ) {
 
 	return $options; 
 }
+
+
+/**
+ * Allows us to easily integrate different types of authors.
+ * This is needed because our blog feeds contain multiple types of posts.
+ * This will handle the display of those different kinds and apply the right data and styling.
+ * @param  string $post_id The post ID of the post we are returning this info for
+ * @param  string $prefix  The string to add in front of the autor name. Defaults to "By".
+ * @return String
+ *
+ * @version  1.0
+ */
+function make_get_author( $post_id, $prefix = 'By' ) {
+
+	// Return our post type name
+	$post_type = get_post_type( absint( $post_id ) );
+
+	// We don't ever want to display an author for the videos post type.
+	if ( $post_type == 'video' )
+		return false;
+
+	echo esc_attr( $prefix ) . ' ';
+
+	if ( $post_type == 'post' ) {
+		if( function_exists( 'coauthors_posts_links' ) ) {	
+			coauthors_posts_links(); 
+		} else { 
+			the_author_posts_link(); 
+		}
+	} else {
+		if ( function_exists( 'coauthors' ) ) {
+			coauthors();
+		} else {
+			the_author();
+		}
+	}
+
+}
+
+
+/**
+ * Filter the query variables and make sure we are searching for the feed so we can include our custom post types like a boss.
+ * @param  array $query_var The query variables.
+ * @return array
+ *
+ * @version  1.0
+ */
+function make_add_post_types_to_feed( $query_var ) {
+
+	// Check that we are quering the RSS feed and post_type isn't being used.
+	if ( isset( $query_var['feed'] ) && ! isset( $query_var['post_type'] ) )
+		$query_var['post_type'] = array( 'post', 'projects', 'review', 'video', 'magazine' );
+
+	return $query_var;
+	
+}
+add_filter( 'request', 'make_add_post_types_to_feed' );
+
+
+
+/**
+ * Outputs the code for our Popdown menu found on all Make sites
+ * @return html
+ *
+ * @version  1.0
+ */
+function make_popdown_menu() { ?>
+	<div class="make-popdown">
+		<div class="wrapper-container">
+			<div class="container">
+				<div class="row">
+					<div class="span3 offset2 border-right">
+						<div class="row-fluid">
+							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" class="span4"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
+							<div class="span7 side-text">
+								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
+							</div>
+						</div>
+					</div>
+					<div class="span2 border-right">
+						<?php wp_nav_menu( array(
+							'theme_location'  => 'popdown-menu-top',
+							'container'       => false, 
+							'menu_class'      => 'first nav',
+							'depth'           => 1 
+						) ); ?>
+					</div>
+					<div class="span4">
+						<?php wp_nav_menu( array(
+							'theme_location'  => 'popdown-menu-middle',
+							'container'       => false, 
+							'menu_class'      => 'second nav',
+							'depth'           => 1 
+						) ); ?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span9 offset2 menu-bottom">
+						<p>What's Hot on Makezine.com:</p>
+						<?php wp_nav_menu( array(
+							'theme_location'  => 'popdown-menu-last',
+							'container'       => false, 
+							'menu_class'      => 'last nav',
+							'depth'           => 1 
+						) ); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="menu-button">
+			<span class="popdown-btn"></span>
+		</div>
+	</div>
+<?php }
+

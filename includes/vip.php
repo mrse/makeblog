@@ -47,28 +47,122 @@ if ( ! jetpack_is_mobile() ) {
  */
 if ( function_exists( 'vip_regex_redirects' ) ) {
 	$redirects = array(
-		'|^/archive/([0-9]{4})/([0-9]{2})/([^/]+)\.html|' => '|/$1/$2/$3/|', // MT articles
-		'|^/([0-9]+)\.html$|' => '|/$1/|', // MT page structure - just redirect to postname and WordPress will resolve
-		'|^/archive/category/([a-zA-Z_]+)|' => '|/category/$1/|', // MT category
-		'|^/archive/category/([a-zA-Z_]+)/index.xml$|' => '|/category/$1/feed/', // MT category feed
-		'|^/archive/category/([a-zA-Z_]+)/feed|' => '|/category/$1/feed/', // Old WordPress Podcast feeds
+		'|^/archive/([0-9]{4})/([0-9]{2})/([^/]+)\.html|'  => '|/$1/$2/$3/|', // MT articles
+		'|^/([0-9]+)\.html$|' 							   => '|/$1/|', // MT page structure - just redirect to postname and WordPress will resolve
+		'|^/archive/category/([a-zA-Z_]+)|' 			   => '|/category/$1/|', // MT category
+		'|^/archive/category/([a-zA-Z_]+)/index.xml$|'	   => '|/category/$1/feed/', // MT category feed
+		'|^/archive/category/([a-zA-Z_]+)/feed|' 		   => '|/category/$1/feed/', // Old WordPress Podcast feeds
 		'|^/archive/category/([a-zA-Z]+)/([0-9]+)\.html$|' => '|/category/$1/page/$2/', // MT paginated category structure
-		'|^/([0-9]{2})/([^/]+)/?$|' => 'http://archive.makezine.com|/$1/$2|',
+		'|^/([0-9]{2})/(.*)|'							   => 'http://archive.makezine.com/$1/$2|',
+		'|^/blog/category/([a-zA-Z0-9 -]+)|' 			   => '|/category/$1/|', // handle any redirects from blog.makezine with categories
+		'|^/blog/tag/([a-zA-Z0-9 -]+)|'				  	   => '|/tag/$1/|', // handle any redirects from blog.makezine with tags
+		'|^/blog/author/([a-zA-Z0-9 -]+)|'				   => '|/author/$1/', // handle any redirects from blog.makezine marked as authors
 	);
 	vip_regex_redirects( $redirects );
 }
 if ( function_exists( 'vip_redirects' ) ) {
 	vip_redirects( array(
-		'/index.xml'         => 'http://blog.makezine.com/feed/', // really old feeds
-		'/feed/rss'          => 'http://blog.makezine.com/feed/', // really old feeds
-		'/podcast'           => 'http://blog.makezine.com/video/', // Old podcast => video
+		'/index.xml'         => 'http://makezine.com/feed/', // really old feeds
+		'/feed/rss'          => 'http://makezine.com/feed/', // really old feeds
+		'/podcast'           => 'http://makezine.com/video/', // Old podcast => video
 		//'/home-page-include' => 'http://makezine.com/', // Old podcast => video
-		'/2008/01/15/weekend-projects/' => 'http://blog.makezine.com/weekend-projects/' // Weekend Projects
+		'/2008/01/15/weekend-projects/' => 'http://makezine.com/weekend-projects/' // Weekend Projects
 	) );
 }
 
+// Since we have a global redirect for blog.makezine.com to makezine.com/blog, we need to append /blog/ before everything for these to return true
+// Due to the fact everything is broken, we need to launch this NOW. TODO: Convert to Reg Ex so we can simplify this.
 if ( function_exists( 'vip_redirects' ) ) {
 	$redirects = array(
+		'/blog/subscribe' 				=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
+		'/blog/renew'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
+		'/blog/paybill'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
+		'/blog/account'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
+		'/blog/premier'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
+		'/blog/coolgifts'				=> 'https://readerservices.makezine.com/backissue/subbi.aspx?PC=MK&AN=&Zp=&PK=',
+		'/blog/gift'					=> 'https://readerservices.makezine.com/mk/SubGiftSplash.aspx',
+		'/blog/04/strobe/indstrobe.mov'	=> 'http://downloads.oreilly.com/make/04/indstrobe.mov',
+		'/blog/04/flash/caps.mov'		=> 'http://downloads.oreilly.com/make/04/caps.mov',
+		'/blog/save'					=> 'https://readerservices.makezine.com//MK/Subnew.aspx?PC=MK&PK=0EBSPL',
+		'/blog/offer'					=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
+		'/blog/bonus'					=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
+		'/blog/talk'					=> 'http://makezine.com/forums',
+		'/blog/fair'					=> 'http://makezine.com/faire/',
+		'/blog/faire'					=> 'http://makerfaire.com/',
+		'/blog/makerfaire'				=> 'http://makerfaire.com/',
+		'/blog/06/legosoccer/focal'		=> 'http://digital.ni.com/public.nsf/allkb/29D716D6F4F1FBC386256AE700727AF6',
+		'/blog/suboffer'				=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
+		'/blog/weekendprojects'			=> 'http://makezine.com/the-weekend-projects/',
+		'/blog/sff'						=> 'http://store.makezine.com/ProductDetails.asp?ProductCode=0596529201',
+		'/blog/pdf'						=> 'http://www.makezine.com/blog/archive/make_pdf/',
+		'/blog/store'					=> 'http://makershed.com/',
+		'/blog/3D'						=> 'http://www.makezine.com/3d',
+		'/blog/elementsofhumanity'		=> 'http://elementsofhumanity.com/',
+		'/blog/pub/au/Terrie_Miller'	=> 'http://makezine.com/pub/au/Terrie_Schweitzer',
+		'/blog/GO/HIW'					=> 'http://makezine.com/hardware-innovation-workshop/',
+		'/blog/3Dspecial'				=> 'https://readerservices.makezine.com/MK/subscribe.aspx?PC=MK&PK=M25SCHO',
+		'/blog/tellus/survey'			=> 'http://www.opinionpath.net/mke/cgi-bin/ciwweb.pl?studyname=mke',
+		'/blog/mf2012'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?PC=MK&PK=M25MFIS&DO=R',
+		'/blog/v/31'					=> 'http://makezine.com/31/',
+		'/blog/craft/blog'				=> 'http://makezine.com/craftzine/',
+		'/blog/craft/'					=> 'http://makezine.com/craft/',
+		'/blog/move'					=> 'https://pubservice.com/SubGiftv2.aspx?PC=MK&PK=M2XBUS',
+		'/blog/241'						=> 'https://www.pubservice.com/subgiftcombo.aspx?PC=MK&PK=42M241',
+		'/blog/holidaygift'				=> 'https://pubservice.com/Subgiftcombo.aspx?PC=MK&PK=429HOL9',
+		'/blog/bogo'					=> 'https://www.pubservice.com/subgiftcombo.aspx?PC=MK&PK=42BBN03',
+		'/blog/PM241'					=> 'https://pubservice.com/Subgiftcombo.aspx?PC=MK&PK=42MPM24',
+		'/blog/3Dfree'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=B31BLB',
+		'/blog/3Dbonus'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=B31BIN',
+		'/blog/33'						=> 'http://makezine.com/volume/make-33/',
+		'/blog/5issues'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M34AIR',
+		'/blog/3DPDF'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
+		'/blog/3dpdf'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
+		'/blog/magazine'				=> 'http://makezine.com/volume/make-34/',
+		'/blog/34'						=> 'http://makezine.com/volume/make-34/',
+		'/blog/maker-projects'			=> 'http://makezine.com/maker-projects/',
+		'/blog/projects'				=> 'http://makezine.com/projects',
+		'/blog/01'						=> 'http://archive.makezine.com/01/',
+		'/blog/02'						=> 'http://archive.makezine.com/02/',
+		'/blog/03'						=> 'http://archive.makezine.com/03/',
+		'/blog/04'						=> 'http://archive.makezine.com/04/',
+		'/blog/05'						=> 'http://archive.makezine.com/05/',
+		'/blog/06'						=> 'http://archive.makezine.com/06/',
+		'/blog/07'						=> 'http://archive.makezine.com/07/',
+		'/blog/08'						=> 'http://archive.makezine.com/08/',
+		'/blog/09'						=> 'http://archive.makezine.com/09/',
+		'/blog/10'						=> 'http://archive.makezine.com/10/',
+		'/blog/11'						=> 'http://archive.makezine.com/11/',
+		'/blog/12'						=> 'http://archive.makezine.com/12/',
+		'/blog/13'						=> 'http://archive.makezine.com/13/',
+		'/blog/14'						=> 'http://archive.makezine.com/14/',
+		'/blog/15'						=> 'http://archive.makezine.com/15/',
+		'/blog/16'						=> 'http://archive.makezine.com/16/',
+		'/blog/17'						=> 'http://archive.makezine.com/17/',
+		'/blog/18'						=> 'http://archive.makezine.com/18/',
+		'/blog/19'						=> 'http://archive.makezine.com/19/',
+		'/blog/20'						=> 'http://archive.makezine.com/20/',
+		'/blog/21'						=> 'http://archive.makezine.com/21/',
+		'/blog/22'						=> 'http://archive.makezine.com/22/',
+		'/blog/23'						=> 'http://archive.makezine.com/23/',
+		'/blog/24'						=> 'http://archive.makezine.com/24/',
+		'/blog/25'						=> 'http://archive.makezine.com/25/',
+		'/blog/26'						=> 'http://archive.makezine.com/26/',
+		'/blog/27'						=> 'http://archive.makezine.com/27/',
+		'/blog/28'						=> 'http://archive.makezine.com/28/',
+		'/blog/29'						=> 'http://archive.makezine.com/29/',
+		'/blog/30'						=> 'http://archive.makezine.com/30/',
+		'/blog/31'						=> 'http://archive.makezine.com/31/',
+		'/blog/32'						=> 'http://archive.makezine.com/32/',
+		'/blog/faq/index.html'			=> 'http://makezine.com/faq/',
+		'/blog/community/index.html'	=> 'http://archive.makezine.com/community/index.html',
+		'/blog/help/index.html'			=> 'http://archive.makezine.com/help/index.html',
+		'/blog/hardware-innovation-workshop/videos.html' => 'http://archive.makezine.com/hardware-innovation-workshop/videos.html',
+		'/blog/magazine/newsletter/makerpro' => 'http://archive.makezine.com/magazine/newsletter/makerpro/index.html',
+		'/blog/groups'					=> 'http://archive.makezine.com/groups/',
+		'/blog/make-newsletter'			=> 'http://makezine.com/newsletter/',
+		'/blog/page-2/'					=> 'http://makezine.com/page-2/',
+
+		// Add redirects for instances that a blog folder isn't here.
 		'/subscribe' 				=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
 		'/renew'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
 		'/paybill'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?pc=mk',
@@ -81,13 +175,13 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/save'						=> 'https://readerservices.makezine.com//MK/Subnew.aspx?PC=MK&PK=0EBSPL',
 		'/offer'					=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
 		'/bonus'					=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
-		'/talk'						=> 'http://forums.makezine.com/',
+		'/talk'						=> 'http://makezine.com/forums',
 		'/fair'						=> 'http://makezine.com/faire/',
 		'/faire'					=> 'http://makerfaire.com/',
 		'/makerfaire'				=> 'http://makerfaire.com/',
 		'/06/legosoccer/focal'		=> 'http://digital.ni.com/public.nsf/allkb/29D716D6F4F1FBC386256AE700727AF6',
 		'/suboffer'					=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
-		'/weekendprojects'			=> 'http://blog.makezine.com/the-weekend-projects/',
+		'/weekendprojects'			=> 'http://makezine.com/the-weekend-projects/',
 		'/sff'						=> 'http://store.makezine.com/ProductDetails.asp?ProductCode=0596529201',
 		'/pdf'						=> 'http://www.makezine.com/blog/archive/make_pdf/',
 		'/store'					=> 'http://makershed.com/',
@@ -99,7 +193,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/tellus/survey'			=> 'http://www.opinionpath.net/mke/cgi-bin/ciwweb.pl?studyname=mke',
 		'/mf2012'					=> 'https://readerservices.makezine.com/mk/subinfo.aspx?PC=MK&PK=M25MFIS&DO=R',
 		'/v/31'						=> 'http://makezine.com/31/',
-		'/craft/blog'				=> 'http://blog.makezine.com/craftzine/',
+		'/craft/blog'				=> 'http://makezine.com/craftzine/',
 		'/move'						=> 'https://pubservice.com/SubGiftv2.aspx?PC=MK&PK=M2XBUS',
 		'/241'						=> 'https://www.pubservice.com/subgiftcombo.aspx?PC=MK&PK=42M241',
 		'/holidaygift'				=> 'https://pubservice.com/Subgiftcombo.aspx?PC=MK&PK=429HOL9',
@@ -107,13 +201,12 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/PM241'					=> 'https://pubservice.com/Subgiftcombo.aspx?PC=MK&PK=42MPM24',
 		'/3Dfree'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=B31BLB',
 		'/3Dbonus'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=B31BIN',
-		'/33'						=> 'http://blog.makezine.com/volume/make-33/',
+		'/33'						=> 'http://makezine.com/volume/make-33/',
 		'/5issues'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M34AIR',
 		'/3DPDF'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
 		'/3dpdf'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
 		'/magazine'					=> 'http://makezine.com/volume/make-34/',
 		'/34'						=> 'http://makezine.com/volume/make-34/',
-		'/maker-projects'			=> 'http://makezine.com/maker-projects/',
 		'/01'						=> 'http://archive.makezine.com/01/',
 		'/02'						=> 'http://archive.makezine.com/02/',
 		'/03'						=> 'http://archive.makezine.com/03/',
@@ -153,6 +246,10 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/magazine/newsletter/makerpro' => 'http://archive.makezine.com/magazine/newsletter/makerpro/index.html',
 		'/groups'					=> 'http://archive.makezine.com/groups/',
 		'/make-newsletter'			=> 'http://makezine.com/newsletter/',
+		'/magazine/newsletter/subscribe/free-digital-magazine.html'			=> 'http://archive.makezine.com/magazine/newsletter/subscribe/free-digital-magazine.html',
+		'/unsubscribe/makershed.csp'			=> 'http://archive.makezine.com/unsubscribe/makershed.html',
+		'/unsubscribe/makershed.html'			=> 'http://archive.makezine.com/unsubscribe/makershed.html',
+
 	);
 	vip_redirects( $redirects );
 }

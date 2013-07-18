@@ -26,7 +26,7 @@ function make_register_cpt_search_term() {
 		'supports' => array( 'title', 'thumbnail', 'custom-fields', 'revisions', 'editor' ),
 		'taxonomies' => array( 'search_terms' ),
 		'public' => false,
-		'show_ui' => true,
+		'show_ui' => false,
 		'show_in_menu' => true,
 		'show_in_nav_menus' => false,
 		'publicly_queryable' => false,
@@ -37,6 +37,7 @@ function make_register_cpt_search_term() {
 		'rewrite' => false,
 		'capability_type' => 'post',
 		'menu_icon' => get_stylesheet_directory_uri() .'/img/magnifier--plus.png',
+		'menu_position' => 100,
 	);
 
 	register_post_type( 'search_term', $args );
