@@ -66,7 +66,6 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/feed/rss'          => 'http://makezine.com/feed/', // really old feeds
 		'/podcast'           => 'http://makezine.com/video/', // Old podcast => video
 		//'/home-page-include' => 'http://makezine.com/', // Old podcast => video
-		'/2008/01/15/weekend-projects/' => 'http://makezine.com/weekend-projects/' // Weekend Projects
 	) );
 }
 
@@ -92,7 +91,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/makerfaire'				=> 'http://makerfaire.com/',
 		'/blog/06/legosoccer/focal'		=> 'http://digital.ni.com/public.nsf/allkb/29D716D6F4F1FBC386256AE700727AF6',
 		'/blog/suboffer'				=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
-		'/blog/weekendprojects'			=> 'http://makezine.com/the-weekend-projects/',
+		'/blog/weekendprojects'			=> 'http://makezine.com/weekendprojects/',
 		'/blog/sff'						=> 'http://store.makezine.com/ProductDetails.asp?ProductCode=0596529201',
 		'/blog/pdf'						=> 'http://www.makezine.com/blog/archive/make_pdf/',
 		'/blog/store'					=> 'http://makershed.com/',
@@ -181,7 +180,6 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/makerfaire'				=> 'http://makerfaire.com/',
 		'/06/legosoccer/focal'		=> 'http://digital.ni.com/public.nsf/allkb/29D716D6F4F1FBC386256AE700727AF6',
 		'/suboffer'					=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
-		'/weekendprojects'			=> 'http://makezine.com/the-weekend-projects/',
 		'/sff'						=> 'http://store.makezine.com/ProductDetails.asp?ProductCode=0596529201',
 		'/pdf'						=> 'http://www.makezine.com/blog/archive/make_pdf/',
 		'/store'					=> 'http://makershed.com/',
@@ -239,6 +237,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/30'						=> 'http://archive.makezine.com/30/',
 		'/31'						=> 'http://archive.makezine.com/31/',
 		'/32'						=> 'http://archive.makezine.com/32/',
+		'/the-weekend-projects'		=> 'http://makezine.com/weekendprojects',
 		'/faq/index.html'			=> 'http://makezine.com/faq/',
 		'/community/index.html'		=> 'http://archive.makezine.com/community/index.html',
 		'/help/index.html'			=> 'http://archive.makezine.com/help/index.html',
