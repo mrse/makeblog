@@ -576,7 +576,7 @@ function make_magazine_dashboard_page() {
 								echo '<td class="post_parent column-post_parent"' . make_check_screen_options( 'post_parent', false, true ) . '>' . esc_html( $volume ) . '</td>';
 								echo '<td class="post_type column-post_type"' . make_check_screen_options( 'post_type', false, true ) . '>' . esc_html( $post_type ) . '</td>';
 								echo '<td class="post_status column-post_status"' . make_check_screen_options( 'post_status', false, true ) . '>' . esc_html( $post_status ) . '</td>';
-								echo '<td class="section column-section"' . make_check_screen_options( 'section', false, true ) . '>' . esc_html( $sections ) . '</td>';
+								echo '<td class="section column-section"' . make_check_screen_options( 'section', false, true ) . '>' . wp_kses( $sections, array( 'a' => array( 'href' => array(), 'title' => array() ) ) ) . '</td>';
 								echo '<td class="post_title column-post_title"' . make_check_screen_options( 'post_title', false, true ) . '><strong><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">' . esc_html( get_the_title() ) . '</a></strong>
 										<div class="row-actions">
 											<span class="inline hide-if-no-js"><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">Edit</a> | </span>
@@ -585,7 +585,7 @@ function make_magazine_dashboard_page() {
 									  </td>';
 								echo '<td class="post_author column-post_author"' . make_check_screen_options( 'post_author', false, true ) . '>' . make_convert_author_id( $post->post_author ) . '</td>';
 								echo '<td class="post_date column-post_date"' . make_check_screen_options( 'post_date', false, true ) . '>' . make_convert_to_pretty_time( $post->post_date, true ) . '</td>';
-								echo '<td class="ef_first_draft_date column-ef_first_draft_date"' . make_check_screen_options( 'ef_first_draft_date' ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_first-draft-date'][0] ) . '</td>';
+								echo '<td class="ef_first_draft_date column-ef_first_draft_date"  style="color:#ff0000;"' . make_check_screen_options( 'ef_first_draft_date' ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_first-draft-date'][0] ) . '</td>';
 								echo '<td class="ef_page_count column-ef_page_count ef_pc_count"' . make_check_screen_options( 'ef_page_count', false, true ) . '>' . make_get_integer( $meta['_ef_editorial_meta_number_page-count'][0] ) . '</td>';
 								echo '<td class="ef_editor column-ef_editor"' . make_check_screen_options( 'ef_editor', false, true ) . '>' . make_convert_author_id( $meta['_ef_editorial_meta_user_editor'][0] ) . '</td>';
 								echo '<td class="ef_editor_deadline column-ef_editor_deadline" style="color:#ff0000;"' . make_check_screen_options( 'ef_editor_deadline', false, true ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_editor-deadline'][0] ) . '</td>';
