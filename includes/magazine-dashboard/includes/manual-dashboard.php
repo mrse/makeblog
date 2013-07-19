@@ -270,8 +270,6 @@ function make_check_screen_options( $option, $metabox = false, $default = false 
 			} else {
 				$output = checked( $screen_options[ $option . '-hide' ], $option, false );
 			}
-
-			$output .= 'metabox';
 		} else { // This code is used when we are not dealing with the screen options metabox (ie our table rows)
 			if ( ! isset( $screen_options[ $option . '-hide' ] ) && $screen_options[ $option . '-hide' ] != $option )
 				$output = ' style="display:none;"';
