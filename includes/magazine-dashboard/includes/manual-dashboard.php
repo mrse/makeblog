@@ -7,17 +7,37 @@
  */
 function make_get_query_vars() {
 	$query_vars = array(
-		'paged' => ( isset( $_GET['paged'] ) ) ? absint( $_GET['paged'] ) : 1,
-		'search' => ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '',
-		'filter' => ( isset( $_GET['filter'] ) ) ? sanitize_text_field( $_GET['filter'] ) : '',
-		'volume' => ( isset( $_GET['volume'] ) && $_GET['volume'] != 'all' ) ? sanitize_text_field( $_GET['volume'] ) : '',
-		'post_status' => ( isset( $_GET['post_status'] ) && $_GET['post_status'] != '' && $_GET['post_status'] != 'all' ) ? sanitize_text_field( $_GET['post_status'] ) : make_post_statuses(),
-		'section' => ( isset( $_GET['section'] ) && $_GET['section'] != 'all' ) ? sanitize_text_field( $_GET['section'] ) : '',
-		'posts_per_page' => ( isset( $_GET['posts_per_page'] ) ) ? absint( $_GET['posts_per_page'] ) : 20,
+		'paged' 		 => ( isset( $_GET['paged'] ) ) ? absint( $_GET['paged'] ) : 1,
+		'search' 		 => ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '',
+		'filter' 		 => ( isset( $_GET['filter'] ) ) ? sanitize_text_field( $_GET['filter'] ) : '',
+		'volume' 		 => ( isset( $_GET['volume'] ) && $_GET['volume'] != 'all' ) ? sanitize_text_field( $_GET['volume'] ) : '',
+		'post_status' 	 => ( isset( $_GET['post_status'] ) && $_GET['post_status'] != '' && $_GET['post_status'] != 'all' ) ? sanitize_text_field( $_GET['post_status'] ) : make_post_statuses(),
+		'section' 		 => ( isset( $_GET['section'] ) && $_GET['section'] != 'all' ) ? sanitize_text_field( $_GET['section'] ) : '',
+		'tag'			 => ( isset( $_GET['tag'] ) && $_GET['tag'] != '' ) ? sanitize_text_field( $_GET['tag'] ) : '',
+		'posts_per_page' => ( isset( $_GET['posts_per_page'] ) ) ? absint( $_GET['posts_per_page'] ) : 40,
 	);
 
 	return $query_vars;
 }
+
+
+/**
+ * Handles our Ajax requests for the custom screen options. Called from dashboard-scripts.js. Only runs when a user is logged in (hence the wp_ajax_* action);
+ * @return [type] [description]
+ */
+function make_magazine_dashboard_ajax() {
+
+	// Make sure everything is as it's supposed to.
+	if ( isset( $_POST['submission'] ) && $_POST['submission'] == 'submit-dashboard-screen-options' && wp_verify_nonce( $_POST['nonce'], 'dashboard-screen-save' ) ) {
+
+		// Turn our query string into an array
+		parse_str( $_POST['data'], $data );
+
+		$user_id = get_current_user_id();
+		$updates = update_user_meta( $user_id, 'metaboxhidden_mag_dashboard', $data );
+	}
+}
+add_action( 'wp_ajax_mag_dash_screen_opt', 'make_magazine_dashboard_ajax' );
 
 
 /**
@@ -42,6 +62,7 @@ function make_count_post_status() {
 			'post_status'	 => $query_vars['post_status'],
 			'post_parent'	 => $query_vars['volume'],
 			'section'		 => $query_vars['section'],
+			'tag'			 => str_replace( ' ', '-', $query_vars['tag'] ), // Is there a better way to do this? If we search for a tag with spaces, we need those converted to dashes...
 			'posts_per_page' => 0,
 			'return_fields'	 => 'ids',
 			's'				 => $query_vars['serach'],	
@@ -88,15 +109,16 @@ function make_count_post_status() {
 	return substr( $output, 2 );
 }
 
+
 /**
  * Function to generate the pagination links. Just a wrapper for paginate links
  */
 function make_get_pagination_link( $total, $paged ) {
 	$links = paginate_links( array(
-		'base' 		=> get_pagenum_link() . '%_%',
-		'format' 	=> '&paged=%#%',
-		'current' 	=> max( 1, sanitize_text_field( $paged ) ),
-		'total' 	=> absint( $total )
+			'base' 		=> get_pagenum_link() . '%_%',
+			'format' 	=> '&paged=%#%',
+			'current' 	=> max( 1, sanitize_text_field( $paged ) ),
+			'total' 	=> absint( $total )
 		) 
 	);
 
@@ -115,7 +137,7 @@ function make_post_status_dropdown() {
 	$output .= '<option value="all">All Statuses</option>';
 
 	foreach ( $wp_post_statuses as $status => $obj) {
-		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' )
+		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' && $status != 'spam' )
 			$output .= '<option value="' . esc_attr( $obj->name ) . '"' . selected( sanitize_text_field( $query_vars['post_status'] ), esc_attr( $obj->name ), false ) . '>' . esc_html( $obj->label ) . '</option>';
 	}
 
@@ -176,7 +198,7 @@ function make_posts_per_page_dropdown( $posts_per_page ) {
 function make_section_dropdown() {
 
 	$query_vars = make_get_query_vars();
-	$terms = get_terms( 'section' );
+	$terms = get_terms( 'section', array( 'hide_empty' => false ) );
 
 	$output = '<select name="section" id="section-dropdown">';
 	$output .= '<option value="all">All Sections</option>';
@@ -199,7 +221,7 @@ function make_post_statuses() {
 	global $wp_post_statuses;
 
 	foreach ( $wp_post_statuses as $status => $name ) {
-		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' )
+		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' && $status != 'spam' )
 			$statuses[] = $status;
 	}
 
@@ -222,89 +244,125 @@ add_action( 'admin_head', 'make_init_screen_options' );
 
 
 /**
+ * Processes the data returned in user meta and allows us to control our table and screen optinos metabox
+ * @param  string  $option  The name of the option to check against (ie post_title, ef_pc, etc, etc)
+ * @param  boolean $metabox Configures the way this function handles the data being outputted. Use this if we are checking for data used in the screen options metabox
+ * @param  boolean $default Some columns we want shown by default. Set this to true to have our metabox checkboxes checked by default
+ * @return string
+ */
+function make_check_screen_options( $option, $metabox = false, $default = false ) {
+
+	$user_id = get_current_user_id();
+	$screen_options = get_user_meta( $user_id, 'metaboxhidden_mag_dashboard', true );
+	$output = '';
+
+	// Let's make sure we have data in DB before requesting it. If there isn't, setup the defaults.
+	if ( ! empty( $screen_options ) ) {
+		// Process the options for our metaboxes
+		if ( $metabox ) {
+			// Check if we want something checked by default, do it as long as our data isn't set in the database yet
+			if ( $default && isset( $screen_options[ $option . '-hide' ] ) ) {
+				if ( $metabox )
+					$output = 'checked="checked"';
+			} else {
+				if ( $metabox )
+					$output = checked( $screen_options[ $option . '-hide' ], $option, false );
+			}
+		} else { // This code is used when we are not dealing with the screen options metabox (ie our table rows)
+			if ( ! isset( $screen_options[ $option . '-hide'] ) && $screen_options[ $option . '-hide' ] != $option )
+				$output = ' style="display:none;"';
+		}
+	} else {
+		if ( $default && $metabox ) {
+			$output = 'checked="checked"';
+		} elseif ( ! $default && ! $metabox ) {
+			$output = ' style="display:none;"';
+		}
+	}
+
+	return $output;
+}
+
+
+/**
  * Display a list of columns to drop (TODO: find a way to output these easily via WP_Screen classs)
  */
 function make_display_screen_options() { ?>
 	<div id="screen-options-wrap" class="hidden" tabindex="-1" aria-label="Screen Options Tab">
-		<form name="make_dashboard_options" method="get">
+		<form id="magazine-dashboard-screen-options" name="make_dashboard_options" method="get">
+			<?php wp_nonce_field( 'dashboard-screen-save', 'make-magazine-dashboard', false ); ?>
+			<input type="hidden" name="submission" value="submit-dashboard-screen-options">
+
 			<h5>Show on screen</h5>
 			<div class="metabox-prefs">
 				<label for="post_parent-hide">
-					<input type="checkbox" class="hide-column-tog" id="post_parent-hide" name="post_parent-hide" value="post_parent" checked="checked"> Volume
+					<input type="checkbox" class="hide-column-tog" id="post_parent-hide" name="post_parent-hide" value="post_parent" <?php echo make_check_screen_options( 'post_parent', true, true ); ?>> Volume
 				</label>
 				<label for="post_type-hide">
-					<input type="checkbox" class="hide-column-tog" id="post_type-hide" name="post_type-hide" value="post_type" checked="checked"> Content Type
+					<input type="checkbox" class="hide-column-tog" id="post_type-hide" name="post_type-hide" value="post_type" <?php echo make_check_screen_options( 'post_type', true, true ); ?>> Content Type
 				</label>
 				<label for="post_status-hide">
-					<input type="checkbox" class="hide-column-tog" id="post_status-hide" name="post_status-hide" value="post_status" checked="checked"> Status
+					<input type="checkbox" class="hide-column-tog" id="post_status-hide" name="post_status-hide" value="post_status" <?php echo make_check_screen_options( 'post_status', true, true ); ?>> Status
 				</label>
 				<label for="section-hide">
-					<input type="checkbox" class="hide-column-tog" id="section-hide" name="section-hide" value="section" checked="checked"> Section
+					<input type="checkbox" class="hide-column-tog" id="section-hide" name="section-hide" value="section" <?php echo make_check_screen_options( 'section', true, true ); ?>> Section
 				</label>
 				<label for="post_title-hide">
-					<input type="checkbox" class="hide-column-tog" id="post_title-hide" name="post_title-hide" value="post_title" checked="checked"> Title
+					<input type="checkbox" class="hide-column-tog" id="post_title-hide" name="post_title-hide" value="post_title" <?php echo make_check_screen_options( 'post_title', true, true ); ?>> Title
 				</label>
 				<label for="post_author-hide">
-					<input type="checkbox" class="hide-column-tog" id="post_author-hide" name="post_author-hide" value="post_author" checked="checked"> Author
+					<input type="checkbox" class="hide-column-tog" id="post_author-hide" name="post_author-hide" value="post_author" <?php echo make_check_screen_options( 'post_author', true, true ); ?>> Author
 				</label>
 				<label for="post_date-hide"> 
-					<input type="checkbox" class="hide-column-tog" id="post_date-hide" name="post_date-hide" value="post_date" checked="checked"> Date
+					<input type="checkbox" class="hide-column-tog" id="post_date-hide" name="post_date-hide" value="post_date" <?php echo make_check_screen_options( 'post_date', true, true ); ?>> Date
 				</label>
-				<label for="ef_pc-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_pc-hide" name="ef_pc-hide" value="ef_pc" checked="checked"> PC
+				<label for="ef_first_draft_date-hide">
+					<input type="checkbox" class="hide-column-tog" id="ef_first_draft_date-hide" name="ef_first_draft_date-hide" value="ef_first_draft_date"<?php echo make_check_screen_options( 'ef_first_draft_date', true ); ?>> 1st Deadline
 				</label>
-				<label for="ef_assignment-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_assignment-hide" name="ef_assignment-hide" value="ef_assignment"> Assignment
+				<label for="ef_page_count-hide">
+					<input type="checkbox" class="hide-column-tog" id="ef_page_count-hide" name="ef_page_count-hide" value="ef_page_count" <?php echo make_check_screen_options( 'ef_page_count', true, true ); ?>> PC
 				</label>
-				<label for="ef_first_deadline-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_first_deadline-hide" name="ef_first_deadline-hide" value="ef_first_deadline"> 1st Deadline
+				<label for="ef_editor-hide">
+					<input type="checkbox" class="hide-column-tog" id="ef_editor-hide" name="ef_editor-hide" value="ef_editor" <?php echo make_check_screen_options( 'ef_editor', true, true ); ?>> ED
 				</label>
-				<label for="ef_ed-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_ed-hide" name="ef_ed-hide" value="ef_ed" checked="checked"> ED
+				<label for="ef_editor_deadline-hide">
+					<input type="checkbox" class="hide-column-tog" id="ef_editor_deadline-hide" name="ef_editor_deadline-hide" value="ef_editor_deadline" <?php echo make_check_screen_options( 'ef_editor_deadline', true, true ); ?>> ED Deadline
 				</label>
-				<label for="ef_ed_deadline-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_ed_deadline-hide" name="ef_ed_deadline-hide" value="ef_ed_deadline" checked="checked"> ED Deadline
+				<label for="ef_copyeditor-hide">
+					<input type="checkbox" class="hide-column-tog" id="ef_copyeditor-hide" name="ef_copyeditor-hide" value="ef_copyeditor" <?php echo make_check_screen_options( 'ef_copyeditor', true, true ); ?>> CE
 				</label>
-				<label for="ef_ce-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_ce-hide" name="ef_ce-hide" value="ef_ce" checked="checked"> CE
+				<label for="ef_copyeditor_deadline-hide">
+					<input type="checkbox" class="hide-column-tog" id="ef_copyeditor_deadline-hide" name="ef_copyeditor_deadline-hide" value="ef_copyeditor_deadline" <?php echo make_check_screen_options( 'ef_copyeditor_deadline', true, true ); ?>> CE Deadline
 				</label>
-				<label for="ef_ce_deadline-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_ce_deadline-hide" name="ef_ce_deadline-hide" value="ef_ce_deadline" checked="checked"> CE Deadline
-				</label>
-				<label for="ef_tr-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_tr-hide" name="ef_tr-hide" value="ef_tr"> TR
+				<label for="ef_tech_review-hide">
+					<input type="checkbox" class="hide-column-tog" id="ef_tech_review-hide" name="ef_tech_review-hide" value="ef_tech_review" <?php echo make_check_screen_options( 'ef_tech_review', true ); ?>> TR
 				</label>
 				<label for="ef_needs_video-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_needs_video-hide" name="ef_needs_video-hide" value="ef_needs_video"> Needs Video
+					<input type="checkbox" class="hide-column-tog" id="ef_needs_video-hide" name="ef_needs_video-hide" value="ef_needs_video" <?php echo make_check_screen_options( 'ef_needs_video', true ); ?>> Needs Video
 				</label>
 				<label for="ef_needs_photo-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_needs_photo-hide" name="ef_needs_photo-hide" value="ef_needs_photo"> Needs Photo
+					<input type="checkbox" class="hide-column-tog" id="ef_needs_photo-hide" name="ef_needs_photo-hide" value="ef_needs_photo" <?php echo make_check_screen_options( 'ef_needs_photo', true ); ?>> Needs Photo
 				</label>
-				<label for="ef_manuscript_estimate-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_manuscript_estimate-hide" name="ef_manuscript_estimate-hide" value="ef_manuscript_estimate" checked="checked"> Fee
+				<label for="ef_estimate-hide">
+					<input type="checkbox" class="hide-column-tog" id="ef_estimate-hide" name="ef_estimate-hide" value="ef_estimate" <?php echo make_check_screen_options( 'ef_estimate', true, true ); ?>> Fee
+				</label>
+				<label for="ef_invoice_amount-hide">
+					<input type="checkbox" class="hide-column-tog" id="ef_invoice_amount-hide" name="ef_invoice_amount-hide" value="ef_invoice_amount" <?php echo make_check_screen_options( 'ef_invoice_amount', true ); ?>> Invoice
 				</label>
 				<label for="ef_invoice_received-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_invoice_received-hide" name="ef_invoice_received-hide" value="ef_invoice_received"> Invoice Received
+					<input type="checkbox" class="hide-column-tog" id="ef_invoice_received-hide" name="ef_invoice_received-hide" value="ef_invoice_received" <?php echo make_check_screen_options( 'ef_invoice_received', true ); ?>> Invoiced
 				</label>
-				<label for="ef_wc-hide">
-					<input type="checkbox" class="hide-column-tog" id="ef_wc-hide" name="ef_wc-hide" value="ef_wc"> WC
+				<label for="ef_maker_shed-hide">
+					<input type="checkbox" class="hide-column-tog" id="ef_maker_shed-hide" name="ef_maker_shed-hide" value="ef_maker_shed" <?php echo make_check_screen_options( 'ef_maker_shed', true ); ?>> Maker Shed
+				</label>
+				<label for="ef_word_count-hide">
+					<input type="checkbox" class="hide-column-tog" id="ef_word_count-hide" name="ef_word_count-hide" value="ef_word_count" <?php echo make_check_screen_options( 'ef_word_count', true ); ?>> WC
 				</label>
 			</div>
 			<div class="screen-options"></div>
 		</form>
 	</div>
 <?php }
-
-
-/**
- * The function to save anything happening in Screen Options. Might not need this? At the moment it does nothing yet.
- */
-function make_save_screen_options() {
-	if ( isset( $_POST['make_dashboard_options'] ) && $_POST['make_dashboard_options'] == 1 ) {
-
-	}
-}
-add_action( 'admin_init', 'make_save_screen_options' );
 
 
 /**
@@ -404,6 +462,7 @@ function make_magazine_dashboard_page() {
 		'paged'			 => $query_vars['paged'],
 		'post_parent'	 => $query_vars['volume'],
 		'section'		 => $query_vars['section'],
+		'tag'			 => str_replace( ' ', '-', $query_vars['tag'] ),
 		's'				 => $query_vars['search'],
 	);
 	$query = new WP_Query( $args ); ?>
@@ -432,6 +491,7 @@ function make_magazine_dashboard_page() {
 				<?php echo make_volumes_dropdown(); ?>
 				<?php echo make_section_dropdown(); ?>
 				<?php echo make_posts_per_page_dropdown( array( 30, 40, 50, 60, 70, 80, 90, 100 ) ); ?>
+				<input type="text" name="tag" placeholder="Filter by Tag" value="<?php echo $query_vars['tag']; ?>">
 				<input type="submit" name="" id="filter-submit" class="button" value="Filter Dashboard">
 				<button class="button"><a href="<?php echo esc_url( admin_url( 'edit.php?post_type=volume&page=manager' ) ); ?>">Reset Filters</a></button>
 				<div class="tablenav-pages">
@@ -444,97 +504,102 @@ function make_magazine_dashboard_page() {
 			<table id="magazine-dashboard" class="wp-list-table widefat fixed pages">
 				<thead>
 					<tr>
-						<th scope="col" id="post_parent" class="manage-column column-post_parent">Volume</th>
-						<th scope="col" id="post_type" class="manage-column column-post_type sortable">Content Type</th>
-						<th scope="col" id="post_status" class="manage-column column-post_status sortable">Status</th>
-						<th scope="col" id="section" class="manage-column column-section sortable">Section</th>
-						<th scope="col" id="post_title" class="manage-column column-post_title">Title</th>
-						<th scope="col" id="post_author" class="manage-column column-post_author">Author</th>
-						<th scope="col" id="post_date" class="manage-column column-post_date sortable">Date</th>
-						<th scope="col" id="ef_pc" class="manage-column column-ef_pc">PC</th>
-						<!-- <th scope="col" id="ef_assignment" class="manage-column column-ef_assignment">Assignment</th>
-						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline">1st Deadline</th> -->
-						<th scope="col" id="ef_ed" class="manage-column column-ef_ed">ED</th>
-						<th scope="col" id="ef_ed_deadline" class="manage-column column-ef_ed_deadline">ED Deadline</th>
-						<th scope="col" id="ef_ce" class="manage-column column-ef_ce">CE</th>
-						<th scope="col" id="ef_ce_deadline" class="manage-column column-ef_ce_deadline">CE Deadline</th>
-						<!-- <th scope="col" id="ef_tr" class="manage-column column-ef_tr">TR</th> -->
-						<!-- <th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video">Needs Video</th>
-						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo">Needs Photo</th> -->
-						<th scope="col" id="ef_manuscript_estimate" class="manage-column column-ef_manuscript_estimate">Fee</th>
-						<!-- <th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received">Invoice Received</th>
-						<th scope="col" id="ef_wc" class="manage-column column-ef_wc">WC</th> -->
+						<th scope="col" id="post_parent" class="manage-column column-post_parent table-sortable"<?php echo make_check_screen_options( 'post_parent', false, true ); ?>>Volume</th>
+						<th scope="col" id="post_type" class="manage-column column-post_type table-sortable"<?php echo make_check_screen_options( 'post_type', false, true ); ?>>Content Type</th>
+						<th scope="col" id="post_status" class="manage-column column-post_status table-sortable"<?php echo make_check_screen_options( 'post_status', false, true ); ?>>Status</th>
+						<th scope="col" id="section" class="manage-column column-section table-sortable"<?php echo make_check_screen_options( 'section', false, true ); ?>>Section</th>
+						<th scope="col" id="post_title" class="manage-column column-post_title table-sortable"<?php echo make_check_screen_options( 'post_title', false, true ); ?>>Title</th>
+						<th scope="col" id="post_author" class="manage-column column-post_author table-sortable"<?php echo make_check_screen_options( 'post_author', false, true ); ?>>Author</th>
+						<th scope="col" id="post_date" class="manage-column column-post_date table-sortable table-sortable"<?php echo make_check_screen_options( 'post_date', false, true ); ?>>Date</th>
+
+						<th scope="col" id="ef_first_draft_date" class="manage-column column-ef_first_draft_date table-sortable"<?php echo make_check_screen_options( 'ef_first_draft_date' ); ?>>1st Deadline</th>
+						<th scope="col" id="ef_page_count" class="manage-column column-ef_page_count table-sortable"<?php echo make_check_screen_options( 'ef_page_count', false, true ); ?>>PC</th>
+						<th scope="col" id="ef_editor" class="manage-column column-ef_editor table-sortable"<?php echo make_check_screen_options( 'ef_editor', false, true ); ?>>ED</th>
+						<th scope="col" id="ef_editor_deadline" class="manage-column column-ef_editor_deadline table-sortable"<?php echo make_check_screen_options( 'ef_editor_deadline', false, true ); ?>>ED Deadline</th>
+						<th scope="col" id="ef_copyeditor" class="manage-column column-ef_copyeditor table-sortable"<?php echo make_check_screen_options( 'ef_copyeditor', false, true ); ?>>CE</th>
+						<th scope="col" id="ef_copyeditor_deadline" class="manage-column column-ef_copyeditor_deadline table-sortable"<?php echo make_check_screen_options( 'ef_copyeditor_deadline', false, true ); ?>>CE Deadline</th>
+						<th scope="col" id="ef_tech_review" class="manage-column column-ef_tech_review table-sortable"<?php echo make_check_screen_options( 'ef_tech_review' ); ?>>TR</th>
+						<th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video table-sortable"<?php echo make_check_screen_options( 'ef_needs_video' ); ?>>Needs Video</th>
+						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo table-sortable"<?php echo make_check_screen_options( 'ef_needs_photo' ); ?>>Needs Photo</th>
+						<th scope="col" id="ef_estimate" class="manage-column column-ef_estimate table-sortable"<?php echo make_check_screen_options( 'ef_estimate', false, true ); ?>>Fee</th>
+						<th scope="col" id="ef_invoice_amount" class="manage-column column-ef_invoice_amount table-sortable"<?php echo make_check_screen_options( 'ef_invoice_amount' ); ?>>Invoice Received</th>
+						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received table-sortable"<?php echo make_check_screen_options( 'ef_invoice_received' ); ?>>Invoice Received</th>
+						<th scope="col" id="ef_maker_shed" class="manage-column column-ef_maker_shed table-sortable"<?php echo make_check_screen_options( 'ef_maker_shed' ); ?>>Invoice Received</th>
+						<th scope="col" id="ef_word_count" class="manage-column column-ef_word_count table-sortable"<?php echo make_check_screen_options( 'ef_word_count' ); ?>>WC</th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
-						<th scope="col" id="post_parent" class="manage-column column-post_parent">Volume</th>
-						<th scope="col" id="post_type" class="manage-column column-post_type sortable">Content Type</th>
-						<th scope="col" id="post_status" class="manage-column column-post_status sortable">Status</th>
-						<th scope="col" id="section" class="manage-column column-section sortable">Section</th>
-						<th scope="col" id="post_title" class="manage-column column-post_title">Title</th>
-						<th scope="col" id="post_author" class="manage-column column-post_author">Author</th>
-						<th scope="col" id="post_date" class="manage-column column-post_date sortabel">Date</th>
-						<th scope="col" id="ef_pc" class="manage-column column-ef_pc">PC</th>
-						<!-- <th scope="col" id="ef_assignment" class="manage-column column-ef_assignment">Assignment</th>
-						<th scope="col" id="ef_first_deadline" class="manage-column column-ef_first_deadline">1st Deadline</th> -->
-						<th scope="col" id="ef_ed" class="manage-column column-ef_ed">ED</th>
-						<th scope="col" id="ef_ed_deadline" class="manage-column column-ef_ed_deadline">ED Deadline</th>
-						<th scope="col" id="ef_ce" class="manage-column column-ef_ce">CE</th>
-						<th scope="col" id="ef_ce_deadline" class="manage-column column-ef_ce_deadline">CE Deadline</th>
-						<!-- <th scope="col" id="ef_tr" class="manage-column column-ef_tr">TR</th> -->
-						<!-- <th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video">Needs Video</th>
-						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo">Needs Photo</th> -->
-						<th scope="col" id="ef_manuscript_estimate" class="manage-column column-ef_manuscript_estimate">Fee</th>
-						<!-- <th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received">Invoice Received</th>
-						<th scope="col" id="ef_wc" class="manage-column column-ef_wc">WC</th> -->
+						<th scope="col" id="post_parent" class="manage-column column-post_parent table-sortable"<?php echo make_check_screen_options( 'post_parent', false, true ); ?>>Volume</th>
+						<th scope="col" id="post_type" class="manage-column column-post_type table-sortable"<?php echo make_check_screen_options( 'post_type', false, true ); ?>>Content Type</th>
+						<th scope="col" id="post_status" class="manage-column column-post_status table-sortable"<?php echo make_check_screen_options( 'post_status', false, true ); ?>>Status</th>
+						<th scope="col" id="section" class="manage-column column-section table-sortable"<?php echo make_check_screen_options( 'section', false, true ); ?>>Section</th>
+						<th scope="col" id="post_title" class="manage-column column-post_title table-sortable"<?php echo make_check_screen_options( 'post_title', false, true ); ?>>Title</th>
+						<th scope="col" id="post_author" class="manage-column column-post_author table-sortable"<?php echo make_check_screen_options( 'post_author', false, true ); ?>>Author</th>
+						<th scope="col" id="post_date" class="manage-column column-post_date table-sortable table-sortable"<?php echo make_check_screen_options( 'post_date', false, true ); ?>>Date</th>
+
+						<th scope="col" id="ef_first_draft_date" class="manage-column column-ef_first_draft_date table-sortable"<?php echo make_check_screen_options( 'ef_first_draft_date' ); ?>>1st Deadline</th>
+						<th scope="col" id="ef_page_count" class="manage-column column-ef_page_count table-sortable"<?php echo make_check_screen_options( 'ef_page_count', false, true ); ?>>PC</th>
+						<th scope="col" id="ef_editor" class="manage-column column-ef_editor table-sortable"<?php echo make_check_screen_options( 'ef_editor', false, true ); ?>>ED</th>
+						<th scope="col" id="ef_editor_deadline" class="manage-column column-ef_editor_deadline table-sortable"<?php echo make_check_screen_options( 'ef_editor_deadline', false, true ); ?>>ED Deadline</th>
+						<th scope="col" id="ef_copyeditor" class="manage-column column-ef_copyeditor table-sortable"<?php echo make_check_screen_options( 'ef_copyeditor', false, true ); ?>>CE</th>
+						<th scope="col" id="ef_copyeditor_deadline" class="manage-column column-ef_copyeditor_deadline table-sortable"<?php echo make_check_screen_options( 'ef_copyeditor_deadline', false, true ); ?>>CE Deadline</th>
+						<th scope="col" id="ef_tech_review" class="manage-column column-ef_tech_review table-sortable"<?php echo make_check_screen_options( 'ef_tech_review' ); ?>>TR</th>
+						<th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video table-sortable"<?php echo make_check_screen_options( 'ef_needs_video' ); ?>>Needs Video</th>
+						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo table-sortable"<?php echo make_check_screen_options( 'ef_needs_photo' ); ?>>Needs Photo</th>
+						<th scope="col" id="ef_estimate" class="manage-column column-ef_estimate table-sortable"<?php echo make_check_screen_options( 'ef_estimate', false, true ); ?>>Fee</th>
+						<th scope="col" id="ef_invoice_amount" class="manage-column column-ef_invoice_amount table-sortable"<?php echo make_check_screen_options( 'ef_invoice_amount' ); ?>>Invoice Received</th>
+						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received table-sortable"<?php echo make_check_screen_options( 'ef_invoice_received' ); ?>>Invoice Received</th>
+						<th scope="col" id="ef_maker_shed" class="manage-column column-ef_maker_shed table-sortable"<?php echo make_check_screen_options( 'ef_maker_shed' ); ?>>Invoice Received</th>
+						<th scope="col" id="ef_word_count" class="manage-column column-ef_word_count table-sortable"<?php echo make_check_screen_options( 'ef_word_count' ); ?>>WC</th>
 					</tr>
 				</tfoot>
 				<tbody id="the-list">
 					<?php
-						global $post;
-						if( $query ) {
-							$i = 0;
+						global $post, $wp_post_statuses;
+						if( ! empty( $query->posts ) ) {
 							foreach ( $query->posts as $post ) {
 								setup_postdata( $post );
 
 								// Set some variables....
-								$volume    = ( $post->post_parent != 0 ) ? get_the_title( absint( $post->post_parent ) ) : '';
-								$meta      = get_post_custom( absint( $post->ID ) );
-								$sections  = get_the_term_list( absint( $post->ID ), 'section' );
-								$post_type = ( get_post_type() == 'magazine' ) ? 'articles' : get_post_type();
+								$volume      = ( $post->post_parent != 0 ) ? get_the_title( absint( $post->post_parent ) ) : '';
+								$meta        = get_post_custom( absint( $post->ID ) );
+								$sections    = get_the_term_list( absint( $post->ID ), 'section', '', ', ' );
+								$post_type   = ( get_post_type() == 'magazine' ) ? 'Articles' : ucwords( get_post_type() );
+								$post_status = $wp_post_statuses[ get_post_status() ]->label;
 
-								echo '<tr>';
-								echo '<td>' . $volume . '</td>';
-								echo '<td>' . $post_type . '</td>';
-								echo '<td>' . get_post_status() . '</td>';
-								echo '<td>' . $sections . '</td>';
-								echo '<td><strong><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">' . get_the_title() . '</a></strong>
+								echo '<tr id="post-' . $post->ID . '" valign="top">';
+								echo '<td class="post_parent column-post_parent"' . make_check_screen_options( 'post_parent', false, true ) . '>' . $volume . '</td>';
+								echo '<td class="post_type column-post_type"' . make_check_screen_options( 'post_type', false, true ) . '>' . $post_type . '</td>';
+								echo '<td class="post_status column-post_status"' . make_check_screen_options( 'post_status', false, true ) . '>' . $post_status . '</td>';
+								echo '<td class="section column-section"' . make_check_screen_options( 'section', false, true ) . '>' . $sections . '</td>';
+								echo '<td class="post_title column-post_title"' . make_check_screen_options( 'post_title', false, true ) . '><strong><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">' . get_the_title() . '</a></strong>
 										<div class="row-actions">
 											<span class="inline hide-if-no-js"><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">Edit</a> | </span>
 											<span class="trash"><a class="submitdelete" href="' . get_delete_post_link( absint( $post->ID ) ) . '">Trash</a></span>
 										</div>
 									  </td>';
-								echo '<td>' . make_convert_author_id( $post->post_author ) . '</td>';
-								echo '<td>' . make_convert_to_pretty_time( $post->post_date, true ) . '</td>';
-								echo '<td class="ef_pc_count">' . make_get_integer( $meta['_ef_editorial_meta_number_pc'][0] ) . '</td>';
-								// echo '<td>' . esc_html( $meta['_ef_editorial_meta_paragraph_assignment'][0] ) . '</td>';
-								// echo '<td>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_1st-deadline'][0] ) . '</td>';
-								echo '<td>' . make_convert_author_id( $meta['_ef_editorial_meta_user_ed'][0] ) . '</td>';
-								echo '<td style="color:#ff0000;">' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_ed-deadline'][0] ) . '</td>';
-								echo '<td>' . make_convert_author_id( $meta['_ef_editorial_meta_user_ce'][0] ) . '</td>';
-								echo '<td style="color:#ff0000;">' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_ce-deadline'][0] ) . '</td>';
-								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_tr'][0] ) . '</td>';
-								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-video'][0] ) . '</td>';
-								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-photo'][0] ) . '</td>';
-								echo '<td>' . make_get_integer( $meta['_ef_editorial_meta_number_manuscript-estimate'][0] ) . '</td>';
-								// echo '<td>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_invoice-received'][0] ) . '</td>';
-								// echo '<td>' . absint( $meta['_ef_editorial_meta_number_wc'][0] ) . '</td>';
+								echo '<td class="post_author column-post_author"' . make_check_screen_options( 'post_author', false, true ) . '>' . make_convert_author_id( $post->post_author ) . '</td>';
+								echo '<td class="post_date column-post_date"' . make_check_screen_options( 'post_date', false, true ) . '>' . make_convert_to_pretty_time( $post->post_date, true ) . '</td>';
+								echo '<td class="ef_first_draft_date column-ef_first_draft_date"' . make_check_screen_options( 'ef_first_draft_date' ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_first-draft-date'][0] ) . '</td>';
+								echo '<td class="ef_page_count column-ef_page_count ef_pc_count"' . make_check_screen_options( 'ef_page_count', false, true ) . '>' . make_get_integer( $meta['_ef_editorial_meta_number_page-count'][0] ) . '</td>';
+								echo '<td class="ef_editor column-ef_editor"' . make_check_screen_options( 'ef_editor', false, true ) . '>' . make_convert_author_id( $meta['_ef_editorial_meta_user_editor'][0] ) . '</td>';
+								echo '<td class="ef_editor_deadline column-ef_editor_deadline" style="color:#ff0000;"' . make_check_screen_options( 'ef_editor_deadline', false, true ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_editor-deadline'][0] ) . '</td>';
+								echo '<td class="ef_copyeditor column-ef_copyeditor"' . make_check_screen_options( 'ef_copyeditor', false, true ) . '>' . make_convert_author_id( $meta['_ef_editorial_meta_user_copyeditor'][0] ) . '</td>';
+								echo '<td class="ef_copyeditor_deadline column-ef_copyeditor_deadline" style="color:#ff0000;"' . make_check_screen_options( 'ef_copyeditor_deadline', false, true ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_copyedit-deadline'][0] ) . '</td>';
+								echo '<td class="ef_tech_review column-ef_tech_review"' . make_check_screen_options( 'ef_tech_review' ) . '>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_tech-review'][0] ) . '</td>';
+								echo '<td class="ef_needs_video column-ef_needs_video"' . make_check_screen_options( 'ef_needs_video' ) . '>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-video'][0] ) . '</td>';
+								echo '<td class="ef_needs_photo column-ef_needs_photo"' . make_check_screen_options( 'ef_needs_photo' ) . '>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-photo'][0] ) . '</td>';
+								echo '<td class="ef_estimate column-ef_estimate"' . make_check_screen_options( 'ef_estimate', false, true ) . '>' . make_get_integer( $meta['_ef_editorial_meta_number_estimate'][0] ) . '</td>';
+								echo '<td class="ef_invoice_amount column-ef_invoice_amount"' . make_check_screen_options( 'ef_invoice_amount' ) . '>' . make_convert_boolean( $meta['_ef_editorial_meta_number_invoice-amount'][0] ) . '</td>';
+								echo '<td class="ef_invoice_received column-ef_invoice_received"' . make_check_screen_options( 'ef_invoice_received' ) . '>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_invoice-received'][0] ) . '</td>';
+								echo '<td class="ef_maker_shed column-ef_maker_shed"' . make_check_screen_options( 'ef_maker_shed' ) . '>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_available-maker-shed'][0] ) . '</td>';
+								echo '<td class="ef_word_count column-ef_word_count"' . make_check_screen_options( 'ef_word_count' ) . '>' . make_get_integer( $meta['_ef_editorial_meta_number_word-count'][0] ) . '</td>';
 								echo '</tr>';
-
-								$i++;
 							}
-						}?>
+						} else {
+							echo '<tr class="no-items"><td class="colspanchange" colspan="3">No content found.</td></tr>';
+						} ?>
 				</tbody>
 				
 			</table>
@@ -549,9 +614,7 @@ function make_magazine_dashboard_page() {
 		</form>
 	</div>
 
-<?php
-
-}
+<?php }
 
 /**
  * Hook the page in
