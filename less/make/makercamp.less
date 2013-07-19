@@ -2,7 +2,7 @@ body.makercamp {
 	/* apply a natural box layout model to all elements. sadly this breaks everything when it should fix... */
 	//* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-	background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat-x;
+	background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat;
 	text-rendering: optimizeLegibility;
 	padding-bottom: 0 !important;
 	margin: 0;
@@ -19,11 +19,48 @@ body.makercamp {
 	iframe { 
 		max-width:100%;
 	}
+	header { 
+		margin:0 0 40px !important;
+	}
 	.main-content {
 		a, a:visited { color:#acd3fc; }
 		a:hover, a:active { color:#acd3fc; text-decoration:underline !important; }
 	}
-
+	.black-bar {
+		background-color: #00315d;
+		padding: 5px 0 !important;
+		margin-top: 40px;
+		.nav-inline li { 
+			margin-right:30px !important;
+			font-weight:bold;
+			text-transform: uppercase;
+		 }
+	}
+	#menu-maker-camp-nav {
+		display: table;
+		margin: 0 auto;
+		#menu-item-315883 {
+			.dropdown;
+			&:hover {
+				.sub-menu {
+					.border-radius(0px);
+					border:0px;
+					box-shadow: 0px;
+					left: -20px;
+					background-color: #00315d;
+					display: block;
+					li {
+						a {
+							color: #acd3fc !important;
+						}
+					}
+				}
+			}
+		}
+		.sub-menu {
+			.dropdown-menu;
+		}
+	}
 	#footer {
 		&.white-bg {
 			margin:0;
@@ -43,12 +80,10 @@ body.makercamp {
 			}
 		}
 	}
-	.search-query {
-		width:206px !important;
-	}
+	.search-query { width:110px !important; }
 
 	header {
-		margin-top:41px;
+		margin-top:0;
 		margin-bottom:40px;
 		color:#fff;
 		h2 {
@@ -124,6 +159,9 @@ body.makercamp {
 			}
 			&:hover { text-decoration:underline; }
 		}
+		.logo {
+			h5{padding-top: 24px !important;}
+			}	
 		.featured {
 			padding:30px 0 0;
 			margin-left:6px;
@@ -247,8 +285,7 @@ body.makercamp {
 				margin-right:5px;
 				}
 		}
-		a, 
-		body.makercamp .new-footer a:visited {
+		a, .new-footer a:visited {
 		    color: #005D8F !important;
 		    }
 		p {
@@ -267,7 +304,6 @@ body.makercamp {
 		.about-column-01{
 		width: 90px;
 		float: left;
-		margin-left: -30px;	
 		}
 		.about-column-02{
 		width: 130px;
@@ -309,21 +345,11 @@ body.makercamp {
 			}
 		}
 		.maker {
-			position:relative;
-			.project-photo {
-				.pull-left;
-				width:20%;
-			}
-			.project-body {
-				.pull-left;
-				width:61%;
-				margin-right:22px;
-			}
+			a { color:#005d8f; }
 			.project-title {
 				font-size:1.285714286em;
 				line-height:1em;
 				color:#005d8f;
-				margin:5px 0 !important;
 			}
 			.date, .mentor {
 				font-size:1.142857143em;
@@ -362,13 +388,48 @@ body.makercamp {
 		border:0;
 	}
 
+	// Map
+	.map-wrapper {
+		li {
+			margin:15px 15px 25px 0 !important;
+			font-size:18px;
+			line-height:1.3em;
+		}
+	}
+	.map-title {
+		background:#011f43;
+		margin:0 !important;
+		font-size:1.637142857em;
+		font-family:sans-serif;
+		font-weight:normal;
+	}
+	.map-list {
+		background:#fff;
+		color:#333;
+		margin-top:20px;
+		border:1px solid #333;
+		th { 
+			color:#fff;
+			border-bottom:1px solid #333;
+			cursor:pointer;
+		}
+		a { color:#005d8f !important; }
+	}
+	.map-list-header {
+		font-weight:normal;
+		background-color: #011f43 !important;
+	}
+
 	// Misc styles
 	.orange { color:#f6ba65 !important; }
 	.red { color:#c7171d; }
 	.blue { color:#acd3fc; }
 	ul.stars {
 		list-style-image: url(../img/makercamp/stars.png); 
-		li { margin: 15px 15px 5px 0; }
+		li { 
+			margin: 15px 15px 5px 0;
+			font-size: 16px !important;
+			}
 	}
 
 	// Buttons
@@ -382,9 +443,8 @@ body.makercamp {
 		margin-bottom:10px;
 		text-decoration: none;
 		background-color: #e01b23;
-		box-shadow: 0 5px 0 0 #8d1216;
-		-webkit-box-shadow: 0 5px 0 0 #8d1216;
-		-moz-box-shadow: 0 5px 0 0 #8d1216;
+		.border-radius( 5px );
+		.box-shadow( 0 5px 0 0 #8d1216 );
 		border-bottom:none;
 		&:hover {
 			background-color: #b3151b !important;
@@ -401,12 +461,7 @@ body.makercamp {
 			font-weight:600;
 			padding-left:20px;
 			padding-right:20px;
-			border-radius: 5px;
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			box-shadow: 0 5px 0 0 #4d97c5;
-			-webkit-box-shadow: 0 5px 0 0 #4d97c5;
-			-moz-box-shadow: 0 5px 0 0 #4d97c5;
+			.box-shadow( 0 5px 0 0 #4d97c5 );
 			&:hover {
 				color:#033978 !important;
 				background-color:#73c1e6 !important;
@@ -429,32 +484,6 @@ body.makercamp {
 			line-height:inherit !important;
 		}
 	}
-
-	// Map
-	.map-wrapper {
-
-	}
-	.map-title {
-		background:#011f43;
-		margin:0 !important;
-		font-size:1.637142857em;
-		font-family:sans-serif;
-		font-weight:normal;
-	}
-	.map-list {
-		background:#fff;
-		color:#333;
-		margin-top:20px;
-		border:1px solid #333;
-		th { 
-			color:#fff;
-			border-bottom:1px solid #333;
-		}
-	}
-	.map-list-header {
-		font-weight:normal;
-		background-color: #011f43 !important;
-	}
 }
 
 @media (min-width: 1200px) {
@@ -467,7 +496,7 @@ body.makercamp {
 
 		// Schedule Page
 		.schedule-content {
-			.maker { margin-right:29px !important; }
+			.maker { /* margin-right:29px !important; */ }
 			.maker-description { width:96% !important; }
 		}
 
@@ -476,6 +505,9 @@ body.makercamp {
 		}
 		.feature-box {
 			.button.blue { font-size:22px !important; }
+		}
+		.search-query {
+			width:206px !important;
 		}
 	}
 }
@@ -521,7 +553,7 @@ body.makercamp {
 			#schedule { 
 				a { font-size:.9em; }
 			}
-			.maker { margin-right:15px !important; }
+			.maker { /* margin-right:15px !important; */ }
 		}
 
 		// Footer
@@ -588,10 +620,6 @@ body.makercamp {
 			.nav-tabs > li { width:100%; }
 			.tab-content {
 				h2.visible-phone, > .active, { padding:0 20px; }
-				[class*="span"] { 
-					float:left;
-					width:149px;
-				}
 			}
 			.desc-body, .desc-feat {
 				float:none;
@@ -602,5 +630,30 @@ body.makercamp {
 
 		// Footer
 		.new-footer .main { margin:5px auto; width:100%; }
+	}
+		.maker-camp-sweepstakes {
+			legend {
+				color:#f6ba65;
+				border: none;
+				font-size:24.5px;
+				margin:10px 0;
+				font-weight:bold;
+				line-height: 40px;
+			}
+
+			label {
+				font-size: 17.5px;
+				margin: 10px 0 !important;
+				line-height: 18px;
+				font-weight:bold;
+			}
+
+			input {
+				width:200px !important
+			}
+
+			input[type="submit"] {
+				width:200px !important;
+		}
 	}
 }

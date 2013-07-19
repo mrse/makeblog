@@ -28,8 +28,6 @@
 	 */
 	function make_mc_load_resources() {
 		if ( is_page_template( 'page-makercamp.php' || is_page_template( 'page-makercamp-map.php' ) ) ) {
-			// wp_enqueue_style( 'thickbox' );
-			// wp_enqueue_script( 'thickbox' );
 			wp_enqueue_script( 'bootstrap' );
 			wp_enqueue_script( 'maker-camp-js', get_stylesheet_directory_uri() . '/js/maker-camp.min.js', array('jquery'), '1.0', true );
 		}
@@ -49,11 +47,11 @@
 	 */
 	function make_mc_logo( $atts ) {
 		extract( shortcode_atts( array(
-			'width'  => 570, // Only accepts integers
-			'height' => 175, // Only accepts integers
+			'width'  => 564, // Only accepts integers
+			'height' => 174, // Only accepts integers
 		), $atts ) );
 		
-		return '<img src="http://makezineblog.files.wordpress.com/2013/05/maker-camp-logo2.png?w=' . intval( $width ) . '" alt="Maker Camp - On Google+" width="' . intval( $width ) . '" height="' . intval( $height ) . '">';
+		return '<a href="http://google.com/+make" target="_blank"><img src="http://makezineblog.files.wordpress.com/2013/07/makercamp_whtlarge_logo.png?w=' . intval( $width ) . '" alt="Maker Camp - On Google+" width="' . intval( $width ) . '" height="' . intval( $height ) . '"></a>';
 	}
 	add_shortcode('maker-camp-logo', 'make_mc_logo' );
 
@@ -73,7 +71,8 @@
 			'date'  => '',        // String. The date as you want it to appear
 			'img'   => '', 		  // String. URL to the project image
 			'title' => '', 		  // String. Enter the title of the project
-			'mentor' => '', 	  // String. Enter the name of the mentot
+			'project_url' => '',  // String. Enter the url for title of the project
+			'mentor' => '', 	  // String. Enter the name of the mentor
 			'mentor_link' => '',  // URL.    Enter the mentors URL to link to.
 			'link'  => '', 		  // String. Add in the URL to where you want the far right button to link to
 			'link_title' => 'View on G+',    // URL. This variable takes the text that will display in the button on the far right
@@ -88,43 +87,58 @@
 		);
 
 		// Check if new classes are tossed at us.
-		if ( ! empty( $class ) ) {
-			$output = '<div class="maker ' . esc_attr( $class ) . ' clearfix">';
-		} else {
-			$output = '<div class="maker clearfix">';
-		}
+		$output  = ( ! empty( $class ) ) ? '<div class="row maker ' . esc_attr( $class ) . '">' : '<div class="row maker">' ;
 
 		// Load the project photo
 		if ( ! empty( $img ) ) {
-			$output .= '<div class="project-photo"><img src="' . wpcom_vip_get_resized_remote_image_url( esc_url( $img ), 166, 107 ) . '" /></div>';
+			$output .= '<div class="span3 project-photo"><img src="' . wpcom_vip_get_resized_remote_image_url( esc_url( $img ), 270, 174 ) . '" /></div>';
 		} else {
-			$output .= '<div class="project-photo"><img src="' . get_stylesheet_directory_uri() . '/img/makercamp/schedule-placeholder.png" /></div>';
+			$output .= '<div class="span3 project-photo"><img src="' . get_stylesheet_directory_uri() . '/img/makercamp/schedule-placeholder.png" /></div>';
 		}
 
-		$output .= '<div class="project-body">';
+		$output .= '<div class="span6 project-body">';
 
 		// Load the project title
 		if ( ! empty( $title ) )
-			$output .= '<h2 class="project-title">' . esc_attr( $title ) . '</h2>';
+			$output .= '<h2 class="project-title">';
 
+			// Do we have a link?
+			if ( ! empty( $project_url ) )
+				$output .= '<a href="' . esc_url( $project_url ) . '">';
+
+			$output .= esc_attr( $title );
+				
+			// Close the link if it exists
+			if ( ! empty( $project_url ) )
+				$output .= '</a>';
+
+			$output .= '</h2>';
+
+		// Look for a date
 		if ( ! empty( $date ) )
-			$output .= '<h3 class="date">' . esc_attr( $date ) . '</h3> ';
+			$output .= '<h3 class="date">' . esc_attr( $date ) . ' ';
 
+		// Is there a mentor?
 		if ( ! empty( $mentor ) ) {
-			$output .= '<h3 class="mentor">';
+			$output .= ' &mdash; Makers: ';
 
-			$output .= ' &mdash; Make Mentor: ';
-
+			// Is there a link to the mentor?
 			if ( ! empty( $mentor_link ) )
 				$output .= '<a href="' . esc_url( $mentor_link ) . '">';
 
-			$output .= $mentor;
+			// Output the mentor name
+			$output .= wp_kses_post( $mentor );
 
+			// Close the link
 			if ( ! empty( $mentor_link ) )
 				$output .= '</a>';
 
-			$output .= '</h3>';
+		// Close the mentor if statement
 		}
+		
+		// Close the heading
+		if ( ! empty( $date ) )
+			$output .= '</h3>';
 
 		// Add the main body paragraph
 		$output .= wp_kses_post( do_shortcode( $content ) );
@@ -132,25 +146,18 @@
 		// Close the project body
 		$output .= '</div>';
 
-		$output .= '<div class="project-link">';
+		// Start the right sidebar
+		$output .= '<div class="span3 project-link">';
+		$output .= '<a href="';
 
 		// Check if a link is set or not and display the right HTML
-		if ( ! empty( $link ) ) {
-			$output .= '<a href="' . esc_url( $link ) . '" class="button blue small-button';
-		} else {
-			$output .= '<p class="button blue small-button';
-		}
-
-		$output .= '">';
-
+		$output .= ( ! empty( $link ) ) ? esc_url( $link ) : 'http://google.com/+make';
+		$output .= '" class="button blue small-button">';
+		
 		$output .= esc_attr( $link_title );
 
 		// Check again and close the needed HTML if a link is set or not
-		if ( ! empty( $link ) ) {
-			$output .= '</a>';
-		} else {
-			$output .= '</p>';
-		}
+		$output .= '</a>';
 
 		// Close the project link
 		$output .= '</div>';
@@ -187,7 +194,7 @@
 		);
 
 		if ( ! empty( $content ) ) {
-			$output = '<h4><a class="' . esc_attr( $class ) . '" data-toggle="modal" href="#' . esc_attr( $link_id ) . '">' . esc_html( $link_name ) . '</a></h4>
+			$output = '<h5><a class="' . esc_attr( $class ) . '" data-toggle="modal" href="#' . esc_attr( $link_id ) . '">' . esc_html( $link_name ) . '</a></h5>
 			<div class="modal hide fade" id="' .esc_attr( $link_id ) . '">
 				<div class="modal-header">
 					<a class="close" data-dismiss="modal">&times;</a>
@@ -203,4 +210,3 @@
 		}
 	}
 	add_shortcode( 'maker-camp-project-materials', 'make_mc_project_schedule_materials' );
-	

@@ -37,6 +37,7 @@ function makeblog_from_the_maker_shed() {
 		'rewrite' => true,
 		'capability_type' => 'post',
 		'menu_icon' => get_stylesheet_directory_uri() .'/images/home-medium.png',
+		'menu_position' => 44,
 	);
 
 	register_post_type( 'from-the-maker-shed', $args );

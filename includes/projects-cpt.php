@@ -43,7 +43,6 @@ function register_cpt_project() {
 		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => true,
-		'menu_position' => 5,
 		'show_in_nav_menus' => true,
 		'publicly_queryable' => true,
 		'exclude_from_search' => true,
@@ -51,7 +50,8 @@ function register_cpt_project() {
 		'query_var' => true,
 		'can_export' => true,
 		'rewrite' => true,
-		'capability_type' => 'post'
+		'capability_type' => 'post',
+		'menu_position' => 40,
 	);
 
 	register_post_type( 'projects', $args );
@@ -67,7 +67,7 @@ $field_data = array (
 			'MakeProjectsGuideNumber'	=> array(),
 			//'Flags'						=> array(),
 			'Type'						=> array(),
-			'Conclusion'				=> array(),
+			// 'Conclusion'				=> array(),
 			'Difficulty'				=> array(),
 			'Image'						=> array(),
 			'Description'				=> array(),
@@ -633,3 +633,17 @@ function make_projects_tools( $tools ) {
 
 	return $output;
 }
+
+
+$field_data = array (
+	'Resources' => array (
+		'fields' => array(
+			'RequiredResources'	=> array( 'type' => 'textarea', 'label' => 'Required Resources' ),
+			'ExtraResources'	=> array( 'type' => 'textarea', 'label' => 'Extra Resources' ),
+	),
+	'title'		=> 'Resources',
+	'pages'		=> array( 'projects' ),
+	),
+);
+
+$easy_cf = new Easy_CF($field_data);

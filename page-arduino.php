@@ -2,10 +2,11 @@
 /**
  * Template Name: Arduino
  */
-?>
 
 
-<?php get_header(); ?>
+$post_types = array( 'post', 'projects', 'review', 'video', 'magazine' );
+
+get_header(); ?>
 		
 		<div class="clear"></div>
 
@@ -65,7 +66,7 @@
 
 											<?php endwhile; wp_reset_postdata(); ?>
 
-											<p><a href="http://blog.makezine.com/category/arduino/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
+											<p><a href="<?php echo home_url(); ?>/category/arduino/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
 
 										</div>
 
@@ -145,7 +146,7 @@
 
 									<ul>
 						
-										<?php echo make_category_li(); ?>
+										<?php echo make_category_li( $post_type ); ?>
 										
 									</ul>
 									

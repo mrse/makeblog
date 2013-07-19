@@ -9,12 +9,18 @@
  */
 $steps = get_post_custom_values('Steps');
 get_header(); ?>
-		
+
 	<div class="category-top">
 	
 		<div class="container">
 
-			<div class="row">
+			<div class="row" style="position:relative;">
+
+				<?php if( has_term( 'Weekend Project', 'flags' ) ) : ?>
+					<div style="position:absolute; right:0; top:-20px;">
+						<a href="http://pubads.g.doubleclick.net/gampad/clk?id=42844138&amp;iu=/11548178/Makezine"><img src="<?php echo get_template_directory_uri(); ?>/images/weekend-projects-btn.png" title="Weekend Projects Powered by Radio Shack" /></a>
+					</div>
+				<?php endif; ?>
 
 				<div class="span12">
 					
@@ -50,7 +56,7 @@ get_header(); ?>
 									Category: <?php the_category(', '); ?>
 								</li>
 								
-									<?php
+								<?php
 									$time = get_post_custom_values('TimeRequired');
 									if ($time[0]) {
 										echo '<li>Time Required: <span>' . esc_html( $time[0] ) . '</span></li>';
@@ -61,8 +67,10 @@ get_header(); ?>
 											echo '<li>Difficulty: <span>' . esc_html( $term->name ) . '</span></li>';
 										}
 									}
-									
-									?>
+								?>
+								<li>
+							Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a>
+						</li>
 							</ul>
 									
 							<div class="row">
@@ -113,39 +121,29 @@ get_header(); ?>
 												if ( ( $parts || $old_parts ) && ( $tools || $old_tools ) ) {
 													echo '<li class="divider"> / </li>';
 												}
-												if ( $tools || $old_tools ) {
+												if ( $tools || $old_tools && ( ! empty( $old_parts ) || ! empty( $parts ) ) ) {
 													echo '<li><a href="#2" data-toggle="tab">Tools</a></li>';
+												} else {
+													echo '<li class="active"><a href="#2" data-toggle="tab">Tools</a></li>';
 												}
 											?>
 											
 										</ul>
 										<div class="tab-content">
-											<div class="tab-pane active" id="1">
-												<?php
-													if ( $parts ) {
-														echo make_projects_parts( $parts );
-													} else if ( $old_parts ) {
-														echo '<ul class="lists">';
-														foreach ($old_parts as $part) {
-															echo '<li>'. esc_html( $part->name ) .'</li>';
-														}
-														echo '</ul>';
-													}
-												?>
-											</div>
-											<div class="tab-pane" id="2">
-												<?php
-													if ( $tools ) {
-														echo make_projects_tools( $tools );
-													} else if ( $old_tools ) {
-														echo '<ul class="lists">';
-														foreach ( $old_tools as $tool ) {
-															echo '<li>' . esc_html( $tool->name ) . '</li>';
-														}
-														echo '</ul>';
-													} else {
-														echo 'no parts';
-													}
+											<?php 
+												if ( $parts ) {
+													echo '<div class="tab-pane active" id="1">';
+													echo make_projects_parts( $parts );
+													echo '</div>';
+												}
+												if ( empty( $parts ) ) {
+													echo '<div class="tab-pane" id="2">';
+												} else {
+													echo '<div class="tab-pane active" id="2">';
+												} 
+												if ( $tools ) {
+													echo make_projects_tools( $tools );
+												}
 												?>
 											</div>
 										</div>

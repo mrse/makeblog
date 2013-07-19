@@ -9,7 +9,48 @@
  */
 global $catslugs;
 get_header(); ?>
+	<div class="content-type">
+	
+		<div class="container">
+
+			<div class="row">
+
+				<div class="span12">
+				
+					<div class="content-type-top">
 					
+						<div class="row">
+							
+							<div class="span9">
+										
+								<h1>Make: Videos</h1>
+									
+								<p>Seeing is believing, and often the best way to learn how to do something is watching others do it first. Park yourself here and browse our extensive collection of how-to and project videos.</p>
+								
+								<h3>Find Videos by Category:</h3>
+								
+								<ul class="subs">
+									
+									<?php echo make_category_li( 'video' ); ?>		
+									
+								</ul>
+								
+							</div>
+
+							<div class="span3"></div>
+							
+						</div>
+					
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+
+	</div>
+
 	<div class="grey">
 
 		<div class="container">

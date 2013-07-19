@@ -30,7 +30,6 @@ function register_cpt_article() {
 		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => true,
-		'menu_position' => 5,
 		'show_in_nav_menus' => true,
 		'publicly_queryable' => true,
 		'exclude_from_search' => true,
@@ -38,7 +37,8 @@ function register_cpt_article() {
 		'query_var' => true,
 		'can_export' => true,
 		'rewrite' => true,
-		'capability_type' => 'post'
+		'capability_type' => 'post',
+		'menu_position' => 41,
 	);
 
 	register_post_type( 'magazine', $args );
@@ -72,7 +72,6 @@ function volume_register_cpt_article() {
 		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => true,
-		'menu_position' => 5,
 		'show_in_nav_menus' => true,
 		'publicly_queryable' => true,
 		'exclude_from_search' => true,
@@ -80,7 +79,8 @@ function volume_register_cpt_article() {
 		'query_var' => true,
 		'can_export' => true,
 		'rewrite' => true,
-		'capability_type' => 'post'
+		'capability_type' => 'post',
+		'menu_position' => 46,
 	);
 
 	register_post_type( 'volume', $args );
@@ -89,12 +89,30 @@ function volume_register_cpt_article() {
 $field_data = array (
 	'magazine_meta' => array (
 		'fields' => array(
-			'Hed'		=> array(),
-			'Dek'		=> array(),
-			'PullQuotes'	=> array(),
-			'PageNumber'	=> array(),
+			'Hed'				=> array(),
+			'Dek'				=> array(),
+			'PullQuotes'		=> array(),
+			'PageNumber'		=> array(),
+			'ProjectsTeaser'	=> array(),
+			'Byline' 			=> array(),
+			'Conclusion'		=> array( 'type' => 'textarea' ),
 	),
 	'title'		=> 'Magazine Meta',
+	'context'	=> 'side',
+	'pages'		=> array( 'magazine', 'review', 'projects' ),
+	),
+);
+
+$easy_cf = new Easy_CF($field_data);
+
+$field_data = array (
+	'magazine_author' => array (
+		'fields' => array(
+			'AuthorBio'			=> array( 'type' => 'textarea', 'label' => 'Author Bio' ),
+			'Phone'				=> array(),
+			'Email'				=> array(),
+	),
+	'title'		=> 'Magazine Author',
 	'context'	=> 'side',
 	'pages'		=> array( 'magazine', 'review', 'projects' ),
 	),
@@ -202,7 +220,8 @@ function make_magazine_toc( $args ) {
 		'post_parent' 		=> null, 
 		'posts_per_page' 	=> -1, 
 		'orderby' 			=> 'name', 
-		'order' 			=> 'asc'
+		'order' 			=> 'asc',
+		'post_status'		=> array( 'publish', 'published-in-mag' ),
 		);
 	
 	$args = wp_parse_args( $args, $defaults );
@@ -231,13 +250,21 @@ function make_magazine_toc( $args ) {
 					if ( !empty( $image[0] ) )  {
 						$output .= '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 140, 140 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
 					} else {
-						$output .= get_the_image( array( 'image_scan' => true, 'size' => 'new-thumb', 'image_class' => 'hide-thumbnail', 'echo' => false ) );
+						$output .= get_the_image( array( 'image_scan' => true, 'size' => 'new-thumb', 'image_class' => 'hide-thumbnail', 'echo' => false, 'link_to_post' => false ) );
 					}
 			$output .= '</div>';
 
 			$output .= '<div class="span6">';
 
-				$output .= '<h3><a class="red" href="' . get_permalink($post->ID) . '">' . get_the_title() . '</a></h3>';
+				$output .= '<h3>';
+
+				if ( $post->post_status != 'published-in-mag' ) {
+					$output .= '<a class="red" href="' . get_permalink($post->ID) . '">' . get_the_title() . '</a>';
+				} else {
+					$output .= get_the_title();
+				}
+				
+				$output .= '</h3>';
 
 				$output .= '<p>' . wp_trim_words(get_the_excerpt(), 30, '...') . '</p>';
 
@@ -332,7 +359,7 @@ function register_taxonomy_section() {
 		'query_var' => true
 	);
 
-	register_taxonomy( 'section', array('magazine'), $args );
+	register_taxonomy( 'section', array( 'magazine', 'projects', 'review' ), $args );
 }
 
 $field_data = array (
@@ -445,3 +472,11 @@ function make_maker_projects_projects() {
 	$output .= make_magazine_toc($args);
 	return $output;
 }
+
+/**
+ * Get a volume cover image
+ */
+function make_get_cover_image( $number = 34 ) {
+	$url = esc_url( 'http://cdn.makezine.com/make/covers/MAKE_V' . absint( $number ) . '_high.jpg' );
+	return $url;
+ }

@@ -102,12 +102,12 @@ function make_linkify($item) {
 }
 
 function make_search_header() {
-	$q = htmlspecialchars(esc_attr($_GET['q']));
-	$si = htmlspecialchars($_GET['start']);
+	$q = ( !empty( $_GET['q'] ) ) ? htmlspecialchars( esc_attr( $_GET['q'] ) ) : '';
+	$si = ( !empty( $_GET['start'] ) ) ? htmlspecialchars( esc_attr( $_GET['start'] ) ) : '';
 	if (!isset($_GET['start'])) {
 		$si = 1;
 	}
-	$siteSearch = htmlspecialchars(esc_attr($_GET['as_sitesearch']));
+	$siteSearch = ( !empty( $_GET['as_sitesearch'] ) ) ? htmlspecialchars( esc_attr( $_GET['as_sitesearch'] ) ) : '';
 	$url = wpcom_vip_file_get_contents('http://www.google.com/search?start=0&num=10&q='.urlencode($q).'&start='.urlencode($si).'&count=10&cx=008032414425079535247:kplxrakvu20&output=xml_no_dtd&client=google-csbe&as_sitesearch='.$siteSearch);
 
 	$json_output = simplexml_load_string( $url );
