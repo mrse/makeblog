@@ -40,4 +40,14 @@ jQuery( document ).ready( function( $ ) {
 		$( '.make-popdown .container' ).slideToggle( 'fast' );
 	});
 
+
+	// Track links clicked
+	$( '.ga-nav a' ).click( function(e) {
+		var link_name = $(this).text();
+		var menu_name = $(this).parents('ul.nav').attr('id');
+
+		// Track this click with Google, yo.
+		_gaq.push(['_trackEvent', menu_name, 'Click', link_name]);
+	});
+
 });

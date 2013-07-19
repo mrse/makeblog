@@ -73,7 +73,7 @@
 								wp_nav_menu( array(
 									'theme_location'  => 'make-primary', 
 									'container'       => false, 
-									'menu_class'      => 'nav menu-primary-nav clearfix',
+									'menu_class'      => 'nav menu-primary-nav ga-nav clearfix',
 								) );
 							?>
 						</nav>
@@ -102,7 +102,7 @@
 								wp_nav_menu( array(
 									'theme_location' => 'make-secondary',
 									'container'		 => false,
-									'menu_class' 	 => 'nav menu-secondary-nav clearfix',
+									'menu_class' 	 => 'nav menu-secondary-nav ga-nav clearfix',
 								) );
 							?>
 						</nav>

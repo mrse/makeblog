@@ -1243,9 +1243,9 @@ function make_popdown_menu() { ?>
 				<div class="row">
 					<div class="span3 offset2 border-right">
 						<div class="row-fluid">
-							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" class="span4"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
+							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" class="span4" onClick="_gaq.push(['_trackEvent', 'PopdownNav', 'Click', 'Subscribe Image']);"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
 							<div class="span7 side-text">
-								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
+								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" onClick="_gaq.push(['_trackEvent', 'PopdownNav', 'Click', 'Subscribe Link']);">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
 							</div>
 						</div>
 					</div>
@@ -1253,7 +1253,7 @@ function make_popdown_menu() { ?>
 						<?php wp_nav_menu( array(
 							'theme_location'  => 'popdown-menu-top',
 							'container'       => false, 
-							'menu_class'      => 'first nav',
+							'menu_class'      => 'first nav ga-nav',
 							'depth'           => 1 
 						) ); ?>
 					</div>
@@ -1261,7 +1261,7 @@ function make_popdown_menu() { ?>
 						<?php wp_nav_menu( array(
 							'theme_location'  => 'popdown-menu-middle',
 							'container'       => false, 
-							'menu_class'      => 'second nav',
+							'menu_class'      => 'second nav ga-nav',
 							'depth'           => 1 
 						) ); ?>
 					</div>
@@ -1272,7 +1272,7 @@ function make_popdown_menu() { ?>
 						<?php wp_nav_menu( array(
 							'theme_location'  => 'popdown-menu-last',
 							'container'       => false, 
-							'menu_class'      => 'last nav',
+							'menu_class'      => 'last nav ga-nav',
 							'depth'           => 1 
 						) ); ?>
 					</div>
