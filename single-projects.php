@@ -18,7 +18,7 @@ get_header(); ?>
 
 				<?php if( has_term( 'Weekend Project', 'flags' ) ) : ?>
 					<div style="position:absolute; right:0; top:-20px;">
-						<img src="<?php echo get_template_directory_uri(); ?>/images/weekend-projects-btn.png" title="Weekend Projects Powered by Radio Shack" />
+						<a href="http://pubads.g.doubleclick.net/gampad/clk?id=42844138&amp;iu=/11548178/Makezine"><img src="<?php echo get_template_directory_uri(); ?>/images/weekend-projects-btn.png" title="Weekend Projects Powered by Radio Shack" /></a>
 					</div>
 				<?php endif; ?>
 

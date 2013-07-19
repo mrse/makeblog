@@ -235,7 +235,7 @@ function make_volume_blurb() {
 
 			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/Make_Volume_33_p/mmv33.htm">Maker Shed</a></p>
 
-			<p><a class="btn btn-primary" href="http://www.makershed.com/Make_Volume_33_p/mmv33.htm">Buy now!</a></p>
+			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=9781449327651-P">Buy now!</a></p>
 
 		</div>';
 	return $output;
@@ -409,7 +409,7 @@ function promo_vol_34() {
 
 			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/MAKE_Volume_34_p/9781449327668.htm">Maker Shed</a></p>
 
-			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=MMV34">Buy now!</a></p>
+			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=9781449327668-P">Buy now!</a></p>
 
 		</div>';
 	return $output;
@@ -716,3 +716,25 @@ function make_campaign_monitor_form( $atts, $content = null ) {
 	return $output;
 }
 add_shortcode( 'make-compagin-monitor', 'make_campaign_monitor_form' );
+
+add_shortcode( 'volume', 'make_volume_tease' );
+/**
+ * New Shortcode for articles. Kind of a big tease with the images of the cover.
+ */
+function make_volume_tease( $atts, $content = null ) {
+	extract( shortcode_atts( array(
+		'volume'	=> '34',
+		'subscribe'	=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK',
+		'buy'		=> 'http://www.makershed.com/MAKE_Volume_34_p/9781449327668-p.htm'
+	), $atts ) );
+
+	$output = '<div class="tease">';
+	$output .= '<h3>Preview</h3>';
+	$output .= '<h4><a href="' . esc_url( $buy ) . '">Buy Volume ' . intval( $volume ) . '</a> for complete access or</h4>';
+	$output .= '<div><a class="button big" href="' . esc_url ( $subscribe ) . '">Subscribe to MAKE and Save!</a></div>';
+	$output .= '<div class="cover"><a href="' . esc_url ( $subscribe ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( make_get_cover_image( absint( $volume ) ), 400, 566 ) .  '" alt="" /></a></div>';
+	$output .= '</div>';
+
+	return $output;
+
+}

@@ -89,12 +89,30 @@ function volume_register_cpt_article() {
 $field_data = array (
 	'magazine_meta' => array (
 		'fields' => array(
-			'Hed'		=> array(),
-			'Dek'		=> array(),
-			'PullQuotes'	=> array(),
-			'PageNumber'	=> array(),
+			'Hed'				=> array(),
+			'Dek'				=> array(),
+			'PullQuotes'		=> array(),
+			'PageNumber'		=> array(),
+			'ProjectsTeaser'	=> array(),
+			'Byline' 			=> array(),
+			'Conclusion'		=> array( 'type' => 'textarea' ),
 	),
 	'title'		=> 'Magazine Meta',
+	'context'	=> 'side',
+	'pages'		=> array( 'magazine', 'review', 'projects' ),
+	),
+);
+
+$easy_cf = new Easy_CF($field_data);
+
+$field_data = array (
+	'magazine_author' => array (
+		'fields' => array(
+			'AuthorBio'			=> array( 'type' => 'textarea', 'label' => 'Author Bio' ),
+			'Phone'				=> array(),
+			'Email'				=> array(),
+	),
+	'title'		=> 'Magazine Author',
 	'context'	=> 'side',
 	'pages'		=> array( 'magazine', 'review', 'projects' ),
 	),
@@ -454,3 +472,11 @@ function make_maker_projects_projects() {
 	$output .= make_magazine_toc($args);
 	return $output;
 }
+
+/**
+ * Get a volume cover image
+ */
+function make_get_cover_image( $number = 34 ) {
+	$url = esc_url( 'http://cdn.makezine.com/make/covers/MAKE_V' . absint( $number ) . '_high.jpg' );
+	return $url;
+ }

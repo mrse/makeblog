@@ -226,6 +226,23 @@ add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
 
 
 /**
+ * Adds scripts and styles to particular pages in the admin areas.
+ * @return void
+ */
+function make_enqueue_resources_admin() {
+	$screen = get_current_screen();
+
+	if ( $screen->id == 'volume_page_manager' ) {
+		wp_enqueue_style( 'make-dashboard-css', get_stylesheet_directory_uri() . '/includes/magazine-dashboard/css/dashboard.css' );
+
+		wp_enqueue_script( 'make-sort-table', get_stylesheet_directory_uri() . '/js/jquery.tablesorter.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'make-dashboard', get_stylesheet_directory_uri() . '/includes/magazine-dashboard/js/dashboard-scripts.js', array( 'make-sort-table' ) );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'make_enqueue_resources_admin' );
+
+
+/**
  * Catch a description for the OG protocol
  * 
  * @deprecated 	Since January 2013.
@@ -1167,10 +1184,12 @@ function make_get_author( $post_id, $prefix = 'By' ) {
 	// Return our post type name
 	$post_type = get_post_type( absint( $post_id ) );
 
-	// We don't ever want to display an author for the videos post type.
-	if ( $post_type == 'video' )
-		return;
+	// Check that we are not loading a video CPT. If we are, return false so we don't echo anything
+	if ( $post_type == 'video')
+		return false;
 
+	// If we want to echo our results, we'll do that here.
+	echo '<li>';
 	echo esc_attr( $prefix ) . ' ';
 
 	if ( $post_type == 'post' ) {
@@ -1186,6 +1205,8 @@ function make_get_author( $post_id, $prefix = 'By' ) {
 			the_author();
 		}
 	}
+
+	echo '</li>';
 
 }
 
@@ -1221,43 +1242,46 @@ function make_popdown_menu() { ?>
 		<div class="wrapper-container">
 			<div class="container">
 				<div class="row">
-					<div class="span4 side-column">
-						<span class="row-fluid">
-							<a href="<?php echo home_url(); ?>" class="span4"><img src="<?php echo get_template_directory_uri(); ?>/images/popdown-makebot.png" alt=""></a>
-							<div class="span8 side-text">
-								<p class="large-text">Where DIY professionals and hobbyists go to learn, create, and share<br /><a href="<?php echo home_url( '/subscribe/' ); ?>">Subscribe to MAKE Magazine</a></p>
+					<div class="span3 offset2 border-right">
+						<div class="row-fluid">
+							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" class="span4"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
+							<div class="span7 side-text">
+								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
 							</div>
-						</span>
+						</div>
 					</div>
-					<nav class="span8 popdown-navigation">
-						<div class="border-bottom">
-							<?php wp_nav_menu( array(
-								'theme_location'  => 'popdown-menu-top',
-								'container'       => false, 
-								'menu_class'      => 'first nav',
-								'depth'           => 1 
-							) ); ?>
-						</div>
-						<div class="border-bottom">
-							<?php wp_nav_menu( array(
-								'theme_location'  => 'popdown-menu-middle',
-								'container'       => false, 
-								'menu_class'      => 'second nav',
-								'depth'           => 1 
-							) ); ?>
-						</div>
+					<div class="span2 border-right">
+						<?php wp_nav_menu( array(
+							'theme_location'  => 'popdown-menu-top',
+							'container'       => false, 
+							'menu_class'      => 'first nav',
+							'depth'           => 1 
+						) ); ?>
+					</div>
+					<div class="span4">
+						<?php wp_nav_menu( array(
+							'theme_location'  => 'popdown-menu-middle',
+							'container'       => false, 
+							'menu_class'      => 'second nav',
+							'depth'           => 1 
+						) ); ?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span9 offset2 menu-bottom">
+						<p>What's Hot on Makezine.com:</p>
 						<?php wp_nav_menu( array(
 							'theme_location'  => 'popdown-menu-last',
 							'container'       => false, 
 							'menu_class'      => 'last nav',
 							'depth'           => 1 
 						) ); ?>
-					</nav>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="menu-button">
-			<span class="popdown-btn"><img src="<?php echo get_template_directory_uri(); ?>/img/make-logo-popdown.png" /></span>
+			<span class="popdown-btn"></span>
 		</div>
 	</div>
 <?php }
