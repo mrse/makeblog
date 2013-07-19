@@ -161,6 +161,13 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/groups'					=> 'http://archive.makezine.com/groups/',
 		'/blog/make-newsletter'			=> 'http://makezine.com/newsletter/',
 		'/blog/page-2/'					=> 'http://makezine.com/page-2/',
+		'/volume/make-36‎'				=> 'http://makezine.com/magazine/',
+		'/volume/make-37'				=> 'http://makezine.com/magazine/',
+		'/volume/make-38‎'				=> 'http://makezine.com/magazine/',
+		'/volume/make-39'				=> 'http://makezine.com/magazine/',
+		'/volume/make-40‎'				=> 'http://makezine.com/magazine/',
+		'/volume/make-41'				=> 'http://makezine.com/magazine/',
+		'/volume/make-42‎'				=> 'http://makezine.com/magazine/',
 
 		// Add redirects for instances that a blog folder isn't here.
 		'/subscribe' 				=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
