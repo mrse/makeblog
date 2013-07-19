@@ -341,7 +341,7 @@ function register_taxonomy_section() {
 		'query_var' => true
 	);
 
-	register_taxonomy( 'section', array('magazine'), $args );
+	register_taxonomy( 'section', array( 'magazine', 'projects', 'review' ), $args );
 }
 
 $field_data = array (
