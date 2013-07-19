@@ -174,6 +174,7 @@ get_header(); ?>
 					'category__in'		=> 0,
 					'projects_landing'	=> true,
 					'all'				=> false,
+					'posts_per_page'	=> 36,
 					'tax_query' => array(
 						array(
 							'taxonomy' => 'flags',
