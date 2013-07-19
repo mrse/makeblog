@@ -266,14 +266,14 @@ function make_check_screen_options( $option, $metabox = false, $default = false 
 		if ( $metabox ) {
 			// Check if we want something checked by default, do it as long as our data isn't set in the database yet
 			if ( $default && isset( $screen_options[ $option . '-hide' ] ) ) {
-				if ( $metabox )
-					$output = 'checked="checked"';
+				$output = 'checked="checked"';
 			} else {
-				if ( $metabox )
-					$output = checked( $screen_options[ $option . '-hide' ], $option, false );
+				$output = checked( $screen_options[ $option . '-hide' ], $option, false );
 			}
+
+			$output .= 'metabox';
 		} else { // This code is used when we are not dealing with the screen options metabox (ie our table rows)
-			if ( ! isset( $screen_options[ $option . '-hide'] ) && $screen_options[ $option . '-hide' ] != $option )
+			if ( ! isset( $screen_options[ $option . '-hide' ] ) && $screen_options[ $option . '-hide' ] != $option )
 				$output = ' style="display:none;"';
 		}
 	} else {
@@ -588,9 +588,9 @@ function make_magazine_dashboard_page() {
 								echo '<td class="ef_first_draft_date column-ef_first_draft_date"' . make_check_screen_options( 'ef_first_draft_date' ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_first-draft-date'][0] ) . '</td>';
 								echo '<td class="ef_page_count column-ef_page_count ef_pc_count"' . make_check_screen_options( 'ef_page_count', false, true ) . '>' . make_get_integer( $meta['_ef_editorial_meta_number_page-count'][0] ) . '</td>';
 								echo '<td class="ef_editor column-ef_editor"' . make_check_screen_options( 'ef_editor', false, true ) . '>' . make_convert_author_id( $meta['_ef_editorial_meta_user_editor'][0] ) . '</td>';
-								echo '<td class="ef_editor_deadline column-ef_editor_deadline" style="color:#ff0000;"' . make_check_screen_options( 'ef_editor_deadline', false, true ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_editor-deadline'][0] ) . '</td>';
+								echo '<td class="ef_editor_deadline column-ef_editor_deadline"' . make_check_screen_options( 'ef_editor_deadline', false, true ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_editor-deadline'][0] ) . '</td>';
 								echo '<td class="ef_copyeditor column-ef_copyeditor"' . make_check_screen_options( 'ef_copyeditor', false, true ) . '>' . make_convert_author_id( $meta['_ef_editorial_meta_user_copyeditor'][0] ) . '</td>';
-								echo '<td class="ef_copyeditor_deadline column-ef_copyeditor_deadline" style="color:#ff0000;"' . make_check_screen_options( 'ef_copyeditor_deadline', false, true ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_copyedit-deadline'][0] ) . '</td>';
+								echo '<td class="ef_copyeditor_deadline column-ef_copyeditor_deadline"' . make_check_screen_options( 'ef_copyeditor_deadline', false, true ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_copyedit-deadline'][0] ) . '</td>';
 								echo '<td class="ef_tech_review column-ef_tech_review"' . make_check_screen_options( 'ef_tech_review' ) . '>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_tech-review'][0] ) . '</td>';
 								echo '<td class="ef_needs_video column-ef_needs_video"' . make_check_screen_options( 'ef_needs_video' ) . '>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-video'][0] ) . '</td>';
 								echo '<td class="ef_needs_photo column-ef_needs_photo"' . make_check_screen_options( 'ef_needs_photo' ) . '>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_needs-photo'][0] ) . '</td>';
