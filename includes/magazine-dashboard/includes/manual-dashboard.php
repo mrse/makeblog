@@ -25,19 +25,23 @@ function make_get_query_vars() {
  * Handles our Ajax requests for the custom screen options. Called from dashboard-scripts.js. Only runs when a user is logged in (hence the wp_ajax_* action);
  * @return [type] [description]
  */
-function make_magazine_dashboard_ajax() {
+function make_magazine_dashboard_ajax_save_user_screen_options() {
+
+	// Ensure that users with a role of Editor or higher can save these options
+	if ( ! current_user_can( 'edit_posts' ) )
+		return;
 
 	// Make sure everything is as it's supposed to.
 	if ( isset( $_POST['submission'] ) && $_POST['submission'] == 'submit-dashboard-screen-options' && wp_verify_nonce( $_POST['nonce'], 'dashboard-screen-save' ) ) {
 
 		// Turn our query string into an array
-		parse_str( $_POST['data'], $data );
+		parse_str( sanitize_text_field( $_POST['data'] ), $data );
 
 		$user_id = get_current_user_id();
 		$updates = update_user_meta( $user_id, 'metaboxhidden_mag_dashboard', $data );
 	}
 }
-add_action( 'wp_ajax_mag_dash_screen_opt', 'make_magazine_dashboard_ajax' );
+add_action( 'wp_ajax_mag_dash_screen_opt', 'make_magazine_dashboard_ajax_save_user_screen_options' );
 
 
 /**
@@ -568,12 +572,12 @@ function make_magazine_dashboard_page() {
 								$post_type   = ( get_post_type() == 'magazine' ) ? 'Articles' : ucwords( get_post_type() );
 								$post_status = $wp_post_statuses[ get_post_status() ]->label;
 
-								echo '<tr id="post-' . $post->ID . '" valign="top">';
-								echo '<td class="post_parent column-post_parent"' . make_check_screen_options( 'post_parent', false, true ) . '>' . $volume . '</td>';
-								echo '<td class="post_type column-post_type"' . make_check_screen_options( 'post_type', false, true ) . '>' . $post_type . '</td>';
-								echo '<td class="post_status column-post_status"' . make_check_screen_options( 'post_status', false, true ) . '>' . $post_status . '</td>';
-								echo '<td class="section column-section"' . make_check_screen_options( 'section', false, true ) . '>' . $sections . '</td>';
-								echo '<td class="post_title column-post_title"' . make_check_screen_options( 'post_title', false, true ) . '><strong><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">' . get_the_title() . '</a></strong>
+								echo '<tr id="post-' . absint( $post->ID ) . '" valign="top">';
+								echo '<td class="post_parent column-post_parent"' . make_check_screen_options( 'post_parent', false, true ) . '>' . esc_html( $volume ) . '</td>';
+								echo '<td class="post_type column-post_type"' . make_check_screen_options( 'post_type', false, true ) . '>' . esc_html( $post_type ) . '</td>';
+								echo '<td class="post_status column-post_status"' . make_check_screen_options( 'post_status', false, true ) . '>' . esc_html( $post_status ) . '</td>';
+								echo '<td class="section column-section"' . make_check_screen_options( 'section', false, true ) . '>' . esc_html( $sections ) . '</td>';
+								echo '<td class="post_title column-post_title"' . make_check_screen_options( 'post_title', false, true ) . '><strong><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">' . esc_html( get_the_title() ) . '</a></strong>
 										<div class="row-actions">
 											<span class="inline hide-if-no-js"><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">Edit</a> | </span>
 											<span class="trash"><a class="submitdelete" href="' . get_delete_post_link( absint( $post->ID ) ) . '">Trash</a></span>
