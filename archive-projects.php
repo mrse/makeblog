@@ -125,7 +125,7 @@ get_header(); ?>
 
 						$args = array(
 							'post_type'			=> 'projects',
-							'title'				=> '<a href="' . home_url() . '/the-weekend-projects/">Weekend Projects</a>',
+							'title'				=> '<a href="' . home_url() . '/weekendprojects/">Weekend Projects</a>',
 							'tax_query' => array(
 								array(
 									'taxonomy' => 'flags',

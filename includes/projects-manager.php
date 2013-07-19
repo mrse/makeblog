@@ -226,8 +226,9 @@
 					</ul>
 				</div><!--[END .step-contents]-->
 			</div><!--[END .parts-template]-->
+			<?php $parts_num = 1; ?>
 			<?php if( isset( $parts ) && is_array( $parts ) ) : ?>
-				<?php $parts_num = 1; foreach( $parts as $part ) : 
+				<?php foreach( $parts as $part ) : 
 					// Unserialize our Parts here as each array is serialized while the parent isn't.
 					$part = unserialize( $part ); ?>
 					<div id="part-<?php echo $parts_num; ?>" class="parts-wrapper">
@@ -321,8 +322,9 @@
 					</ul>
 				</div><!--[END .step-contents]-->
 			</div><!--[END .tools-template]-->
+			<?php $tools_num = 1; ?>
 			<?php if( isset( $tools ) && is_array( $tools ) ) : ?>
-				<?php $tools_num = 1; foreach( $tools as $tool ) : ?>
+				<?php foreach( $tools as $tool ) : ?>
 					<div id="tool-<?php echo $tools_num; ?>" class="tools-wrapper">
 						<input type="hidden" name="tool-number-<?php echo $tools_num; ?>" value="<?php echo ( ! empty( $tool->number ) ) ? $tool->number : $tools_num; ?>">
 						<div class="tool-title">

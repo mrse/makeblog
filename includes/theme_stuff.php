@@ -529,10 +529,9 @@ function make_get_category_name_strip_slash() {
  * This will bring posts, craft, projects, video into the main query. Allows for better archive pages.
  * @return string Main category name.
  */
-// TODO: Bring in reviews.
 function make_add_custom_types( $query ) {
 	if ( ! is_admin() && $query->is_main_query() && ( $query->is_tag() || $query->is_author() || $query-> is_tax() ) && empty( $query->query_vars['suppress_filters'] ) ) {
-		$query->set( 'post_type', array( 'post', 'craft', 'projects', 'video' ));
+		$query->set( 'post_type', array( 'post', 'craft', 'projects', 'video', 'reviews', 'magazine' ));
 		return $query;
 	}
 }

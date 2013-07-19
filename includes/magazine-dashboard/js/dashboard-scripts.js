@@ -13,24 +13,34 @@ jQuery( document ).ready( function( $ ) {
 
 	// Sort the custom table and enable zebra stripes
 	$.tablesorter.defaults.widgets = ['zebra'];
-	$( 'table#magazine-dashboard' ).tablesorter({
-		headers: { // Disable sorting on these columns
-            0: { sorter: false },
-            4: { sorter: false },
-            5: { sorter: false },
-            7: { sorter: false },
-            8: { sorter: false },
-            9: { sorter: false },
-            10: { sorter: false },
-            11: { sorter: false },
-            12: { sorter: false },
-            13: { sorter: false },
-            14: { sorter: false },
-            15: { sorter: false },
-            16: { sorter: false },
-            17: { sorter: false },
-            18: { sorter: false },
-            19: { sorter: false }
-        }
+	$( 'table#magazine-dashboard' ).tablesorter();
+
+
+	// Setup Ajax for our screen options
+	$( 'input.hide-column-tog:checkbox' ).on( 'click', function() {
+
+		// Save our new options to the database
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: ajaxurl,
+			data: {
+				'action' : 'mag_dash_screen_opt',
+				'nonce' : $( '#magazine-dashboard-screen-options input#make-magazine-dashboard' ).val(),
+				'submission' : $( '#magazine-dashboard-screen-options input[name="submission"]:hidden' ).val(),
+				'data'   : $( '#magazine-dashboard-screen-options input:checked' ).serialize()
+			}
+		});
+
+		// show or hide our columns on click
+		var column = '.column-' + $(this).val();
+
+		$( column ).each( function() {
+			if ( $(this).is(':visible') ) {
+				$(this).hide();
+			} else {
+				$(this).show();
+			}
+		});
 	});
 });
