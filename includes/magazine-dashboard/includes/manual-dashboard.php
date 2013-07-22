@@ -38,7 +38,7 @@ function make_magazine_dashboard_ajax_save_user_screen_options() {
 		parse_str( sanitize_text_field( $_POST['data'] ), $data );
 
 		$user_id = get_current_user_id();
-		$updates = update_user_meta( $user_id, 'metaboxhidden_mag_dashboard', $data );
+		$updates = update_user_attribute( $user_id, 'metaboxhidden_mag_dashboard', $data );
 	}
 }
 add_action( 'wp_ajax_mag_dash_screen_opt', 'make_magazine_dashboard_ajax_save_user_screen_options' );
@@ -257,7 +257,7 @@ add_action( 'admin_head', 'make_init_screen_options' );
 function make_check_screen_options( $option, $metabox = false, $default = false ) {
 
 	$user_id = get_current_user_id();
-	$screen_options = get_user_meta( $user_id, 'metaboxhidden_mag_dashboard', true );
+	$screen_options = get_user_attribute( $user_id, 'metaboxhidden_mag_dashboard', true );
 	$output = '';
 
 	// Let's make sure we have data in DB before requesting it. If there isn't, setup the defaults.
@@ -576,7 +576,7 @@ function make_magazine_dashboard_page() {
 								echo '<td class="post_parent column-post_parent"' . make_check_screen_options( 'post_parent', false, true ) . '>' . esc_html( $volume ) . '</td>';
 								echo '<td class="post_type column-post_type"' . make_check_screen_options( 'post_type', false, true ) . '>' . esc_html( $post_type ) . '</td>';
 								echo '<td class="post_status column-post_status"' . make_check_screen_options( 'post_status', false, true ) . '>' . esc_html( $post_status ) . '</td>';
-								echo '<td class="section column-section"' . make_check_screen_options( 'section', false, true ) . '>' . esc_html( $sections ) . '</td>';
+								echo '<td class="section column-section"' . make_check_screen_options( 'section', false, true ) . '>' . wp_kses( $sections, array( 'a' => array( 'href' => array(), 'title' => array() ) ) ) . '</td>';
 								echo '<td class="post_title column-post_title"' . make_check_screen_options( 'post_title', false, true ) . '><strong><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">' . esc_html( get_the_title() ) . '</a></strong>
 										<div class="row-actions">
 											<span class="inline hide-if-no-js"><a href="' . get_edit_post_link( absint( $post->ID ) ) . '">Edit</a> | </span>
