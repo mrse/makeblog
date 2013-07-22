@@ -583,7 +583,7 @@ function make_magazine_dashboard_page() {
 									  </td>';
 								echo '<td class="post_author column-post_author"' . make_check_screen_options( 'post_author', false, true ) . '>' . make_convert_author_id( $post->post_author ) . '</td>';
 								echo '<td class="post_date column-post_date"' . make_check_screen_options( 'post_date', false, true ) . '>' . make_convert_to_pretty_time( $post->post_date, true ) . '</td>';
-								echo '<td class="ef_first_draft_date column-ef_first_draft_date"  style="color:#ff0000;"' . make_check_screen_options( 'ef_first_draft_date' ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_first-draft-date'][0] ) . '</td>';
+								echo '<td class="ef_first_draft_date column-ef_first_draft_date"' . make_check_screen_options( 'ef_first_draft_date' ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_first-draft-date'][0] ) . '</td>';
 								echo '<td class="ef_page_count column-ef_page_count ef_pc_count"' . make_check_screen_options( 'ef_page_count', false, true ) . '>' . make_get_integer( $meta['_ef_editorial_meta_number_page-count'][0] ) . '</td>';
 								echo '<td class="ef_editor column-ef_editor"' . make_check_screen_options( 'ef_editor', false, true ) . '>' . make_convert_author_id( $meta['_ef_editorial_meta_user_editor'][0] ) . '</td>';
 								echo '<td class="ef_editor_deadline column-ef_editor_deadline"' . make_check_screen_options( 'ef_editor_deadline', false, true ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_editor-deadline'][0] ) . '</td>';
