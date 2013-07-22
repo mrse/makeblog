@@ -442,7 +442,7 @@ function itunes_feed() {
 
 add_action('template_redirect', 'itunes_feed');
 
-// add_action('pre_get_posts', 'make_mf_remove_tag_from_home' );
+add_action('pre_get_posts', 'make_mf_remove_tag_from_home' );
 
 /**
  * Take Maker Faire posts that don't have MF tag, and remove from the main query.
@@ -451,8 +451,8 @@ add_action('template_redirect', 'itunes_feed');
 function make_mf_remove_tag_from_home( $query ) {
 
 	// only impact the main WordPress query and if on homepage or feed
-	if( $query->is_main_query() && ( $query->is_home() || $query->is_feed() || $query->is_page(215620) ) ) {
-		$query->set( 'tag__not_in', array( 5183,22815 ) );
+	if( $query->is_main_query() && ( $query->is_home() || $query->is_feed() ) ) {
+		$query->set( 'tag__not_in', array( 5183, 22815, 9947 ) );
 	}
 }
 

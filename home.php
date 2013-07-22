@@ -22,6 +22,7 @@ make_get_header() ?>
 						$query = new WP_Query( array(
 							'post_type' => array( 'post', 'projects', 'review', 'video', 'magazine' ),
 							'paged' => $paged,
+							'tag__not_in' => array( 5183, 22815, 9947 ),
 						) );
 
 						if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
