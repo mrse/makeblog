@@ -1,20 +1,10 @@
 <?php
 /**
- * Template Name: Stats Tool
- * Used to grab stats for tweets/plusses/likes
- *
- * @package    makeblog
- * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
- * @author     Jake Spurlock <jspurlock@makermedia.com>
+ * Stats Functions
  * 
+ * Moving this to the admin. The original goal, was just to make it as a private page, but Mo dropped Mjölnir on that commit...
+ *
  */
-
-//$url = 'http://makeprojects.com/Project/Kitty-Twitty-Cat-Toy/1439/1';
-
-if ( $_POST ) {
-	$url = esc_url( $_POST["url"] );
-}
-
 function make_get_tweets( $url ) {
  
 	$json_string = wpcom_vip_file_get_contents( 'http://urls.api.twitter.com/1/urls/count.json?url=' . $url );
@@ -72,47 +62,28 @@ function make_get_plusones( $url ) {
 	}
 }
 
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Like, the best tool ever...</title>
-		<?php wp_head(); ?>
-	</head>
-
-	<body>
-
-	<div class="container">
-
-		<!-- Main hero unit for a primary marketing message or call to action -->
-
-		<div class="row">
-
-			<div class="span6 offset3">
-
-				<div class="hero-unit">
-					<h1>The Social Counter!</h1>
-
-				</div>
-
-			</div>
-
-		</div>
-			
-		<div class="row">
-
-			<div class="span6 offset3">
+function make_social_stats() {
+	if ( $_POST ) {
+		$url = esc_url( $_POST["url"] );
+	}
+	?>
+	<div class="wrap">
+	
+		<h1>The Social Counter!</h1>
 		
-				<div class="">
-					
-					<form action="" method="post" class="form-inline">
+		<div id="" class="postbox metabox-holder">
+			<h3 class="hndle"><span>Like, the best tool ever...</span></h3>
+			<div class="inside">
+				<div class="table table_content">
+					<p class="sub">Add a URL to get stats</p>
+					<form action="" method="post" class="">
 						<input type="text" class="span3" placeholder="url&hellip;" name="url">
 						<button type="submit" class="btn btn info">Submit</button>
 					</form>
-
-					<?php			
+					
+					<br class="clear">
+					
+					<?php
 			
 						if ($_POST) {
 
@@ -126,30 +97,19 @@ function make_get_plusones( $url ) {
 							echo '</tbody></table>';
 						}
 					?>
-
+					
+					<br class="clear">
 				</div>
-
 			</div>
-
 		</div>
+	<?php
+}
 
-		<div class="row">
+/**
+ * Hook the page in
+ */
+function make_add_stats_menu_page() {
+	add_submenu_page( 'index.php', 'Social Stats', 'Social Stats', 'edit_posts', 'social_stats', 'make_social_stats' );
+}
 
-			<div class="span6 offset3">
-
-				<footer>
-					<p>&copy; <?php echo bloginfo( 'name' ) . ' ' . date( 'Y' ); ?></p>
-				</footer>
-
-			</div>
-
-		</div>
-
-	</div> <!-- /container -->
-
-	<!-- Le javascript
-	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<?php wp_footer(); ?>
-	</body>
-</html>
+add_action( 'admin_menu', 'make_add_stats_menu_page' );
