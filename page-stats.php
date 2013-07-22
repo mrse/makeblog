@@ -108,7 +108,7 @@ function make_get_plusones( $url ) {
 				<div class="">
 					
 					<form action="" method="post" class="form-inline">
-						<input type="text" class="span3" placeholder="url…" name="url">
+						<input type="text" class="span3" placeholder="url&hellip;" name="url">
 						<button type="submit" class="btn btn info">Submit</button>
 					</form>
 
