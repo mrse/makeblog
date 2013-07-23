@@ -57,6 +57,7 @@ if ( function_exists( 'vip_regex_redirects' ) ) {
 		'|^/blog/category/([a-zA-Z0-9 -]+)|' 			   => '|/category/$1/|', // handle any redirects from blog.makezine with categories
 		'|^/blog/tag/([a-zA-Z0-9 -]+)|'				  	   => '|/tag/$1/|', // handle any redirects from blog.makezine with tags
 		'|^/blog/author/([a-zA-Z0-9 -]+)|'				   => '|/author/$1/', // handle any redirects from blog.makezine marked as authors
+		'|^/tv/(.*)|'									   => 'http://archive.makezine.com/tv/$1', // Old Makezine TV redirects
 	);
 	vip_regex_redirects( $redirects );
 }
