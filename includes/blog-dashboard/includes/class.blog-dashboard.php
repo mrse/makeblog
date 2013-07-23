@@ -1,9 +1,20 @@
 <?php
 	
-
+	/**
+	 * Blog Dashboard.
+	 *
+	 * A custom list table to display all posts under a list of post types.
+	 *
+	 * @package    makeblog
+	 * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
+	 * @author     Cole Geissinger <cgeissinger@makermedia.com>
+	 */
 	class Make_List_Tables_Blog_Dashboard {
 
-		// The URL we want to assign our submenu to.
+		/**
+		 * Contains all information for creating our submenu page, plus some extra data used through out the class
+		 * @var array
+		 */
 		public $submenu_data = array(
 			'parent_slug' => 'index.php',
 			'page_title'  => 'Blog Dashboard',
@@ -33,7 +44,10 @@
 		);
 
 
-		// Post status we do not want to return
+		/**
+		 * A list of post statuses we DO NOT want returned
+		 * @var array
+		 */
 		public $disallowed_post_statuses = array(
 			'trash',
 			'spam',
@@ -42,7 +56,12 @@
 			'auto-draft',
 		);
 
-		// A list of our columns needed
+		
+		/**
+		 * List all the of the columns to be outputted.
+		 * Used in the Screen Options and table header/footer
+		 * @var array
+		 */
 		public $columns = array(
 			'post_title' => array(
 				'label'    => 'Title',
@@ -92,6 +111,11 @@
 		);
 
 
+		/**
+		 * The initilizer.
+		 *
+		 * Loads all hooks/filters and magic here.
+		 */
 		public function __construct() {
 
 			// Load our admin page
@@ -109,13 +133,17 @@
 
 
 		/**
-		 * Hook the page in
+		 * Registers our submenu.
+		 * Do not adjust directly, except for the callback function. Other wise, use the $submenu_data variable to adjust.
 		 */
 		function add_menu_page() {
 			add_submenu_page( $this->submenu_data['parent_slug'], $this->submenu_data['page_title'], $this->submenu_data['menu_title'], $this->submenu_data['capability'], $this->submenu_data['menu_slug'], array( $this, 'display_blog_dashboard_page' ) );
 		}
 
 
+		/**
+		 * Loads all required JavaScript/CSS to make our list table work.
+		 */
 		function add_resources() {
 			$screen = get_current_screen();
 
@@ -152,7 +180,7 @@
 
 		/**
 		 * Handles our Ajax requests for the custom screen options. Called from dashboard-scripts.js. Only runs when a user is logged in (hence the wp_ajax_* action);
-		 * @return [type] [description]
+		 * @return void
 		 */
 		function ajax_save_user_screen_options() {
 
@@ -168,11 +196,13 @@
 
 				$user_id = get_current_user_id();
 				$updates = update_user_attribute( $user_id, 'metaboxhidden_blog_dashboard', $data );
-				echo 'asdf';
 			}
 		}
 
 
+		/**
+		 * Handles any additional query string data
+		 */
 		function add_additional_queries() {
 			$query_vars = $this->get_query_vars();
 			$additionals = '';
@@ -201,12 +231,12 @@
 
 
 		/**
-		 * Function to count the statuses of Maker Faire applications
+		 * Counts all post statuses and returns a link that we can use to filter by
 		 */
 		function count_post_status() {
 			$query_vars = $this->get_query_vars();
 			$results = array();
-			$new_post_types = array_slice( $this->post_types, 1 );
+			$new_post_types = array_slice( $this->post_types, 1 ); // Remove the first array option which is 'all'
 			$output = '';
 
 			foreach ( $this->post_types as $k => $type ) {
@@ -219,9 +249,9 @@
 					'month'			 => $query_vars['month'],
 					'day'			 => $query_vars['day'],
 					'year'			 => $query_vars['year'],
+					's'				 => $query_vars['serach'],
 					'posts_per_page' => 0,
 					'return_fields'	 => 'ids',
-					's'				 => $query_vars['serach'],	
 				);
 				$query = new WP_Query( $args );
 
@@ -238,13 +268,12 @@
 			foreach ( $results as $result ) {
 
 				// Check the current results and apply our current class if we are currently filtering by that post type.
-				$class = ( ( $result['type_uri'] == $query_vars['filter'] ) || $result['type_uri'] == 'all' && empty( $query_vars['filter'] ) ) ? ' class="current"' : '';
+				$class = ( ( $result['type_uri'] == $query_vars['post_type'] ) || $result['type_uri'] == 'all' && empty( $query_vars['post_type'] ) ) ? ' class="current"' : '';
 
-				$additionals = $this->add_additional_queries();
-
-				$output .= ' | <li><a href="' . esc_url( $this->submenu_data['page_url'] . '&filter=' . sanitize_text_field( $result['type_uri'] ) ) . sanitize_text_field( $additionals ) . '"' . $class . '>' . esc_html( $result['post_type'] ) . '</a><span class="count">(' . absint( $result['post_count'] ) . ')</span> </li>';
+				$output .= ' | <li><a href="' . esc_url( $this->submenu_data['page_url'] . '&post_status=' . sanitize_text_field( $result['type_uri'] ) ) . sanitize_text_field( $this->add_additional_queries() ) . '"' . $class . '>' . esc_html( $result['post_type'] ) . '</a><span class="count">(' . absint( $result['post_count'] ) . ')</span> </li>';
 			}
 
+			// Remove the first two characters of our string and return it
 			return substr( $output, 2 );
 		}
 
@@ -311,17 +340,21 @@
 		 * Generate a dropdown to filter the sections. Duh.
 		 * @return html
 		 */
-		function month_dropdown() {
+		function date_dropdown( $posts ) {
 
 			$query_vars = $this->get_query_vars();
-			$terms = get_terms( 'section', array( 'hide_empty' => false ) );
 
-			$output = '<select name="section" id="section-dropdown">';
-			$output .= '<option value="all">All Sections</option>';
+			$output = '<select name="month" id="month-dropdown">';
+			$output .= '<option value="0">Month</option>';
 
-			foreach ( $terms as $term ) {
-				$output .= '<option value="' . sanitize_text_field( $term->slug ) . '"' . selected( sanitize_text_field( $query_vars['section'] ), sanitize_text_field( $term->slug ), false ) . '>' . esc_html( $term->name ) . '</option>';
+			foreach ( $posts as $post ) {
+				$date = $post->post_date;
+
+				if ( ! empty( $date ) )
+					$output .= '<option value="' . date( 'm&year=y', $date ) . '">' . date( 'M Y', $date ) . '</option>';
 			}
+			// $output .= wp_get_archives( array( 'type' => 'monthly', 'format' => 'option', 'show_post_count' => 0 ) );
+			// $output .= '<option value="' . sanitize_text_field( $term->slug ) . '"' . selected( sanitize_text_field( $query_vars['section'] ), sanitize_text_field( $term->slug ), false ) . '>' . esc_html( $term->name ) . '</option>';
 
 			$output .= '</select>';
 
@@ -505,10 +538,10 @@
 			$query_vars = $this->get_query_vars(); 
 
 			// Check if we are filtering our results by post type.
-			if ( empty( $query_vars['filter'] ) || $query_vars['filter'] == 'all' ) {
+			if ( empty( $query_vars['post_type'] ) || $query_vars['post_type'] == 'all' ) {
 				$post_types = array_slice( $this->post_types, 1 );
 			} else {
-				$post_types = $query_vars['filter'];
+				$post_types = $query_vars['post_type'];
 			}
 
 			$args = array(
@@ -531,7 +564,6 @@
 				</ul>
 
 				<form method="get" class="posts-filter">
-					<input type="hidden" name="post_type" value="volume" />
 					<input type="hidden" name="page" value="<?php echo esc_attr( $_REQUEST['page'] ); ?>" />
 					<?php wp_nonce_field( 'overview-form-save', $this->nonce_name, false ); ?>
 					
@@ -543,8 +575,8 @@
 
 					<div class="tablenav top">
 						<?php echo $this->post_status_dropdown(); ?>
+						<?php echo $this->date_dropdown($query); ?>
 						<?php echo $this->posts_per_page_dropdown( array( 20, 30, 40, 50, 60, 70, 80, 90, 100 ) ); ?>
-						<input type="text" name="tag" placeholder="Filter by Tag" value="<?php echo $query_vars['tag']; ?>">
 						<input type="submit" name="" id="filter-submit" class="button" value="Filter All Content">
 						<button class="button"><a href="<?php echo esc_url( admin_url( $this->submenu_data['page_url'] ) ); ?>">Reset Filters</a></button>
 						<div class="tablenav-pages">
@@ -617,6 +649,5 @@
 					</div>
 				</form>
 			</div>
-
 		<?php }
 	}
