@@ -1,6 +1,6 @@
 <?php
 /**
- * Single page template for projects custom post type.
+ * Single page template for printed projects.
  *
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
@@ -8,30 +8,14 @@
  * 
  */
 $steps = get_post_custom_values('Steps');
-
-$print = $_GET[ 'print' ];
-
-var_dump( $print );
-
-if ( $print == 'true' ) {
-	include_once 'single-projects-print.php';
-	return;
-}
-
 get_header(); ?>
 
 	<div class="category-top">
 	
 		<div class="container">
 
-			<div class="row" style="position:relative;">
-
-				<?php if( has_term( 'Weekend Project', 'flags' ) ) : ?>
-					<div style="position:absolute; right:0; top:-20px;">
-						<a href="http://pubads.g.doubleclick.net/gampad/clk?id=42844138&amp;iu=/11548178/Makezine"><img src="<?php echo get_template_directory_uri(); ?>/images/weekend-projects-btn.png" title="Weekend Projects Powered by Radio Shack" /></a>
-					</div>
-				<?php endif; ?>
-
+			<div class="row">
+				
 				<div class="span12">
 					
 					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
@@ -40,14 +24,12 @@ get_header(); ?>
 						
 							<div class="projects-masthead">
 								
-								<h3><a href="http://blog.makezine.com/projects/">Make: Projects</a></h3>
-							
 								<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 								
 								<?php 
 									$desc = get_post_custom_values('Description');
 									if (isset($desc[0])) {
-										echo '<p>' . $desc[0] . '</p>';	
+										echo Markdown( $desc[0] );	
 									}
 								?>
 								
