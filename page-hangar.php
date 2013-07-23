@@ -148,6 +148,7 @@ get_header(); ?>
 							'projects_landing'	=> false,
 							'all'				=> false,
 							'playlist'			=> 'maker-hangar',
+							'order'				=> 'ASC',
 						);
 						make_carousel($args);
 					?>
