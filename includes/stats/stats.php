@@ -5,23 +5,23 @@
  * Moving this to the admin. The original goal, was just to make it as a private page, but Mo dropped Mjölnir on that commit...
  *
  */
-function make_get_tweets( $url ) {
+function make_get_tweet_count( $url ) {
  
 	$json_string = wpcom_vip_file_get_contents( 'http://urls.api.twitter.com/1/urls/count.json?url=' . $url );
-	$json = json_decode($json_string, true);
+	$json = json_decode( $json_string, true );
  
 	return intval( $json['count'] );
 }
  
-function make_get_likes( $url ) {
+function make_get_like_count( $url ) {
  
-	$json_string = wpcom_vip_file_get_contents('http://graph.facebook.com/?ids=' . $url);
-	$json = json_decode($json_string, true);
+	$json_string = wpcom_vip_file_get_contents( 'http://graph.facebook.com/?ids=' . $url );
+	$json = json_decode( $json_string, true );
  
 	return intval( $json[$url]['shares'] );
 }
 
-function make_get_plusones( $url ) {
+function make_get_plusone_count( $url ) {
  
 	$args = array(
 			'method' => 'POST',
@@ -78,6 +78,7 @@ function make_social_stats() {
 					<p class="sub">Add a URL to get stats</p>
 					<form action="" method="post" class="">
 						<input type="text" class="span3" placeholder="url&hellip;" name="url">
+						<?php wp_nonce_field( 'make_stats_nonce', 'make_stats_nonce' ); ?>
 						<button type="submit" class="btn btn info">Submit</button>
 					</form>
 					
@@ -85,15 +86,15 @@ function make_social_stats() {
 					
 					<?php
 			
-						if ($_POST) {
+						if ( !empty( $_POST ) && wp_verify_nonce( $_POST['make_stats_nonce'], 'make_stats_nonce' ) ) {
 
 							echo '<table class="table table-striped table-bordered"><thead><tr><th>Site</th><th>Count</th></tr></thead><tbody>';
 							echo '<tr><td>Twitter Tweets</td>';
-							echo '<td>' . make_get_tweets( $url ) . '</td></tr>';
+							echo '<td>' . make_get_tweet_count( $url ) . '</td></tr>';
 							echo '<tr><td>Facebook Likes</td>';
-							echo '<td>' . make_get_likes( $url ) . '</td></tr>';
+							echo '<td>' . make_get_like_count( $url ) . '</td></tr>';
 							echo '<tr><td>Google Plusses</td>';
-							echo '<td>' . make_get_plusones( $url ) . '</td></tr>';
+							echo '<td>' . make_get_plusone_count( $url ) . '</td></tr>';
 							echo '</tbody></table>';
 						}
 					?>
