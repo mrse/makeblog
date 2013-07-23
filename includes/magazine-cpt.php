@@ -89,12 +89,30 @@ function volume_register_cpt_article() {
 $field_data = array (
 	'magazine_meta' => array (
 		'fields' => array(
-			'Hed'		=> array(),
-			'Dek'		=> array(),
-			'PullQuotes'	=> array(),
-			'PageNumber'	=> array(),
+			'Hed'				=> array(),
+			'Dek'				=> array(),
+			'PullQuotes'		=> array(),
+			'PageNumber'		=> array(),
+			'ProjectsTeaser'	=> array(),
+			'Byline' 			=> array(),
+			'Conclusion'		=> array( 'type' => 'textarea' ),
 	),
 	'title'		=> 'Magazine Meta',
+	'context'	=> 'side',
+	'pages'		=> array( 'magazine', 'review', 'projects' ),
+	),
+);
+
+$easy_cf = new Easy_CF($field_data);
+
+$field_data = array (
+	'magazine_author' => array (
+		'fields' => array(
+			'AuthorBio'			=> array( 'type' => 'textarea', 'label' => 'Author Bio' ),
+			'Phone'				=> array(),
+			'Email'				=> array(),
+	),
+	'title'		=> 'Magazine Author',
 	'context'	=> 'side',
 	'pages'		=> array( 'magazine', 'review', 'projects' ),
 	),
@@ -341,7 +359,7 @@ function register_taxonomy_section() {
 		'query_var' => true
 	);
 
-	register_taxonomy( 'section', array('magazine'), $args );
+	register_taxonomy( 'section', array( 'magazine', 'projects', 'review' ), $args );
 }
 
 $field_data = array (

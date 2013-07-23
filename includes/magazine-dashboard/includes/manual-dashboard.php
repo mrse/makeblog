@@ -257,7 +257,11 @@ add_action( 'admin_head', 'make_init_screen_options' );
 function make_check_screen_options( $option, $metabox = false, $default = false ) {
 
 	$user_id = get_current_user_id();
+<<<<<<< HEAD
 	$screen_options = get_user_attribute( $user_id, 'metaboxhidden_mag_dashboard', true );
+=======
+	$screen_options = get_user_attribute( $user_id, 'metaboxhidden_mag_dashboard' );
+>>>>>>> master
 	$output = '';
 
 	// Let's make sure we have data in DB before requesting it. If there isn't, setup the defaults.
@@ -270,8 +274,6 @@ function make_check_screen_options( $option, $metabox = false, $default = false 
 			} else {
 				$output = checked( $screen_options[ $option . '-hide' ], $option, false );
 			}
-
-			$output .= 'metabox';
 		} else { // This code is used when we are not dealing with the screen options metabox (ie our table rows)
 			if ( ! isset( $screen_options[ $option . '-hide' ] ) && $screen_options[ $option . '-hide' ] != $option )
 				$output = ' style="display:none;"';
@@ -526,9 +528,9 @@ function make_magazine_dashboard_page() {
 						<th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video table-sortable"<?php echo make_check_screen_options( 'ef_needs_video' ); ?>>Needs Video</th>
 						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo table-sortable"<?php echo make_check_screen_options( 'ef_needs_photo' ); ?>>Needs Photo</th>
 						<th scope="col" id="ef_estimate" class="manage-column column-ef_estimate table-sortable"<?php echo make_check_screen_options( 'ef_estimate', false, true ); ?>>Fee</th>
-						<th scope="col" id="ef_invoice_amount" class="manage-column column-ef_invoice_amount table-sortable"<?php echo make_check_screen_options( 'ef_invoice_amount' ); ?>>Invoice Received</th>
-						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received table-sortable"<?php echo make_check_screen_options( 'ef_invoice_received' ); ?>>Invoice Received</th>
-						<th scope="col" id="ef_maker_shed" class="manage-column column-ef_maker_shed table-sortable"<?php echo make_check_screen_options( 'ef_maker_shed' ); ?>>Invoice Received</th>
+						<th scope="col" id="ef_invoice_amount" class="manage-column column-ef_invoice_amount table-sortable"<?php echo make_check_screen_options( 'ef_invoice_amount' ); ?>>Invoice</th>
+						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received table-sortable"<?php echo make_check_screen_options( 'ef_invoice_received' ); ?>>Invoiced</th>
+						<th scope="col" id="ef_maker_shed" class="manage-column column-ef_maker_shed table-sortable"<?php echo make_check_screen_options( 'ef_maker_shed' ); ?>>Maker Shed</th>
 						<th scope="col" id="ef_word_count" class="manage-column column-ef_word_count table-sortable"<?php echo make_check_screen_options( 'ef_word_count' ); ?>>WC</th>
 					</tr>
 				</thead>
@@ -552,9 +554,9 @@ function make_magazine_dashboard_page() {
 						<th scope="col" id="ef_needs_video" class="manage-column column-ef_needs_video table-sortable"<?php echo make_check_screen_options( 'ef_needs_video' ); ?>>Needs Video</th>
 						<th scope="col" id="ef_needs_photo" class="manage-column column-ef_needs_photo table-sortable"<?php echo make_check_screen_options( 'ef_needs_photo' ); ?>>Needs Photo</th>
 						<th scope="col" id="ef_estimate" class="manage-column column-ef_estimate table-sortable"<?php echo make_check_screen_options( 'ef_estimate', false, true ); ?>>Fee</th>
-						<th scope="col" id="ef_invoice_amount" class="manage-column column-ef_invoice_amount table-sortable"<?php echo make_check_screen_options( 'ef_invoice_amount' ); ?>>Invoice Received</th>
-						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received table-sortable"<?php echo make_check_screen_options( 'ef_invoice_received' ); ?>>Invoice Received</th>
-						<th scope="col" id="ef_maker_shed" class="manage-column column-ef_maker_shed table-sortable"<?php echo make_check_screen_options( 'ef_maker_shed' ); ?>>Invoice Received</th>
+						<th scope="col" id="ef_invoice_amount" class="manage-column column-ef_invoice_amount table-sortable"<?php echo make_check_screen_options( 'ef_invoice_amount' ); ?>>Invoice</th>
+						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received table-sortable"<?php echo make_check_screen_options( 'ef_invoice_received' ); ?>>Invoiced</th>
+						<th scope="col" id="ef_maker_shed" class="manage-column column-ef_maker_shed table-sortable"<?php echo make_check_screen_options( 'ef_maker_shed' ); ?>>Maker Shed</th>
 						<th scope="col" id="ef_word_count" class="manage-column column-ef_word_count table-sortable"<?php echo make_check_screen_options( 'ef_word_count' ); ?>>WC</th>
 					</tr>
 				</tfoot>

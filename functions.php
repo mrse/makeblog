@@ -145,7 +145,10 @@ include_once dirname( __FILE__ ) . '/includes/magazine-dashboard/magazine-dashbo
 // 39. Newsletter Post Type
 include_once dirname(  __FILE__  ) . '/includes/post-types/newsletter.php';
 
-// 40. Blog Dashboard
+// 40. Social Stats
+include_once dirname(  __FILE__  ) . '/includes/stats/stats.php';
+
+// 41. Blog Dashboard
 include_once dirname( __FILE__ ) . '/includes/blog-dashboard/blog-dashboard.php';
 
 ?>

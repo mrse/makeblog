@@ -67,7 +67,7 @@ $field_data = array (
 			'MakeProjectsGuideNumber'	=> array(),
 			//'Flags'						=> array(),
 			'Type'						=> array(),
-			'Conclusion'				=> array(),
+			// 'Conclusion'				=> array(),
 			'Difficulty'				=> array(),
 			'Image'						=> array(),
 			'Description'				=> array(),
@@ -633,3 +633,33 @@ function make_projects_tools( $tools ) {
 
 	return $output;
 }
+
+function make_projects_tools_shortcode( $atts ) {
+	extract( shortcode_atts( array(
+		'type' => 'parts',
+	), $atts ) );
+	$output = '';
+	if ( $atts['type'] == 'parts' ) {
+		$parts = get_post_meta( absint( $atts['id'] ), 'parts');
+		$output .= make_projects_parts( $parts );
+	} elseif ( $atts['type'] == 'tools' ) {
+		$tools = get_post_meta( absint( $atts['id'] ), 'Tools');
+		$output .= make_projects_tools( $tools );
+	}
+	return $output;
+}
+
+add_shortcode( 'make_parts', 'make_projects_tools_shortcode' );
+
+$field_data = array (
+	'Resources' => array (
+		'fields' => array(
+			'RequiredResources'	=> array( 'type' => 'textarea', 'label' => 'Required Resources' ),
+			'ExtraResources'	=> array( 'type' => 'textarea', 'label' => 'Extra Resources' ),
+	),
+	'title'		=> 'Resources',
+	'pages'		=> array( 'projects' ),
+	),
+);
+
+$easy_cf = new Easy_CF($field_data);
