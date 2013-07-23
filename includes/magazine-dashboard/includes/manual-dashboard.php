@@ -422,6 +422,32 @@ function make_convert_author_id( $author_id ) {
 
 
 /**
+ * This function is used to return the TRUE post author.
+ * This is needed as we use Coauthors Plus and returning the post author is not always correct.
+ * @param  integer $post_id The ID of the post we want to get the author from
+ * @return string
+ */
+function make_get_true_post_author( $post_id ) {
+	// Make sure we actually passed some data..
+	if ( ! is_int( $post_id ) )
+		return;
+
+	// Data is stored as a taxonomy term called author, so we'll extract that data.
+	$post_author = wp_get_post_terms( absint( $post_id ), 'author' );
+	
+	// Go an return our post authors data.
+	$user = get_user_by( 'slug', sanitize_text_field( $post_author[0]->name ) );
+
+	// If get_user_by() fails, it returns false. that means this user is a "guest author" and we need to return the proper data for them.
+	if ( $user ) {
+		return '<a href="' . get_author_posts_url( absint( $user->data->ID ) ) . '">' . esc_html( $user->display_name ) . '</a>';
+	} else {
+		return '<a href="' . esc_url( home_url( '/author/' . sanitize_text_field( $post_author[0]->name ) ) ) . '">' . esc_html( $post_author[0]->name ) . '</a>';
+	}
+}
+
+
+/**
  * Helper function to process integers and return numbers or an empty string. We use this function because absint will return 0 other wise.. and we don't always want that.
  * @param  string $integer The integer we want to process. If the string is empty, we return nothing rather than 0
  * @return integer/void
@@ -581,7 +607,7 @@ function make_magazine_dashboard_page() {
 											<span class="trash"><a class="submitdelete" href="' . get_delete_post_link( absint( $post->ID ) ) . '">Trash</a></span>
 										</div>
 									  </td>';
-								echo '<td class="post_author column-post_author"' . make_check_screen_options( 'post_author', false, true ) . '>' . make_convert_author_id( $post->post_author ) . '</td>';
+								echo '<td class="post_author column-post_author"' . make_check_screen_options( 'post_author', false, true ) . '>' . make_get_true_post_author( $post->ID ) . '</td>';
 								echo '<td class="post_date column-post_date"' . make_check_screen_options( 'post_date', false, true ) . '>' . make_convert_to_pretty_time( $post->post_date, true ) . '</td>';
 								echo '<td class="ef_first_draft_date column-ef_first_draft_date"' . make_check_screen_options( 'ef_first_draft_date' ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_first-draft-date'][0] ) . '</td>';
 								echo '<td class="ef_page_count column-ef_page_count ef_pc_count"' . make_check_screen_options( 'ef_page_count', false, true ) . '>' . make_get_integer( $meta['_ef_editorial_meta_number_page-count'][0] ) . '</td>';
