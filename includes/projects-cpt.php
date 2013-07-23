@@ -634,6 +634,22 @@ function make_projects_tools( $tools ) {
 	return $output;
 }
 
+function make_projects_tools_shortcode( $atts ) {
+	extract( shortcode_atts( array(
+		'type' => 'parts',
+	), $atts ) );
+	$output = '';
+	if ( $atts['type'] == 'parts' ) {
+		$parts = get_post_meta( absint( $atts['id'] ), 'parts');
+		$output .= make_projects_parts( $parts );
+	} elseif ( $atts['type'] == 'tools' ) {
+		$tools = get_post_meta( absint( $atts['id'] ), 'Tools');
+		$output .= make_projects_tools( $tools );
+	}
+	return $output;
+}
+
+add_shortcode( 'make_parts', 'make_projects_tools_shortcode' );
 
 $field_data = array (
 	'Resources' => array (
