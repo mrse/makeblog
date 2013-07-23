@@ -1285,3 +1285,163 @@ function make_popdown_menu() { ?>
 	</div>
 <?php }
 
+
+/**
+ * Remove unncessary meta boxes from Authors
+ * @return void
+ */
+function make_remove_metaboxes_for_authors() {
+	// Remove the following metaboxes for authors and below
+	if ( ! current_user_can( 'delete_others_pages' ) ) {
+
+		// Remove Edit Flow Editorial Metadata
+		remove_meta_box( 'ef_editorial_meta', 'post', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'projects', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'magazine', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'review', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'video', 'side' );
+
+		// Remove Edit Flot Editorial Comments
+		remove_meta_box( 'edit-flow-editorial-comments', 'post', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'projects', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'magazine', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'review', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'craft', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'video', 'normal' );
+		
+		// Remove Edit Flow Notifications
+		remove_meta_box( 'edit-flow-notifications', 'post', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'projects', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'magazine', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'review', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'video', 'advanced' );
+
+		// Remove Post Tags
+		remove_meta_box( 'tagsdiv-post_tag', 'post', 'side' );
+		remove_meta_box( 'tagsdiv-post_tag', 'projects', 'side' );
+		remove_meta_box( 'tagsdiv-post_tag', 'magazine', 'side' );
+		remove_meta_box( 'tagsdiv-post_tag', 'review', 'side' );
+		remove_meta_box( 'tagsdiv-post_tag', 'craft', 'side' );
+		remove_meta_box( 'tagsdiv-post_tag', 'video', 'side' );
+
+		// Remove Categories
+		remove_meta_box( 'categorydiv', 'post', 'side' );
+		remove_meta_box( 'categorydiv', 'projects', 'side' );
+		remove_meta_box( 'categorydiv', 'magazine', 'side' );
+		remove_meta_box( 'categorydiv', 'review', 'side' );
+		remove_meta_box( 'categorydiv', 'craft', 'side' );
+		remove_meta_box( 'categorydiv', 'video', 'side' );
+
+		// Remove Featured Image
+		remove_meta_box( 'postimagediv', 'post', 'side' );
+		remove_meta_box( 'postimagediv', 'projects', 'side' );
+		remove_meta_box( 'postimagediv', 'magazine', 'side' );
+		remove_meta_box( 'postimagediv', 'review', 'side' );
+		remove_meta_box( 'postimagediv', 'craft', 'side' );
+
+		// Remove Makers Taxonomy
+		remove_meta_box( 'tagsdiv-maker', 'post', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'projects', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'magazine', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'review', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'craft', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'video', 'side' );
+
+		// Remove Makers Location Taxonomy
+		remove_meta_box( 'tagsdiv-location', 'post', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'projects', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'magazine', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'review', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'craft', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'video', 'side' );
+
+		// Remove Primary Category Taxonomy
+		remove_meta_box( 'mob_category_primary_term_div', 'post', 'side' );
+		remove_meta_box( 'mob_category_primary_term_div', 'projects', 'side' );
+		remove_meta_box( 'mob_category_primary_term_div', 'magazine', 'side' );
+		remove_meta_box( 'mob_category_primary_term_div', 'review', 'side' );
+		remove_meta_box( 'mob_review-category_primary_term_div', 'review', 'side' );
+		remove_meta_box( 'mob_category_primary_term_div', 'craft', 'side' );
+		remove_meta_box( 'mob_category_primary_term_div', 'video', 'side' );
+
+		// Remove Primary Section Taxonomy
+		remove_meta_box( 'mob_section_primary_term_div', 'post', 'side' );
+		remove_meta_box( 'mob_section_primary_term_div', 'projects', 'side' );
+		remove_meta_box( 'mob_section_primary_term_div', 'magazine', 'side' );
+		remove_meta_box( 'mob_section_primary_term_div', 'review', 'side' );
+
+		// Remove Primary Type Taxonomy
+		remove_meta_box( 'mob_types_primary_term_div', 'post', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'projects', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'magazine', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'review', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'craft', 'side' );
+
+		// Remove Primary Flag
+		remove_meta_box( 'mob_flags_primary_term_div', 'projects', 'side' );
+
+		// Remove Primary Difficulty
+		remove_meta_box( 'mob_difficulty_primary_term_div', 'projects', 'side' );
+		remove_meta_box( 'mob_difficulty_primary_term_div', 'video', 'side' );
+
+		// Remove Primary Playlist
+		remove_meta_box( 'mob_playlist_primary_term_div', 'video', 'side' );
+
+		// Remove Flags Taxonomy
+		remove_meta_box( 'flagsdiv', 'projects', 'side' );
+
+		// Remove Magazine Meta
+		remove_meta_box( 'magazine_meta', 'post', 'side' );
+		remove_meta_box( 'magazine_meta', 'projects', 'side' );
+		remove_meta_box( 'magazine_meta', 'magazine', 'side' );
+		remove_meta_box( 'magazine_meta', 'review', 'side' );
+
+		// Remove Projects Meta
+		remove_meta_box( 'advanced_testgroup', 'projects', 'advanced' );
+
+		// Remove Tools Taxonomy
+		remove_meta_box( 'tagsdiv-tools', 'projects', 'side' );
+
+		// Remove Parts Taxonomy
+		remove_meta_box( 'tagsdiv-parts', 'projects', 'side' );
+
+		// Remove Disscussion
+		remove_meta_box( 'commentstatusdiv', 'post', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'projects', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'magazine', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'review', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'craft', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'video', 'normal' );
+
+		// Remove Send Trackbacks
+		remove_meta_box( 'trackbacksdiv', 'post', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'projects', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'magazine', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'review', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'craft', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'video', 'normal' );
+
+		// Remove Likes and Shares
+		remove_meta_box( 'likes_meta', 'post', 'advanced' );
+		remove_meta_box( 'likes_meta', 'projects', 'advanced' );
+		remove_meta_box( 'likes_meta', 'magazine', 'advanced' );
+		remove_meta_box( 'likes_meta', 'review', 'advanced' );
+		remove_meta_box( 'likes_meta', 'craft', 'advanced' );
+		remove_meta_box( 'likes_meta', 'video', 'advanced' );
+	}
+}
+add_action( 'do_meta_boxes', 'make_remove_metaboxes_for_authors' );
+
+
+/**
+ * Hide post types we don't want to show to authors
+ * @return void
+ */
+function make_remove_admin_areas_for_authors() {
+	// Remove the following metaboxes for authors and below
+	if ( ! current_user_can( 'delete_others_pages' ) ) {
+		remove_menu_page( 'edit.php?post_type=newsletter' );
+	}
+}
+add_action( 'admin_menu', 'make_remove_admin_areas_for_authors' );
+
