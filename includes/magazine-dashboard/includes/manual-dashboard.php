@@ -257,11 +257,7 @@ add_action( 'admin_head', 'make_init_screen_options' );
 function make_check_screen_options( $option, $metabox = false, $default = false ) {
 
 	$user_id = get_current_user_id();
-<<<<<<< HEAD
-	$screen_options = get_user_attribute( $user_id, 'metaboxhidden_mag_dashboard', true );
-=======
 	$screen_options = get_user_attribute( $user_id, 'metaboxhidden_mag_dashboard' );
->>>>>>> master
 	$output = '';
 
 	// Let's make sure we have data in DB before requesting it. If there isn't, setup the defaults.
