@@ -57,6 +57,7 @@ if ( function_exists( 'vip_regex_redirects' ) ) {
 		'|^/blog/category/([a-zA-Z0-9 -]+)|' 			   => '|/category/$1/|', // handle any redirects from blog.makezine with categories
 		'|^/blog/tag/([a-zA-Z0-9 -]+)|'				  	   => '|/tag/$1/|', // handle any redirects from blog.makezine with tags
 		'|^/blog/author/([a-zA-Z0-9 -]+)|'				   => '|/author/$1/', // handle any redirects from blog.makezine marked as authors
+		'|^/tv/(.*)|'									   => 'http://archive.makezine.com/tv/$1', // Old Makezine TV redirects
 	);
 	vip_regex_redirects( $redirects );
 }
@@ -116,7 +117,6 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/5issues'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M34AIR',
 		'/blog/3DPDF'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
 		'/blog/3dpdf'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
-		'/blog/magazine'				=> 'http://makezine.com/volume/make-34/',
 		'/blog/34'						=> 'http://makezine.com/volume/make-34/',
 		'/blog/maker-projects'			=> 'http://makezine.com/maker-projects/',
 		'/blog/projects'				=> 'http://makezine.com/projects',
@@ -160,6 +160,13 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/groups'					=> 'http://archive.makezine.com/groups/',
 		'/blog/make-newsletter'			=> 'http://makezine.com/newsletter/',
 		'/blog/page-2/'					=> 'http://makezine.com/page-2/',
+		'/volume/make-36‎'				=> 'http://makezine.com/magazine/',
+		'/volume/make-37'				=> 'http://makezine.com/magazine/',
+		'/volume/make-38‎'				=> 'http://makezine.com/magazine/',
+		'/volume/make-39'				=> 'http://makezine.com/magazine/',
+		'/volume/make-40‎'				=> 'http://makezine.com/magazine/',
+		'/volume/make-41'				=> 'http://makezine.com/magazine/',
+		'/volume/make-42‎'				=> 'http://makezine.com/magazine/',
 
 		// Add redirects for instances that a blog folder isn't here.
 		'/subscribe' 				=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
@@ -203,7 +210,8 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/5issues'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M34AIR',
 		'/3DPDF'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
 		'/3dpdf'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
-		'/magazine'					=> 'http://makezine.com/volume/make-34/',
+		'/magazine'					=> 'http://makezine.com/volume/make-35/',
+		'/35'						=> 'http://makezine.com/volume/make-35/',
 		'/34'						=> 'http://makezine.com/volume/make-34/',
 		'/01'						=> 'http://archive.makezine.com/01/',
 		'/02'						=> 'http://archive.makezine.com/02/',

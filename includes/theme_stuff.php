@@ -442,7 +442,7 @@ function itunes_feed() {
 
 add_action('template_redirect', 'itunes_feed');
 
-// add_action('pre_get_posts', 'make_mf_remove_tag_from_home' );
+add_action('pre_get_posts', 'make_mf_remove_tag_from_home' );
 
 /**
  * Take Maker Faire posts that don't have MF tag, and remove from the main query.
@@ -451,8 +451,8 @@ add_action('template_redirect', 'itunes_feed');
 function make_mf_remove_tag_from_home( $query ) {
 
 	// only impact the main WordPress query and if on homepage or feed
-	if( $query->is_main_query() && ( $query->is_home() || $query->is_feed() || $query->is_page(215620) ) ) {
-		$query->set( 'tag__not_in', array( 5183,22815 ) );
+	if( $query->is_main_query() && ( $query->is_home() || $query->is_feed() ) ) {
+		$query->set( 'tag__not_in', array( 5183, 22815, 9947 ) );
 	}
 }
 
@@ -529,10 +529,9 @@ function make_get_category_name_strip_slash() {
  * This will bring posts, craft, projects, video into the main query. Allows for better archive pages.
  * @return string Main category name.
  */
-// TODO: Bring in reviews.
 function make_add_custom_types( $query ) {
 	if ( ! is_admin() && $query->is_main_query() && ( $query->is_tag() || $query->is_author() || $query-> is_tax() ) && empty( $query->query_vars['suppress_filters'] ) ) {
-		$query->set( 'post_type', array( 'post', 'craft', 'projects', 'video' ));
+		$query->set( 'post_type', array( 'post', 'craft', 'projects', 'video', 'reviews', 'magazine' ));
 		return $query;
 	}
 }
@@ -1244,9 +1243,9 @@ function make_popdown_menu() { ?>
 				<div class="row">
 					<div class="span3 offset2 border-right">
 						<div class="row-fluid">
-							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" class="span4"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
+							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" class="span4" onClick="_gaq.push(['_trackEvent', 'PopdownNav', 'Click', 'Subscribe Image']);"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
 							<div class="span7 side-text">
-								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
+								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" onClick="_gaq.push(['_trackEvent', 'PopdownNav', 'Click', 'Subscribe Link']);">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
 							</div>
 						</div>
 					</div>
@@ -1254,7 +1253,7 @@ function make_popdown_menu() { ?>
 						<?php wp_nav_menu( array(
 							'theme_location'  => 'popdown-menu-top',
 							'container'       => false, 
-							'menu_class'      => 'first nav',
+							'menu_class'      => 'first nav ga-nav',
 							'depth'           => 1 
 						) ); ?>
 					</div>
@@ -1262,7 +1261,7 @@ function make_popdown_menu() { ?>
 						<?php wp_nav_menu( array(
 							'theme_location'  => 'popdown-menu-middle',
 							'container'       => false, 
-							'menu_class'      => 'second nav',
+							'menu_class'      => 'second nav ga-nav',
 							'depth'           => 1 
 						) ); ?>
 					</div>
@@ -1273,7 +1272,7 @@ function make_popdown_menu() { ?>
 						<?php wp_nav_menu( array(
 							'theme_location'  => 'popdown-menu-last',
 							'container'       => false, 
-							'menu_class'      => 'last nav',
+							'menu_class'      => 'last nav ga-nav',
 							'depth'           => 1 
 						) ); ?>
 					</div>

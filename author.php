@@ -6,33 +6,37 @@ $author = get_queried_object();
 // Contains the username which should match the Gravatar account URL.
 $gravatar_login = $author->data->user_login;
 
-// used to display all post related to this authro in the carousel
-$author_ids = $author->ID;
-
 // Get all the Coauthor Plus data
 $coauthor = array_shift( get_coauthors() ); 
+
+// Get the authors name and store it in a variable
+$author_name = $coauthor->display_name;
 
 // Contain our coauthor email into a variable. This may be overwritten when account is linked
 $avatar_email = $coauthor->user_email;
 
 // Setup some new variables or override some when an author is linked.
 if ( ! empty( $author->linked_account ) ) {
-
 	// We need the ID of the linked author so we can get their posts.
 	$linked_author = get_user_by( 'slug', $author->linked_account );
 
+	// Check if we are viewing the guest author account. If so, redirect to their linked account.
+	if ( ! strpos( $_SERVER['REQUEST_URI'], $linked_author->user_nicename ) ) {
+		wp_redirect( esc_url( home_url( '/author/' . $linked_author->user_nicename ) ), 301 );
+		exit;
+	}
+
+	// Return the linked authors name
+	$author_name = $linked_author->display_name;
+	
 	// When an account is linked, we want to add this email into mix to see if we return gravatar data
 	$gravatar_login = $linked_author->user_login;
-
-	// When linked, we want to concatenate the linked author ID into the WP_Query carousel.
-	$author_ids .= ',' . $linked_author->ID;
 
 	// Set linked account email as the gravatar email
 	$avatar_email = $linked_author->user_email;
 }
-
 make_get_header() ?>
-
+	
 	<div class="category-top">
 
 		<div class="container">
@@ -54,8 +58,9 @@ make_get_header() ?>
 						if ( $contents != false ) {
 							$json_output = json_decode( $contents );								
 							$gauthor = $json_output->entry[0];
-							$gauthor_url = ( ! empty( $gauthor->requestHash ) ) ? $gauthor->requestHash : ''; ?>
-							<h1 class="jumbo"><a class="noborder" href="<?php echo esc_url( home_url( '/author/' . $gauthor_url ) ); ?>"><?php if ( isset( $gauthor->displayName ) ) echo esc_html( $gauthor->displayName ); ?></a></h1>
+							$gauthor_url = ( ! empty( $gauthor->requestHash ) ) ? $gauthor->requestHash : ''; 
+							$author_name = ( isset( $gauthor->displayName ) ) ? $gauthor->displayName : ''; ?>
+							<h1 class="jumbo"><a class="noborder" href="<?php echo esc_url( home_url( '/author/' . $gauthor_url ) ); ?>"><?php echo esc_html( $author_name ); ?></a></h1>
 						
 							<?php if ( isset( $gauthor->aboutMe ) )
 								echo markdown( $gauthor->aboutMe ); ?>
@@ -108,7 +113,7 @@ make_get_header() ?>
 			
 				<div class="span12">
 				
-					<h2>Latest from <?php echo $author->display_name; ?></h2>
+					<h2>Latest from <?php echo esc_html( $author_name ); ?></h2>
 				
 				</div>
 				
@@ -123,13 +128,18 @@ make_get_header() ?>
 					<div class="row">
 			
 						<div class="span12">
-							
 							<?php 
 								$args = array(
-									'author'		=> $author_ids,
 									'title' 		=> /* $author->display_name . '\'s ' .*/ ucfirst( make_post_type_better_name( $type ) ),
 									'post_type'		=> $type,
-									'all'			=> all
+									'all'			=> all,
+									'tax_query' => array(
+										array(
+											'taxonomy' => 'author',
+											'field' => 'name',
+											'terms' => array( $coauthor->user_login, $gravatar_login ),
+										),
+									),
 								);
 
 								make_carousel( $args );
