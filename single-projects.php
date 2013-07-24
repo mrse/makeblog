@@ -8,7 +8,6 @@
  * 
  */
 $steps = get_post_custom_values('Steps');
-
 get_header(); ?>
 
 	<div class="category-top">
