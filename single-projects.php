@@ -11,9 +11,7 @@ $steps = get_post_custom_values('Steps');
 
 $print = $_GET[ 'print' ];
 
-var_dump( $print );
-
-if ( $print == 'true' ) {
+if ( ($print == 'true') && current_user_can( 'edit_posts' )  ) {
 	include_once 'single-projects-print.php';
 	return;
 }
@@ -47,7 +45,7 @@ get_header(); ?>
 								<?php 
 									$desc = get_post_custom_values('Description');
 									if (isset($desc[0])) {
-										echo '<p>' . $desc[0] . '</p>';	
+										echo Markdown( wp_kses_post( $desc[0] ) );
 									}
 								?>
 								
