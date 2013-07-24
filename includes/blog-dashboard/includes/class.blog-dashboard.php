@@ -168,13 +168,13 @@
 			$query_vars = array(
 				'paged' 		 => ( isset( $_GET['paged'] ) ) ? absint( $_GET['paged'] ) : 1,
 				'search' 		 => ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '',
-				'post_type' 	 => ( isset( $_GET['post_type'] ) ) ? sanitize_text_field( $_GET['post_type'] ) : '',
+				'post_type' 	 => ( isset( $_GET['content_type'] ) && in_array( $_GET['content_type'], $this->post_types ) ) ? sanitize_text_field( $_GET['content_type'] ) : '',
 				'post_status' 	 => ( isset( $_GET['post_status'] ) && $_GET['post_status'] != '' && $_GET['post_status'] != 'all' ) ? sanitize_text_field( $_GET['post_status'] ) : $this->get_post_statuses(),
 				'category' 		 => ( isset( $_GET['category'] ) && $_GET['category'] != '0' ) ? sanitize_text_field( $_GET['category'] ) : '',
 				'tag'			 => ( isset( $_GET['tag'] ) && $_GET['tag'] != 'all' ) ? sanitize_text_field( $_GET['tag'] ) : '',
 				'month'			 => ( isset( $_GET['month'] ) && $_GET['month'] != 'all' ) ? absint( $_GET['month'] ) : '',
 				'year'			 => ( isset( $_GET['year'] ) && $_GET['year'] != 'all' ) ? absint( $_GET['year'] ) : '',
-				'posts_per_page' => ( isset( $_GET['posts_per_page'] ) ) ? absint( $_GET['posts_per_page'] ) : 40,
+				'posts_per_page' => ( isset( $_GET['posts_per_page'] ) && $_GET['posts_per_page'] <= 100 ) ? absint( $_GET['posts_per_page'] ) : 40,
 			);
 
 			return $query_vars;
@@ -229,7 +229,7 @@
 			if ( ! empty( $query_vars['posts_per_page'] ) )
 				$additionals .= '&posts_per_page=' . $query_vars['posts_per_page'];
 
-			return $additionals;
+			return sanitize_text_field( $additionals );
 		}
 
 
@@ -273,7 +273,7 @@
 				// Check the current results and apply our current class if we are currently filtering by that post type.
 				$class = ( ( $result['type_uri'] == $query_vars['post_type'] ) || $result['type_uri'] == 'all' && empty( $query_vars['post_type'] ) ) ? ' class="current"' : '';
 
-				$output .= ' | <li><a href="' . esc_url( $this->submenu_data['page_url'] . '&post_status=' . sanitize_text_field( $result['type_uri'] ) ) . sanitize_text_field( $this->add_additional_queries() ) . '"' . $class . '>' . esc_html( $result['post_type'] ) . '</a><span class="count">(' . absint( $result['post_count'] ) . ')</span> </li>';
+				$output .= ' | <li><a href="' . esc_url( $this->submenu_data['page_url'] . '&content_type=' . sanitize_text_field( $result['type_uri'] ) ) . $this->add_additional_queries() . '"' . $class . '>' . esc_html( $result['post_type'] ) . '</a><span class="count">(' . absint( $result['post_count'] ) . ')</span> </li>';
 			}
 
 			// Remove the first two characters of our string and return it
@@ -310,7 +310,7 @@
 
 			foreach ( $wp_post_statuses as $status => $obj ) {
 				if ( ! in_array( $status, $this->disallowed_post_statuses ) )
-					$output .= '<option value="' . esc_attr( $obj->name ) . '"' . selected( sanitize_text_field( $query_vars['post_status'] ), esc_attr( $obj->name ), false ) . '>' . esc_html( $obj->label ) . '</option>';
+					$output .= '<option value="' . esc_attr( $obj->name ) . '"' . selected( $query_vars['post_status'], esc_attr( $obj->name ), false ) . '>' . esc_html( $obj->label ) . '</option>';
 			}
 
 			$output .= '</select>';
@@ -330,7 +330,7 @@
 			$output = 'Posts Per Page <select name="posts_per_page" id="posts-per-page">';
 
 			foreach ( $posts_per_page as $post_count ) {
-				$output .= '<option value="' . absint( $post_count ) . '"' . selected( absint( $query_vars['posts_per_page'] ), absint( $post_count ), false ) . '>' . absint( $post_count ) . '</option>';
+				$output .= '<option value="' . absint( $post_count ) . '"' . selected( $query_vars['posts_per_page'], absint( $post_count ), false ) . '>' . absint( $post_count ) . '</option>';
 			}
 
 			$output .= '</select>';
@@ -374,7 +374,7 @@
 			$output = '<select name="month" id="month-dropdown">';
 			$output .= '<option value="all">Month</option>';
 			foreach ( $months as $number => $month ) {
- 				$output .= '<option value="' . absint( $number ) . '"' . selected( absint( $query_vars['month'] ), absint( $number ), false ) . '>' . esc_html( $month ) . '</option>';
+ 				$output .= '<option value="' . absint( $number ) . '"' . selected( $query_vars['month'], absint( $number ), false ) . '>' . esc_html( $month ) . '</option>';
 			}
 			$output .= '</select>';
 
@@ -384,7 +384,7 @@
 			$output .= '<option value="all">Year</option>';
 
 			foreach ( $years as $year ) {
-				$output .= '<option value="' . absint( $year ) . '"' . selected( absint( $query_vars['year'] ), absint( $year ), false ) . '>' . absint( $year ) . '</option>';
+				$output .= '<option value="' . absint( $year ) . '"' . selected( $query_vars['year'], absint( $year ), false ) . '>' . absint( $year ) . '</option>';
 			}
 			$output .= '</select>';
 
