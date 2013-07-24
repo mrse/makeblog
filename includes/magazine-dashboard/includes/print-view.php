@@ -17,7 +17,7 @@ add_action( 'admin_menu', 'make_add_production_editor_menu_page' );
  */
 function make_print_production() {
 	global $post;
-	$p = $_GET['p'];
+	$p = ( !empty( $_GET['p'] ) ) ? $_GET['p'] : '1';
 	$post = get_post( $p );
 	setup_postdata( $post );
 	$meta = get_post_meta( $post->ID );
