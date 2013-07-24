@@ -9,13 +9,6 @@
  */
 $steps = get_post_custom_values('Steps');
 
-$print = $_GET[ 'print' ];
-
-if ( ($print == 'true') && current_user_can( 'edit_posts' )  ) {
-	include_once 'single-projects-print.php';
-	return;
-}
-
 get_header(); ?>
 
 	<div class="category-top">
