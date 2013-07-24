@@ -24,6 +24,10 @@
 			'page_url'	  => 'index.php?page=blog-dashboard',
 		);
 
+		/**
+		 * We like nonces. Nonces keep us safe. <3
+		 * @var string
+		 */
 		public $nonce_name = 'make-blog-dashboard';
 
 
@@ -166,11 +170,10 @@
 				'search' 		 => ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '',
 				'post_type' 	 => ( isset( $_GET['post_type'] ) ) ? sanitize_text_field( $_GET['post_type'] ) : '',
 				'post_status' 	 => ( isset( $_GET['post_status'] ) && $_GET['post_status'] != '' && $_GET['post_status'] != 'all' ) ? sanitize_text_field( $_GET['post_status'] ) : $this->get_post_statuses(),
-				'category' 		 => ( isset( $_GET['category'] ) && $_GET['category'] != 'all' ) ? sanitize_text_field( $_GET['category'] ) : '',
-				'tag'			 => ( isset( $_GET['tag'] ) && $_GET['tag'] != '' ) ? sanitize_text_field( $_GET['tag'] ) : '',
-				'month'			 => ( isset( $_GET['month'] ) && $_GET['month'] != '' ) ? absint( $_GET['month'] ) : '',
-				'day'			 => ( isset( $_GET['day'] ) && $_GET['day'] != '' ) ? absint( $_GET['day'] ) : '',
-				'year'			 => ( isset( $_GET['year'] ) && $_GET['year'] != '' ) ? absint( $_GET['year'] ) : '',
+				'category' 		 => ( isset( $_GET['category'] ) && $_GET['category'] != '0' ) ? sanitize_text_field( $_GET['category'] ) : '',
+				'tag'			 => ( isset( $_GET['tag'] ) && $_GET['tag'] != 'all' ) ? sanitize_text_field( $_GET['tag'] ) : '',
+				'month'			 => ( isset( $_GET['month'] ) && $_GET['month'] != 'all' ) ? absint( $_GET['month'] ) : '',
+				'year'			 => ( isset( $_GET['year'] ) && $_GET['year'] != 'all' ) ? absint( $_GET['year'] ) : '',
 				'posts_per_page' => ( isset( $_GET['posts_per_page'] ) ) ? absint( $_GET['posts_per_page'] ) : 40,
 			);
 
@@ -340,25 +343,96 @@
 		 * Generate a dropdown to filter the sections. Duh.
 		 * @return html
 		 */
-		function date_dropdown( $posts ) {
+		function date_dropdown() {
 
 			$query_vars = $this->get_query_vars();
 
+			// Months array
+			$months = array(
+				01 => 'Jan',
+				02 => 'Feb',
+				03 => 'Mar',
+				04 => 'Apr',
+				05 => 'May',
+				06 => 'Jun',
+				07 => 'Jul',
+				08 => 'Aug',
+				09 => 'Sep',
+				10 => 'Oct',
+				11 => 'Nov',
+				12 => 'Dec',
+			);
+
+
+			// Years array
+			$oldest_post = get_posts( 'posts_per_page=1&order=ASC' );
+			$oldest_year = date( 'Y', strtotime( $oldest_post[0]->post_date ) );
+			$years  = range( date( 'Y' ), $oldest_year );
+
+
+			// output our Month dropdown
 			$output = '<select name="month" id="month-dropdown">';
-			$output .= '<option value="0">Month</option>';
-
-			foreach ( $posts as $post ) {
-				$date = $post->post_date;
-
-				if ( ! empty( $date ) )
-					$output .= '<option value="' . date( 'm&year=y', $date ) . '">' . date( 'M Y', $date ) . '</option>';
+			$output .= '<option value="all">Month</option>';
+			foreach ( $months as $number => $month ) {
+ 				$output .= '<option value="' . absint( $number ) . '"' . selected( absint( $query_vars['month'] ), absint( $number ), false ) . '>' . esc_html( $month ) . '</option>';
 			}
-			// $output .= wp_get_archives( array( 'type' => 'monthly', 'format' => 'option', 'show_post_count' => 0 ) );
-			// $output .= '<option value="' . sanitize_text_field( $term->slug ) . '"' . selected( sanitize_text_field( $query_vars['section'] ), sanitize_text_field( $term->slug ), false ) . '>' . esc_html( $term->name ) . '</option>';
+			$output .= '</select>';
+
+
+			// output our Year dropdown
+			$output .= '<select name="year" id="year-dropdown">';
+			$output .= '<option value="all">Year</option>';
+
+			foreach ( $years as $year ) {
+				$output .= '<option value="' . absint( $year ) . '"' . selected( absint( $query_vars['year'] ), absint( $year ), false ) . '>' . absint( $year ) . '</option>';
+			}
+			$output .= '</select>';
+
+
+			// Output our dropdowns
+			return $output;
+		}
+
+
+		/**
+		 * Generate a dropdown to filter tags
+		 * @return html
+		 */
+		function make_tags_dropdown() {
+
+			$query_vars = $this->get_query_vars();
+			$terms = get_terms( 'post_tag', array( 'hide_empty' => false ) );
+
+			$output = '<select name="tag" id="tag-dropdown">';
+			$output .= '<option value="all">All Tags</option>';
+
+			foreach ( $terms as $term ) {
+				$output .= '<option value="' . sanitize_text_field( $term->slug ) . '"' . selected( sanitize_text_field( $query_vars['tag'] ), sanitize_text_field( $term->slug ), false ) . '>' . esc_html( $term->name ) . '</option>';
+			}
 
 			$output .= '</select>';
 
 			return $output;
+		}
+
+
+		/**
+		 * Generate a dropdown to filter categories
+		 * @return html
+		 */
+		function make_categories_dropdown() {
+
+			$query_vars = $this->get_query_vars();
+			$cats = wp_dropdown_categories( array(
+				'hide_empty' 		=> false,
+				'selected'   		=> $query_vars['category'],
+				'name'		  		=> 'category',
+				'show_option_all'   => 'All Categories',
+				'sort_column' 		=> 'menu_order, post_title',
+				'echo'				=> false,
+			) );
+
+			return $cats;
 		}
 
 
@@ -509,6 +583,32 @@
 
 
 		/**
+		 * This function is used to return the TRUE post author.
+		 * This is needed as we use Coauthors Plus and returning the post author is not always correct.
+		 * @param  integer $post_id The ID of the post we want to get the author from
+		 * @return string
+		 */
+		function get_true_post_author( $post_id ) {
+			// Make sure we actually passed some data..
+			if ( ! is_int( $post_id ) )
+				return;
+
+			// Data is stored as a taxonomy term called author, so we'll extract that data.
+			$post_author = wp_get_post_terms( absint( $post_id ), 'author' );
+			
+			// Go an return our post authors data.
+			$user = get_user_by( 'slug', sanitize_text_field( $post_author[0]->name ) );
+
+			// If get_user_by() fails, it returns false. that means this user is a "guest author" and we need to return the proper data for them.
+			if ( $user ) {
+				return '<a href="' . get_author_posts_url( absint( $user->data->ID ) ) . '">' . esc_html( $user->display_name ) . '</a>';
+			} else {
+				return '<a href="' . esc_url( home_url( '/author/' . sanitize_text_field( $post_author[0]->name ) ) ) . '">' . esc_html( $post_author[0]->name ) . '</a>';
+			}
+		}
+
+
+		/**
 		 * Helper function to process integers and return numbers or an empty string. We use this function because absint will return 0 other wise.. and we don't always want that.
 		 * @param  string $integer The integer we want to process. If the string is empty, we return nothing rather than 0
 		 * @return integer/void
@@ -575,7 +675,9 @@
 
 					<div class="tablenav top">
 						<?php echo $this->post_status_dropdown(); ?>
-						<?php echo $this->date_dropdown($query); ?>
+						<?php echo $this->date_dropdown(); ?>
+						<?php echo $this->make_tags_dropdown(); ?>
+						<?php echo $this->make_categories_dropdown(); ?>
 						<?php echo $this->posts_per_page_dropdown( array( 20, 30, 40, 50, 60, 70, 80, 90, 100 ) ); ?>
 						<input type="submit" name="" id="filter-submit" class="button" value="Filter All Content">
 						<button class="button"><a href="<?php echo esc_url( admin_url( $this->submenu_data['page_url'] ) ); ?>">Reset Filters</a></button>
@@ -623,7 +725,7 @@
 													<span class="trash"><a class="submitdelete" href="' . get_delete_post_link( absint( $post->ID ) ) . '">Trash</a></span>
 												</div>
 											  </td>';
-										echo '<td class="post_author column-post_author"' . $this->check_screen_options( 'post_author', false, true ) . '>' . $this->convert_author_id( $post->post_author ) . '</td>';
+										echo '<td class="post_author column-post_author"' . $this->check_screen_options( 'post_author', false, true ) . '>' . $this->get_true_post_author( $post->ID ) . '</td>';
 										echo '<td class="post_cats column-post_cats"' . $this->check_screen_options( 'post_cats', false, true ) . '>' . wp_kses( $cats, array( 'a' => array( 'href' => array(), 'title' => array() ) ) ) . '</td>';
 										echo '<td class="post_tags column-post_tags"' . $this->check_screen_options( 'post_tags', false, true ) . '>' . wp_kses( $tags, array( 'a' => array( 'href' => array(), 'title' => array() ) ) ) . '</td>';
 										echo '<td class="post_type column-post_type"' . $this->check_screen_options( 'post_type', false, true ) . '>' . esc_html( $post_type ) . '</td>';

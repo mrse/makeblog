@@ -14,7 +14,7 @@
 	 * @since   0.1
 	 */
 	
-
+	// Make sure we haven't already loaded our class.. 
 	if ( ! class_exists( 'Make_List_Tables_Blog_Dashboard' ) && is_admin() ) {
 		require_once( 'includes/class.blog-dashboard.php' );
 
