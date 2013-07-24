@@ -94,6 +94,7 @@ $field_data = array (
 			'PullQuotes'		=> array(),
 			'PageNumber'		=> array(),
 			'ProjectsTeaser'	=> array(),
+			'Cost'	 			=> array(),
 			'Byline' 			=> array(),
 			'Conclusion'		=> array( 'type' => 'textarea' ),
 	),
