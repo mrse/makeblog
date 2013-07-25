@@ -69,7 +69,7 @@ function make_count_post_status() {
 			'tag'			 => str_replace( ' ', '-', $query_vars['tag'] ), // Is there a better way to do this? If we search for a tag with spaces, we need those converted to dashes...
 			'posts_per_page' => 0,
 			'return_fields'	 => 'ids',
-			's'				 => $query_vars['serach'],	
+			's'				 => $query_vars['search'],	
 		);
 		$query = new WP_Query( $args );
 
@@ -271,7 +271,7 @@ function make_check_screen_options( $option, $metabox = false, $default = false 
 				$output = checked( $screen_options[ $option . '-hide' ], $option, false );
 			}
 		} else { // This code is used when we are not dealing with the screen options metabox (ie our table rows)
-			if ( ! isset( $screen_options[ $option . '-hide' ] ) && $screen_options[ $option . '-hide' ] != $option )
+			if ( ! empty( $screen_options[ $option . '-hide' ] ) && $screen_options[ $option . '-hide' ] != $option )
 				$output = ' style="display:none;"';
 		}
 	} else {
@@ -359,6 +359,9 @@ function make_display_screen_options() { ?>
 				</label>
 				<label for="ef_word_count-hide">
 					<input type="checkbox" class="hide-column-tog" id="ef_word_count-hide" name="ef_word_count-hide" value="ef_word_count" <?php echo make_check_screen_options( 'ef_word_count', true ); ?>> WC
+				</label>
+				<label for="print-view-hide">
+					<input type="checkbox" class="hide-column-tog" id="print-view-hide" name="print-view-hide" value="print-view" <?php echo make_check_screen_options( 'print-view', true, true ); ?>> Print View
 				</label>
 			</div>
 			<div class="screen-options"></div>
@@ -543,6 +546,7 @@ function make_magazine_dashboard_page() {
 						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received table-sortable"<?php echo make_check_screen_options( 'ef_invoice_received' ); ?>>Invoiced</th>
 						<th scope="col" id="ef_maker_shed" class="manage-column column-ef_maker_shed table-sortable"<?php echo make_check_screen_options( 'ef_maker_shed' ); ?>>Maker Shed</th>
 						<th scope="col" id="ef_word_count" class="manage-column column-ef_word_count table-sortable"<?php echo make_check_screen_options( 'ef_word_count' ); ?>>WC</th>
+						<th scope="col" id="print-view" class="manage-column column-print-view table-sortable"<?php echo make_check_screen_options( 'print-view', false, true ); ?>>Print View</th>
 					</tr>
 				</thead>
 				<tfoot>
@@ -569,6 +573,7 @@ function make_magazine_dashboard_page() {
 						<th scope="col" id="ef_invoice_received" class="manage-column column-ef_invoice_received table-sortable"<?php echo make_check_screen_options( 'ef_invoice_received' ); ?>>Invoiced</th>
 						<th scope="col" id="ef_maker_shed" class="manage-column column-ef_maker_shed table-sortable"<?php echo make_check_screen_options( 'ef_maker_shed' ); ?>>Maker Shed</th>
 						<th scope="col" id="ef_word_count" class="manage-column column-ef_word_count table-sortable"<?php echo make_check_screen_options( 'ef_word_count' ); ?>>WC</th>
+						<th scope="col" id="print-view" class="manage-column column-print-view table-sortable"<?php echo make_check_screen_options( 'print-view', false, true ); ?>>Print View</th>
 					</tr>
 				</tfoot>
 				<tbody id="the-list">
@@ -612,6 +617,7 @@ function make_magazine_dashboard_page() {
 								echo '<td class="ef_invoice_received column-ef_invoice_received"' . make_check_screen_options( 'ef_invoice_received' ) . '>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_invoice-received'][0] ) . '</td>';
 								echo '<td class="ef_maker_shed column-ef_maker_shed"' . make_check_screen_options( 'ef_maker_shed' ) . '>' . make_convert_boolean( $meta['_ef_editorial_meta_checkbox_available-maker-shed'][0] ) . '</td>';
 								echo '<td class="ef_word_count column-ef_word_count"' . make_check_screen_options( 'ef_word_count' ) . '>' . make_get_integer( $meta['_ef_editorial_meta_number_word-count'][0] ) . '</td>';
+								echo '<td class="print-view column-print-view"' . make_check_screen_options( 'print-view', false, true ) . '><a href="' . esc_url( admin_url( 'edit.php?post_type=volume&page=production_editor&p=' . get_the_ID() ) ) . '">Print View</a></td>';
 								echo '</tr>';
 							}
 						} else {

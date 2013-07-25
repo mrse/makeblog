@@ -517,17 +517,17 @@ function make_projects_to_s3( $haystack ) {
  * Full content of the steps.
  * 
  */
-function make_projects_steps( $steps ) {
+function make_projects_steps( $steps, $print = false ) {
 	$steps = unserialize($steps[0]);
 	$count = count($steps);
 	if ( !empty( $count ) ) {
 		foreach ( $steps as $idx => $step ) {
-			if ($idx == 0) {
+			if ($idx == 0 or $print == true) {
 				echo '<div class="jstep active" id="js-step-' . esc_attr( $step->number ) . '">';
 			} else {
 				echo '<div class="jstep hide" id="js-step-' . esc_attr( $step->number ) . '">';
 			}
-			if( $idx < $count - 1 ) {
+			if( $idx < $count - 1 && $print == false ) {
 				echo '<span class="row"><span class="span7"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4></span><span class="span1"><a class="btn pull-right btn-danger nexter" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next</a></span></span>';
 			} else {
 				echo '<span class="row"><span class="span8"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4></span></span>';
