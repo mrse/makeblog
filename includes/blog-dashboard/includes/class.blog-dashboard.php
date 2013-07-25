@@ -168,13 +168,13 @@
 			$query_vars = array(
 				'paged' 		 => ( isset( $_GET['paged'] ) ) ? absint( $_GET['paged'] ) : 1,
 				'search' 		 => ( isset( $_GET['s'] ) ) ? sanitize_text_field( $_GET['s'] ) : '',
-				'post_type' 	 => ( isset( $_GET['post_type'] ) ) ? sanitize_text_field( $_GET['post_type'] ) : '',
+				'post_type' 	 => ( isset( $_GET['content_type'] ) && in_array( $_GET['content_type'], $this->post_types ) ) ? sanitize_text_field( $_GET['content_type'] ) : '',
 				'post_status' 	 => ( isset( $_GET['post_status'] ) && $_GET['post_status'] != '' && $_GET['post_status'] != 'all' ) ? sanitize_text_field( $_GET['post_status'] ) : $this->get_post_statuses(),
 				'category' 		 => ( isset( $_GET['category'] ) && $_GET['category'] != '0' ) ? sanitize_text_field( $_GET['category'] ) : '',
 				'tag'			 => ( isset( $_GET['tag'] ) && $_GET['tag'] != 'all' ) ? sanitize_text_field( $_GET['tag'] ) : '',
 				'month'			 => ( isset( $_GET['month'] ) && $_GET['month'] != 'all' ) ? absint( $_GET['month'] ) : '',
 				'year'			 => ( isset( $_GET['year'] ) && $_GET['year'] != 'all' ) ? absint( $_GET['year'] ) : '',
-				'posts_per_page' => ( isset( $_GET['posts_per_page'] ) ) ? absint( $_GET['posts_per_page'] ) : 40,
+				'posts_per_page' => ( isset( $_GET['posts_per_page'] ) && $_GET['posts_per_page'] <= 100 ) ? absint( $_GET['posts_per_page'] ) : 40,
 			);
 
 			return $query_vars;
@@ -229,7 +229,7 @@
 			if ( ! empty( $query_vars['posts_per_page'] ) )
 				$additionals .= '&posts_per_page=' . $query_vars['posts_per_page'];
 
-			return $additionals;
+			return sanitize_text_field( $additionals );
 		}
 
 
@@ -273,7 +273,7 @@
 				// Check the current results and apply our current class if we are currently filtering by that post type.
 				$class = ( ( $result['type_uri'] == $query_vars['post_type'] ) || $result['type_uri'] == 'all' && empty( $query_vars['post_type'] ) ) ? ' class="current"' : '';
 
-				$output .= ' | <li><a href="' . esc_url( $this->submenu_data['page_url'] . '&post_status=' . sanitize_text_field( $result['type_uri'] ) ) . sanitize_text_field( $this->add_additional_queries() ) . '"' . $class . '>' . esc_html( $result['post_type'] ) . '</a><span class="count">(' . absint( $result['post_count'] ) . ')</span> </li>';
+				$output .= ' | <li><a href="' . esc_url( $this->submenu_data['page_url'] . '&content_type=' . sanitize_text_field( $result['type_uri'] ) ) . $this->add_additional_queries() . '"' . $class . '>' . esc_html( $result['post_type'] ) . '</a><span class="count">(' . absint( $result['post_count'] ) . ')</span> </li>';
 			}
 
 			// Remove the first two characters of our string and return it
@@ -310,7 +310,7 @@
 
 			foreach ( $wp_post_statuses as $status => $obj ) {
 				if ( ! in_array( $status, $this->disallowed_post_statuses ) )
-					$output .= '<option value="' . esc_attr( $obj->name ) . '"' . selected( sanitize_text_field( $query_vars['post_status'] ), esc_attr( $obj->name ), false ) . '>' . esc_html( $obj->label ) . '</option>';
+					$output .= '<option value="' . esc_attr( $obj->name ) . '"' . selected( $query_vars['post_status'], esc_attr( $obj->name ), false ) . '>' . esc_html( $obj->label ) . '</option>';
 			}
 
 			$output .= '</select>';
@@ -330,7 +330,7 @@
 			$output = 'Posts Per Page <select name="posts_per_page" id="posts-per-page">';
 
 			foreach ( $posts_per_page as $post_count ) {
-				$output .= '<option value="' . absint( $post_count ) . '"' . selected( absint( $query_vars['posts_per_page'] ), absint( $post_count ), false ) . '>' . absint( $post_count ) . '</option>';
+				$output .= '<option value="' . absint( $post_count ) . '"' . selected( $query_vars['posts_per_page'], absint( $post_count ), false ) . '>' . absint( $post_count ) . '</option>';
 			}
 
 			$output .= '</select>';
@@ -374,7 +374,7 @@
 			$output = '<select name="month" id="month-dropdown">';
 			$output .= '<option value="all">Month</option>';
 			foreach ( $months as $number => $month ) {
- 				$output .= '<option value="' . absint( $number ) . '"' . selected( absint( $query_vars['month'] ), absint( $number ), false ) . '>' . esc_html( $month ) . '</option>';
+ 				$output .= '<option value="' . absint( $number ) . '"' . selected( $query_vars['month'], absint( $number ), false ) . '>' . esc_html( $month ) . '</option>';
 			}
 			$output .= '</select>';
 
@@ -384,7 +384,7 @@
 			$output .= '<option value="all">Year</option>';
 
 			foreach ( $years as $year ) {
-				$output .= '<option value="' . absint( $year ) . '"' . selected( absint( $query_vars['year'] ), absint( $year ), false ) . '>' . absint( $year ) . '</option>';
+				$output .= '<option value="' . absint( $year ) . '"' . selected( $query_vars['year'], absint( $year ), false ) . '>' . absint( $year ) . '</option>';
 			}
 			$output .= '</select>';
 
@@ -588,23 +588,12 @@
 		 * @param  integer $post_id The ID of the post we want to get the author from
 		 * @return string
 		 */
-		function get_true_post_author( $post_id ) {
-			// Make sure we actually passed some data..
-			if ( ! is_int( $post_id ) )
-				return;
+		function get_true_post_author() {
+			// Use Coauthors Plus to get our post authors
+			$author = array_shift( get_coauthors() );
 
-			// Data is stored as a taxonomy term called author, so we'll extract that data.
-			$post_author = wp_get_post_terms( absint( $post_id ), 'author' );
-			
-			// Go an return our post authors data.
-			$user = get_user_by( 'slug', sanitize_text_field( $post_author[0]->name ) );
-
-			// If get_user_by() fails, it returns false. that means this user is a "guest author" and we need to return the proper data for them.
-			if ( $user ) {
-				return '<a href="' . get_author_posts_url( absint( $user->data->ID ) ) . '">' . esc_html( $user->display_name ) . '</a>';
-			} else {
-				return '<a href="' . esc_url( home_url( '/author/' . sanitize_text_field( $post_author[0]->name ) ) ) . '">' . esc_html( $post_author[0]->name ) . '</a>';
-			}
+			// Return it yo.
+			return coauthors_posts_links_single( $author );
 		}
 
 
@@ -725,7 +714,7 @@
 													<span class="trash"><a class="submitdelete" href="' . get_delete_post_link( absint( $post->ID ) ) . '">Trash</a></span>
 												</div>
 											  </td>';
-										echo '<td class="post_author column-post_author"' . $this->check_screen_options( 'post_author', false, true ) . '>' . $this->get_true_post_author( $post->ID ) . '</td>';
+										echo '<td class="post_author column-post_author"' . $this->check_screen_options( 'post_author', false, true ) . '>' . $this->get_true_post_author() . '</td>';
 										echo '<td class="post_cats column-post_cats"' . $this->check_screen_options( 'post_cats', false, true ) . '>' . wp_kses( $cats, array( 'a' => array( 'href' => array(), 'title' => array() ) ) ) . '</td>';
 										echo '<td class="post_tags column-post_tags"' . $this->check_screen_options( 'post_tags', false, true ) . '>' . wp_kses( $tags, array( 'a' => array( 'href' => array(), 'title' => array() ) ) ) . '</td>';
 										echo '<td class="post_type column-post_type"' . $this->check_screen_options( 'post_type', false, true ) . '>' . esc_html( $post_type ) . '</td>';
