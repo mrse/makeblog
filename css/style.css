@@ -8563,6 +8563,10 @@ textarea.radio-narrow,
 .main-sub-area #ccType {
   width: 115px !important;
 }
+/*BACK ISSUES*/
+.back-issues p {
+  font-size: 14px !important;
+}
 .dots {
   background: url('../img/dots.png');
   background-repeat: repeat-x;
