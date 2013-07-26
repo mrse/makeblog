@@ -96,6 +96,9 @@ global $post;
 				}
 				elseif (has_tag( array( 'greatcreate', 'Weekend Projects' )) || is_page( array( 286853, 271492, 313151 ) ) ) {
 					echo "googletag.pubads().setTargeting('sponsor',['radioshack']);";
+				}
+				elseif ( has_category( 'electronics' ) ) {
+					echo "googletag.pubads().setTargeting('sponsor',['wiley']);";
 				} 
 				elseif (has_tag('esurance') || is_page( array(313086, 316119, 316937) ) ) {
 					echo "googletag.pubads().setTargeting('sponsor',['esurance']);";
