@@ -45,7 +45,7 @@
 				<div class="container">	
 					<div class="row">
 						<div class="span12 header-image">
-							<h1><a href="http://makezine.com/hardware-innovation-workshop/2013-new-york-event/tickets/"><img style="margin:0 auto" src="http://makezineblog.files.wordpress.com/2013/07/hiw_eventbrite_webheader_ny13_with-times.jpg?w=940" alt="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" title="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" /></a></h1>
+							<h1><a href="http://makezineblog.files.wordpress.com/2013/07/screen-shot-2013-07-24-at-11-45-28-am.png?w=940" alt="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" title="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" /></a></h1>
 						</div> <!-- END span12 -->
 					</div> <!-- END row -->	
 				</div> <!-- END container -->		
