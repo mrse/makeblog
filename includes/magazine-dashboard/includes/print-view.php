@@ -24,13 +24,14 @@ function make_print_production() {
 	$parts = get_post_meta( $post->ID, 'parts' );
 	$tools = get_post_meta( $post->ID, 'Tools' );
 	$steps = get_post_custom_values('Steps', $post->ID );
+	$post_type = get_post_type();
 ?>
 	
 	<script>
 
 		jQuery(document).ready(function(){
 			jQuery('.toggle').click(function() {
-				if (jQuery('#the-list img').is(':visible')) { //Basic function here checks for the form and then brings it in if it isn't showing.
+				if (jQuery('#the-list img').is(':visible')) {
 					jQuery('#the-list img').fadeOut();
 				}
 				
@@ -39,7 +40,7 @@ function make_print_production() {
 				}
 			});
 			jQuery('.the-hider').click(function() {
-				if (jQuery('.hider').is(':visible')) { //Basic function here checks for the form and then brings it in if it isn't showing.
+				if (jQuery('.hider').is(':visible')) {
 					jQuery('.hider').hide();
 				}
 				else {
@@ -114,10 +115,14 @@ function make_print_production() {
 					<td><?php coauthors( $post->ID ); ?></td>
 				</tr>
 				<tr>
-					<?php $terms = get_the_terms( $post->ID, 'difficulty' ); ?>
-					<td class="hider">Difficulty</td>
-					<td><?php if ($terms) : foreach ($terms as $term) : echo esc_html( $term->name ); endforeach; endif;?></td>
+					<td class="hider">Body</td>
+					<td><?php the_content(); ?></td>
 				</tr>
+				<tr>
+					<td class="hider">Word Count</td>
+					<td><?php echo str_word_count( get_the_content() ); ?></td>
+				</tr>
+				<?php if ( $post_type == 'projects' ) : ?>
 				<tr class="alternate">
 					<td class="hider">Time Required</td>
 					<td><?php echo ( !empty( $meta['TimeRequired'][0] ) ) ?  esc_html( $meta['TimeRequired'][0] ) : ''; ?></td>
@@ -125,10 +130,6 @@ function make_print_production() {
 				<tr>
 					<td class="hider">Cost</td>
 					<td><?php echo ( !empty( $meta['Cost'][0] ) ) ?  esc_html( $meta['Cost'][0] ) : ''; ?></td>
-				</tr>
-				<tr>
-					<td class="hider">Body</td>
-					<td><?php the_content(); ?></td>
 				</tr>
 				<tr class="alternate">
 					<td class="hider">Parts</td>
@@ -144,8 +145,53 @@ function make_print_production() {
 				</tr>
 				<tr>
 					<td class="hider">Conclusion</td>
-					<td><?php echo $meta['Conclusion'][0]; ?></td>
+					<td><?php echo ( !empty( $meta['Conclusion'][0] ) ) ?  esc_html( $meta['Conclusion'][0] ) : ''; ?></td>
 				</tr>
+				<tr class="alternate">
+					<?php $terms = get_the_terms( $post->ID, 'difficulty' ); ?>
+					<td class="hider">Difficulty</td>
+					<td><?php if ($terms) : foreach ($terms as $term) : echo esc_html( $term->name ); endforeach; endif;?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if ( $post_type == 'review' ) : ?>
+				<tr class="alternate">
+					<td class="hider">Company URL</td>
+					<td><?php echo ( !empty( $meta['CompanyURL'][0] ) ) ?  esc_html( $meta['CompanyURL'][0] ) : ''; ?></td>
+				</tr>
+				<tr>
+					<td class="hider">Product URL</td>
+					<td><?php echo ( !empty( $meta['ProductURL'][0] ) ) ?  esc_html( $meta['ProductURL'][0] ) : ''; ?></td>
+				</tr>
+				<tr class="alternate">
+					<td class="hider">Price</td>
+					<td><?php echo ( !empty( $meta['Price'][0] ) ) ?  esc_html( $meta['Price'][0] ) : ''; ?></td>
+				</tr>
+				<tr>
+					<?php $terms = get_the_terms( $post->ID, 'complexity' ); ?>
+					<td class="hider">Complexity</td>
+					<td><?php if ($terms) : foreach ($terms as $term) : echo esc_html( $term->name ); endforeach; endif;?></td>
+				</tr>
+				<tr class="alternate">
+					<?php $terms = get_the_terms( $post->ID, 'components' ); ?>
+					<td class="hider">Components</td>
+					<td><?php if ($terms) : foreach ($terms as $term) : echo esc_html( $term->name ); endforeach; endif;?></td>
+				</tr>
+				<tr>
+					<?php $terms = get_the_terms( $post->ID, 'documentation' ); ?>
+					<td class="hider">Documentation</td>
+					<td><?php if ($terms) : foreach ($terms as $term) : echo esc_html( $term->name ); endforeach; endif;?></td>
+				</tr>
+				<tr class="alternate">
+					<?php $terms = get_the_terms( $post->ID, 'community' ); ?>
+					<td class="hider">Community</td>
+					<td><?php if ($terms) : foreach ($terms as $term) : echo esc_html( $term->name ); endforeach; endif;?></td>
+				</tr>
+				<tr>
+					<?php $terms = get_the_terms( $post->ID, 'completeness' ); ?>
+					<td class="hider">Completeness</td>
+					<td><?php if ($terms) : foreach ($terms as $term) : echo esc_html( $term->name ); endforeach; endif;?></td>
+				</tr>
+				<?php endif; ?>
 			</tbody>
 			
 		</table>
