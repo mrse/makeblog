@@ -8602,6 +8602,9 @@ textarea.radio-narrow,
   color: white;
   border-bottom: 0px;
 }
+.category-top .pull-right a {
+  border: 0px;
+}
 .category-top .subs {
   margin: 0px 0px 20px;
 }
@@ -9320,6 +9323,9 @@ ul#tabs .current > a:hover {
 .single p a.btn {
   color: white;
   border-bottom: 0px;
+}
+.single .pull-right a {
+  border: 0px;
 }
 .single .subs {
   margin: 0px 0px 20px;
@@ -11294,6 +11300,9 @@ body.makercamp a.button.small-button {
 .archive p a.btn {
   color: white;
   border-bottom: 0px;
+}
+.archive .pull-right a {
+  border: 0px;
 }
 .archive .subs {
   margin: 0px 0px 20px;
