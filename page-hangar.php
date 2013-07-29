@@ -139,6 +139,7 @@ get_header(); ?>
 							'playlist'			=> 'maker-hangar',
 							'order'				=> 'ASC',
 							'limit'				=> 4,
+							'posts_per_page'	=> 4,
 						);
 						make_carousel($args);
 					?>
@@ -155,13 +156,14 @@ get_header(); ?>
 
 						$args = array(
 							'post_type'			=> 'video',
-							'title'				=> 'Recent Videos',
+							'title'				=> '',
 							'projects_landing'	=> false,
 							'all'				=> false,
 							'playlist'			=> 'maker-hangar',
 							'order'				=> 'ASC',
 							'limit'				=> 4,
 							'offset'			=> 4,
+							'posts_per_page'	=> 4,
 						);
 						make_carousel($args);
 					?>
