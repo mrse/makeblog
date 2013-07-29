@@ -620,7 +620,7 @@
 		function display_blog_dashboard_page() {
 
 			//must check that the user has the required capability 
-			if ( ! current_user_can( 'manage_options' ) )
+			if ( ! current_user_can( 'delete_others_pages' ) )
 				wp_die( __( 'You do not have sufficient permissions to access this page.', 'make' ) );
 
 			// Get any query variables if set
