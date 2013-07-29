@@ -103,13 +103,13 @@ add_filter( 'the_content', 'make_add_children', 15 );
  * @param object $post (Optional)
  * @return array $dropdown_args
  */
-function page_attributes_metabox_add_parents( $dropdown_args, $post = NULL ) {
+function make_page_attributes_metabox_add_parents( $dropdown_args, $post = NULL ) {
 	$dropdown_args['post_status'] = array('publish', 'draft', 'pending', 'future', 'private');
 	return $dropdown_args;
 }
  
-add_filter( 'page_attributes_dropdown_pages_args', 'page_attributes_metabox_add_parents', 10, 2 ); 
-add_filter( 'quick_edit_dropdown_pages_args', 'page_attributes_metabox_add_parents', 10);
+add_filter( 'page_attributes_dropdown_pages_args', 'make_page_attributes_metabox_add_parents', 10, 2 ); 
+add_filter( 'quick_edit_dropdown_pages_args', 'make_page_attributes_metabox_add_parents', 10);
  
 /**
  * Add (status) to titles in page parent dropdowns
@@ -118,14 +118,14 @@ add_filter( 'quick_edit_dropdown_pages_args', 'page_attributes_metabox_add_paren
  * @param object $page
  * @return string $title
  */
-function page_parent_status_filter( $title, $page ) {
+function make_page_parent_status_filter( $title, $page ) {
 	$status = $page->post_status;
 	if ($status != __('publish'))
 		$title .= " ($status)";
 	return $title;
 }
  
-add_filter( 'list_pages', 'page_parent_status_filter', 10, 2);
+add_filter( 'list_pages', 'make_page_parent_status_filter', 10, 2);
  
 /**
  * Filter public page queries to include privately published ones. 
@@ -134,10 +134,10 @@ add_filter( 'list_pages', 'page_parent_status_filter', 10, 2);
  * @param object $query
  * @return object $query
  */
-function private_page_query_filter($query) {
+function make_private_page_query_filter($query) {
 	if ( is_admin() ) {
 		$screen = get_current_screen();
-		if ( 'nav-menus' == $screen['base'] )
+		if ( 'nav-menus' == $screen->base )
 			$query->set( 'post_status', 'publish,private,future,pending,draft' );
 	}
 	else {
@@ -146,7 +146,7 @@ function private_page_query_filter($query) {
 	return $query;
 }
  
-add_filter('pre_get_posts', 'private_page_query_filter');
+add_filter('pre_get_posts', 'make_private_page_query_filter');
  
 /**
  * Filter lists of pages to include privately published ones. 
@@ -156,7 +156,7 @@ add_filter('pre_get_posts', 'private_page_query_filter');
  * @param array|string $args Parsed arguments passed from wp_list_pages().
  * @return string HTML content.
  */
-function wp_list_pages_with_private($output, $args) {
+function make_wp_list_pages_with_private($output, $args) {
 	$defaults = array( 'post_status' => 'publish,private' );  // other defaults already parsed in wp_list_pages()
  
 	$r = wp_parse_args( $args, $defaults );
@@ -192,4 +192,4 @@ function wp_list_pages_with_private($output, $args) {
 	return $output;
 }
  
-add_filter('wp_list_pages', 'wp_list_pages_with_private', 1, 2);
+add_filter('wp_list_pages', 'make_wp_list_pages_with_private', 1, 2);
