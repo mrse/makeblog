@@ -537,6 +537,17 @@ function make_add_custom_types( $query ) {
 }
 add_filter( 'pre_get_posts', 'make_add_custom_types' );
 
+/**
+ * Change the default look to be by added date for admin pages.
+ */
+function make_set_default_sort( $query ) {
+	if ( is_admin() && $query->is_main_query() && empty( $query->query_vars['suppress_filters'] ) ) {
+		$query->set( 'orderby', 'date' );
+		$query->set( 'order', 'dsc' );
+		return $query;
+	}
+}
+add_filter( 'pre_get_posts', 'make_set_default_sort' );
 
 add_filter( 'byline_auto_filter_author', '__return_true' );
 
