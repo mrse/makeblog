@@ -101,9 +101,9 @@ add_shortcode( 'makerpro', 'make_marketron_newsletter' );
 
 function meetup_newsletter( $atts, $content = null ) {
 	return '
-		<form class="form-stacked" action="http://newsletter.makezine.com/t/r/s/jdhyjkj/" method="post" id="subForm">
+		<form class="form-stacked" action="http://newsletter.makezine.com/t/r/s/juiuilk/" method="post" id="subForm">
 			<fieldset>
-				<legend>Enter your information to receive a free PDF of Make Volume 34</legend>
+				<legend>Enter for a chance to win one of five Ultimate Arduino Microcontroller Packs! All entries will receive a free PDF of MAKE volume 35: Danger! </legend>
 				<div class="clearfix">
 					<label for="name">Name:</label>
 					<div class="input">
@@ -112,9 +112,9 @@ function meetup_newsletter( $atts, $content = null ) {
 				</div>
 				<!-- /clearfix -->
 				<div class="clearfix">
-					<label for="jdhyjkj-jdhyjkj">Email:</label>
+					<label for="juiuilk-juiuilk">Email:</label>
 					<div class="input">
-						<input class="xlarge" id="jdhyjkj-jdhyjkj" name="cm-jdhyjkj-jdhyjkj" size="30" type="text">
+						<input class="xlarge" id="juiuilk-juiuilk" name="cm-juiuilk-juiuilk" size="30" type="text">
 					</div>
 				</div>
 				<!-- /clearfix -->

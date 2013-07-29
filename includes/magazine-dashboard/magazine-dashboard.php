@@ -14,19 +14,6 @@
 	 * @since   0.1
 	 */
 	
-
-	// Adopted @jake's custom list table for now as time ran out trying to get wp_list_table to work for us.
-	
-	// // Load our list table class
-	// if ( ! class_exists( 'Make_List_Table' ) )
-	// 	require_once( 'includes/class.list-table.php' );
-
-	// if ( ! class_exists( 'Make_Magazine_Dashboard' ) ) {
-	// 	require_once( 'includes/class.magazine-dashboard.php' );
-
-	// 	// Instantiate our content manager class
-	// 	$make_magazine_dashboard = new Make_Magazine_Dashboard();
-
-	// }
-
 	require_once( 'includes/manual-dashboard.php' );
+	
+	require_once( 'includes/print-view.php' );

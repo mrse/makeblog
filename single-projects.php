@@ -37,7 +37,7 @@ get_header(); ?>
 								<?php 
 									$desc = get_post_custom_values('Description');
 									if (isset($desc[0])) {
-										echo '<p>' . $desc[0] . '</p>';	
+										echo Markdown( wp_kses_post( $desc[0] ) );
 									}
 								?>
 								

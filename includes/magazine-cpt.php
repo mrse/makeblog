@@ -94,8 +94,12 @@ $field_data = array (
 			'PullQuotes'		=> array(),
 			'PageNumber'		=> array(),
 			'ProjectsTeaser'	=> array(),
+			'Cost'	 			=> array(),
 			'Byline' 			=> array(),
-			'Conclusion'		=> array( 'type' => 'textarea' ),
+			'Conclusion'		=> array( 
+									'type' 	=> 'textarea',
+									'label'	=> 'Projects Conclusion',
+									),
 	),
 	'title'		=> 'Magazine Meta',
 	'context'	=> 'side',
