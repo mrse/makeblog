@@ -543,7 +543,7 @@ add_filter( 'pre_get_posts', 'make_add_custom_types' );
 function make_set_default_sort( $query ) {
 	if ( is_admin() && $query->is_main_query() && empty( $query->query_vars['suppress_filters'] ) ) {
 		$query->set( 'orderby', 'date' );
-		$query->set( 'order', 'dsc' );
+		$query->set( 'order', 'DESC' );
 		return $query;
 	}
 }
