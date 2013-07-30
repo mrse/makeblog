@@ -5596,6 +5596,10 @@ h6 {
 h3 {
   line-height: 24px;
 }
+body ul li {
+  font-size: 18px;
+  line-height: 140%;
+}
 #div-gpt-ad-664089004995786621-1 {
   margin-top: 50px;
 }
@@ -7971,6 +7975,11 @@ body#shop {
 }
 .carousel {
   text-shadow: none;
+}
+/* SLIDESHOW LINK COLORS*/
+.carousel-caption .single p a {
+  color: #d7d7d7;
+  border-bottom: 1px solid #d7d7d7;
 }
 .features {
   margin: 20px 0 20px;
