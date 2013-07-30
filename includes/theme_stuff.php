@@ -216,7 +216,11 @@ function make_enqueue_jquery() {
 	wp_enqueue_script( 'make-header', get_stylesheet_directory_uri() . '/js/header.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-cookie', get_stylesheet_directory_uri() . '/js/jquery.cookie.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-tracker', get_stylesheet_directory_uri() . '/js/tracker.js', array( 'jquery' ) );
-
+	
+	if ( is_front_page() ) {
+		wp_enqueue_script( 'make-optimizely', '//cdn.optimizely.com/js/288261727.js', array( 'jquery' ) );
+	}
+	
 	// display our map sort plugin for Maker Camp
 	if ( is_page( 315793 ) )
 		wp_enqueue_script( 'make-sort-table', get_stylesheet_directory_uri() . '/js/jquery.tablesorter.min.js', array( 'jquery' ) );
