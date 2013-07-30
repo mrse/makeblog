@@ -128,7 +128,6 @@ function make_page_parent_status_filter( $title, $page ) {
 add_filter( 'list_pages', 'make_page_parent_status_filter', 10, 2);
  
 /**
- * Filter public page queries to include privately published ones. 
  * Filter pages metabox on menu admin screen to include all built-in statuses.
  *
  * @param object $query
@@ -140,9 +139,6 @@ function make_private_page_query_filter($query) {
 		if ( 'nav-menus' == $screen->base )
 			$query->set( 'post_status', 'publish,private,future,pending,draft' );
 	}
-	else {
-		$query->set( 'post_status', 'publish,private' );
-	}	
 	return $query;
 }
  
