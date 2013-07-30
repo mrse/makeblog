@@ -425,21 +425,6 @@ function make_convert_author_id( $author_id ) {
 
 
 /**
- * This function is used to return the TRUE post author.
- * This is needed as we use Coauthors Plus and returning the post author is not always correct.
- * @return string
- */
-function make_get_true_post_author() {
-
-	// Use Coauthors Plus to get our post authors
-	$author = array_shift( get_coauthors() );
-
-	// Return it yo.
-	return coauthors_posts_links_single( $author );
-}
-
-
-/**
  * Helper function to process integers and return numbers or an empty string. We use this function because absint will return 0 other wise.. and we don't always want that.
  * @param  string $integer The integer we want to process. If the string is empty, we return nothing rather than 0
  * @return integer/void
@@ -601,7 +586,7 @@ function make_magazine_dashboard_page() {
 											<span class="trash"><a class="submitdelete" href="' . get_delete_post_link( absint( $post->ID ) ) . '">Trash</a></span>
 										</div>
 									  </td>';
-								echo '<td class="post_author column-post_author"' . make_check_screen_options( 'post_author', false, true ) . '>' . make_get_true_post_author( $post->ID ) . '</td>';
+								echo '<td class="post_author column-post_author"' . make_check_screen_options( 'post_author', false, true ) . '>' . coauthors_posts_links( ', ', ', ', null, null, false ) . '</td>';
 								echo '<td class="post_date column-post_date"' . make_check_screen_options( 'post_date', false, true ) . '>' . make_convert_to_pretty_time( $post->post_date, true ) . '</td>';
 								echo '<td class="ef_first_draft_date column-ef_first_draft_date"' . make_check_screen_options( 'ef_first_draft_date' ) . '>' . make_convert_to_pretty_time( $meta['_ef_editorial_meta_date_first-draft-date'][0] ) . '</td>';
 								echo '<td class="ef_page_count column-ef_page_count ef_pc_count"' . make_check_screen_options( 'ef_page_count', false, true ) . '>' . make_get_integer( $meta['_ef_editorial_meta_number_page-count'][0] ) . '</td>';

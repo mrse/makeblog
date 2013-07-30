@@ -583,21 +583,6 @@
 
 
 		/**
-		 * This function is used to return the TRUE post author.
-		 * This is needed as we use Coauthors Plus and returning the post author is not always correct.
-		 * @param  integer $post_id The ID of the post we want to get the author from
-		 * @return string
-		 */
-		function get_true_post_author() {
-			// Use Coauthors Plus to get our post authors
-			$author = array_shift( get_coauthors() );
-
-			// Return it yo.
-			return coauthors_posts_links_single( $author );
-		}
-
-
-		/**
 		 * Helper function to process integers and return numbers or an empty string. We use this function because absint will return 0 other wise.. and we don't always want that.
 		 * @param  string $integer The integer we want to process. If the string is empty, we return nothing rather than 0
 		 * @return integer/void
@@ -714,7 +699,7 @@
 													<span class="trash"><a class="submitdelete" href="' . get_delete_post_link( absint( $post->ID ) ) . '">Trash</a></span>
 												</div>
 											  </td>';
-										echo '<td class="post_author column-post_author"' . $this->check_screen_options( 'post_author', false, true ) . '>' . $this->get_true_post_author() . '</td>';
+										echo '<td class="post_author column-post_author"' . $this->check_screen_options( 'post_author', false, true ) . '>' . coauthors_posts_links( ', ', ', ', null, null, false ) . '</td>';
 										echo '<td class="post_cats column-post_cats"' . $this->check_screen_options( 'post_cats', false, true ) . '>' . wp_kses( $cats, array( 'a' => array( 'href' => array(), 'title' => array() ) ) ) . '</td>';
 										echo '<td class="post_tags column-post_tags"' . $this->check_screen_options( 'post_tags', false, true ) . '>' . wp_kses( $tags, array( 'a' => array( 'href' => array(), 'title' => array() ) ) ) . '</td>';
 										echo '<td class="post_type column-post_type"' . $this->check_screen_options( 'post_type', false, true ) . '>' . esc_html( $post_type ) . '</td>';
