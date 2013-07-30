@@ -47,7 +47,7 @@ get_header(); ?>
 								<li>
 									By <?php 
 									if( function_exists( 'coauthors_posts_links' ) ) {	
-										coauthors(); 
+										coauthors_posts_links(); 
 									} else { 
 										the_author_posts_link(); 
 									} ?>

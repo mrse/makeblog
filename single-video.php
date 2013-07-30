@@ -27,7 +27,7 @@ make_get_header() ?>
 					
 					<ul class="projects-meta">
 						<li>
-							Posted <span class="blue"><?php the_date(); ?></span>
+							Posted <span class="blue"><?php the_date('Y/m/d \@ g:i a'); ?></span>
 						</li>
 						<li>
 							Category <?php the_category(', '); ?>
