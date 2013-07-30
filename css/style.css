@@ -11767,3 +11767,35 @@ a.button.small-button {
 .single-newsletter article section:hover .comment-link a {
   color: #0088cc;
 }
+.popup {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  margin-bottom: 0;
+  bottom: 0;
+  height: 60px;
+  margin-top: 160px;
+  background-color: #0087cc;
+}
+.popup .navbar-inner {
+  -webkit-box-shadow: 0 -1px 10px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 -1px 10px rgba(0,0,0,.1);
+  box-shadow: 0 -1px 10px rgba(0,0,0,.1);
+}
+.popup img.cover {
+  margin-top: -150px;
+  border: 5px solid #0087cc;
+}
+.popup h3 {
+  margin-top: 18px;
+  color: white;
+  font-size: 20px;
+}
+.popup .span2 a {
+  font-size: 18px;
+  font-weight: bold;
+}
+.popup .span2 img.x {
+  margin-top: 5px;
+}

@@ -136,6 +136,38 @@
 	
 	</div> <!-- /container -->
 
+	<div class="popup hide">
+		
+		<div class="container">
+		
+			<div class="row">
+				
+				<div class="span2">
+					
+					<a class="" data-link-name="Subscrive Cover" data-tracker="popup-subscribe-magazine-cover" href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M37ZPOP">
+						<img class="cover" src="<?php echo wpcom_vip_get_resized_remote_image_url( 'http://cdn.makezine.com/make/covers/MAKE_V34_high.jpg', 140, 200 ); ?>">
+					</a>
+					
+				</div>
+				
+				<div class="span8">
+					
+					<h3>Subscribe to MAKE and get the Maker Projects Guide PDF FREE!</h3>
+					
+				</div>
+				
+				<div class="span2">
+					
+					<a class="button danger" data-link-name="Subscribe Button" data-tracker="popup-subscribe-magazine-button" href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M37ZPOP">SUBSCRIBE</a>
+					<a href="#" data-link-name="Close Button" data-tracker="popup-subscribe-close-button" class="pull-right x"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/x.png" /></a>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
 
 		<!-- Le javascript
 		================================================== -->
@@ -168,6 +200,10 @@
 				
 			});
 			jQuery('.hide-thumbnail').removeClass('thumbnail');
+			jQuery('.popup').delay(5000).fadeIn();
+			jQuery('.x').click(function () {
+				jQuery('.popup').fadeOut();
+    		});
 		});
 		</script>
 
