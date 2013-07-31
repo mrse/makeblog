@@ -156,7 +156,7 @@ Template Name: Home Page
 
 					<div class="span12">
 
-						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M36BN09">
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M37BN02">
 							<img src="http://cdn.makezine.com/make/ads/Make_SIP-ProjectsGuide_SubOffer_940x39.gif" alt="Subscribe to MAKE magazine" />
 						</a>
 
