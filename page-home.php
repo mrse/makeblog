@@ -62,8 +62,14 @@ Template Name: Home Page
 
 												<a href="<?php echo esc_url( make_get_cap_option( 'top_link' ) ); ?>">
 												
-													<img class="home-biggest" src="<?php echo esc_url( make_get_cap_option( 'top_url' ) ); ?>" />
-
+													<?php
+														if ( make_get_cap_option( 'top_url_id' ) ) {
+															echo wp_get_attachment_image( make_get_cap_option( 'top_url_id' ), 'p1' );
+														} else {
+															echo '<img class="home-biggest" src="' . esc_url( make_get_cap_option( 'top_url' ) ) . '" />';
+														} 
+													?>
+													
 												</a>
 
 												<div class="caption">
@@ -83,8 +89,14 @@ Template Name: Home Page
 
 												<a href="<?php echo esc_url( make_get_cap_option( 'bottom_link' ) ); ?>">
 													
-													<img class="home-biggest" src="<?php echo esc_url( make_get_cap_option( 'bottom_url' ) ); ?>" />
-
+													<?php
+														if ( make_get_cap_option( 'bottom_url_id' ) ) {
+															echo wp_get_attachment_image( make_get_cap_option( 'bottom_url_id' ), 'p1' );
+														} else {
+															echo '<img class="home-biggest" src="' . esc_url( make_get_cap_option( 'bottom_url' ) ) . '" />';
+														} 
+													?>
+													
 												</a>
 
 												<div class="caption">

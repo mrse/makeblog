@@ -76,6 +76,12 @@ $cap = new CheezCap( array(
 					''
 				),
 				new CheezCapTextOption(
+					'Top Right Image ID',
+					'Add the ID of the image that you would like to use here. It will take the size from p2 thumbnail.',
+					'top_url_id',
+					''
+				),
+				new CheezCapTextOption(
 					'Bottom Right Item Title',
 					'This is the big image on the top right.',
 					'bottom_title',
@@ -97,6 +103,12 @@ $cap = new CheezCap( array(
 					'Bottom Right Image URL',
 					'Add the uploaded image URL. Size should be 290px &times; 180px.',
 					'bottom_url',
+					''
+				),
+				new CheezCapTextOption(
+					'Bottom Right Image ID',
+					'Add the ID of the image that you would like to use here. It will take the size from p2 thumbnail.',
+					'bottom_url_id',
 					''
 				),
 				new CheezCapTextOption(
