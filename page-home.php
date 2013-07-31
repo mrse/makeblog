@@ -27,8 +27,17 @@ Template Name: Home Page
 										<?php endif; ?>
 
 										<a href="<?php echo esc_html( make_get_cap_option( 'main_link' ) ); ?>">
-
-											<img src="<?php echo esc_url( make_get_cap_option( 'main_url' ) ); ?>" <?php if ( make_get_cap_option( 'ribbon_title_display' ) ) echo 'id="top-left" '; ?>/>
+										
+											<?php
+												if ( make_get_cap_option( 'main_id' ) ) {
+													echo wp_get_attachment_image( make_get_cap_option( 'main_id' ), 'p1' );
+												} else {
+													echo '<img src="' . esc_url( make_get_cap_option( 'main_url' ) ) . '"'; 
+													if ( make_get_cap_option( 'ribbon_title_display' ) )
+														echo 'id="top-left" ';
+													echo '/>';
+												} 
+											?>
 
 										</a>
 
