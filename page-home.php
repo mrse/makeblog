@@ -64,7 +64,7 @@ Template Name: Home Page
 												
 													<?php
 														if ( make_get_cap_option( 'top_url_id' ) ) {
-															echo wp_get_attachment_image( make_get_cap_option( 'top_url_id' ), 'p1' );
+															echo wp_get_attachment_image( make_get_cap_option( 'top_url_id' ), 'p2' );
 														} else {
 															echo '<img class="home-biggest" src="' . esc_url( make_get_cap_option( 'top_url' ) ) . '" />';
 														} 
@@ -91,7 +91,7 @@ Template Name: Home Page
 													
 													<?php
 														if ( make_get_cap_option( 'bottom_url_id' ) ) {
-															echo wp_get_attachment_image( make_get_cap_option( 'bottom_url_id' ), 'p1' );
+															echo wp_get_attachment_image( make_get_cap_option( 'bottom_url_id' ), 'p2' );
 														} else {
 															echo '<img class="home-biggest" src="' . esc_url( make_get_cap_option( 'bottom_url' ) ) . '" />';
 														} 
