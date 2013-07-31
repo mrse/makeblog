@@ -46,6 +46,12 @@ $cap = new CheezCap( array(
 					''
 				),
 				new CheezCapTextOption(
+					'Main Item Image ID',
+					'Add the ID of the image that you would like to use here. It will take the size from p1 thumbnail.',
+					'main_id',
+					''
+				),
+				new CheezCapTextOption(
 					'Top Right Item Title',
 					'This is the big image on the top right.',
 					'top_title',
