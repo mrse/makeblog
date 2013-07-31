@@ -1059,6 +1059,7 @@ add_shortcode( 'make-themes', 'make_daily_themes' );
  * Adds a dynamic feature block to the home page.
  */
 function make_featured_post() {
+	global $post;
 	$post_id = make_get_cap_option( 'daily' );
 	$post = get_post( $post_id );
 	$output = '<div class="img"><a href="' . get_permalink( $post->ID) . '">';
@@ -1066,8 +1067,8 @@ function make_featured_post() {
 	$output .= '</div>';
 	$output .= '<div class="blurb">';
 	$output .= '<h3><span class="trending">What\'s hot:</span> ' . $post->post_title . '</h3>';
-	$output .= '<p><small>By: <strong>' . get_the_author_meta( 'display_name', $post->post_author ) . '</strong></small></p>';
-	$output .= '<p>'.wp_trim_words(strip_shortcodes( $post->post_content ), 20).'</p>';
+	$output .= '<p><small>By: <strong>' . coauthors( ', ', '', '', '', false ) . '</strong></small></p>';
+	$output .= '<p>' . wp_trim_words(strip_shortcodes( $post->post_content ), 20) . '</p>';
 	$output .= '</a></div>';
 	return $output;
 }
