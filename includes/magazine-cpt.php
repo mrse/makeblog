@@ -100,6 +100,10 @@ $field_data = array (
 									'type' 	=> 'textarea',
 									'label'	=> 'Projects Conclusion',
 									),
+			'Updates'			=> array( 
+									'type' 	=> 'textarea',
+									'label'	=> 'Updates',
+									),
 	),
 	'title'		=> 'Magazine Meta',
 	'context'	=> 'side',
@@ -483,4 +487,21 @@ function make_maker_projects_projects() {
 function make_get_cover_image( $number = 34 ) {
 	$url = esc_url( 'http://cdn.makezine.com/make/covers/MAKE_V' . absint( $number ) . '_high.jpg' );
 	return $url;
- }
+}
+ 
+add_action( 'the_content', 'make_update_to_content' );
+/**
+ * Bring updates into the the_content()
+ */
+function make_update_to_content( $content ) {
+	global $post;
+	$updates = get_post_meta( get_the_ID(), 'Updates', true );
+	$output = '';
+	if ( !empty( $updates ) ) {
+		$output .= '<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>';
+		$output .= wp_kses_post( Markdown( $updates ) );
+		$output .= '</div>';
+	}
+	$output .= $content;
+	return $output;
+}
