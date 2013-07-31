@@ -156,7 +156,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/community/index.html'	=> 'http://archive.makezine.com/community/index.html',
 		'/blog/help/index.html'			=> 'http://archive.makezine.com/help/index.html',
 		'/blog/hardware-innovation-workshop/videos.html' => 'http://archive.makezine.com/hardware-innovation-workshop/videos.html',
-		'/blog/magazine/newsletter/makerpro' => 'http://archive.makezine.com/magazine/newsletter/makerpro/index.html',
+		'/blog/magazine/newsletter/makerpro' => 'http://makezine.com/maker-pro-sign-up/',
 		'/blog/groups'					=> 'http://archive.makezine.com/groups/',
 		'/blog/make-newsletter'			=> 'http://makezine.com/newsletter/',
 		'/blog/page-2/'					=> 'http://makezine.com/page-2/',
