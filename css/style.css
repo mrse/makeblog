@@ -8317,6 +8317,7 @@ textarea.radio-narrow,
   box-shadow: none;
 }
 .new-footer ul li {
+  font-size: 14px !important;
   display: list-item;
 }
 .new-footer .control-group {
