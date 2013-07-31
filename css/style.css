@@ -11800,7 +11800,8 @@ a.button.small-button {
 .popup h3 {
   margin-top: 18px;
   color: white;
-  font-size: 20px;
+  font-size: 19px;
+  text-transform: none;
 }
 .popup .span2 a {
   font-size: 16px;
