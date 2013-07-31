@@ -157,7 +157,7 @@ Template Name: Home Page
 					<div class="span12">
 
 						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M36BN09">
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Belt-2995-PDF.jpg" alt="Subscribe to MAKE magazine" />
+							<img src="http://cdn.makezine.com/make/ads/Make_SIP-ProjectsGuide_SubOffer_940x39.gif" alt="Subscribe to MAKE magazine" />
 						</a>
 
 					</div>
@@ -191,6 +191,7 @@ Template Name: Home Page
 								'posts_per_page'  => 6,
 								'no_found_rows' => true,
 								'post_type' => array( 'post', 'projects', 'review', 'video', 'magazine' ),
+								'tag__not_in' => array( 5183, 22815, 9947 ),
 							);
 
 							$the_query = new WP_Query( $args );

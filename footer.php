@@ -29,12 +29,19 @@
 			</div>
 		
 		</div>
-	<div class="new-footer">
-		<div class="container">
-			<img src="<?php bloginfo('stylesheet_directory'); ?>/img/make-160-footer.png" alt="MAKE">
-			<div class="row">
-				<div class="span main">
-					<div class="span trending">
+		<section id="footer" class="new-footer">
+			<div class="container">
+				<div class="row">
+					<div class="span12 logo" >
+						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/make-160-footer.png" alt="MAKE">	
+						<img src="http://makezineblog.files.wordpress.com/2013/07/digital-book-foot.png" alt="MAKE"> 
+						<h5><a href="http://make-digital.com/" target="_blank">Read Digital Edition</a></h5>
+					</div>
+					<div class="clear"></div>
+				<!-- END row -->
+				</div>
+				<div class="row">
+					<div class="span3 trending">
 						<h5>Trending Topics</h5>
 						<?php echo wp_kses_post( stripslashes( make_get_cap_option( 'hot_topics' ) ) ); ?>
 					<!-- END span trending -->
@@ -74,44 +81,44 @@
 						</form>
 					<!-- END span newsletter -->
 					</div>
-					<div class="span about-us">
+					<div class="span3 about-us">
 						<h5>About <a href="http://makermedia.com">Maker Media</a></h5>
-						<div class="span about-column-01">
+						<div class="about-column-01">
 							<ul>
 								<li><a href="http://makezine.com/help/index.html">Help</a></li>
-								<li><a href="http://makermedia.com/contact-us/">Contact</a></li>
+								<li><a href="http://makermedia.com/contact-us/" target="_blank">Contact</a></li>
 								<li><a href="http://www.makezine.com/go/subscribe2make">Subscribe</a></li>
-								<li><a href="http://makermedia.com/work-with-us/advertising/">Advertise</a></li> 
-								<li><a href="http://makermedia.com/privacy/">Privacy</a></li>
+								<li><a href="http://makermedia.com/work-with-us/advertising/" target="_blank">Advertise</a></li> 
+								<li><a href="http://makermedia.com/privacy/" target="_blank">Privacy</a></li>
 							</ul>
 						<!-- END span about-column-01 --></div>
-						<div class="span about-column-02">
+						<div class="about-column-02">
 							<ul>
-								<li><a href="http://makermedia.com/about-us/management-team/">About Us</a></li>
+								<li><a href="http://makermedia.com/about-us/management-team/" target="_blank">About Us</a></li>
 								<li><a href="http://makezine.com/faq/index.html">FAQ</a></li>
 								<li><a href="http://makezine.com/community/index.html">Forums</a></li>
-								<li><a href="http://blog.makezine.com/contribute/">Write for MAKE</a></li>
+								<li><a href="http://makezine.com/contribute/">Write for MAKE</a></li>
 							</ul>
 						<!-- END span about-column-02 -->
 						</div>
 						<div class="clearfix"></div>
-						<div class="span socialArea">
+						<div class="socialArea">
 							<p class="links">
-								<span class="soci"><a href="http://twitter.com/make"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/twitter.png?m=1351191030g" alt="Make on Twitter"></a></span>
-								<span class="soci"><a href="http://youtube.com/make"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/youtube.png?m=1347432875g" alt="Make on YouTube"></a></span>
-								<span class="soci"><a href="http://pinterest.com/makemagazine/"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/pinterest.png?m=1351191030g" alt="Make on Pintrest"></a></span>
-								<span class="soci"><a href="http://www.flickr.com/groups/make/"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/flickr.png?m=1347432875g" alt="Make on Flickr"></a></span>
-								<span class="soci"><a href="http://facebook.com/makemagazine"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/facebook.png?m=1347432875g" alt="Make on Facebook"></a></span>
-								<span class="soci"><a href="http://www.stumbleupon.com/to/stumble/stumblethru:makezine.com?utm_source=Makezine&amp;utm_medium=StumbleThru&amp;utm_campaign=StumbleThruButton"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/stumbleupon.png?m=1351191030g" alt="Stumble Make Magazine"></a></span>
-								<span class="soci"><a href="http://instagram.com/makemagazine"><img src="http://makezineblog.files.wordpress.com/2012/12/instagram.png" alt="MAKE on Instagram"></a></span>
-								<span class="soci"><a href="https://google.com/+MAKE/"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/google-plus.png?m=1347432875g" alt="MAKE on Google+"></a></span>
+								<span class="soci"><a href="http://twitter.com/make" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/twitter.png?m=1351191030g" alt="Make on Twitter"></a></span>
+								<span class="soci"><a href="http://youtube.com/make" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/youtube.png?m=1347432875g" alt="Make on YouTube"></a></span>
+								<span class="soci"><a href="http://pinterest.com/makemagazine/" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/pinterest.png?m=1351191030g" alt="Make on Pintrest"></a></span>
+								<span class="soci"><a href="http://www.flickr.com/groups/make/" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/flickr.png?m=1347432875g" alt="Make on Flickr"></a></span>
+								<span class="soci"><a href="http://facebook.com/makemagazine" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/facebook.png?m=1347432875g" alt="Make on Facebook"></a></span>
+								<span class="soci"><a href="http://www.stumbleupon.com/to/stumble/stumblethru:makezine.com?utm_source=Makezine&amp;utm_medium=StumbleThru&amp;utm_campaign=StumbleThruButton" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/stumbleupon.png?m=1351191030g" alt="Stumble Make Magazine"></a></span>
+								<span class="soci"><a href="http://instagram.com/makemagazine" target="_blank"><img src="http://makezineblog.files.wordpress.com/2012/12/instagram.png" alt="MAKE on Instagram"></a></span>
+								<span class="soci"><a href="https://google.com/+MAKE/" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/google-plus.png?m=1347432875g" alt="MAKE on Google+"></a></span>
 							</p>
 						<!-- END socialArea -->
 						</div> 
 					<!-- END span3 about-us -->
 					</div>
-					<div class="span subscribe">
-						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB">
+					<div class="span3 subscribe">
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB" target="_blank">
 							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.jpg" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
 						</a>
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/arrow-footer.png" width="80" height="48" id="mag-arrow">
@@ -120,17 +127,47 @@
 						<hr />
 					<!-- END span subscribe -->
 					</div>
-				<!-- END MAIN span (main) -->
+				<!-- END MAIN row (main) -->
 				</div>
-			<!-- END MAIN row (main) -->
+			<!-- END container -->
 			</div>
-		<!-- END container -->
-		</div>
-	<!-- END new-footer -->
-	</div>
+		<!-- END new-footer -->
+		</section>
 	
-	</div>
+	</div> <!-- /container -->
 
+	<div class="popup hide">
+		
+		<div class="container">
+		
+			<div class="row">
+				
+				<div class="span2">
+					
+					<a class="subscribe-link" data-link-name="Subscribe Cover" data-tracker="popup-subscribe-magazine-cover" href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M37ZPOP">
+						<img class="cover" src="<?php echo wpcom_vip_get_resized_remote_image_url( 'http://cdn.makezine.com/make/covers/MAKE_V34_high.jpg', 140, 200 ); ?>">
+					</a>
+					
+				</div>
+				
+				<div class="span8">
+					
+					<h3>Subscribe to MAKE and get the Maker Projects Guide PDF FREE!</h3>
+					
+				</div>
+				
+				<div class="span2">
+					
+					<a class="button danger subscribe-link" data-link-name="Subscribe Button" data-tracker="popup-subscribe-magazine-button" href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M37ZPOP">SUBSCRIBE</a>
+					<a href="#" data-link-name="Close Button" data-tracker="popup-subscribe-close-button" class="pull-right x"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/x.png" /></a>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
 
 		<!-- Le javascript
 		================================================== -->
@@ -163,6 +200,7 @@
 				
 			});
 			jQuery('.hide-thumbnail').removeClass('thumbnail');
+
 		});
 		</script>
 

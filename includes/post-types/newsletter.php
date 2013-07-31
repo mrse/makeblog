@@ -9,7 +9,7 @@ function newsletter_init() {
 		'supports'				=> array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'trackbacks', 'comments', 'revisions', 'page-attributes' ),
 		'has_archive'			=> true,
 		'query_var'				=> true,
-		'rewrite'				=> true,
+		'rewrite'				=> array( 'slug' => 'newsletters' ),
 		'taxonomies'			=> array( 'category', 'post_tag', 'maker' ),
 		'labels'				=> array(
 			'name'					=> __( 'Newsletters', 'makeblog' ),
@@ -56,3 +56,136 @@ function newsletter_updated_messages( $messages ) {
 	return $messages;
 }
 add_filter( 'post_updated_messages', 'newsletter_updated_messages' );
+
+
+function make_get_newsletter_children( $id ) {
+	$args = array(
+		'post_parent'	=> $id,
+		'post_status'	=> 'published',
+		'post_type'		=> 'newsletter',
+		'orderby'		=> 'menu_order',
+		'order'			=> 'ASC'
+
+	);
+	// Get the kids
+	$kids = new WP_Query( $args );
+	// Drop them off at the pool...
+	$output = '';
+	global $post;
+	while ( $kids->have_posts() ) : $kids->the_post();
+		$post_ID = $post->ID;
+		$output .= '<section>';
+		$output .= '<h2>' . get_the_title() . '</h2>';
+		$output .= apply_filters( 'the_content', get_the_content() );
+		$output .= '<div class="comment-link"><a href="' . get_comments_link( $post_ID ) . '">Leave a comment on this section</a></div>';
+		$output .= '</section>';
+	endwhile;
+	// Get ready for the next round.
+	wp_reset_postdata();
+	return $output;
+}
+
+function make_add_children($content) {
+	global $post;
+	if ('newsletter' == get_post_type() ) {
+		$content = $content . make_get_newsletter_children( get_the_ID() );
+	}
+	return $content;
+}
+
+add_filter( 'the_content', 'make_add_children', 15 );
+
+
+/**
+ * Add private/draft/future/pending pages to parent dropdown in page attributes metabox and Quick Edit
+ *
+ * @param array $dropdown_args
+ * @param object $post (Optional)
+ * @return array $dropdown_args
+ */
+function make_page_attributes_metabox_add_parents( $dropdown_args, $post = NULL ) {
+	$dropdown_args['post_status'] = array('publish', 'draft', 'pending', 'future', 'private');
+	return $dropdown_args;
+}
+ 
+add_filter( 'page_attributes_dropdown_pages_args', 'make_page_attributes_metabox_add_parents', 10, 2 ); 
+add_filter( 'quick_edit_dropdown_pages_args', 'make_page_attributes_metabox_add_parents', 10);
+ 
+/**
+ * Add (status) to titles in page parent dropdowns
+ *
+ * @param string $title
+ * @param object $page
+ * @return string $title
+ */
+function make_page_parent_status_filter( $title, $page ) {
+	$status = $page->post_status;
+	if ($status != __('publish'))
+		$title .= " ($status)";
+	return $title;
+}
+ 
+add_filter( 'list_pages', 'make_page_parent_status_filter', 10, 2);
+ 
+/**
+ * Filter pages metabox on menu admin screen to include all built-in statuses.
+ *
+ * @param object $query
+ * @return object $query
+ */
+function make_private_page_query_filter($query) {
+	if ( is_admin() ) {
+		$screen = get_current_screen();
+		if ( 'nav-menus' == $screen->base )
+			$query->set( 'post_status', 'publish,private,future,pending,draft' );
+	}
+	return $query;
+}
+ 
+add_filter('pre_get_posts', 'make_private_page_query_filter');
+ 
+/**
+ * Filter lists of pages to include privately published ones. 
+ * This a duplicate of wp_list_pages() except we change post_status in the default args, and we return without echoing.
+ *
+ * @param string $output Original output of wp_list_pages(), which we will overwrite.
+ * @param array|string $args Parsed arguments passed from wp_list_pages().
+ * @return string HTML content.
+ */
+function make_wp_list_pages_with_private($output, $args) {
+	$defaults = array( 'post_status' => 'publish,private' );  // other defaults already parsed in wp_list_pages()
+ 
+	$r = wp_parse_args( $args, $defaults );
+	extract( $r, EXTR_SKIP );
+ 
+	$output = '';
+	$current_page = 0;
+ 
+	// sanitize, mostly to keep spaces out
+	$r['exclude'] = preg_replace('/[^0-9,]/', '', $r['exclude']);
+ 
+	// Allow plugins to filter an array of excluded pages (but don't put a nullstring into the array)
+	$exclude_array = ( $r['exclude'] ) ? explode(',', $r['exclude']) : array();
+	$r['exclude'] = implode( ',', apply_filters('wp_list_pages_excludes', $exclude_array) );
+ 
+	// Query pages.
+	$r['hierarchical'] = 0;
+	$pages = get_pages($r);
+ 
+	if ( !empty($pages) ) {
+		if ( $r['title_li'] )
+			$output .= '<li class="pagenav">' . $r['title_li'] . '<ul>';
+ 
+		global $wp_query;
+		if ( is_page() || is_attachment() || $wp_query->is_posts_page )
+			$current_page = $wp_query->get_queried_object_id();
+		$output .= walk_page_tree($pages, $r['depth'], $current_page, $r);
+ 
+		if ( $r['title_li'] )
+			$output .= '</ul></li>';
+	}
+ 
+	return $output;
+}
+ 
+add_filter('wp_list_pages', 'make_wp_list_pages_with_private', 1, 2);

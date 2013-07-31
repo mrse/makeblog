@@ -40,4 +40,26 @@ jQuery( document ).ready( function( $ ) {
 		$( '.make-popdown .container' ).slideToggle( 'fast' );
 	});
 
+
+	// Track links clicked
+	$( '.ga-nav a' ).click( function(e) {
+		var link_name = $(this).text();
+		var menu_name = $(this).parents('ul.nav').attr('id');
+
+		// Track this click with Google, yo.
+		_gaq.push(['_trackEvent', menu_name, 'Click', link_name]);
+	});
+
+
+	// Stop youtube videos from playing in modal windows when closing
+	// TODO: clean up misc, global scripts and centralize them...
+	$('.carousel-inner a[data-dismiss="modal"]').click(function() {
+		var video = $(this).parent().siblings('.modal-body').find('iframe');
+		var url = video.attr('src');
+		
+		// Empty the src attribute so we can stop the video when it closes. Then we'll put it back right after.
+		video.attr('src', '');
+		video.attr('src', url);
+	});
+
 });

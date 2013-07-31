@@ -33,11 +33,11 @@ function make_the_dash_shares_widget($type, $hits = null, $limit = 5, $size = 80
 	$content = null;
 
 	foreach ($data as $key => $item) {
-		$needles = array( 'Craft Home', 'MAKE', 'Search' );
+		$needles = array( 'Craft Home', 'MAKE', 'Search',  );
 		$exclude = false;
 		foreach ($needles as $needle) {
 			$pos = strpos( $item->title, $needle );
-			if ( $pos !== false ) {
+			if ( $pos !== false || empty( $item->title ) ) {
 				$exclude = true;
 				break 1;
 			}

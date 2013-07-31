@@ -124,7 +124,7 @@ get_header(); ?>
 									
 									$args = array(
 										'post_type'			=> 'errata',
-										'title'				=> 'Errata',
+										'title'				=> 'Before You Start',
 										'post_parent'		=> $parent,
 										'order'				=> 'asc',
 									);

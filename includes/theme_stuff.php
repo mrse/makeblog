@@ -214,7 +214,13 @@ function make_enqueue_jquery() {
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-header', get_stylesheet_directory_uri() . '/js/header.js', array( 'jquery' ) );
-
+	wp_enqueue_script( 'make-cookie', get_stylesheet_directory_uri() . '/js/jquery.cookie.js', array( 'jquery' ) );
+	wp_enqueue_script( 'make-tracker', get_stylesheet_directory_uri() . '/js/tracker.js', array( 'jquery' ) );
+	
+	if ( is_front_page() ) {
+		wp_enqueue_script( 'make-optimizely', '//cdn.optimizely.com/js/288261727.js', array( 'jquery' ) );
+	}
+	
 	// display our map sort plugin for Maker Camp
 	if ( is_page( 315793 ) )
 		wp_enqueue_script( 'make-sort-table', get_stylesheet_directory_uri() . '/js/jquery.tablesorter.min.js', array( 'jquery' ) );
@@ -223,6 +229,23 @@ function make_enqueue_jquery() {
 	wp_enqueue_style( 'make-print', get_stylesheet_directory_uri() . '/css/print.css', array(), false, 'print' );
 }
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
+
+
+/**
+ * Adds scripts and styles to particular pages in the admin areas.
+ * @return void
+ */
+function make_enqueue_resources_admin() {
+	$screen = get_current_screen();
+
+	if ( $screen->id == 'volume_page_manager' ) {
+		wp_enqueue_style( 'make-dashboard-css', get_stylesheet_directory_uri() . '/includes/magazine-dashboard/css/dashboard.css' );
+
+		wp_enqueue_script( 'make-sort-table', get_stylesheet_directory_uri() . '/js/jquery.tablesorter.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'make-dashboard', get_stylesheet_directory_uri() . '/includes/magazine-dashboard/js/dashboard-scripts.js', array( 'make-sort-table' ) );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'make_enqueue_resources_admin' );
 
 
 /**
@@ -425,7 +448,7 @@ function itunes_feed() {
 
 add_action('template_redirect', 'itunes_feed');
 
-// add_action('pre_get_posts', 'make_mf_remove_tag_from_home' );
+add_action('pre_get_posts', 'make_mf_remove_tag_from_home' );
 
 /**
  * Take Maker Faire posts that don't have MF tag, and remove from the main query.
@@ -434,8 +457,8 @@ add_action('template_redirect', 'itunes_feed');
 function make_mf_remove_tag_from_home( $query ) {
 
 	// only impact the main WordPress query and if on homepage or feed
-	if( $query->is_main_query() && ( $query->is_home() || $query->is_feed() || $query->is_page(215620) ) ) {
-		$query->set( 'tag__not_in', array( 5183,22815 ) );
+	if( $query->is_main_query() && ( $query->is_home() || $query->is_feed() ) ) {
+		$query->set( 'tag__not_in', array( 5183, 22815, 9947 ) );
 	}
 }
 
@@ -512,15 +535,25 @@ function make_get_category_name_strip_slash() {
  * This will bring posts, craft, projects, video into the main query. Allows for better archive pages.
  * @return string Main category name.
  */
-// TODO: Bring in reviews.
 function make_add_custom_types( $query ) {
 	if ( ! is_admin() && $query->is_main_query() && ( $query->is_tag() || $query->is_author() || $query-> is_tax() ) && empty( $query->query_vars['suppress_filters'] ) ) {
-		$query->set( 'post_type', array( 'post', 'craft', 'projects', 'video' ));
+		$query->set( 'post_type', array( 'post', 'craft', 'projects', 'video', 'review', 'magazine' ));
 		return $query;
 	}
 }
 add_filter( 'pre_get_posts', 'make_add_custom_types' );
 
+/**
+ * Change the default look to be by added date for admin pages.
+ */
+function make_set_default_sort( $query ) {
+	if ( is_admin() && $query->is_main_query() && empty( $query->query_vars['suppress_filters'] ) ) {
+		$query->set( 'orderby', 'date' );
+		$query->set( 'order', 'DESC' );
+		return $query;
+	}
+}
+add_filter( 'pre_get_posts', 'make_set_default_sort' );
 
 add_filter( 'byline_auto_filter_author', '__return_true' );
 
@@ -1167,10 +1200,12 @@ function make_get_author( $post_id, $prefix = 'By' ) {
 	// Return our post type name
 	$post_type = get_post_type( absint( $post_id ) );
 
-	// We don't ever want to display an author for the videos post type.
-	if ( $post_type == 'video' )
+	// Check that we are not loading a video CPT. If we are, return false so we don't echo anything
+	if ( $post_type == 'video')
 		return false;
 
+	// If we want to echo our results, we'll do that here.
+	echo '<li>';
 	echo esc_attr( $prefix ) . ' ';
 
 	if ( $post_type == 'post' ) {
@@ -1186,6 +1221,8 @@ function make_get_author( $post_id, $prefix = 'By' ) {
 			the_author();
 		}
 	}
+
+	echo '</li>';
 
 }
 
@@ -1223,9 +1260,9 @@ function make_popdown_menu() { ?>
 				<div class="row">
 					<div class="span3 offset2 border-right">
 						<div class="row-fluid">
-							<a href="<?php echo home_url( '/subscribe' ); ?>" class="span4"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
+							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" class="span4" onClick="_gaq.push(['_trackEvent', 'PopdownNav', 'Click', 'Subscribe Image']);"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
 							<div class="span7 side-text">
-								<a href="<?php echo home_url( '/subscribe' ); ?>">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
+								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" onClick="_gaq.push(['_trackEvent', 'PopdownNav', 'Click', 'Subscribe Link']);">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
 							</div>
 						</div>
 					</div>
@@ -1233,7 +1270,7 @@ function make_popdown_menu() { ?>
 						<?php wp_nav_menu( array(
 							'theme_location'  => 'popdown-menu-top',
 							'container'       => false, 
-							'menu_class'      => 'first nav',
+							'menu_class'      => 'first nav ga-nav',
 							'depth'           => 1 
 						) ); ?>
 					</div>
@@ -1241,7 +1278,7 @@ function make_popdown_menu() { ?>
 						<?php wp_nav_menu( array(
 							'theme_location'  => 'popdown-menu-middle',
 							'container'       => false, 
-							'menu_class'      => 'second nav',
+							'menu_class'      => 'second nav ga-nav',
 							'depth'           => 1 
 						) ); ?>
 					</div>
@@ -1252,7 +1289,7 @@ function make_popdown_menu() { ?>
 						<?php wp_nav_menu( array(
 							'theme_location'  => 'popdown-menu-last',
 							'container'       => false, 
-							'menu_class'      => 'last nav',
+							'menu_class'      => 'last nav ga-nav',
 							'depth'           => 1 
 						) ); ?>
 					</div>
@@ -1264,4 +1301,164 @@ function make_popdown_menu() { ?>
 		</div>
 	</div>
 <?php }
+
+
+/**
+ * Remove unncessary meta boxes from Authors
+ * @return void
+ */
+function make_remove_metaboxes_for_authors() {
+	// Remove the following metaboxes for authors and below
+	if ( ! current_user_can( 'delete_others_pages' ) ) {
+
+		// Remove Edit Flow Editorial Metadata
+		remove_meta_box( 'ef_editorial_meta', 'post', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'projects', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'magazine', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'review', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'video', 'side' );
+
+		// Remove Edit Flot Editorial Comments
+		remove_meta_box( 'edit-flow-editorial-comments', 'post', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'projects', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'magazine', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'review', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'craft', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'video', 'normal' );
+		
+		// Remove Edit Flow Notifications
+		remove_meta_box( 'edit-flow-notifications', 'post', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'projects', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'magazine', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'review', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'video', 'advanced' );
+
+		// Remove Post Tags
+		remove_meta_box( 'tagsdiv-post_tag', 'post', 'side' );
+		remove_meta_box( 'tagsdiv-post_tag', 'projects', 'side' );
+		remove_meta_box( 'tagsdiv-post_tag', 'magazine', 'side' );
+		remove_meta_box( 'tagsdiv-post_tag', 'review', 'side' );
+		remove_meta_box( 'tagsdiv-post_tag', 'craft', 'side' );
+		remove_meta_box( 'tagsdiv-post_tag', 'video', 'side' );
+
+		// Remove Categories
+		remove_meta_box( 'categorydiv', 'post', 'side' );
+		remove_meta_box( 'categorydiv', 'projects', 'side' );
+		remove_meta_box( 'categorydiv', 'magazine', 'side' );
+		remove_meta_box( 'categorydiv', 'review', 'side' );
+		remove_meta_box( 'categorydiv', 'craft', 'side' );
+		remove_meta_box( 'categorydiv', 'video', 'side' );
+
+		// Remove Featured Image
+		remove_meta_box( 'postimagediv', 'post', 'side' );
+		remove_meta_box( 'postimagediv', 'projects', 'side' );
+		remove_meta_box( 'postimagediv', 'magazine', 'side' );
+		remove_meta_box( 'postimagediv', 'review', 'side' );
+		remove_meta_box( 'postimagediv', 'craft', 'side' );
+
+		// Remove Makers Taxonomy
+		remove_meta_box( 'tagsdiv-maker', 'post', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'projects', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'magazine', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'review', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'craft', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'video', 'side' );
+
+		// Remove Makers Location Taxonomy
+		remove_meta_box( 'tagsdiv-location', 'post', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'projects', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'magazine', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'review', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'craft', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'video', 'side' );
+
+		// Remove Primary Category Taxonomy
+		remove_meta_box( 'mob_category_primary_term_div', 'post', 'side' );
+		remove_meta_box( 'mob_category_primary_term_div', 'projects', 'side' );
+		remove_meta_box( 'mob_category_primary_term_div', 'magazine', 'side' );
+		remove_meta_box( 'mob_category_primary_term_div', 'review', 'side' );
+		remove_meta_box( 'mob_review-category_primary_term_div', 'review', 'side' );
+		remove_meta_box( 'mob_category_primary_term_div', 'craft', 'side' );
+		remove_meta_box( 'mob_category_primary_term_div', 'video', 'side' );
+
+		// Remove Primary Section Taxonomy
+		remove_meta_box( 'mob_section_primary_term_div', 'post', 'side' );
+		remove_meta_box( 'mob_section_primary_term_div', 'projects', 'side' );
+		remove_meta_box( 'mob_section_primary_term_div', 'magazine', 'side' );
+		remove_meta_box( 'mob_section_primary_term_div', 'review', 'side' );
+
+		// Remove Primary Type Taxonomy
+		remove_meta_box( 'mob_types_primary_term_div', 'post', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'projects', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'magazine', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'review', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'craft', 'side' );
+
+		// Remove Primary Flag
+		remove_meta_box( 'mob_flags_primary_term_div', 'projects', 'side' );
+
+		// Remove Primary Difficulty
+		remove_meta_box( 'mob_difficulty_primary_term_div', 'projects', 'side' );
+		remove_meta_box( 'mob_difficulty_primary_term_div', 'video', 'side' );
+
+		// Remove Primary Playlist
+		remove_meta_box( 'mob_playlist_primary_term_div', 'video', 'side' );
+
+		// Remove Flags Taxonomy
+		remove_meta_box( 'flagsdiv', 'projects', 'side' );
+
+		// Remove Magazine Meta
+		remove_meta_box( 'magazine_meta', 'post', 'side' );
+		remove_meta_box( 'magazine_meta', 'projects', 'side' );
+		remove_meta_box( 'magazine_meta', 'magazine', 'side' );
+		remove_meta_box( 'magazine_meta', 'review', 'side' );
+
+		// Remove Projects Meta
+		remove_meta_box( 'advanced_testgroup', 'projects', 'advanced' );
+
+		// Remove Tools Taxonomy
+		remove_meta_box( 'tagsdiv-tools', 'projects', 'side' );
+
+		// Remove Parts Taxonomy
+		remove_meta_box( 'tagsdiv-parts', 'projects', 'side' );
+
+		// Remove Disscussion
+		remove_meta_box( 'commentstatusdiv', 'post', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'projects', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'magazine', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'review', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'craft', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'video', 'normal' );
+
+		// Remove Send Trackbacks
+		remove_meta_box( 'trackbacksdiv', 'post', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'projects', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'magazine', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'review', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'craft', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'video', 'normal' );
+
+		// Remove Likes and Shares
+		remove_meta_box( 'likes_meta', 'post', 'advanced' );
+		remove_meta_box( 'likes_meta', 'projects', 'advanced' );
+		remove_meta_box( 'likes_meta', 'magazine', 'advanced' );
+		remove_meta_box( 'likes_meta', 'review', 'advanced' );
+		remove_meta_box( 'likes_meta', 'craft', 'advanced' );
+		remove_meta_box( 'likes_meta', 'video', 'advanced' );
+	}
+}
+add_action( 'do_meta_boxes', 'make_remove_metaboxes_for_authors' );
+
+
+/**
+ * Hide post types we don't want to show to authors
+ * @return void
+ */
+function make_remove_admin_areas_for_authors() {
+	// Remove the following metaboxes for authors and below
+	if ( ! current_user_can( 'delete_others_pages' ) ) {
+		remove_menu_page( 'edit.php?post_type=newsletter' );
+	}
+}
+add_action( 'admin_menu', 'make_remove_admin_areas_for_authors' );
 

@@ -115,7 +115,7 @@ get_header(); ?>
 					<?php 
 
 						$args = array(
-							'post_type'			=> 'post',
+							'post_type'			=> array( 'post', 'video' ),
 							'title'				=> 'Weekend Projects News',
 							'tag'				=> 'weekend-projects',
 							'projects_landing'	=> true,
@@ -174,6 +174,7 @@ get_header(); ?>
 					'category__in'		=> 0,
 					'projects_landing'	=> true,
 					'all'				=> false,
+					'posts_per_page'	=> 36,
 					'tax_query' => array(
 						array(
 							'taxonomy' => 'flags',

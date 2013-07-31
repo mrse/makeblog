@@ -256,7 +256,7 @@ function make_carousel( $args, $title_link = true ) {
 								'video',
 								'projects',
 								'review',
-								'craft' )
+								'craft' ),
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -276,9 +276,10 @@ function make_carousel( $args, $title_link = true ) {
 		<div class="span10">
 			<h3 class="heading">
 				<?php
+					$output = '';
 					if ( isset( $args['difficulty'] ) ) {
 						if ( $title_link )
-							$output = '<a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '?cat=' . intval($args['category__in']) . '">';
+							$output .= '<a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '?cat=' . intval($args['category__in']) . '">';
 
 						$output .= $args['difficulty'];
 
@@ -288,7 +289,7 @@ function make_carousel( $args, $title_link = true ) {
 						echo $output;
 					} elseif ( isset( $args['category__in'] ) ) {
 						if ( $title_link ) {
-							$output = '<a href="';
+							$output .= '<a href="';
 							$output .= get_term_link( intval($args['category__in']), 'category', 'id');
 							if ($args['projects_landing'] != false ) {
 								$output .= '?post_type=projects">';	
@@ -305,7 +306,7 @@ function make_carousel( $args, $title_link = true ) {
 						echo $output;
 					} elseif ( isset($args['tag'] ) ) {
 						if ( $title_link ) {
-							$output = '<a href="';
+							$output .= '<a href="';
 							$output .= get_term_link( $args['tag'], 'post_tag');
 							if ($args['projects_landing'] != false ) {
 								$output .= '?post_type=projects">';	
@@ -441,7 +442,7 @@ function make_carousel( $args, $title_link = true ) {
 							echo '">';
 							echo get_the_title( $post->ID );
 							echo '</a></h4>';
-							echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_excerpt ), 15, '...' ) . '</p>';
+							echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 15, '...' ) . '</p>';
 							echo '</div>'. "\n";
 							if ($type == 'video') {
 								echo '<div class="modal hide" id="myModal-' . $post->ID . '">
