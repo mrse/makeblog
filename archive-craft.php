@@ -9,88 +9,88 @@
 
 get_header('craft'); ?>
 		
-		<div class="clear"></div>
+	<div class="single">
+	
+		<div class="container">
 
-		<div class="sand">
+			<div class="row">
 
-			<div class="container">
+				<div class="span8">
+					
+					<?php // create a new custom query so we can return posts, 
+						$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+						$query = new WP_Query( array(
+							'post_type' => array( 'craft' ),
+							'paged' => $paged,
+						) );
 
-				<div class="row">
-
-					<div class="span8">
-
-						<div class="content">
-
-							 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-			
-								<article <?php post_class(); ?>>
-
-									<!--<p class="categories"><?php the_category(', '); ?></p>-->
-
-									<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-
-									<p class="meta top">
-										By <?php 
-											if( function_exists( 'coauthors_posts_links' ) ) {	
-												coauthors_posts_links(); 
-											} else { 
-												the_author_posts_link(); 
-											} ?>, 
-										<?php the_time('Y/m/d \@ g:i a') ?>
-									</p>
-
-									<?php the_content(); ?>
-
-									<div class="clear"></div>
-
-									<div class="row">
-
-										<div class="postmeta">
-		
-											<div class="span-thumb thumbnail">
-											
-												<?php echo get_avatar( get_the_author_meta('user_email'), 72); ?>
-											
-											</div>
-											
-											<div class="span-well well">
-											
-												<p>Posted by <?php the_author_posts_link(); ?> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>
-												<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
-
-											</div>
-
-										</div>
-										
-									</div>
-								
-								</article>
-
-							<?php endwhile; ?>
-
-							<ul class="pager">
+						if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
+				
+					<div class="projects-masthead">
+						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+						
+					</div>
+					
+					<ul class="projects-meta">
+						<?php if ( make_get_author( $post->ID ) ) : ?>
+							<?php make_get_author( $post->ID ); ?>
+						<?php endif ?>
+						<li>Posted <span class="blue"><?php the_time('Y/m/d \@ g:i a'); ?></span></li>
+						<li>Category <?php the_category(', '); ?></li>
+						<li>Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a></li>
+					</ul>
+				
+					<article <?php post_class(); ?>>
+						
+						<div class="media">
 							
-								<li class="previous"><?php previous_posts_link('&larr; Previous Page'); ?></li>
-								<li class="next"><?php next_posts_link('Next Page &rarr;'); ?></li>
+							<a href="<?php the_permalink(); ?>" class="pull-left">
+								<?php the_post_thumbnail( 'archive-thumb', array( 'class' => 'media-object' ) ); ?>
+							</a>
 							
-							</ul>
-
-							<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
-
-							<div class="comments">
-								<?php comments_template(); ?>
+							<div class="media-body">
+								<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
 							</div>
 							
-							<?php else: ?>
+							<div class="jetpack-sharing">
+								<?php if ( function_exists( 'sharing_display') ) echo sharing_display(); ?> 
+							</div>
 							
-								<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 							
-							<?php endif; ?>
-
 						</div>
+					
+					</article>
 
+					<?php endwhile; ?>
+					
+					<ul class="pager">
+							
+						<li class="previous"><?php previous_posts_link('&larr; Previous Page'); ?></li>
+						<li class="next"><?php next_posts_link('Next Page &rarr;'); ?></li>
+					
+					</ul>
+
+					<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
+
+					<div class="comments">
+						<?php comments_template(); ?>
 					</div>
+					
+					<?php else: ?>
+					
+						<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+					
+					<?php endif; ?>
+				</div>
+				
+				
+				<?php get_sidebar(); ?>
+					
+					
+			</div>
 
-					<?php get_sidebar('craft'); ?>
+		</div>
 
-			<?php get_footer('craft'); ?>
+	</div>
+
+<?php get_footer(); ?>
