@@ -35,8 +35,7 @@
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script>jQuery(".entry-content:odd").addClass('odd');</script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="http://cdn.makezine.com/make/bootstrap/js/bootstrap.js"></script>
+
 		<script type="text/javascript">
 		jQuery(document).ready(function(){
 			jQuery(".scroll").click(function(event){
