@@ -1164,6 +1164,7 @@ function mf_allow_data_atts( $allowedposttags, $context ) {
 	$new_attributes = array( 
 		'data-toggle' 	=> true,
 		'data-dismiss' 	=> true,
+		'data-interval'	=> true,
 		);
  
 	foreach ( $tags as $tag ) {
