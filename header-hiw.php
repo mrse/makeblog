@@ -17,6 +17,20 @@
 		<link rel="shortcut icon" href="http://1.gravatar.com/blavatar/dab43acfe30c0e28a023bb3b7a700440?s=14">
 		<script type="text/javascript" src="http://use.typekit.com/fzm8sgx.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.js"></script>
+
+		<script type="text/javascript" src="http://cdn.makezine.com/make/js/jquery.cycle.min.js"></script>
+
+		<script>
+		  $(document).ready(function(){
+		    $('#tweetCarousel').carousel({
+		      interval: 4000
+		    });
+		  });
+		</script>
+
 		<script type="text/javascript">
 
 		var _gaq = _gaq || [];
