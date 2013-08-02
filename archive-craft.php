@@ -17,18 +17,10 @@ get_header('craft'); ?>
 
 				<div class="span8">
 					
-					<?php // create a new custom query so we can return posts, 
-						$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-						$query = new WP_Query( array(
-							'post_type' => array( 'craft' ),
-							'paged' => $paged,
-						) );
-
-						if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
-				
+					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+					
 					<div class="projects-masthead">
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						
 					</div>
 					
 					<ul class="projects-meta">
