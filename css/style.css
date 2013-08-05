@@ -7229,6 +7229,7 @@ hr {
   background-repeat: no-repeat;
   font-size: 20px;
 }
+.attachment-p1,
 #top-left {
   margin-top: -41px;
 }
@@ -8317,6 +8318,7 @@ textarea.radio-narrow,
   box-shadow: none;
 }
 .new-footer ul li {
+  font-size: 14px !important;
   display: list-item;
 }
 .new-footer .control-group {
@@ -11799,7 +11801,8 @@ a.button.small-button {
 .popup h3 {
   margin-top: 18px;
   color: white;
-  font-size: 20px;
+  font-size: 19px;
+  text-transform: none;
 }
 .popup .span2 a {
   font-size: 16px;

@@ -38,6 +38,9 @@ function make_action_after_setup_theme() {
 	add_image_size( 'category-thumb-small', 218, 146, true );		// Used on Category archive pages when in a .span3
 	add_image_size( 'related-thumb', 98, 55, true );				// Used on related blocks.
 	add_image_size( 'featured-thumb', 105, 105, true );				// Used on related blocks.
+	add_image_size( 'p1', 301, 400, true );							// Used as the top left featured image on home page.
+	add_image_size( 'p2', 290, 180, true );							// Used as the top right featured images on home page.
+
 	/**
 	  * Depracated image sizes.
 	 */
@@ -214,8 +217,8 @@ function make_enqueue_jquery() {
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-header', get_stylesheet_directory_uri() . '/js/header.js', array( 'jquery' ) );
-	wp_enqueue_script( 'make-cookie', get_stylesheet_directory_uri() . '/js/jquery.cookie.js', array( 'jquery' ) );
-	wp_enqueue_script( 'make-tracker', get_stylesheet_directory_uri() . '/js/tracker.js', array( 'jquery' ) );
+	// wp_enqueue_script( 'make-cookie', get_stylesheet_directory_uri() . '/js/jquery.cookie.js', array( 'jquery' ) );
+	// wp_enqueue_script( 'make-tracker', get_stylesheet_directory_uri() . '/js/tracker.js', array( 'jquery' ) );
 	
 	if ( is_front_page() ) {
 		wp_enqueue_script( 'make-optimizely', '//cdn.optimizely.com/js/288261727.js', array( 'jquery' ) );
@@ -1059,6 +1062,7 @@ add_shortcode( 'make-themes', 'make_daily_themes' );
  * Adds a dynamic feature block to the home page.
  */
 function make_featured_post() {
+	global $post;
 	$post_id = make_get_cap_option( 'daily' );
 	$post = get_post( $post_id );
 	$output = '<div class="img"><a href="' . get_permalink( $post->ID) . '">';
@@ -1066,8 +1070,8 @@ function make_featured_post() {
 	$output .= '</div>';
 	$output .= '<div class="blurb">';
 	$output .= '<h3><span class="trending">What\'s hot:</span> ' . $post->post_title . '</h3>';
-	$output .= '<p><small>By: <strong>' . get_the_author_meta( 'display_name', $post->post_author ) . '</strong></small></p>';
-	$output .= '<p>'.wp_trim_words(strip_shortcodes( $post->post_content ), 20).'</p>';
+	$output .= '<p><small>By: <strong>' . coauthors( ', ', '', '', '', false ) . '</strong></small></p>';
+	$output .= '<p>' . wp_trim_words(strip_shortcodes( $post->post_content ), 20) . '</p>';
 	$output .= '</a></div>';
 	return $output;
 }
@@ -1160,6 +1164,7 @@ function mf_allow_data_atts( $allowedposttags, $context ) {
 	$new_attributes = array( 
 		'data-toggle' 	=> true,
 		'data-dismiss' 	=> true,
+		'data-interval'	=> true,
 		);
  
 	foreach ( $tags as $tag ) {

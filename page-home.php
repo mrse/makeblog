@@ -27,8 +27,17 @@ Template Name: Home Page
 										<?php endif; ?>
 
 										<a href="<?php echo esc_html( make_get_cap_option( 'main_link' ) ); ?>">
-
-											<img src="<?php echo esc_url( make_get_cap_option( 'main_url' ) ); ?>" <?php if ( make_get_cap_option( 'ribbon_title_display' ) ) echo 'id="top-left" '; ?>/>
+										
+											<?php
+												if ( make_get_cap_option( 'main_id' ) ) {
+													echo wp_get_attachment_image( absint( make_get_cap_option( 'main_id' ) ), 'p1' );
+												} else {
+													echo '<img src="' . esc_url( make_get_cap_option( 'main_url' ) ) . '"'; 
+													if ( make_get_cap_option( 'ribbon_title_display' ) )
+														echo 'id="top-left" ';
+													echo '/>';
+												} 
+											?>
 
 										</a>
 
@@ -53,8 +62,14 @@ Template Name: Home Page
 
 												<a href="<?php echo esc_url( make_get_cap_option( 'top_link' ) ); ?>">
 												
-													<img class="home-biggest" src="<?php echo esc_url( make_get_cap_option( 'top_url' ) ); ?>" />
-
+													<?php
+														if ( make_get_cap_option( 'top_url_id' ) ) {
+															echo wp_get_attachment_image( absint( make_get_cap_option( 'top_url_id' ) ), 'p2' );
+														} else {
+															echo '<img class="home-biggest" src="' . esc_url( make_get_cap_option( 'top_url' ) ) . '" />';
+														} 
+													?>
+													
 												</a>
 
 												<div class="caption">
@@ -74,8 +89,14 @@ Template Name: Home Page
 
 												<a href="<?php echo esc_url( make_get_cap_option( 'bottom_link' ) ); ?>">
 													
-													<img class="home-biggest" src="<?php echo esc_url( make_get_cap_option( 'bottom_url' ) ); ?>" />
-
+													<?php
+														if ( make_get_cap_option( 'bottom_url_id' ) ) {
+															echo wp_get_attachment_image( absint( make_get_cap_option( 'bottom_url_id' ) ), 'p2' );
+														} else {
+															echo '<img class="home-biggest" src="' . esc_url( make_get_cap_option( 'bottom_url' ) ) . '" />';
+														} 
+													?>
+													
 												</a>
 
 												<div class="caption">
@@ -156,7 +177,7 @@ Template Name: Home Page
 
 					<div class="span12">
 
-						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M36BN09">
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M37BN02">
 							<img src="http://cdn.makezine.com/make/ads/Make_SIP-ProjectsGuide_SubOffer_940x39.gif" alt="Subscribe to MAKE magazine" />
 						</a>
 
