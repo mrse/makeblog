@@ -68,4 +68,27 @@ jQuery(document).ready(function(){
 		var mydata = jQuery(this).data();
 		jQuery('#' + mydata.loc + ' .main').attr('src', mydata.src );
 	});
+
+	jQuery('.modal').on('show', function () {
+		// Check to see if we have shown the video. If so, bail so that we don't embed multiples.
+		if ( jQuery(this).attr('data-shown') !== 'true' ) {
+			// Get the URL of the video.
+			var id = jQuery(this).attr('data-video');
+			// Create a link in the modal body.
+			jQuery('.modal-body .link', this).append( '<a href="' + id + '" class="oembed">Video Link</a>' );
+			// Trigger the jQuery Oembed
+			jQuery("a.oembed").oembed();
+		}
+	});
+
+	jQuery('.modal').on('hide', function () {
+		// Add a data-shown="true" to the modal. Will prevent further lookups.
+		jQuery(this).attr('data-shown', 'true' );
+		// Look for the iframe tag, and clear the video SRC out.
+		var video = jQuery('.modal-body', this).find('iframe');
+		var url = video.attr('src');
+		// Empty the src attribute so we can stop the video when it closes. Then we'll put it back right after.
+		video.attr('src', '');
+		video.attr('src', url);
+	});
 });
