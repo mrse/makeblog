@@ -1260,9 +1260,9 @@ function make_popdown_menu() { ?>
 				<div class="row">
 					<div class="span3 offset2 border-right">
 						<div class="row-fluid">
-							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" class="span4" onClick="_gaq.push(['_trackEvent', 'PopdownNav', 'Click', 'Subscribe Image']);"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
+							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" class="span4" onClick="_gaq.push(['_trackEvent', 'popdown-subscribe', 'Click', 'Subscribe Image']);"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
 							<div class="span7 side-text">
-								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" onClick="_gaq.push(['_trackEvent', 'PopdownNav', 'Click', 'Subscribe Link']);">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
+								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" onClick="_gaq.push(['_trackEvent', 'popdown-subscribe', 'Click', 'Subscribe Link']);">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
 							</div>
 						</div>
 					</div>
