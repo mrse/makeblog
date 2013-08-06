@@ -9303,7 +9303,16 @@ ul#tabs .current > a:hover {
 		opacity:1;
 		z-index:1;
 	}
-} */.single {
+} */
+.oembedall-container {
+  text-align: center;
+}
+.oembedall-container br,
+.oembedall-closehide,
+a.oembed {
+  display: none;
+}
+.single {
   background: url('../img/dots.png');
   background-color: url('../img/dots.png');
   background-repeat: repeat-x;
