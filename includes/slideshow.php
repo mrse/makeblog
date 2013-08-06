@@ -446,7 +446,7 @@ function make_carousel( $args, $title_link = true ) {
 							echo '</div>'. "\n";
 							if ($type == 'video') {
 								$link = get_post_meta( $post->ID, 'Link', true );
-								echo '<div class="modal hide" id="myModal-' . $post->ID . '" data-video="' . $link . '">
+								echo '<div class="modal hide" id="myModal-' . $post->ID . '" data-video="' . esc_url( $link ) . '">
 									<div class="modal-header">
 										<a class="close" data-dismiss="modal">&times;</a>
 										<h3>' . get_the_title( $post->ID ) . '</h3>
