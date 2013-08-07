@@ -20,20 +20,32 @@
 		 */
 		public function make_get_author_data() {
 			global $post;
+			$coauthors = get_coauthors();
 
-			$author_id = $post->post_author;
-			$author    = get_userdata( $author_id );
-			$url       = 'http://en.gravatar.com/' . $author->data->user_login . '.json';
-			$contents  = wpcom_vip_file_get_contents( $url );
-
-			if ( $contents != false ) {
-				$json_output = json_decode( $contents );								
-				$data        = $json_output->entry[0];
-
-				return $data;
-			} else {
-				return false;
+			$data = array();
+			$i = 0;
+			foreach( $coauthors as $coauthor ) {
+				if ( !empty( $coauthor->linked_account ) ) {
+					// We need the ID of the linked author so we can get their posts.
+					$linked_author = get_user_by( 'slug', $author->linked_account );
+					// When an account is linked, we want to add this email into mix to see if we return gravatar data
+					$username = $linked_author->user_login;
+				} elseif ( isset( $coauthor->data->user_login ) ) {
+					$username = $coauthor->data->user_login;
+				} else {
+					$username = $coauthor->user_login;
+				}
+				$url = 'http://en.gravatar.com/' . $username . '.json';	
+				$contents  = wpcom_vip_file_get_contents( $url );
+				if ( $contents == false ) {
+					$data[$i] = $coauthor;
+				} else {
+					$json = json_decode( $contents );
+					$data[$i] = $json;
+				}
+				$i++;
 			}
+			return $data;
 		}
 
 
@@ -45,16 +57,23 @@
 		 * @since    1.0
 		 */
 		public function full_author_formatted() {
-			$author = $this->make_get_author_data();
+			$authors = $this->make_get_author_data();
 			$output = '';
-
+			
+			// var_dump( $authors[0]);
 			// Make sure a user was loaded.
-			if ( $author ) {
+			foreach ( $authors as $author ) {
 				$output .= '<div class="author-bio row">';
 					$output .= '<div class="author-photo span2">';
 					
 						// Return the authro bio photo.
-						$output .= $this->author_photo();
+						// $output .= $this->author_photo();
+						if ( isset( $author->entry[0]->emails[0]->value ) ) {
+							$output = '<a href="' . get_author_posts_url( $author->entry[0]->requestHash ) . '">' . get_avatar( $author->entry[0]->emails[0]->value, 200 ) . '</a>';
+						} else {
+							$output = '<a href="' . get_author_posts_url( $author->user_login ) . '">' . get_avatar( $author->user_email, 200 ) . '</a>';
+						}
+						
 				
 					$output .= '</div>';
 
@@ -78,13 +97,8 @@
 						};
 					$output .= '</div>';
 				$output .= '</div>';
-
-				return $output;
-			} else {
-
-				// If no author is returned, lets just return false for conditional checks
-				return false;
 			}
+			return $output;
 		}
 
 
