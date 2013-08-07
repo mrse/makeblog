@@ -13,8 +13,10 @@
 						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/' ); ?>">Home</a></li>
 						<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/' ); ?>">2013 New York Event</a></li>
 						<div style="padding-left:15px;">
-								<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/tickets/' ); ?>">Tickets</a></li>
-                        	</div>  
+							<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/agenda/' ); ?>">Agenda</a></li>
+							<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/speakers/' ); ?>">Speakers</a></li>
+							<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/tickets/' ); ?>">Tickets</a></li>
+                    	</div>  
 						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/research/' ); ?>">Maker Market Research</a></li>
 						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/press/' ); ?>">Press</a></li>
 						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/contact/' ); ?>">Contact</a></li>
