@@ -20,20 +20,44 @@
 		 */
 		public function make_get_author_data() {
 			global $post;
+			$coauthors = get_coauthors();
 
-			$author_id = $post->post_author;
-			$author    = get_userdata( $author_id );
-			$url       = 'http://en.gravatar.com/' . $author->data->user_login . '.json';
-			$contents  = wpcom_vip_file_get_contents( $url );
-
-			if ( $contents != false ) {
-				$json_output = json_decode( $contents );								
-				$data        = $json_output->entry[0];
-
-				return $data;
-			} else {
-				return false;
+			$data = array();
+			$i = 0;
+			foreach( $coauthors as $coauthor ) {
+				if ( !empty( $coauthor->linked_account ) ) {
+					// We need the ID of the linked author so we can get their posts.
+					$linked_author = get_user_by( 'slug', $author->linked_account );
+					// When an account is linked, we want to add this email into mix to see if we return gravatar data
+					$username = $linked_author->user_login;
+				} elseif ( isset( $coauthor->data->user_login ) ) {
+					$username = $coauthor->data->user_login;
+				} else {
+					$username = $coauthor->user_login;
+				}
+				$url = 'http://en.gravatar.com/' . $username . '.json';	
+				$contents  = wpcom_vip_file_get_contents( $url );
+				if ( $contents == false ) {
+					$data[$i] = $coauthor;
+				} else {
+					$json = json_decode( $contents );
+					$data[$i] = $json;
+				}
+				$i++;
 			}
+			return $data;
+		}
+
+		/**
+		 * Generate a gravatar url based on the hash
+		 * @return String
+		 *
+		 * @version  1.0
+		 * @since    1.0
+		 */
+		public function get_gravatar_img_url( $url, $size ) {
+			$gravurl = add_query_arg( array( 's' => $size ), $url );
+			return esc_url( $gravurl );
 		}
 
 
@@ -45,46 +69,52 @@
 		 * @since    1.0
 		 */
 		public function full_author_formatted() {
-			$author = $this->make_get_author_data();
+			$authors = $this->make_get_author_data();
 			$output = '';
-
+			
 			// Make sure a user was loaded.
-			if ( $author ) {
+			foreach ( $authors as $author ) {
 				$output .= '<div class="author-bio row">';
 					$output .= '<div class="author-photo span2">';
 					
 						// Return the authro bio photo.
-						$output .= $this->author_photo();
-				
+						if ( isset( $author->entry[0] ) ) {
+							$output .= '<a href="' . esc_url( home_url( '/author/' . $author->entry[0]->requestHash ) ) . '"><img src="' . $this->get_gravatar_img_url( $author->entry[0]->thumbnailUrl, 200 ) . '" alt="' . esc_attr( $author->entry['0']->displayName ) . '" /></a>';
+						} else {
+							$output .= '<a href="' . esc_url( home_url( '/author/' . $author->user_login ) ) . '">' .  get_the_post_thumbnail( $author->ID, 'archive-thumb' ) . '</a>';
+						}
+						
 					$output .= '</div>';
 
 					$output .= '<div class="span6">';
 
 						// Return the author name.
-						$output .= $this->author_name();
+						if ( isset( $author->entry[0] ) ) {
+							$output .= '<h3 class="jumbo">BY <a class="noborder" href="' . esc_url( home_url( '/author/' . $author->entry[0]->requestHash ) ) . '">' . esc_html( $author->entry['0']->displayName ) . '</a></h3>';
+						} else {
+							$output .= '<h3 class="jumbo">BY <a class="noborder" href="' . esc_url( home_url( '/author/' . $author->user_login ) ) . '">' . esc_html( $author->display_name ) . '</a></h3>';
+						}
 
 						// Display the bio info.
-						if ( isset( $author->aboutMe ) ) 
-							$output .= $this->author_bio( $author );
-						
+						if ( isset( $author->entry[0]->aboutMe ) ) {
+							$output .= Markdown( $author->entry[0]->aboutMe );
+						} elseif ( isset( $author->description ) ) {
+							$output .= Markdown( $author->description );
+						}
+
 						// Display the soical media accounts.
-						if ( isset( $author->accounts ) ) {
-							$output .= $this->author_social( $author );
+						if ( isset( $author->entry[0]->accounts ) ) {
+							$output .= $this->author_social( $author->entry[0]->accounts );
 						}
 						
 						// Display the author website urls. We'll also pass it our already quried Author data.
-						if ( isset( $author->urls ) ) {
-							$output .= $this->author_urls( $author );
+						if ( isset( $author->entry[0]->urls ) ) {
+							$output .= $this->author_urls( $author->entry[0]->urls );
 						};
 					$output .= '</div>';
 				$output .= '</div>';
-
-				return $output;
-			} else {
-
-				// If no author is returned, lets just return false for conditional checks
-				return false;
 			}
+			return $output;
 		}
 
 
@@ -130,13 +160,10 @@
 		 * @version 1.0
 		 * @since   1.0
 		 */
-		public function author_urls( $author ) {
-			// Only load our author data if we aren't passing it already
-			if ( empty( $author ) )
-				$author = $this->make_get_author_data();
-
+		public function author_urls( $urls ) {
+			
 			$output = '<ul class="links">';
-				foreach ( $author->urls as $url ) {
+				foreach ( $urls as $url ) {
 					$output .= '<li><a class="noborder" href="' . esc_url( $url->value ) . '">' . esc_html( $url->title ) . '</a></li>';
 				}
 			$output .= '</ul>';
@@ -153,13 +180,10 @@
 		 * @version  1.0
 		 * @since    1.0
 		 */
-		public function author_social( $author ) {
-			// Only load our author data if we aren't passing it already
-			if ( empty( $author ) )
-				$author = $this->make_get_author_data();
-
+		public function author_social( $accounts ) {
+			
 			$output = '<ul class="social">';
-				foreach ( $author->accounts as $account ) {
+				foreach ( $accounts as $account ) {
 					$output .= '<li class="' . esc_attr( $account->shortname ) . '"><a class="noborder" href="' . esc_url( $account->url ) . '"><span class="sp">&nbsp;</span></a></li>';
 				}
 
@@ -177,7 +201,7 @@
 			if ( empty( $author ) )
 				$author = $this->make_get_author_data();
 
-			$output = markdown( $author->aboutMe );
+			$output = Markdown( $author->aboutMe );
 
 			return $output;
 		}
@@ -206,7 +230,7 @@
 
 		// Return the full HTML block
 		if ( $type == 'full' )
-			echo $make_author_class->full_author_formatted();
+			return $make_author_class->full_author_formatted();
 
 		// Return the author name only
 		if ( $type == 'name' )
@@ -229,3 +253,9 @@
 			echo $make_author_class->author_social();
 	}
 
+	function hook_bio_into_content( $content ) {
+		$content .= make_author_bio();
+		return $content;
+	}
+
+	add_filter( 'the_content', 'hook_bio_into_content', 5 );
