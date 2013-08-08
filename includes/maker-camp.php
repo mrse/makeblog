@@ -148,16 +148,32 @@
 
 		// Start the right sidebar
 		$output .= '<div class="span3 project-link">';
-		$output .= '<a href="';
-
-		// Check if a link is set or not and display the right HTML
-		$output .= ( ! empty( $link ) ) ? esc_url( $link ) : 'http://google.com/+make';
-		$output .= '" class="button blue small-button">';
 		
-		$output .= esc_attr( $link_title );
+		// Let's get the links, and if there isn't one, setup the default.
+		$link  = ( ! empty( $link ) ) ? esc_url( $link ) : 'http://google.com/+make';
+		$links = explode(',', $link);
 
-		// Check again and close the needed HTML if a link is set or not
-		$output .= '</a>';
+		// Set a counter.
+		$i = 0;
+
+		// Loop through links, might be more then one.
+		foreach ($links as $link) {
+			$output .= '<a href="';
+
+			// Check if a link is set or not and display the right HTML
+			$output .= esc_url( $link );
+			$output .= '" class="button blue small-button">';
+			
+			// If there are multiple links, there might be multiple titles.
+			$linktitle = explode(',', $link_title);
+			$output .= esc_attr( $linktitle[$i] );
+
+			// Check again and close the needed HTML if a link is set or not
+			$output .= '</a>';
+
+			// Increase the counter
+			$i++;
+		}
 
 		// Close the project link
 		$output .= '</div>';
