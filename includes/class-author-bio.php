@@ -72,7 +72,6 @@
 			$authors = $this->make_get_author_data();
 			$output = '';
 			
-			// var_dump( $authors[0]);
 			// Make sure a user was loaded.
 			foreach ( $authors as $author ) {
 				$output .= '<div class="author-bio row">';
@@ -85,7 +84,6 @@
 							$output .= '<a href="' . esc_url( home_url( '/author/' . $author->user_login ) ) . '">' .  get_the_post_thumbnail( $author->ID, 'archive-thumb' ) . '</a>';
 						}
 						
-				
 					$output .= '</div>';
 
 					$output .= '<div class="span6">';
@@ -100,7 +98,7 @@
 						// Display the bio info.
 						if ( isset( $author->entry[0]->aboutMe ) ) {
 							$output .= Markdown( $author->entry[0]->aboutMe );
-						} elseif ( $author->description ) {
+						} elseif ( isset( $author->description ) ) {
 							$output .= Markdown( $author->description );
 						}
 
@@ -232,7 +230,7 @@
 
 		// Return the full HTML block
 		if ( $type == 'full' )
-			echo $make_author_class->full_author_formatted();
+			return $make_author_class->full_author_formatted();
 
 		// Return the author name only
 		if ( $type == 'name' )
@@ -255,3 +253,9 @@
 			echo $make_author_class->author_social();
 	}
 
+	function hook_bio_into_content( $content ) {
+		$content .= make_author_bio();
+		return $content;
+	}
+
+	add_filter( 'the_content', 'hook_bio_into_content', 5 );
