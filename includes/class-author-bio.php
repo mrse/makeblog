@@ -48,6 +48,18 @@
 			return $data;
 		}
 
+		/**
+		 * Generate a gravatar url based on the hash
+		 * @return String
+		 *
+		 * @version  1.0
+		 * @since    1.0
+		 */
+		public function get_gravatar_img_url( $url, $size ) {
+			$gravurl = add_query_arg( array( 's' => $size ), $url );
+			return esc_url( $gravurl );
+		}
+
 
 		/**
 		 * Return the full HTML block for our author-bio's
@@ -67,11 +79,10 @@
 					$output .= '<div class="author-photo span2">';
 					
 						// Return the authro bio photo.
-						// $output .= $this->author_photo();
-						if ( isset( $author->entry[0]->emails[0]->value ) ) {
-							$output = '<a href="' . get_author_posts_url( $author->entry[0]->requestHash ) . '">' . get_avatar( $author->entry[0]->emails[0]->value, 200 ) . '</a>';
+						if ( isset( $author->entry[0] ) ) {
+							$output .= '<a href="' . esc_url( home_url( '/author/' . $author->entry[0]->requestHash ) ) . '"><img src="' . $this->get_gravatar_img_url( $author->entry[0]->thumbnailUrl, 200 ) . '" alt="' . esc_attr( $author->entry['0']->displayName ) . '" /></a>';
 						} else {
-							$output = '<a href="' . get_author_posts_url( $author->user_login ) . '">' . get_avatar( $author->user_email, 200 ) . '</a>';
+							$output .= '<a href="' . esc_url( home_url( '/author/' . $author->user_login ) ) . '">' .  get_the_post_thumbnail( $author->ID, 'archive-thumb' ) . '</a>';
 						}
 						
 				
@@ -80,20 +91,27 @@
 					$output .= '<div class="span6">';
 
 						// Return the author name.
-						$output .= $this->author_name();
+						if ( isset( $author->entry[0] ) ) {
+							$output .= '<h3 class="jumbo">BY <a class="noborder" href="' . esc_url( home_url( '/author/' . $author->entry[0]->requestHash ) ) . '">' . esc_html( $author->entry['0']->displayName ) . '</a></h3>';
+						} else {
+							$output .= '<h3 class="jumbo">BY <a class="noborder" href="' . esc_url( home_url( '/author/' . $author->user_login ) ) . '">' . esc_html( $author->display_name ) . '</a></h3>';
+						}
 
 						// Display the bio info.
-						if ( isset( $author->aboutMe ) ) 
-							$output .= $this->author_bio( $author );
-						
+						if ( isset( $author->entry[0]->aboutMe ) ) {
+							$output .= Markdown( $author->entry[0]->aboutMe );
+						} elseif ( $author->description ) {
+							$output .= Markdown( $author->description );
+						}
+
 						// Display the soical media accounts.
-						if ( isset( $author->accounts ) ) {
-							$output .= $this->author_social( $author );
+						if ( isset( $author->entry[0]->accounts ) ) {
+							$output .= $this->author_social( $author->entry[0]->accounts );
 						}
 						
 						// Display the author website urls. We'll also pass it our already quried Author data.
-						if ( isset( $author->urls ) ) {
-							$output .= $this->author_urls( $author );
+						if ( isset( $author->entry[0]->urls ) ) {
+							$output .= $this->author_urls( $author->entry[0]->urls );
 						};
 					$output .= '</div>';
 				$output .= '</div>';
@@ -144,13 +162,10 @@
 		 * @version 1.0
 		 * @since   1.0
 		 */
-		public function author_urls( $author ) {
-			// Only load our author data if we aren't passing it already
-			if ( empty( $author ) )
-				$author = $this->make_get_author_data();
-
+		public function author_urls( $urls ) {
+			
 			$output = '<ul class="links">';
-				foreach ( $author->urls as $url ) {
+				foreach ( $urls as $url ) {
 					$output .= '<li><a class="noborder" href="' . esc_url( $url->value ) . '">' . esc_html( $url->title ) . '</a></li>';
 				}
 			$output .= '</ul>';
@@ -167,13 +182,10 @@
 		 * @version  1.0
 		 * @since    1.0
 		 */
-		public function author_social( $author ) {
-			// Only load our author data if we aren't passing it already
-			if ( empty( $author ) )
-				$author = $this->make_get_author_data();
-
+		public function author_social( $accounts ) {
+			
 			$output = '<ul class="social">';
-				foreach ( $author->accounts as $account ) {
+				foreach ( $accounts as $account ) {
 					$output .= '<li class="' . esc_attr( $account->shortname ) . '"><a class="noborder" href="' . esc_url( $account->url ) . '"><span class="sp">&nbsp;</span></a></li>';
 				}
 
@@ -191,7 +203,7 @@
 			if ( empty( $author ) )
 				$author = $this->make_get_author_data();
 
-			$output = markdown( $author->aboutMe );
+			$output = Markdown( $author->aboutMe );
 
 			return $output;
 		}
