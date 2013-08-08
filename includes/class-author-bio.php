@@ -254,7 +254,9 @@
 	}
 
 	function hook_bio_into_content( $content ) {
-		$content .= make_author_bio();
+		if( is_single() && is_main_query() ) {
+			$content .= make_author_bio();
+		}
 		return $content;
 	}
 
