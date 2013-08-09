@@ -22,15 +22,16 @@ Template Name: Home Page
 
 									<div class="paddme">
 										
-										<?php if ( make_get_cap_option( 'ribbon_title_display' ) ) : ?>
+										<?php if ( make_get_cap_option( 'ribbon_title_display' ) ) : 
+											$ribbon_class = 'attachment-p1'; ?>
 											<div class="ribbon"><?php echo esc_html( make_get_cap_option( 'ribbon_title' ) ); ?></div>
-										<?php endif; ?>
+										<?php else : $ribbon_class = ''; endif; ?>
 
 										<a href="<?php echo esc_html( make_get_cap_option( 'main_link' ) ); ?>">
 										
 											<?php
 												if ( make_get_cap_option( 'main_id' ) ) {
-													echo wp_get_attachment_image( absint( make_get_cap_option( 'main_id' ) ), 'p1' );
+													echo wp_get_attachment_image( absint( make_get_cap_option( 'main_id' ) ), 'p1', 0, array( 'class' => $ribbon_class ) );
 												} else {
 													echo '<img src="' . esc_url( make_get_cap_option( 'main_url' ) ) . '"'; 
 													if ( make_get_cap_option( 'ribbon_title_display' ) )
