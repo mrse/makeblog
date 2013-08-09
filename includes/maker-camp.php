@@ -166,7 +166,7 @@
 			
 			// If there are multiple links, there might be multiple titles.
 			$linktitle = explode(',', $link_title);
-			$output .= esc_attr( $linktitle[$i] );
+			$output .= esc_html( $linktitle[$i] );
 
 			// Check again and close the needed HTML if a link is set or not
 			$output .= '</a>';
