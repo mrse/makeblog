@@ -171,6 +171,29 @@ get_header(); ?>
 				</div>
 			
 			</div>
+			
+			<div class="row">
+			
+				<div class="span12">
+				
+					<?php 
+						$args = array(
+							'post_type'			=> 'video',
+							'title'				=> '',
+							'projects_landing'	=> false,
+							'all'				=> false,
+							'playlist'			=> 'maker-hangar',
+							'order'				=> 'ASC',
+							'limit'				=> 4,
+							'offset'			=> 8,
+							'posts_per_page'	=> 4,
+						);
+						make_carousel($args);
+					?>
+					
+				</div>
+			
+			</div>
 		
 		</div>
 		
