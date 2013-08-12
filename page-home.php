@@ -276,7 +276,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3><a class="red" href="http://makezine.com/tag/diy-projects/">New Projects</a></h3>
+								<h3><a class="red" href="http://makezine.com/projects/">New Projects</a></h3>
 
 								<div class="grid-box boxy">
 
