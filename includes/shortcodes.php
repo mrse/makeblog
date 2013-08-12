@@ -419,7 +419,8 @@ add_shortcode( 'promo_34', 'promo_vol_34' );
 
 
 function make_github_3d_viewer($atts) {
-	$output = '<iframe class="render-viewer" src="https://render.github.com/view/3d/?url=' . urlencode( esc_url( $atts['url'] ) ) . '" frameborder="0" sandbox="allow-scripts allow-same-origin" width="620" height="420">Viewer requires iframe.</iframe>';
+	$url = str_replace( array( 'https://github.com/', 'http://github.com/', '/blob'), array( '', '', ''), $atts['url']);
+	$output = '<script src="' . esc_url( 'https://embed.github.com/view/3d/' . $url ) . '"></script>';
 	return $output;
 }
 

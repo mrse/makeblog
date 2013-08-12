@@ -132,7 +132,7 @@ make_get_header() ?>
 								$args = array(
 									'title' 		=> /* $author->display_name . '\'s ' .*/ ucfirst( make_post_type_better_name( $type ) ),
 									'post_type'		=> $type,
-									'all'			=> all,
+									'all'			=> 'all',
 									'tax_query' => array(
 										array(
 											'taxonomy' => 'author',

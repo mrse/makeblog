@@ -445,15 +445,15 @@ function make_carousel( $args, $title_link = true ) {
 							echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 15, '...' ) . '</p>';
 							echo '</div>'. "\n";
 							if ($type == 'video') {
-								echo '<div class="modal hide" id="myModal-' . $post->ID . '">
+								$link = get_post_meta( $post->ID, 'Link', true );
+								echo '<div class="modal hide" id="myModal-' . $post->ID . '" data-video="' . esc_url( $link ) . '">
 									<div class="modal-header">
 										<a class="close" data-dismiss="modal">&times;</a>
 										<h3>' . get_the_title( $post->ID ) . '</h3>
 									</div>
-									<div class="modal-body">';
-										$link = get_post_custom_values( 'Link' , $post->ID );
-										echo do_shortcode('[youtube='. esc_url( $link[0] ) .'&w=530]');
-										echo apply_filters('the_content', strip_shortcodes( $post->post_content ) );
+									<div class="modal-body">
+										<div class="link"></div>';
+										echo Markdown( strip_shortcodes( $post->post_content ) );
 									echo '</div>
 									<div class="modal-footer">
 										<a href="#" class="btn" data-dismiss="modal">Close</a>

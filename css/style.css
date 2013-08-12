@@ -5597,7 +5597,7 @@ h3 {
   line-height: 24px;
 }
 body ul li {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 140%;
 }
 #div-gpt-ad-664089004995786621-1 {
@@ -7229,6 +7229,7 @@ hr {
   background-repeat: no-repeat;
   font-size: 20px;
 }
+.attachment-p1,
 #top-left {
   margin-top: -41px;
 }
@@ -8317,6 +8318,7 @@ textarea.radio-narrow,
   box-shadow: none;
 }
 .new-footer ul li {
+  font-size: 14px !important;
   display: list-item;
 }
 .new-footer .control-group {
@@ -9301,7 +9303,16 @@ ul#tabs .current > a:hover {
 		opacity:1;
 		z-index:1;
 	}
-} */.single {
+} */
+.oembedall-container {
+  text-align: center;
+}
+.oembedall-container br,
+.oembedall-closehide,
+a.oembed {
+  display: none;
+}
+.single {
   background: url('../img/dots.png');
   background-color: url('../img/dots.png');
   background-repeat: repeat-x;
@@ -9598,7 +9609,7 @@ ul#tabs .current > a:hover {
   margin-right: 22px;
 }
 .primary-navigation ul > li > a {
-  padding-bottom: 9px;
+  padding-bottom: 3px;
 }
 .primary-navigation .dropdown-menu {
   margin-top: 0px;
@@ -11799,7 +11810,8 @@ a.button.small-button {
 .popup h3 {
   margin-top: 18px;
   color: white;
-  font-size: 20px;
+  font-size: 19px;
+  text-transform: none;
 }
 .popup .span2 a {
   font-size: 16px;

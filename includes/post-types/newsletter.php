@@ -135,9 +135,11 @@ add_filter( 'list_pages', 'make_page_parent_status_filter', 10, 2);
  */
 function make_private_page_query_filter($query) {
 	if ( is_admin() ) {
-		$screen = get_current_screen();
-		if ( 'nav-menus' == $screen->base )
-			$query->set( 'post_status', 'publish,private,future,pending,draft' );
+		if ( function_exists( 'get_current_screen' ) ) {
+			$screen = get_current_screen();
+			if ( 'nav-menus' == $screen->base )
+				$query->set( 'post_status', 'publish,private,future,pending,draft' );
+		}
 	}
 	return $query;
 }

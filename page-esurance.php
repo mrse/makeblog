@@ -41,15 +41,15 @@ make_get_header() ?>
 			<div class="tabbable">
 				
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#about" data-toggle="tab">About</a></li>
-					<li class=""><a href="#enter" data-toggle="tab">Enter Now</a></li>
-					<li class=""><a href="#entries" data-toggle="tab">View Entries</a></li>
+					<li class=""><a href="#about" data-toggle="tab">About</a></li>
+					<!-- <li class=""><a href="#enter" data-toggle="tab">Enter Now</a></li> -->
+					<li class="active"><a href="#entries" data-toggle="tab">Vote Now!</a></li>
 					<li class=""><a href="#winners" data-toggle="tab">Previous Winners</a></li>
 					<li class=""><a href="#rules" data-toggle="tab">Rules</a></li>
 				</ul>
 				
 				<div class="tab-content">
-					<div class="tab-pane active" id="about">
+					<div class="tab-pane" id="about">
 						
 						<?php 
 							if ( have_posts() ) : 
@@ -69,9 +69,9 @@ make_get_header() ?>
 						
 					</div>
 					
-					<div class="tab-pane" id="entries">
+					<div class="tab-pane active" id="entries">
 					
-						<iframe onload="window.parent.parent.scrollTo(0,0)" id="wizehiveportal" scrolling="auto" frameborder="0" width="940px" height="1800px"></iframe>
+						<iframe onload="window.parent.parent.scrollTo(0,0)" id="wizehiveportal" scrolling="auto" frameborder="0" width="940px" height="3434px"></iframe>
 						<script src="http://app.wizehive.com/js/portaliframe.js" type="text/javascript"></script><script type="text/javascript">displayPortal('makermedia2013');</script>
 						<p><a href="http://www.wizehive.com/photo-contest-software" target="_blank">Photo Contest Software</a> provided by WizeHive</p>
 						
