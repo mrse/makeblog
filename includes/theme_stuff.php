@@ -221,7 +221,7 @@ function make_enqueue_jquery() {
 	// wp_enqueue_script( 'make-tracker', get_stylesheet_directory_uri() . '/js/tracker.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-oembed', get_stylesheet_directory_uri() . '/js/jquery.oembed.js', array( 'jquery' ) );
 	
-	if ( is_front_page() ) {
+	if ( is_front_page() || is_post_type_archive('projects') ) {
 		wp_enqueue_script( 'make-optimizely', '//cdn.optimizely.com/js/288261727.js', array( 'jquery' ) );
 	}
 	
