@@ -256,7 +256,7 @@
 	}
 
 	function hook_bio_into_content( $content ) {
-		if( is_single() && is_main_query() ) {
+		if( is_single() && is_main_query() && get_post_type() != 'video' ) {
 			$content .= make_author_bio();
 		}
 		return $content;
