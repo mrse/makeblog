@@ -192,6 +192,8 @@
 				}
 			$output .= '</ul>';
 
+			$output .= '<div class="clearfix"></div>';
+
 			return $output;
 		}
 

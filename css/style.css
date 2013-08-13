@@ -9207,7 +9207,9 @@ ul#tabs .current > a:hover {
   margin: 0 0 10px;
 }
 .social li {
-  display: inline;
+  display: block;
+  float: left;
+  height: 16px;
   background-image: url(http://www.gravatar.com/images/grav-share-sprite.png);
   background-repeat: no-repeat;
   padding: 0px;
@@ -9251,6 +9253,7 @@ ul#tabs .current > a:hover {
 }
 .youtube {
   background-position: 0 -208px;
+  margin: inherit;
 }
 .noborder {
   border: 0!important;
