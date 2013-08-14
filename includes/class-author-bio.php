@@ -256,7 +256,8 @@
 	}
 
 	function hook_bio_into_content( $content ) {
-		if( is_single() && is_main_query() && get_post_type() != 'video' ) {
+		global $post;
+		if( is_single() && is_main_query() && get_post_type() != 'video' && $post->post_parent == 0  ) {
 			$content .= make_author_bio();
 		}
 		return $content;
