@@ -98,3 +98,70 @@ function make_go_custom_columns( $column, $post_id ) {
 		break;
     }
 }
+function add_go_search_page() {
+	add_submenu_page( 'edit.php?post_type=go', 'Go Link Search', 'Go Link Search', 'delete_others_pages', 'go_search', 'mf_go_search' );
+}
+
+add_action( 'admin_menu', 'add_go_search_page' );
+
+function mf_go_search() {
+
+	$slug = ( isset( $_GET['slug'] ) ) ? sanitize_text_field( $_GET['slug'] ) : '';
+	$url = ( isset( $_GET['url'] ) ) ? sanitize_text_field( $_GET['url'] ) : '';
+
+	//must check that the user has the required capability 
+	if ( ! current_user_can( 'delete_others_pages' ) )
+		wp_die( __( 'You do not have sufficient permissions to access this page.', 'make' ) );
+?>
+	<div class="wrap">
+		<h1>Go Links Search</h1>
+
+		<?php
+		$args = array(
+			'name' 			=> $slug,
+			'post_type' 	=> 'go',
+			'post_status' 	=> 'publish',
+			'meta_value'	=> $url,
+		);
+		$posts = new wp_query( $args );
+		?>
+		<div class="tablenav top">
+			<form id="posts-filter" method="get">
+				<input type="hidden" name="post_type" value="go">
+				<input type="hidden" name="page" value="go_search">
+				<?php wp_nonce_field( 'blog-dashboard-screen-save', 'make-go-search', false ); ?>
+				<label>Slug<input type="slug" id="post-search-input" name="slug" value="<?php echo ( isset( $slug ) ) ? esc_attr( $slug ) : ''; ?>"></label>
+				<label>URL<input type="url" id="post-url-input" name="url" value="<?php echo ( isset( $url ) ) ? esc_attr( $url ) : ''; ?>"></label>
+				<input type="submit" name="" id="search-submit" class="button" value="Search All Content">
+			</form>
+		</div>
+		<table id="go-search" class="table wp-list-table widefat fixed posts">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Go URL</th>
+					<th>Source URL</th>
+					<th>Shortened URL</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>Title</th>
+					<th>Go URL</th>
+					<th>Source URL</th>
+					<th>Shortened URL</th>
+				</tr>
+			</tfoot>
+			<tbody id="the-list">
+				<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
+					<tr>
+						<td><?php edit_post_link( get_the_title() ); ?></td>
+						<td><?php the_permalink(); ?></td>
+						<td><?php echo ( get_post_meta( get_the_ID(), 'url', true ) ) ? esc_url( get_post_meta( get_the_ID(), 'url', true ) ) : ''; ?></td>
+						<td><?php echo ( get_post_meta( get_the_ID(), 'bitly_url', true ) ) ? esc_url( get_post_meta( get_the_ID(), 'bitly_url', true ) ) : ''; ?></td>
+					</tr>
+				<?php endwhile; ?>
+			</tbody>
+		</table>
+	</div>
+<?php }
