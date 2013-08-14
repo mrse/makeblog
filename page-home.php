@@ -353,6 +353,7 @@ Template Name: Home Page
 											'tag__not_in' => array( 92075710, 22815 ),
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
+											'post_type' => array( 'post', 'projects', 'review', 'video', 'magazine' ),
 										);
 										
 
