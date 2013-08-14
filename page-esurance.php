@@ -43,7 +43,7 @@ make_get_header() ?>
 				<ul class="nav nav-tabs">
 					<li class=""><a href="#about" data-toggle="tab">About</a></li>
 					<!-- <li class=""><a href="#enter" data-toggle="tab">Enter Now</a></li> -->
-					<li class="active"><a href="#entries" data-toggle="tab">Vote Now!</a></li>
+					<li class="active"><a href="#entries" data-toggle="tab">View Entries</a></li>
 					<li class=""><a href="#winners" data-toggle="tab">Previous Winners</a></li>
 					<li class=""><a href="#rules" data-toggle="tab">Rules</a></li>
 				</ul>
