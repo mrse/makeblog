@@ -9,6 +9,12 @@ $number_entries_labels = array( '== Select a Number ==' );
 $cap = new CheezCap( array(
 		new CheezCapGroup( 'Featured Posts', 'firstGroup',
 			array(
+				new CheezCapBooleanOption(
+					'Maker Camp Homepage Takeover',
+					'Do you want the Maker Camp to be on the home page?',
+					'make_camp_takeover',
+					'1'
+				),
 				new CheezCapTextOption(
 					'Ribbon Title',
 					'What do you want the ribbon to say, keep this short. Ten characters or so...',

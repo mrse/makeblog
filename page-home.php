@@ -6,6 +6,8 @@ Template Name: Home Page
 
 <?php get_header(); ?>
 
+		<?php if ( !make_get_cap_option( 'make_camp_takeover' ) ) : ?>
+
 		<div class="waist">
 
 			<div class="container">
@@ -169,6 +171,12 @@ Template Name: Home Page
 			</div>
 
 		</div>
+
+		<?php else : ?>
+
+			<?php get_template_part( 'home-takover' ); ?>
+
+		<? endif; ?>
 
 		<div class="sand new-sand">
 
