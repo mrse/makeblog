@@ -78,6 +78,14 @@
 							?>
 						</nav>
 						<div class="additional-content">
+							<div class="community-login">
+								<ul>
+									<li class="gigya-logged-out"><a href="#" onclick="gigyaUtil.showRegistrationModal();">Register</a></li>
+									<li class="gigya-logged-out"><a href="#" onclick="gigyaUtil.showLoginModal();">Login</a></li>
+									<li class="gigya-logged-in" style="display:none;"><img src="" class="gigya-thumbnail" style="width:25px; height:25px; display:none;" /> <a href="#" onclick="gigyaUtil.showProfileModal();"><span class="gigya-first-name"></span></a></li>
+									<li class="gigya-logged-in" style="display:none;"><a href="#" onclick="gigyaUtil.logout();">logout</a></li>
+								</ul>
+							</div>
 							<div class="subscribe dropdown clearfix">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Subscribe</a>
 								<ul class="dropdown-menu">
