@@ -1,8 +1,7 @@
-<div class="waist">
+<div class="waist-takeover">
 
 	<div class="container">
 		
-		<h1>Jake was here, again...</h1>
 
 	</div>
 

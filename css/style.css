@@ -9194,6 +9194,11 @@ ul#tabs .current > a:hover {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+.waist-takeover {
+  background-image: url('../images/makercamp_background.jpg');
+  background-position: center;
+  height: 548px;
+}
 .avatar-298 {
   margin-bottom: 20px;
   border: 1px solid #cecece;
