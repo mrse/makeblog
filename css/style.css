@@ -9199,6 +9199,20 @@ ul#tabs .current > a:hover {
   background-position: center;
   height: 548px;
 }
+.waist-takeover .container {
+  padding: 20px 0;
+}
+.waist-takeover .container .thumb {
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.waist-takeover .container .thumb .thumbnail {
+  border: 0px;
+  padding: 0px;
+}
+.waist-takeover .container .thumb div {
+  padding: 9px;
+}
 .avatar-298 {
   margin-bottom: 20px;
   border: 1px solid #cecece;

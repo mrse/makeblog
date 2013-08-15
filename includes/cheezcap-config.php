@@ -9,12 +9,6 @@ $number_entries_labels = array( '== Select a Number ==' );
 $cap = new CheezCap( array(
 		new CheezCapGroup( 'Featured Posts', 'firstGroup',
 			array(
-				new CheezCapBooleanOption(
-					'Maker Camp Homepage Takeover',
-					'Do you want the Maker Camp to be on the home page?',
-					'make_camp_takeover',
-					'1'
-				),
 				new CheezCapTextOption(
 					'Ribbon Title',
 					'What do you want the ribbon to say, keep this short. Ten characters or so...',
@@ -325,6 +319,41 @@ $cap = new CheezCap( array(
 					'When enabled, this will make the header animate wit the .gif.',
 					'onair',
 					'onair'
+				),
+			)
+		),
+		new CheezCapGroup( 'Maker Camp Takeover', 'campGroup',
+			array(
+				new CheezCapBooleanOption(
+					'Maker Camp Homepage Takeover',
+					'Do you want the Maker Camp to be on the home page?',
+					'make_camp_takeover',
+					'1'
+				),
+				new CheezCapTextOption(
+					'Maker Camp Homepage Posts',
+					'Add two post IDs here, comma seperated, with no space.',
+					'make_camp_takeover_posts',
+					''
+				),
+				new CheezCapTextOption(
+					'Maker Camp Homepage Main Heading',
+					'This is the heading under the video on the left.',
+					'make_camp_takeover_heading',
+					''
+				),
+				new CheezCapTextOption(
+					'Maker Camp Homepage Content',
+					'This is the content under the heading on the left side.',
+					'make_camp_takeover_content',
+					'',
+					true
+				),
+				new CheezCapTextOption(
+					'THE BIG OL\' YOUTUBE VIDEO',
+					'Add the URL of a YouTube video here.',
+					'camp_youtube',
+					''
 				),
 			)
 		),
