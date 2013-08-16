@@ -155,7 +155,7 @@ Template Name: Home Page
 						<div class="home-ads bottom">
 
 							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
-							<div id='div-gpt-ad-664089004995786621-2'>
+							<div id='div-gpt-ad-664089004995786621-3'>
 								<script type='text/javascript'>
 									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-3')});
 								</script>
