@@ -109,13 +109,13 @@
 						
 						<div class="sidebar-ad">
 
-							<!-- Beginning Sync AdSlot 3 for Ad unit sidebar ### size: [[300,250]]  -->
-							<div id='div-gpt-ad-664089004995786621-3'>
-								<script type='text/javascript'>
-									googletag.display('div-gpt-ad-664089004995786621-2');
-								</script>
-							</div>
-							<!-- End AdSlot 2 -->
+							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
+						<div id='div-gpt-ad-664089004995786621-3'>
+							<script type='text/javascript'>
+								googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
+							</script>
+						</div>
+						<!-- End AdSlot 2 -->
 
 						</div>
 

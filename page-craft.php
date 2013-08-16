@@ -110,13 +110,13 @@ Template Name: Craft Home Page
 
 						<div style="height:250x;overflow:hidden">
 
-							<!-- Beginning Sync AdSlot 1 for Ad unit header ### size: [[300,250]]  -->
+							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 							<div id='div-gpt-ad-664089004995786621-2'>
 								<script type='text/javascript'>
-									googletag.display('div-gpt-ad-664089004995786621-2');
+									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
 								</script>
 							</div>
-							<!-- End AdSlot 1 -->
+							<!-- End AdSlot 2 -->
 
 						</div>
 
