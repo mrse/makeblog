@@ -37,7 +37,7 @@
 				foreach ( $posts as $post ) {
 					$output .= '<div class="thumb">';
 					$output .= '<a href="' . get_permalink() . '">';
-					$output .= get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb', 'image_class' => 'hide-thumbnail', 'echo' => false ) );
+					$output .= get_the_image( array( 'image_scan' => true, 'size' => 'category-thumb', 'image_class' => 'hide-thumbnail', 'echo' => false ) );
 					$output .= '</a>';
 					$output .= '<div class="">';
 					$output .= '<h4><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
