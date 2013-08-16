@@ -9202,6 +9202,9 @@ ul#tabs .current > a:hover {
 .waist-takeover .container {
   padding: 20px 0;
 }
+.waist-takeover .container .span8 .thumb div {
+  padding: 5px 0;
+}
 .waist-takeover .container .thumb {
   background-color: #fff;
   margin-bottom: 10px;
