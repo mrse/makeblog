@@ -236,7 +236,7 @@ $cap = new CheezCap( array(
 				),
 				new CheezCapTextOption(
 					'BIG OL\' YOUTUBE VIDEO',
-					'When you add the Iframe embed of a YouTube video here, it will add it under the feature boxes on the home page.',
+					'When you add the URL a YouTube video here, it will add it under the feature boxes on the home page.',
 					'craft_youtube',
 					''
 				),
@@ -252,7 +252,7 @@ $cap = new CheezCap( array(
 			array(
 				new CheezCapTextOption(
 					'BIG OL\' YOUTUBE VIDEO',
-					'When you add the Iframe embed of a YouTube video here, it will add it under the feature boxes on the home page.',
+					'When you add the URL of a YouTube video here, it will add it under the feature boxes on the home page.',
 					'youtube',
 					''
 				),
