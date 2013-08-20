@@ -383,7 +383,7 @@ Template Name: Craft Home Page
 											echo '<a href="'.get_permalink().'">';
 											the_post_thumbnail('small-home-feature-boxes');
 											the_title('<h4>', '</h4>');
-											echo '<p>'.wp_trim_words((get_the_content('...')), 12).'</p>';
+											echo '<p>' . wp_trim_words( ( strip_shortcodes( get_the_content('...') ) ), 12 ) . '</p>';
 											echo '</a>';
 										endwhile;
 
