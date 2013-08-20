@@ -16,6 +16,9 @@ if ($type == 'projects') {
 	return;
 }
 
+// Setup our default list of post types
+$post_types = array( 'post', 'video', 'projects', 'review', 'craft', 'magazine' );
+
 make_get_header(); ?>
 
 	<div class="category-top">
@@ -65,7 +68,7 @@ make_get_header(); ?>
 							'title'        => 'Featured in ' . get_queried_object()->name,
 							'limit'        => 2,
 							'tag'          => 'Featured',
-							'post_type'	   => array( 'post', 'video','projects', 'review', 'craft' )
+							'post_type'	   => ( ! empty( $type ) && in_array( $type, $post_types ) ) ? $type : array( 'post', 'video','projects', 'review', 'craft' )
 					) ); ?>
 					
 				</div>
