@@ -15,7 +15,7 @@ jQuery.cookie = function( key, value, options ) {
 			options.expires = -1;
 		}
 
-		if ( typeof options.expires === 'number') {
+		if ( typeof options.expires === 'number' ) {
 			var days = options.expires,
 				t = options.expires = new Date();
 
@@ -49,7 +49,7 @@ jQuery.cookie = function( key, value, options ) {
  * @type {Object}
  */
 var gigyaUtil = {
-	debug: true,
+	debug: false,
 
 	getContext: function() {
 		var d = new Date();
@@ -409,12 +409,12 @@ var gigyaUtil = {
 
 		return u;
 	},
-	trackEvent: function( e ) { //for Omniture
+	trackEvent: function( e ) { // For Omniture
 		if ( gigyaUtil.debug )
 			console.log( 'trackEvent() called');
 
 		if ( gigyaUtil.debug )
-			console.log(e);
+			console.log( e );
 
 		var action = '';
 
@@ -452,7 +452,7 @@ var gigyaUtil = {
 		jQuery.ajax({
 			type: 'POST',
 			cache: false,
-			url: '/wp-admin/admin-ajax.php', // TODO: FIX THIS.
+			url: ajaxurl,
 			data: d,
 			success: function( data, textStatus, jqXHR ) {
 				if ( gigyaUtil.debug )
@@ -484,7 +484,7 @@ var gigyaUtil = {
 		jQuery.ajax({
 			type: 'POST',
 			cache: false,
-			url: '/wp-admin/admin-ajax.php', // TODO: FIX THIS.
+			url: ajaxurl,
 			data: d,
 			success: function( data, textStatus, jqXHR ) {
 				if ( gigyaUtil.debug )
@@ -527,7 +527,7 @@ var gigyaUtil = {
 		jQuery.ajax({
 			type: 'POST',
 			cache: false,
-			url: '/wp-admin/admin-ajax.php', // TODO: FIX THIS
+			url: ajaxurl, // TODO: FIX THIS
 			data: d,
 			success: function( data, textStatus, jqXHR ) {
 				if ( gigyaUtil.debug )
@@ -655,17 +655,20 @@ gigya.accounts.addEventHandlers({
 			console.log( 'onLogin event fired' );
 
 		// Use this event to turn off 3 click and start pay wall monitoring
-		if ( gigyaUtil.debug )
+		// if ( gigyaUtil.debug )
 			console.log( e );
 		
 		// Set ui
 		var profile = e.profile;
 		var data = e.data;
 
+		// Pass the user profile information and update our login screen
 		gigyaUtil.showUser( profile );
+
+		// Update the login buttons to show that we are now logged in.
 		gigyaUtil.showLoggedIn();
 		
-		// Set cookies
+		// Set cookies... mmmm
 		var now = new Date();
 		var expiresDate = new Date();
 		var skel = gigyaUtil.getUserSkeleton( profile );
@@ -698,11 +701,11 @@ gigya.accounts.addEventHandlers({
 				url: c.url,
 				timestamp: c.timestamp
 			};
-			d.cid = c.cid
-			isReg = true;
+			d.cid = c.cid;
+			isReg = false;
 		}
 
-		if ( isReg ) { // Rhis is a registration
+		if ( isReg ) { // This is a registration
 			if ( gigyaUtil.debug )
 				console.log( 'this is a registration' );
 
@@ -712,7 +715,7 @@ gigya.accounts.addEventHandlers({
 			jQuery.ajax({
 				type: 'POST',
 				cache: false,
-				url: "/wp-admin/admin-ajax.php", // TODO: FIX THIS
+				url: ajaxurl, // TODO: FIX THIS
 				data: e,
 				success: function( data, textStatus, jqXHR ) {
 					if ( gigyaUtil.debug )
@@ -805,6 +808,7 @@ gigya.accounts.addEventHandlers({
 		gigyaUtil.trackEvent(e);
 	}
 });
+
 
 /**
  * Handle our Login UI

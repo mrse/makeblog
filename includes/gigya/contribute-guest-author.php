@@ -1,22 +1,14 @@
 <?php
 
-add_action('wp_ajax_gigya_makeblog_register', 'gigya_makeblog_register');
-add_action('wp_ajax_nopriv_gigya_makeblog_register', 'gigya_makeblog_register');
 
-add_action('wp_ajax_gigya_makeblog_update', 'gigya_makeblog_update');
-add_action('wp_ajax_nopriv_gigya_makeblog_update', 'gigya_makeblog_update');
-
-add_action('wp_ajax_esp_acct_search', 'esp_acct_search');
-add_action('wp_ajax_nopriv_esp_acct_search', 'esp_acct_search');
-
-add_action('wp_ajax_test_esp', 'test_esp');
-add_action('wp_ajax_nopriv_test_esp', 'test_esp');
-
-
+/**
+ * Register our Guest Authors with CoAuthors Plus.
+ * @return void
+ */
 function gigya_makeblog_register() {
 	global $coauthors_plus;
 	
-	$payload = $_POST;
+	$payload  = $_POST;
 	$response = array();
 	$response['complete'] = false;
 	
@@ -129,7 +121,7 @@ function gigya_makeblog_register() {
 		makeblog_update_post_meta( $make_post_id, 'cap-display_name',  sanitize_text_field( $name ) );
 		makeblog_update_post_meta( $make_post_id, 'cap-first_name',  sanitize_text_field( $firstName ) );
 		makeblog_update_post_meta( $make_post_id, 'cap-last_name',  sanitize_text_field( $lastName ) );
-		makeblog_update_post_meta( $make_post_id, 'cap-user_email',  sanitize_email( $email );
+		makeblog_update_post_meta( $make_post_id, 'cap-user_email',  sanitize_email( $email ) );
 		makeblog_update_post_meta( $make_post_id, 'cap-website',  esc_url_raw( $profileURL ) );
 		makeblog_update_post_meta( $make_post_id, 'cap-photo_url',  esc_url_raw( $photoURL ) );
 		makeblog_update_post_meta( $make_post_id, 'cap-thumbnail_url',  esc_url_raw( $thumbnailURL ) );
@@ -189,16 +181,22 @@ function gigya_makeblog_register() {
 	
 	exit;
 }
+add_action('wp_ajax_gigya_makeblog_register', 'gigya_makeblog_register');
+add_action('wp_ajax_nopriv_gigya_makeblog_register', 'gigya_makeblog_register');
 
 
+/**
+ * Update user accounts
+ * @return void
+ */
 function gigya_makeblog_update() {
 		
-	$payload = $_POST;
+	$payload  = $_POST;
 	$response = array();
 	$response['complete'] = false;
 	
 	$profile = $payload['profile'];
-	$uid = $payload['UID'];
+	$uid 	 = $payload['UID'];
 	
 	//failsafe user info
 	$firstName = '';
@@ -210,7 +208,7 @@ function gigya_makeblog_update() {
 	if ( isset( $profile['lastName'] ) ) {
 		$lastName = $profile['lastName'];
 	}
-	$name = $firstName . " " . $lastName;
+	$name = $firstName . ' ' . $lastName;
 
 	$email = '';
 	if ( isset( $profile['email'] ) ) {
@@ -266,14 +264,14 @@ function gigya_makeblog_update() {
 		$country = $profile['country'];
 	}
 	
-	//update guest author meta info
-	makeblog_update_post_meta( $uid, 'cap-display_name',  sanitize_text_field($name) );
-	makeblog_update_post_meta( $uid, 'cap-first_name',  sanitize_text_field($firstName) );
-	makeblog_update_post_meta( $uid, 'cap-last_name',  sanitize_text_field($lastName) );
+	// Update guest author meta info
+	makeblog_update_post_meta( $uid, 'cap-display_name',  sanitize_text_field( $name) );
+	makeblog_update_post_meta( $uid, 'cap-first_name',  sanitize_text_field( $firstName ) );
+	makeblog_update_post_meta( $uid, 'cap-last_name',  sanitize_text_field( $lastName ) );
 	makeblog_update_post_meta( $uid, 'cap-user_email',  sanitize_email( $email ) );
-	makeblog_update_post_meta( $uid, 'cap-website',  esc_url_raw($profileURL) );
-	makeblog_update_post_meta( $uid, 'cap-photo_url',  esc_url_raw($photoURL) );
-	makeblog_update_post_meta( $uid, 'cap-thumbnail_url',  esc_url_raw($thumbnailURL) );
+	makeblog_update_post_meta( $uid, 'cap-website',  esc_url_raw( $profileURL ) );
+	makeblog_update_post_meta( $uid, 'cap-photo_url',  esc_url_raw( $photoURL ) );
+	makeblog_update_post_meta( $uid, 'cap-thumbnail_url',  esc_url_raw( $thumbnailURL ) );
 	makeblog_update_post_meta( $uid, 'cap-gender',  $gender );
 	makeblog_update_post_meta( $uid, 'cap-birthdate',  $birthdate );
 	makeblog_update_post_meta( $uid, 'cap-zip',  $zip );
@@ -285,11 +283,20 @@ function gigya_makeblog_update() {
 	
 	//return AJAX response
 	header( "Content-Type: application/json" );
-	echo json_encode($response);
+	echo json_encode( $response );
 
 	exit;
 }
+add_action('wp_ajax_gigya_makeblog_update', 'gigya_makeblog_update');
+add_action('wp_ajax_nopriv_gigya_makeblog_update', 'gigya_makeblog_update');
 
+
+/**
+ * [normalizeSimpleXML description]
+ * @param  [type] $obj    [description]
+ * @param  [type] $result [description]
+ * @return [type]         [description]
+ */
 function normalizeSimpleXML($obj, &$result) {
 	$data = $obj;
 	if (is_object($data)) {
@@ -310,16 +317,32 @@ function normalizeSimpleXML($obj, &$result) {
 	}
 }
 	
+
+/**
+ * [XML2JSON description]
+ * @param [type] $xml [description]
+ */
 function XML2JSON($xml) {
 	normalizeSimpleXML(simplexml_load_string($xml), $result);
 	return json_encode($result);
 }
 
+
+/**
+ * [XML2array description]
+ * @param [type] $xml [description]
+ */
 function XML2array($xml) {
 	normalizeSimpleXML(simplexml_load_string($xml), $result);
 	return $result;
 }
 
+
+/**
+ * [get_esp_listener description]
+ * @param  [type] $srv [description]
+ * @return [type]      [description]
+ */
 function get_esp_listener($srv) {
 	$lisnr = '';
 	
@@ -364,6 +387,12 @@ function get_esp_listener($srv) {
 	return $lisnr;
 }
 
+
+/**
+ * [get_esp_error_meaning description]
+ * @param  [type] $code [description]
+ * @return [type]       [description]
+ */
 function get_esp_error_meaning($code) {
 	$k = ''.$code; //force to string
 	$meaning = "unknown";
@@ -520,6 +549,13 @@ function get_esp_error_meaning($code) {
 	return $meaning;
 }
 
+
+/**
+ * [get_esp_api_url description]
+ * @param  [type] $srv [description]
+ * @param  [type] $req [description]
+ * @return [type]      [description]
+ */
 function get_esp_api_url($srv,$req) {
 	// https://www.pubservice.com/wsrvc/Listener<##>.asmx/<SERVICE NAME>?CUID=<CUID>&CPWD=<CPWD>&REQ=<Request in XML format>
 	
@@ -532,6 +568,13 @@ function get_esp_api_url($srv,$req) {
 	return $url;
 }
 
+
+/**
+ * [get_esp_xml description]
+ * @param  [type] $srv [description]
+ * @param  [type] $ary [description]
+ * @return [type]      [description]
+ */
 function get_esp_xml($srv,$ary) {
 
 	$pubcode = get_esp_pubcode();
@@ -557,6 +600,13 @@ function get_esp_xml($srv,$ary) {
 	return $xml;
 }
 
+
+/**
+ * [get_esp_api description]
+ * @param  [type] $srv    [description]
+ * @param  [type] $params [description]
+ * @return [type]         [description]
+ */
 function get_esp_api($srv,$params) {
 	
 	$response = array();
@@ -639,6 +689,11 @@ function get_esp_api($srv,$params) {
 	return $response;
 }
 
+
+/**
+ * [test_esp description]
+ * @return [type] [description]
+ */
 function test_esp() {
 	
 	$payload = $_POST;
@@ -699,9 +754,14 @@ function test_esp() {
 
 	exit;
 }
+add_action('wp_ajax_test_esp', 'test_esp');
+add_action('wp_ajax_nopriv_test_esp', 'test_esp');
+
 
 /**
- *
+ * [get_esp_acct description]
+ * @param  [type] $params [description]
+ * @return [type]         [description]
  */
 function get_esp_acct($params) {
 
@@ -942,8 +1002,10 @@ function get_esp_acct($params) {
 	return $acct;
 }
 
+
 /**
- *
+ * [esp_acct_search description]
+ * @return [type] [description]
  */
 function esp_acct_search() {
 
@@ -958,6 +1020,8 @@ function esp_acct_search() {
 
 	exit;
 }
+add_action( 'wp_ajax_esp_acct_search', 'esp_acct_search' );
+add_action( 'wp_ajax_nopriv_esp_acct_search', 'esp_acct_search' );
 
 
 /**
