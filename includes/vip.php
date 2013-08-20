@@ -270,7 +270,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 if ( false !== strpos( $_SERVER['REQUEST_URI'], '_' ) )
 	add_action( 'template_redirect', 'makeblog_redirect_urls_with_underscores' );
 function makeblog_redirect_urls_with_underscores( ) {
-	if ( !is_404() )
+	if ( !is_404() || is_preview() )
 		return;
 	$new_uri = str_replace( '_', '-', $_SERVER['REQUEST_URI'] );
 	$new_url = home_url( $new_uri );
