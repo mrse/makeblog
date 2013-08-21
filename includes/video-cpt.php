@@ -76,7 +76,7 @@ function make_register_taxonomy_playlist() {
 		'query_var' => true
 	);
 
-	register_taxonomy( 'playlist', array('video'), $args );
+	register_taxonomy( 'playlist', array('video','post'), $args );
 }
 
 $field_data = array (
