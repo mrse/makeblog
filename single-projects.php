@@ -308,6 +308,8 @@ get_header(); ?>
 							<div class="row">
 								
 								<div class="span8">
+
+									<?php echo make_author_bio(); ?>
 										
 									<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
 

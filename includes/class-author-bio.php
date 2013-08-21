@@ -257,7 +257,7 @@
 
 	function hook_bio_into_content( $content ) {
 		global $post;
-		if( is_single() && is_main_query() && !in_array( get_post_type(),  array( 'video', 'page-2' ) ) && $post->post_parent == 0  ) {
+		if( is_single() && is_main_query() && !in_array( get_post_type(),  array( 'video', 'page-2', 'projects' ) ) && $post->post_parent == 0  ) {
 			$content .= make_author_bio();
 		}
 		return $content;
