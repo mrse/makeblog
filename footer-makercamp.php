@@ -83,7 +83,7 @@
 								<div class="about-column-02">
 									<ul>
 										<li><a href="http://makermedia.com/about-us/management-team/" target="_blank">About Us</a></li>
-										<li><a href="http://makezine.com/faq/index.html" target="_blank">FAQ</a></li>
+										<!-- <li><a href="http://makezine.com/faq/index.html" target="_blank">FAQ</a></li> -->
 										<li><a href="http://makezine.com/community/index.html" target="_blank">Forums</a></li>
 										<li><a href="http://makezine.com/contribute/" target="_blank">Write for MAKE</a></li>
 									</ul>
