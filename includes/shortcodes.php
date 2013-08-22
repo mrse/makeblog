@@ -241,12 +241,12 @@ function make_volume_blurb() {
 	return $output;
 }
 
-add_shortcode( 'volume', 'make_volume_blurb' );
+add_shortcode( 'old_volume', 'make_volume_blurb' );
 
 function make_blurb_add_shortcode( $content ) {
 	global $post;
 	if ( '246865' == $post->post_parent ) {
-		$content = $content . do_shortcode( '[volume]' );
+		$content = $content . do_shortcode( '[old_volume]' );
 		return $content;
 	} else {
 		return $content;
