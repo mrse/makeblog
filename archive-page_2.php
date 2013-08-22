@@ -41,7 +41,7 @@ get_header(); ?>
 
 									<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
-									<p class="meta top">By <a href="<?php echo esc_url( $url[0] ); ?>"><?php echo esc_html( $name[0] ); ?></a>, <?php the_time('Y/m/d \@ g:i a') ?></p>
+									<p class="meta top">By <a href="<?php echo esc_url( $url[0] ); ?>"><?php echo esc_html( $name[0] ); ?></a>, <?php the_time('m/d/Y \@ g:i a') ?></p>
 
 									<?php the_content(); ?>
 

@@ -36,7 +36,7 @@ get_header('craft'); ?>
 											} else { 
 												the_author_posts_link(); 
 											} ?>, 
-										<?php the_time('Y/m/d \@ g:i a') ?>
+										<?php the_time('m/d/Y \@ g:i a') ?>
 									</p>
 
 									<?php the_content(); ?>
