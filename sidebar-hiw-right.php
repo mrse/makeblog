@@ -21,14 +21,8 @@
 					<div class="atclear"></div></div>
 					<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f98388529c0fff4"></script>
 					<!-- AddThis Button END -->
-                                        <h4>Title Sponsor</h4>
-					<ul class="unstyled" id="sponsors">
-						<li>
-							<a style="margin-bottom:10px;" href="http://www.ge.com/" class="thumbnail">
-								<img src="http://makezineblog.files.wordpress.com/2013/04/ge_logo.jpg?w=130" alt="General Electric Logo" width="130">
-							</a>
-						</li>
-					</ul>
+                    
+					
 					<style type="text/css">
 						ul.unstyled li a {margin-bottom:10px;}
 					</style>
