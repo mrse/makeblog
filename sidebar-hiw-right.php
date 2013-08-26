@@ -21,7 +21,7 @@
 					<div class="atclear"></div></div>
 					<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f98388529c0fff4"></script>
 					<!-- AddThis Button END -->
-					<!-- <h4>Title Sponsor</h4>
+                                        <h4>Title Sponsor</h4>
 					<ul class="unstyled" id="sponsors">
 						<li>
 							<a style="margin-bottom:10px;" href="http://www.ge.com/" class="thumbnail">
@@ -32,32 +32,27 @@
 					<style type="text/css">
 						ul.unstyled li a {margin-bottom:10px;}
 					</style>
-					<h4>Supporting Sponsors</h4>
+					<h4>Partner</h4>
 					<ul class="unstyled" id="sponsors">
 					  	<li>
-							<a style="margin-bottom:10px;" href="http://www.google.com/entrepreneurs/" class="thumbnail">
-								<img src="http://makezineblog.files.wordpress.com/2013/04/googleforentrepreneurs_logo.jpeg?w=130" alt="Google for Entrepreneurs" width="130">
+							<a style="margin-bottom:10px;" href="http://www.nysci.org/" class="thumbnail">
+								<img src="http://makezineblog.files.wordpress.com/2013/08/hiw-sponsor-nysci.png?w=130" alt="NY SCI" width="130">
 							</a>
 						</li>
 						<li>
-							<a href="http://www.pchintl.com" class="thumbnail">
-								<img src="http://cdn.makezine.com/make/hardware/pch.png" alt="PCH International">
-							</a>
-						</li>
-						<li>
-							<a style="margin-bottom:10px;" href="http://www.shopbottools.com/" class="thumbnail">
-								<img src="http://cdn.makezine.com/make/bootstrap/img/etc/ShopBot-Logo-w-Reg.png" alt="ShopBot" width="130">
+							<a href="http://www.nycedc.com" class="thumbnail">
+								<img src="http://makezineblog.files.wordpress.com/2013/08/hiw-sponsor-nycedc.jpg?W=130" alt="NYC EDU">
 							</a>
 						</li>
 					</ul>
-						<h4>Media Sponsor</h4>
+						<h4>Media Partner</h4>
 					<ul class="unstyled" id="sponsors">
 						<li>
 							<a style="margin-bottom:10px;" href="http://www.engadget.com/expand/about/" target="_blank">
 								<img class="thumbnail" src="http://makezineblog.files.wordpress.com/2013/04/engadget-logo.jpg?w=130" alt="ShopBot" width="130">
 							</a>
 						</li>
-					</ul> -->
+					</ul>
 					<h4>Press</h4>
 						<img class="thumbnail" src="http://makezineblog.files.wordpress.com/2013/03/hiw_web-asset_cnet-quote1.jpg" alt="">
 					<img src="http://cdn.makezine.com/make/bootstrap/img/etc/businessweek.jpg" alt="Bloomberg Businessweek" class="thumbnail" width="130">
