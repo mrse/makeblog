@@ -3,7 +3,7 @@
 .step-wrapper h3 { cursor:inherit !important; }
 .step-contents { padding:.5em; }
 .step .steps-template, .parts .parts-template, .tools .tools-template { display:none; }
-.step-title { position:relative; }
+.step-title { position:relative; cursor:move; }
 .step-title .remove-step, .part-title .remove-part, .tool-title .remove-tool { position:absolute; right:8px; top:8px; opacity:.3; cursor:pointer; }
 .step-title .remove-step:hover, .part-title .remove-part:hover, .tool-title .remove-tool:hover { opacity:1; }
 
