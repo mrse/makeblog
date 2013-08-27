@@ -89,7 +89,7 @@ make_get_header(); ?>
 								customSearchOptions['googleAnalyticsOptions'] = googleAnalyticsOptions;
 								customSearchOptions['adoptions'] = {'layout': 'noTop'};
 								var customSearchControl = new google.search.CustomSearchControl(
-									'008032414425079535247:kplxrakvu20', customSearchOptions);
+									'013710623676068871951:xunnvqtkgnw', customSearchOptions);
 								customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
 								var options = new google.search.DrawOptions();
 								options.setAutoComplete(true);

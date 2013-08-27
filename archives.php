@@ -60,7 +60,7 @@ get_header(); ?>
 
 										<?php the_content(); ?>
 
-										<p class="meta top">By <?php the_author_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>
+										<p class="meta top">By <?php the_author_link(); ?>, <?php the_time('m/d/Y \@ g:i a') ?></p>
 										<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
 
 									</div>

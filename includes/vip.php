@@ -156,7 +156,6 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/community/index.html'	=> 'http://archive.makezine.com/community/index.html',
 		'/blog/help/index.html'			=> 'http://archive.makezine.com/help/index.html',
 		'/blog/hardware-innovation-workshop/videos.html' => 'http://archive.makezine.com/hardware-innovation-workshop/videos.html',
-		'/blog/magazine/newsletter/makerpro' => 'http://makezine.com/maker-pro-sign-up/',
 		'/blog/groups'					=> 'http://archive.makezine.com/groups/',
 		'/blog/make-newsletter'			=> 'http://makezine.com/newsletter/',
 		'/blog/page-2/'					=> 'http://makezine.com/page-2/',
@@ -250,7 +249,6 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/community/index.html'		=> 'http://archive.makezine.com/community/index.html',
 		'/help/index.html'			=> 'http://archive.makezine.com/help/index.html',
 		'/hardware-innovation-workshop/videos.html'	=> 'http://archive.makezine.com/hardware-innovation-workshop/videos.html',
-		'/magazine/newsletter/makerpro' => 'http://makezine.com/maker-pro-sign-up/',
 		'/groups'					=> 'http://archive.makezine.com/groups/',
 		'/make-newsletter'			=> 'http://makezine.com/newsletter/',
 		'/magazine/newsletter/subscribe/free-digital-magazine.html'			=> 'http://archive.makezine.com/magazine/newsletter/subscribe/free-digital-magazine.html',
@@ -272,7 +270,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 if ( false !== strpos( $_SERVER['REQUEST_URI'], '_' ) )
 	add_action( 'template_redirect', 'makeblog_redirect_urls_with_underscores' );
 function makeblog_redirect_urls_with_underscores( ) {
-	if ( !is_404() )
+	if ( !is_404() || is_preview() )
 		return;
 	$new_uri = str_replace( '_', '-', $_SERVER['REQUEST_URI'] );
 	$new_url = home_url( $new_uri );

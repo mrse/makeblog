@@ -53,7 +53,7 @@ get_header(); ?>
 
 									<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
-									<p class="meta top">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?> 
+									<p class="meta top">By <?php the_author_posts_link(); ?>, <?php the_time('m/d/Y \@ g:i a') ?> 
 
 										<?php
 											

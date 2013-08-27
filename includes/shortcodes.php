@@ -124,7 +124,7 @@ function meetup_newsletter( $atts, $content = null ) {
 							<label class="checkbox" for="CRAFTNewsletter">CRAFT Newsletter<input type="checkbox" name="cm-ol-jjurhj" id="CRAFTNewsletter" /></label>
 							<label class="checkbox" for="MAKENewsletter">MAKE Newsletter<input type="checkbox" name="cm-ol-jjuylk" id="MAKENewsletter" /></label>
 							<label class="checkbox" for="MakerShed-MasterList">Maker Shed<input type="checkbox" name="cm-ol-tyvyh" id="MakerShed-MasterList" /></label>
-							<label class="checkbox" for="MakerProNewsletter">Maker Pro Newsletter<input type="checkbox" name="cm-ol-jjhuukr" id="MakerProNewsletter" /></label>
+							<label class="checkbox" for="MakerProNewsletter">Maker Pro Newsletter<input type="checkbox" name="cm-ol-jrsydu" id="MakerProNewsletter" /></label>
 						</div>
 					</div>
 				</div>
@@ -241,12 +241,12 @@ function make_volume_blurb() {
 	return $output;
 }
 
-add_shortcode( 'volume', 'make_volume_blurb' );
+add_shortcode( 'old_volume', 'make_volume_blurb' );
 
 function make_blurb_add_shortcode( $content ) {
 	global $post;
 	if ( '246865' == $post->post_parent ) {
-		$content = $content . do_shortcode( '[volume]' );
+		$content = $content . do_shortcode( '[old_volume]' );
 		return $content;
 	} else {
 		return $content;

@@ -68,7 +68,7 @@ get_header(); ?>
 						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 						<div id='div-gpt-ad-664089004995786621-2'>
 							<script type='text/javascript'>
-								googletag.display('div-gpt-ad-664089004995786621-2');
+								googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
 							</script>
 						</div>
 						<!-- End AdSlot 2 -->

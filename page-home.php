@@ -6,6 +6,8 @@ Template Name: Home Page
 
 <?php get_header(); ?>
 
+		<?php if ( !make_get_cap_option( 'make_camp_takeover' ) ) : ?>
+
 		<div class="waist">
 
 			<div class="container">
@@ -140,25 +142,25 @@ Template Name: Home Page
 
 						<div class="home-ads">
 
-							<!-- Beginning Sync AdSlot 1 for Ad unit header ### size: [[300,250]]  -->
+							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 							<div id='div-gpt-ad-664089004995786621-2'>
 								<script type='text/javascript'>
-									googletag.display('div-gpt-ad-664089004995786621-2');
+									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
 								</script>
 							</div>
-							<!-- End AdSlot 1 -->
+							<!-- End AdSlot 2 -->
 
 						</div>
 
 						<div class="home-ads bottom">
 
-							<!-- Beginning Sync AdSlot 1 for Ad unit header ### size: [[300,250]]  -->
+							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 							<div id='div-gpt-ad-664089004995786621-3'>
 								<script type='text/javascript'>
-									googletag.display('div-gpt-ad-664089004995786621-3');
+									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-3')});
 								</script>
 							</div>
-							<!-- End AdSlot 1 -->
+							<!-- End AdSlot 2 -->
 
 						</div>
 
@@ -169,6 +171,12 @@ Template Name: Home Page
 			</div>
 
 		</div>
+
+		<?php else : ?>
+
+			<?php get_template_part( 'home-takover' ); ?>
+
+		<? endif; ?>
 
 		<div class="sand new-sand">
 

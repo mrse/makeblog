@@ -10,18 +10,6 @@
 ?>
 					<div class="span4 sidebar">
 
-						<div class="sidebar-ad">
-
-							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
-							<div id='div-gpt-ad-664089004995786621-2'>
-								<script type='text/javascript'>
-									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
-								</script>
-							</div>
-							<!-- End AdSlot 2 -->
-
-						</div>
-
 						<div class="plus_forum">
 							<a href="https://plus.google.com/communities/105413589856236995389">
 								<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Make_Forum_join_banner_mini.jpg" alt="Join the MAKE Forum">

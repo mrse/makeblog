@@ -16,6 +16,9 @@ if ($type == 'projects') {
 	return;
 }
 
+// Setup our default list of post types
+$post_types = array( 'post', 'video', 'projects', 'review', 'craft', 'magazine' );
+
 make_get_header(); ?>
 
 	<div class="category-top">
@@ -65,7 +68,7 @@ make_get_header(); ?>
 							'title'        => 'Featured in ' . get_queried_object()->name,
 							'limit'        => 2,
 							'tag'          => 'Featured',
-							'post_type'	   => array( 'post', 'video','projects', 'review', 'craft' )
+							'post_type'	   => ( ! empty( $type ) && in_array( $type, $post_types ) ) ? $type : array( 'post', 'video','projects', 'review', 'craft' )
 					) ); ?>
 					
 				</div>
@@ -77,7 +80,7 @@ make_get_header(); ?>
 						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 						<div id='div-gpt-ad-664089004995786621-2'>
 							<script type='text/javascript'>
-								googletag.display('div-gpt-ad-664089004995786621-2');
+								googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
 							</script>
 						</div>
 						<!-- End AdSlot 2 -->

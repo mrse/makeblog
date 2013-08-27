@@ -236,7 +236,7 @@ $cap = new CheezCap( array(
 				),
 				new CheezCapTextOption(
 					'BIG OL\' YOUTUBE VIDEO',
-					'When you add the Iframe embed of a YouTube video here, it will add it under the feature boxes on the home page.',
+					'When you add the URL a YouTube video here, it will add it under the feature boxes on the home page.',
 					'craft_youtube',
 					''
 				),
@@ -252,7 +252,7 @@ $cap = new CheezCap( array(
 			array(
 				new CheezCapTextOption(
 					'BIG OL\' YOUTUBE VIDEO',
-					'When you add the Iframe embed of a YouTube video here, it will add it under the feature boxes on the home page.',
+					'When you add the URL of a YouTube video here, it will add it under the feature boxes on the home page.',
 					'youtube',
 					''
 				),
@@ -319,6 +319,41 @@ $cap = new CheezCap( array(
 					'When enabled, this will make the header animate wit the .gif.',
 					'onair',
 					'onair'
+				),
+			)
+		),
+		new CheezCapGroup( 'Maker Camp Takeover', 'campGroup',
+			array(
+				new CheezCapBooleanOption(
+					'Maker Camp Homepage Takeover',
+					'Do you want the Maker Camp to be on the home page?',
+					'make_camp_takeover',
+					'1'
+				),
+				new CheezCapTextOption(
+					'Maker Camp Homepage Posts',
+					'Add two post IDs here, comma seperated, with no space.',
+					'make_camp_takeover_posts',
+					''
+				),
+				new CheezCapTextOption(
+					'Maker Camp Homepage Main Heading',
+					'This is the heading under the video on the left.',
+					'make_camp_takeover_heading',
+					''
+				),
+				new CheezCapTextOption(
+					'Maker Camp Homepage Content',
+					'This is the content under the heading on the left side.',
+					'make_camp_takeover_content',
+					'',
+					true
+				),
+				new CheezCapTextOption(
+					'THE BIG OL\' YOUTUBE VIDEO',
+					'Add the URL of a YouTube video here.',
+					'camp_youtube',
+					''
 				),
 			)
 		),
