@@ -152,7 +152,7 @@ class Contextly
         if ( empty( $post_id ) ) return false;
 
 	    $display_widget_flag = null;
-	    if ( isset( $_POST['contextly_display_widgets'] ) ) {
+	    if ( isset( $_POST['contextly_display_widgets'] ) && is_bool( $_POST['contextly_display_widgets'] ) ) {
 		    $display_widget_flag = $_POST['contextly_display_widgets'];
 	    }
 
