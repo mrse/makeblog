@@ -26,8 +26,16 @@
 					<style type="text/css">
 						ul.unstyled li a {margin-bottom:10px;}
 					</style>
+					<h4>Presenting Sponsor</h4>
+					<ul class="unstyled" id="presenting-sponsor">
+					  	<li>
+							<a style="margin-bottom:10px;" href="http://www.ge.com/" class="thumbnail">
+								<img src="http://makezineblog.files.wordpress.com/2013/04/ge_logo.jpg?w=130" alt="General Electric Logo" width="130">
+							</a>
+						</li>
+					</ul>
 					<h4>Partner</h4>
-					<ul class="unstyled" id="sponsors">
+					<ul class="unstyled" id="partner">
 					  	<li>
 							<a style="margin-bottom:10px;" href="http://www.nysci.org/" class="thumbnail">
 								<img src="http://makezineblog.files.wordpress.com/2013/08/hiw-sponsor-nysci.png?w=130" alt="NY SCI" width="130">
@@ -40,7 +48,7 @@
 						</li>
 					</ul>
 						<h4>Media Partner</h4>
-					<ul class="unstyled" id="sponsors">
+					<ul class="unstyled" id="media-partner">
 						<li>
 							<a style="margin-bottom:10px;" href="http://www.engadget.com/expand/about/" target="_blank">
 								<img class="thumbnail" src="http://makezineblog.files.wordpress.com/2013/04/engadget-logo.jpg?w=130" alt="ShopBot" width="130">
