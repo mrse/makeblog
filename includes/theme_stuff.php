@@ -242,12 +242,19 @@ add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
 function make_enqueue_resources_admin() {
 	$screen = get_current_screen();
 
+	// Run this code when we are in the magazine dashboard
 	if ( $screen->id == 'volume_page_manager' ) {
 		wp_enqueue_style( 'make-dashboard-css', get_stylesheet_directory_uri() . '/includes/magazine-dashboard/css/dashboard.css' );
 
 		wp_enqueue_script( 'make-sort-table', get_stylesheet_directory_uri() . '/js/jquery.tablesorter.min.js', array( 'jquery' ) );
 		wp_enqueue_script( 'make-dashboard', get_stylesheet_directory_uri() . '/includes/magazine-dashboard/js/dashboard-scripts.js', array( 'make-sort-table' ) );
 	}
+
+	// Run this code when we are in the magazine edit screen
+	if ( $screen->id == 'magazine' ) {
+		wp_enqueue_script( 'make-hide-publish-btn', get_stylesheet_directory_uri() . '/js/jquery.hide-publish-btn.js', array( 'jquery' ), '1.0', true );
+	}
+
 }
 add_action( 'admin_enqueue_scripts', 'make_enqueue_resources_admin' );
 
