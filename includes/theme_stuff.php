@@ -1339,22 +1339,6 @@ function make_remove_metaboxes_for_authors() {
 		remove_meta_box( 'edit-flow-notifications', 'review', 'advanced' );
 		remove_meta_box( 'edit-flow-notifications', 'video', 'advanced' );
 
-		// Remove Post Tags
-		remove_meta_box( 'tagsdiv-post_tag', 'post', 'side' );
-		remove_meta_box( 'tagsdiv-post_tag', 'projects', 'side' );
-		remove_meta_box( 'tagsdiv-post_tag', 'magazine', 'side' );
-		remove_meta_box( 'tagsdiv-post_tag', 'review', 'side' );
-		remove_meta_box( 'tagsdiv-post_tag', 'craft', 'side' );
-		remove_meta_box( 'tagsdiv-post_tag', 'video', 'side' );
-
-		// Remove Categories
-		remove_meta_box( 'categorydiv', 'post', 'side' );
-		remove_meta_box( 'categorydiv', 'projects', 'side' );
-		remove_meta_box( 'categorydiv', 'magazine', 'side' );
-		remove_meta_box( 'categorydiv', 'review', 'side' );
-		remove_meta_box( 'categorydiv', 'craft', 'side' );
-		remove_meta_box( 'categorydiv', 'video', 'side' );
-
 		// Remove Featured Image
 		remove_meta_box( 'postimagediv', 'post', 'side' );
 		remove_meta_box( 'postimagediv', 'projects', 'side' );
@@ -1377,15 +1361,6 @@ function make_remove_metaboxes_for_authors() {
 		remove_meta_box( 'tagsdiv-location', 'review', 'side' );
 		remove_meta_box( 'tagsdiv-location', 'craft', 'side' );
 		remove_meta_box( 'tagsdiv-location', 'video', 'side' );
-
-		// Remove Primary Category Taxonomy
-		remove_meta_box( 'mob_category_primary_term_div', 'post', 'side' );
-		remove_meta_box( 'mob_category_primary_term_div', 'projects', 'side' );
-		remove_meta_box( 'mob_category_primary_term_div', 'magazine', 'side' );
-		remove_meta_box( 'mob_category_primary_term_div', 'review', 'side' );
-		remove_meta_box( 'mob_review-category_primary_term_div', 'review', 'side' );
-		remove_meta_box( 'mob_category_primary_term_div', 'craft', 'side' );
-		remove_meta_box( 'mob_category_primary_term_div', 'video', 'side' );
 
 		// Remove Primary Section Taxonomy
 		remove_meta_box( 'mob_section_primary_term_div', 'post', 'side' );
