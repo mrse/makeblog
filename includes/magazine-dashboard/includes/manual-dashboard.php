@@ -129,11 +129,18 @@ function make_get_pagination_link( $total, $paged ) {
 	return $links;
 }
 
+$make_dashboard_disallowed_post_statuses = array(
+		'trash',
+		'spam',
+		'inherit',
+		'private',
+		'auto-draft',
+	);
 /**
  * Post Status Drop Down
  */
 function make_post_status_dropdown() {
-	global $wp_post_statuses;
+	global $wp_post_statuses, $make_dashboard_disallowed_post_statuses;
 
 	$query_vars = make_get_query_vars();
 
@@ -141,7 +148,7 @@ function make_post_status_dropdown() {
 	$output .= '<option value="all">All Statuses</option>';
 
 	foreach ( $wp_post_statuses as $status => $obj) {
-		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' && $status != 'spam' )
+		if ( ! in_array( $status, $make_dashboard_disallowed_post_statuses ) )
 			$output .= '<option value="' . esc_attr( $obj->name ) . '"' . selected( sanitize_text_field( $query_vars['post_status'] ), esc_attr( $obj->name ), false ) . '>' . esc_html( $obj->label ) . '</option>';
 	}
 
@@ -222,10 +229,10 @@ function make_section_dropdown() {
  * @return array
  */
 function make_post_statuses() {
-	global $wp_post_statuses;
+	global $wp_post_statuses, $make_dashboard_disallowed_post_statuses;
 
 	foreach ( $wp_post_statuses as $status => $name ) {
-		if ( $status != 'trash' && $status != 'inherit' && $status != 'private' && $status != 'auto-draft' && $status != 'spam' )
+		if ( ! in_array( $status, $make_dashboard_disallowed_post_statuses ) )
 			$statuses[] = $status;
 	}
 
