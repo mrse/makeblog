@@ -33,6 +33,11 @@
 								<img src="http://makezineblog.files.wordpress.com/2013/04/ge_logo.jpg?w=130" alt="General Electric Logo" width="130">
 							</a>
 						</li>
+						<li>
+							<a style="margin-bottom:10px;" href="http://www.shopbottools.com/" class="thumbnail">
+								<img src="http://cdn.makezine.com/make/bootstrap/img/etc/ShopBot-Logo-w-Reg.png" alt="ShopBot" width="130">
+							</a>
+						</li>
 					</ul>
 					<h4>Partner</h4>
 					<ul class="unstyled" id="partner">
