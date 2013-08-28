@@ -278,9 +278,10 @@ function make_check_screen_options( $option, $metabox = false, $default = false 
 				$output = checked( $screen_options[ $option . '-hide' ], $option, false );
 			}
 		} else { // This code is used when we are not dealing with the screen options metabox (ie our table rows)
-			if ( ! empty( $screen_options[ $option . '-hide' ] ) && $screen_options[ $option . '-hide' ] != $option )
+			if ( empty( $screen_options[ $option . '-hide' ] ) )
 				$output = ' style="display:none;"';
 		}
+
 	} else {
 		if ( $default && $metabox ) {
 			$output = 'checked="checked"';
