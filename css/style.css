@@ -8600,6 +8600,10 @@ textarea.narrow,
 .back-issues p {
   font-size: 14px !important;
 }
+/*FIX FOR SHARE THIS SOCIAL BAR WIDTH ISSUE*/
+.googleplus1_button {
+  width: auto !important;
+}
 .dots {
   background: url('../img/dots.png');
   background-repeat: repeat-x;
