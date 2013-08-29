@@ -11,10 +11,8 @@
 
 get_header(); ?>
 		
-		<div class="clear"></div>
-
-		<div class="sand">
-
+		<div class="single">
+		
 			<div class="container">
 
 				<div class="row">
