@@ -528,9 +528,9 @@ function make_projects_steps( $steps, $print = false ) {
 				echo '<div class="jstep hide" id="js-step-' . esc_attr( $step->number ) . '">';
 			}
 			if( $idx < $count - 1 && $print == false ) {
-				echo '<span class="row"><span class="span7"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4></span><span class="span1"><a class="btn pull-right btn-danger nexter" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next</a></span></span>';
+				echo '<span class="row"><span class="span7"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( stripslashes( $step->title ) ) . '</h4></span><span class="span1"><a class="btn pull-right btn-danger nexter" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next</a></span></span>';
 			} else {
-				echo '<span class="row"><span class="span8"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4></span></span>';
+				echo '<span class="row"><span class="span8"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( stripslashes( $step->title ) ) . '</h4></span></span>';
 			}
 			
 			$images = $step->images;
