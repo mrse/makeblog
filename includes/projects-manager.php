@@ -141,7 +141,7 @@
 								?>
 							</div><!--[END #image-list]-->
 							<div id="list" class="alignleft">
-								<input type="text" name="step-title-<?php echo $step_num; ?>" id="project-header" class="widefat" placeholder="Add A Title" value="<?php echo ( ! empty( $step->title ) ) ? wp_filter_post_kses( $step->title ) : ''; ?>">
+								<input type="text" name="step-title-<?php echo $step_num; ?>" id="project-header" class="widefat" placeholder="Add A Title" value="<?php echo ( ! empty( $step->title ) ) ?  wp_kses_post( stripslashes( $step->title ) ) : ''; ?>">
 								<ul id="sub-lists" class="sortable reset-list">
 									<?php if ( isset( $step->lines ) ) : ?>
 										<?php
