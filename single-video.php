@@ -27,7 +27,15 @@ make_get_header() ?>
 					
 					<ul class="projects-meta">
 						<li>
-							Posted <span class="blue"><?php the_date('Y/m/d \@ g:i a'); ?></span>
+							By <?php 
+							if( function_exists( 'coauthors_posts_links' ) ) {	
+								coauthors_posts_links(); 
+							} else { 
+								the_author_posts_link(); 
+							} ?>
+						</li>
+						<li>
+							Posted <span class="blue"><?php the_date('m/d/Y \@ g:i a'); ?></span>
 						</li>
 						<li>
 							Category <?php the_category(', '); ?>
