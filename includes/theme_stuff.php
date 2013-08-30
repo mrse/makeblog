@@ -1214,25 +1214,17 @@ function make_get_author( $post_id, $prefix = 'By' ) {
 	$post_type = get_post_type( absint( $post_id ) );
 
 	// Check that we are not loading a video CPT. If we are, return false so we don't echo anything
-	if ( $post_type == 'video')
-		return false;
+	// if ( $post_type == 'video')
+	// 	return false;
 
 	// If we want to echo our results, we'll do that here.
 	echo '<li>';
 	echo esc_attr( $prefix ) . ' ';
 
-	if ( $post_type == 'post' ) {
-		if( function_exists( 'coauthors_posts_links' ) ) {	
-			coauthors_posts_links(); 
-		} else { 
-			the_author_posts_link(); 
-		}
-	} else {
-		if ( function_exists( 'coauthors' ) ) {
-			coauthors();
-		} else {
-			the_author();
-		}
+	if( function_exists( 'coauthors_posts_links' ) ) {	
+		coauthors_posts_links(); 
+	} else { 
+		the_author_posts_link(); 
 	}
 
 	echo '</li>';
