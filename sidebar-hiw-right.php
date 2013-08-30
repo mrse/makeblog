@@ -21,11 +21,7 @@
 					<div class="atclear"></div></div>
 					<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f98388529c0fff4"></script>
 					<!-- AddThis Button END -->
-                    
-					
-					<style type="text/css">
-						ul.unstyled li a {margin-bottom:10px;}
-					</style>
+
 					<h4>Presenting Sponsor</h4>
 					<ul class="unstyled" id="presenting-sponsor">
 					  	<li>
@@ -33,6 +29,9 @@
 								<img src="http://makezineblog.files.wordpress.com/2013/04/ge_logo.jpg?w=130" alt="General Electric Logo" width="130">
 							</a>
 						</li>
+					</ul>
+					<h4>Supporting Sponsor</h4>
+					<ul class="unstyled" id="supporting-sponsor">
 						<li>
 							<a style="margin-bottom:10px;" href="http://www.shopbottools.com/" class="thumbnail">
 								<img src="http://cdn.makezine.com/make/bootstrap/img/etc/ShopBot-Logo-w-Reg.png" alt="ShopBot" width="130">
