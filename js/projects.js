@@ -62,6 +62,11 @@ jQuery(document).ready(function(){
 			js: 1,
 			action_name: "Next Slide"
 		});
+		var video = jQuery('.slide').find('iframe');
+		var url = video.attr('src');
+		// Empty the src attribute so we can stop the video when it closes. Then we'll put it back right after.
+		video.attr('src', '');
+		video.attr('src', url);
 		return true;
 	});
 	jQuery('.thumbs').click(function () {

@@ -9366,6 +9366,11 @@ ul#tabs .current > a:hover {
 a.oembed {
   display: none;
 }
+.topper.right,
+.topper.left {
+  top: 200px;
+  border: 0px;
+}
 .single {
   background: url('../img/dots.png');
   background-color: url('../img/dots.png');
