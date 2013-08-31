@@ -629,26 +629,35 @@ function make_video_photo_gallery( $attr ) {
 	$i = 0;
 
 	foreach( $posts as $post ) {
-		$post = get_post( $post );
-		setup_postdata( $post );
+		if ( strpos( $post, 'youtu' ) ) {
+			$youtube = true;
+		} else {
+			$post = get_post( $post );
+			setup_postdata( $post );
+			$youtube = false;
+		}
 		$i++;
+
 		if ($i == 1) {
 			$output .= '<div class="item active">';	
 		} else {
 			$output .= '<div class="item slide-' . get_the_ID() . '">';
 		}
-		if ( get_post_type() == 'video' ) {
-			$url = get_post_meta( get_the_ID(), 'Link', true );
-			$output .= do_shortcode('[youtube='. esc_url( $url ) .'&w=620]');
+		if ( $youtube == false ) {
+			if ( get_post_type() == 'video' ) {
+				$url = get_post_meta( get_the_ID(), 'Link', true );
+				$output .= do_shortcode('[youtube='. esc_url( $url ) .'&w=620]');
+			} else {
+				$output .= wp_get_attachment_image( get_the_ID(), 'medium' );
+			}
+			if (isset($post->post_title)) {
+				$output .= '<div class="carousel-caption" style="position:relative;">';
+				$output .= '<h4>' . get_the_title() . '</h4>';
+				$output .= ( isset( $post->post_excerpt ) ) ? Markdown( wp_kses_post( $post->post_excerpt ) ) : '';
+				$output .= '</div>';
+			}
 		} else {
-			$output .= wp_get_attachment_image( get_the_ID(), 'medium' );
-		}
-		if (isset($post->post_title)) {
-			$output .= '<div class="carousel-caption" style="position:relative;">';
-			$output .= '<h4>' . get_the_title() . '</h4>';
-			$output .= ( isset( $post->post_excerpt ) ) ? Markdown( wp_kses_post( $post->post_excerpt ) ) : '';
-			$output .= '</div>';
-			
+			$output .= do_shortcode('[youtube='. esc_url( $post ) .'&w=620]');
 		}
 		$output .= '</div>';
 		
