@@ -201,7 +201,7 @@ function make_post_loop( $args ) {
 
 					} else { ?>
 						<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
-					<? }	?>
+					<?php }	?>
 					
 				</div>
 			
