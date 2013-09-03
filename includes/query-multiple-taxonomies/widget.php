@@ -8,7 +8,7 @@ class Taxonomy_Drill_Down_Widget extends scbWidget {
 		'taxonomies' => array(),
 	);
 
-	static function init() {
+	static function init( $class = '', $file = '', $base = '' ) {
 		add_action( 'load-widgets.php', array( __CLASS__, '_init' ) );
 	}
 
@@ -315,7 +315,7 @@ class QMT_List_Walker extends Walker_Category {
 
 class QMT_Dropdown_Walker extends Walker_CategoryDropdown {
 
-	function start_el(&$output, $category, $depth, $args) {
+	function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
 		$pad = str_repeat('&nbsp;', $depth * 3);
 
 		$cat_name = apply_filters( 'list_cats', $category->name, $category );
