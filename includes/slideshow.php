@@ -641,7 +641,7 @@ function make_video_photo_gallery( $attr ) {
 		if ($i == 1) {
 			$output .= '<div class="item active">';	
 		} else {
-			$output .= '<div class="item slide-' . get_the_ID() . '">';
+			$output .= '<div class="item">';
 		}
 		if ( $youtube == false ) {
 			if ( get_post_type() == 'video' ) {
@@ -662,6 +662,7 @@ function make_video_photo_gallery( $attr ) {
 		$output .= '</div>';
 		
 	} //foreach
+	wp_reset_postdata();
 	$output .= '</div>
 		<a class="topper left carousel-control" href="#myCarousel-' . $rand . '" data-slide="prev">‹</a>
 		<a class="topper right carousel-control" href="#myCarousel-' . $rand . '" data-slide="next">›</a>
