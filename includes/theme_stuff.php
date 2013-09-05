@@ -940,60 +940,132 @@ add_action( 'admin_head', 'make_cpt_icons' );
  */
 function make_cpt_icons() { ?>
 	<style type="text/css" media="screen">
-		#menu-posts-video .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/camcorder.png') no-repeat 6px -17px !important;
+		.icon16.icon-dashboard:before,
+		#adminmenu .menu-icon-dashboard div.wp-menu-image:before {
+			content: '\f226';
 		}
-		#menu-posts-video:hover .wp-menu-image, #menu-posts-video.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-post:before,
+		#adminmenu .menu-icon-post div.wp-menu-image:before {
+			content: '\f109';
 		}
-		#menu-posts-slideshow .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/slides.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-media:before,
+		#adminmenu .menu-icon-media div.wp-menu-image:before {
+			content: '\f104';
 		}
-		#menu-posts-slideshow:hover .wp-menu-image, #menu-posts-slideshow.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-links:before,
+		#adminmenu .menu-icon-links div.wp-menu-image:before {
+			content: '\f103';
 		}
-		#menu-posts-craft .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/cutter.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-page:before,
+		#adminmenu .menu-icon-page div.wp-menu-image:before {
+			content: '\f105';
 		}
-		#menu-posts-craft:hover .wp-menu-image, #menu-posts-craft.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-comments:before,
+		#adminmenu .menu-icon-comments div.wp-menu-image:before {
+			content: '\f101';
+			margin-top: 1px;
 		}
-		#menu-posts-volume .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/book.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-appearance:before,
+		#adminmenu .menu-icon-appearance div.wp-menu-image:before {
+			content: '\f100';
 		}
-		#menu-posts-volume:hover .wp-menu-image, #menu-posts-volume.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-plugins:before,
+		#adminmenu .menu-icon-plugins div.wp-menu-image:before {
+			content: '\f106';
 		}
-		#menu-posts-magazine .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/book-open.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-users:before,
+		#adminmenu .menu-icon-users div.wp-menu-image:before {
+			content: '\f110';
 		}
-		#menu-posts-magazine:hover .wp-menu-image, #menu-posts-magazine.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-tools:before,
+		#adminmenu .menu-icon-tools div.wp-menu-image:before {
+			content: '\f107';
 		}
-		#menu-posts-review .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/application-dialog.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-settings:before,
+		#adminmenu .menu-icon-settings div.wp-menu-image:before {
+			content: '\f108';
 		}
-		#menu-posts-review:hover .wp-menu-image, #menu-posts-review.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-site:before,
+		#adminmenu .menu-icon-site div.wp-menu-image:before {
+			content: '\f112'
 		}
-		#menu-posts-page_2 .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/application-form.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-generic:before,
+		#adminmenu .menu-icon-generic div.wp-menu-image:before {
+			content: '\f111';
 		}
-		#menu-posts-page_2:hover .wp-menu-image, #menu-posts-page_2.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-video:before,
+		#adminmenu #menu-posts-video div.wp-menu-image:before {
+			content: '\f126';
 		}
-		#menu-posts-errata .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/application-list.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-project:before,
+		#adminmenu #menu-posts-projects div.wp-menu-image:before {
+			content: '\f308';
 		}
-		#menu-posts-errata:hover .wp-menu-image, #menu-posts-errata.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-magazine:before,
+		#adminmenu #menu-posts-magazine div.wp-menu-image:before {
+			content: '\f123';
 		}
-		#menu-posts-projects .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/application-tile.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-review:before,
+		#adminmenu #menu-posts-review div.wp-menu-image:before {
+			content: '\f175';
 		}
-		#menu-posts-projects:hover .wp-menu-image, #menu-posts-projects.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-volume:before,
+		#adminmenu #menu-posts-volume div.wp-menu-image:before {
+			content: '\f318';
 		}
+
+		.icon16.icon-errata:before,
+		#adminmenu #menu-posts-errata div.wp-menu-image:before {
+			content: '\f117';
+		}
+
+		.icon16.icon-page_2:before,
+		#adminmenu #menu-posts-page_2 div.wp-menu-image:before {
+			content: '\f161';
+		}
+
+		.icon16.icon-slideshow:before,
+		#adminmenu #menu-posts-slideshow div.wp-menu-image:before {
+			content: '\f181';
+		}
+
+		.icon16.icon-golink:before,
+		#adminmenu #menu-posts-go div.wp-menu-image:before {
+			content: '\f103';
+		}
+
+		.icon16.icon-newsletter:before,
+		#adminmenu #menu-posts-newsletter div.wp-menu-image:before {
+			content: '\f116';
+		}
+
+		.icon16.icon-craft:before,
+		#adminmenu #menu-posts-craft div.wp-menu-image:before {
+			content: '\f237';
+		}
+
+		.icon16.icon-from-the-maker-shed:before,
+		#adminmenu #menu-posts-from-the-maker-shed div.wp-menu-image:before {
+			content: '\f312';
+		}
+
 	</style>
 <?php }
 
