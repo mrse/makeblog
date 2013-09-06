@@ -1055,6 +1055,15 @@ function make_cpt_icons() { ?>
 		#adminmenu #menu-posts-newsletter div.wp-menu-image:before {
 			content: '\f116';
 		}
+		.icon16.icon-craft:before,
+		#adminmenu #menu-posts-craft div.wp-menu-image:before {
+			content: '\f309';
+		}
+
+		.icon16.icon-from-the-maker-shed:before,
+		#adminmenu #menu-posts-from-the-maker-shed div.wp-menu-image:before {
+			content: '\f312';
+		 }
 
 	</style>
 <?php }
