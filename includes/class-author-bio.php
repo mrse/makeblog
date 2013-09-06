@@ -164,7 +164,11 @@
 			
 			$output = '<ul class="links">';
 				foreach ( $urls as $url ) {
-					$output .= '<li><a class="noborder" href="' . esc_url( $url->value ) . '">' . esc_html( $url->title ) . '</a></li>';
+					if ( strpos( $url->value, 'google' ) ) {
+						$output .= '<li><a class="noborder" href="' . esc_url( $url->value . '?rel=author' ) . '">' . esc_html( $url->title ) . '</a></li>';
+					} else {
+						$output .= '<li><a class="noborder" href="' . esc_url( $url->value ) . '">' . esc_html( $url->title ) . '</a></li>';
+					}
 				}
 			$output .= '</ul>';
 
@@ -184,7 +188,12 @@
 			
 			$output = '<ul class="social">';
 				foreach ( $accounts as $account ) {
-					$output .= '<li class="' . esc_attr( $account->shortname ) . '"><a class="noborder" href="' . esc_url( $account->url ) . '"><span class="sp">&nbsp;</span></a></li>';
+					if ( strpos( $account->url, 'google' ) ) {
+						$output .= '<li class="' . esc_attr( $account->shortname ) . '"><a class="noborder" href="' . esc_url( $account->url . '?rel=author' ) . '"><span class="sp">&nbsp;</span></a></li>';
+					} else {
+						$output .= '<li class="' . esc_attr( $account->shortname ) . '"><a class="noborder" href="' . esc_url( $account->url ) . '"><span class="sp">&nbsp;</span></a></li>';
+					}
+					
 				}
 
 				if ( isset( $author->emails[0]->value ) ) {
