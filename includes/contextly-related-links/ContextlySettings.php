@@ -111,14 +111,14 @@ class ContextlySettings {
 	}
 
 	private function getContextlyBaseUrl( $page_type = 'settings' ) {
-		return Urls::getMainServerUrl() . 'redirect/?type=' . $page_type;
+		return esc_url( Urls:: getMainServerUrl() . 'redirect/?type=' . $page_type );
 	}
 
 	private function getContextlyRegistrationUrl( $page_type = 'settings' ) {
-		return $this->getContextlyBaseUrl( $page_type ) .
+		return esc_url( $this->getContextlyBaseUrl( $page_type ) .
 			"&blog_url=" . urlencode( site_url() ) .
 			"&blog_title=" . urlencode( get_bloginfo("name") ) .
-			"&cms_settings_page=" . urlencode( $this->getWPPluginSettingsUrl() );
+			"&cms_settings_page=" . urlencode( $this->getWPPluginSettingsUrl() ) );
 	}
 
     public function displaySettings() {
@@ -126,7 +126,7 @@ class ContextlySettings {
         ?>
         <script>
             function open_contextly_settings() {
-                var base_url = "<?php echo $this->getContextlyBaseUrl() ?>";
+                var base_url = "<?php echo esc_url( $this->getContextlyBaseUrl() ) ?>";
 				var button_id = '#contextly-settings-btn';
 	            var auth_token_attr = 'contextly_access_token';
 	            var token_attr = jQuery( button_id ).attr( auth_token_attr );
@@ -134,10 +134,10 @@ class ContextlySettings {
 	            if ( typeof token_attr !== 'undefined' && token_attr !== false ) {
 		            base_url += "&" + auth_token_attr + "=" + encodeURIComponent( token_attr );
 	            } else {
-		            base_url = "<?php echo $this->getContextlyRegistrationUrl() ?>";
+		            base_url = "<?php echo esc_url( $this->getContextlyRegistrationUrl() ) ?>";
 	            }
 
-                window.open( base_url );
+                window.open( esc_url( base_url ) );
             }
         </script>
         <div class="wrap">
@@ -163,7 +163,7 @@ class ContextlySettings {
                 </form>
             <?php } else { ?>
                 <h3>
-	                Click the settings button to securely login to your settings. If that fails, you can still login via Twitter using this <a target="_blank" href="<?php echo $this->getContextlyRegistrationUrl() ?>">link</a>.
+	                Click the settings button to securely login to your settings. If that fails, you can still login via Twitter using this <a target="_blank" href="<?php echo esc_url( $this->getContextlyRegistrationUrl() ) ?>">link</a>.
                 </h3>
                 <p>
                     <input type="button" value="Settings" class="button button-hero button-primary" style="font-size: 18px;" id="contextly-settings-btn" onclick="open_contextly_settings();" />
@@ -211,7 +211,7 @@ class ContextlySettings {
     }
 
     public function apiLayoutSection() {
-        echo "<p>In order to communicate securely, we use a shared secret key. You can find your secret API key on <a target='_blank' href='".$this->getContextlyRegistrationUrl('tour')."'>this page</a>. Copy and paste it below.</p>";
+        echo "<p>In order to communicate securely, we use a shared secret key. You can find your secret API key on <a target='_blank' href='" . esc_url( $this->getContextlyRegistrationUrl('tour') ) . "'>this page</a>. Copy and paste it below.</p>";
     }
 
     public function apiKeyInput() {
