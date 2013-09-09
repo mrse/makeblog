@@ -130,17 +130,19 @@ get_header(); ?>
 											
 										</ul>
 										<div class="tab-content">
-											<?php 
+											<?php
 												if ( $parts ) {
 													echo '<div class="tab-pane active" id="1">';
 													echo make_projects_parts( $parts );
 													echo '</div>';
 												}
+
+												// If our parts are empty, we want to default to tools
 												if ( empty( $parts ) ) {
-													echo '<div class="tab-pane" id="2">';
-												} else {
 													echo '<div class="tab-pane active" id="2">';
-												} 
+												} else {
+													echo '<div class="tab-pane" id="2">';
+												}
 												if ( $tools ) {
 													echo make_projects_tools( $tools );
 												}

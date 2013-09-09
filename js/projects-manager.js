@@ -87,6 +87,9 @@ jQuery(document).ready(function($) {
 		// The class assigned to the
 		placeholder: 'ui-state-highlight',
 
+		// Stop allowing our template code from being a drop target. This will stop users from sorting above it.
+		items: "div.steps-wrapper:not(.steps-template)",
+
 		axis: 'y',
 
 		// fired when a sortable list receives an item from a connected list.

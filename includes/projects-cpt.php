@@ -614,18 +614,20 @@ function make_projects_tools( $tools ) {
 	$output = '<ul class="lists">';
 
 	// The array is complicated, thus this foreach is complicated... $tool is an object.
-	foreach ( $tools[0] as $tool ) {
+	if ( ! empty( $tools[0] ) && is_array( $tools[0] ) ) {
+		foreach ( $tools[0] as $tool ) {
 
-		$output .='<li>';
-		if ( ! empty( $tool->url ) ) {
-			$output .= '<a href="' . esc_url( $tool->url ) . '" data-toggle="tooltip" title="' . esc_attr( $tool->text ) .'">' . esc_html( $tool->text ) . '</a>';
-		} else {
-			$output .= esc_html( $tool->text );
-		}
-		$notes = null;
+			$output .='<li>';
+			if ( ! empty( $tool->url ) ) {
+				$output .= '<a href="' . esc_url( $tool->url ) . '" data-toggle="tooltip" title="' . esc_attr( $tool->text ) .'">' . esc_html( $tool->text ) . '</a>';
+			} else {
+				$output .= esc_html( $tool->text );
+			}
+			$notes = null;
 
-		if( ! empty( $tool->notes ) ) {
-			$output .= '  <span class="muted">' . wp_kses_post( $tool->notes ) . '</span>';
+			if( ! empty( $tool->notes ) ) {
+				$output .= '  <span class="muted">' . wp_kses_post( $tool->notes ) . '</span>';
+			}
 		}
 	}
 
