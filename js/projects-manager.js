@@ -5,10 +5,13 @@ jQuery(document).ready(function($) {
 	$('#make_magazine_projects_step_manager h3.hndle').prepend('<span class="steps-ico"></span>');
 
 	// Add our remove button for images uploaded to the Projects Manager
-	$('#image-list .has-image').prepend('<img src="' + make_projects_js.stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
+	$('#image-list .has-image').prepend('<img src="' + make_projects_js.stylesheet_uri + '/images/icon-view.png" class="view-image" /><img src="' + make_projects_js.stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
 
 	// Call our image removal and hover state
 	make_projects_manager_image_removal();
+
+	// Call our view image button and hover state
+	make_projects_manager_view_image();
 
 	/**
 	 * Run our "Add Step" click event. This seems like too much. Can probably re-work this and optimize it...
@@ -88,7 +91,7 @@ jQuery(document).ready(function($) {
 		placeholder: 'ui-state-highlight',
 
 		// Stop allowing our template code from being a drop target. This will stop users from sorting above it.
-		items: "div.steps-wrapper:not(.steps-template)",
+		items: "div.step-wrapper:not(.steps-template)",
 
 		axis: 'y',
 
@@ -280,6 +283,24 @@ function make_projects_manager_image_removal() {
 }
 
 
+function make_projects_manager_view_image() {
+	// Fade in our view button for images uploaded to the Projects Manager
+	jQuery('.has-image').hover(function() {
+		jQuery(this).children('img.view-image').fadeIn(100);
+	}, function() {
+		jQuery(this).children('img.view-image').fadeOut(100);
+	});
+
+	// View the image in a pretty modal window
+	jQuery('img.view-image').click(function(e) {
+		e.preventDefault();
+
+		var image_src = jQuery(this).siblings('.image-url').val();
+		window.open(image_src,'_blank');
+	});
+}
+
+
 /**
  * Allows us to hook into the new WordPress 3.5 Media Uploader so we can add custom media in the Project Manager.
  * Function is to be applied to a wrapper element like $('.image-upload').make_project_manager();
@@ -343,12 +364,15 @@ function make_projects_manager_image_removal() {
 				// Attach tha info. Yo.
 				$(preview).attr('src', url);
 
-				// Once everything is complete, we'll add some needed UI stuff like the image removal button
+				// Once everything is complete, we'll add some needed UI stuff like the image removal button and viewing the image button
 				// TO DO: Contain all the following code here into a function for simplicity and DRY programming.
-				$(this).parent().addClass('has-image').prepend('<img src="' + make_projects_js.stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
+				$(this).parent().addClass('has-image').prepend('<a href="#" class="view-image"><img src="' + make_projects_js.stylesheet_uri + '/images/icon-view.png" /></a><img src="' + make_projects_js.stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
 
 				// Call our image removal and hover state
 				make_projects_manager_image_removal();
+
+				// Call our view image and hover state
+				make_projects_manager_view_image();
 			});
 		};
 
