@@ -46,6 +46,13 @@
 		<?php if ( is_page( 313086 ) ) 
 			echo '<meta property="og:image" content="http://makezineblog.files.wordpress.com/2013/06/makercamp_300x250.jpg" />'; ?>
 
+		<?php if ( is_404() ) : ?>
+			<script>
+				// Track our 404 errors and log them to GA
+				_gaq.push(['_trackEvent', '404', '404', '404 page']);
+			</script>
+		<?php endif; ?>
+
 		<?php wp_head(); ?>
 
 	</head>
