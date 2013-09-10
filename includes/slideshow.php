@@ -625,7 +625,7 @@ function make_video_photo_gallery( $attr ) {
 
 	global $post;
 
-	$output = '<div id="myCarousel-' . $rand . '" class="carousel slide" data-interval=""><div class="carousel-inner">';
+	$output = '<div id="myCarousel-' . $rand . '" class="carousel slide video" data-interval=""><div class="carousel-inner">';
 	$i = 0;
 
 	foreach( $posts as $post ) {

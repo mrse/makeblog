@@ -9333,6 +9333,12 @@ ul#tabs .current > a:hover {
 .author-bio .author-photo {
   margin-left: 0;
 }
+.video.carousel .carousel-inner {
+  background-color: #000;
+  background-image: url('../images/ajax-loader.gif');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
 .carousel-inner .carousel-caption {
   position: absolute;
 }
