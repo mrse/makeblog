@@ -5584,6 +5584,9 @@ body.single-slideshow {
 body.single-slideshow #wpadminbar {
   display: none;
 }
+body.search .well {
+  margin-bottom: 0 !important;
+}
 body.category {
   background-image: none;
   background-color: #fff;

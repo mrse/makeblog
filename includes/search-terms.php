@@ -116,7 +116,7 @@ function make_search_header() {
 		return;
 
 	echo '<h2>Search Terms: '.$q.'</h2>';
-	echo '<p><small>Results: '.$json_output->RES->M. ' Time: '.$json_output->TM.'</small></p>';
+	//echo '<p><small>Results: '.$json_output->RES->M. ' Time: '.$json_output->TM.'</small></p>';
 }
 
 			
