@@ -8495,7 +8495,13 @@ textarea.narrow,
   font-weight: bold;
 }
 #make_subcription_form .main-sub-hdr h3 {
-  color: #F00;
+  color: #cc2229;
+  font-family: museo-slab, serif;
+  font-style: normal;
+  font-weight: 900;
+  margin-bottom: 0px;
+  font-size: 22px;
+  margin-top: 10px;
 }
 #make_subcription_form .card-number-area {
   width: 180px;
