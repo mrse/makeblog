@@ -357,6 +357,22 @@ $cap = new CheezCap( array(
 				),
 			)
 		),
+		new CheezCapGroup( 'Qualtrics Script', 'qualtrics',
+			array(
+				new CheezCapBooleanOption(
+					'Display Qualtrics Script',
+					'Do you want to show the survey script?',
+					'qualtrics_script',
+					'1'
+				),
+				new CheezCapTextOption(
+					'Delay Amount',
+					'Time is in milliseconds, so 6000 == sixty seconds.',
+					'qualtrics_script_delay',
+					'3000'
+				),
+			)
+		),
 	), array(
 		'themename' => 'Home', // used on the title of the custom admin page
 		'req_cap_to_edit' => 'manage_options', // the user capability that is required to access the CheezCap settings page
