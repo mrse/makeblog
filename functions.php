@@ -151,4 +151,8 @@ include_once dirname(  __FILE__  ) . '/includes/stats/stats.php';
 // 41. Blog Dashboard
 include_once dirname( __FILE__ ) . '/includes/blog-dashboard/blog-dashboard.php';
 
+// 42. Sitemap
+include_once dirname( __FILE__ ) . '/includes/metro-sitemap/metro-sitemap.php';
+
+
 ?>
