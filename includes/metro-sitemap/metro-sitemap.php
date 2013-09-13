@@ -569,9 +569,12 @@ class Metro_Sitemap {
 $metro_sitemap_class = new Metro_Sitemap();
 
 
+/**
+ * Bring in MAKE custom post types
+ */
+function make_custom_post_types( $types ) {
+	$types = array( 'post', 'page', 'attachement', 'maagazine', 'volume', 'video', 'projects', 'craft', 'newsletter', 'review', 'page_2', 'slideshow', 'go'  );
+	return $types;
+}
 
-
-
-
-
-
+add_filter( 'mgs_sitemap_entry_post_type', 'make_custom_post_types' );
