@@ -633,7 +633,7 @@ function make_qualtrics_script() {
 	if ( make_get_cap_option( 'qualtrics_script' ) ) : ?>
 	<!--BEGIN QUALTRICS POPUP-->
 	<script type="text/javascript">
-		var q_viewrate=2;
+		var q_viewrate = 2;
 		var url = 'http://s.qualtrics.com/ControlPanel/Graphic.php?IM=IM_ef9i42Jt6yJs8OV&V=1378824622';
 		if ( Math.random() < q_viewrate / 100 ){
 			var q_popup_f = function(){ 
@@ -667,8 +667,6 @@ function make_qualtrics_script() {
 				window.addEventListener("load",q_popup_f,false);
 			} else if (window.attachEvent) {
 				r=window.attachEvent("onload",q_popup_f);
-			} else {
-				alert('WHAT!');
 			};
 		};
 	</script>
