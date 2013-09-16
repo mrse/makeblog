@@ -53,8 +53,8 @@
 						    <ul class="dropdown-menu">
 						    	<li><a href="http://makezine.com/trainingcamp/design-for-desktop-3d-printing/"> Design for Desktop 3D Printing</a></li>
 						    </ul> -->
-					    <a class="btn btn-large" href="http://makezine.com/trainingcamp/teach-camp/">Teach a Camp</a>
-					    <a class="btn btn-large" href="http://makezine.com/trainingcamp/suggest-course/">Suggest Camp</a>
+					    <!-- <a class="btn btn-large" href="http://makezine.com/trainingcamp/teach-camp/">Teach a Camp</a>
+					    <a class="btn btn-large" href="http://makezine.com/trainingcamp/suggest-course/">Suggest Camp</a> -->
 					    <a class="btn btn-large" href="http://makezine.com/trainingcamp/frequently-asked-questions/">FAQ</a>
 				    </div>
 				</div> <!-- END container -->
