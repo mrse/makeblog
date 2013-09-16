@@ -21,7 +21,7 @@
 			<div class="carousel-inner">
 				<?php $i = 1; while ( $query->have_posts() ) : $query->the_post(); 
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full'); ?>
-					<div class="item<?php echo ( $i % 5 == 1 ) ? ' active' : ''; ?>">
+					<div class="item<?php echo ( $i % 7 == 1 ) ? ' active' : ''; ?>">
 						<a href="<?php echo get_permalink($post->ID); ?>"><img src="<?php echo wpcom_vip_get_resized_remote_image_url( $image[0], 366, 342 ); ?>"></a>
 						<div class="carousel-caption">
 							<h3 class="cap-title">Maker Faire News</h3>
