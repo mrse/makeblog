@@ -22,10 +22,10 @@
 				<?php $i = 1; while ( $query->have_posts() ) : $query->the_post(); 
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full'); ?>
 					<div class="item<?php echo ( $i % 5 == 1 ) ? ' active' : ''; ?>">
-						<a href="<?php get_permalink(); ?>"><img src="<?php echo wpcom_vip_get_resized_remote_image_url( $image[0], 366, 342 ); ?>"></a>
+						<a href="<?php echo get_permalink($post->ID); ?>"><img src="<?php echo wpcom_vip_get_resized_remote_image_url( $image[0], 366, 342 ); ?>"></a>
 						<div class="carousel-caption">
 							<h3 class="cap-title">Maker Faire News</h3>
-							<h4 class="cap-body"><a href="<?php get_permalink(); ?>"><?php the_title(); ?></a></h4>
+							<h4 class="cap-body"><a href="<?php echo get_permalink($post->ID); ?>"><?php the_title(); ?></a></h4>
 						</div>
 					</div>
 				<?php $i++; endwhile; ?>
