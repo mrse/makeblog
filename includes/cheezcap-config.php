@@ -357,6 +357,22 @@ $cap = new CheezCap( array(
 				),
 			)
 		),
+		new CheezCapGroup( 'Maker Week', 'makerWeekGroup',
+			array(
+				new CheezCapBooleanOption(
+					'Maker Week Homepage Takeover',
+					'Do you want the Maker Week to be on the home page?',
+					'maker_week',
+					'0'
+				),
+				new CheezCapTextOption(
+					'Maker Week Homepage Posts',
+					'Add three post IDs here, comma seperated, with no space.',
+					'make_week_takeover_posts',
+					''
+				),
+			)
+		),
 		new CheezCapGroup( 'Qualtrics Script', 'qualtrics',
 			array(
 				new CheezCapBooleanOption(
