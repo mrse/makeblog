@@ -632,11 +632,17 @@ function make_video_photo_gallery( $attr ) {
 	foreach( $posts as $post ) {
 		if ( strpos( $post, 'youtu' ) ) {
 			$youtube = true;
+			$vine = false;
+		} elseif ( strpos( $post, 'vine' ) ) {
+			$youtube = false;
+			$vine = true;
 		} else {
 			$post = get_post( $post );
 			setup_postdata( $post );
 			$youtube = false;
+			$vine = false;
 		}
+
 		$i++;
 
 		if ($i == 1) {
@@ -644,7 +650,11 @@ function make_video_photo_gallery( $attr ) {
 		} else {
 			$output .= '<div class="item">';
 		}
-		if ( $youtube == false ) {
+		if ( $youtube == true ) {
+			$output .= do_shortcode('[youtube='. esc_url( $post ) .'&w=620]');
+		} elseif ( $vine == true ) {
+			$output .= do_shortcode( '[vine url="' . esc_url( $post ) . '" type="simple" width="620"]' );
+		} else {
 			if ( get_post_type() == 'video' ) {
 				$url = get_post_meta( get_the_ID(), 'Link', true );
 				$output .= do_shortcode('[youtube='. esc_url( $url ) .'&w=620]');
@@ -657,8 +667,6 @@ function make_video_photo_gallery( $attr ) {
 				$output .= ( isset( $post->post_excerpt ) ) ? Markdown( wp_kses_post( $post->post_excerpt ) ) : '';
 				$output .= '</div>';
 			}
-		} else {
-			$output .= do_shortcode('[youtube='. esc_url( $post ) .'&w=620]');
 		}
 		$output .= '</div>';
 		
