@@ -256,7 +256,8 @@ function make_carousel( $args, $title_link = true ) {
 								'video',
 								'projects',
 								'review',
-								'craft' ),
+								'craft',
+								'magazine' ),
 	);
 
 	$args = wp_parse_args( $args, $defaults );
