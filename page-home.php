@@ -6,7 +6,7 @@ Template Name: Home Page
 
 <?php get_header(); ?>
 
-		<?php if ( !make_get_cap_option( 'make_camp_takeover' ) ) : ?>
+		<?php if ( !make_get_cap_option( 'make_camp_takeover' ) && !make_get_cap_option( 'maker_week' ) ) : ?>
 
 		<div class="waist">
 
@@ -172,11 +172,15 @@ Template Name: Home Page
 
 		</div>
 
-		<?php else : ?>
+		<?php elseif ( make_get_cap_option( 'make_camp_takeover' ) ) : ?>
 
 			<?php get_template_part( 'home-takover' ); ?>
 
-		<? endif; ?>
+		<?php elseif ( make_get_cap_option( 'maker_week' ) ) : ?>
+
+			<?php get_template_part( 'maker-week' ); ?>
+
+		<?php endif; ?>
 
 		<div class="sand new-sand">
 
