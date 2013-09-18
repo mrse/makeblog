@@ -9628,6 +9628,9 @@ a.oembed {
   box-shadow: 3px 3px 3px rgba(183, 183, 183, 0.4);
   margin-bottom: 20px;
 }
+.page-id-336037 .projects-masterhead {
+  display: none;
+}
 .widget {
   margin: 20px 0;
 }
