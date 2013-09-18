@@ -634,7 +634,7 @@ function make_qualtrics_script() {
 	if ( make_get_cap_option( 'qualtrics_script' ) ) : ?>
 	<!--BEGIN QUALTRICS POPUP-->
 	<script type="text/javascript">
-		var q_viewrate = 2;
+		var q_viewrate = <?php echo esc_js( intval( make_get_cap_option( 'qualtrics_script_percent' ) ) ); ?>;
 		var url = 'http://s.qualtrics.com/ControlPanel/Graphic.php?IM=IM_ef9i42Jt6yJs8OV&V=1378824622';
 		if ( Math.random() < q_viewrate / 100 ){
 			var q_popup_f = function(){ 

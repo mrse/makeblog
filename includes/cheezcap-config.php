@@ -387,6 +387,12 @@ $cap = new CheezCap( array(
 					'qualtrics_script_delay',
 					'3000'
 				),
+				new CheezCapTextOption(
+					'Pageview Percentage',
+					'What percent of pageviews should load the popup.',
+					'qualtrics_script_percent',
+					'8'
+				),
 			)
 		),
 	), array(
