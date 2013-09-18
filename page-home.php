@@ -206,7 +206,7 @@ Template Name: Home Page
 							$cap_livestream = make_get_cap_option( 'livestream' );
 							if ( $cap_livestream ) {
 								echo '<div class="big-livestream">';
-								echo do_shortcode('[gigya src="'.wp_kses_post( $cap_livestream ).'" width="940" height="529" quality="high" wmode="transparent" allowFullScreen="true" ]');
+								echo do_shortcode('[gigya src="' . esc_url( ( $cap_livestream ) ) . '" width="940" height="529" quality="high" wmode="transparent" allowFullScreen="true" ]');
 								echo '</div>';
 							}; ?>
 
