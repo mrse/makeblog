@@ -1,4 +1,5 @@
 <div class="maker-week-takeover">
+	<div class="flags">
 
 	<div class="container">
 
@@ -105,6 +106,6 @@
 		
 
 	</div>
-
+	</div>
 </div>
 

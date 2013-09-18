@@ -9256,16 +9256,19 @@ ul#tabs .current > a:hover {
 }
 .maker-week-takeover {
   border-top: 1px solid #005B85;
+  background-color: #006690 !important;
+  background-image: -moz-linear-gradient(top, #003752, #00acec) !important;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#003752), to(#00acec)) !important;
+  background-image: -webkit-linear-gradient(top, #003752, #00acec) !important;
+  background-image: -o-linear-gradient(top, #003752, #00acec) !important;
+  background-image: linear-gradient(to bottom, #003752, #00acec) !important;
+  background-repeat: repeat-x !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff003752', endColorstr='#ff00acec', GradientType=0) !important;
+}
+.maker-week-takeover .flags {
   background-image: url('../images/flags.png') !important;
   background-position: center top;
-  background-color: #006690;
-  background-image: -moz-linear-gradient(top, #003752, #00acec);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#003752), to(#00acec));
-  background-image: -webkit-linear-gradient(top, #003752, #00acec);
-  background-image: -o-linear-gradient(top, #003752, #00acec);
-  background-image: linear-gradient(to bottom, #003752, #00acec);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff003752', endColorstr='#ff00acec', GradientType=0);
 }
 .maker-week-takeover .maker-week {
   width: 408px;
