@@ -84,7 +84,7 @@
 					$output .= '</a>';
 					$output .= '<div class="">';
 					$output .= '<h4><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
-					$output .= Markdown( wp_trim_words( get_the_excerpt(), 13, '...' ) );
+					$output .= Markdown( wp_trim_words( get_the_excerpt(), 7, '...' ) );
 					$output .= '</div></div>';
 				}
 				$output .= '</div>';
