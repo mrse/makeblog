@@ -4,13 +4,22 @@
 
 		<div class="row">
 
-			<div class="span12">
+			<div class="span6 offset2">
 
 				<div class="maker-week">
 
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/maker-week.png" alt="Maker Week">
 
 				</div>
+
+			</div>
+
+			<div class="span2 offset2 tix">
+
+				<h3>Sept. 21 &amp; 22<br>Queens, NY</h3>
+				<a href="http://makerfairenyc.eventbrite.com/">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/buy-tickets.png" class="tickets" alt="Buy Tickets">
+				</a>
 
 			</div>
 
