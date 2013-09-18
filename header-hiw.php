@@ -50,11 +50,5 @@
 					</div> <!-- END row -->	
 				</div> <!-- END container -->		
 				</div> <!-- END header -->
-					<div class="container">	
-							<div class="header-wrap">
-								<h2><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/tickets/' ); ?>">Miss the May 2013 event in San Mateo? Don't worry, we are coming to New York for a one-day event on September 18th, 2013! </h2> 
-								<a href="http://www.foliomag.com/2013/make-magazine-s-hardware-innovation-workshop" target="_blank"><img style="pull-right" src="http://makezineblog.files.wordpress.com/2013/03/pastedgraphic-1.jpg" alt="2012 Event received FAME award for Best First Time Event"></a>
-						</div> <!-- END header-wrap -->
-				</div> <!-- END container -->
 				<div class="clear"></div>
 		</div> <!-- END fix -->
