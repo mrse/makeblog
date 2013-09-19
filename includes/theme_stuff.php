@@ -110,8 +110,8 @@ $easy_cf = new Easy_CF($field_data);
  */
 function make_get_short_title( $length ) {
 	$original = get_the_title();
-	$title = substr( $original, 0, $length );
-	if ( strlen( $original ) > $length ) $title .= '...';
+	$title = substr( $original, 0, absint( $length ) );
+	if ( strlen( $original ) > absint( $length ) ) $title .= '...';
 
 	return $title;
 }
