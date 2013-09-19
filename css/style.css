@@ -5623,6 +5623,17 @@ body ul li {
 .blog article {
   margin: 20px 0 45px;
 }
+ul.inline.urban-sensor-nav li {
+  padding: 0;
+}
+ul.inline.urban-sensor-nav li a {
+  padding: 0 5px;
+  color: #8ed5f6;
+}
+ul.inline.urban-sensor-nav li a:hover {
+  background: #E4F4F9;
+  color: #ed1c24 !important;
+}
 #header {
   background-image: url('../img/header_bg.jpg');
   border-bottom: 1px solid #797575;
