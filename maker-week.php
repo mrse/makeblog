@@ -91,7 +91,6 @@
 					$output .= get_the_image( array( 'image_scan' => true, 'size' => 'maker-week-thumb', 'image_class' => 'hide-thumbnail pull-left', 'echo' => false ) );
 					$output .= '<div class="mw-content">';
 					$output .= '<h4><a href="' . get_permalink() . '">' . make_get_short_title( 47 ) . '</a></h4>';
-					$output .= Markdown( wp_trim_words( get_the_excerpt(), 7, '...' ) );
 					$output .= '<div class="clearfix"></div></div></div>';
 				}
 				$output .= '</div>';
