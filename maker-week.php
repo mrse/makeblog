@@ -29,7 +29,7 @@
 				<div class="slider">
 
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/makey.png" class="makey" alt="Mr. Makey">
-					<h3>Come See The Greatest Show and Tell on Earth &raquo;</h3>
+					<h3>Come See The Greatest Show and Tell on Earth <span>&raquo;</span></h3>
 					<div class="clearfix"></div>
 
 					<?php
@@ -58,7 +58,7 @@
 										<?php the_post_thumbnail( 'maker-week-home' ); ?>
 									</a>
 
-									<?php the_title( '<h4><a href="' . get_permalink() . '">', '</a></h4>' ); ?>
+									<h4><a href="<?php echo get_permalink(); ?>"><?php echo make_get_short_title( 65 ); ?></a></h4>
 
 								</div>
 
@@ -73,10 +73,9 @@
 					<?php endif; ?>
 
 					<script type="text/javascript" charset="utf-8">
-						jQuery('#myCarousel').carousel( {
+						jQuery('#myCarousel').carousel({
 							 interval: 5000
-							}
-						);
+						});
 					</script>
 
 				</div>
@@ -89,11 +88,9 @@
 				$output = '<div class="span4">';
 				foreach ( $posts as $post ) {
 					$output .= '<div class="thumb slider">';
-					$output .= '<a href="' . get_permalink() . '">';
-					$output .= get_the_image( array( 'image_scan' => true, 'size' => 'featured-thumb', 'image_class' => 'hide-thumbnail pull-left', 'echo' => false ) );
-					$output .= '</a>';
-					$output .= '<div class="">';
-					$output .= '<h4><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
+					$output .= get_the_image( array( 'image_scan' => true, 'size' => 'maker-week-thumb', 'image_class' => 'hide-thumbnail pull-left', 'echo' => false ) );
+					$output .= '<div class="mw-content">';
+					$output .= '<h4><a href="' . get_permalink() . '">' . make_get_short_title( 47 ) . '</a></h4>';
 					$output .= Markdown( wp_trim_words( get_the_excerpt(), 7, '...' ) );
 					$output .= '<div class="clearfix"></div></div></div>';
 				}

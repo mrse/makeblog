@@ -40,7 +40,8 @@ function make_action_after_setup_theme() {
 	add_image_size( 'featured-thumb', 105, 105, true );				// Used on related blocks.
 	add_image_size( 'p1', 301, 400, true );							// Used as the top left featured image on home page.
 	add_image_size( 'p2', 290, 180, true );							// Used as the top right featured images on home page.
-	add_image_size( 'maker-week-home', 620, 340, true );			// Used on related blocks.
+	add_image_size( 'maker-week-home', 620, 400, true );			// Used on Maker Week take over page.
+	add_image_size( 'maker-week-thumb', 145, 110, true );			// Used on Maker Week take over page sidebar.
 
 	/**
 	  * Depracated image sizes.
@@ -100,6 +101,20 @@ $field_data = array (
 	),
 );
 $easy_cf = new Easy_CF($field_data);
+
+
+/**
+ * Provides a way to truncate titles
+ * @param  integer $length The desiered length
+ * @return string
+ */
+function make_get_short_title( $length ) {
+	$original = get_the_title();
+	$title = substr( $original, 0, $length );
+	if ( strlen( $original ) > $length ) $title .= '...';
+
+	return $title;
+}
 
 
 /**

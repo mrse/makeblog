@@ -80,6 +80,7 @@
 
 .maker-week-takeover {
 	border-top: 1px solid #005B85;
+	font-family: "proxima-nova", sans-serif;
 	#gradient > .vertical( #003752, #00ACEC ) !important;
 	.flags {
 		background-image: url('../images/flags.png') !important;
@@ -99,6 +100,7 @@
 			font-size: 18px;
 			line-height: 120%;
 			margin-bottom: 10px;
+			font-weight:normal;
 		}
 	}
 	.slider {
@@ -116,6 +118,7 @@
 			font-weight: 400;
 			margin-top: 6px;
 			margin-left: 13px;
+			span { font-size:28px; }
 		}
 		h4 {
 			font-family: "proxima-nova", sans-serif;
@@ -135,7 +138,7 @@
 			border:1px solid #00324b;
 			font-size:72px;
 			width:30px;
-			height:46px;
+			height:39px;
 			transition:opacity .3s;
 			border-radius:0;
 			border-top-left-radius:5px;
@@ -157,13 +160,21 @@
 			}
 		}
 		&.thumb {
-			padding: 5px;
-			margin-bottom: 10px;
+			padding: 4px;
+			margin-bottom: 32px;
 			color: #5ebcf7;
 			font-size: 16px;
 			line-height: 120%;
 			img {
 				margin-right: 10px;
+				width:145px;
+			}
+			> div {
+				p {
+					margin-bottom:0;
+					font-size:16px;
+					color:#5ebcf7;
+				}
 			}
 			h4 {
 				margin: 0px;

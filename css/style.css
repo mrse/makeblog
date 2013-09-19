@@ -9267,6 +9267,7 @@ ul#tabs .current > a:hover {
 }
 .maker-week-takeover {
   border-top: 1px solid #005B85;
+  font-family: "proxima-nova", sans-serif;
   background-color: #006690 !important;
   background-image: -moz-linear-gradient(top, #003752, #00acec) !important;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#003752), to(#00acec)) !important;
@@ -9295,6 +9296,7 @@ ul#tabs .current > a:hover {
   font-size: 18px;
   line-height: 120%;
   margin-bottom: 10px;
+  font-weight: normal;
 }
 .maker-week-takeover .slider {
   background-color: #003752;
@@ -9315,6 +9317,9 @@ ul#tabs .current > a:hover {
   margin-top: 6px;
   margin-left: 13px;
 }
+.maker-week-takeover .slider h3 span {
+  font-size: 28px;
+}
 .maker-week-takeover .slider h4 {
   font-family: "proxima-nova", sans-serif;
   font-weight: 400;
@@ -9333,7 +9338,7 @@ ul#tabs .current > a:hover {
   border: 1px solid #00324b;
   font-size: 72px;
   width: 30px;
-  height: 46px;
+  height: 39px;
   transition: opacity .3s;
   border-radius: 0;
   border-top-left-radius: 5px;
@@ -9355,14 +9360,20 @@ ul#tabs .current > a:hover {
   right: 0px;
 }
 .maker-week-takeover .slider.thumb {
-  padding: 5px;
-  margin-bottom: 10px;
+  padding: 4px;
+  margin-bottom: 32px;
   color: #5ebcf7;
   font-size: 16px;
   line-height: 120%;
 }
 .maker-week-takeover .slider.thumb img {
   margin-right: 10px;
+  width: 145px;
+}
+.maker-week-takeover .slider.thumb > div p {
+  margin-bottom: 0;
+  font-size: 16px;
+  color: #5ebcf7;
 }
 .maker-week-takeover .slider.thumb h4 {
   margin: 0px;
