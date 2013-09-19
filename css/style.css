@@ -9643,6 +9643,10 @@ a.oembed {
 .page-id-336037 .single {
   padding-top: 0;
 }
+.page-id-335857 .single p,
+.page-id-336037 .single p {
+  font-size: 16px;
+}
 .page-id-335857 .background-blue,
 .page-id-336037 .background-blue {
   background-color: #e4f4f9;
