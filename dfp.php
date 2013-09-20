@@ -127,6 +127,9 @@ global $post;
 				elseif (is_page( array( 289746,271575 ) ) ) {
 					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
 				}
+				elseif ( has_category( '3d-printing-workshop' ) ) {
+					echo "googletag.pubads().setTargeting('sponsor',['sketchup']);";
+				}
 			?>
 			googletag.enableServices();
 			});
