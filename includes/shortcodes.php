@@ -752,23 +752,25 @@ function maker_short_post_loop( $args ) {
 		);
 
 	$args = wp_parse_args( $args, $defaults );
-	
+
 	$output = '<div class="newsies"><div class="news post">';
+
+	$output .= ( isset( $args['title'] ) ) ? '<h3 class="red">' . wp_kses_post( $args['title'] ) . '</h3>' : '';
 	
 	$query = new WP_Query($args);
 	if( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
 		
-		$output .= '<h4><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
-		$output .= '<div class="row"><div class="span2">';
-		$output .= get_the_image( array( 'image_scan' => true, 'size' => 'faire-thumb', 'echo' => false ) );
-		$output .= '</div><div class="span6"><p>' . get_the_excerpt() . '</p>';
+		$output .= '<div class="media"><div class="pull-left">';
+		$output .= get_the_image( array( 'image_scan' => true, 'size' => 'faire-thumb', 'echo' => false, 'image_class' => 'media-object hide-thumbnail' ) );
+		$output .= '</div><div class="media-body">';
+		$output .= '<h4 class="media-heading"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4><p>' . get_the_excerpt() . '</p>';
 		$output .= '<ul class="unstyled"><li>Posted by ';
 		if( function_exists( 'coauthors_posts_links' ) ) {	
-			$output .= coauthors_posts_links(); 
+			$output .= coauthors_posts_links( null, null, null, null, false); 
 		} else { 
 			$output .= the_author_posts_link();
 		}
-		$output .= '| ' . the_time('F jS, Y g:i A') . '</li>';
+		$output .= ' | ' . get_the_time('F jS, Y g:i A') . '</li>';
 		$output .= '</ul></div></div>';
 
 		endwhile; 
