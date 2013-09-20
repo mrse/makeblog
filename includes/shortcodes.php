@@ -739,3 +739,44 @@ function make_volume_tease( $atts, $content = null ) {
 	return $output;
 
 }
+
+
+/**
+ * Add Posts from a category/tag to the bottom of a post via a shortcode
+ */
+function maker_short_post_loop( $args ) {
+
+	$defaults = array( 
+		'post_type' 		=> array( 'post', 'craft', 'magazine', 'video', 'projects' ),
+		'posts_per_page' 	=> 5, 
+		);
+
+	$args = wp_parse_args( $args, $defaults );
+	
+	$output = '<div class="newsies"><div class="news post">';
+	
+	$query = new WP_Query($args);
+	if( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+		
+		$output .= '<h4><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
+		$output .= '<div class="row"><div class="span2">';
+		$output .= get_the_image( array( 'image_scan' => true, 'size' => 'faire-thumb', 'echo' => false ) );
+		$output .= '</div><div class="span6"><p>' . get_the_excerpt() . '</p>';
+		$output .= '<ul class="unstyled"><li>Posted by ';
+		if( function_exists( 'coauthors_posts_links' ) ) {	
+			$output .= coauthors_posts_links(); 
+		} else { 
+			$output .= the_author_posts_link();
+		}
+		$output .= '| ' . the_time('F jS, Y g:i A') . '</li>';
+		$output .= '</ul></div></div>';
+
+		endwhile; 
+	endif;
+	wp_reset_postdata();
+		
+	$output .= '</div></div>';
+	return $output;
+}
+
+add_shortcode( 'make_post_loop', 'maker_short_post_loop' );
