@@ -9653,50 +9653,61 @@ a.oembed {
   box-shadow: 3px 3px 3px rgba(183, 183, 183, 0.4);
   margin-bottom: 20px;
 }
+.page-id-328564 .projects-masthead,
 .page-id-335857 .projects-masthead,
 .page-id-336037 .projects-masthead {
   display: none;
 }
+.page-id-328564 br,
 .page-id-335857 br,
 .page-id-336037 br {
   display: none;
 }
+.page-id-328564 .single,
 .page-id-335857 .single,
 .page-id-336037 .single {
   padding-top: 0;
 }
+.page-id-328564 .single p,
 .page-id-335857 .single p,
 .page-id-336037 .single p {
   font-size: 16px;
 }
+.page-id-328564 .background-blue,
 .page-id-335857 .background-blue,
 .page-id-336037 .background-blue {
   background-color: #e4f4f9;
   padding: 10px;
 }
+.page-id-328564 .border-radius,
 .page-id-335857 .border-radius,
 .page-id-336037 .border-radius {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+.page-id-328564 .border-solid,
 .page-id-335857 .border-solid,
 .page-id-336037 .border-solid {
   border-style: solid;
   border-width: 2px;
   border-color: #e4f4f9;
 }
+.page-id-328564 h3.red,
 .page-id-335857 h3.red,
 .page-id-336037 h3.red {
   text-transform: none;
 }
+.page-id-328564 h4.dark-blue,
 .page-id-335857 h4.dark-blue,
 .page-id-336037 h4.dark-blue {
   color: #005d8f;
 }
+.page-id-328564 strong,
 .page-id-335857 strong,
 .page-id-336037 strong {
   color: #005d8f;
 }
+.page-id-328564 div.padding-ush,
 .page-id-335857 div.padding-ush,
 .page-id-336037 div.padding-ush {
   padding: 10px;
