@@ -252,7 +252,7 @@
 					'month'			 => ( isset( $query_vars['month'] ) ) ? $query_vars['month'] : '',
 					'day'			 => ( isset( $query_vars['day'] ) ) ? $query_vars['day'] : '',
 					'year'			 => ( isset( $query_vars['year'] ) ) ? $query_vars['year'] : '',
-					's'				 => ( isset( $query_vars['serach'] ) ) ? $query_vars['serach'] : '',
+					's'				 => ( isset( $query_vars['search'] ) ) ? $query_vars['search'] : '',
 					'posts_per_page' => 0,
 					'return_fields'	 => 'ids',
 				);
