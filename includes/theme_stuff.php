@@ -1,11 +1,10 @@
 <?php
 /**
- * Sidebar for Projects Page
- *
+ * General makeblog theme functions
  * 
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
- * @author     Jake Spurlock <jspurlock@makermedia.com>
+ *
  */
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -1581,3 +1580,15 @@ function make_remove_admin_areas_for_authors() {
 }
 add_action( 'admin_menu', 'make_remove_admin_areas_for_authors' );
 
+/**
+ * Function to generate the title tags for page heads.	
+ */
+function make_generate_title_tag() {
+	$output = '';
+	if ( is_home() || is_front_page() ) {
+		$output .= get_bloginfo('name') . ' | ' . get_bloginfo('description');
+	} else {
+		$output .= wp_title('', false ) . ' | ' . get_bloginfo('name');
+	}
+	return $output;
+}
