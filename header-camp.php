@@ -41,7 +41,7 @@
                  		
 				<div class="container">	
 							<div class="clear"></div>
-							<h1><a href="http://blog.makezine.com/make-training-camp/"><img style="margin:0 auto" src="http://makezineblog.files.wordpress.com/2013/05/maker-training-camp-hdr.gif" alt="Maker Training Camp" title="Maker Training Camp" /></a></h1>			
+							<h1><a href="http://blog.makezine.com/trainingcamp/"><img style="margin:0 auto" src="http://makezineblog.files.wordpress.com/2013/05/maker-training-camp-hdr.gif" alt="Maker Training Camp" title="Maker Training Camp" /></a></h1>			
 				</div> <!-- END container -->
 			</div> <!-- END header -->
 
