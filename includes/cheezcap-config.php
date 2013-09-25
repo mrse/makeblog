@@ -263,6 +263,12 @@ $cap = new CheezCap( array(
 					'Maker Shed Exclusive'
 				),
 				new CheezCapTextOption(
+					'Featured Box ID',
+					'Add the ID of the featured page so we can link the title.',
+					'feature_url',
+					''
+				),
+				new CheezCapTextOption(
 					'Featured Box Title',
 					'This is the title of the content that you want to go in the box.',
 					'feature_title',
@@ -363,7 +369,7 @@ $cap = new CheezCap( array(
 					'Maker Week Homepage Takeover',
 					'Do you want the Maker Week to be on the home page?',
 					'maker_week',
-					'0'
+					'1'
 				),
 				new CheezCapTextOption(
 					'Maker Week Homepage Posts',

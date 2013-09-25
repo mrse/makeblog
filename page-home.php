@@ -262,8 +262,13 @@ Template Name: Home Page
 					<!--<div class="shadow"></div>-->
 
 					<div class="span8">
-
-						<h3 class="red"><?php echo esc_html( make_get_cap_option( 'feature_heading' ) ); ?></h3>
+						<?php
+							$feature_url = make_get_cap_option( 'feature_url' );
+							if ( $feature_url && absint( $feature_url ) ) : ?>
+								<h3><a href="<?php echo get_permalink( absint( $feature_url ) ); ?>" class="red"><?php echo esc_html( make_get_cap_option( 'feature_heading' ) ); ?></a></h3>
+							<?php else : ?>
+								<h3 class="red"><?php echo esc_html( make_get_cap_option( 'feature_heading' ) ); ?></h3>
+							<?php endif; ?>
 
 						<div class="new-grid">
 
