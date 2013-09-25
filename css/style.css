@@ -8630,7 +8630,6 @@ textarea.narrow,
 }
 .category-top {
   background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
@@ -8757,7 +8756,6 @@ textarea.narrow,
 }
 .child {
   background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
   background-repeat: repeat-x;
   padding: 20px 0;
   background-color: #f3f3f3;
@@ -8799,7 +8797,6 @@ textarea.narrow,
 }
 .content-type {
   background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
   background-repeat: repeat-x;
   padding: 20px 0;
   font-family: "proxima-nova", sans-serif;
@@ -9096,7 +9093,6 @@ a {
 }
 .projects-home {
   background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
   background-repeat: repeat-x;
   padding-top: 20px;
   font-family: "proxima-nova", sans-serif;
@@ -9513,7 +9509,6 @@ a.oembed {
 }
 .single {
   background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
@@ -11610,9 +11605,6 @@ body.makercamp a.button.small-button {
   }
 }
 .archive {
-  background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
-  background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
   padding-top: 20px;
