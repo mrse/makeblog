@@ -71,7 +71,7 @@
 				<div class="row">
 					<blockquote>
 						<p><strong style="color:#0075BE">New from the editors of MAKE magazine!</strong></p>
-						<p><a href="<?php echo home_url( '/maker-pro-newsletter/' ); ?>">Maker Pro Newsletter</a> is a weekly roundup of news about the impact makers are having on business and technology. From new hardware products and devices, hot startups, incubators and innovators, to new tools and market trends, Maker Pro delivers a quick read to keep you up to speed on the business of making. <a href="<?php echo home_url( 'magazine/newsletter/makerpro/?utm_medium=email&utm_campaign=Maker%20Pro%203&utm_content=Maker%20Pro%203+CID_29125aad483db7e7122133ed32737560&utm_source=Email%20Campaign&utm_term=Click%20here&utm_medium=email&utm_campaign=Maker%20Pro%20Newsletter%209&utm_content=Maker%20Pro%20Newsletter%209+CID_9dece7899be7475df05542bdbc5f4d04&utm_source=Email%20Campaign&utm_term=here' ); ?>">Subscribe today</a>!</p>
+						<p><a href="<?php echo home_url( '/maker-pro-newsletter/' ); ?>">Maker Pro Newsletter</a> is a weekly roundup of news about the impact makers are having on business and technology. From new hardware products and devices, hot startups, incubators and innovators, to new tools and market trends, Maker Pro delivers a quick read to keep you up to speed on the business of making. <a href="<?php echo home_url( '/maker-pro-newsletter/' ); ?>">Subscribe today</a>!</p>
 					</blockquote>
 				</div><!-- END row-->
 					<div class="clear"></div>
