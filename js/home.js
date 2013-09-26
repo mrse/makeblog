@@ -1,8 +1,4 @@
-/*
-
-	Handle Error checking on the forms
-
-*/
+// Handle Error checking on the forms
 
 function validateForm(theForm){
 

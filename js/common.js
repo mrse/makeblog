@@ -1,8 +1,6 @@
 
-/**
- * This file contains common JavaScript that is loaded into every page.
- * We want to register and enqueue these scripts with WordPress.
- */
+// This file contains common JavaScript that is loaded into every page.
+// We want to register and enqueue these scripts with WordPress.
 
 // Load Typekit
 try{Typekit.load();}catch(e){}
