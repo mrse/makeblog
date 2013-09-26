@@ -27,19 +27,7 @@
 
 					</article>
 					
-					<?php endwhile; ?>
-
-					<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
-
-					<div class="comments">
-						<?php comments_template(); ?>
-					</div>
-					
-					<?php else: ?>
-					
-						<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-					
-					<?php endif; ?>
+					<?php endwhile; endif; ?>
 				</div> <!-- END span12 -->
 													
 			</div> <!-- END row -->
