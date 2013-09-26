@@ -5623,6 +5623,17 @@ body ul li {
 .blog article {
   margin: 20px 0 45px;
 }
+ul.inline.urban-sensor-nav li {
+  padding: 0;
+}
+ul.inline.urban-sensor-nav li a {
+  padding: 0 5px;
+  color: #8ed5f6;
+}
+ul.inline.urban-sensor-nav li a:hover {
+  background: #E4F4F9;
+  color: #ed1c24 !important;
+}
 #header {
   background-image: url('../img/header_bg.jpg');
   border-bottom: 1px solid #797575;
@@ -8498,7 +8509,13 @@ textarea.narrow,
   font-weight: bold;
 }
 #make_subcription_form .main-sub-hdr h3 {
-  color: #F00;
+  color: #cc2229;
+  font-family: museo-slab, serif;
+  font-style: normal;
+  font-weight: 900;
+  margin-bottom: 0px;
+  font-size: 22px;
+  margin-top: 10px;
 }
 #make_subcription_form .card-number-area {
   width: 180px;
@@ -8613,7 +8630,6 @@ textarea.narrow,
 }
 .category-top {
   background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
@@ -8740,7 +8756,6 @@ textarea.narrow,
 }
 .child {
   background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
   background-repeat: repeat-x;
   padding: 20px 0;
   background-color: #f3f3f3;
@@ -8782,7 +8797,6 @@ textarea.narrow,
 }
 .content-type {
   background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
   background-repeat: repeat-x;
   padding: 20px 0;
   font-family: "proxima-nova", sans-serif;
@@ -9079,7 +9093,6 @@ a {
 }
 .projects-home {
   background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
   background-repeat: repeat-x;
   padding-top: 20px;
   font-family: "proxima-nova", sans-serif;
@@ -9248,6 +9261,120 @@ ul#tabs .current > a:hover {
 .waist-takeover .container .thumb div p {
   margin-bottom: 0px;
 }
+.maker-week-takeover {
+  border-top: 1px solid #005B85;
+  font-family: "proxima-nova", sans-serif;
+  background-color: #006690 !important;
+  background-image: -moz-linear-gradient(top, #003752, #00acec) !important;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#003752), to(#00acec)) !important;
+  background-image: -webkit-linear-gradient(top, #003752, #00acec) !important;
+  background-image: -o-linear-gradient(top, #003752, #00acec) !important;
+  background-image: linear-gradient(to bottom, #003752, #00acec) !important;
+  background-repeat: repeat-x !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff003752', endColorstr='#ff00acec', GradientType=0) !important;
+}
+.maker-week-takeover .flags {
+  background-image: url('../images/flags.png') !important;
+  background-position: center top;
+  background-repeat: repeat-x;
+}
+.maker-week-takeover .maker-week {
+  width: 408px;
+  margin: 10px 0px 25px 100px;
+}
+.maker-week-takeover .tix {
+  color: #fff;
+  margin-top: 40px;
+  text-align: right;
+}
+.maker-week-takeover .tix h3 {
+  text-align: right;
+  font-size: 18px;
+  line-height: 120%;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+.maker-week-takeover .slider {
+  background-color: #003752;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.maker-week-takeover .slider .makey {
+  float: left;
+  margin-top: -60px;
+}
+.maker-week-takeover .slider h3 {
+  float: left;
+  color: #96dffa;
+  font-family: "proxima-nova", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 6px;
+  margin-left: 13px;
+}
+.maker-week-takeover .slider h3 span {
+  font-size: 28px;
+}
+.maker-week-takeover .slider h4 {
+  font-family: "proxima-nova", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  margin: 10px 5px;
+}
+.maker-week-takeover .slider h4 a {
+  color: #96dffa;
+}
+.maker-week-takeover .slider .caption {
+  color: #5ebcf7;
+}
+.maker-week-takeover .slider .carousel-control {
+  top: 50%;
+  background: #00476b;
+  border: 1px solid #00324b;
+  font-size: 72px;
+  width: 30px;
+  height: 39px;
+  transition: opacity .3s;
+  border-radius: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.maker-week-takeover .slider .carousel-control span {
+  line-height: 1.4em;
+  width: auto;
+  height: auto;
+  background-image: none;
+}
+.maker-week-takeover .slider .carousel-control.left {
+  left: 0px;
+  border-radius: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.maker-week-takeover .slider .carousel-control.right {
+  right: 0px;
+}
+.maker-week-takeover .slider.thumb {
+  padding: 4px;
+  margin-bottom: 32px;
+  color: #5ebcf7;
+  font-size: 16px;
+  line-height: 120%;
+}
+.maker-week-takeover .slider.thumb img {
+  margin-right: 10px;
+  width: 145px;
+}
+.maker-week-takeover .slider.thumb > div p {
+  margin-bottom: 0;
+  font-size: 16px;
+  color: #5ebcf7;
+}
+.maker-week-takeover .slider.thumb h4 {
+  margin: 0px;
+  font-size: 18px;
+}
 .avatar-298 {
   margin-bottom: 20px;
   border: 1px solid #cecece;
@@ -9382,7 +9509,6 @@ a.oembed {
 }
 .single {
   background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
   background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
@@ -9521,6 +9647,127 @@ a.oembed {
   -moz-box-shadow: 3px 3px 3px rgba(183, 183, 183, 0.4);
   box-shadow: 3px 3px 3px rgba(183, 183, 183, 0.4);
   margin-bottom: 20px;
+}
+.page-id-328564 .projects-masthead,
+.page-id-335857 .projects-masthead,
+.page-id-336037 .projects-masthead {
+  display: none;
+}
+.page-id-328564 br,
+.page-id-335857 br,
+.page-id-336037 br {
+  display: none;
+}
+.page-id-328564 .single,
+.page-id-335857 .single,
+.page-id-336037 .single {
+  font-size: 16px;
+  padding-top: 0;
+}
+.page-id-328564 .single p,
+.page-id-335857 .single p,
+.page-id-336037 .single p {
+  font-size: 16px;
+}
+.page-id-328564 .single .post ul li,
+.page-id-335857 .single .post ul li,
+.page-id-336037 .single .post ul li {
+  font-size: 16px;
+}
+.page-id-328564 .background-blue,
+.page-id-335857 .background-blue,
+.page-id-336037 .background-blue {
+  background-color: #e4f4f9;
+  padding: 10px;
+}
+.page-id-328564 .border-radius,
+.page-id-335857 .border-radius,
+.page-id-336037 .border-radius {
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.page-id-328564 .border-solid,
+.page-id-335857 .border-solid,
+.page-id-336037 .border-solid {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #e4f4f9;
+}
+.page-id-328564 h3.red,
+.page-id-335857 h3.red,
+.page-id-336037 h3.red {
+  text-transform: none;
+}
+.page-id-328564 h4.dark-blue,
+.page-id-335857 h4.dark-blue,
+.page-id-336037 h4.dark-blue {
+  color: #005d8f;
+}
+.page-id-328564 strong,
+.page-id-335857 strong,
+.page-id-336037 strong {
+  color: #005d8f;
+}
+.page-id-328564 div.padding-ush,
+.page-id-335857 div.padding-ush,
+.page-id-336037 div.padding-ush {
+  padding: 10px;
+}
+.page-id-328564 .boxed,
+.page-id-335857 .boxed,
+.page-id-336037 .boxed {
+  border: 1px solid #e4f4f9;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.page-id-328564 .boxed h3,
+.page-id-335857 .boxed h3,
+.page-id-336037 .boxed h3 {
+  background-color: #e4f4f9;
+  padding: 10px;
+}
+.page-id-328564 .boxed h3 a,
+.page-id-335857 .boxed h3 a,
+.page-id-336037 .boxed h3 a {
+  color: #cc2229;
+  color: #CC2229;
+}
+.page-id-328564 .news,
+.page-id-335857 .news,
+.page-id-336037 .news {
+  margin: 20px 0;
+  border: 1px solid #e4f4f9;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.page-id-328564 .news li,
+.page-id-335857 .news li,
+.page-id-336037 .news li {
+  font-size: 16px;
+}
+.page-id-328564 .news h3,
+.page-id-335857 .news h3,
+.page-id-336037 .news h3 {
+  background-color: #e4f4f9;
+  padding: 10px;
+}
+.page-id-328564 .news h3 a,
+.page-id-335857 .news h3 a,
+.page-id-336037 .news h3 a {
+  color: #cc2229;
+  color: #CC2229;
+}
+.page-id-328564 .news .Thumbnail,
+.page-id-335857 .news .Thumbnail,
+.page-id-336037 .news .Thumbnail {
+  max-width: 140px;
+}
+.page-id-328564 .news .media,
+.page-id-335857 .news .media,
+.page-id-336037 .news .media {
+  padding: 0 10px;
 }
 .widget {
   margin: 20px 0;
@@ -11358,9 +11605,6 @@ body.makercamp a.button.small-button {
   }
 }
 .archive {
-  background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
-  background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
   padding-top: 20px;

@@ -1,12 +1,10 @@
 <?php
 /*
-Template Name: Home Page
+Template Name: Home Page Test
 */
 ?>
 
 <?php get_header(); ?>
-
-		<?php if ( !make_get_cap_option( 'make_camp_takeover' ) && !make_get_cap_option( 'maker_week' ) ) : ?>
 
 		<div class="waist">
 
@@ -172,15 +170,9 @@ Template Name: Home Page
 
 		</div>
 
-		<?php elseif ( make_get_cap_option( 'make_camp_takeover' ) ) : ?>
+		<?php get_template_part( 'home-takover' ); ?>
 
-			<?php get_template_part( 'home-takover' ); ?>
-
-		<?php elseif ( make_get_cap_option( 'maker_week' ) ) : ?>
-
-			<?php get_template_part( 'maker-week' ); ?>
-
-		<?php endif; ?>
+		<?php get_template_part( 'maker-week' ); ?>
 
 		<div class="sand new-sand">
 
@@ -262,13 +254,8 @@ Template Name: Home Page
 					<!--<div class="shadow"></div>-->
 
 					<div class="span8">
-						<?php
-							$feature_url = make_get_cap_option( 'feature_url' );
-							if ( $feature_url && absint( $feature_url ) ) : ?>
-								<h3><a href="<?php echo get_permalink( absint( $feature_url ) ); ?>" class="red"><?php echo esc_html( make_get_cap_option( 'feature_heading' ) ); ?></a></h3>
-							<?php else : ?>
-								<h3 class="red"><?php echo esc_html( make_get_cap_option( 'feature_heading' ) ); ?></h3>
-							<?php endif; ?>
+
+						<h3 class="red"><?php echo esc_html( make_get_cap_option( 'feature_heading' ) ); ?></h3>
 
 						<div class="new-grid">
 

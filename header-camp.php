@@ -2,7 +2,7 @@
 <html lang="en" xmlns:fb="http://ogp.me/ns/fb#">
 	<head>
 		<meta charset="utf-8">
-		<title><?php bloginfo('name'); ?> | <?php is_home() ? bloginfo('description') : wp_title(''); ?></title>
+		<title><?php echo make_genenate_title_tag(); ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 
@@ -41,7 +41,7 @@
                  		
 				<div class="container">	
 							<div class="clear"></div>
-							<h1><a href="http://blog.makezine.com/make-training-camp/"><img style="margin:0 auto" src="http://makezineblog.files.wordpress.com/2013/05/maker-training-camp-hdr.gif" alt="Maker Training Camp" title="Maker Training Camp" /></a></h1>			
+							<h1><a href="http://blog.makezine.com/trainingcamp/"><img style="margin:0 auto" src="http://makezineblog.files.wordpress.com/2013/05/maker-training-camp-hdr.gif" alt="Maker Training Camp" title="Maker Training Camp" /></a></h1>			
 				</div> <!-- END container -->
 			</div> <!-- END header -->
 
@@ -53,8 +53,8 @@
 						    <ul class="dropdown-menu">
 						    	<li><a href="http://makezine.com/trainingcamp/design-for-desktop-3d-printing/"> Design for Desktop 3D Printing</a></li>
 						    </ul> -->
-					    <a class="btn btn-large" href="http://makezine.com/trainingcamp/teach-camp/">Teach a Camp</a>
-					    <a class="btn btn-large" href="http://makezine.com/trainingcamp/suggest-course/">Suggest Camp</a>
+					    <!-- <a class="btn btn-large" href="http://makezine.com/trainingcamp/teach-camp/">Teach a Camp</a>
+					    <a class="btn btn-large" href="http://makezine.com/trainingcamp/suggest-course/">Suggest Camp</a> -->
 					    <a class="btn btn-large" href="http://makezine.com/trainingcamp/frequently-asked-questions/">FAQ</a>
 				    </div>
 				</div> <!-- END container -->

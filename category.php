@@ -67,7 +67,7 @@ make_get_header(); ?>
 							'title'        => 'Featured in ' . get_queried_object()->name,
 							'limit'        => 2,
 							'tag'          => 'Featured',
-							'post_type'	   => ( ! empty( $type ) && in_array( $type, $post_types ) ) ? $type : array( 'post', 'video','projects', 'review', 'craft' )
+							'post_type'	   => ( ! empty( $type ) && in_array( $type, $post_types ) ) ? $type : array( 'post', 'video','projects', 'review', 'craft', 'magazine' )
 					) ); ?>
 					
 				</div>
@@ -98,7 +98,7 @@ make_get_header(); ?>
 						make_carousel( array(
 							'category__in'   => get_queried_object_id(), // Likely the queried object ID
 							'title'          => 'New in ' . get_queried_object()->name,
-							'posts_per_page' => 32
+							'posts_per_page' => 32,
 						) );
 					?>
 					
@@ -257,6 +257,22 @@ make_get_header(); ?>
 							'cat'       => $qo_id,
 							'title'     => $qo_name . ' On the Blog',
 							'post_type' => 'post'
+						) );
+					?>
+					
+				</div>
+			
+			</div>
+
+			<div class="row">
+				
+				<div class="span12">
+				
+					<?php
+						make_carousel( array(
+							'cat'       => $qo_id,
+							'title'     => $qo_name . ' Articles',
+							'post_type' => 'magazine'
 						) );
 					?>
 					

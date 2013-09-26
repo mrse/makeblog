@@ -103,7 +103,7 @@
 				'default'  => true,
 			),
 			'post_date' => array(
-				'label'    => 'Date Modified',
+				'label'    => 'Date',
 				'sortable' => true,
 				'default'  => true,
 			),
@@ -245,14 +245,14 @@
 			foreach ( $this->post_types as $k => $type ) {
 				$args = array( 
 					'post_type'		 => ( $type == 'all' ) ? $new_post_types : $type,
-					'post_status'	 => $query_vars['post_status'],
-					'post_parent'	 => $query_vars['post_parent'],
-					'tag'			 => $query_vars['tag'],
-					'category'		 => $query_vars['category'],
-					'month'			 => $query_vars['month'],
-					'day'			 => $query_vars['day'],
-					'year'			 => $query_vars['year'],
-					's'				 => $query_vars['serach'],
+					'post_status'	 => ( isset( $query_vars['post_status'] ) ) ? $query_vars['post_status'] : '',
+					'post_parent'	 => ( isset( $query_vars['post_parent'] ) ) ? $query_vars['post_parent'] : '',
+					'tag'			 => ( isset( $query_vars['tag'] ) ) ? $query_vars['tag'] : '',
+					'category'		 => ( isset( $query_vars['category'] ) ) ? $query_vars['category'] : '',
+					'month'			 => ( isset( $query_vars['month'] ) ) ? $query_vars['month'] : '',
+					'day'			 => ( isset( $query_vars['day'] ) ) ? $query_vars['day'] : '',
+					'year'			 => ( isset( $query_vars['year'] ) ) ? $query_vars['year'] : '',
+					's'				 => ( isset( $query_vars['search'] ) ) ? $query_vars['search'] : '',
 					'posts_per_page' => 0,
 					'return_fields'	 => 'ids',
 				);
@@ -542,7 +542,7 @@
 			if ( $is_string )
 				$time = strtotime( $time );
 
-			return date( 'm/d/y', absint( $time ) );
+			return date( 'h:i A \- m/d/y', absint( $time ) );
 		}
 
 
@@ -620,15 +620,15 @@
 
 			$args = array(
 				'post_type'		 => $post_types,
-				'post_status'	 => $query_vars['post_status'],
-				'posts_per_page' => $query_vars['posts_per_page'],
-				'paged'			 => $query_vars['paged'],
-				'category'	 	 => $query_vars['category'],
-				'tag'			 => $query_vars['tag'],
-				'monthnum'		 => $query_vars['month'],
-				'day'			 => $query_vars['day'],
-				'year'			 => $query_vars['year'],
-				's'				 => $query_vars['search'],
+				'post_status'	 => ( isset( $query_vars['post_status'] ) ) ? $query_vars['post_status'] : '',
+				'posts_per_page' => ( isset( $query_vars['posts_per_page'] ) ) ? $query_vars['posts_per_page'] : '',
+				'paged'			 => ( isset( $query_vars['paged'] ) ) ? $query_vars['paged'] : '',
+				'category'	 	 => ( isset( $query_vars['category'] ) ) ? $query_vars['category'] : '',
+				'tag'			 => ( isset( $query_vars['tag'] ) ) ? $query_vars['tag'] : '',
+				'monthnum'		 => ( isset( $query_vars['month'] ) ) ? $query_vars['month'] : '',
+				'day'			 => ( isset( $query_vars['day'] ) ) ? $query_vars['day'] : '',
+				'year'			 => ( isset( $query_vars['year'] ) ) ? $query_vars['year'] : '',
+				's'				 => ( isset( $query_vars['search'] ) ) ? $query_vars['search'] : '',
 			);
 			$query = new WP_Query( $args ); ?>
 			<div class="wrap">

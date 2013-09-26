@@ -263,6 +263,12 @@ $cap = new CheezCap( array(
 					'Maker Shed Exclusive'
 				),
 				new CheezCapTextOption(
+					'Featured Box ID',
+					'Add the ID of the featured page so we can link the title.',
+					'feature_url',
+					''
+				),
+				new CheezCapTextOption(
 					'Featured Box Title',
 					'This is the title of the content that you want to go in the box.',
 					'feature_title',
@@ -354,6 +360,44 @@ $cap = new CheezCap( array(
 					'Add the URL of a YouTube video here.',
 					'camp_youtube',
 					''
+				),
+			)
+		),
+		new CheezCapGroup( 'Maker Week', 'makerWeekGroup',
+			array(
+				new CheezCapBooleanOption(
+					'Maker Week Homepage Takeover',
+					'Do you want the Maker Week to be on the home page?',
+					'maker_week',
+					'1'
+				),
+				new CheezCapTextOption(
+					'Maker Week Homepage Posts',
+					'Add three post IDs here, comma seperated, with no space.',
+					'make_week_takeover_posts',
+					''
+				),
+			)
+		),
+		new CheezCapGroup( 'Qualtrics Script', 'qualtrics',
+			array(
+				new CheezCapBooleanOption(
+					'Display Qualtrics Script',
+					'Do you want to show the survey script?',
+					'qualtrics_script',
+					'1'
+				),
+				new CheezCapTextOption(
+					'Delay Amount',
+					'Time is in milliseconds, so 6000 == sixty seconds.',
+					'qualtrics_script_delay',
+					'3000'
+				),
+				new CheezCapTextOption(
+					'Pageview Percentage',
+					'What percent of pageviews should load the popup.',
+					'qualtrics_script_percent',
+					'8'
 				),
 			)
 		),

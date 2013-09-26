@@ -1,11 +1,10 @@
 <?php
 /**
- * Sidebar for Projects Page
- *
+ * General makeblog theme functions
  * 
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
- * @author     Jake Spurlock <jspurlock@makermedia.com>
+ *
  */
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -40,6 +39,8 @@ function make_action_after_setup_theme() {
 	add_image_size( 'featured-thumb', 105, 105, true );				// Used on related blocks.
 	add_image_size( 'p1', 301, 400, true );							// Used as the top left featured image on home page.
 	add_image_size( 'p2', 290, 180, true );							// Used as the top right featured images on home page.
+	add_image_size( 'maker-week-home', 620, 400, true );			// Used on Maker Week take over page.
+	add_image_size( 'maker-week-thumb', 145, 110, true );			// Used on Maker Week take over page sidebar.
 
 	/**
 	  * Depracated image sizes.
@@ -99,6 +100,20 @@ $field_data = array (
 	),
 );
 $easy_cf = new Easy_CF($field_data);
+
+
+/**
+ * Provides a way to truncate titles
+ * @param  integer $length The desiered length
+ * @return string
+ */
+function make_get_short_title( $length ) {
+	$original = get_the_title();
+	$title = substr( $original, 0, absint( $length ) );
+	if ( strlen( $original ) > absint( $length ) ) $title .= '...';
+
+	return $title;
+}
 
 
 /**
@@ -628,6 +643,58 @@ function make_quantcast_tag() { ?>
 <?php }
 
 add_action('wp_footer', 'make_quantcast_tag');
+
+
+/**
+ * Add the Qualtrics popup to the Footer
+ */
+function make_qualtrics_script() {
+	if ( make_get_cap_option( 'qualtrics_script' ) ) : ?>
+	<!--BEGIN QUALTRICS POPUP-->
+	<script type="text/javascript">
+		var q_viewrate = <?php echo esc_js( intval( make_get_cap_option( 'qualtrics_script_percent' ) ) ); ?>;
+		var url = 'http://s.qualtrics.com/ControlPanel/Graphic.php?IM=IM_ef9i42Jt6yJs8OV&V=1378824622';
+		if ( Math.random() < q_viewrate / 100 ){
+			var q_popup_f = function(){ 
+				var q_script = document.createElement("script");
+				var q_popup_g = function(){
+					new QualtricsEmbeddedPopup( {
+						id: "SV_1Rex7PkiBgaaK3z",
+						imagePath: "https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics/",
+						surveyBase: "http://surveys.makermedia.com/WRQualtricsSurveyEngine/",
+						delay: <?php echo esc_js( intval( make_get_cap_option( 'qualtrics_script_delay' ) ) ); ?>,
+						preventDisplay:0,
+						animate:true,
+						width:400,
+						height:300,
+						surveyPopupWidth:900,
+						surveyPopupHeight:600,
+						startPos:"BR",
+						popupText:"<div style='margin-bottom:20px;'><image src=" + url + "></div>Would you please help us improve our website by answering 3 questions?",
+						linkText:"Click Here"
+					});
+				};
+				q_script.onreadystatechange= function () {
+					if (this.readyState == "loaded") 
+						q_popup_g();
+				};
+				q_script.onload = q_popup_g;
+				q_script.src="https://qdistribution.qualtrics.com/WRQualtricsShared/JavaScript/Distribution/popup.js";
+				document.getElementsByTagName("head")[0].appendChild(q_script);
+			};
+			if (window.addEventListener){
+				window.addEventListener("load",q_popup_f,false);
+			} else if (window.attachEvent) {
+				r=window.attachEvent("onload",q_popup_f);
+			};
+		};
+	</script>
+	<noscript><p><a target="_blank" href="http://surveys.makermedia.com/WRQualtricsSurveyEngine/?SID=SV_1Rex7PkiBgaaK3z">Click Here</a><p></noscript>
+	<!--END QUALTRICS POPUP-->
+	<?php endif;
+}
+
+add_action( 'wp_footer', 'make_qualtrics_script' );
 
 /**
  * Adds the popover javascript for review posts.
@@ -1517,3 +1584,15 @@ function make_remove_admin_areas_for_authors() {
 }
 add_action( 'admin_menu', 'make_remove_admin_areas_for_authors' );
 
+/**
+ * Function to generate the title tags for page heads.	
+ */
+function make_generate_title_tag() {
+	$output = '';
+	if ( is_home() || is_front_page() ) {
+		$output .= get_bloginfo('name') . ' | ' . get_bloginfo('description');
+	} else {
+		$output .= wp_title('', false ) . ' | ' . get_bloginfo('name');
+	}
+	return $output;
+}
