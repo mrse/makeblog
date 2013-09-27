@@ -309,8 +309,10 @@
 			$output .= '<option value="all">All Statuses</option>';
 
 			foreach ( $wp_post_statuses as $status => $obj ) {
-				if ( ! in_array( $status, $this->disallowed_post_statuses ) )
-					$output .= '<option value="' . esc_attr( $obj->name ) . '"' . selected( $query_vars['post_status'], esc_attr( $obj->name ), false ) . '>' . esc_html( $obj->label ) . '</option>';
+				if ( ! in_array( $status, $this->disallowed_post_statuses ) ) {
+					$post_status = ( ! is_array( $query_vars['post_status'] ) ) ? $query_vars['post_status'] : '';
+					$output .= '<option value="' . esc_attr( $obj->name ) . '"' . selected( $post_status, esc_attr( $obj->name ), false ) . '>' . esc_html( $obj->label ) . '</option>';
+				}
 			}
 
 			$output .= '</select>';
