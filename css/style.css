@@ -12161,3 +12161,14 @@ a.button.small-button {
 .popup .span2 img.x {
   margin-top: 5px;
 }
+.makerfaire-lp.flags {
+  background: url('../images/flags-small.png') center top repeat-x;
+}
+.makerfaire-lp .mf-top {
+  margin-top: 55px;
+}
+.makerfaire-lp .top-header h3 {
+  color: #555;
+  font-size: 22px;
+  margin: 21px 0 0;
+}
