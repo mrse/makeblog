@@ -563,12 +563,14 @@ function make_new_gallery_shortcode($attr) {
 			$output .= '<div class="item">';
 		}
 		$output .= wp_get_attachment_link( $attachment->ID, 'medium');
-		if (isset($attachment->post_title) && ! empty($attachment->post_title)) {
+		if ( isset( $attachment->post_excerpt ) && ! empty( $attachment->post_excerpt ) ) {
+			$attachment_caption = $attachment->post_excerpt;
+		} elseif ( isset( $attachment->post_title ) && ! empty( $attachment->post_title ) ) {
+			$attachment_caption = $attachment->post_title;
+		}
+		if ( isset( $attachment_caption ) && ! empty( $attachment_caption ) ) {
 			$output .= '<div class="carousel-caption">';
-			$output .= '<h4>' . esc_html( $attachment->post_title ) . '</h4>';
-			if (isset($attachment->post_excerpt)) {
-				$output .= Markdown( esc_html( $attachment->post_excerpt ) );
-			}
+			$output .= '<h4>' . Markdown( esc_html( $attachment_caption ) ) . '</h4>';
 			$output .= '</div>';
 			
 		}
