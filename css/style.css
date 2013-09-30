@@ -12172,3 +12172,14 @@ a.button.small-button {
   font-size: 22px;
   margin: 21px 0 0;
 }
+.makerfaire-lp .slideshow-wrapper {
+  margin-top: 39px;
+}
+.makerfaire-lp .slideshow-wrapper h3 {
+  background: #1c1c1c;
+  color: #e6e6e6;
+  font-family: 'bento-sans', sans-serif;
+  padding: 12px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
