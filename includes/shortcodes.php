@@ -799,9 +799,11 @@ function make_get_custom_feed( $atts, $content = null ) {
 	if ( empty( $type ) || empty( $count ) )
 		return;
 
+	$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$args = array(
 		'post_type' => make_convert_sanitize_string_to_array( $type, ',' ),
 		'posts_per_page' => absint( $count ),
+		'paged' => $paged,
 		'category_name' => make_convert_sanitize_string_to_array( $category, ',' ),
 		'category__not_in' => make_convert_sanitize_string_to_array( $exclude_cat, ',' ),
 		'tag' => make_convert_sanitize_string_to_array( $tag, ',' ),
@@ -810,9 +812,11 @@ function make_get_custom_feed( $atts, $content = null ) {
 	$query = new WP_Query( $args );
 
 	$design_defaults = array( 'standard', 'standard-no-meta', 'simple', 'simple-title-top' );
-	$layout_defaults = array( 'full-width', '2-col' );
+	$layout_defaults = array( 'full-width', 'col-2' );
 	$output = '';
+	$count = 1;
 
+	$output .= '<div class="feed-wrapper">';
 	if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
 		global $post;
 		setup_postdata( $post );
@@ -823,20 +827,31 @@ function make_get_custom_feed( $atts, $content = null ) {
 		if ( ! in_array( $layout, $layout_defaults ) )
 			$layout = 'full-width';
 
-		$output .= '<div class="' . implode( ' ', get_post_class( 'custom-feed ' . $design . ' ' . $layout ) ) . '">';
+		$pos = ( $count % 2 == 0 ) ? 'even' : 'odd';
+		$output .= '<div class="' . implode( ' ', get_post_class( 'custom-feed ' . $design . ' ' . $layout . ' ' . $pos ) ) . '">';
 			
 			if ( $design == 'simple' ) {
-				if ( has_post_thumbnail() )
-					$output .= '<a href="' . get_permalink() . '" class="feed-thumb">' . get_the_post_thumbnail() .'</a>';
+				$has_image = '';
+				$image = get_the_post_thumbnail( $post->ID, '2-col-thumb' );
+				if ( ! empty( $image ) ) {
+					$has_image = 'has-image';
+					$output .= '<a href="' . get_permalink() . '" class="feed-thumb">' . $image .'</a>';
+				}
 
-				$output .= '<a href="' . get_permalink() . '" class="feed-title">' . get_the_title() . '</a>';
+				$output .= '<a href="' . get_permalink() . '" class="feed-title ' . $has_image . '">' . get_the_title() . '</a>';
 			}
 
 		$output .= '</div>';
 
+		$count++;
+	endwhile;
+		$output .= '</div>';
+		$output .= '<div class="alignleft">' . get_previous_posts_link( 'PREVIOUS POSTS' ) . '</div>';
+		$output .= '<div class="alignright">' . get_next_posts_link( 'NEWEST POSTS', $query->max_num_pages ) . '</div>';
 		wp_reset_postdata();
-	endwhile; else :
-		$output = '<p>No posts found</p>';
+	else :
+		$output .= '<p>No posts found</p>';
+		$output .= '</div>';
 	endif;
 
 	return $output;

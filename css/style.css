@@ -8628,24 +8628,41 @@ textarea.narrow,
   border: 1px solid #dadada;
   border-radius: 5px;
   padding: 13px;
+  margin-bottom: 25px;
 }
 .custom-feed.simple .feed-thumb {
-  *zoom: 1;
-}
-.custom-feed.simple .feed-thumb:before,
-.custom-feed.simple .feed-thumb:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.custom-feed.simple .feed-thumb:after {
-  clear: both;
+  display: block;
 }
 .custom-feed.simple .feed-title {
   font-size: 16px;
   font-weight: bold;
   color: #005d8f;
+  display: block;
+}
+.custom-feed.simple .feed-title.has-image {
   margin-top: 14px;
+}
+.custom-feed.col-2 {
+  width: 268px;
+  margin-left: 27px;
+  background: #fff;
+  float: left;
+}
+.custom-feed.col-2.odd {
+  clear: left;
+  margin-left: 0;
+}
+.feed-wrapper {
+  *zoom: 1;
+}
+.feed-wrapper:before,
+.feed-wrapper:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.feed-wrapper:after {
+  clear: both;
 }
 .dots {
   background: url('../img/dots.png');
