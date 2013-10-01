@@ -832,10 +832,10 @@ function make_get_custom_feed( $atts, $content = null ) {
 			
 			if ( $design == 'simple' ) {
 				$has_image = '';
-				$image = get_the_post_thumbnail( $post->ID, '2-col-thumb' );
-				if ( ! empty( $image ) ) {
+				$image_url = wp_get_attachment_url( get_post_thumbnail_id() );
+				if ( ! empty( $image_url ) ) {
 					$has_image = 'has-image';
-					$output .= '<a href="' . get_permalink() . '" class="feed-thumb">' . $image .'</a>';
+					$output .= '<a href="' . get_permalink() . '" class="feed-thumb"><img src="' . wpcom_vip_get_resized_remote_image_url( $image_url, 268, 167 ) .'" alt="' . get_the_title() . '" /></a>';
 				}
 
 				$output .= '<a href="' . get_permalink() . '" class="feed-title ' . $has_image . '">' . get_the_title() . '</a>';
