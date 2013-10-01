@@ -8624,6 +8624,29 @@ textarea.narrow,
 .googleplus1_button {
   width: auto !important;
 }
+.custom-feed.simple {
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  padding: 13px;
+}
+.custom-feed.simple .feed-thumb {
+  *zoom: 1;
+}
+.custom-feed.simple .feed-thumb:before,
+.custom-feed.simple .feed-thumb:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.custom-feed.simple .feed-thumb:after {
+  clear: both;
+}
+.custom-feed.simple .feed-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #005d8f;
+  margin-top: 14px;
+}
 .dots {
   background: url('../img/dots.png');
   background-repeat: repeat-x;

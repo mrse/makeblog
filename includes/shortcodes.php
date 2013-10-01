@@ -823,10 +823,13 @@ function make_get_custom_feed( $atts, $content = null ) {
 		if ( ! in_array( $layout, $layout_defaults ) )
 			$layout = 'full-width';
 
-		$output .= '<div class="' . implode( ' ', get_post_class( $design . ' ' . $layout ) ) . '">';
+		$output .= '<div class="' . implode( ' ', get_post_class( 'custom-feed ' . $design . ' ' . $layout ) ) . '">';
 			
-			if ( $layout == 'simple' ) {
-				var_dump(get_post_thumbnail());
+			if ( $design == 'simple' ) {
+				if ( has_post_thumbnail() )
+					$output .= '<a href="' . get_permalink() . '" class="feed-thumb">' . get_the_post_thumbnail() .'</a>';
+
+				$output .= '<a href="' . get_permalink() . '" class="feed-title">' . get_the_title() . '</a>';
 			}
 
 		$output .= '</div>';
