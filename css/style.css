@@ -9511,7 +9511,7 @@ a.oembed {
   top: 200px;
   border: 0px;
 }
-.single {
+body .single {
   background: url('../img/dots.png');
   background-color: url('../img/dots.png');
   background-repeat: repeat-x;
@@ -9520,49 +9520,49 @@ a.oembed {
   padding-top: 20px;
   border-bottom: 0px;
 }
-.single h1 {
+body .single h1 {
   font-size: 38px;
 }
-.single h3 {
+body .single h3 {
   font-size: 16px;
   text-transform: uppercase;
   color: #ed1c24;
 }
-.single p {
+body .single p {
   font-size: 18px;
   line-height: 140%;
 }
-.single p a {
+body .single p a {
   color: #005d8f;
   border-bottom: 1px solid #005d8f;
 }
-.single p a:hover {
+body .single p a:hover {
   text-decoration: none;
 }
-.single p a.btn {
+body .single p a.btn {
   color: white;
   border-bottom: 0px;
 }
-.single .pull-right a {
+body .single .pull-right a {
   border: 0px;
 }
-.single .subs {
+body .single .subs {
   margin: 0px 0px 20px;
 }
-.single .subs li {
+body .single .subs li {
   font-size: 18px;
   display: inline;
   margin-right: 20px;
 }
-.single .subs li a {
+body .single .subs li a {
   color: #005d8f;
   font-weight: bold;
 }
-.single .post ul li,
-.single .post ol li {
+body .single .post ul li,
+body .single .post ol li {
   font-size: 18px;
 }
-.single .tag-weekend-projects {
+body .single .tag-weekend-projects {
   margin-top: 10px;
 }
 .gsc-cursor-page {

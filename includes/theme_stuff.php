@@ -1592,3 +1592,17 @@ function make_generate_title_tag() {
 	}
 	return $output;
 }
+
+function make_convert_sanitize_string_to_array( $string, $delimiter = ',' ) {
+	if ( strpos( $string, $delimiter ) !== false) {
+	    $array = explode( esc_html( $delimiter ), $string );
+
+	    foreach ( $array as $key => $value ) {
+	    	$output[ absint( $key ) ] = sanitize_title_for_query( $value );
+	    }
+	} else {
+		$output = sanitize_title_for_query( $string );
+	}
+
+	return $output;
+}

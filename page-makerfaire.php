@@ -34,6 +34,8 @@ make_get_header() ?>
 								<div class="slideshow-wrapper">
 									<h3>Top 5 Attractions of World Maker Faire New York</h3>
 									<?php echo do_shortcode('[new_gallery size="full" ids="328235,328234"]'); ?>
+
+									<?php echo do_shortcode('[custom-feed tag="maker-faire"]'); ?>
 								</div>
 							</div>
 							<div class="span4 sidebar-content">

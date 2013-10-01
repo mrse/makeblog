@@ -782,3 +782,60 @@ function maker_short_post_loop( $args ) {
 }
 
 add_shortcode( 'make_post_loop', 'maker_short_post_loop' );
+
+
+function make_get_custom_feed( $atts, $content = null ) {
+	extract( shortcode_atts( array(
+		'type' => 'post',
+		'count' => 10,
+		'category' => '',
+		'tag' => '',
+		'exclude_cat' => '',
+		'exclude_tag' => '',
+		'design' => 'standard',
+		'layout' => 'full-width',
+	), $atts ) );
+
+	if ( empty( $type ) || empty( $count ) )
+		return;
+
+	$args = array(
+		'post_type' => make_convert_sanitize_string_to_array( $type, ',' ),
+		'posts_per_page' => absint( $count ),
+		'category_name' => make_convert_sanitize_string_to_array( $category, ',' ),
+		'category__not_in' => make_convert_sanitize_string_to_array( $exclude_cat, ',' ),
+		'tag' => make_convert_sanitize_string_to_array( $tag, ',' ),
+		'tag__not_in' => make_convert_sanitize_string_to_array( $exclude_tag, ',' ),
+	);
+	$query = new WP_Query( $args );
+
+	$design_defaults = array( 'standard', 'standard-no-meta', 'simple', 'simple-title-top' );
+	$layout_defaults = array( 'full-width', '2-col' );
+	$output = '';
+
+	if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+		global $post;
+		setup_postdata( $post );
+		
+		if ( ! in_array( $design, $design_defaults ) )
+			$design = 'standard';
+
+		if ( ! in_array( $layout, $layout_defaults ) )
+			$layout = 'full-width';
+
+		$output .= '<div class="' . implode( ' ', get_post_class( $design . ' ' . $layout ) ) . '">';
+			
+			if ( $layout == 'simple' ) {
+				var_dump(get_post_thumbnail());
+			}
+
+		$output .= '</div>';
+
+		wp_reset_postdata();
+	endwhile; else :
+		$output = '<p>No posts found</p>';
+	endif;
+
+	return $output;
+}
+add_shortcode( 'custom-feed', 'make_get_custom_feed' );
