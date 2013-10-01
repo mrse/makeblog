@@ -567,6 +567,8 @@ function make_new_gallery_shortcode($attr) {
 			$attachment_caption = $attachment->post_excerpt;
 		} elseif ( isset( $attachment->post_title ) && ! empty( $attachment->post_title ) ) {
 			$attachment_caption = $attachment->post_title;
+		} else {
+			$attachment_caption = '';
 		}
 		if ( isset( $attachment_caption ) && ! empty( $attachment_caption ) ) {
 			$output .= '<div class="carousel-caption">';
