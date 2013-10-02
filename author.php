@@ -20,12 +20,6 @@ if ( ! empty( $author->linked_account ) ) {
 	// We need the ID of the linked author so we can get their posts.
 	$linked_author = get_user_by( 'slug', $author->linked_account );
 
-	// Check if we are viewing the guest author account. If so, redirect to their linked account.
-	if ( ! strpos( $_SERVER['REQUEST_URI'], $linked_author->user_nicename ) ) {
-		wp_redirect( esc_url( home_url( '/author/' . $linked_author->user_nicename ) ), 301 );
-		exit;
-	}
-
 	// Return the linked authors name
 	$author_name = $linked_author->display_name;
 	
