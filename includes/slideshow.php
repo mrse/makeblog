@@ -562,7 +562,7 @@ function make_new_gallery_shortcode($attr) {
 		} else {
 			$output .= '<div class="item">';
 		}
-		$output .= wp_get_attachment_link( $attachment->ID, $size);
+		$output .= wp_get_attachment_link( $attachment->ID, sanitize_title_for_query( $size ) );
 		if ( isset( $attachment->post_excerpt ) && ! empty( $attachment->post_excerpt ) ) {
 			$attachment_caption = $attachment->post_excerpt;
 		} elseif ( isset( $attachment->post_title ) && ! empty( $attachment->post_title ) ) {
