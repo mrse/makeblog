@@ -45,16 +45,10 @@
 				<div class="container">	
 					<div class="row">
 						<div class="span12 header-image">
-							<h1><a href="http://makezine.com/hardware-innovation-workshop/2013-new-york-event/tickets/"><img style="margin:0 auto" src="<?php echo get_stylesheet_directory_uri(); ?>/images/HIW_EventBrite_WebHeader_NY13_GE.jpg" alt="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" title="Hardware Innovation Workshop - New York Hall of Science - Queens, New York -September 18, 2013" /></a></h1>
+							<h1><a href="http://makezine.com/hardware-innovation-workshop/"><img style="margin:0 auto" src="<?php echo get_stylesheet_directory_uri(); ?>/images/hiw-hdr-01.png" alt="Hardware Innovation Workshop" title="Hardware Innovation Workshop" /></a></h1>
 						</div> <!-- END span12 -->
 					</div> <!-- END row -->	
 				</div> <!-- END container -->		
 				</div> <!-- END header -->
-					<div class="container">	
-							<div class="header-wrap">
-								<h2><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/tickets/' ); ?>">Miss the May 2013 event in San Mateo? Don't worry, we are coming to New York for a one-day event on September 18th, 2013! </h2> 
-								<a href="http://www.foliomag.com/2013/make-magazine-s-hardware-innovation-workshop" target="_blank"><img style="pull-right" src="http://makezineblog.files.wordpress.com/2013/03/pastedgraphic-1.jpg" alt="2012 Event received FAME award for Best First Time Event"></a>
-						</div> <!-- END header-wrap -->
-				</div> <!-- END container -->
 				<div class="clear"></div>
 		</div> <!-- END fix -->
