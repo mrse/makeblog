@@ -11,17 +11,23 @@
 
 				<div class="span2 right-sidebar">				
 
-					<!-- AddThis Button BEGIN -->
-					<div class="addthis_toolbox addthis_default_style ">
-						<a href="#" title="Facebook" class="addthis_button_preferred_1 addthis_button_facebook at300b"><span class="at16nc at300bs at15nc at15t_facebook at16t_facebook"><span class="at_a11y">Share on facebook</span></span></a>
-						<a href="#" title="Tweet" class="addthis_button_preferred_2 addthis_button_twitter at300b"><span class="at16nc at300bs at15nc at15t_twitter at16t_twitter"><span class="at_a11y">Share on twitter</span></span></a>
-						<a href="#" title="Email" class="addthis_button_preferred_3 addthis_button_email at300b"><span class="at16nc at300bs at15nc at15t_email at16t_email"><span class="at_a11y">Share on email</span></span></a>
-						<a href="#" title="Print" class="addthis_button_preferred_4 addthis_button_print at300b"><span class="at16nc at300bs at15nc at15t_print at16t_print"><span class="at_a11y">Share on print</span></span></a>
-						<a href="#" class="addthis_button_compact at300m"><span class="at16nc at300bs at15nc at15t_compact at16t_compact"><span class="at_a11y">More Sharing Services</span></span></a>
-					<div class="atclear"></div></div>
-					<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f98388529c0fff4"></script>
-					<!-- AddThis Button END -->
-
+					<!-- Social Media Buttons BEGIN -->
+					<h4>Be Social</h4>
+					<div class="socialArea">
+							<p class="links">
+								<span class="soci"><a href="http://twitter.com/make" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/twitter.png?m=1351191030g" alt="Make on Twitter"></a></span>
+								<span class="soci"><a href="http://youtube.com/make" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/youtube.png?m=1347432875g" alt="Make on YouTube"></a></span>
+								<span class="soci"><a href="http://pinterest.com/makemagazine/" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/pinterest.png?m=1351191030g" alt="Make on Pintrest"></a></span>
+								<span class="soci"><a href="http://www.flickr.com/groups/make/" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/flickr.png?m=1347432875g" alt="Make on Flickr"></a></span>
+								<span class="soci"><a href="http://facebook.com/makemagazine" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/facebook.png?m=1347432875g" alt="Make on Facebook"></a></span>
+								<span class="soci"><a href="http://www.stumbleupon.com/to/stumble/stumblethru:makezine.com?utm_source=Makezine&amp;utm_medium=StumbleThru&amp;utm_campaign=StumbleThruButton" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/stumbleupon.png?m=1351191030g" alt="Stumble Make Magazine"></a></span>
+								<span class="soci"><a href="http://instagram.com/makemagazine" target="_blank"><img src="http://makezineblog.files.wordpress.com/2012/12/instagram.png" alt="MAKE on Instagram"></a></span>
+								<span class="soci"><a href="https://google.com/+MAKE/" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/google-plus.png?m=1347432875g" alt="MAKE on Google+"></a></span>
+							</p>
+					</div> 
+					<!-- Social Media Buttons END -->
+					<div class="clearfix"></div>
+					
 					<h4>Presenting Sponsor</h4>
 					<ul class="unstyled" id="presenting-sponsor">
 					  	<li>

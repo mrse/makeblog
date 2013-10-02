@@ -12030,6 +12030,19 @@ body.hiw h6 {
   line-height: 20px;
   margin-bottom: 16px;
 }
+body.hiw .right-sidebar h4:first-child {
+  margin-bottom: 5px;
+}
+body.hiw .right-sidebar img {
+  margin-right: 8px;
+  margin-bottom: 0;
+}
+body.hiw div.right-sidebar p a {
+  border-bottom-style: none;
+}
+body.hiw .right-sidebar .soci {
+  margin: 0 0 10px 0;
+}
 .button,
 a.button {
   display: inline;
