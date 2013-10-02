@@ -34,7 +34,7 @@
 		}
 
 		// check for a template type
-		if ( isset( $template_file ) == 'page-makercamp-map.php' && isset( $post_id ) )
+		if ( isset( $template_file ) && $template_file == 'page-makercamp-map.php' && isset( $post_id ) )
 			add_meta_box( 'make-maps-data', 'Map Data (JSON array only) This builds the contact table.', 'make_map_data_callback', 'page' );
 	}
 	add_action( 'add_meta_boxes', 'make_makercamp_map_data' );

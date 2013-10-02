@@ -33,15 +33,17 @@ get_header(); ?>
 
 		<div class="container">
 			
-			<div class="row">
-			
-				<div class="span12">
-					
-					<h3 class="heading">Featured Project</h3>
-					
+			<?php if ( is_page( array( 313151, 286853 ) ) ) : ?>
+				<div class="row">
+				
+					<div class="span12">
+						
+						<h3 class="heading">Featured Project</h3>
+						
+					</div>
+				
 				</div>
-			
-			</div>
+			<?php endif; ?>
 			
 			<div class="row">
 			
