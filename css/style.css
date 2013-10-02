@@ -8624,6 +8624,46 @@ textarea.narrow,
 .googleplus1_button {
   width: auto !important;
 }
+.custom-feed.simple {
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  padding: 13px;
+  margin-bottom: 25px;
+}
+.custom-feed.simple .feed-thumb {
+  display: block;
+}
+.custom-feed.simple .feed-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #005d8f;
+  display: block;
+}
+.custom-feed.simple .feed-title.has-image {
+  margin-top: 14px;
+}
+.custom-feed.col-2 {
+  width: 268px;
+  margin-left: 27px;
+  background: #fff;
+  float: left;
+}
+.custom-feed.col-2.odd {
+  clear: left;
+  margin-left: 0;
+}
+.feed-wrapper {
+  *zoom: 1;
+}
+.feed-wrapper:before,
+.feed-wrapper:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.feed-wrapper:after {
+  clear: both;
+}
 .dots {
   background: url('../img/dots.png');
   background-repeat: repeat-x;
@@ -12173,4 +12213,104 @@ a.button.small-button {
 }
 .popup .span2 img.x {
   margin-top: 5px;
+}
+.makerfaire-lp.flags {
+  background: url('../images/flags-small.png') center top repeat-x;
+}
+.makerfaire-lp .mf-top {
+  margin-top: 55px;
+}
+.makerfaire-lp .top-header h3 {
+  color: #555;
+  font-size: 22px;
+  margin: 21px 0 0;
+}
+.makerfaire-lp .slideshow-wrapper {
+  margin-top: 39px;
+}
+.makerfaire-lp .slideshow-wrapper h3 {
+  background: #1c1c1c;
+  color: #e6e6e6;
+  font-family: 'bento-sans', sans-serif;
+  padding: 12px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.makerfaire-lp .sidebar-content {
+  margin-top: 39px;
+}
+.makerfaire-lp .sidebar-content p {
+  color: #5c5b5b;
+  display: block;
+  font-family: 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  height: auto;
+  line-height: 22px;
+}
+.makerfaire-lp .sidebar-content p.more-link {
+  text-transform: uppercase;
+  text-align: right;
+}
+.makerfaire-lp .sidebar-content h3 {
+  color: #e01b23;
+  display: block;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  height: 24px;
+  line-height: 24px;
+  margin: 0px;
+  padding: 0px 0px 5px;
+  text-rendering: optimizelegibility;
+}
+.makerfaire-lp .sidebar-content h4 {
+  color: #005d8f;
+  cursor: auto;
+  display: inline;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  height: auto;
+  line-height: 18px;
+  text-decoration: none;
+  text-shadow: #ffffff 0px 1px 0px;
+  width: auto;
+  padding-top: 5px;
+}
+.makerfaire-lp .sidebar-content h4 a {
+  color: #005d8f;
+}
+.makerfaire-lp .sidebar-content .button.big {
+  -webkit-box-shadow: #8d1216 0px 5px 0px 0px;
+  background-color: #e01b23;
+  border-bottom-color: #ffffff;
+  border-radius: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+  box-shadow: #8d1216 0px 5px 0px 0px;
+  color: #ffffff;
+  cursor: auto;
+  display: block;
+  font-family: 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  height: 20px;
+  line-height: 20px;
+  margin: 0px 0px 20px;
+  padding: 12px 0px 12px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.makerfaire-lp .sidebar-content .preview-box {
+  padding: 0px 0px 20px;
+}
+.makerfaire-lp .sidebar-content .boxer {
+  border: 1px solid #cecece;
+  border-radius: 5px;
+  max-width: 100%;
+  margin-top: 30px;
+  padding: 10px;
 }

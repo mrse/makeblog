@@ -524,7 +524,7 @@ function make_new_gallery_shortcode($attr) {
 		'icontag'    => 'dt',
 		'captiontag' => 'dd',
 		'columns'    => 3,
-		'size'       => 'thumbnail',
+		'size'       => 'medium',
 		'include'    => '',
 		'exclude'    => ''
 	), $attr));
@@ -562,7 +562,7 @@ function make_new_gallery_shortcode($attr) {
 		} else {
 			$output .= '<div class="item">';
 		}
-		$output .= wp_get_attachment_link( $attachment->ID, 'medium');
+		$output .= wp_get_attachment_link( $attachment->ID, $size);
 		if ( isset( $attachment->post_excerpt ) && ! empty( $attachment->post_excerpt ) ) {
 			$attachment_caption = $attachment->post_excerpt;
 		} elseif ( isset( $attachment->post_title ) && ! empty( $attachment->post_title ) ) {

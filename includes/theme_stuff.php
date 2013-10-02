@@ -41,6 +41,7 @@ function make_action_after_setup_theme() {
 	add_image_size( 'p2', 290, 180, true );							// Used as the top right featured images on home page.
 	add_image_size( 'maker-week-home', 620, 400, true );			// Used on Maker Week take over page.
 	add_image_size( 'maker-week-thumb', 145, 110, true );			// Used on Maker Week take over page sidebar.
+	add_image_size( '2-col-thumb', 268, 167, true );				// Used on the custom feed for a 2-column layout.
 
 	/**
 	  * Depracated image sizes.
@@ -1590,5 +1591,19 @@ function make_generate_title_tag() {
 	} else {
 		$output .= wp_title('', false ) . ' | ' . get_bloginfo('name');
 	}
+	return $output;
+}
+
+function make_convert_sanitize_string_to_array( $string, $delimiter = ',' ) {
+	if ( strpos( $string, $delimiter ) !== false) {
+	    $array = explode( esc_html( $delimiter ), $string );
+
+	    foreach ( $array as $key => $value ) {
+	    	$output[ absint( $key ) ] = sanitize_title_for_query( $value );
+	    }
+	} else {
+		$output = sanitize_title_for_query( $string );
+	}
+
 	return $output;
 }
