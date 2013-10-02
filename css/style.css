@@ -12235,6 +12235,10 @@ a.button.small-button {
   height: auto;
   line-height: 22px;
 }
+.makerfaire-lp .sidebar-content p.more-link {
+  text-transform: uppercase;
+  text-align: right;
+}
 .makerfaire-lp .sidebar-content h3 {
   color: #e01b23;
   display: block;
@@ -12296,8 +12300,4 @@ a.button.small-button {
   max-width: 100%;
   margin-top: 30px;
   padding: 10px;
-}
-.makerfaire-lp .sidebar-content p.more-link {
-  text-transform: uppercase;
-  text-align: right;
 }

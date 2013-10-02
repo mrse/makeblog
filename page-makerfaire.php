@@ -61,30 +61,30 @@ make_get_header() ?>
 										</a>
 										<h4><a href="http://fora.tv/2013/09/22/makernurse_the_stealth_ingenuity_of_inventive_nurses_in_america" target="_blank">MakerNurse: The Stealth Ingenuity of Nurses</a></h4>
 									</div>
-									<p class="more-link"><a href="#" target="_blank">More Videos</a></p>
+									<p class="more-link"><a href="http://fora.tv/conference/world_maker_faire_new_york_2013" target="_blank">More Videos</a></p>
 								</div>
 								<div class="boxer">
 									<h3>Live Stage</h3>
 									<p>Conversations about Emerging Tech, New Practices &amp; Community</p>
 									<div class="preview-box">
-										<a href="http://www.youtube.com/watch?v=mXlmQ1ilpbs&feature=share" target="_blank">
+										<a href="http://www.youtube.com/watch?v=mXlmQ1ilpbs&amp;feature=share" target="_blank">
 											<img src="http://makezineblog.files.wordpress.com/2013/10/makerfaire-live-01.jpg" alt="Makerfaire New York 2013 Live Stage">
 										</a>
-										<h4><a href="http://www.youtube.com/watch?v=mXlmQ1ilpbs&feature=share" target="_blank">21st Century Robot: Meet Jimmy, the robot you can make at home</a></h4>
+										<h4><a href="http://www.youtube.com/watch?v=mXlmQ1ilpbs&amp;feature=share" target="_blank">21st Century Robot: Meet Jimmy, the robot you can make at home</a></h4>
 									</div>
 									<div class="preview-box">
-										<a href="http://www.youtube.com/watch?v=oTfHtaHDBtE&feature=share" target="_blank">
+										<a href="http://www.youtube.com/watch?v=oTfHtaHDBtE&amp;feature=share" target="_blank">
 											<img src="http://makezineblog.files.wordpress.com/2013/10/makerfaire-live-02.jpg" alt="Makerfaire New York 2013 Live Stage">
 										</a>
-										<h4><a href="http://www.youtube.com/watch?v=oTfHtaHDBtE&feature=share" target="_blank">Maker Collaboration: The Air Rocket Glider</a></h4>
+										<h4><a href="http://www.youtube.com/watch?v=oTfHtaHDBtE&amp;feature=share" target="_blank">Maker Collaboration: The Air Rocket Glider</a></h4>
 									</div>
 									<div class="preview-box">
-										<a href="http://www.youtube.com/watch?v=2YRdOHdMVCo&feature=share" target="_blank">
+										<a href="http://www.youtube.com/watch?v=2YRdOHdMVCo&amp;feature=share" target="_blank">
 											<img src="http://makezineblog.files.wordpress.com/2013/10/makerfaire-live-03.jpg" alt="Makerfaire New York 2013 Live Stage">
 										</a>
-										<h4><a href="http://www.youtube.com/watch?v=2YRdOHdMVCo&feature=share" target="_blank">Make: Live 3D Design Practice</a></h4>
+										<h4><a href="http://www.youtube.com/watch?v=2YRdOHdMVCo&amp;feature=share" target="_blank">Make: Live 3D Design Practice</a></h4>
 									</div>
-									<p class="more-link"><a href="#" target="_blank">More Videos</a></p>	
+									<p class="more-link"><a href="http://www.youtube.com/user/makemagazine/videos?view=0&amp;shelf_index=0&amp;sort=dd" target="_blank">More Videos</a></p>	
 							</div>
 						</div>
 					</article>
