@@ -803,7 +803,7 @@ function make_get_custom_feed( $atts, $content = null ) {
 	$args = array(
 		'post_type' => make_convert_sanitize_string_to_array( $type, ',' ),
 		'posts_per_page' => absint( $count ),
-		'paged' => $paged,
+		'paged' => absint( $paged ),
 		'category_name' => make_convert_sanitize_string_to_array( $category, ',' ),
 		'category__not_in' => make_convert_sanitize_string_to_array( $exclude_cat, ',' ),
 		'tag' => make_convert_sanitize_string_to_array( $tag, ',' ),
@@ -828,7 +828,7 @@ function make_get_custom_feed( $atts, $content = null ) {
 			$layout = 'full-width';
 
 		$pos = ( $count % 2 == 0 ) ? 'even' : 'odd';
-		$output .= '<div class="' . implode( ' ', get_post_class( 'custom-feed ' . $design . ' ' . $layout . ' ' . $pos ) ) . '">';
+		$output .= '<div class="' . implode( ' ', get_post_class( 'custom-feed ' . esc_attr( $design ) . ' ' . esc_attr( $layout ) . ' ' . $pos ) ) . '">';
 			
 			if ( $design == 'simple' ) {
 				$has_image = '';
