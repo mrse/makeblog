@@ -2,7 +2,7 @@
 <html lang="en" xmlns:fb="http://ogp.me/ns/fb#">
 	<head>
 		<meta charset="utf-8">
-		<title><?php bloginfo('name'); ?> | <?php is_home() || is_front_page() ? bloginfo('description') : wp_title(''); ?></title>
+		<title><?php echo make_generate_title_tag(); ?></title>
 		<meta name="description" content="<?php if ( is_single() ) {
 				echo wp_trim_words( strip_shortcodes( $post->post_content ), 20 );
 			} else {
@@ -36,6 +36,14 @@
 
 		</script>
 
+		<?php if ( is_404() ) : ?>
+			<script>
+				// Track our 404 errors and log them to GA
+				_gaq.push(['_trackEvent', '404', 'URL', document.location.pathname + document.location.search]);
+				_gap.push(['_trackEvent', '404', 'REF', document.referrer]);
+			</script>
+		<?php endif; ?>
+
 		<?php if ( is_page( array( 'home-page-include', 'home-page', 'home', 116357 ) ) ) : ?>
 
 			<link rel="canonical" href="http://makezine.com/" />
@@ -51,6 +59,7 @@
 	</head>
 
 	<body <?php body_class(); ?>>
+		<?php make_popdown_menu(); ?>
 		<div class="container">
 			<div class="row">
 				<div id="div-gpt-ad-664089004995786621-1" class="text-center">
@@ -72,7 +81,7 @@
 								wp_nav_menu( array(
 									'theme_location'  => 'make-primary', 
 									'container'       => false, 
-									'menu_class'      => 'nav menu-primary-nav clearfix',
+									'menu_class'      => 'nav menu-primary-nav ga-nav clearfix',
 								) );
 							?>
 						</nav>
@@ -101,7 +110,7 @@
 								wp_nav_menu( array(
 									'theme_location' => 'make-secondary',
 									'container'		 => false,
-									'menu_class' 	 => 'nav menu-secondary-nav clearfix',
+									'menu_class' 	 => 'nav menu-secondary-nav ga-nav clearfix',
 								) );
 							?>
 						</nav>

@@ -6,6 +6,8 @@ Template Name: Home Page
 
 <?php get_header(); ?>
 
+		<?php if ( !make_get_cap_option( 'make_camp_takeover' ) && !make_get_cap_option( 'maker_week' ) ) : ?>
+
 		<div class="waist">
 
 			<div class="container">
@@ -22,13 +24,23 @@ Template Name: Home Page
 
 									<div class="paddme">
 										
-										<?php if ( make_get_cap_option( 'ribbon_title_display' ) ) : ?>
+										<?php if ( make_get_cap_option( 'ribbon_title_display' ) ) : 
+											$ribbon_class = 'attachment-p1'; ?>
 											<div class="ribbon"><?php echo esc_html( make_get_cap_option( 'ribbon_title' ) ); ?></div>
-										<?php endif; ?>
+										<?php else : $ribbon_class = ''; endif; ?>
 
 										<a href="<?php echo esc_html( make_get_cap_option( 'main_link' ) ); ?>">
-
-											<img src="<?php echo esc_url( make_get_cap_option( 'main_url' ) ); ?>" <?php if ( make_get_cap_option( 'ribbon_title_display' ) ) echo 'id="top-left" '; ?>/>
+										
+											<?php
+												if ( make_get_cap_option( 'main_id' ) ) {
+													echo wp_get_attachment_image( absint( make_get_cap_option( 'main_id' ) ), 'p1', 0, array( 'class' => $ribbon_class ) );
+												} else {
+													echo '<img src="' . esc_url( make_get_cap_option( 'main_url' ) ) . '"'; 
+													if ( make_get_cap_option( 'ribbon_title_display' ) )
+														echo 'id="top-left" ';
+													echo '/>';
+												} 
+											?>
 
 										</a>
 
@@ -53,8 +65,14 @@ Template Name: Home Page
 
 												<a href="<?php echo esc_url( make_get_cap_option( 'top_link' ) ); ?>">
 												
-													<img class="home-biggest" src="<?php echo esc_url( make_get_cap_option( 'top_url' ) ); ?>" />
-
+													<?php
+														if ( make_get_cap_option( 'top_url_id' ) ) {
+															echo wp_get_attachment_image( absint( make_get_cap_option( 'top_url_id' ) ), 'p2' );
+														} else {
+															echo '<img class="home-biggest" src="' . esc_url( make_get_cap_option( 'top_url' ) ) . '" />';
+														} 
+													?>
+													
 												</a>
 
 												<div class="caption">
@@ -74,8 +92,14 @@ Template Name: Home Page
 
 												<a href="<?php echo esc_url( make_get_cap_option( 'bottom_link' ) ); ?>">
 													
-													<img class="home-biggest" src="<?php echo esc_url( make_get_cap_option( 'bottom_url' ) ); ?>" />
-
+													<?php
+														if ( make_get_cap_option( 'bottom_url_id' ) ) {
+															echo wp_get_attachment_image( absint( make_get_cap_option( 'bottom_url_id' ) ), 'p2' );
+														} else {
+															echo '<img class="home-biggest" src="' . esc_url( make_get_cap_option( 'bottom_url' ) ) . '" />';
+														} 
+													?>
+													
 												</a>
 
 												<div class="caption">
@@ -118,25 +142,25 @@ Template Name: Home Page
 
 						<div class="home-ads">
 
-							<!-- Beginning Sync AdSlot 1 for Ad unit header ### size: [[300,250]]  -->
+							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 							<div id='div-gpt-ad-664089004995786621-2'>
 								<script type='text/javascript'>
-									googletag.display('div-gpt-ad-664089004995786621-2');
+									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
 								</script>
 							</div>
-							<!-- End AdSlot 1 -->
+							<!-- End AdSlot 2 -->
 
 						</div>
 
 						<div class="home-ads bottom">
 
-							<!-- Beginning Sync AdSlot 1 for Ad unit header ### size: [[300,250]]  -->
+							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 							<div id='div-gpt-ad-664089004995786621-3'>
 								<script type='text/javascript'>
-									googletag.display('div-gpt-ad-664089004995786621-3');
+									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-3')});
 								</script>
 							</div>
-							<!-- End AdSlot 1 -->
+							<!-- End AdSlot 2 -->
 
 						</div>
 
@@ -148,6 +172,16 @@ Template Name: Home Page
 
 		</div>
 
+		<?php elseif ( make_get_cap_option( 'make_camp_takeover' ) ) : ?>
+
+			<?php get_template_part( 'home-takover' ); ?>
+
+		<?php elseif ( make_get_cap_option( 'maker_week' ) ) : ?>
+
+			<?php get_template_part( 'maker-week' ); ?>
+
+		<?php endif; ?>
+
 		<div class="sand new-sand">
 
 			<div class="container">
@@ -156,8 +190,8 @@ Template Name: Home Page
 
 					<div class="span12">
 
-						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M36BN09">
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Belt-2995-PDF.jpg" alt="Subscribe to MAKE magazine" />
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M37BN02">
+							<img src="http://cdn.makezine.com/make/ads/Make_SIP-ProjectsGuide_SubOffer_940x39.gif" alt="Subscribe to MAKE magazine" />
 						</a>
 
 					</div>
@@ -172,7 +206,7 @@ Template Name: Home Page
 							$cap_livestream = make_get_cap_option( 'livestream' );
 							if ( $cap_livestream ) {
 								echo '<div class="big-livestream">';
-								echo do_shortcode('[gigya src="'.wp_kses_post( $cap_livestream ).'" width="940" height="529" quality="high" wmode="transparent" allowFullScreen="true" ]');
+								echo do_shortcode('[gigya src="' . esc_url( ( $cap_livestream ) ) . '" width="940" height="529" quality="high" wmode="transparent" allowFullScreen="true" ]');
 								echo '</div>';
 							}; ?>
 
@@ -188,9 +222,10 @@ Template Name: Home Page
 
 						<?php 
 							$args = array(
-								'posts_per_page'  => 6,
+								'posts_per_page'  => 7,
 								'no_found_rows' => true,
 								'post_type' => array( 'post', 'projects', 'review', 'video', 'magazine' ),
+								'tag__not_in' => array( 5183, 22815, 9947 ),
 							);
 
 							$the_query = new WP_Query( $args );
@@ -222,15 +257,18 @@ Template Name: Home Page
 						<?php endwhile; wp_reset_postdata(); ?>
 
 						<p><a href="http://makezine.com/blog/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
-						<div class="home-promo-rtmfc">							
-							<a href="http://pubads.g.doubleclick.net/gampad/clk?id=40517218&iu=/11548178/Makezine"><img src="http://makezineblog.files.wordpress.com/2013/06/300x180-badge_vs3-1.jpg" alt="Road to Maker Faire Challenge Contest" /></a>
-						</div>
+						
 					</div>
 					<!--<div class="shadow"></div>-->
 
 					<div class="span8">
-
-						<h3 class="red"><?php echo esc_html( make_get_cap_option( 'feature_heading' ) ); ?></h3>
+						<?php
+							$feature_url = make_get_cap_option( 'feature_url' );
+							if ( $feature_url && absint( $feature_url ) ) : ?>
+								<h3><a href="<?php echo get_permalink( absint( $feature_url ) ); ?>" class="red"><?php echo esc_html( make_get_cap_option( 'feature_heading' ) ); ?></a></h3>
+							<?php else : ?>
+								<h3 class="red"><?php echo esc_html( make_get_cap_option( 'feature_heading' ) ); ?></h3>
+							<?php endif; ?>
 
 						<div class="new-grid">
 
@@ -253,7 +291,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h3><a class="red" href="http://makezine.com/tag/diy-projects/">New Projects</a></h3>
+								<h3><a class="red" href="http://makezine.com/projects/">New Projects</a></h3>
 
 								<div class="grid-box boxy">
 
@@ -330,6 +368,7 @@ Template Name: Home Page
 											'tag__not_in' => array( 92075710, 22815 ),
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
+											'post_type' => array( 'post', 'projects', 'review', 'video', 'magazine' ),
 										);
 										
 

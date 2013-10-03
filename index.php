@@ -1,9 +1,7 @@
 <?php get_header(); ?>
+
+		<div class="single">
 		
-		<div class="clear"></div>
-
-		<div class="sand">
-
 			<div class="container">
 
 				<div class="row">

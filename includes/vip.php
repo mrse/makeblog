@@ -57,6 +57,7 @@ if ( function_exists( 'vip_regex_redirects' ) ) {
 		'|^/blog/category/([a-zA-Z0-9 -]+)|' 			   => '|/category/$1/|', // handle any redirects from blog.makezine with categories
 		'|^/blog/tag/([a-zA-Z0-9 -]+)|'				  	   => '|/tag/$1/|', // handle any redirects from blog.makezine with tags
 		'|^/blog/author/([a-zA-Z0-9 -]+)|'				   => '|/author/$1/', // handle any redirects from blog.makezine marked as authors
+		'|^/tv/(.*)|'									   => 'http://archive.makezine.com/tv/$1', // Old Makezine TV redirects
 	);
 	vip_regex_redirects( $redirects );
 }
@@ -66,7 +67,6 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/feed/rss'          => 'http://makezine.com/feed/', // really old feeds
 		'/podcast'           => 'http://makezine.com/video/', // Old podcast => video
 		//'/home-page-include' => 'http://makezine.com/', // Old podcast => video
-		'/2008/01/15/weekend-projects/' => 'http://makezine.com/weekend-projects/' // Weekend Projects
 	) );
 }
 
@@ -92,7 +92,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/makerfaire'				=> 'http://makerfaire.com/',
 		'/blog/06/legosoccer/focal'		=> 'http://digital.ni.com/public.nsf/allkb/29D716D6F4F1FBC386256AE700727AF6',
 		'/blog/suboffer'				=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
-		'/blog/weekendprojects'			=> 'http://makezine.com/the-weekend-projects/',
+		'/blog/weekendprojects'			=> 'http://makezine.com/weekendprojects/',
 		'/blog/sff'						=> 'http://store.makezine.com/ProductDetails.asp?ProductCode=0596529201',
 		'/blog/pdf'						=> 'http://www.makezine.com/blog/archive/make_pdf/',
 		'/blog/store'					=> 'http://makershed.com/',
@@ -117,7 +117,6 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/5issues'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M34AIR',
 		'/blog/3DPDF'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
 		'/blog/3dpdf'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
-		'/blog/magazine'				=> 'http://makezine.com/volume/make-34/',
 		'/blog/34'						=> 'http://makezine.com/volume/make-34/',
 		'/blog/maker-projects'			=> 'http://makezine.com/maker-projects/',
 		'/blog/projects'				=> 'http://makezine.com/projects',
@@ -157,10 +156,16 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/blog/community/index.html'	=> 'http://archive.makezine.com/community/index.html',
 		'/blog/help/index.html'			=> 'http://archive.makezine.com/help/index.html',
 		'/blog/hardware-innovation-workshop/videos.html' => 'http://archive.makezine.com/hardware-innovation-workshop/videos.html',
-		'/blog/magazine/newsletter/makerpro' => 'http://archive.makezine.com/magazine/newsletter/makerpro/index.html',
 		'/blog/groups'					=> 'http://archive.makezine.com/groups/',
 		'/blog/make-newsletter'			=> 'http://makezine.com/newsletter/',
 		'/blog/page-2/'					=> 'http://makezine.com/page-2/',
+		'/volume/make-36‎'				=> 'http://makezine.com/magazine/',
+		'/volume/make-37'				=> 'http://makezine.com/magazine/',
+		'/volume/make-38‎'				=> 'http://makezine.com/magazine/',
+		'/volume/make-39'				=> 'http://makezine.com/magazine/',
+		'/volume/make-40‎'				=> 'http://makezine.com/magazine/',
+		'/volume/make-41'				=> 'http://makezine.com/magazine/',
+		'/volume/make-42‎'				=> 'http://makezine.com/magazine/',
 
 		// Add redirects for instances that a blog folder isn't here.
 		'/subscribe' 				=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
@@ -181,7 +186,6 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/makerfaire'				=> 'http://makerfaire.com/',
 		'/06/legosoccer/focal'		=> 'http://digital.ni.com/public.nsf/allkb/29D716D6F4F1FBC386256AE700727AF6',
 		'/suboffer'					=> 'https://readerservices.makezine.com/MK/MKSubnew1.aspx?PC=MK',
-		'/weekendprojects'			=> 'http://makezine.com/the-weekend-projects/',
 		'/sff'						=> 'http://store.makezine.com/ProductDetails.asp?ProductCode=0596529201',
 		'/pdf'						=> 'http://www.makezine.com/blog/archive/make_pdf/',
 		'/store'					=> 'http://makershed.com/',
@@ -205,7 +209,8 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/5issues'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M34AIR',
 		'/3DPDF'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
 		'/3dpdf'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
-		'/magazine'					=> 'http://makezine.com/volume/make-34/',
+		'/magazine'					=> 'http://makezine.com/volume/make-35/',
+		'/35'						=> 'http://makezine.com/volume/make-35/',
 		'/34'						=> 'http://makezine.com/volume/make-34/',
 		'/01'						=> 'http://archive.makezine.com/01/',
 		'/02'						=> 'http://archive.makezine.com/02/',
@@ -239,11 +244,11 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/30'						=> 'http://archive.makezine.com/30/',
 		'/31'						=> 'http://archive.makezine.com/31/',
 		'/32'						=> 'http://archive.makezine.com/32/',
+		'/the-weekend-projects'		=> 'http://makezine.com/weekendprojects',
 		'/faq/index.html'			=> 'http://makezine.com/faq/',
 		'/community/index.html'		=> 'http://archive.makezine.com/community/index.html',
 		'/help/index.html'			=> 'http://archive.makezine.com/help/index.html',
 		'/hardware-innovation-workshop/videos.html'	=> 'http://archive.makezine.com/hardware-innovation-workshop/videos.html',
-		'/magazine/newsletter/makerpro' => 'http://archive.makezine.com/magazine/newsletter/makerpro/index.html',
 		'/groups'					=> 'http://archive.makezine.com/groups/',
 		'/make-newsletter'			=> 'http://makezine.com/newsletter/',
 		'/magazine/newsletter/subscribe/free-digital-magazine.html'			=> 'http://archive.makezine.com/magazine/newsletter/subscribe/free-digital-magazine.html',
@@ -265,7 +270,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 if ( false !== strpos( $_SERVER['REQUEST_URI'], '_' ) )
 	add_action( 'template_redirect', 'makeblog_redirect_urls_with_underscores' );
 function makeblog_redirect_urls_with_underscores( ) {
-	if ( !is_404() )
+	if ( !is_404() || is_preview() )
 		return;
 	$new_uri = str_replace( '_', '-', $_SERVER['REQUEST_URI'] );
 	$new_url = home_url( $new_uri );

@@ -41,6 +41,9 @@ make_get_header() ?>
 						<li>
 							Category <?php the_category(', '); ?>
 						</li>
+						<li>
+							Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a>
+						</li>
 					</ul>
 		
 				</div>
@@ -58,7 +61,7 @@ make_get_header() ?>
 					</article>
 					
 					<?php endwhile; ?>
-
+					
 					<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
 
 					<div class="comments">

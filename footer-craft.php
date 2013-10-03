@@ -28,17 +28,21 @@
 
 		</div>
 
-<div class="new-footer">
-		<div class="container">
-			<img src="<?php bloginfo('stylesheet_directory'); ?>/img/craft-logo1.png" alt="MAKE">
-			<div class="row">
-				<div class="span main">
-					<div class="span trending">
+		<section id="footer" class="new-footer">
+			<div class="container">
+				<div class="row">
+					<div class="span12 logo" >
+						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/craft-logo1.png" alt="MAKE">
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="row">
+					<div class="span3 trending">
 						<h5>Trending Topics</h5>
 						<?php echo wp_kses_post( stripslashes( make_get_cap_option( 'hot_topics' ) ) ); ?>
 					<!-- END span trending -->
 					</div>
-					<div class="span newsletter">
+					<div class="span3 newsletter">
 						<h5>Get our Newsletters</h5>  
 						<form action="http://makermedia.createsend.com/t/r/s/jrsydu/" method="post" id="subForm">
 							<fieldset>
@@ -71,11 +75,11 @@
 								</div>
 							</fieldset>
 						</form>
-					<!-- END span4 newsletter -->
+					<!-- END span newsletter -->
 					</div>
-					<div class="span about-us">
+					<div class="span3 about-us">
 						<h5>About <a href="http://makermedia.com">Maker Media</a></h5>
-						<div class="span about-column-01">
+						<div class="about-column-01">
 							<ul>
 								<li><a href="http://makezine.com/help/index.html">Help</a></li>
 								<li><a href="http://makermedia.com/contact-us/">Contact</a></li>
@@ -84,47 +88,47 @@
 								<li><a href="http://makermedia.com/privacy/">Privacy</a></li>
 							</ul>
 						<!-- END span about-column-01 --></div>
-						<div class="span about-column-02">
+						<div class="about-column-02">
 							<ul>
-								<li><a href="http://makermedia.com/about-us/management-team/">About Us</a></li>
-								<li><a href="http://makezine.com/faq/index.html">FAQ</a></li>
+								<li><a href="http://makermedia.com/about-us/management-team/" target="_blank">About Us</a></li>
+								<!-- <li><a href="http://makezine.com/faq/index.html">FAQ</a></li> -->
 								<li><a href="http://makezine.com/community/index.html">Forums</a></li>
-								<li><a href="http://blog.makezine.com/contribute/">Write for MAKE</a></li>
+								<li><a href="http://makezine.com/contribute/">Write for MAKE</a></li>
 							</ul>
 						<!-- END span about-column-02 -->
 						</div>
 						<div class="clearfix"></div>
-						<div class="span socialArea">
+						<div class="socialArea">
 							<p class="links">
-								<span class="soci"><a href="http://twitter.com/craft"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/twitter.png?m=1351191030g" alt="Make on Twitter"></a></span>
-								<span class="soci"><a href="http://youtube.com/craft"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/youtube.png?m=1347432875g" alt="Make on YouTube"></a></span>
-								<span class="soci"><a href="http://pinterest.com/craftzine"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/pinterest.png?m=1351191030g" alt="Make on Pintrest"></a></span>
-								<span class="soci"><a href="http://www.flickr.com/groups/craft/"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/flickr.png?m=1347432875g" alt="Craft on Flickr"></a></span>
-								<span class="soci"><a href="https://www.facebook.com/craftzine"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/facebook.png?m=1347432875g" alt="Craft on Facebook"></a></span>
-								<span class="soci"><a href="http://www.stumbleupon.com/to/stumble/stumblethru:makezine.com?utm_source=Makezine&amp;utm_medium=StumbleThru&amp;utm_campaign=StumbleThruButton"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/stumbleupon.png?m=1351191030g" alt="Stumble Make Magazine"></a></span>
-								<span class="soci"><a href="http://instagram.com/makemagazine"><img src="http://makezineblog.files.wordpress.com/2012/12/instagram.png" alt="MAKE on Instagram"></a></span>
-								<span class="soci"><a href="https://google.com/+MAKE/"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/google-plus.png?m=1347432875g" alt="MAKE on Google+"></a></span>
+								<span class="soci"><a href="http://twitter.com/craft" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/twitter.png?m=1351191030g" alt="Make on Twitter"></a></span>
+								<span class="soci"><a href="http://youtube.com/craft" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/youtube.png?m=1347432875g" alt="Make on YouTube"></a></span>
+								<span class="soci"><a href="http://pinterest.com/craftzine" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/pinterest.png?m=1351191030g" alt="Make on Pintrest"></a></span>
+								<span class="soci"><a href="http://www.flickr.com/groups/craft/" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/flickr.png?m=1347432875g" alt="Craft on Flickr"></a></span>
+								<span class="soci"><a href="https://www.facebook.com/craftzine" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/facebook.png?m=1347432875g" alt="Craft on Facebook"></a></span>
+								<span class="soci"><a href="http://www.stumbleupon.com/to/stumble/stumblethru:makezine.com?utm_source=Makezine&amp;utm_medium=StumbleThru&amp;utm_campaign=StumbleThruButton" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/stumbleupon.png?m=1351191030g" alt="Stumble Make Magazine"></a></span>
+								<span class="soci"><a href="http://instagram.com/makemagazine" target="_blank"><img src="http://makezineblog.files.wordpress.com/2012/12/instagram.png" alt="MAKE on Instagram"></a></span>
+								<span class="soci"><a href="https://google.com/+MAKE/" target="_blank"><img src="http://s2.wp.com/wp-content/themes/vip/makeblog/img/google-plus.png?m=1347432875g" alt="MAKE on Google+"></a></span>
 							</p>
 						<!-- END socialArea -->
 						</div> 
 					<!-- END span3 about-us -->
 					</div>
-					<div class="span subscribe">
-						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.jpg" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
+					<div class="span3 subscribe">
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB" target="_blank"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB"><a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB">
+							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.jpg" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
+						</a>
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/arrow-footer.png" width="80" height="48" id="mag-arrow">
 						<h5>Subscribe<br /> to MAKE!</h5>
-						<p>Get print and the digital version when you join!</p>
+						<p>Get the print and digital versions when you subscribe</p>
 						<hr />
 					<!-- END span subscribe -->
 					</div>
-				<!-- END MAIN span (main) -->
+				<!-- END MAIN row (main) -->
 				</div>
-			<!-- END MAIN row (main) -->
+			<!-- END container -->
 			</div>
-		<!-- END container -->
-		</div>
-	<!-- END new-footer -->
-	</div>
+		<!-- END new-footer -->
+		</section>
 	
 	</div>
 

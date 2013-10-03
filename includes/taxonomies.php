@@ -59,7 +59,7 @@ function create_maker_locations()
 	'menu_name' => __( 'Maker Locations' ),
   ); 
 
-  register_taxonomy('location', array( 'post','reviews' ), array(
+  register_taxonomy('location', array( 'post','review' ), array(
 	'hierarchical' => false,
 	'labels' => $labels,
 	'show_ui' => true,

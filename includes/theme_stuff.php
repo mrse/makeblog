@@ -1,11 +1,10 @@
 <?php
 /**
- * Sidebar for Projects Page
- *
+ * General makeblog theme functions
  * 
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
- * @author     Jake Spurlock <jspurlock@makermedia.com>
+ *
  */
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -38,6 +37,12 @@ function make_action_after_setup_theme() {
 	add_image_size( 'category-thumb-small', 218, 146, true );		// Used on Category archive pages when in a .span3
 	add_image_size( 'related-thumb', 98, 55, true );				// Used on related blocks.
 	add_image_size( 'featured-thumb', 105, 105, true );				// Used on related blocks.
+	add_image_size( 'p1', 301, 400, true );							// Used as the top left featured image on home page.
+	add_image_size( 'p2', 290, 180, true );							// Used as the top right featured images on home page.
+	add_image_size( 'maker-week-home', 620, 400, true );			// Used on Maker Week take over page.
+	add_image_size( 'maker-week-thumb', 145, 110, true );			// Used on Maker Week take over page sidebar.
+	add_image_size( '2-col-thumb', 268, 167, true );				// Used on the custom feed for a 2-column layout.
+
 	/**
 	  * Depracated image sizes.
 	 */
@@ -96,6 +101,20 @@ $field_data = array (
 	),
 );
 $easy_cf = new Easy_CF($field_data);
+
+
+/**
+ * Provides a way to truncate titles
+ * @param  integer $length The desiered length
+ * @return string
+ */
+function make_get_short_title( $length ) {
+	$original = get_the_title();
+	$title = substr( $original, 0, absint( $length ) );
+	if ( strlen( $original ) > absint( $length ) ) $title .= '...';
+
+	return $title;
+}
 
 
 /**
@@ -214,7 +233,14 @@ function make_enqueue_jquery() {
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.js', array( 'jquery' ) );
 	wp_enqueue_script( 'make-header', get_stylesheet_directory_uri() . '/js/header.js', array( 'jquery' ) );
-
+	// wp_enqueue_script( 'make-cookie', get_stylesheet_directory_uri() . '/js/jquery.cookie.js', array( 'jquery' ) );
+	// wp_enqueue_script( 'make-tracker', get_stylesheet_directory_uri() . '/js/tracker.js', array( 'jquery' ) );
+	wp_enqueue_script( 'make-oembed', get_stylesheet_directory_uri() . '/js/jquery.oembed.js', array( 'jquery' ) );
+	
+	if ( is_front_page() || is_post_type_archive('projects') ) {
+		wp_enqueue_script( 'make-optimizely', '//cdn.optimizely.com/js/288261727.js', array( 'jquery' ) );
+	}
+	
 	// display our map sort plugin for Maker Camp
 	if ( is_page( 315793 ) )
 		wp_enqueue_script( 'make-sort-table', get_stylesheet_directory_uri() . '/js/jquery.tablesorter.min.js', array( 'jquery' ) );
@@ -223,6 +249,30 @@ function make_enqueue_jquery() {
 	wp_enqueue_style( 'make-print', get_stylesheet_directory_uri() . '/css/print.css', array(), false, 'print' );
 }
 add_action( 'wp_enqueue_scripts', 'make_enqueue_jquery' );
+
+
+/**
+ * Adds scripts and styles to particular pages in the admin areas.
+ * @return void
+ */
+function make_enqueue_resources_admin() {
+	$screen = get_current_screen();
+
+	// Run this code when we are in the magazine dashboard
+	if ( $screen->id == 'volume_page_manager' ) {
+		wp_enqueue_style( 'make-dashboard-css', get_stylesheet_directory_uri() . '/includes/magazine-dashboard/css/dashboard.css' );
+
+		wp_enqueue_script( 'make-sort-table', get_stylesheet_directory_uri() . '/js/jquery.tablesorter.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'make-dashboard', get_stylesheet_directory_uri() . '/includes/magazine-dashboard/js/dashboard-scripts.js', array( 'make-sort-table' ) );
+	}
+
+	// Run this code when we are in the magazine edit screen
+	if ( $screen->id == 'magazine' ) {
+		wp_enqueue_script( 'make-hide-publish-btn', get_stylesheet_directory_uri() . '/js/jquery.hide-publish-btn.js', array( 'jquery' ), '1.0', true );
+	}
+
+}
+add_action( 'admin_enqueue_scripts', 'make_enqueue_resources_admin' );
 
 
 /**
@@ -425,7 +475,7 @@ function itunes_feed() {
 
 add_action('template_redirect', 'itunes_feed');
 
-// add_action('pre_get_posts', 'make_mf_remove_tag_from_home' );
+add_action('pre_get_posts', 'make_mf_remove_tag_from_home' );
 
 /**
  * Take Maker Faire posts that don't have MF tag, and remove from the main query.
@@ -434,8 +484,8 @@ add_action('template_redirect', 'itunes_feed');
 function make_mf_remove_tag_from_home( $query ) {
 
 	// only impact the main WordPress query and if on homepage or feed
-	if( $query->is_main_query() && ( $query->is_home() || $query->is_feed() || $query->is_page(215620) ) ) {
-		$query->set( 'tag__not_in', array( 5183,22815 ) );
+	if( $query->is_main_query() && ( $query->is_home() || $query->is_feed() ) ) {
+		$query->set( 'tag__not_in', array( 5183, 22815, 9947 ) );
 	}
 }
 
@@ -512,15 +562,25 @@ function make_get_category_name_strip_slash() {
  * This will bring posts, craft, projects, video into the main query. Allows for better archive pages.
  * @return string Main category name.
  */
-// TODO: Bring in reviews.
 function make_add_custom_types( $query ) {
 	if ( ! is_admin() && $query->is_main_query() && ( $query->is_tag() || $query->is_author() || $query-> is_tax() ) && empty( $query->query_vars['suppress_filters'] ) ) {
-		$query->set( 'post_type', array( 'post', 'craft', 'projects', 'video' ));
+		$query->set( 'post_type', array( 'post', 'craft', 'projects', 'video', 'review', 'magazine' ));
 		return $query;
 	}
 }
 add_filter( 'pre_get_posts', 'make_add_custom_types' );
 
+/**
+ * Change the default look to be by added date for admin pages.
+ */
+function make_set_default_sort( $query ) {
+	if ( is_admin() && $query->is_main_query() && empty( $query->query_vars['suppress_filters'] ) ) {
+		$query->set( 'orderby', 'date' );
+		$query->set( 'order', 'DESC' );
+		return $query;
+	}
+}
+add_filter( 'pre_get_posts', 'make_set_default_sort' );
 
 add_filter( 'byline_auto_filter_author', '__return_true' );
 
@@ -580,6 +640,58 @@ function make_quantcast_tag() { ?>
 <?php }
 
 add_action('wp_footer', 'make_quantcast_tag');
+
+
+/**
+ * Add the Qualtrics popup to the Footer
+ */
+function make_qualtrics_script() {
+	if ( make_get_cap_option( 'qualtrics_script' ) ) : ?>
+	<!--BEGIN QUALTRICS POPUP-->
+	<script type="text/javascript">
+		var q_viewrate = <?php echo esc_js( intval( make_get_cap_option( 'qualtrics_script_percent' ) ) ); ?>;
+		var url = 'http://s.qualtrics.com/ControlPanel/Graphic.php?IM=IM_ef9i42Jt6yJs8OV&V=1378824622';
+		if ( Math.random() < q_viewrate / 100 ){
+			var q_popup_f = function(){ 
+				var q_script = document.createElement("script");
+				var q_popup_g = function(){
+					new QualtricsEmbeddedPopup( {
+						id: "SV_1Rex7PkiBgaaK3z",
+						imagePath: "https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics/",
+						surveyBase: "http://surveys.makermedia.com/WRQualtricsSurveyEngine/",
+						delay: <?php echo esc_js( intval( make_get_cap_option( 'qualtrics_script_delay' ) ) ); ?>,
+						preventDisplay:0,
+						animate:true,
+						width:400,
+						height:300,
+						surveyPopupWidth:900,
+						surveyPopupHeight:600,
+						startPos:"BR",
+						popupText:"<div style='margin-bottom:20px;'><image src=" + url + "></div>Would you please help us improve our website by answering 3 questions?",
+						linkText:"Click Here"
+					});
+				};
+				q_script.onreadystatechange= function () {
+					if (this.readyState == "loaded") 
+						q_popup_g();
+				};
+				q_script.onload = q_popup_g;
+				q_script.src="https://qdistribution.qualtrics.com/WRQualtricsShared/JavaScript/Distribution/popup.js";
+				document.getElementsByTagName("head")[0].appendChild(q_script);
+			};
+			if (window.addEventListener){
+				window.addEventListener("load",q_popup_f,false);
+			} else if (window.attachEvent) {
+				r=window.attachEvent("onload",q_popup_f);
+			};
+		};
+	</script>
+	<noscript><p><a target="_blank" href="http://surveys.makermedia.com/WRQualtricsSurveyEngine/?SID=SV_1Rex7PkiBgaaK3z">Click Here</a><p></noscript>
+	<!--END QUALTRICS POPUP-->
+	<?php endif;
+}
+
+add_action( 'wp_footer', 'make_qualtrics_script' );
 
 /**
  * Adds the popover javascript for review posts.
@@ -896,60 +1008,131 @@ add_action( 'admin_head', 'make_cpt_icons' );
  */
 function make_cpt_icons() { ?>
 	<style type="text/css" media="screen">
-		#menu-posts-video .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/camcorder.png') no-repeat 6px -17px !important;
+		.icon16.icon-dashboard:before,
+		#adminmenu .menu-icon-dashboard div.wp-menu-image:before {
+			content: '\f226';
 		}
-		#menu-posts-video:hover .wp-menu-image, #menu-posts-video.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-post:before,
+		#adminmenu .menu-icon-post div.wp-menu-image:before {
+			content: '\f109';
 		}
-		#menu-posts-slideshow .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/slides.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-media:before,
+		#adminmenu .menu-icon-media div.wp-menu-image:before {
+			content: '\f104';
 		}
-		#menu-posts-slideshow:hover .wp-menu-image, #menu-posts-slideshow.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-links:before,
+		#adminmenu .menu-icon-links div.wp-menu-image:before {
+			content: '\f103';
 		}
-		#menu-posts-craft .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/cutter.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-page:before,
+		#adminmenu .menu-icon-page div.wp-menu-image:before {
+			content: '\f105';
 		}
-		#menu-posts-craft:hover .wp-menu-image, #menu-posts-craft.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-comments:before,
+		#adminmenu .menu-icon-comments div.wp-menu-image:before {
+			content: '\f101';
+			margin-top: 1px;
 		}
-		#menu-posts-volume .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/book.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-appearance:before,
+		#adminmenu .menu-icon-appearance div.wp-menu-image:before {
+			content: '\f100';
 		}
-		#menu-posts-volume:hover .wp-menu-image, #menu-posts-volume.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-plugins:before,
+		#adminmenu .menu-icon-plugins div.wp-menu-image:before {
+			content: '\f106';
 		}
-		#menu-posts-magazine .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/book-open.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-users:before,
+		#adminmenu .menu-icon-users div.wp-menu-image:before {
+			content: '\f110';
 		}
-		#menu-posts-magazine:hover .wp-menu-image, #menu-posts-magazine.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-tools:before,
+		#adminmenu .menu-icon-tools div.wp-menu-image:before {
+			content: '\f107';
 		}
-		#menu-posts-review .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/application-dialog.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-settings:before,
+		#adminmenu .menu-icon-settings div.wp-menu-image:before {
+			content: '\f108';
 		}
-		#menu-posts-review:hover .wp-menu-image, #menu-posts-review.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-site:before,
+		#adminmenu .menu-icon-site div.wp-menu-image:before {
+			content: '\f112'
 		}
-		#menu-posts-page_2 .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/application-form.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-generic:before,
+		#adminmenu .menu-icon-generic div.wp-menu-image:before {
+			content: '\f111';
 		}
-		#menu-posts-page_2:hover .wp-menu-image, #menu-posts-page_2.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-video:before,
+		#adminmenu #menu-posts-video div.wp-menu-image:before {
+			content: '\f126';
 		}
-		#menu-posts-errata .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/application-list.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-project:before,
+		#adminmenu #menu-posts-projects div.wp-menu-image:before {
+			content: '\f308';
 		}
-		#menu-posts-errata:hover .wp-menu-image, #menu-posts-errata.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-magazine:before,
+		#adminmenu #menu-posts-magazine div.wp-menu-image:before {
+			content: '\f123';
 		}
-		#menu-posts-projects .wp-menu-image {
-			background: url('<?php bloginfo('template_url') ?>/images/application-tile.png') no-repeat 6px -17px !important;
+
+		.icon16.icon-review:before,
+		#adminmenu #menu-posts-review div.wp-menu-image:before {
+			content: '\f175';
 		}
-		#menu-posts-projects:hover .wp-menu-image, #menu-posts-projects.wp-has-current-submenu .wp-menu-image {
-			background-position:6px 7px!important;
+
+		.icon16.icon-volume:before,
+		#adminmenu #menu-posts-volume div.wp-menu-image:before {
+			content: '\f318';
 		}
+
+		.icon16.icon-errata:before,
+		#adminmenu #menu-posts-errata div.wp-menu-image:before {
+			content: '\f117';
+		}
+
+		.icon16.icon-page_2:before,
+		#adminmenu #menu-posts-page_2 div.wp-menu-image:before {
+			content: '\f161';
+		}
+
+		.icon16.icon-slideshow:before,
+		#adminmenu #menu-posts-slideshow div.wp-menu-image:before {
+			content: '\f181';
+		}
+
+		.icon16.icon-golink:before,
+		#adminmenu #menu-posts-go div.wp-menu-image:before {
+			content: '\f103';
+		}
+
+		.icon16.icon-newsletter:before,
+		#adminmenu #menu-posts-newsletter div.wp-menu-image:before {
+			content: '\f116';
+		}
+		.icon16.icon-craft:before,
+		#adminmenu #menu-posts-craft div.wp-menu-image:before {
+			content: '\f309';
+		}
+
+		.icon16.icon-from-the-maker-shed:before,
+		#adminmenu #menu-posts-from-the-maker-shed div.wp-menu-image:before {
+			content: '\f312';
+		 }
+
 	</style>
 <?php }
 
@@ -1026,6 +1209,7 @@ add_shortcode( 'make-themes', 'make_daily_themes' );
  * Adds a dynamic feature block to the home page.
  */
 function make_featured_post() {
+	global $post;
 	$post_id = make_get_cap_option( 'daily' );
 	$post = get_post( $post_id );
 	$output = '<div class="img"><a href="' . get_permalink( $post->ID) . '">';
@@ -1033,8 +1217,8 @@ function make_featured_post() {
 	$output .= '</div>';
 	$output .= '<div class="blurb">';
 	$output .= '<h3><span class="trending">What\'s hot:</span> ' . $post->post_title . '</h3>';
-	$output .= '<p><small>By: <strong>' . get_the_author_meta( 'display_name', $post->post_author ) . '</strong></small></p>';
-	$output .= '<p>'.wp_trim_words(strip_shortcodes( $post->post_content ), 20).'</p>';
+	$output .= '<p><small>By: <strong>' . coauthors( ', ', '', '', '', false ) . '</strong></small></p>';
+	$output .= '<p>' . wp_trim_words(strip_shortcodes( $post->post_content ), 20) . '</p>';
 	$output .= '</a></div>';
 	return $output;
 }
@@ -1109,12 +1293,14 @@ function make_sitemap_add_gallery_post_type( $post_types ) {
  */
 function make_register_menu() {
 
-	// Leaving this menu in so we can migrate navigation smoothly. Will remove after menus are setup and running
-	register_nav_menu( 'topbar', __( 'Top Bar', 'make' ) );
-
-	// New Make Navigation menus
+	// Make Navigation menus
 	register_nav_menu( 'make-primary', __( 'Make Primary Nav', 'make' ) );
 	register_nav_menu( 'make-secondary', __( 'Make Secondary Nav', 'make' ) );
+
+	// Popdown Menus
+	register_nav_menu( 'popdown-menu-top', __( 'Popdown Top', 'make' ) );
+	register_nav_menu( 'popdown-menu-middle', __( 'Popdown Middle', 'make' ) );
+	register_nav_menu( 'popdown-menu-last', __( 'Popdown Last', 'make' ) );
 }
 add_action( 'init', 'make_register_menu' );
 
@@ -1125,6 +1311,7 @@ function mf_allow_data_atts( $allowedposttags, $context ) {
 	$new_attributes = array( 
 		'data-toggle' 	=> true,
 		'data-dismiss' 	=> true,
+		'data-interval'	=> true,
 		);
  
 	foreach ( $tags as $tag ) {
@@ -1165,25 +1352,21 @@ function make_get_author( $post_id, $prefix = 'By' ) {
 	// Return our post type name
 	$post_type = get_post_type( absint( $post_id ) );
 
-	// We don't ever want to display an author for the videos post type.
-	if ( $post_type == 'video' )
-		return;
+	// Check that we are not loading a video CPT. If we are, return false so we don't echo anything
+	// if ( $post_type == 'video')
+	// 	return false;
 
+	// If we want to echo our results, we'll do that here.
+	echo '<li>';
 	echo esc_attr( $prefix ) . ' ';
 
-	if ( $post_type == 'post' ) {
-		if( function_exists( 'coauthors_posts_links' ) ) {	
-			coauthors_posts_links(); 
-		} else { 
-			the_author_posts_link(); 
-		}
-	} else {
-		if ( function_exists( 'coauthors' ) ) {
-			coauthors();
-		} else {
-			the_author();
-		}
+	if( function_exists( 'coauthors_posts_links' ) ) {	
+		coauthors_posts_links(); 
+	} else { 
+		the_author_posts_link(); 
 	}
+
+	echo '</li>';
 
 }
 
@@ -1206,3 +1389,221 @@ function make_add_post_types_to_feed( $query_var ) {
 }
 add_filter( 'request', 'make_add_post_types_to_feed' );
 
+
+
+/**
+ * Outputs the code for our Popdown menu found on all Make sites
+ * @return html
+ *
+ * @version  1.0
+ */
+function make_popdown_menu() { ?>
+	<div class="make-popdown">
+		<div class="wrapper-container">
+			<div class="container">
+				<div class="row">
+					<div class="span3 offset2 border-right">
+						<div class="row-fluid">
+							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" class="span4" onClick="_gaq.push(['_trackEvent', 'popdown-subscribe', 'Click', 'Subscribe Image']);"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-make-cover.jpg" alt=""></a>
+							<div class="span7 side-text">
+								<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN05" onClick="_gaq.push(['_trackEvent', 'popdown-subscribe', 'Click', 'Subscribe Link']);">Subscribe to MAKE!</a> Receive both print &amp; digital editions.
+							</div>
+						</div>
+					</div>
+					<div class="span2 border-right">
+						<?php wp_nav_menu( array(
+							'theme_location'  => 'popdown-menu-top',
+							'container'       => false, 
+							'menu_class'      => 'first nav ga-nav',
+							'depth'           => 1 
+						) ); ?>
+					</div>
+					<div class="span4">
+						<?php wp_nav_menu( array(
+							'theme_location'  => 'popdown-menu-middle',
+							'container'       => false, 
+							'menu_class'      => 'second nav ga-nav',
+							'depth'           => 1 
+						) ); ?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span9 offset2 menu-bottom">
+						<p>What's Hot on Makezine.com:</p>
+						<?php wp_nav_menu( array(
+							'theme_location'  => 'popdown-menu-last',
+							'container'       => false, 
+							'menu_class'      => 'last nav ga-nav',
+							'depth'           => 1 
+						) ); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="menu-button">
+			<span class="popdown-btn"></span>
+		</div>
+	</div>
+<?php }
+
+
+/**
+ * Remove unncessary meta boxes from Authors
+ * @return void
+ */
+function make_remove_metaboxes_for_authors() {
+	// Remove the following metaboxes for authors and below
+	if ( ! current_user_can( 'delete_others_pages' ) ) {
+
+		// Remove Edit Flow Editorial Metadata
+		remove_meta_box( 'ef_editorial_meta', 'post', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'projects', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'magazine', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'review', 'side' );
+		remove_meta_box( 'ef_editorial_meta', 'video', 'side' );
+
+		// Remove Edit Flot Editorial Comments
+		remove_meta_box( 'edit-flow-editorial-comments', 'post', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'projects', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'magazine', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'review', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'craft', 'normal' );
+		remove_meta_box( 'edit-flow-editorial-comments', 'video', 'normal' );
+		
+		// Remove Edit Flow Notifications
+		remove_meta_box( 'edit-flow-notifications', 'post', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'projects', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'magazine', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'review', 'advanced' );
+		remove_meta_box( 'edit-flow-notifications', 'video', 'advanced' );
+
+		// Remove Featured Image
+		remove_meta_box( 'postimagediv', 'post', 'side' );
+		remove_meta_box( 'postimagediv', 'projects', 'side' );
+		remove_meta_box( 'postimagediv', 'magazine', 'side' );
+		remove_meta_box( 'postimagediv', 'review', 'side' );
+		remove_meta_box( 'postimagediv', 'craft', 'side' );
+
+		// Remove Makers Taxonomy
+		remove_meta_box( 'tagsdiv-maker', 'post', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'projects', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'magazine', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'review', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'craft', 'side' );
+		remove_meta_box( 'tagsdiv-maker', 'video', 'side' );
+
+		// Remove Makers Location Taxonomy
+		remove_meta_box( 'tagsdiv-location', 'post', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'projects', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'magazine', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'review', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'craft', 'side' );
+		remove_meta_box( 'tagsdiv-location', 'video', 'side' );
+
+		// Remove Primary Section Taxonomy
+		remove_meta_box( 'mob_section_primary_term_div', 'post', 'side' );
+		remove_meta_box( 'mob_section_primary_term_div', 'projects', 'side' );
+		remove_meta_box( 'mob_section_primary_term_div', 'magazine', 'side' );
+		remove_meta_box( 'mob_section_primary_term_div', 'review', 'side' );
+
+		// Remove Primary Type Taxonomy
+		remove_meta_box( 'mob_types_primary_term_div', 'post', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'projects', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'magazine', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'review', 'side' );
+		remove_meta_box( 'mob_types_primary_term_div', 'craft', 'side' );
+
+		// Remove Primary Flag
+		remove_meta_box( 'mob_flags_primary_term_div', 'projects', 'side' );
+
+		// Remove Primary Difficulty
+		remove_meta_box( 'mob_difficulty_primary_term_div', 'projects', 'side' );
+		remove_meta_box( 'mob_difficulty_primary_term_div', 'video', 'side' );
+
+		// Remove Primary Playlist
+		remove_meta_box( 'mob_playlist_primary_term_div', 'video', 'side' );
+
+		// Remove Flags Taxonomy
+		remove_meta_box( 'flagsdiv', 'projects', 'side' );
+
+		// Remove Magazine Meta
+		remove_meta_box( 'magazine_meta', 'post', 'side' );
+		remove_meta_box( 'magazine_meta', 'projects', 'side' );
+		remove_meta_box( 'magazine_meta', 'magazine', 'side' );
+		remove_meta_box( 'magazine_meta', 'review', 'side' );
+
+		// Remove Projects Meta
+		remove_meta_box( 'advanced_testgroup', 'projects', 'advanced' );
+
+		// Remove Tools Taxonomy
+		remove_meta_box( 'tagsdiv-tools', 'projects', 'side' );
+
+		// Remove Parts Taxonomy
+		remove_meta_box( 'tagsdiv-parts', 'projects', 'side' );
+
+		// Remove Disscussion
+		remove_meta_box( 'commentstatusdiv', 'post', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'projects', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'magazine', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'review', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'craft', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'video', 'normal' );
+
+		// Remove Send Trackbacks
+		remove_meta_box( 'trackbacksdiv', 'post', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'projects', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'magazine', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'review', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'craft', 'normal' );
+		remove_meta_box( 'trackbacksdiv', 'video', 'normal' );
+
+		// Remove Likes and Shares
+		remove_meta_box( 'likes_meta', 'post', 'advanced' );
+		remove_meta_box( 'likes_meta', 'projects', 'advanced' );
+		remove_meta_box( 'likes_meta', 'magazine', 'advanced' );
+		remove_meta_box( 'likes_meta', 'review', 'advanced' );
+		remove_meta_box( 'likes_meta', 'craft', 'advanced' );
+		remove_meta_box( 'likes_meta', 'video', 'advanced' );
+	}
+}
+add_action( 'do_meta_boxes', 'make_remove_metaboxes_for_authors' );
+
+
+/**
+ * Hide post types we don't want to show to authors
+ * @return void
+ */
+function make_remove_admin_areas_for_authors() {
+	// Remove the following metaboxes for authors and below
+	if ( ! current_user_can( 'delete_others_pages' ) ) {
+		remove_menu_page( 'edit.php?post_type=newsletter' );
+	}
+}
+add_action( 'admin_menu', 'make_remove_admin_areas_for_authors' );
+
+/**
+ * Function to generate the title tags for page heads.	
+ */
+function make_generate_title_tag() {
+	$output = '';
+	if ( is_home() || is_front_page() ) {
+		$output .= get_bloginfo('name') . ' | ' . get_bloginfo('description');
+	} else {
+		$output .= wp_title('', false ) . ' | ' . get_bloginfo('name');
+	}
+	return $output;
+}
+
+function make_convert_sanitize_string_to_array( $string, $delimiter = ',' ) {
+	if ( strpos( $string, $delimiter ) !== false) {
+	    $array = explode( esc_html( $delimiter ), $string );
+
+	    foreach ( $array as $key => $value ) {
+	    	$output[ absint( $key ) ] = sanitize_title_for_query( $value );
+	    }
+	} else {
+		$output = sanitize_title_for_query( $string );
+	}
+
+	return $output;
+}

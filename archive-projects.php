@@ -31,6 +31,8 @@ get_header(); ?>
 									<p>Explore our growing cookbook of DIY projects for the workshop, <a href="<?php echo home_url(); ?>/category/home/food-beverage/?post_type=projects">kitchen</a>, garage, and backyard. Learn new skills, find <a href="<?php echo home_url(); ?>/category/home/kids-family/?post_type=projects">family fun</a>, build a <a href="<?php echo home_url(); ?>/category/electronics/robotics/?post_type=projects">robot</a> or a <a href="<?php echo home_url(); ?>/category/home/fun-games/?post_type=projects&amp;tag=rockets">rocket</a>. <a href="<?php echo home_url(); ?>/category/electronics/?post_type=projects&amp;difficulty=easy">Get started in electronics</a> and use new platforms like <a href="<?php echo home_url(); ?>/category/electronics/raspberry-pi/?post_type=projects">Raspberry Pi</a> and <a href="<?php echo home_url(); ?>/category/electronics/arduino/?post_type=projects">Arduino</a> to power your inventions. Get inspired and start making something today.</p>
 
 									<p class="muted" style="font-size:15px;font-style:italic;">Welcome to the new Make: Projects! User accounts are temporarily disabled. If you contributed on our old platform, you can still view your projects here, and we're working on an easy way to edit them in the future. If you'd like access to update a project, email us at <a href="mailto:projects@makezine.com">projects@makezine.com</a>.</p>
+
+									<p>Not find what you are looking for? Try searching for the project here: <input class="span2" type="text" /></p>
 									
 									<h3>Find Projects by Category:</h3>
 									
@@ -86,7 +88,7 @@ get_header(); ?>
 						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 						<div id='div-gpt-ad-664089004995786621-2'>
 							<script type='text/javascript'>
-								googletag.display('div-gpt-ad-664089004995786621-2');
+								googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
 							</script>
 						</div>
 						<!-- End AdSlot 2 -->
@@ -125,7 +127,7 @@ get_header(); ?>
 
 						$args = array(
 							'post_type'			=> 'projects',
-							'title'				=> '<a href="' . home_url() . '/the-weekend-projects/">Weekend Projects</a>',
+							'title'				=> '<a href="' . home_url() . '/weekendprojects/">Weekend Projects</a>',
 							'tax_query' => array(
 								array(
 									'taxonomy' => 'flags',

@@ -32,7 +32,7 @@ get_header(); ?>
 	<div class="grey">
 
 		<div class="container">
-		
+			
 			<div class="row">
 			
 				<div class="span12">
@@ -59,7 +59,7 @@ get_header(); ?>
 				
 				<div class="span4">
 					
-					<a href="http://makezine.com/maker-camp">
+					<a href="http://pubads.g.doubleclick.net/gampad/clk?id=40880938&iu=/11548178/Makezine">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/makercamp_300x250.jpg" alt="Maker Camp!" style="margin-bottom:20px;">
 					</a>
 					
@@ -68,7 +68,7 @@ get_header(); ?>
 						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 						<div id='div-gpt-ad-664089004995786621-2'>
 							<script type='text/javascript'>
-								googletag.display('div-gpt-ad-664089004995786621-2');
+								googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
 							</script>
 						</div>
 						<!-- End AdSlot 2 -->
@@ -115,7 +115,7 @@ get_header(); ?>
 					<?php 
 
 						$args = array(
-							'post_type'			=> 'post',
+							'post_type'			=> array( 'post', 'video' ),
 							'title'				=> 'Weekend Projects News',
 							'tag'				=> 'weekend-projects',
 							'projects_landing'	=> true,
@@ -174,6 +174,7 @@ get_header(); ?>
 					'category__in'		=> 0,
 					'projects_landing'	=> true,
 					'all'				=> false,
+					'posts_per_page'	=> 36,
 					'tax_query' => array(
 						array(
 							'taxonomy' => 'flags',

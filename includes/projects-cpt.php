@@ -67,7 +67,7 @@ $field_data = array (
 			'MakeProjectsGuideNumber'	=> array(),
 			//'Flags'						=> array(),
 			'Type'						=> array(),
-			'Conclusion'				=> array(),
+			// 'Conclusion'				=> array(),
 			'Difficulty'				=> array(),
 			'Image'						=> array(),
 			'Description'				=> array(),
@@ -119,7 +119,7 @@ function make_magazine_projects_toc() {
 
 				<p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
 
-				<p class="meta">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>
+				<p class="meta">By <?php the_author_posts_link(); ?>, <?php the_time('m/d/Y \@ g:i a') ?></p>
 				<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
 
 			</div>
@@ -517,20 +517,20 @@ function make_projects_to_s3( $haystack ) {
  * Full content of the steps.
  * 
  */
-function make_projects_steps( $steps ) {
+function make_projects_steps( $steps, $print = false ) {
 	$steps = unserialize($steps[0]);
 	$count = count($steps);
 	if ( !empty( $count ) ) {
 		foreach ( $steps as $idx => $step ) {
-			if ($idx == 0) {
+			if ($idx == 0 or $print == true) {
 				echo '<div class="jstep active" id="js-step-' . esc_attr( $step->number ) . '">';
 			} else {
 				echo '<div class="jstep hide" id="js-step-' . esc_attr( $step->number ) . '">';
 			}
-			if( $idx < $count - 1 ) {
-				echo '<span class="row"><span class="span7"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4></span><span class="span1"><a class="btn pull-right btn-danger nexter" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next</a></span></span>';
+			if( $idx < $count - 1 && $print == false ) {
+				echo '<span class="row"><span class="span7"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( stripslashes( $step->title ) ) . '</h4></span><span class="span1"><a class="btn pull-right btn-danger nexter" id="step-'  . esc_attr( $step->number + 1 ) . '" data-target="#js-step-'  . esc_attr( $step->number + 1 ) . '">Next</a></span></span>';
 			} else {
-				echo '<span class="row"><span class="span8"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( $step->title ) . '</h4></span></span>';
+				echo '<span class="row"><span class="span8"><h4><span class="black">Step #' . esc_html( $step->number ) . ':</span> ' . esc_html( stripslashes( $step->title ) ) . '</h4></span></span>';
 			}
 			
 			$images = $step->images;
@@ -614,18 +614,20 @@ function make_projects_tools( $tools ) {
 	$output = '<ul class="lists">';
 
 	// The array is complicated, thus this foreach is complicated... $tool is an object.
-	foreach ( $tools[0] as $tool ) {
+	if ( ! empty( $tools[0] ) && is_array( $tools[0] ) ) {
+		foreach ( $tools[0] as $tool ) {
 
-		$output .='<li>';
-		if ( ! empty( $tool->url ) ) {
-			$output .= '<a href="' . esc_url( $tool->url ) . '" data-toggle="tooltip" title="' . esc_attr( $tool->text ) .'">' . esc_html( $tool->text ) . '</a>';
-		} else {
-			$output .= esc_html( $tool->text );
-		}
-		$notes = null;
+			$output .='<li>';
+			if ( ! empty( $tool->url ) ) {
+				$output .= '<a href="' . esc_url( $tool->url ) . '" data-toggle="tooltip" title="' . esc_attr( $tool->text ) .'">' . esc_html( $tool->text ) . '</a>';
+			} else {
+				$output .= esc_html( $tool->text );
+			}
+			$notes = null;
 
-		if( ! empty( $tool->notes ) ) {
-			$output .= '  <span class="muted">' . wp_kses_post( $tool->notes ) . '</span>';
+			if( ! empty( $tool->notes ) ) {
+				$output .= '  <span class="muted">' . wp_kses_post( $tool->notes ) . '</span>';
+			}
 		}
 	}
 
@@ -633,3 +635,33 @@ function make_projects_tools( $tools ) {
 
 	return $output;
 }
+
+function make_projects_tools_shortcode( $atts ) {
+	extract( shortcode_atts( array(
+		'type' => 'parts',
+	), $atts ) );
+	$output = '';
+	if ( $atts['type'] == 'parts' ) {
+		$parts = get_post_meta( absint( $atts['id'] ), 'parts');
+		$output .= make_projects_parts( $parts );
+	} elseif ( $atts['type'] == 'tools' ) {
+		$tools = get_post_meta( absint( $atts['id'] ), 'Tools');
+		$output .= make_projects_tools( $tools );
+	}
+	return $output;
+}
+
+add_shortcode( 'make_parts', 'make_projects_tools_shortcode' );
+
+$field_data = array (
+	'Resources' => array (
+		'fields' => array(
+			'RequiredResources'	=> array( 'type' => 'textarea', 'label' => 'Required Resources' ),
+			'ExtraResources'	=> array( 'type' => 'textarea', 'label' => 'Extra Resources' ),
+	),
+	'title'		=> 'Resources',
+	'pages'		=> array( 'projects' ),
+	),
+);
+
+$easy_cf = new Easy_CF($field_data);

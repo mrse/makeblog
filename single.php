@@ -35,7 +35,7 @@ make_get_header() ?>
 							} ?>
 						</li>
 						<li>
-							Posted <span class="blue"><?php the_date('Y/m/d \@ g:i a'); ?></span>
+							Posted <span class="blue"><?php the_date('m/d/Y \@ g:i a'); ?></span>
 						</li>
 						<li>
 							Category <?php the_category(', '); ?>
@@ -59,8 +59,6 @@ make_get_header() ?>
 					
 					</article>
 					
-					<?php if ( function_exists( 'make_author_bio' ) ) { make_author_bio(); } ?>
-
 					<?php endwhile; ?>
 
 					<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>

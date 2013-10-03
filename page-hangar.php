@@ -28,26 +28,67 @@ get_header(); ?>
 					<div class="thumbnail">
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/_KW06134.jpg" alt="" >
 						<div style="padding:5px;color:#555;">
-							<p>Follow along with Lukas and build the Maker Trainer, a custom built RC plane.</p>
+							<p>Follow along with Lucas and build the Maker Trainer, a custom built RC plane.</p>
 						</div>
 					</div>
 					
 				</div>
 				
 				<div class="span9">
-					
+				
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/makerhangarad_04.jpg" alt="Hangar">
 					<div style="height:20px;"></div>
-					
-					<p><strong>MAKE Magazine</strong> and <strong>Lucas Weakley</strong> have teamed up to bring you Maker Hangar, a 15-episode tutorial series that will teach you everything you need to know to build and fly this custom RC plane, the Maker Trainer.</p>
+				
+					<div class="row">
+						
+						<div class="span5">
+							
+							<p><strong>MAKE Magazine</strong> and <strong>Lucas Weakley</strong> have teamed up to bring you Maker Hangar, a 15-episode tutorial series that will teach you everything you need to know to build and fly this custom RC plane, the Maker Trainer.</p>
 
-					<p>The first installment airs July 11th and don’t miss Lucas Weakly on Maker Camp as a Guest Maker!</p>
+							<p>The first installment airs July 11th and don’t miss Lucas Weakly on Maker Camp as a Guest Maker!</p>
 
-					<p>New installments will air every Tuesday and Thursday through August 29th!</p>
+							<p>New installments will air every Tuesday and Thursday through August 29th!</p>
 
-					<p>Join us on the <a href="https://plus.google.com/communities/111848781234483620161">Maker Hangar Google+ Community page</a> to share your ideas, comments, photos and video and details for your own RC plane project builds.</p>
+							<p>Join us on the <a href="https://plus.google.com/communities/111848781234483620161">Maker Hangar Google+ Community page</a> to share your ideas, comments, photos and video and details for your own RC plane project builds.</p>
 
-					<p>NOTE: Be sure to check out the parts list below for the materials you’ll need to build the Maker Trainer. </p>
+							<p>NOTE: Be sure to check out the <a href="#parts" role="button" class="" data-toggle="modal">parts list</a> for the materials you’ll need to build the Maker Trainer. </p>
+							
+							<!-- Modal -->
+							<div id="parts" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									<h3 id="myModalLabel">Maker Trainer Parts</h3>
+								</div>
+								<div class="modal-body">
+									<?php 
+										$parts = get_post_meta( 320331, 'parts' );
+										echo make_projects_parts( $parts );
+									?>
+								</div>
+								<div class="modal-footer">
+									<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="span4">
+							
+							<div class="sidebar-ad">
+
+							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
+							<div id='div-gpt-ad-664089004995786621-2'>
+								<script type='text/javascript'>
+									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
+								</script>
+							</div>
+							<!-- End AdSlot 2 -->
+
+						</div>
+							
+						</div>
+						
+					</div>
 					
 				</div>
 				
@@ -69,7 +110,7 @@ get_header(); ?>
 				
 				<div class="span3">
 					
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/lukas.jpg" alt="Lukas Weakley">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/lukas.jpg" alt="Lucas Weakley">
 					<div style="height:20px;"></div>
 					
 				</div>
@@ -83,41 +124,6 @@ get_header(); ?>
 	<div class="grey content">
 
 		<div class="container">
-		
-			<div class="row">
-			
-				<div class="span8">
-					
-					<?php
-						$args = array(
-							'post_type'			=> 'post',
-							'title'				=> 'Maker Hangar Posts',
-							'limit'				=> 4,
-							'tag'				=> 'Hangar',
-							'projects_landing'	=> false,
-							'all'				=> false
-						);
-						make_carousel( $args ); ?>
-					
-				</div>
-				
-				<div class="span4">
-					
-					<div class="sidebar-ad">
-
-						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
-						<div id='div-gpt-ad-664089004995786621-2'>
-							<script type='text/javascript'>
-								googletag.display('div-gpt-ad-664089004995786621-2');
-							</script>
-						</div>
-						<!-- End AdSlot 2 -->
-
-					</div>
-					
-				</div>
-				
-			</div>
 								
 			<div class="row">
 			
@@ -130,8 +136,57 @@ get_header(); ?>
 							'title'				=> 'Recent Videos',
 							'projects_landing'	=> false,
 							'all'				=> false,
-							'playlist'			=> 'maker-hanger',
-							'debug'				=> false
+							'playlist'			=> 'maker-hangar',
+							'order'				=> 'ASC',
+							'limit'				=> 4,
+							'posts_per_page'	=> 4,
+						);
+						make_carousel($args);
+					?>
+					
+				</div>
+			
+			</div>
+			
+			<div class="row">
+			
+				<div class="span12">
+				
+					<?php 
+
+						$args = array(
+							'post_type'			=> 'video',
+							'title'				=> '',
+							'projects_landing'	=> false,
+							'all'				=> false,
+							'playlist'			=> 'maker-hangar',
+							'order'				=> 'ASC',
+							'limit'				=> 4,
+							'offset'			=> 4,
+							'posts_per_page'	=> 4,
+						);
+						make_carousel($args);
+					?>
+					
+				</div>
+			
+			</div>
+			
+			<div class="row">
+			
+				<div class="span12">
+				
+					<?php 
+						$args = array(
+							'post_type'			=> 'video',
+							'title'				=> '',
+							'projects_landing'	=> false,
+							'all'				=> false,
+							'playlist'			=> 'maker-hangar',
+							'order'				=> 'ASC',
+							'limit'				=> 4,
+							'offset'			=> 8,
+							'posts_per_page'	=> 4,
 						);
 						make_carousel($args);
 					?>

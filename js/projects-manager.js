@@ -1,56 +1,17 @@
 jQuery(document).ready(function($) {
 
-	/**
-	 * Define our image creation and removal functionality.
-	 * Also reference the make_projects_manager() function below for more.
-	 *
-	 * @version 2.0
-	 */
 
 	// Add our icon class to the meta box title
 	$('#make_magazine_projects_step_manager h3.hndle').prepend('<span class="steps-ico"></span>');
 
 	// Add our remove button for images uploaded to the Projects Manager
-	$('#image-list .has-image').prepend('<img src="' + make_projects_js.stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
+	$('#image-list .has-image').prepend('<img src="' + make_projects_js.stylesheet_uri + '/images/icon-view.png" class="view-image" /><img src="' + make_projects_js.stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
 
 	// Call our image removal and hover state
 	make_projects_manager_image_removal();
 
-	/**
-	 * Define our sortable sub-lists
-	 * Using jQuery UI, we hook onto the class ".sort" on the sort icon so this become the "handle".
-	 * Chain disableSelection() to the end so we can deactivate text selection when users are dragging.
-	 *
-	 * @version 2.0
-	 */
-	$('#sub-lists.sortable').sortable({
-
-		// Connect our sort button in each list to be the dragable area.
-		connectWith: '.sort',
-
-		// The class assigned to the sort placeholder
-		placeholder: 'ui-state-highlight',
-
-		// Only allow vertical sorting.
-		axis: 'y',
-
-		// fired when a sortable list receives an item from a connected list.
-		receive: function(event, ui) { make_projects_manager_sort_received(this); },
-
-		// Removing a child from a sortable fires this event.
-		remove: function(event, ui) { make_projects_manager_sort_removed(this); },
-
-		// Check when sort has been completed and move our add button to the last sub-list
-		update: function(event, ui) { make_projects_manager_sort_updated(this); }
-	});
-
-
-	// Call our "Add List" function.
-	make_projects_manager_add_list();
-
-	// Call our "Remove List" function.
-	make_projects_manager_remove_list();
-
+	// Call our view image button and hover state
+	make_projects_manager_view_image();
 
 	/**
 	 * Run our "Add Step" click event. This seems like too much. Can probably re-work this and optimize it...
@@ -73,74 +34,164 @@ jQuery(document).ready(function($) {
 		// Remove the .list-template that get duplicated in the cloning process
 		$('#step-' + num + ' li.list-template').removeClass();
 
-		// Update the the title name field
-		$('#step-' + num + ' input[name="step-title-0"]').attr('name', 'step-title-' + num);
+		// Update our step number field
+		$('#step-' + num + ' > input[type="hidden"]').attr({
+			name: 'step-number-' + num,
+			value: num
+		});
 
-		// Update the number field in the object.
-		$('#step-' + num + ' > input[type="hidden"]').attr({'name': 'step-number-' + num, 'value': num});
-
-		// Update each image field with the proper name field.
-		$('#step-' + num + ' input.image-url').each(function() {
+		// Update our images
+		$('#step-' + num + ' #image-list input.image-url' ).each( function() {
 			$(this).attr('name', 'step-images-' + num + '[]');
 		});
 
-		// Update each sub-list with the proper name and ID fields.
-		$('#step-' + num + ' textarea[name="step-lines-0[]"]').each(function() {
-			$(this).attr({'name': 'step-lines-' + num + '[]', 'id': 'line-' + num});
+		// Update our sub-lists title
+		$('#step-' + num + ' #list input[name="step-title-0"]' ).attr('name', 'step-title-' + num);
+
+		// Update our sub-lists
+		$('#step-' + num + ' #sub-lists textarea[name="step-lines-0[]"]').attr({
+			name: 'step-lines-' + num + '[]',
+			id: 'line-' + num
 		});
-	});
+
+	}).disableSelection();
 
 
 	/**
 	 * Run our "Remove Step" click event.
 	 *
-	 * @version 2.0
+	 * @version 1.0
 	 */
 	$('.remove-step').click(function() {
-		// Remove the main .step-wrapper div.
+		// Remove the main .parts-wrapper div.
 		$(this).parent().parent().slideUp(500, function() {
-
 			// Remove this element
-			$(this).remove();
+			jQuery(this).remove();
 
+			// Update our parts
+			make_step_manager_update_steps();
 
-			var i = 0;
-			$('.step-wrapper').each( function(e, v) {
-
-				// Update the step ID
-				$(this).attr('id', 'step-' + i);
-
-				// Update the hidden field
-				$('#step-' + i + ' > input[type="hidden"]').attr({
-					name: 'step-number-' + i,
-					value: i
-				});
-
-				// Update the title
-				$('#step-' + i + ' .step-title h3').html('Step ' + i);
-
-				// Update the step images
-				$('#step-' + i + ' #image-list input[type="hidden"]').each(function() {
-					$(this).attr('name', 'step-images-' + i + '[]');
-				});
-
-				// Update the step title
-				$('#step-' + i + ' #project-header').attr('name', 'step-title-' + i);
-
-				// Update the step images
-				$('#step-' + i + ' #sub-lists textarea').each(function() {
-					$(this).attr('name', 'step-lines-' + i + '[]');
-				});
-
-				i++;
-			});
-
-			// Count how many steps we have and update the total-steps field. This is needed to compile our onject upon save.
+			// Count how many parts we have and update the total-parts field. This is needed to compile our onject upon save.
 			var num = $('.step-wrapper').length - 1;
 			$('input[name="total-steps"]').val(num);
 		});
 	});
+
+
+	/**
+	 * Define our sortable steps
+	 * Using jQuery UI, we hook onto the class ".sort" on the sort icon so this become the "handle".
+	 * Chain disableSelection() to the end so we can deactivate text selection when users are dragging.
+	 *
+	 * @version 1.0
+	 */
+	$('.steps-step').sortable({
+
+		// The class assigned to the
+		placeholder: 'ui-state-highlight',
+
+		// Stop allowing our template code from being a drop target. This will stop users from sorting above it.
+		items: "div.step-wrapper:not(.steps-template)",
+
+		axis: 'y',
+
+		// fired when a sortable list receives an item from a connected list.
+		receive: function(event, ui) { make_steps_manager_sort_received( this ); },
+
+		// Removing a child from a sortable fires this event.
+		remove: function(event, ui) { make_steps_manager_sort_removed( this ); },
+
+		// Check when sort has been completed and update the list numerically
+		update: function(event, ui) { make_steps_manager_sort_update( this ); }
+	});
+
+	// Call our "Add List" function.
+	make_projects_manager_add_list();
+
+	// Call our "Remove List" function.
+	make_projects_manager_remove_list();
 });
+
+
+/**
+ * Used in the jQuery UI $.sortable() function for our #sub-lists.
+ * This method allows us to add the text empty to a list when its last item is removed
+ *
+ * @version 1.0
+ */
+function make_steps_manager_sort_received(selector) {
+	if(jQuery(selector).hasClass('empty')) {
+		jQuery(selector).removeClass('empty').find('.empty').remove();
+	}
+}
+
+
+/**
+ * Used in the jQuery UI $.sortable() function for our .parts.sortable
+ * Checks to see if the parent sortable has any children. If so, remove the text as soon as a new item is added.
+ *
+ * @version 1.0
+ */
+function make_steps_manager_sort_removed(selector) {
+	if(jQuery(selector).children().length === 0) {
+		jQuery(selector).append($('<div class="empty">empty</div>')).addClass('empty');
+	}
+}
+
+
+/**
+ * Used in the jQuery UI $.sortable() function for our .parts.sortable
+ * Used to updated our parts with the right ordering in the form fields and text (IE Part 3 will be updated to Part 2 if moved to the second position).
+ * 
+ * @version 1.0
+ */
+function make_steps_manager_sort_update(selector) {
+
+	// Go an update each of our form fields.
+	make_step_manager_update_steps();
+}
+
+
+/**
+ * The function that will actually update our form fields and text for the parts section
+ * 
+ * @version 1.0
+ */
+function make_step_manager_update_steps() {
+	var i = 0;
+	jQuery('.step-wrapper').each( function(e, v) {
+
+		// Update the part ID
+		jQuery(this).attr('id', 'step-' + i);
+
+		// Update the hidden field
+		jQuery('#step-' + i + ' > input[type="hidden"]').attr({
+			name: 'step-number-' + i,
+			value: i
+		});
+
+		// Update the step title
+		jQuery('#step-' + i + ' .step-title h3').html('Part ' + i);
+
+		// Update our images
+		jQuery('#step-' + i + ' #image-list input.image-url' ).each( function() {
+			jQuery(this).attr('name', 'step-images-' + i + '[]');
+		});
+
+		// Update the step title
+		jQuery('#step-' + i + ' #project-header').attr('name', 'step-title-' + i);
+
+		// Update our sub-lists
+		jQuery('#step-' + i + ' #sub-lists textarea').each(function() {
+			jQuery(this).attr({
+				name: 'step-lines-' + i + '[]',
+				id: 'line-' + i
+			});
+		});
+
+		i++;
+	});
+}
 
 
 /**
@@ -149,6 +200,7 @@ jQuery(document).ready(function($) {
  * @version 2.0
  */
 function make_projects_manager_add_list() {
+
 	jQuery('#sub-lists img.add').click(function() {
 		// Get the current step number. Needed for setting the proper name field for our textarea.
 		var step_num = jQuery(this).parents('.step-wrapper').children().val();
@@ -231,52 +283,21 @@ function make_projects_manager_image_removal() {
 }
 
 
-/**
- * Used in the jQuery UI $.sortable() function for our #sub-lists.
- * This method allows us to add the text empty to a list when its last item is removed
- *
- * @version 1.0
- */
-function make_projects_manager_sort_received(selector) {
-	if(jQuery(selector).hasClass('empty')) {
-		jQuery(selector).removeClass('empty').find('.empty').remove();
-	}
-}
+function make_projects_manager_view_image() {
+	// Fade in our view button for images uploaded to the Projects Manager
+	jQuery('.has-image').hover(function() {
+		jQuery(this).children('img.view-image').fadeIn(100);
+	}, function() {
+		jQuery(this).children('img.view-image').fadeOut(100);
+	});
 
+	// View the image in a pretty modal window
+	jQuery('img.view-image').click(function(e) {
+		e.preventDefault();
 
-/**
- * Used in the jQuery UI $.sortable() function for our #sub-lists.
- * Checks to see if the parent sortable has any children. If so, remove the text as soon as a new item is added.
- *
- * @version 1.0
- */
-function make_projects_manager_sort_removed(selector) {
-	if(jQuery(selector).children().length === 0) {
-		jQuery(selector).append($('<li class="empty">empty</li>')).addClass('empty');
-	}
-}
-
-
-/**
- * Used in the jQuery UI $.sortable() function for our #sub-lists.
- * Runs when sorting has been completed, then we'll move the img.add button to the last list if it is not already.
- *
- * @version 1.0
- */
-function make_projects_manager_sort_updated(selector) {
-	// Check if there is an img.add in the last list item
-	//var add_in_last = jQuery('#sub-lists li:last > img.add').length;
-
-	//console.log(add_in_last);
-
-	// If the value is 0 (aka false), then remove all instances of the img.add and add one to the last list item
-	//if(add_in_last === 0) {
-		jQuery('#sub-lists img.add').remove();
-
-		jQuery('#sub-lists li:last-child').append('<img src="' + stylesheet_uri + '/images/icon-add.png" class="project-button add">');
-
-		make_projects_manager_add_list();
-	//}
+		var image_src = jQuery(this).siblings('.image-url').val();
+		window.open(image_src,'_blank');
+	});
 }
 
 
@@ -343,16 +364,18 @@ function make_projects_manager_sort_updated(selector) {
 				// Attach tha info. Yo.
 				$(preview).attr('src', url);
 
-				// Once everything is complete, we'll add some needed UI stuff like the image removal button
+				// Once everything is complete, we'll add some needed UI stuff like the image removal button and viewing the image button
 				// TO DO: Contain all the following code here into a function for simplicity and DRY programming.
-				$(this).parent().addClass('has-image').prepend('<img src="' + make_projects_js.stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
+				$(this).parent().addClass('has-image').prepend('<a href="#" class="view-image"><img src="' + make_projects_js.stylesheet_uri + '/images/icon-view.png" /></a><img src="' + make_projects_js.stylesheet_uri + '/images/icon-remove.png" class="remove-image" />');
 
 				// Call our image removal and hover state
 				make_projects_manager_image_removal();
+
+				// Call our view image and hover state
+				make_projects_manager_view_image();
 			});
 		};
 
 		$('.image-upload').make_projects_manager();
    });
 }(jQuery));
-

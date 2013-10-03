@@ -3,7 +3,7 @@
 .step-wrapper h3 { cursor:inherit !important; }
 .step-contents { padding:.5em; }
 .step .steps-template, .parts .parts-template, .tools .tools-template { display:none; }
-.step-title { position:relative; }
+.step-title { position:relative; cursor:move; }
 .step-title .remove-step, .part-title .remove-part, .tool-title .remove-tool { position:absolute; right:8px; top:8px; opacity:.3; cursor:pointer; }
 .step-title .remove-step:hover, .part-title .remove-part:hover, .tool-title .remove-tool:hover { opacity:1; }
 
@@ -13,8 +13,9 @@
 .steps-image { border:2px solid #fff; margin:0 4px; cursor:pointer; }
 .steps-image:hover, .steps-delete-hover { border:2px solid #eee; box-shadow:0 2px 3px rgba(0,0,0,.3); }
 .image-upload { position:relative; display:inline-block; }
-.image-upload .remove-image { position:absolute; bottom:-4px; right:3px; cursor:pointer; z-index:10; border-radius:15px; background:#ccc; padding:3px; opacity:.5; display:none; }
-.image-upload .remove-image:hover { opacity:1; }
+.image-upload .remove-image, .image-upload .view-image { position:absolute; bottom:-4px; right:3px; cursor:pointer; z-index:10; border-radius:15px; background:#ccc; padding:3px; opacity:.5; display:none; }
+.image-upload .remove-image:hover, .image-upload .view-image:hover { opacity:1; }
+.image-upload .view-image { left:-2px; border-radius:0; background:transparent; padding:0; }
 
 /***** [ Step Sub-list ] *****/
 #list { width:52%; }

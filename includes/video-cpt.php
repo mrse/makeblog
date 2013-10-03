@@ -76,7 +76,7 @@ function make_register_taxonomy_playlist() {
 		'query_var' => true
 	);
 
-	register_taxonomy( 'playlist', array('video'), $args );
+	register_taxonomy( 'playlist', array('video','post'), $args );
 }
 
 $field_data = array (
@@ -85,6 +85,7 @@ $field_data = array (
 			'EmbedLink'					=> array(),
 			'Link'						=> array(),
 			'MakeProjectsGuideNumber'	=> array(),
+			'Image'						=> array(),
 	),
 	'title'		=> 'Video Meta',
 	'context'	=> 'side',
@@ -125,7 +126,7 @@ function make_magazine_video_toc() {
 
 				<p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
 
-				<p class="meta">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>
+				<p class="meta">By <?php the_author_posts_link(); ?>, <?php the_time('m/d/Y \@ g:i a') ?></p>
 				<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
 
 			</div>

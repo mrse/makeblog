@@ -10,24 +10,54 @@
 ?>
 				<div class="span3 sidebar-left">
 					<ul class="left-nav">
-						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/">Home</a></li>
-						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/research/">Maker Market Research</a></li>
-						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/press/">Press</a></li>
-						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/contact/">Contact</a></li>
-						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/overview/">2013 Hardware Innovation Workshop</a></li>
-                        	<div style="padding-left:15px;">
-								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/agenda/">2013 Agenda</a></li>
-								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/keynotes/">2013 Speaker Roster</a></li>
-								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/innovators/">2013 Showcase Innovators</a></li>  
-								<li><a href="http://blog.makezine.com/hardware-innovation-workshop/master-class/">2013 Master Class Workshop</a></li>
-                        	</div>  
-						<li><a href="http://blog.makezine.com/hardware-innovation-workshop/overview-2012/">2012 Hardware Innovation Workshop</a></li>
-                        	<div style="padding-left:15px;">
-							<li><a href="http://blog.makezine.com/hardware-innovation-workshop/overview-2012/agenda-2012/">2012 Agenda</a></li>
-							<li><a href="http://blog.makezine.com/hardware-innovation-workshop/overview-2012/speaker-roster-2012/">2012 Speaker Roster</a></li>
-							<li><a href="http://blog.makezine.com/hardware-innovation-workshop/overview-2012/showcase-innovators-2012/">2012 Showcase Innovators</a></li> 
+						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/' ); ?>">Home</a></li>
+						<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/' ); ?>">2013 New York Event</a></li>
+						<div style="padding-left:15px;">
+							<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/agenda/' ); ?>">Agenda</a></li>
+							<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/speakers/' ); ?>">Speakers</a></li>
+							<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/tickets/' ); ?>">Tickets</a></li>
+							<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/hotel/' ); ?>">Travel</a></li>
+                    	</div>  
+						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/research/' ); ?>">Maker Market Research</a></li>
+						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/press/' ); ?>">Press</a></li>
+						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/contact/' ); ?>">Contact</a></li>
 					</ul>
-
+					<div class="accordion">
+						<div class="accordion">
+							<div class="accordion-heading">
+								<h3><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">2013 Bay Area Event</a></h3>
+							</div>
+							<div id="collapseOne" class="accordion-body collapse in">
+								<div class="accordion-inner">
+									<ul class="left-nav left-nav-accord">
+										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/overview/' ); ?>">2013 Bay Area Overview</a></li>
+										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/agenda/' ); ?>">2013 Agenda</a></li>
+										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/keynotes/' ); ?>">2013 Speaker Roster</a></li>
+										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/innovators/' ); ?>">2013 Showcase Innovators</a></li>  
+										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/master-class/' ); ?>">2013 Master Class Workshop</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="accordion">
+						<div class="accordion">
+							<div class="accordion-heading">
+								<h3><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">2012 Bay Area Event</a></h3>
+							</div>
+							<div id="collapseTwo" class="accordion-body collapse in">
+								<div class="accordion-inner">
+									<ul class="left-nav left-nav-accord">
+										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/overview-2012/' ); ?>">2012 Bay Area Overview</a></li>
+										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/overview-2012/agenda-2012/' ); ?>">2012 Agenda</a></li>
+										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/overview-2012/speaker-roster-2012/' ); ?>">2012 Speaker Roster</a></li>
+										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/overview-2012/showcase-innovators-2012/' ); ?>">2012 Showcase Innovators</a></li> 
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 					<h4>Follow us:</h4>
 
 					<ul class="left-nav">
@@ -41,7 +71,7 @@
 				<div class="row">
 					<blockquote>
 						<p><strong style="color:#0075BE">New from the editors of MAKE magazine!</strong></p>
-						<p><a href="http://blog.makezine.com/maker-pro-newsletter/">Maker Pro Newsletter</a> is a weekly roundup of news about the impact makers are having on business and technology. From new hardware products and devices, hot startups, incubators and innovators, to new tools and market trends, Maker Pro delivers a quick read to keep you up to speed on the business of making. <a href="http://makezine.com/magazine/newsletter/makerpro/?utm_medium=email&utm_campaign=Maker%20Pro%203&utm_content=Maker%20Pro%203+CID_29125aad483db7e7122133ed32737560&utm_source=Email%20Campaign&utm_term=Click%20here&utm_medium=email&utm_campaign=Maker%20Pro%20Newsletter%209&utm_content=Maker%20Pro%20Newsletter%209+CID_9dece7899be7475df05542bdbc5f4d04&utm_source=Email%20Campaign&utm_term=here">Subscribe today</a>!</p>
+						<p><a href="<?php echo home_url( '/maker-pro-newsletter/' ); ?>">Maker Pro Newsletter</a> is a weekly roundup of news about the impact makers are having on business and technology. From new hardware products and devices, hot startups, incubators and innovators, to new tools and market trends, Maker Pro delivers a quick read to keep you up to speed on the business of making. <a href="<?php echo home_url( '/maker-pro-newsletter/' ); ?>">Subscribe today</a>!</p>
 					</blockquote>
 				</div><!-- END row-->
 					<div class="clear"></div>

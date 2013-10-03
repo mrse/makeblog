@@ -16,6 +16,9 @@ if ($type == 'projects') {
 	return;
 }
 
+// Setup our default list of post types
+$post_types = array( 'post', 'video', 'projects', 'review', 'craft', 'magazine' );
+
 make_get_header(); ?>
 
 	<div class="category-top">
@@ -35,7 +38,7 @@ make_get_header(); ?>
 						echo '<div class="span12">';
 					}
 				?>
-				
+								
 					<h1 class="jumbo"><?php single_cat_title('', true); ?></h1>
 				
 					<?php echo Markdown( strip_tags( category_description() ) ); ?>
@@ -64,7 +67,7 @@ make_get_header(); ?>
 							'title'        => 'Featured in ' . get_queried_object()->name,
 							'limit'        => 2,
 							'tag'          => 'Featured',
-							'post_type'	   => array( 'post', 'video','projects', 'review', 'craft' )
+							'post_type'	   => ( ! empty( $type ) && in_array( $type, $post_types ) ) ? $type : array( 'post', 'video','projects', 'review', 'craft', 'magazine' )
 					) ); ?>
 					
 				</div>
@@ -76,7 +79,7 @@ make_get_header(); ?>
 						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 						<div id='div-gpt-ad-664089004995786621-2'>
 							<script type='text/javascript'>
-								googletag.display('div-gpt-ad-664089004995786621-2');
+								googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
 							</script>
 						</div>
 						<!-- End AdSlot 2 -->
@@ -95,7 +98,7 @@ make_get_header(); ?>
 						make_carousel( array(
 							'category__in'   => get_queried_object_id(), // Likely the queried object ID
 							'title'          => 'New in ' . get_queried_object()->name,
-							'posts_per_page' => 32
+							'posts_per_page' => 32,
 						) );
 					?>
 					
@@ -254,6 +257,22 @@ make_get_header(); ?>
 							'cat'       => $qo_id,
 							'title'     => $qo_name . ' On the Blog',
 							'post_type' => 'post'
+						) );
+					?>
+					
+				</div>
+			
+			</div>
+
+			<div class="row">
+				
+				<div class="span12">
+				
+					<?php
+						make_carousel( array(
+							'cat'       => $qo_id,
+							'title'     => $qo_name . ' Articles',
+							'post_type' => 'magazine'
 						) );
 					?>
 					

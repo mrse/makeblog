@@ -256,7 +256,8 @@ function make_carousel( $args, $title_link = true ) {
 								'video',
 								'projects',
 								'review',
-								'craft' )
+								'craft',
+								'magazine' ),
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -276,9 +277,10 @@ function make_carousel( $args, $title_link = true ) {
 		<div class="span10">
 			<h3 class="heading">
 				<?php
+					$output = '';
 					if ( isset( $args['difficulty'] ) ) {
 						if ( $title_link )
-							$output = '<a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '?cat=' . intval($args['category__in']) . '">';
+							$output .= '<a href="' . make_get_category_url($args['difficulty'], 'difficulty') . '?cat=' . intval($args['category__in']) . '">';
 
 						$output .= $args['difficulty'];
 
@@ -288,7 +290,7 @@ function make_carousel( $args, $title_link = true ) {
 						echo $output;
 					} elseif ( isset( $args['category__in'] ) ) {
 						if ( $title_link ) {
-							$output = '<a href="';
+							$output .= '<a href="';
 							$output .= get_term_link( intval($args['category__in']), 'category', 'id');
 							if ($args['projects_landing'] != false ) {
 								$output .= '?post_type=projects">';	
@@ -305,7 +307,7 @@ function make_carousel( $args, $title_link = true ) {
 						echo $output;
 					} elseif ( isset($args['tag'] ) ) {
 						if ( $title_link ) {
-							$output = '<a href="';
+							$output .= '<a href="';
 							$output .= get_term_link( $args['tag'], 'post_tag');
 							if ($args['projects_landing'] != false ) {
 								$output .= '?post_type=projects">';	
@@ -391,7 +393,7 @@ function make_carousel( $args, $title_link = true ) {
 										update_post_meta( $post->ID, 'Image', $img );
 										echo '<a href="'. get_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( get_post_meta( $post->ID, 'Image', true ), 218, 146 ) . '" alt="' . the_title_attribute( 'echo=0' ) . '" /></a>';
 									} elseif ( has_post_thumbnail() ) {
-										$image = the_post_thumbnail( array( '218', '146' ) );
+										$image = the_post_thumbnail( 'category-thumb-small' );
 										echo '<a href="' . get_permalink( $post->ID ) . '">' . $image . '</a>';
 									}
 								} else {
@@ -441,18 +443,18 @@ function make_carousel( $args, $title_link = true ) {
 							echo '">';
 							echo get_the_title( $post->ID );
 							echo '</a></h4>';
-							echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_excerpt ), 15, '...' ) . '</p>';
+							echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 15, '...' ) . '</p>';
 							echo '</div>'. "\n";
 							if ($type == 'video') {
-								echo '<div class="modal hide" id="myModal-' . $post->ID . '">
+								$link = get_post_meta( $post->ID, 'Link', true );
+								echo '<div class="modal hide" id="myModal-' . $post->ID . '" data-video="' . esc_url( $link ) . '">
 									<div class="modal-header">
 										<a class="close" data-dismiss="modal">&times;</a>
 										<h3>' . get_the_title( $post->ID ) . '</h3>
 									</div>
-									<div class="modal-body">';
-										$link = get_post_custom_values( 'Link' , $post->ID );
-										echo do_shortcode('[youtube='. esc_url( $link[0] ) .'&w=530]');
-										echo apply_filters('the_content', strip_shortcodes( $post->post_content ) );
+									<div class="modal-body">
+										<div class="link"></div>';
+										echo Markdown( strip_shortcodes( $post->post_content ) );
 									echo '</div>
 									<div class="modal-footer">
 										<a href="#" class="btn" data-dismiss="modal">Close</a>
@@ -522,7 +524,7 @@ function make_new_gallery_shortcode($attr) {
 		'icontag'    => 'dt',
 		'captiontag' => 'dd',
 		'columns'    => 3,
-		'size'       => 'thumbnail',
+		'size'       => 'medium',
 		'include'    => '',
 		'exclude'    => ''
 	), $attr));
@@ -560,13 +562,17 @@ function make_new_gallery_shortcode($attr) {
 		} else {
 			$output .= '<div class="item">';
 		}
-		$output .= wp_get_attachment_link( $attachment->ID, 'medium');
-		if (isset($attachment->post_title)) {
+		$output .= wp_get_attachment_link( $attachment->ID, sanitize_title_for_query( $size ) );
+		if ( isset( $attachment->post_excerpt ) && ! empty( $attachment->post_excerpt ) ) {
+			$attachment_caption = $attachment->post_excerpt;
+		} elseif ( isset( $attachment->post_title ) && ! empty( $attachment->post_title ) ) {
+			$attachment_caption = $attachment->post_title;
+		} else {
+			$attachment_caption = '';
+		}
+		if ( isset( $attachment_caption ) && ! empty( $attachment_caption ) ) {
 			$output .= '<div class="carousel-caption">';
-			$output .= '<h4>' . $attachment->post_title . '</h4>';
-			if (isset($attachment->post_excerpt)) {
-				$output .= '<p>' . $attachment->post_excerpt . '</p>';
-			}
+			$output .= '<h4>' . Markdown( esc_html( $attachment_caption ) ) . '</h4>';
 			$output .= '</div>';
 			
 		}
@@ -603,3 +609,79 @@ function make_new_gallery_shortcode($attr) {
 }
 
 add_shortcode( 'new_gallery', 'make_new_gallery_shortcode' );
+
+
+/**
+ * The Video/Image Gallery
+ *
+ * Wanted to extend our Bootstrap Slideshow so that you could put in Post IDs and get back a slideshow.
+ * Basically the same thing that the default slideshow does, so why not use that!
+ *
+ * @since 1.0
+ *
+ * @param array $attr Attributes of the shortcode.
+ * @return string HTML content to display gallery.
+ */
+function make_video_photo_gallery( $attr ) {
+
+	$posts = explode( ',', $attr['ids'] );
+
+	$rand = mt_rand( 0, get_the_ID() );
+
+	global $post;
+
+	$output = '<div id="myCarousel-' . $rand . '" class="carousel slide video" data-interval=""><div class="carousel-inner">';
+	$i = 0;
+
+	foreach( $posts as $post ) {
+		if ( strpos( $post, 'youtu' ) ) {
+			$youtube = true;
+			$vine = false;
+		} elseif ( strpos( $post, 'vine' ) ) {
+			$youtube = false;
+			$vine = true;
+		} else {
+			$post = get_post( $post );
+			setup_postdata( $post );
+			$youtube = false;
+			$vine = false;
+		}
+
+		$i++;
+
+		if ($i == 1) {
+			$output .= '<div class="item active">';	
+		} else {
+			$output .= '<div class="item">';
+		}
+		if ( $youtube == true ) {
+			$output .= do_shortcode('[youtube='. esc_url( $post ) .'&w=620]');
+		} elseif ( $vine == true ) {
+			$output .= do_shortcode( '[vine url="' . esc_url( $post ) . '" type="simple" width="620"]' );
+		} else {
+			if ( get_post_type() == 'video' ) {
+				$url = get_post_meta( get_the_ID(), 'Link', true );
+				$output .= do_shortcode('[youtube='. esc_url( $url ) .'&w=620]');
+			} else {
+				$output .= wp_get_attachment_image( get_the_ID(), 'medium' );
+			}
+			if (isset($post->post_title)) {
+				$output .= '<div class="carousel-caption" style="position:relative;">';
+				$output .= '<h4>' . get_the_title() . '</h4>';
+				$output .= ( isset( $post->post_excerpt ) ) ? Markdown( wp_kses_post( $post->post_excerpt ) ) : '';
+				$output .= '</div>';
+			}
+		}
+		$output .= '</div>';
+		
+	} //foreach
+	wp_reset_postdata();
+	$output .= '</div>
+		<a class="topper left carousel-control" href="#myCarousel-' . $rand . '" data-slide="prev">‹</a>
+		<a class="topper right carousel-control" href="#myCarousel-' . $rand . '" data-slide="next">›</a>
+	</div>';
+	$output .= '<div class="clearfix"></div>';
+	return $output;
+}
+
+add_shortcode( 'video_gallery', 'make_video_photo_gallery' );

@@ -3,7 +3,7 @@
 
 function make_pop_terms() {
 
-	$data = wpcom_vip_file_get_contents('http://www.google.com/cse/api/008032414425079535247/cse/kplxrakvu20/queries');
+	$data = wpcom_vip_file_get_contents('http://www.google.com/cse/api/013710623676068871951/cse/xunnvqtkgnw/queries');
 	
 	$xml = simplexml_load_string( $data );
  	 
@@ -22,7 +22,7 @@ function make_pop_terms() {
 
 function make_hot_topics() {
 
-	$data = wpcom_vip_file_get_contents('http://www.google.com/cse/api/008032414425079535247/cse/kplxrakvu20/queries');
+	$data = wpcom_vip_file_get_contents('http://www.google.com/cse/api/013710623676068871951/cse/xunnvqtkgnw/queries');
 
 	$xml = simplexml_load_string( $data );
  	 
@@ -108,7 +108,7 @@ function make_search_header() {
 		$si = 1;
 	}
 	$siteSearch = ( !empty( $_GET['as_sitesearch'] ) ) ? htmlspecialchars( esc_attr( $_GET['as_sitesearch'] ) ) : '';
-	$url = wpcom_vip_file_get_contents('http://www.google.com/search?start=0&num=10&q='.urlencode($q).'&start='.urlencode($si).'&count=10&cx=008032414425079535247:kplxrakvu20&output=xml_no_dtd&client=google-csbe&as_sitesearch='.$siteSearch);
+	$url = wpcom_vip_file_get_contents('http://www.google.com/search?start=0&num=10&q='.urlencode($q).'&start='.urlencode($si).'&count=10&cx=013710623676068871951:xunnvqtkgnw&output=xml_no_dtd&client=google-csbe&as_sitesearch='.$siteSearch);
 
 	$json_output = simplexml_load_string( $url );
 
@@ -116,7 +116,7 @@ function make_search_header() {
 		return;
 
 	echo '<h2>Search Terms: '.$q.'</h2>';
-	echo '<p><small>Results: '.$json_output->RES->M. ' Time: '.$json_output->TM.'</small></p>';
+	//echo '<p><small>Results: '.$json_output->RES->M. ' Time: '.$json_output->TM.'</small></p>';
 }
 
 			
@@ -129,7 +129,7 @@ function make_search() {
 	}
 	$siteSearch = htmlspecialchars(esc_attr($_GET['as_sitesearch']));
 
-	$url = wpcom_vip_file_get_contents('http://www.google.com/search?start=0&num=10&q='.urlencode($q).'&start='.urlencode($si).'&count=10&cx=008032414425079535247:kplxrakvu20&output=xml_no_dtd&client=google-csbe&as_sitesearch='.$siteSearch);
+	$url = wpcom_vip_file_get_contents('http://www.google.com/search?start=0&num=10&q='.urlencode($q).'&start='.urlencode($si).'&count=10&cx=013710623676068871951:xunnvqtkgnw&output=xml_no_dtd&client=google-csbe&as_sitesearch='.$siteSearch);
 	$json_output = simplexml_load_string( $url );
 
 	if ( ! $json_output )

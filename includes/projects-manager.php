@@ -77,7 +77,7 @@
 		// Load our Projects steps
 		$steps = make_magazine_get_project_data( 'Steps' );
 		wp_nonce_field( 'make-mag-projects-metabox-nonce', 'meta_box_nonce' ); ?>
-		<div class="step group">
+		<div class="step steps-step sortable group">
 			<input type="button" value="Add A Step" class="button add-step alignright" />
 			<div class="steps-template step-wrapper">
 				<input type="hidden" name="step-number-0" value="0">
@@ -89,7 +89,7 @@
 					<div id="image-list" class="alignleft">
 						<div class="image-upload group">
 							<img src="http://placehold.it/94x94" alt="" class="alignleft steps-image" title="Upload an Image" width="94" height="94" />
-							<input type="hidden" name="step-image-0[]" class="image-url" value="">
+							<input type="hidden" name="step-images-0[]" class="image-url" value="">
 						</div><!--[END .image-upload]-->
 						<div class="image-upload group">
 							<img src="http://placehold.it/94x94" alt="" class="alignleft steps-image" title="Upload an Image" width="94" height="94" />
@@ -105,7 +105,7 @@
 						<ul id="sub-lists" class="sortable group reset-list">
 							<li class="list-template">
 								<textarea name="step-lines-0[]" id="line-0" rows="5"></textarea>
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
+								<!--<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort-list" />-->
 								<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
 								<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
 							</li>
@@ -141,7 +141,7 @@
 								?>
 							</div><!--[END #image-list]-->
 							<div id="list" class="alignleft">
-								<input type="text" name="step-title-<?php echo $step_num; ?>" id="project-header" class="widefat" placeholder="Add A Title" value="<?php echo ( ! empty( $step->title ) ) ? wp_filter_post_kses( $step->title ) : ''; ?>">
+								<input type="text" name="step-title-<?php echo $step_num; ?>" id="project-header" class="widefat" placeholder="Add A Title" value="<?php echo ( ! empty( $step->title ) ) ?  wp_kses_post( stripslashes( $step->title ) ) : ''; ?>">
 								<ul id="sub-lists" class="sortable reset-list">
 									<?php if ( isset( $step->lines ) ) : ?>
 										<?php
@@ -150,7 +150,7 @@
 											foreach ( $step->lines as $key ) : ?>
 											<li>
 												<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $i; ?>" rows="5"><?php echo stripslashes( wp_filter_post_kses( $key->text ) ); ?></textarea>
-												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
+												<!--<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort-list" />-->
 												<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
 												<?php if ( $i === $total ) : // Display our add button only on the last step on load. ?>
 													<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
@@ -162,7 +162,7 @@
 									<?php else : ?>
 										<li>
 											<textarea name="step-lines-<?php echo $step_num; ?>[]" id="line-<?php echo $step_num; ?>" rows="5"></textarea>
-											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort" />
+											<!--<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-sort.png" class="project-button sort-list" />-->
 											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-minus.png" class="project-button remove">
 											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-add.png" class="project-button add">
 										</li>
@@ -226,8 +226,9 @@
 					</ul>
 				</div><!--[END .step-contents]-->
 			</div><!--[END .parts-template]-->
+			<?php $parts_num = 1; ?>
 			<?php if( isset( $parts ) && is_array( $parts ) ) : ?>
-				<?php $parts_num = 1; foreach( $parts as $part ) : 
+				<?php foreach( $parts as $part ) : 
 					// Unserialize our Parts here as each array is serialized while the parent isn't.
 					$part = unserialize( $part ); ?>
 					<div id="part-<?php echo $parts_num; ?>" class="parts-wrapper">
@@ -321,8 +322,9 @@
 					</ul>
 				</div><!--[END .step-contents]-->
 			</div><!--[END .tools-template]-->
+			<?php $tools_num = 1; ?>
 			<?php if( isset( $tools ) && is_array( $tools ) ) : ?>
-				<?php $tools_num = 1; foreach( $tools as $tool ) : ?>
+				<?php foreach( $tools as $tool ) : ?>
 					<div id="tool-<?php echo $tools_num; ?>" class="tools-wrapper">
 						<input type="hidden" name="tool-number-<?php echo $tools_num; ?>" value="<?php echo ( ! empty( $tool->number ) ) ? $tool->number : $tools_num; ?>">
 						<div class="tool-title">
@@ -399,7 +401,7 @@
 
 				// Set our images array and contain each image as an object in the Steps object
 				$int = 0;
-				// echo '<pre>'; print_r($_POST['step-images-' . $i ]); echo '</pre>';
+				
 				foreach( $_POST[ 'step-images-' . $i ] as $image ) {
 					
 					$image_url = ( ! empty( $image ) ) ? esc_url_raw( $image ) : '';
@@ -416,8 +418,6 @@
 
 				// Contain the whole $steps array into an object
 				$step_object[] = (object) $step;
-				
-				// echo '<pre>'; print_r($step_object); echo '</pre>';
 
 			}
 

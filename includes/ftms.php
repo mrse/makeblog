@@ -36,7 +36,6 @@ function makeblog_from_the_maker_shed() {
 		'can_export' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'menu_icon' => get_stylesheet_directory_uri() .'/images/home-medium.png',
 		'menu_position' => 44,
 	);
 

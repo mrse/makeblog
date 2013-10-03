@@ -89,12 +89,38 @@ function volume_register_cpt_article() {
 $field_data = array (
 	'magazine_meta' => array (
 		'fields' => array(
-			'Hed'		=> array(),
-			'Dek'		=> array(),
-			'PullQuotes'	=> array(),
-			'PageNumber'	=> array(),
+			'Hed'				=> array(),
+			'Dek'				=> array(),
+			'PullQuotes'		=> array(),
+			'PageNumber'		=> array(),
+			'ProjectsTeaser'	=> array(),
+			'Cost'	 			=> array(),
+			'Byline' 			=> array(),
+			'Conclusion'		=> array( 
+									'type' 	=> 'textarea',
+									'label'	=> 'Projects Conclusion',
+									),
+			'Updates'			=> array( 
+									'type' 	=> 'textarea',
+									'label'	=> 'Updates',
+									),
 	),
 	'title'		=> 'Magazine Meta',
+	'context'	=> 'side',
+	'pages'		=> array( 'magazine', 'review', 'projects' ),
+	),
+);
+
+$easy_cf = new Easy_CF($field_data);
+
+$field_data = array (
+	'magazine_author' => array (
+		'fields' => array(
+			'AuthorBio'			=> array( 'type' => 'textarea', 'label' => 'Author Bio' ),
+			'Phone'				=> array(),
+			'Email'				=> array(),
+	),
+	'title'		=> 'Magazine Author',
 	'context'	=> 'side',
 	'pages'		=> array( 'magazine', 'review', 'projects' ),
 	),
@@ -175,7 +201,7 @@ function make_post_loop( $args ) {
 
 					} else { ?>
 						<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
-					<? }	?>
+					<?php }	?>
 					
 				</div>
 			
@@ -203,7 +229,7 @@ function make_magazine_toc( $args ) {
 		'posts_per_page' 	=> -1, 
 		'orderby' 			=> 'name', 
 		'order' 			=> 'asc',
-		'post_status'		=> array( 'published', 'published-in-mag' ),
+		'post_status'		=> array( 'publish', 'published-in-mag' ),
 		);
 	
 	$args = wp_parse_args( $args, $defaults );
@@ -341,7 +367,7 @@ function register_taxonomy_section() {
 		'query_var' => true
 	);
 
-	register_taxonomy( 'section', array('magazine'), $args );
+	register_taxonomy( 'section', array( 'magazine', 'projects', 'review' ), $args );
 }
 
 $field_data = array (
@@ -452,5 +478,30 @@ function make_maker_projects_projects() {
 		'title'			 	=> 'Art &amp; Design',
 		);
 	$output .= make_magazine_toc($args);
+	return $output;
+}
+
+/**
+ * Get a volume cover image
+ */
+function make_get_cover_image( $number = 34 ) {
+	$url = esc_url( 'http://cdn.makezine.com/make/covers/MAKE_V' . absint( $number ) . '_high.jpg' );
+	return $url;
+}
+ 
+add_action( 'the_content', 'make_update_to_content' );
+/**
+ * Bring updates into the the_content()
+ */
+function make_update_to_content( $content ) {
+	global $post;
+	$updates = get_post_meta( get_the_ID(), 'Updates', true );
+	$output = '';
+	if ( !empty( $updates ) ) {
+		$output .= '<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>';
+		$output .= wp_kses_post( Markdown( $updates ) );
+		$output .= '</div>';
+	}
+	$output .= $content;
 	return $output;
 }

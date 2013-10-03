@@ -1,9 +1,7 @@
 <?php get_header(); ?>
 		
-		<div class="clear"></div>
-
-		<div class="sand">
-
+		<div class="single">
+		
 			<div class="container">
 
 				<div class="row">
@@ -24,7 +22,12 @@
 										//print_r($wp_query);
 										echo make_get_better_tag_title(); 
 										if( isset( $wp_query->query_vars['cat'] ) ) { 
-											echo ' ' . get_cat_name( $wp_query->query_vars['cat'] ) . ' Projects';
+											echo ' ' . get_cat_name( $wp_query->query_vars['cat'] );
+
+											// Append the word projects if we are viewing the projects taxonomy difficulty
+											if ( is_tax( 'difficulty' ) )
+												echo ' Projects';
+
 										} 
 									?> 
 								</h1>

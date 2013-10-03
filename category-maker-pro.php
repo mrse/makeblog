@@ -10,10 +10,8 @@
 
 get_header(); ?>
 		
-		<div class="clear"></div>
-
-		<div class="sand">
-
+		<div class="single">
+		
 			<div class="container">
 
 				<div class="row">
@@ -74,7 +72,7 @@ get_header(); ?>
 
 										<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
 
-										<p class="meta">By <?php the_author_posts_link(); ?>, <?php the_time('Y/m/d \@ g:i a') ?></p>
+										<p class="meta">By <?php the_author_posts_link(); ?>, <?php the_time('m/d/Y \@ g:i a') ?></p>
 										<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
 
 									</div>

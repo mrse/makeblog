@@ -2,14 +2,17 @@
 	width:126px !important;
 }
 
+// Google Custom Search Styles
+.gsc-cursor .gsc-cursor-current-page { background-color:#005d8f; }
 a:hover {
   text-decoration: none !important;
 }
 
 body {
 	/* background-image: url('../img/sand.png'); */
-	margin-top:20px;
+	margin-top:0;
 	overflow-wrap: break-word;
+	padding-top:0 !important;
 }
 
 body.single-slideshow {
@@ -25,6 +28,8 @@ body.single-slideshow #wpadminbar {
 	display: none;
 }
 
+body.search .well { margin-bottom:0 !important; }
+
 body.category {
 	background-image: none;
 	background-color: #fff;
@@ -38,6 +43,14 @@ h3 {
 	line-height: 24px;
 }
 
+body ul li{
+	font-size:16px;
+    line-height: 140%;
+}
+
+// Top ad div
+#div-gpt-ad-664089004995786621-1 { margin-top:50px; }
+
 // Blog styles
 .add30 {
 	width:590px;
@@ -50,6 +63,21 @@ h3 {
 		font-weight:normal;
 	}
 	article { margin:20px 0 45px; }
+}
+
+// Urban Sponsor Hack styles
+ul.inline.urban-sensor-nav {
+	li {
+		padding:0;
+		a {
+			padding:0 5px;
+			color:#8ed5f6;
+			&:hover {
+				background:#E4F4F9;
+				color:#ed1c24 !important;
+			}
+		}
+	}
 }
 
 #header {
@@ -1901,6 +1929,7 @@ hr {
 	font-size:20px;
 }
 
+.attachment-p1,
 #top-left {
 	margin-top:-41px;
 }
@@ -2779,6 +2808,13 @@ body#shop {
 	text-shadow:none;
 }
 
+/* SLIDESHOW LINK COLORS*/
+
+.carousel-caption .single p a {
+color: #d7d7d7;
+border-bottom: 1px solid #d7d7d7;
+}
+
 .features { margin:20px 0 20px; border:1px solid #eee; padding:10px; }
 .features img { padding:5px; margin:0px; background-color: #eee; border:1px solid #ddd; }
 .features h3, .features h4, .features h5, .features h6 { line-height: 24px; }
@@ -2788,217 +2824,6 @@ body#shop {
 .features h4 { font-size:13px; line-height: 16px;}
 .features .twenty-five { width:25%; float:left; text-align:center;}
 .features .small-thumb { max-height: 75px; max-width: auto; }
-
-/* CSS FOR SUBSCRIPTION DEMO BY BILL OLSON */
-
-#make-subcription-form .subscribe-button-area {background-color:#f0f0f0;height:auto; padding:10px;margin:10px 0;}
-
-#make-subcription-form .upper-sub-area h2 {
-	font-size:42px; 
-	color:#1F5875; 
-	font-weight:400;
-}
-
-#make-subcription-form .upper-sub-area p span {
-	font-size:14px;
-}
-
-#make-subcription-form .upper-sub-area p {
-	font-size:18px;
-	margin-bottom:15px;
-	margin-top:5px;
-}
-
-.row-fluid .lower-sub-col-02 {margin-left:0;}
-
-#make-subcription-form #payment-info legend {
-	float:left;
-	width:auto;
-	padding-right:5px;
-	padding-top:15px;
-	margin-bottom:10px;
-}
-
-#make-subcription-form #payment-info span {
-	float:left;
-	font-size:10px;
-	padding-top:15px;
-}
-
-#make-subcription-form #payment-info img {padding-top:13px;}
-
-#make-subcription-form .card-name-area {
-	width:200px;
-	float:left;
-}
-
-#make-subcription-form .radio.inline , #make-subcription-form .checkbox.inline {
-    margin-left: 0;
-    float:left;
-    width:auto;
-    padding-right:10px;
-}
-
-#make-subcription-form .card-name-area label {padding-top:10px;}
-
-#make-subcription-form .card-type-area {
-	width:115px;
-	display:inline;
-	float:right;
-	padding-top:10px;
-}
-
-#make-subcription-form .card-type-area label {width:115px;}
-
-#make-subcription-form .card-number-area {
-	width:180px;
-	float:left;
-}
-
-#make-subcription-form .card-number-area label {
-	padding-top:10px;
-	width:180px;
-}
-
-#make-subcription-form .card-number-area input {width:160px;}
-
-#make-subcription-form .card-year-area {
-	width:70px;
-	display:inline;
-	float:right;
-	padding-top:10px;
-}
-
-#make-subcription-form .card-month-area {
-	width:65px;
-	display:inline;
-	float:right;
-	padding-top:10px;
-}
-
-#make-subcription-form .card-month-area label {width:65px;}
-
-#make-subcription-form #sub-info control group {
-	border-top:1px solid #CCC;
-	border-bottom:1px solid #CCC
-	;margin-top:15px;
-	line-height:110px;
-}
-
-#make-subcription-form #sub-info label {
-	color: #37BAF5;
-	font-size:16px; 
-	font-weight:bold;
-	text-align:left; 
-	width:120px;
-	margin-top:42px;
-}
-
-#make-subcription-form fieldset#sub-info.form-horizontal .control-group .controls {
-	margin-left:0;
-	padding-top:42px; 
-	padding-bottom:42px;
-	border-top:1px solid #ccc;
-	border-bottom:1px solid #ccc;
-}
-
-#make-subcription-form {
-	font-size:12px;
-	color:#333;
-	line-height:16px;
-	margin-bottom:15px;
-}
-
-#make-subcription-form fieldset#delivery-info.form-horizontal div.control-group label.checkbox div.controls {margin-left:0;}
-
-#make-subcription-form .submit-btn-area {
-	border-top:1px solid #ccc;
-	padding-top:15px;
-	border-bottom:1px solid #ccc;
-	padding-bottom:15px;
-}
-
-#make-subcription-form .btn-area-02 {
-	text-align:left;
-	font-size:24px;
-	padding:10px 20px;
-	width:auto;
-	height:50px;
-	}
-
-#make-subcription-form .container .row .span12 .red {
-		color:#CC2229;
-		font-family: museo-slab,serif;
-		font-size: 22px;
-		font-style: normal;
-		font-weight: 900;
-		margin-bottom: 0; 
-		margin-top: 10px;
-		text-transform: uppercase;
-}
-
-#make-subcription-form .container .row .span12.subscribe-button-area {
-		background-color: #F0F0F0;
-		height: 40px;
-		padding-top:10px;
-		margin-bottom:10px;
-}
-
-#make-subcription-form input,textarea, #make-subcription-form uneditable-input{width:184px}
-
-#make-subcription-form input.radio-narrow,textarea.radio-narrow, #make-subcription-form .uneditable-input.radio-narrow{width:20px;padding:0;}
-
-#make-subcription-form textarea{height:auto}
-
-#make-subcription-form select .wide{
-		width:200px;
-		background-color:#fff;
-		border:1px solid #ccc
-}
-
-#make-subcription-form .form-horizontal .control-label{
-		float:left;
-		width:80px;
-		padding-top:5px;
-		text-align:left;
-}
-
-#make-subcription-form .form-horizontal .controls{
-		*display:inline-block;
-		*padding-left:20px;
-		margin-left:90px;
-		*margin-left:0;
-		
-}
-
-#make-subcription-form .form-horizontal .controls:first-child{*padding-left:90px;}
-
-#make-subcription-form legend{
-		display:block;
-		width:100%;
-		padding:0;
-		margin-bottom:10px;
-		line-height:20px;
-		border:0 none;
-		font-size:16px;
-		font-weight:bold;
-		text-align:left;
-		color:#37BAF5;
-		margin-bottom: 15px;
-    	margin-top: 8px;
-}
-
-#make-subcription-form legend+.control-group{
-    	margin-top: 8px;
-		margin-top:10px;
-		-webkit-margin-top-collapse:separate
-}
-
-#make-subcription-form .controls #shipState_ddState {width: 200px;}
-
-#make-subcription-form .main-sub-hdr h3 {color: #F00;}
-
-#make-subcription-form #offer-code {font-size:14px;padding-top:45px;font-weight:bold;}
 
 .features .small-thumb { max-height: 75px; max-width: auto; }
 
@@ -3045,174 +2870,162 @@ body#shop {
 /* NEW FOOTER STYLES BY BILL OLSON*/
 
 .new-footer {
-  /*border-top:5px solid #033045;*/
-	background-color:transparent; 
-	width:100%;
-}
-
-.new-footer .control-group {margin-bottom:8px;}
-
-.craft .new-footer {
-	background-color:transparent;
-	border-width: 1px;
-}
-
-.new-footer ul li {
-	display: list-item;
-}
-
-.new-footer .text a {
-	color:#000;
-}
-
-.new-footer .clearfix { 
-	clear:both;
-	height:0;
-	font-size: 1px;
-	line-height: 0px;
-}
-
-.new-footer {
-	padding-top:20px;
+    background-color:transparent;
+    width:100%;
+    padding-top:20px;
     width: 100%;
-	text-align:center;
-	border-top: 3px solid #A0B0B8;
-	background-image: url('../img/header_bg.jpg');
+    text-align:center;
+    border-top: 3px solid #A0B0B8;
+    background-image: url('../img/header_bg.jpg');
+    label {
+        display: block;
+        margin-bottom: 0;
+        margin-top:0;
+    }
+    label.checkbox {
+        font-weight:bold;
+    }
+    .about-column-01 {
+        width: 90px;
+        float:left;
+        margin-left:0;
+    }
+    .about-column-02 {
+        float:left;
+        width:130px;
+        margin-left:0;
+    }
+    .email-area {
+        #appendedInputButton {
+            border-radius: 0;
+            height:16px;
+        }
+        controls {
+            width:130px;
+            float:left;
+            margin:0;
+            padding:0;
+        }
+        .btn {
+            background-color:#F60B29;
+            color:#fff;
+            font-weight:400;
+            font-size:18px;
+            border-radius: 0;
+            background-image: none;
+            height:26px;
+            padding-top:2px;
+            border: 1px solid #ccc;
+            box-shadow: none;
+        }
+    }
+    ul {
+        li {
+        	font-size:14px !important;
+            display: list-item;
+        }
+    }
+    .control-group {
+        margin-bottom:8px;
+    }
+    h5 {
+        margin-bottom:0;
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .clearfix {
+        clear:both;
+        height:0;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    .logo {
+        margin-bottom:5px;
+        h5 {
+            float:left;
+            padding-top:32px;
+        }
+        img {
+            float:left;
+            padding-right:5px;
+        }
+    }
+    .terms {
+        margin-top:0;
+    }
+    .main {
+        width:940px;
+        margin-top:5px;
+    }
+    .text {
+        margin-top:0;
+        a {
+            color:#000;
+        }
+    }
+    .subscribe {
+        img#mag-arrow {
+            width: 95px;
+            border: 1px solid #ccc;
+            margin-top: -40px;
+            margin-left: -20px;
+            border: none;
+        }
+        img#mag-cover {
+            width: 128px;
+            float: right;
+            border: 1px solid #ccc;
+            margin-top: -20px;
+        }
+    }
+    .container {
+        width: 940px;
+        margin: 0 auto;
+        text-align: left;
+        ul {
+            margin-left:15px;
+        }
+        .row {
+            .subscribe {
+                h5 {
+                    color: #F60B29;
+                    margin-top:-20px;
+                }
+                p {
+                    font-weight: bold;
+                    margin-top:3px;
+                    padding-right:3px;
+                }
+                hr {
+                    border: none;
+                    background-color: #F60B29;
+                    color: #F60B29;
+                    height: 7px;
+                    width:85px;
+                }
+            }
+        }
+    }
 }
-
-.new-footer .text {margin-top:0;}
-
-.new-footer .terms {margin-top:0;}
-
-.new-footer .container {
-	width: 940px;
-	margin: 0 auto;
-	padding-top: 20px;
-	text-align: left;
+.new-footer .controls &>.radio:first-child, .controls &>.checkbox:first-child {
+    padding-top: 0;
 }
-	
-.new-footer .main {
-	width:940px;
-	margin-left:0; 
-	margin-top:5px;
+.craft {
+    .new-footer {
+        background-color:transparent;
+        border-width: 1px;
+    }
 }
-
-.new-footer h5 {margin-bottom:0;}
-
-.new-footer .container .row {margin-left:0;}
-
-.new-footer .trending, .new-footer .newsletter, .new-footer .about-us, .new-footer .subscribe  {
-	width:220px;
-	float:left;
-	border-top:1px solid #ccc;
-	text-align:left;
-	padding-top:10px;
-}
-
-.new-footer .trending {margin-left:0;}
-
-.new-footer .email-area controls {
-	width:130px;
-	float:left;
-	margin:0;
-	padding:0;
-}
-
-.new-footer .container .row .span.main .span.about-us .span.about-column-02 {
-	float:left;
-	width:130px;
-	margin-left:0;
-}
-
-.new-footer .container .row .span.main .span.about-us .span.about-column-01 {
-	width: 90px;
-	float:left;
-	margin-left:0;
-}
-
-.new-footer .container .row .span.main .span.about-us .span.socialArea {
-	 width:220px;
-	 margin-left:0;
-}
-
-.new-footer .subscribe img#mag-cover {
-	width: 128px;
-	float: right;
-	border: 1px solid #ccc;
-	margin-top: -20px;
-}
-
-.new-footer .subscribe img#mag-arrow {
-	width: 95px;
-	border: 1px solid #ccc;
-	margin-top: -40px;
-	margin-left: -20px;
-	border: none;
-}
-
-.new-footer label.checkbox {
-	font-weight:bold;
-}
-
-.new-footer .container ul {
-	margin-left:15px;
-}
-
-
 .new-footer input[type="radio"], .new-footer input[type="checkbox"] {
     margin: 0;
 }
-
-.new-footer h5 {
-	font-family: sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-}
-.new-footer .container .row .span .span.subscribe h5 {
-	color: #F60B29;
-	margin-top:-20px;
-}
-.new-footer .container .row .span .span.subscribe p {
-	font-weight: bold;
-	margin-top:3px;
-	padding-right:3px;
-}
-
-.new-footer .container .row .span .span.subscribe hr {
-	border: none;
-	background-color: #F60B29;
-	color: #F60B29;
-	height: 7px;
-	width:85px;
-}
-
-.new-footer .controls > .radio:first-child, .controls > .checkbox:first-child {
-    padding-top: 0;
-}
-
-.new-footer label {
-    display: block;
-    margin-bottom: 0;
-    margin-top:0;
-}
-
-
-.new-footer .email-area .btn {
-	background-color:#F60B29;
-	color:#fff;
-	font-weight:400;
-	font-size:18px;
-	border-radius: 0;
-	background-image: none;
-	height:26px;
-	padding-top:2px;
-	border: 1px solid #ccc;  
-	box-shadow: none;
-}
-
-.new-footer .email-area #appendedInputButton{
-	border-radius: 0;
-	height:16px;
+.new-footer .trending, .new-footer .newsletter, .new-footer .about-us, .new-footer .subscribe {
+    width:220px;
+    float:left;
+    border-top:1px solid #ccc;
+    text-align:left;
+    padding-top:10px;
 }
 
 /* HEADER MAIN BLOG LINK*/
@@ -3355,24 +3168,318 @@ color:green;
 
 // Bootstrap overrides
 // Change button position in the Bootstrap styles
-.carousel-control { top:15px !important; }
+/* .carousel-control { top:15px !important; } */
 
-/*subscription page styles by Bill Olson */
+/* MAGAZINE SUBSCRIPTION PAGE */
 
-.main-sub-area .form-horizontal .control-label {
-width:90px !important
+#make_subcription_form legend + .control-group {
+  margin-top: 8px;
+  margin-top: 10px;
+  -webkit-margin-top-collapse: separate;
+}
+#make_subcription_form .controls #shipState_ddState, #billState_ddState, #billCountry_ddCountry,#shipCountry_ddCountry {
+    width: 200px;
+}
+#make_subcription_form .radio.inline,#make_subcription_form .checkbox.inline {
+    margin-left: 0;
+    margin-left: 20px\9;
+    float: left;
+    width: auto;
+    padding-right: 10px;
+}
+.row-fluid {
+    .lower-sub-col-02 {
+        margin-left: 0;
+    }
+}
+#make_subcription_form .card-number-area input,#make_subcription_form .card-name-area input {
+    width: 160px;
+}
+#payment-info .card-type-area select,.card-month-area select,.card-year-area select {
+    width: auto !important;
+}
+#isBillShipAddrNotSame {
+    width:auto !important;
+    width: auto !important;
+}
+#make_subcription_form .btn-02-area, #make_subcription_form .btn-01-area {
+    text-align:left;
+    font-size:24px;
+    padding:10px 20px;
+    width:auto;
+    height:50px;
+}
+#make_subcription_form input.narrow,textarea.narrow,#make_subcription_form .uneditable-input.radio-narrow {
+    width: 20px;
+    padding: 0;
+}
+#make_subcription_form .controls #shipState_ddState,#billState_ddState,#billCountry_ddCountry,#shipCountry_ddCountry {
+    width: 200px;
+}
+#make_subcription_form input.narrow,textarea.narrow, #make_subcription_form .uneditable-input.radio-narrow {
+    width:20px;
+    padding:0;
+}
+#make_subcription_form {
+    font-size:12px;
+    color:#333;
+    line-height:16px;
+    margin-bottom:15px;
+    font-size: 12px;
+    color: #333;
+    line-height: 16px;
+    margin-bottom: 15px;
+    .card-month-area {
+        width: 65px;
+        display: inline;
+        float: right;
+        padding-top: 10px;
+        label {
+            width: 65px;
+        }
+    }
+    legend+.control-group {
+        margin-top: 8px;
+        margin-top:10px;
+        -webkit-margin-top-collapse:separate;
+    }
+    .form-horizontal {
+        .controls:first-child {
+            *padding-left:90px;
+            *padding-left: 90px;
+        }
+        .control-label {
+            float:left;
+            width:80px;
+            padding-top:5px;
+            text-align:left;
+            float: left;
+            width: 80px;
+            padding-top: 5px;
+            text-align: left;
+        }
+        .controls {
+            *display:inline-block;
+            *padding-left:20px;
+            margin-left:90px;
+            *margin-left:0;
+            *display: inline-block;
+            *padding-left: 20px;
+            margin-left: 90px;
+            *margin-left: 0;
+        }
+    }
+    h3 {
+        color: #005d8f;
+        font-size:18px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: normal;
+    }
+    .subscribe-button-area {
+        background-color: #f0f0f0;
+        height: auto;
+        padding: 10px;
+        margin: 10px 0;
+    }
+    fieldset#sub-info.form-horizontal {
+        .control-group {
+            .controls {
+                margin-left: 0;
+                padding-top: 42px;
+                padding-bottom: 42px;
+                border-top: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+            }
+        }
+    }
+    .control-group {
+        margin-bottom:15px;
+        margin-bottom: 15px;
+    }
+    .card-name-area {
+        width: 200px;
+        float: left;
+        label {
+            padding-top: 10px;
+        }
+    }
+    legend {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin-bottom: 10px;
+        line-height: 20px;
+        border: 0 none;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: left;
+        color: #37BAF5;
+        margin-bottom: 15px;
+        margin-top: 8px;
+    }
+    fieldset#delivery-info.form-horizontal {
+        div.control-group {
+            label.checkbox {
+                div.controls {
+                    margin-left:0;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+    #offer-code {
+        font-size:14px;
+        padding-top:45px;
+        font-weight:bold;
+        font-size: 14px;
+        padding-top: 45px;
+        font-weight: bold;
+    }
+    .main-sub-hdr {
+        h3 {
+            color: #cc2229;
+            font-family: museo-slab, serif;
+            font-style: normal;
+            font-weight: 900;
+            margin-bottom: 0px;
+			font-size: 22px;
+			margin-top: 10px;
+        }
+    }
+    .card-number-area {
+        width: 180px;
+        float: left;
+        label {
+            padding-top: 10px;
+            width: 180px;
+        }
+    }
+    .card-year-area {
+        width: 70px;
+        display: inline;
+        float: right;
+        padding-top: 10px;
+    }
+    #payment-info {
+        legend {
+            float: left;
+            width: auto;
+            padding-right: 5px;
+            padding-top: 15px;
+            margin-bottom: 10px;
+        }
+        img {
+            padding-top: 13px;
+        }
+        span {
+            float: left;
+            font-size: 10px;
+            padding-top: 15px;
+        }
+    }
+    textarea {
+        height:autoheight: auto;
+    }
+    .submit-btn-area {
+        border-top: 1px solid #ccc;
+        padding-top: 15px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 15px;
+    }
+    .upper-sub-area {
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            margin-top: 5px;
+            span {
+                font-size: 14px;
+            }
+        }
+        h2 {
+            font-size: 42px;
+            color: #1F5875;
+            font-weight: 400;
+        }
+    }
+    .card-type-area {
+        width: 115px;
+        display: inline;
+        float: right;
+        padding-top: 10px;
+        label {
+            width: 115px;
+        }
+    }
+    select {
+        .wide {
+            width:200px;
+            background-color:#fff;
+            border:1px solid #cccwidth: 200px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+    }
+    #sub-info {
+        control {
+            group {
+                border-top: 1px solid #CCC;
+                border-bottom: 1px solid #CCC;
+                margin-top: 15px;
+                line-height: 110px;
+            }
+        }
+        label {
+            color: #37BAF5;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+            width: 120px;
+            margin-top: 42px;
+        }
+    }
+    .textboxes {
+        width:184pxwidth: 184px;
+    }
+    .container {
+        .row {
+            .span12 {
+                .red {
+                    color:#CC2229;
+                    font-family: museo-slab,serif;
+                    font-size: 22px;
+                    font-style: normal;
+                    font-weight: 900;
+                    margin-bottom: 0;
+                    margin-top: 10px;
+                    text-transform: uppercase;
+                    color: #CC2229;
+                    font-family: museo-slab, serif;
+                    font-size: 22px;
+                    font-style: normal;
+                    font-weight: 900;
+                    margin-bottom: 0;
+                    margin-top: 10px;
+                    text-transform: uppercase;
+                }
+            }
+            .span12.subscribe-button-area {
+                background-color: #F0F0F0;
+                height: 40px;
+                padding-top:10px;
+                margin-bottom:10px;
+                background-color: #F0F0F0;
+                height: 40px;
+                padding-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+    }
 }
 
-.main-sub-area .form-horizontal .controls {
-    margin-left: 95px !important;
-}
 
-.main-sub-area select  {
-width:195px !important;
-}
+/*BACK ISSUES*/
 
-.main-sub-area .lower-sub-col-01 input {width:185px !important;}
+.back-issues p {font-size:14px !important;}
 
-.main-sub-area #isBillShipAddrSame {width:auto !important;}
-
-.main-sub-area #ccType {width:115px !important;}
+/*FIX FOR SHARE THIS SOCIAL BAR WIDTH ISSUE*/
+.googleplus1_button {width:auto !important}

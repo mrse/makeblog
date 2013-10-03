@@ -22,6 +22,7 @@ make_get_header() ?>
 						$query = new WP_Query( array(
 							'post_type' => array( 'post', 'projects', 'review', 'video', 'magazine' ),
 							'paged' => $paged,
+							'tag__not_in' => array( 5183, 22815, 9947 ),
 						) );
 
 						if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
@@ -32,8 +33,10 @@ make_get_header() ?>
 					</div>
 					
 					<ul class="projects-meta">
-						<li><?php make_get_author( $post->ID ); ?></li>
-						<li>Posted <span class="blue"><?php the_time('Y/m/d \@ g:i a'); ?></span></li>
+						<?php if ( make_get_author( $post->ID ) ) : ?>
+							<?php make_get_author( $post->ID ); ?>
+						<?php endif ?>
+						<li>Posted <span class="blue"><?php the_time('m/d/Y \@ g:i a'); ?></span></li>
 						<li>Category <?php the_category(', '); ?></li>
 						<li>Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a></li>
 					</ul>

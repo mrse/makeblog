@@ -101,9 +101,9 @@ add_shortcode( 'makerpro', 'make_marketron_newsletter' );
 
 function meetup_newsletter( $atts, $content = null ) {
 	return '
-		<form class="form-stacked" action="http://newsletter.makezine.com/t/r/s/jdhyjkj/" method="post" id="subForm">
+		<form class="form-stacked" action="http://newsletter.makezine.com/t/r/s/juiuilk/" method="post" id="subForm">
 			<fieldset>
-				<legend>Enter your information to receive a free PDF of Make Volume 34</legend>
+				<legend>Enter for a chance to win one of five Ultimate Arduino Microcontroller Packs! All entries will receive a free PDF of MAKE volume 35: Danger! </legend>
 				<div class="clearfix">
 					<label for="name">Name:</label>
 					<div class="input">
@@ -112,9 +112,9 @@ function meetup_newsletter( $atts, $content = null ) {
 				</div>
 				<!-- /clearfix -->
 				<div class="clearfix">
-					<label for="jdhyjkj-jdhyjkj">Email:</label>
+					<label for="juiuilk-juiuilk">Email:</label>
 					<div class="input">
-						<input class="xlarge" id="jdhyjkj-jdhyjkj" name="cm-jdhyjkj-jdhyjkj" size="30" type="text">
+						<input class="xlarge" id="juiuilk-juiuilk" name="cm-juiuilk-juiuilk" size="30" type="text">
 					</div>
 				</div>
 				<!-- /clearfix -->
@@ -124,7 +124,7 @@ function meetup_newsletter( $atts, $content = null ) {
 							<label class="checkbox" for="CRAFTNewsletter">CRAFT Newsletter<input type="checkbox" name="cm-ol-jjurhj" id="CRAFTNewsletter" /></label>
 							<label class="checkbox" for="MAKENewsletter">MAKE Newsletter<input type="checkbox" name="cm-ol-jjuylk" id="MAKENewsletter" /></label>
 							<label class="checkbox" for="MakerShed-MasterList">Maker Shed<input type="checkbox" name="cm-ol-tyvyh" id="MakerShed-MasterList" /></label>
-							<label class="checkbox" for="MakerProNewsletter">Maker Pro Newsletter<input type="checkbox" name="cm-ol-jjhuukr" id="MakerProNewsletter" /></label>
+							<label class="checkbox" for="MakerProNewsletter">Maker Pro Newsletter<input type="checkbox" name="cm-ol-jrsydu" id="MakerProNewsletter" /></label>
 						</div>
 					</div>
 				</div>
@@ -235,18 +235,18 @@ function make_volume_blurb() {
 
 			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/Make_Volume_33_p/mmv33.htm">Maker Shed</a></p>
 
-			<p><a class="btn btn-primary" href="http://www.makershed.com/Make_Volume_33_p/mmv33.htm">Buy now!</a></p>
+			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=9781449327651-P">Buy now!</a></p>
 
 		</div>';
 	return $output;
 }
 
-add_shortcode( 'volume', 'make_volume_blurb' );
+add_shortcode( 'old_volume', 'make_volume_blurb' );
 
 function make_blurb_add_shortcode( $content ) {
 	global $post;
 	if ( '246865' == $post->post_parent ) {
-		$content = $content . do_shortcode( '[volume]' );
+		$content = $content . do_shortcode( '[old_volume]' );
 		return $content;
 	} else {
 		return $content;
@@ -409,7 +409,7 @@ function promo_vol_34() {
 
 			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/MAKE_Volume_34_p/9781449327668.htm">Maker Shed</a></p>
 
-			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=MMV34">Buy now!</a></p>
+			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=9781449327668-P">Buy now!</a></p>
 
 		</div>';
 	return $output;
@@ -419,7 +419,8 @@ add_shortcode( 'promo_34', 'promo_vol_34' );
 
 
 function make_github_3d_viewer($atts) {
-	$output = '<iframe class="render-viewer" src="https://render.github.com/view/3d/?url=' . urlencode( esc_url( $atts['url'] ) ) . '" frameborder="0" sandbox="allow-scripts allow-same-origin" width="620" height="420">Viewer requires iframe.</iframe>';
+	$url = str_replace( array( 'https://github.com/', 'http://github.com/', '/blob'), array( '', '', ''), $atts['url']);
+	$output = '<script src="' . esc_url( 'https://embed.github.com/view/3d/' . $url ) . '"></script>';
 	return $output;
 }
 
@@ -716,3 +717,143 @@ function make_campaign_monitor_form( $atts, $content = null ) {
 	return $output;
 }
 add_shortcode( 'make-compagin-monitor', 'make_campaign_monitor_form' );
+
+add_shortcode( 'volume', 'make_volume_tease' );
+/**
+ * New Shortcode for articles. Kind of a big tease with the images of the cover.
+ */
+function make_volume_tease( $atts, $content = null ) {
+	extract( shortcode_atts( array(
+		'volume'	=> '34',
+		'subscribe'	=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK',
+		'buy'		=> 'http://www.makershed.com/MAKE_Volume_34_p/9781449327668-p.htm'
+	), $atts ) );
+
+	$output = '<div class="tease">';
+	$output .= '<h3>Preview</h3>';
+	$output .= '<h4><a href="' . esc_url( $buy ) . '">Buy Volume ' . intval( $volume ) . '</a> for complete access or</h4>';
+	$output .= '<div><a class="button big" href="' . esc_url ( $subscribe ) . '">Subscribe to MAKE and Save!</a></div>';
+	$output .= '<div class="cover"><a href="' . esc_url ( $subscribe ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( make_get_cover_image( absint( $volume ) ), 400, 566 ) .  '" alt="" /></a></div>';
+	$output .= '</div>';
+
+	return $output;
+
+}
+
+
+/**
+ * Add Posts from a category/tag to the bottom of a post via a shortcode
+ */
+function maker_short_post_loop( $args ) {
+
+	$defaults = array( 
+		'post_type' 		=> array( 'post', 'craft', 'magazine', 'video', 'projects' ),
+		'posts_per_page' 	=> 5, 
+		);
+
+	$args = wp_parse_args( $args, $defaults );
+
+	$output = '<div class="newsies"><div class="news post">';
+
+	$output .= ( isset( $args['title'] ) ) ? '<h3 class="red">' . wp_kses_post( $args['title'] ) . '</h3>' : '';
+	
+	$query = new WP_Query($args);
+	if( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+		
+		$output .= '<div class="media"><div class="pull-left">';
+		$output .= get_the_image( array( 'image_scan' => true, 'size' => 'faire-thumb', 'echo' => false, 'image_class' => 'media-object hide-thumbnail' ) );
+		$output .= '</div><div class="media-body">';
+		$output .= '<h4 class="media-heading"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4><p>' . get_the_excerpt() . '</p>';
+		$output .= '<ul class="unstyled"><li>Posted by ';
+		if( function_exists( 'coauthors_posts_links' ) ) {	
+			$output .= coauthors_posts_links( null, null, null, null, false); 
+		} else { 
+			$output .= the_author_posts_link();
+		}
+		$output .= ' | ' . get_the_time('F jS, Y g:i A') . '</li>';
+		$output .= '</ul></div></div>';
+
+		endwhile; 
+	endif;
+	wp_reset_postdata();
+		
+	$output .= '</div></div>';
+	return $output;
+}
+
+add_shortcode( 'make_post_loop', 'maker_short_post_loop' );
+
+
+function make_get_custom_feed( $atts, $content = null ) {
+	extract( shortcode_atts( array(
+		'type' => 'post',
+		'count' => 10,
+		'category' => '',
+		'tag' => '',
+		'exclude_cat' => '',
+		'exclude_tag' => '',
+		'design' => 'standard',
+		'layout' => 'full-width',
+	), $atts ) );
+
+	if ( empty( $type ) || empty( $count ) )
+		return;
+
+	$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	$args = array(
+		'post_type' => make_convert_sanitize_string_to_array( $type, ',' ),
+		'posts_per_page' => absint( $count ),
+		'paged' => absint( $paged ),
+		'category_name' => make_convert_sanitize_string_to_array( $category, ',' ),
+		'category__not_in' => make_convert_sanitize_string_to_array( $exclude_cat, ',' ),
+		'tag' => make_convert_sanitize_string_to_array( $tag, ',' ),
+		'tag__not_in' => make_convert_sanitize_string_to_array( $exclude_tag, ',' ),
+	);
+	$query = new WP_Query( $args );
+
+	$design_defaults = array( 'standard', 'standard-no-meta', 'simple', 'simple-title-top' );
+	$layout_defaults = array( 'full-width', 'col-2' );
+	$output = '';
+	$count = 1;
+
+	$output .= '<div class="feed-wrapper">';
+	if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+		global $post;
+		setup_postdata( $post );
+		
+		if ( ! in_array( $design, $design_defaults ) )
+			$design = 'standard';
+
+		if ( ! in_array( $layout, $layout_defaults ) )
+			$layout = 'full-width';
+
+		$pos = ( $count % 2 == 0 ) ? 'even' : 'odd';
+		$output .= '<div class="' . implode( ' ', get_post_class( 'custom-feed ' . esc_attr( $design ) . ' ' . esc_attr( $layout ) . ' ' . $pos ) ) . '">';
+			
+			if ( $design == 'simple' ) {
+				$has_image = '';
+				$image_url = wp_get_attachment_url( get_post_thumbnail_id() );
+				if ( ! empty( $image_url ) ) {
+					$has_image = 'has-image';
+					$output .= '<a href="' . get_permalink() . '" class="feed-thumb"><img src="' . wpcom_vip_get_resized_remote_image_url( $image_url, 268, 167 ) .'" alt="' . get_the_title() . '" /></a>';
+				}
+
+				$output .= '<a href="' . get_permalink() . '" class="feed-title ' . $has_image . '">' . get_the_title() . '</a>';
+			}
+
+		$output .= '</div>';
+
+		$count++;
+	endwhile;
+		$output .= '</div>';
+		$output .= '<div class="alignleft">' . get_previous_posts_link( 'PREVIOUS POSTS' ) . '</div>';
+		$output .= '<div class="alignright">' . get_next_posts_link( 'NEWEST POSTS', $query->max_num_pages ) . '</div>';
+		wp_reset_postdata();
+	else :
+		$output .= '<p>No posts found</p>';
+		$output .= '</div>';
+	endif;
+
+	return $output;
+}
+add_shortcode( 'custom-feed', 'make_get_custom_feed' );
