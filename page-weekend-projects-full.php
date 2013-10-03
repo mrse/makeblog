@@ -1,7 +1,7 @@
 <?php
 /**
  * Archive page template for projects custom post type.
- * Template name: Weekend Projects 2-col
+ * Template name: Weekend Projects Wide
  * 
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
@@ -34,15 +34,13 @@ get_header(); ?>
 			
 			<div class="row">
 			
-				<div class="span8">
+				<div class="span12">
 					
 					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						<?php the_content(); ?>
 					<?php endwhile; endif; ?>
 					
 				</div>
-
-				<?php get_sidebar(); ?>
 
 			</div>
 		
