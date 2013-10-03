@@ -175,6 +175,7 @@ textarea {
     content: "";
   }
   pre,
+  code,
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
@@ -816,15 +817,6 @@ pre {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-}
-code {
-  padding: 2px 4px;
-  color: #d14;
-  background-color: #f7f7f9;
-  border: 1px solid #e1e1e8;
-  white-space: nowrap;
-}
-pre {
   display: block;
   padding: 9.5px;
   margin: 0 0 10px;
@@ -841,9 +833,11 @@ pre {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
+code.prettyprint,
 pre.prettyprint {
   margin-bottom: 20px;
 }
+code code,
 pre code {
   padding: 0;
   color: inherit;
