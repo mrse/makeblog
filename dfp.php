@@ -115,6 +115,9 @@ global $post;
 				elseif (is_single(array(121818))) {
 					echo "googletag.pubads().setTargeting('sponsor',['microchip']);";
 				}
+				elseif (is_single(array(333675))) {
+					echo "googletag.pubads().setTargeting('sponsor',['energizer']);";
+				}
 				elseif (is_single(array(122575))) {
 					echo "googletag.pubads().setTargeting('sponsor',['xobject']);";
 				}
@@ -123,6 +126,9 @@ global $post;
 				}
 				elseif (is_page( array( 289746,271575 ) ) ) {
 					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
+				}
+				elseif ( has_category( '3d-printing-workshop' ) ) {
+					echo "googletag.pubads().setTargeting('sponsor',['sketchup']);";
 				}
 			?>
 			googletag.enableServices();
