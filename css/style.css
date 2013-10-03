@@ -9497,6 +9497,7 @@ ul#tabs .current > a:hover {
   border-top: 2px solid #ccc;
   padding-top: 20px;
   margin-left: 0;
+  margin-bottom: 10px;
 }
 .author-bio .author-photo {
   margin-left: 0;

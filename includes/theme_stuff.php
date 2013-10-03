@@ -344,7 +344,7 @@ function make_featured_products() {
 
 
 ?>
-
+<div class="clearfix"></div>
 <div class="features well">
 
 <h3>In the <a href="http://www.makershed.com/?Click=107309">Maker Shed</a></h3>

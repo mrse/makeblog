@@ -193,3 +193,6 @@
 #ctx_branding_open {
     float: right;
 }
+.ctx_subhead_title {
+    color: #333 !important;
+}
