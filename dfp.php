@@ -115,20 +115,14 @@ global $post;
 				elseif (is_single(array(121818))) {
 					echo "googletag.pubads().setTargeting('sponsor',['microchip']);";
 				}
-				elseif (is_single(array(333675))) {
-					echo "googletag.pubads().setTargeting('sponsor',['energizer']);";
-				}
 				elseif (is_single(array(122575))) {
 					echo "googletag.pubads().setTargeting('sponsor',['xobject']);";
 				}
-				elseif (is_single(array(122348))) {
+				elseif (is_single(array(122348)) || has_category( array( 7334,134289,91749252,49695267,13426))) {
 					echo "googletag.pubads().setTargeting('sponsor',['element14']);";
 				}
 				elseif (is_page( array( 289746,271575 ) ) ) {
 					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
-				}
-				elseif ( has_category( '3d-printing-workshop' ) ) {
-					echo "googletag.pubads().setTargeting('sponsor',['sketchup']);";
 				}
 			?>
 			googletag.enableServices();
