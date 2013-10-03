@@ -27,7 +27,7 @@ make_get_header() ?>
 						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 						<div id='div-gpt-ad-664089004995786621-2'>
 							<script type='text/javascript'>
-								googletag.display('div-gpt-ad-664089004995786621-2');
+								googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-2')});
 							</script>
 						</div>
 						<!-- End AdSlot 2 -->
@@ -42,10 +42,13 @@ make_get_header() ?>
 				
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#about" data-toggle="tab">About</a></li>
-					<li class=""><a href="#enter" data-toggle="tab">Enter Now</a></li>
+			   <!-- HIDING TABS AT END OF CONTEST FOR FUTURE USE
+
+			    <li class=""><a href="#enter" data-toggle="tab">Enter Now</a></li>
 					<li class=""><a href="#entries" data-toggle="tab">View Entries</a></li>
 					<li class=""><a href="#winners" data-toggle="tab">Previous Winners</a></li>
-					<li class=""><a href="#rules" data-toggle="tab">Rules</a></li>
+					<li class=""><a href="#rules" data-toggle="tab">Rules</a></li> 
+				-->
 				</ul>
 				
 				<div class="tab-content">
@@ -62,16 +65,18 @@ make_get_header() ?>
 					
 					</div>
 					
+					<!-- HIDING TABS AT END OF CONTEST FOR FUTURE USE 
+
 					<div class="tab-pane" id="enter">
 						
 						<iframe src = "http://app.wizehive.com/webform/makermedia2013" scrolling="auto" frameborder="0" width="940px" height="2000px"></iframe>
 						<p><a href="http://www.wizehive.com/photo-contest-software" target="_blank">Photo Contest Software</a> provided by WizeHive</p>
 						
-					</div>
+					</div> 
 					
-					<div class="tab-pane" id="entries">
+					<div class="tab-pane active" id="entries">
 					
-						<iframe onload="window.parent.parent.scrollTo(0,0)" id="wizehiveportal" scrolling="auto" frameborder="0" width="940px" height="1800px"></iframe>
+						<iframe onload="window.parent.parent.scrollTo(0,0)" id="wizehiveportal" scrolling="auto" frameborder="0" width="940px" height="3434px"></iframe>
 						<script src="http://app.wizehive.com/js/portaliframe.js" type="text/javascript"></script><script type="text/javascript">displayPortal('makermedia2013');</script>
 						<p><a href="http://www.wizehive.com/photo-contest-software" target="_blank">Photo Contest Software</a> provided by WizeHive</p>
 						
@@ -189,7 +194,7 @@ make_get_header() ?>
 </ol>
 	
 						
-					</div>
+					</div> -->
 					
 				</div>
 			</div>
