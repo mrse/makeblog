@@ -41,15 +41,15 @@ make_get_header() ?>
 			<div class="tabbable">
 				
 				<ul class="nav nav-tabs">
-					<li class=""><a href="#about" data-toggle="tab">About</a></li>
-					<!-- <li class=""><a href="#enter" data-toggle="tab">Enter Now</a></li> -->
+					<li class="active"><a href="#about" data-toggle="tab">About</a></li>
+					<!-- <li class=""><a href="#enter" data-toggle="tab">Enter Now</a></li> 
 					<li class="active"><a href="#entries" data-toggle="tab">View Entries</a></li>
 					<li class=""><a href="#winners" data-toggle="tab">Previous Winners</a></li>
-					<li class=""><a href="#rules" data-toggle="tab">Rules</a></li>
+					<li class=""><a href="#rules" data-toggle="tab">Rules</a></li>-->
 				</ul>
 				
 				<div class="tab-content">
-					<div class="tab-pane" id="about">
+					<div class="tab-pane active" id="about">
 						
 						<?php 
 							if ( have_posts() ) : 
@@ -62,7 +62,7 @@ make_get_header() ?>
 					
 					</div>
 					
-					<div class="tab-pane" id="enter">
+					<!-- <div class="tab-pane" id="enter">
 						
 						<iframe src = "http://app.wizehive.com/webform/makermedia2013" scrolling="auto" frameborder="0" width="940px" height="2000px"></iframe>
 						<p><a href="http://www.wizehive.com/photo-contest-software" target="_blank">Photo Contest Software</a> provided by WizeHive</p>
@@ -189,7 +189,7 @@ make_get_header() ?>
 </ol>
 	
 						
-					</div>
+					</div> -->
 					
 				</div>
 			</div>
