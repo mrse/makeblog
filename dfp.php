@@ -121,7 +121,7 @@ global $post;
 				elseif (is_single(array(122575))) {
 					echo "googletag.pubads().setTargeting('sponsor',['xobject']);";
 				}
-				elseif (is_single(array(122348)) || has_category( array( 7334,134289,91749252,49695267,13426))) {
+				elseif ( has_category( 'electronics' ) ) {
 					echo "googletag.pubads().setTargeting('sponsor',['element14']);";
 				}
 				elseif (is_page( array( 289746,271575 ) ) ) {
