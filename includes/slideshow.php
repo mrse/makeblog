@@ -90,13 +90,8 @@ function slideshow_content_filter( $content ) {
 
 function make_slideshow_hotkeys() {
 	if ( ('slideshow' ) == get_post_type() ) {
-		wp_enqueue_script(
-			'hotkeys',
-			get_template_directory_uri() . '/js/jquery.hotkeys.js',
-			array('jquery')
-		);
+		wp_enqueue_script( 'hotkeys', get_stylesheet_directory_uri() . '/js/jquery.hotkeys.min.js', array( 'jquery' ) );
 	}
-	
 }
 add_action('wp_enqueue_scripts', 'make_slideshow_hotkeys');
 

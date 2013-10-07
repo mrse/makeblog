@@ -28,7 +28,7 @@
 		
 		<?php wp_head( 'makercamp' ); ?>
 
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/less/css/responsive.css">
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/responsive.css">
 
 	</head>
 	<body <?php body_class( 'makercamp' ); ?>>
@@ -57,7 +57,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</a>
-						<a class="brand" href="http://makezine.com/maker-camp">Menu</a>
+						<a class="brand" href="<?php echo home_url( '/maker-camp' ); ?>">Menu</a>
 						<div class="nav-collapse in collapse">
 							<?php
 								// all Navigational items are controlled in Appearance > Menus : Maker Camp Nav
