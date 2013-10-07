@@ -38,9 +38,9 @@ make_get_header() ?>
 								
 								<p>If that doesn't work, why not try browsing from popular categories?</p>
 								
-								<div class="columns">
+								<ul class="columns">
 									<?php wp_list_categories( 'title_li=' ); ?>	
-								</div>
+								</ul>
 								
 								
 							</div>
