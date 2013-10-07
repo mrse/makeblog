@@ -24,8 +24,6 @@
 			
 								<article <?php post_class(); ?>>
 
-									<!--<p class="categories"><?php the_category(', '); ?></p>-->
-
 									<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 									
 									<div class="cat" id="advancedmaterials">

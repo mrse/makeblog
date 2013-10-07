@@ -146,16 +146,6 @@
 
 								</div>
 
-								<div class="categories">
-
-									<ul>
-						
-										<?php echo make_category_li( 'post' ); ?>
-										
-									</ul>
-
-								</div>	
-
 								<div class="new-dotw">
 
 									<?php

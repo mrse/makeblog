@@ -144,15 +144,6 @@ get_header(); ?>
 
 								</div>
 
-								<div class="categories">
-
-									<ul>
-						
-										<?php echo make_category_li( $post_type ); ?>
-										
-									</ul>
-									
-								</div>
 
 								<div class="new-dotw">
 

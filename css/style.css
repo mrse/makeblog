@@ -5550,9 +5550,6 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
-.navbar-inverse .navbar-search .search-query {
-  width: 126px !important;
-}
 .gsc-cursor .gsc-cursor-current-page {
   background-color: #005d8f;
 }
@@ -5560,8 +5557,6 @@ a:hover {
   text-decoration: none !important;
 }
 body {
-  /* background-image: url('../img/sand.png'); */
-
   margin-top: 0;
   overflow-wrap: break-word;
   padding-top: 0 !important;
@@ -5569,21 +5564,12 @@ body {
 body.single-slideshow {
   margin-top: 0px;
   margin-bottom: 0px;
-  /*background-image: url('../img/arduino.jpg');
-	background-attachment: fixed;
-	background-position: top center;
-	background-repeat: no-repeat;*/
-
 }
 body.single-slideshow #wpadminbar {
   display: none;
 }
 body.search .well {
   margin-bottom: 0 !important;
-}
-body.category {
-  background-image: none;
-  background-color: #fff;
 }
 h1,
 h2,
@@ -5627,127 +5613,6 @@ ul.inline.urban-sensor-nav li a {
 ul.inline.urban-sensor-nav li a:hover {
   background: #E4F4F9;
   color: #ed1c24 !important;
-}
-#header {
-  background-image: url('../img/header_bg.jpg');
-  border-bottom: 1px solid #797575;
-  padding-top: 0px;
-  padding-top: 10px;
-}
-#header h1 {
-  margin: 0px;
-  margin-top: 10px;
-}
-.admin-bardebug-bar-maximized #header,
-.admin-bar #header {
-  background-image: url('../img/header_bg.jpg');
-  border-bottom: 1px solid #797575;
-  padding-top: 20px;
-}
-.topad {
-  width: 728px;
-  height: 90px;
-  z-index: 999;
-  float: left;
-  position: relative;
-}
-.bar form {
-  margin: 0px;
-  float: left;
-}
-.navbar-inner h5 {
-  display: inline-block;
-  color: white;
-  font-size: 12px;
-  margin-top: 5px;
-  margin-left: 10px;
-  text-transform: uppercase;
-}
-.bar ul {
-  display: inline;
-  margin-left: 0px;
-}
-.bar ul li {
-  display: inline;
-  font-weight: bold;
-}
-.bar ul li a {
-  color: #9cdafb;
-}
-.navi {
-  margin: 0px;
-  font-family: sans-serif;
-  font-weight: 400;
-  margin-left: 260px;
-  margin-top: 10px;
-}
-.navi li {
-  display: inline-block;
-  height: 40px;
-  margin-top: 47px;
-  font-size: 24px;
-  padding: 5px 3px;
-  margin-bottom: -21px;
-  cursor: pointer;
-  text-align: left;
-  line-height: 21px;
-  margin-right: 0px;
-  letter-spacing: -1px;
-}
-.navi li a {
-  color: #6b6e74;
-}
-.navi .active a {
-  color: #333 !important;
-}
-.navi li a:hover {
-  text-decoration: none;
-}
-.sub-nav {
-  display: none;
-}
-.sub-nav.active {
-  display: block;
-  border: 0px;
-  background-color: transparent;
-}
-#header h1 {
-  float: left;
-}
-.header-bottom {
-  background-color: #F0F0F0;
-  height: 38px;
-  border-bottom: 1px solid #333;
-}
-.header-bottom h5 {
-  float: left;
-  height: 20px;
-  font-size: 16px;
-  padding: 0px 10px 0px 5px;
-  font-family: sans-serif;
-  font-weight: bold;
-  margin-top: 10px;
-}
-.header-bottom ul {
-  margin: 0px;
-}
-.header-bottom ul li {
-  display: inline-block;
-  height: 20px;
-  font-size: 14px;
-  padding: 0px 0px 0px 5px;
-  font-family: sans-serif;
-  font-weight: bold;
-  margin-top: 10px;
-}
-.header-bottom ul li:last-child {
-  border: 0px;
-}
-.header-bottom ul li a {
-  color: #404040;
-}
-.header-bottom ul li a:hover {
-  text-decoration: none;
 }
 .waist {
   background-image: url('../img/blue_bg1.jpg');
@@ -6010,20 +5875,6 @@ article h4 a:hover {
   height: 264px;
   margin-bottom: 10px;
 }
-.new-grid .halloween {
-  background-image: url('../img/halloween-banner.jpg');
-  height: 363px;
-  margin-top: 10px;
-}
-.halloween a,
-.halloween a:hover {
-  color: #000;
-}
-.halloblurb {
-  padding: 20px 10px;
-  width: 220px;
-  text-shadow: 0px 0px 0px white;
-}
 .grid-box.camp h2 {
   margin: 0px !important;
 }
@@ -6105,10 +5956,6 @@ article h4 a:hover {
   display: inline-block;
   padding-bottom: 8px;
 }
-.beige {
-  background-color: #f2ebd4;
-  border-top: 1px solid #131515;
-}
 footer {
   padding-top: 40px;
   padding-bottom: 20px;
@@ -6116,73 +5963,6 @@ footer {
 .twtr-widget {
   border: 1px solid #D0D0CE !important;
 }
-.more_faires {
-  background-color: #E8F1F4;
-  border: 1px solid #D0D0CE;
-  padding: 10px;
-  max-height: 373px;
-}
-.more_faires h3 {
-  font-family: "bebas-neue", sans-serif;
-  font-weight: 300;
-  font-size: 32px;
-  color: #67abc6;
-  margin-bottom: 10px;
-}
-.more_faires h4 {
-  font-family: "bebas-neue", sans-serif;
-  font-weight: 300;
-  font-size: 28px;
-  color: #67abc6;
-  margin: 10px 0px;
-}
-.more_faires ul li {
-  font-size: 16px;
-  list-style-image: url('../img/arrow.gif');
-}
-.more_faires ul li a {
-  font-weight: bold;
-  color: #065270;
-}
-footer .pills {
-  margin-left: 100px;
-  margin-top: 20px;
-}
-footer .pills a {
-  color: #5a6479;
-}
-#house_ad {
-  background-image: url('http://cdn.makezine.com/make/ads/make-SIP-house-ad-300-teaser.png');
-  height: 393px;
-  width: 300px;
-}
-.authors {
-  background-color: #3c3c3c;
-  background-image: url('../img/blue_bg.jpg');
-  color: #fff;
-  border-top: 1px solid #515151;
-  border-top: 1px solid #00335D;
-  border-bottom: 1px solid #515151;
-}
-.authors h3 {
-  font-family: museo-slab, serif;
-  text-align: right;
-}
-.authors h4 {
-  margin-top: 9px;
-  margin-left: 60px;
-}
-.authors h5 {
-  margin-left: 60px;
-}
-.authors .span3 img {
-  padding: 5px;
-}
-/*********************
-
-Time for a Dr. Pepper? #jakespurlocktakesthecake
-
-*********************/
 .blue-box {
   /* background: -moz-linear-gradient(top,  rgba(22,157,202,0.65) 0%, rgba(0,0,0,0) 100%); FF3.6+ */
 
@@ -6228,27 +6008,6 @@ Time for a Dr. Pepper? #jakespurlocktakesthecake
 }
 .red:hover {
   color: #7F080D;
-}
-.categories {
-  margin: 20px 0;
-}
-.superpage .sidebar-ad {
-  margin-top: 0px;
-}
-.categories ul {
-  margin-left: 20px;
-}
-.categories ul li {
-  font-size: 18px;
-  font-weight: bold;
-  border-bottom: 1px solid #C5D6D8;
-  padding-bottom: 5px;
-  list-style-type: square;
-  margin-bottom: 5px;
-  color: #cc2229;
-}
-.categories ul li a {
-  color: #cc2229;
 }
 .content {
   background-color: white;
