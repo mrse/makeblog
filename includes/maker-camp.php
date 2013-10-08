@@ -29,7 +29,7 @@
 	function make_mc_load_resources() {
 		if ( is_page_template( 'page-makercamp.php' || is_page_template( 'page-makercamp-map.php' ) ) ) {
 			wp_enqueue_script( 'bootstrap' );
-			wp_enqueue_script( 'maker-camp-js', get_stylesheet_directory_uri() . '/js/maker-camp.min.js', array('jquery'), '1.0', true );
+			wp_enqueue_script( 'maker-camp-js', get_stylesheet_directory_uri() . '/js/maker-camp.js', array('jquery'), '1.0', true );
 		}
 	}
 	add_action( 'wp_enqueue_scripts', 'make_mc_load_resources' );

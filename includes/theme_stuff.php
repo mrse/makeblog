@@ -235,7 +235,7 @@ function make_enqueue_jquery() {
 
 	// Load our common scripts first. These should not require jQuery
 	wp_enqueue_script( 'make-typekit', 'http://use.typekit.com/fzm8sgx.js', array() );
-	wp_enqueue_script( 'make-common', get_stylesheet_directory_uri() . '/js/common.min.js', array( 'make-typekit' ) );
+	wp_enqueue_script( 'make-common', get_stylesheet_directory_uri() . '/js/common.js', array( 'make-typekit' ) );
 
 	// Load optimizely A/B testing script
 	if ( is_front_page() || is_post_type_archive('projects') ) {
@@ -244,9 +244,9 @@ function make_enqueue_jquery() {
 
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'make-bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.min.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'make-header', get_stylesheet_directory_uri() . '/js/header.min.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'make-oembed', get_stylesheet_directory_uri() . '/js/jquery.oembed.min.js', array( 'jquery' ) );
+	wp_enqueue_script( 'make-projects', get_stylesheet_directory_uri() . '/js/projects.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'make-header', get_stylesheet_directory_uri() . '/js/header.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'make-oembed', get_stylesheet_directory_uri() . '/js/jquery.oembed.js', array( 'jquery' ) );
 	
 	// display our map sort plugin for Maker Camp
 	if ( is_page( 315793 ) )
@@ -272,7 +272,7 @@ function make_enqueue_resources_admin() {
 
 	// Run this code when we are in the magazine edit screen
 	if ( $screen->id == 'magazine' ) {
-		wp_enqueue_script( 'make-hide-publish-btn', get_stylesheet_directory_uri() . '/js/jquery.hide-publish-btn.min.js', array( 'jquery' ), '1.0', true );
+		wp_enqueue_script( 'make-hide-publish-btn', get_stylesheet_directory_uri() . '/js/jquery.hide-publish-btn.js', array( 'jquery' ), '1.0', true );
 	}
 
 }

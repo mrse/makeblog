@@ -8,7 +8,7 @@
 
 	function makeblog_jQuery_form_valid() {
 
-		wp_enqueue_script( 'make-home', get_template_directory_uri() . '/js/home.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'make-home', get_template_directory_uri() . '/js/home.js', array( 'jquery' ) );
 		wp_localize_script( 'make-home', 'MakeAjax', array( 
 			'makeajaxurl' => home_url( '/wp-admin/admin-ajax.php' )
 		) );
