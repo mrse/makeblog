@@ -785,10 +785,20 @@ add_shortcode( 'make_post_loop', 'maker_short_post_loop' );
 
 
 /**
- * Display a custom feed by 
- * @param  [type] $atts    [description]
- * @param  [type] $content [description]
- * @return [type]          [description]
+ * Display a custom feed by post type and filter by cat or tag. Also provides the ability to select any of our custom layouts
+ * @param  array $atts    Contains all the shortcode options
+ *                        string/array  $type         A single post type or a list of them comma separated. Each post type will be sanitized/escaped and then matched in make_convert_sanitize_string_to_array().
+ *                        int 			$count        The number of posts to return per page. A max of 40 is set. Any higher and the default is used instead.
+ *                        string/array  $category     A single cat or a list of them comma separated. Each category will be sanitized/escaped using make_convert_sanitize_string_to_array().
+ *                        string/array  $tag          A single tag or a list of them comma separated. Each tag will be sanitized/escaped using make_convert_sanitize_string_to_array().
+ *                        string/array  $exclude_cat  A single or list of categories we DO NOT want to show in the feed. Each category will be sanitized/escaped using make_convert_sanitize_string_to_array().
+ *                        string/array  $exclude_tag  A single or list of tags we DO NOT want to show in the feed. Each tag will be sanitized/escaped using make_convert_sanitize_string_to_array().
+ *                        string 		$design  	  The ability to say which feed design we want to display. Value must match the $design_defaults array or else a default is used instead.
+ *                        string 		$layout  	  The ability to say which layout we want to display. Value must match the $layout_defaults array or else a default is used instead.
+ * @param  string $content Contains the WP content if wrapped. 
+ * @return mixed
+ *
+ * @since  Autobots
  */
 function make_get_custom_feed( $atts, $content = null ) {
 	extract( shortcode_atts( array(
@@ -805,8 +815,12 @@ function make_get_custom_feed( $atts, $content = null ) {
 	if ( empty( $type ) || empty( $count ) )
 		return;
 
+	// Create some variables
 	$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$post_types = array( 'post', 'projects', 'video', 'magazine', 'craft', 'review', 'newsletter' );
+	$design_defaults = array( 'standard', 'standard-no-meta', 'simple', 'simple-title-top' );
+	$layout_defaults = array( 'full-width', 'col-2' );
+
 	$args = array(
 		'post_type' => make_convert_sanitize_string_to_array( $type, ',', $post_types ),
 		'posts_per_page' => ( absint( $count ) && $count <= 40 ) ? $count : 10,
@@ -818,8 +832,6 @@ function make_get_custom_feed( $atts, $content = null ) {
 	);
 	$query = new WP_Query( $args );
 
-	$design_defaults = array( 'standard', 'standard-no-meta', 'simple', 'simple-title-top' );
-	$layout_defaults = array( 'full-width', 'col-2' );
 	$output = '';
 	$count = 1;
 
@@ -833,7 +845,7 @@ function make_get_custom_feed( $atts, $content = null ) {
 			$layout = 'full-width';
 
 		$pos = ( $count % 2 == 0 ) ? 'even' : 'odd';
-		$output .= '<div class="' . implode( ' ', get_post_class( 'custom-feed ' . esc_attr( $design ) . ' ' . esc_attr( $layout ) . ' ' . $pos ) ) . '">';
+		$output .= '<div class="' . implode( ' ', get_post_class( 'custom-feed ' . esc_attr( $design ) . ' ' . esc_attr( $layout ) . ' ' . esc_attr( $pos ) ) ) . '">';
 
 			if ( $design == 'simple' ) {
 				$has_image = '';
@@ -843,7 +855,7 @@ function make_get_custom_feed( $atts, $content = null ) {
 					$output .= '<a href="' . get_permalink() . '" class="feed-thumb"><img src="' . wpcom_vip_get_resized_remote_image_url( $image_url, 268, 167 ) .'" alt="' . get_the_title() . '" /></a>';
 				}
 
-				$output .= '<a href="' . get_permalink() . '" class="feed-title ' . $has_image . '">' . get_the_title() . '</a>';
+				$output .= '<h2 class="feed-title"><a href="' . get_permalink() . '" class="' . esc_attr( $has_image ) . '">' . get_the_title() . '</a></h2>';
 			}
 
 		$output .= '</div>';
@@ -852,7 +864,7 @@ function make_get_custom_feed( $atts, $content = null ) {
 	endwhile;
 		$output .= '</div>';
 		$output .= '<div class="alignleft">' . get_previous_posts_link( 'PREVIOUS POSTS' ) . '</div>';
-		$output .= '<div class="alignright">' . get_next_posts_link( 'NEWEST POSTS', $query->max_num_pages ) . '</div>';
+		$output .= '<div class="alignright">' . get_next_posts_link( 'NEWEST POSTS', absint( $query->max_num_pages ) ) . '</div>';
 		wp_reset_postdata();
 	else :
 		$output .= '<p>No posts found</p>';

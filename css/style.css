@@ -8630,6 +8630,7 @@ textarea.narrow,
 .custom-feed.simple .feed-title {
   font-size: 16px;
   font-weight: bold;
+  line-height: 20px;
   color: #005d8f;
   display: block;
 }
