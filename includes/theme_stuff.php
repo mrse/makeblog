@@ -887,9 +887,10 @@ function make_cat_change() {
 /**
  * Takes popular tags, and renames them.
  */
-function make_get_better_tag_title() {
-
-	$title = single_cat_title('', false);
+function make_get_better_tag_title( $title = null ) {
+	if ( $title == null ) {
+		$title = single_cat_title('', false);	
+	}
 	$machine = array(
 		'robotskills', 
 		'castmat', 
@@ -944,6 +945,7 @@ function make_get_better_tag_title() {
 		'Glass',
 		'Radio Shack\'s The Great Create'
 		);
+
 	$newtag = str_replace($machine, $human, $title);
 	return $newtag;
 
