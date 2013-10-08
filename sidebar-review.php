@@ -50,16 +50,6 @@
 
 								</div>
 								
-						<?php } else { ?>
-						
-						<div class="categories">
-
-							<ul class="categories">
-								<?php echo make_category_li( 'post' ); ?>
-							</ul>
-
-						</div>
-						
 						<?php } ?>
 
 						<div class="new-dotw">
