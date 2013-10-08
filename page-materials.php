@@ -51,7 +51,8 @@ make_get_header() ?>
 									$args = array(
 										'tag'				=> $term->slug,
 										'posts_per_page'	=> 30,
-										'no_found_rows'		=> true
+										'no_found_rows'		=> true,
+										'post_type'			=> array('post', 'review', 'craft', 'projects', 'video' ),
 										);
 									$my_query = new WP_Query( $args );
 									wp_cache_set( 'page-materials-query-advancedmaterials', $my_query, '', 43200  );
