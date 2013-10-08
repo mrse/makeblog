@@ -33,61 +33,52 @@ make_get_header() ?>
 				<div class="span8">
 				
 					<article <?php post_class(); ?>>
-						
-						<div class="row">
 
-							<div class="span8">
+						<h3 class="red">Kids &amp; Family on the Blog</h3>	
 
-								<h3 class="red">Kids &amp; Family on the Blog</h3>	
+						<div class="top">
 
-								<div class="top">
+							<div class="row">
 
-									<div class="row">
+								<div class="span8">
 
-										<div class="span8">
+									<?php $the_query = new WP_Query( 'cat=129975&posts_per_page=6' ); ?>
 
-											<?php $the_query = new WP_Query( 'cat=129975&posts_per_page=6' ); ?>
+									<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
-											<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-						
-											<article <?php post_class('row'); ?>>
-												
-												<div class="span2 blurb-thumbnail">
+									<article <?php post_class('row'); ?>>
+										
+										<div class="span2 blurb-thumbnail">
 
-													<?php the_post_thumbnail( 'new-thumb' ); ?>
-
-												</div>
-
-												<div class="span6 blurb-blurb">
-
-													<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-													
-													<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
-
-													<p class="meta">By <?php the_author_posts_link(); ?>, <?php the_date(); ?> @ <?php the_time(); ?></p>
-												
-												</div>
-											
-											</article>
-
-											<hr />
-
-											<?php endwhile; wp_reset_postdata(); ?>
-
-											<p><a href="<?php echo home_url(); ?>/category/kids/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
+											<?php the_post_thumbnail( 'new-thumb' ); ?>
 
 										</div>
 
-									</div>
+										<div class="span6 blurb-blurb">
+
+											<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+											
+											<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
+
+											<p class="meta">By <?php the_author_posts_link(); ?>, <?php the_date(); ?> @ <?php the_time(); ?></p>
+										
+										</div>
+									
+									</article>
+
+									<hr />
+
+									<?php endwhile; wp_reset_postdata(); ?>
+
+									<p><a href="<?php echo home_url(); ?>/category/kids/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
 
 								</div>
 
-								<?php the_content(); ?>
-
 							</div>
 
-
 						</div>
+
+						<?php the_content(); ?>
 					
 					</article>
 					
