@@ -783,3 +783,82 @@ function maker_short_post_loop( $args ) {
 
 add_shortcode( 'make_post_loop', 'maker_short_post_loop' );
 
+
+/**
+ * Display a custom feed by 
+ * @param  [type] $atts    [description]
+ * @param  [type] $content [description]
+ * @return [type]          [description]
+ */
+function make_get_custom_feed( $atts, $content = null ) {
+	extract( shortcode_atts( array(
+		'type' => 'post',
+		'count' => 10,
+		'category' => '',
+		'tag' => '',
+		'exclude_cat' => '',
+		'exclude_tag' => '',
+		'design' => 'standard',
+		'layout' => 'full-width',
+	), $atts ) );
+
+	if ( empty( $type ) || empty( $count ) )
+		return;
+
+	$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	$post_types = array( 'post', 'projects', 'video', 'magazine', 'craft', 'review', 'newsletter' );
+	$args = array(
+		'post_type' => make_convert_sanitize_string_to_array( $type, ',', $post_types ),
+		'posts_per_page' => ( absint( $count ) && $count <= 40 ) ? $count : 10,
+		'paged' => absint( $paged ),
+		'category_name' => make_convert_sanitize_string_to_array( $category, ',' ),
+		'category__not_in' => make_convert_sanitize_string_to_array( $exclude_cat, ',' ),
+		'tag' => make_convert_sanitize_string_to_array( $tag, ',' ),
+		'tag__not_in' => make_convert_sanitize_string_to_array( $exclude_tag, ',' ),
+	);
+	$query = new WP_Query( $args );
+
+	$design_defaults = array( 'standard', 'standard-no-meta', 'simple', 'simple-title-top' );
+	$layout_defaults = array( 'full-width', 'col-2' );
+	$output = '';
+	$count = 1;
+
+	$output .= '<div class="feed-wrapper">';
+	if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+
+		if ( ! in_array( $design, $design_defaults ) )
+			$design = 'standard';
+
+		if ( ! in_array( $layout, $layout_defaults ) )
+			$layout = 'full-width';
+
+		$pos = ( $count % 2 == 0 ) ? 'even' : 'odd';
+		$output .= '<div class="' . implode( ' ', get_post_class( 'custom-feed ' . esc_attr( $design ) . ' ' . esc_attr( $layout ) . ' ' . $pos ) ) . '">';
+
+			if ( $design == 'simple' ) {
+				$has_image = '';
+				$image_url = wp_get_attachment_url( get_post_thumbnail_id() );
+				if ( ! empty( $image_url ) ) {
+					$has_image = 'has-image';
+					$output .= '<a href="' . get_permalink() . '" class="feed-thumb"><img src="' . wpcom_vip_get_resized_remote_image_url( $image_url, 268, 167 ) .'" alt="' . get_the_title() . '" /></a>';
+				}
+
+				$output .= '<a href="' . get_permalink() . '" class="feed-title ' . $has_image . '">' . get_the_title() . '</a>';
+			}
+
+		$output .= '</div>';
+
+		$count++;
+	endwhile;
+		$output .= '</div>';
+		$output .= '<div class="alignleft">' . get_previous_posts_link( 'PREVIOUS POSTS' ) . '</div>';
+		$output .= '<div class="alignright">' . get_next_posts_link( 'NEWEST POSTS', $query->max_num_pages ) . '</div>';
+		wp_reset_postdata();
+	else :
+		$output .= '<p>No posts found</p>';
+		$output .= '</div>';
+	endif;
+
+	return $output;
+}
+add_shortcode( 'custom-feed', 'make_get_custom_feed' );
