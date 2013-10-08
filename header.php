@@ -59,7 +59,11 @@
 				<div class="container">
 					<div class="row">
 						<div class="logo span2">
-							<a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png" /></a>
+							<?php if ( is_home() ) : ?>
+								<h1><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png" /></a></h1>
+							<?php else : ?>
+								<h2><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png" /></a></h2>
+							<?php endif; ?>
 						</div>
 						<nav role="navigation" class="span10 site-navigation primary-navigation">
 							<?php
