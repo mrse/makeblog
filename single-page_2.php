@@ -63,15 +63,15 @@ make_get_header() ?>
 					
 					</article>
 
-					<div class="postmeta">
+					<div class="media">
 
-						<div class="span-thumb thumbnail">
+						<div class="media-object pull-left">
 						
 							<?php echo get_avatar( $email, $size ); ?>
 						
 						</div>
 						
-						<div class="span-well well">
+						<div class="media-body well">
 						
 							<p>Posted by: <a href="<?php echo esc_url( $url[0] ); ?>"><?php echo esc_html( $name[0] ); ?></a> | <a href="<?php the_permalink(); ?>"><?php the_time('l F jS, Y g:i A'); ?></a></p>
 							<?php 
