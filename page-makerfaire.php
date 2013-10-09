@@ -53,7 +53,7 @@ make_get_header() ?>
 												$image_url = wp_get_attachment_url( get_post_thumbnail_id() );
 												if ( ! empty( $image_url ) ) {
 													$has_image = 'has-image';
-													$output .= '<a href="' . get_permalink() . '" class="feed-thumb"><img src="' . wpcom_vip_get_resized_remote_image_url( esc_url( $image_url ), 268, 167 ) .'" alt="' . get_the_title() . '" /></a>';
+													$output .= '<a href="' . get_permalink() . '" class="feed-thumb"><img src="' . wpcom_vip_get_resized_remote_image_url( esc_url( $image_url ), 268, 167 ) .'" alt="' . esc_attr( get_the_title() ) . '" /></a>';
 												}
 
 												$output .= '<h2 class="feed-title"><a href="' . get_permalink() . '" class="' . esc_attr( $has_image ) . '">' . get_the_title() . '</a></h2>';
