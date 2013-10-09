@@ -190,7 +190,7 @@ function make_child_category_list() {
 	$count = count($categories);
 	$i = 0;
 	foreach ($categories as $category) {
-		echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->cat_name . '</a></li>';
+		echo '<li><h2 class="no_h2_styles"><a href="' . get_category_link( $category->term_id ) . '">' . $category->cat_name . '</a></h2></li>';
 		if(++$i != $count) {
 			echo '<li>&bull;</li>';	
 		}

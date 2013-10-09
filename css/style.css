@@ -5777,6 +5777,72 @@ ul.inline.urban-sensor-nav li a:hover {
   background-image: url('../img/header_bg.jpg');
   margin: 15px 0 0;
 }
+.look_like_h4 a {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+  height: 120px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 5px;
+  width: 274px;
+  display: block;
+  height: 90px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.look_like_h4 a .blurb {
+  font-weight: 400;
+  color: #333;
+}
+.look_like_h4_cat {
+  font-family: "proxima-nova", sans-serif !important;
+  color: #022c44 !important;
+  font-weight: normal !important;
+  font-size: 24px !important;
+  margin: 0 0 5px 0;
+  height: 36px;
+  line-height: 18px;
+  cursor: text;
+}
+.look_like_h3_blue {
+  font-family: museo-slab, serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 900;
+  height: 24px;
+  line-height: 24px;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 290px;
+}
+.look_like_h3_blue a {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 900;
+  height: auto;
+  line-height: 24px;
+  text-decoration: none;
+  font-family: museo-slab, serif;
+}
+.look_like_h3 a {
+  font-size: 16px;
+  font-weight: normal;
+  height: auto;
+  text-transform: uppercase;
+  line-height: 24px;
+  text-decoration: none;
+  font-family: proxima-nova, sans-serif;
+}
+.look_like_h3_heading a {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 900;
+  height: auto;
+  line-height: 24px;
+  text-decoration: none;
+  font-family: museo-slab, serif;
+}
 .checkers img {
   border: 1px solid #c3c5c5;
 }
@@ -8708,6 +8774,11 @@ textarea.narrow,
   color: #005d8f;
   font-weight: bold;
 }
+.category-top .no_h2_styles {
+  font-size: 18px;
+  display: inline;
+  line-height: 25px;
+}
 .grey {
   padding: 20px 0;
   background-color: #f3f3f3;
@@ -9593,6 +9664,11 @@ body .single .subs li {
 body .single .subs li a {
   color: #005d8f;
   font-weight: bold;
+}
+body .single .no_h2_styles {
+  font-size: 18px;
+  display: inline;
+  line-height: 25px;
 }
 body .single .post ul li,
 body .single .post ol li {
@@ -11694,6 +11770,11 @@ body.makercamp a.button.small-button {
 .archive .subs li a {
   color: #005d8f;
   font-weight: bold;
+}
+.archive .no_h2_styles {
+  font-size: 18px;
+  display: inline;
+  line-height: 25px;
 }
 .archive .content ul li {
   font-size: 16px;

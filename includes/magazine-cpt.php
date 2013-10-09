@@ -148,7 +148,7 @@ function make_post_loop( $args ) {
 
 	// Need a way to filter out the title if there are no results in the query.
 	if($post->post_parent == 0 && !empty($the_query->posts) ) {
-		echo '<h4 class="heading">'. esc_html( $args['title']  ) .'</h4>';
+		echo '<h3 class="heading look_like_h4_cat">'. esc_html( $args['title']  ) .'</h3>';
 		
 	}
 

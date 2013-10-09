@@ -275,7 +275,7 @@ function make_carousel( $args, $title_link = true ) {
 
 	<div class="row-fluid">
 		<div class="span10">
-			<h3 class="heading">
+			<h2 class="look_like_h3">
 				<?php
 					$output = '';
 					if ( isset( $args['difficulty'] ) ) {
