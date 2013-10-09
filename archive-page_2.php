@@ -15,7 +15,7 @@ make_get_header() ?>
 
 			<div class="row">
 
-				<div class="span8 add30">
+				<div class="span8">
 					
 					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				
@@ -29,9 +29,7 @@ make_get_header() ?>
 					
 					<article <?php post_class(); ?>>
 
-						<div class="projects-masthead">
-							<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-						</div>
+						<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 						
 						<ul class="projects-meta">
 							<li>By <a href="<?php echo esc_url( $url[0] ); ?>"><?php echo esc_html( $name[0] ); ?></a></li>

@@ -15,25 +15,22 @@ make_get_header() ?>
 
 			<div class="row">
 
-				<div class="span8 add30">
+				<div class="span8">
 					
 					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-				
-					<div class="projects-masthead">
-						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						
-					</div>
-					
-					<ul class="projects-meta">
-						<?php if ( make_get_author( $post->ID ) ) : ?>
-							<?php make_get_author( $post->ID ); ?>
-						<?php endif ?>
-						<li>Posted <span class="blue"><?php the_time('m/d/Y \@ g:i a'); ?></span></li>
-						<li>Category <?php the_category(', '); ?></li>
-						<li>Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a></li>
-					</ul>
-				
+
 					<article <?php post_class(); ?>>
+				
+						<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+						
+						<ul class="projects-meta">
+							<?php if ( make_get_author( $post->ID ) ) : ?>
+								<?php make_get_author( $post->ID ); ?>
+							<?php endif ?>
+							<li>Posted <span class="blue"><?php the_time('m/d/Y \@ g:i a'); ?></span></li>
+							<li>Category <?php the_category(', '); ?></li>
+							<li>Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a></li>
+						</ul>
 						
 						<div class="media">
 							

@@ -8783,8 +8783,13 @@ body .single .subs li a {
   color: #005d8f;
   font-weight: bold;
 }
-body .single .post ul li,
-body .single .post ol li {
+body .single article h1 {
+  line-height: 100%;
+  margin-bottom: 0px;
+  font-size: 36px;
+}
+body .single article ul li,
+body .single article ol li {
   font-size: 18px;
 }
 body .single .tag-weekend-projects {
