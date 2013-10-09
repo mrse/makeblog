@@ -545,7 +545,7 @@ function make_projects_steps( $steps, $print = false ) {
 				echo '<span class="row smalls" style="display:block">';
 				foreach ($images as $image) {
 					echo '<span class="span2">';
-					echo ( !empty($image->text ) ) ? '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image->text ), 140, 80 ) . '" data-loc="js-step-' . esc_attr( $step->number ) . '" data-src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image->text ), 620, 465 )  . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="thumbs ' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />' : null ;
+					echo ( !empty($image->text ) ) ? '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image->text ), 140, 110 ) . '" data-loc="js-step-' . esc_attr( $step->number ) . '" data-src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image->text ), 620, 465 )  . '" alt="' . esc_attr( the_title('', '', false ) ) . '" class="thumbs ' . esc_attr( $image->imageid ) . ' ' . esc_attr( $image->orderby ) .'" />' : null ;
 					echo '</span>';
 				}
 				echo '</span><!--.row-->';

@@ -15,7 +15,12 @@
 		<meta charset="utf-8">
 		<title><?php echo make_generate_title_tag(); ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
+		<meta name="description" content="<?php if ( is_single() ) {
+				echo wp_trim_words( strip_shortcodes( htmlspecialchars( $post->post_content ) ), 20 );
+			} else {
+				bloginfo('name'); echo " - "; bloginfo('description');
+			}
+			?>" />
 		<meta name="author" content="">
 	
 		<!-- Le styles -->
@@ -28,7 +33,7 @@
 		
 		<?php wp_head( 'makercamp' ); ?>
 
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/less/css/responsive.css">
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/responsive.css">
 
 	</head>
 	<body <?php body_class( 'makercamp' ); ?>>
@@ -57,7 +62,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</a>
-						<a class="brand" href="http://makezine.com/maker-camp">Menu</a>
+						<a class="brand" href="<?php echo home_url( '/maker-camp' ); ?>">Menu</a>
 						<div class="nav-collapse in collapse">
 							<?php
 								// all Navigational items are controlled in Appearance > Menus : Maker Camp Nav

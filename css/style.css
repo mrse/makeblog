@@ -1,12 +1,3 @@
-/*!
- * Bootstrap v2.3.1
- *
- * Copyright 2012 Twitter, Inc
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Designed and built with all the love in the world @twitter by @mdo and @fat.
- */
 .clearfix {
   *zoom: 1;
 }
@@ -5550,9 +5541,6 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
-.navbar-inverse .navbar-search .search-query {
-  width: 126px !important;
-}
 .gsc-cursor .gsc-cursor-current-page {
   background-color: #005d8f;
 }
@@ -5560,8 +5548,6 @@ a:hover {
   text-decoration: none !important;
 }
 body {
-  /* background-image: url('../img/sand.png'); */
-
   margin-top: 0;
   overflow-wrap: break-word;
   padding-top: 0 !important;
@@ -5569,21 +5555,12 @@ body {
 body.single-slideshow {
   margin-top: 0px;
   margin-bottom: 0px;
-  /*background-image: url('../img/arduino.jpg');
-	background-attachment: fixed;
-	background-position: top center;
-	background-repeat: no-repeat;*/
-
 }
 body.single-slideshow #wpadminbar {
   display: none;
 }
 body.search .well {
   margin-bottom: 0 !important;
-}
-body.category {
-  background-image: none;
-  background-color: #fff;
 }
 h1,
 h2,
@@ -5627,127 +5604,6 @@ ul.inline.urban-sensor-nav li a {
 ul.inline.urban-sensor-nav li a:hover {
   background: #E4F4F9;
   color: #ed1c24 !important;
-}
-#header {
-  background-image: url('../img/header_bg.jpg');
-  border-bottom: 1px solid #797575;
-  padding-top: 0px;
-  padding-top: 10px;
-}
-#header h1 {
-  margin: 0px;
-  margin-top: 10px;
-}
-.admin-bardebug-bar-maximized #header,
-.admin-bar #header {
-  background-image: url('../img/header_bg.jpg');
-  border-bottom: 1px solid #797575;
-  padding-top: 20px;
-}
-.topad {
-  width: 728px;
-  height: 90px;
-  z-index: 999;
-  float: left;
-  position: relative;
-}
-.bar form {
-  margin: 0px;
-  float: left;
-}
-.navbar-inner h5 {
-  display: inline-block;
-  color: white;
-  font-size: 12px;
-  margin-top: 5px;
-  margin-left: 10px;
-  text-transform: uppercase;
-}
-.bar ul {
-  display: inline;
-  margin-left: 0px;
-}
-.bar ul li {
-  display: inline;
-  font-weight: bold;
-}
-.bar ul li a {
-  color: #9cdafb;
-}
-.navi {
-  margin: 0px;
-  font-family: sans-serif;
-  font-weight: 400;
-  margin-left: 260px;
-  margin-top: 10px;
-}
-.navi li {
-  display: inline-block;
-  height: 40px;
-  margin-top: 47px;
-  font-size: 24px;
-  padding: 5px 3px;
-  margin-bottom: -21px;
-  cursor: pointer;
-  text-align: left;
-  line-height: 21px;
-  margin-right: 0px;
-  letter-spacing: -1px;
-}
-.navi li a {
-  color: #6b6e74;
-}
-.navi .active a {
-  color: #333 !important;
-}
-.navi li a:hover {
-  text-decoration: none;
-}
-.sub-nav {
-  display: none;
-}
-.sub-nav.active {
-  display: block;
-  border: 0px;
-  background-color: transparent;
-}
-#header h1 {
-  float: left;
-}
-.header-bottom {
-  background-color: #F0F0F0;
-  height: 38px;
-  border-bottom: 1px solid #333;
-}
-.header-bottom h5 {
-  float: left;
-  height: 20px;
-  font-size: 16px;
-  padding: 0px 10px 0px 5px;
-  font-family: sans-serif;
-  font-weight: bold;
-  margin-top: 10px;
-}
-.header-bottom ul {
-  margin: 0px;
-}
-.header-bottom ul li {
-  display: inline-block;
-  height: 20px;
-  font-size: 14px;
-  padding: 0px 0px 0px 5px;
-  font-family: sans-serif;
-  font-weight: bold;
-  margin-top: 10px;
-}
-.header-bottom ul li:last-child {
-  border: 0px;
-}
-.header-bottom ul li a {
-  color: #404040;
-}
-.header-bottom ul li a:hover {
-  text-decoration: none;
 }
 .waist {
   background-image: url('../img/blue_bg1.jpg');
@@ -5880,8 +5736,6 @@ ul.inline.urban-sensor-nav li a:hover {
   background-image: url('../img/sand.png');
 }
 .sand {
-  /* background-image:url('../img/sand.png'); */
-
   text-shadow: 0px 1px 0px white;
 }
 .sand h3 {
@@ -5955,9 +5809,6 @@ article h4 a:hover {
 .posts {
   background-image: url('../img/shadow1.png');
   background-repeat: no-repeat;
-  /*background-position-x:286px;
-	background-position-y:50px;*/
-
 }
 .posts article {
   margin-bottom: 20px;
@@ -6076,20 +5927,6 @@ article h4 a:hover {
   height: 264px;
   margin-bottom: 10px;
 }
-.new-grid .halloween {
-  background-image: url('../img/halloween-banner.jpg');
-  height: 363px;
-  margin-top: 10px;
-}
-.halloween a,
-.halloween a:hover {
-  color: #000;
-}
-.halloblurb {
-  padding: 20px 10px;
-  width: 220px;
-  text-shadow: 0px 0px 0px white;
-}
 .grid-box.camp h2 {
   margin: 0px !important;
 }
@@ -6171,10 +6008,6 @@ article h4 a:hover {
   display: inline-block;
   padding-bottom: 8px;
 }
-.beige {
-  background-color: #f2ebd4;
-  border-top: 1px solid #131515;
-}
 footer {
   padding-top: 40px;
   padding-bottom: 20px;
@@ -6244,26 +6077,7 @@ footer .pills a {
 .authors .span3 img {
   padding: 5px;
 }
-/*********************
-
-Time for a Dr. Pepper? #jakespurlocktakesthecake
-
-*********************/
 .blue-box {
-  /* background: -moz-linear-gradient(top,  rgba(22,157,202,0.65) 0%, rgba(0,0,0,0) 100%); FF3.6+ */
-
-  /* background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(22,157,202,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-
-  /* background: -webkit-linear-gradient(top,  rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
-
-  /* background: -o-linear-gradient(top,  rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
-
-  /* background: -ms-linear-gradient(top,  rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
-
-  /* background: linear-gradient(top,  rgba(22,157,202,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
-
-  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6169dca', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
-
   background-image: url('../img/blue-grad.png');
   background-repeat: repeat-x;
   margin-top: 10px;
@@ -6295,38 +6109,12 @@ Time for a Dr. Pepper? #jakespurlocktakesthecake
 .red:hover {
   color: #7F080D;
 }
-.categories {
-  margin: 20px 0;
-}
-.superpage .sidebar-ad {
-  margin-top: 0px;
-}
-.categories ul {
-  margin-left: 20px;
-}
-.categories ul li {
-  font-size: 18px;
-  font-weight: bold;
-  border-bottom: 1px solid #C5D6D8;
-  padding-bottom: 5px;
-  list-style-type: square;
-  margin-bottom: 5px;
-  color: #cc2229;
-}
-.categories ul li a {
-  color: #cc2229;
-}
 .content {
   background-color: white;
   padding: 10px;
   margin-top: 20px;
   background-image: url('../img/header_bg.jpg');
   border: 1px solid #C0C3C3;
-}
-.categories {
-  color: #047b99;
-  font-size: 18px;
-  line-height: 14px;
 }
 .content h1 {
   border-bottom: 1px solid #074F6D;
@@ -6360,7 +6148,6 @@ Time for a Dr. Pepper? #jakespurlocktakesthecake
   font-weight: bold;
   color: #023a48;
 }
-/* Alignment */
 .alignleft {
   display: inline;
   float: left;
@@ -6381,8 +6168,6 @@ Time for a Dr. Pepper? #jakespurlocktakesthecake
   margin-top: 25px;
   min-height: 20px;
 }
-/* =Comments
------------------------------------------------ */
 #comments-title {
   color: #666;
   font-size: 10px;
@@ -6408,8 +6193,6 @@ Time for a Dr. Pepper? #jakespurlocktakesthecake
 .content .commentlist,
 .page-template-sidebar-page-php .commentlist {
   width: 100%;
-  /* reset the width for the one-column and sidebar page layout */
-
 }
 .commentlist > li.comment {
   background: #f6f6f6;
@@ -6454,8 +6237,6 @@ Time for a Dr. Pepper? #jakespurlocktakesthecake
 }
 .commentlist .children li.comment .comment-content {
   margin: 1.625em 0 0;
-  /* overflow: scroll; */
-
 }
 .comment-meta a {
   font-weight: bold;
@@ -6509,7 +6290,6 @@ a.comment-reply-link > span {
   position: relative;
   top: -1px;
 }
-/* Post author highlighting */
 .commentlist > li.bypostauthor {
   background: #ddd;
   border-color: #d3d3d3;
@@ -6520,34 +6300,28 @@ a.comment-reply-link > span {
 .commentlist > li.bypostauthor:before {
   content: url('../img/comment-arrow-bypostauthor.png');
 }
-/* Post Author threaded comments */
 .commentlist .children > li.bypostauthor {
   background: #ddd;
   border-color: #d3d3d3;
 }
-/*Ideas for author templates... */
 .comment-author-whyisjake,
 .comment-author-jspurlock {
-  background-image: url('../img/sand.png') !important;
+  background-image: url('http://subtlepatterns.com/patterns/geometry.png') !important;
 }
 .commentlist > li.comment-author-whyisjake:before,
 .commentlist > li.comment-author-jspurlock:before {
-  content: url(../img/comment-arrow-blank.png);
+  content: url('../img/comment-arrow-blank.png');
   left: -21px;
   position: absolute;
 }
-/* sidebar-page.php comments */
-/* Make sure we have room for our comment avatars */
 .page-template-sidebar-page-php .commentlist > li.comment,
 .page-template-sidebar-page-php.commentlist .pingback {
   margin-left: 102px;
   width: auto;
 }
-/* And a full-width comment form */
 .page-template-sidebar-page-php #respond {
   width: auto;
 }
-/* Comment Form */
 #respond {
   background: #ddd;
   border: 1px solid #d3d3d3;
@@ -6705,27 +6479,9 @@ p.comment-form-comment {
   float: left;
   width: 450px;
 }
-.big-nav {
-  margin: 0px;
-  border-bottom: 2px dotted #045876;
-  padding: 10px 0;
-}
-.big-nav li {
-  display: inline;
-  font-size: 18px;
-  margin-right: 12px;
-  text-transform: uppercase;
-}
-.big-nav li a {
-  color: #045876;
-  font-weight: bold;
-}
-.big-nav li a:active {
-  color: #ed1c24;
-}
 .cat {
   border: 1px solid #BCD7DF;
-  margin: 10px 0;
+  margin: 0 0 20px;
   background: -ms-linear-gradient(top, #fafcfd 0%, #eeeff0 100%);
   background: -moz-linear-gradient(top, #fafcfd 0%, #eeeff0 100%);
   background: -o-linear-gradient(top, #fafcfd 0%, #eeeff0 100%);
@@ -6734,245 +6490,6 @@ p.comment-form-comment {
   background: linear-gradient(top, #fafcfd 0%, #eeeff0 100%);
   padding: 10px;
 }
-/* Of note, all of these will be background-position:top right; 
-
-.cat-robotskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-robots.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-.cat-electronskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-electronics.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-.cat-woodskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-woodworking.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-.cat-machine  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-machining-1.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-.cat-metalskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-metalworking.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-.cat-foodskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-food-1.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-.cat-bikeshop  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-bikes-1.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-.cat-plasticskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-plastics.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-hobby {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-hobby.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-photoskills {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-photography.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-mechanicskills  {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/sb-machining-2.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-/*
-Remaining Skill Builders
-
-
-
-
-
-.cat-print {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/desktop-man.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-computer {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/computer-mobile.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-electronics {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/electronics-1.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-flight {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/flight.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-kids {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/kids.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-makers {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/makers.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-arduino {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/microcontrollers.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-robots {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/robots.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-science {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/science.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-shop {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/shop-craft.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-tools {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/workshop.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-vehicles {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/vehicles.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-toys {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/rockets.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-imaging {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/imaging.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-recreation {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/recreation.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-home {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/home-garden.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-energy {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/energy.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}
-
-.cat-events {
-	background-image:url('http://makezineblog.files.wordpress.com/2012/07/events.png');
-	background-repeat:no-repeat;
-	background-position:top right;
-	margin-bottom:-10px;
-	padding-bottom:10px;
-}*/
-/*
-Remaining Topics
-.cat-art 
-.cat-green 
-.cat-crafts 
-*/
 .cat a {
   color: #045876;
 }
@@ -7009,11 +6526,6 @@ Remaining Topics
 }
 .uppercase {
   text-transform: uppercase;
-  font-size: 14px;
-}
-.category-title img {
-  /* margin-top: -16px; */
-
 }
 .cat-title {
   font-size: 16px;
@@ -7133,43 +6645,9 @@ hr {
   margin: 10px 0;
   text-align: center;
 }
-.superpage .container {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-.padtitle {
-  padding: 0px 0px 0px 10px;
-}
 .center {
   text-align: center;
   padding: 10px 0;
-}
-/* h4.left {
-	text-align:left !important;
-} */
-/*div.left {
-	width:130px;
-	float:left;
-	margin-right:20px;
-	margin-left:5px;
-}*/
-/* span.right {
-	margin-right:20px;
-} */
-/*div.right {
-	width:130px;
-	float:left;
-}*/
-/* div.left h4, div.right h4 {
-	margin:10px 0 0;
-	height:42px;
-} */
-/* .page-template-page-kids-php div.left h4, div.right h4 {
-	margin:20px 0 0;
-	height:20px;
-} */
-.superpage article .row {
-  margin-left: -20px;
 }
 .small-posts {
   margin: 20px 0;
@@ -7180,46 +6658,6 @@ hr {
 .link {
   text-align: right;
   margin-bottom: 12px;
-}
-.cap {
-  font-size: 24px !important;
-  font-family: bebas-neue, sans-serif !important;
-  font-weight: 400 !important;
-}
-.spaceme {
-  margin-left: 5px;
-  margin-bottom: -15px;
-}
-.summer {
-  background-color: #fff;
-  background-image: url('../img/header_bg.jpg');
-  padding: 10px;
-  -webkit-transition: box-shadow 1s linear;
-}
-.summer:hover {
-  -webkit-box-shadow: 1px 1px 3px #999;
-  -moz-box-shadow: 1px 1px 3px #999;
-  box-shadow: 1px 1px 3px #999;
-}
-.summer .span4 {
-  float: left;
-  margin-left: 10px;
-}
-.summer .row {
-  margin-left: -10px;
-}
-.summer h3 {
-  margin-top: 0px;
-}
-.summer .caption {
-  margin-top: -50px;
-  height: 50px;
-  background-color: rgba(255, 255, 255, 0.8);
-  position: relative;
-  margin-bottom: 10px;
-}
-.super-title {
-  margin-bottom: 20px;
 }
 .top {
   padding-top: 20px;
@@ -7290,7 +6728,6 @@ hr {
 .red {
   color: #CC2229;
 }
-/* ribbon style */
 .ribbon {
   height: 36px;
   width: 136px;
@@ -7454,151 +6891,11 @@ article h3 {
 blockquote p {
   margin-bottom: 12px;
 }
-.fbpluginrecommendationsbarleft,
-.fbpluginrecommendationsbarright {
-  position: fixed !important;
-  bottom: 0px !important;
-  z-index: 999;
-}
-.craft .fbpluginrecommendationsbarleft,
-.craft .fbpluginrecommendationsbarright {
-  position: fixed !important;
-  bottom: 0px !important;
-  z-index: 999;
-}
-.single-slideshow .fbpluginrecommendationsbarleft,
-.single-slideshow .fbpluginrecommendationsbarright {
-  position: fixed !important;
-  bottom: 101px !important;
-  z-index: 999;
-  display: none;
-}
-.craft-banner {
-  margin-top: -28px;
-}
-.craft-archive-banner {
-  margin-top: 9px;
-  margin-left: 7px;
-}
-/* .tax-image, 
-#taxonomy-image {
-	float:right;
-	width:200px;
-}
-
-.taxonomy-image {
-	float:right;
-	width:200px;
-	margin-top:-16px;
-}
- */
-.craft .waist {
-  background-color: #9acc67;
-  background-image: none;
-  border-top: 0px;
-}
-.contribute {
-  margin-top: 15px;
-}
-.craft #header {
-  background-image: url('../img/craft-grid.png');
-  border-bottom: 1px solid #797575;
-  padding-top: 20px;
-}
-.craft .navi {
-  font-family: sans-serif;
-  font-weight: 400;
-  margin: 6px 0 0 240px;
-  width: 480px;
-  height: 80px;
-}
-.craft .navi li {
-  display: inline-block;
-  height: 50px;
-  margin-top: 30px;
-  font-size: 24px;
-  padding: -1px 3px 5px;
-  margin-bottom: -21px;
-  cursor: pointer;
-  text-align: left;
-  line-height: 21px;
-  margin-right: 0px;
-  letter-spacing: -1px;
-}
-.craft .navi li.blog-link small {
-  color: #cc2229;
-  font-size: 17px;
-  font-weight: bold;
-  letter-spacing: 0;
-  padding-top: 0;
-  line-height: 24px;
-}
-.craft ul.navi li.active a small {
-  border-top: 3px solid #505151;
-}
-.craft .navi .active {
-  border: none;
-}
-.navi .active {
-  border-top: 3px solid #505151;
-}
-.biggins {
-  float: left;
-  height: 177px;
-  margin-bottom: -250px;
-  margin-left: -55px;
-  margin-top: 18px;
-  position: relative;
-  width: 266px;
-  z-index: 1;
-}
-.sub-banner {
-  margin: 10px 0 10px -20px;
-}
 .small-youtube {
   padding: 15px;
 }
-.navbar-search {
-  margin-top: 0px;
-}
-.navbar .nav > li > a {
-  color: #fff;
-}
-.navbar .nav .active > a,
-.navbar .nav .active > a:hover {
-  color: #ED1C24;
-  text-decoration: none;
-  background-color: transparent;
-}
-.admin-bardebug-bar-maximized .navbar-fixed-top,
-.admin-bar .navbar-fixed-top {
-  top: 32px;
-}
 .blue {
   color: #00315d;
-}
-.navbar-search {
-  margin-top: 4px;
-}
-.search-query {
-  width: 126px !important;
-}
-input.search-query {
-  width: 126px !important;
-}
-.topics {
-  width: 690px;
-  float: left;
-}
-.topics ul {
-  float: left;
-}
-.see {
-  margin-top: 7px;
-  float: left;
-}
-#nav-buttons {
-  height: 0px;
 }
 .carousel-control.new {
   position: relative;
@@ -7639,29 +6936,12 @@ input.search-query {
   border: 1px solid #C0C3C3;
   width: 300px;
 }
-.newer-footer {
-  border-top: 5px solid #033045;
-  background-color: #005d90;
-  width: 100%;
-  bottom: 0px;
-  position: fixed;
-}
-.newer-footer .row {
-  margin: 3px 0;
-}
 .inline {
   margin-left: 0px;
 }
 .inline li {
   display: inline;
   margin-right: 5px;
-}
-.navbar .nav > .active > a,
-.navbar .nav > .active > a:hover,
-.navbar .nav > .active > a:focus {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
 }
 .googleplus1_button {
   width: 63px;
@@ -7738,8 +7018,6 @@ div.sharedaddy .sd-content li {
 }
 .modal.slideshow {
   width: 1030px;
-  /* margin-top:-325px; */
-
   margin-left: -470px;
 }
 .modal.slideshow .modal-body iframe {
@@ -7762,9 +7040,6 @@ img#wpstats {
   font-style: italic;
   margin: 10px 0;
 }
-/* .next {
-	left:544px !important;
-} */
 [class*="paged"] .next {
   left: 496px !important;
 }
@@ -7969,72 +7244,14 @@ body.embed.single-slideshow h1 {
 body#shop {
   background: none!important;
 }
-.wpcom-related-posts img {
-  max-width: 115px;
-  height: auto;
-}
-.wpcom-related-posts {
-  text-align: center;
-}
-.wpcom-related-posts ul {
-  margin-left: 0;
-  list-style: none;
-}
-.wpcom-related-posts ul li {
-  width: 120px;
-}
-.wpcom-related-posts ul li img {
-  padding: 4px;
-  border: 1px solid #999;
-}
 .alert {
   padding: 8px 14px 8px 14px !important;
-}
-.footer {
-  /*this is a comment*/
-
 }
 .feature li {
   list-style-image: url('../img/arrows.png');
 }
 .feature li.red {
   list-style-image: url('../img/arrows-red.png');
-}
-.teaser2 span {
-  position: relative;
-  top: -26px;
-  font-size: 20px;
-  padding: 5px;
-  background-color: rgba(200, 200, 200, 0.8);
-  color: #fff;
-  color: white;
-  text-shadow: black 0.1em 0.1em 0.2em;
-  -webkit-border-top-right-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  border-top-right-radius: 5px;
-  border-top: 1px solid #B2C1D5;
-  border-right: 1px solid #B2C1D5;
-  -webkit-box-shadow: 0px 0px 29px rgba(50, 50, 50, 0.41);
-  -moz-box-shadow: 0px 0px 29px rgba(50, 50, 50, 0.41);
-  box-shadow: 0px 0px 29px rgba(50, 50, 50, 0.41);
-  text-align: left !important;
-  display: block;
-  width: 32px;
-  -webkit-text-stroke: 0.35px;
-  transform: translate3d(0, 0, 0);
-}
-.teaser2.alright span {
-  left: 17px;
-}
-.teaser2.alright span {
-  left: 9px;
-}
-.banner .teaser2 {
-  width: 151.25px;
-  float: left;
-}
-.teaser2 img {
-  max-width: 134px;
 }
 .alright {
   text-align: right;
@@ -8054,7 +7271,6 @@ body#shop {
 .carousel {
   text-shadow: none;
 }
-/* SLIDESHOW LINK COLORS*/
 .carousel-caption .single p a {
   color: #d7d7d7;
   border-bottom: 1px solid #d7d7d7;
@@ -8134,7 +7350,6 @@ body#shop {
   margin-right: 15px;
   text-shadow: 0px 0px 0px #fff !important;
 }
-/* NEW FOOTER STYLES BY BILL OLSON*/
 .new-footer {
   background-color: transparent;
   padding-top: 20px;
@@ -8285,7 +7500,6 @@ body#shop {
   text-align: left;
   padding-top: 10px;
 }
-/* HEADER MAIN BLOG LINK*/
 .hoa {
   background-image: url('../img/Google_Hangout_WebAd2_upcoming.gif');
   height: 102px;
@@ -8304,7 +7518,6 @@ body#shop {
   font-size: 14px;
   line-height: 130%;
 }
-/* this is just a test */
 .overlay {
   margin-top: -70px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -8314,7 +7527,6 @@ body#shop {
   padding: 5px;
   text-overflow: ellipsis;
 }
-/*MAKE MONEY*/
 #make-money #box-area {
   background-color: #dff0f8;
   padding: 10px 0 5px 15px;
@@ -8372,7 +7584,6 @@ body#shop {
 #make-money .container .row .span5 {
   padding-top: 10px;
 }
-/* Pro Page Category Subscritpion */
 .pro-title-area {
   margin-left: 0;
 }
@@ -8420,8 +7631,6 @@ body#shop {
 .footer-ad {
   padding: 30px 0;
 }
-/* .carousel-control { top:15px !important; } */
-/* MAGAZINE SUBSCRIPTION PAGE */
 #make_subcription_form legend + .control-group {
   margin-top: 8px;
   margin-top: 10px;
@@ -8676,11 +7885,9 @@ textarea.narrow,
   padding-top: 10px;
   margin-bottom: 10px;
 }
-/*BACK ISSUES*/
 .back-issues p {
   font-size: 14px !important;
 }
-/*FIX FOR SHARE THIS SOCIAL BAR WIDTH ISSUE*/
 .googleplus1_button {
   width: auto !important;
 }
@@ -8696,6 +7903,7 @@ textarea.narrow,
 .custom-feed.simple .feed-title {
   font-size: 16px;
   font-weight: bold;
+  line-height: 20px;
   color: #005d8f;
   display: block;
 }
@@ -9586,25 +8794,6 @@ ul#tabs .current > a:hover {
 .carousel-caption {
   position: relative;
 }
-/* .carousel {
-	.item {
-		-webkit-transition: opacity 1s;
-		-moz-transition: opacity 1s; 
-		-ms-transition: opacity 1s; 
-		-o-transition: opacity 1s;
-		 transition: opacity 1s;
-		}
-	.active.left {
-		left:0;
-		opacity:0;
-		z-index:2;
-	}
-	.next {
-		left:0;
-		opacity:1;
-		z-index:1;
-	}
-} */
 .oembedall-container {
   text-align: center;
 }
@@ -9670,8 +8859,13 @@ body .single .no_h2_styles {
   display: inline;
   line-height: 25px;
 }
-body .single .post ul li,
-body .single .post ol li {
+body .single article h1 {
+  line-height: 100%;
+  margin-bottom: 0px;
+  font-size: 36px;
+}
+body .single article ul li,
+body .single article ol li {
   font-size: 18px;
 }
 body .single .tag-weekend-projects {
@@ -10914,8 +10108,6 @@ body.camp a.button.green {
   color: #ffffff;
 }
 body.makercamp {
-  /* apply a natural box layout model to all elements. sadly this breaks everything when it should fix... */
-
   background: #094a89 url(http://makezineblog.files.wordpress.com/2013/05/star-bg-long.jpg) 0 20px repeat;
   text-rendering: optimizeLegibility;
   padding-bottom: 0 !important;
@@ -11560,10 +10752,6 @@ body.makercamp a.button.small-button {
   body.makercamp .schedule-content #schedule a,
   body.makercamp.admin-bar .schedule-content #schedule a {
     font-size: .9em;
-  }
-  body.makercamp .schedule-content .maker,
-  body.makercamp.admin-bar .schedule-content .maker {
-    /* margin-right:15px !important; */
   }
   body.makercamp .new-footer .main,
   body.makercamp.admin-bar .new-footer .main {

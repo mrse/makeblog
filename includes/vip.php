@@ -14,29 +14,29 @@ if ( function_exists( 'wpcom_vip_sharing_twitter_via' ) ) {
 	wpcom_vip_sharing_twitter_via( 'make' );
 }
 
-wpcom_vip_load_plugin( 'breadcrumb-navxt' );
+// wpcom_vip_load_plugin( 'breadcrumb-navxt' );
 wpcom_vip_load_plugin( 'wp-help' );
-wpcom_vip_load_plugin( 'recent-comments' );
+// wpcom_vip_load_plugin( 'recent-comments' );
 wpcom_vip_load_plugin( 'easy-custom-fields' );
 wpcom_vip_load_plugin( 'edit-flow' );
-wpcom_vip_load_plugin( 'wp-page-numbers' );
+// wpcom_vip_load_plugin( 'wp-page-numbers' );
 wpcom_vip_load_plugin( 'lazy-load' );
 wpcom_vip_load_plugin( 'get-the-image' );
-wpcom_vip_load_plugin( 'storify' );
+// wpcom_vip_load_plugin( 'storify' );
 wpcom_vip_load_plugin( 'cheezcap' );
 wpcom_vip_load_plugin( 'add-meta-tags-mod' );
 wpcom_vip_load_plugin( 'wpcom-thumbnail-editor' );
-wpcom_vip_load_plugin( 'wp-frontend-uploader' );
+
+// Needs to run on the contribute page, admin, and possibly page 2 pages.
+if ( is_page( 'contribute' ) || is_admin() ) {
+	wpcom_vip_load_plugin( 'wp-frontend-uploader' );
+}
 wpcom_vip_load_plugin( 'multiple-post-thumbnails' );
 wpcom_vip_load_plugin( 'taxonomy-images' );
 wpcom_vip_load_plugin( 'simply-show-ids' );
 //wpcom_vip_load_plugin( 'wpcom-related-posts' );
 wpcom_vip_load_plugin( 'view-all-posts-pages' );
 wpcom_vip_load_plugin( 'co-authors-plus' );
-
-if (is_page('contribute')) {
-	wpcom_vip_load_plugin( 'wp-frontend-uploader' );	
-}
 
 if ( ! jetpack_is_mobile() ) {
 	wpcom_vip_load_plugin( 'facebook' );

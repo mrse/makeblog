@@ -137,7 +137,7 @@ class ContextlySettings {
 		            base_url = "<?php echo esc_url( $this->getContextlyRegistrationUrl() ) ?>";
 	            }
 
-                window.open( esc_url( base_url ) );
+                window.open( base_url );
             }
         </script>
         <div class="wrap">

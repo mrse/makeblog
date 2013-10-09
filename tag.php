@@ -1,92 +1,86 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying the tag archive of all posts.
+ *
+ * @package    makeblog
+ * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
+ *
+ */
+
+make_get_header() ?>
 		
-		<div class="single">
-		
-			<div class="container">
+	<div class="single">
+	
+		<div class="container">
 
-				<div class="row">
+			<div class="row">
 
-					<div class="span8">
+				<div class="span8">
+					
+					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-						<div class="content">
+					<article <?php post_class(); ?>>
+				
+						<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 						
-							<?php
-								if (is_tag( 'greatcreate' )) {
-									echo '<a href="http://blog.makezine.com/tag/greatcreate"><img src="http://cdn.makezine.com/make/jake/great_create.jpg" border="0" alt="Great Create Archives" /></a>';
-								} elseif ( is_tag( array( 'altsxsw', 'elmers' ) ) ) {
-									echo '<a href="http://www.elmers.com/glueguide"><img src="http://cdn.makezine.com/make/ads/glue_guide.jpg" style="height:auto; max-width:580px;" border="0" alt="Elmers Glue Guide" /></a>';
-								}
-							?>
-
-							<div class="category-title">
-
-								<h1 class="cat-title jumbo"><?php echo make_get_better_tag_title(); ?></h1>
-
-								<div class="clear"></div>
-
+						<ul class="projects-meta">
+							<?php if ( make_get_author( $post->ID ) ) : ?>
+								<?php make_get_author( $post->ID ); ?>
+							<?php endif ?>
+							<li>Posted <span class="blue"><?php the_time('m/d/Y \@ g:i a'); ?></span></li>
+							<li>Category <?php the_category(', '); ?></li>
+							<li>Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a></li>
+						</ul>
+						
+						<div class="media">
+							
+							<a href="<?php the_permalink(); ?>" class="pull-left">
+								<?php the_post_thumbnail( 'archive-thumb', array( 'class' => 'media-object' ) ); ?>
+							</a>
+							
+							<div class="media-body">
+								<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
 							</div>
-
-							 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-			
-							 	<article <?php post_class(); ?>>
-
-							 		<div class="cat-thumb">
-							 		
-								 		<?php 
-								 			$image = get_post_custom_values('Image');
-											if ( !empty( $image[0] ) ) {
-												echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 200, 200 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
-											} else {
-												get_the_image( array( 'image_scan' => true, 'size' => 'archive-thumb' ) );
-											}
-										?>
-
-							 		</div>
-
-							 		<div class="cat-blurb">
-
-										<h3><a class="red" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-
-										<p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
-
-										<p>Posted by 
-											<?php if(function_exists('coauthors_posts_links')) {
-												coauthors();
-											} else { 
-												the_author_posts_link();
-											} ?>
-											<?php $type = get_post_type( $post->ID ); if ($type != 'projects') { echo ' | <a href="' . get_permalink() . '">' . get_the_time('l F jS, Y g:i A'); } ?></a></p>
-										<p>Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?> <?php edit_post_link('Fix me...', ' | '); ?></p>
-
-									</div>
-
-									<div class="clear"></div>
-									
-									<hr />
-
-								</article>
-
-							<?php endwhile; ?>
-
-							<ul class="pager">
 							
-								<li class="previous"><?php previous_posts_link('&larr; Previous Page'); ?></li>
-								<li class="next"><?php next_posts_link('Next Page &rarr;'); ?></li>
+							<div class="jetpack-sharing">
+								<?php if ( function_exists( 'sharing_display') ) echo sharing_display(); ?> 
+							</div>
 							
-							</ul>
-
-							<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
-						
-							<?php else: ?>
 							
-								<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-							
-							<?php endif; ?>
-
 						</div>
+					
+					</article>
 
+					<?php endwhile; ?>
+					
+					<ul class="pager">
+							
+						<li class="previous"><?php previous_posts_link('&larr; Previous Page'); ?></li>
+						<li class="next"><?php next_posts_link('Next Page &rarr;'); ?></li>
+					
+					</ul>
+
+					<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
+
+					<div class="comments">
+						<?php comments_template(); ?>
 					</div>
+					
+					<?php else: ?>
+					
+						<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+					
+					<?php endif; ?>
+				</div>
+				
+				
+				<?php get_sidebar(); ?>
+					
+					
+			</div>
 
-					<?php get_sidebar(); ?>
+		</div>
 
-			<?php get_footer(); ?>
+	</div>
+
+<?php get_footer(); ?>
