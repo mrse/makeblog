@@ -241,14 +241,12 @@ Template Name: Home Page
 									<?php get_the_image( array( 'image_scan' => true, 'size' => 'left-rail-home-thumb' ) ); ?>
 								</a>
 
-								<h3 class="look_like_h4">
-									<a href="<?php the_permalink(); ?>">
-										<span class="arrows">&raquo;</span> <?php the_title(); ?>
-										<span class="blurb">
-											<?php echo wp_trim_words(strip_shortcodes( get_the_excerpt() ), 20, '...') ; ?>
-										</span>
-									</a>
-								</h3>
+								<a href="<?php the_permalink(); ?>">
+									<span class="arrows">&raquo;</span> <h3 class="look_like_h4"><?php the_title(); ?></h3>
+									<span class="blurb">
+										<?php echo wp_trim_words(strip_shortcodes( get_the_excerpt() ), 20, '...') ; ?>
+									</span>
+								</a>
 							
 							</div>
 						
