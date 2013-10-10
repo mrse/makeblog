@@ -771,7 +771,10 @@ function maker_short_post_loop( $args ) {
 			$output .= the_author_posts_link();
 		}
 		$output .= ' | ' . get_the_time('F jS, Y g:i A') . '</li>';
-		$output .= '</ul></div></div>';
+		$output .= '</ul>';
+		$output .= '<div class="jetpack-sharing">';
+		$output .= ( $args['social'] == true ) ? sharing_display() : '';
+		$output .= '</div></div></div>';
 
 		endwhile; 
 	endif;

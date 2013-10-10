@@ -8982,6 +8982,12 @@ body .single .tag-weekend-projects {
 .page-id-336037 .single .post ul li {
   font-size: 16px;
 }
+.page-id-328564 .single .post .jetpack-sharing h3,
+.page-id-335857 .single .post .jetpack-sharing h3,
+.page-id-336037 .single .post .jetpack-sharing h3 {
+  padding: inherit;
+  background-color: inherit;
+}
 .page-id-328564 .background-blue,
 .page-id-335857 .background-blue,
 .page-id-336037 .background-blue {
