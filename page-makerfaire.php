@@ -29,8 +29,9 @@ make_get_header() ?>
 						<div class="row-fluid">
 							<div class="span8 main-content">
 								<div class="slideshow-wrapper">
-									<h3>Top 5 Attractions of World Maker Faire New York</h3>
-									<?php echo do_shortcode( '[new_gallery size="full" ids="341917,341918,341919,341920,341921,341922,341923,341924,341926"]' ); ?>
+									<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+										<?php the_content(); ?>
+									<?php endwhile; endif; ?>
 									<?php
 										$args = array(
 											'post_type' => array( 'post', 'projects', 'video', 'magazine', 'craft', 'review', 'newsletter' ),
