@@ -29,7 +29,7 @@ make_get_header(); ?>
 					
 				<?php 
 					$image = apply_filters( 'taxonomy-images-queried-term-image', '', array( 'after' => '</div>', 'before' => '<div id="taxonomy-image">', 'image_size' => 'full') );
-					if ( !empty( $image ) ) {
+					if ( ! empty( $image ) ) {
 						echo '<div class="span4">';
 						echo $image;
 						echo '</div>';

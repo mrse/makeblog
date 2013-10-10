@@ -4,7 +4,6 @@
  *
  * @package    makeblog
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
- * @author     Jake Spurlock <jspurlock@makermedia.com>
  * 
  */
 make_get_header() ?>

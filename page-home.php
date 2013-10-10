@@ -218,7 +218,7 @@ Template Name: Home Page
 
 					<div class="span4 posts">
 
-						<h2 class="look_like_h3_blue"><a href="http://makezine.com/blog/">Blog Feed</a></h2>	
+						<h2 class="look_like_h3_blue"><a href="<?php echo home_url( '/blog/' ); ?>">Blog Feed</a></h2>	
 
 						<?php 
 							$args = array(
@@ -256,7 +256,7 @@ Template Name: Home Page
 
 						<?php endwhile; wp_reset_postdata(); ?>
 
-						<p><a href="http://makezine.com/blog/"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
+						<p><a href="</php echo home_url( '/blog/' ); ?>"><span class="pull-right light aqua seeall right">See All Posts</span></a></p>
 						
 					</div>
 					<!--<div class="shadow"></div>-->
@@ -291,7 +291,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h2 class="look_like_h3"><a class="red" href="http://makezine.com/projects/">New Projects</a></h3>
+								<h2 class="look_like_h3"><a class="red" href="<?php echo home_url( '/projects/' ); ?>">New Projects</a></h3>
 
 								<div class="grid-box boxy">
 
@@ -357,7 +357,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h2 class="look_like_h3"><a href="http://makezine.com/category/makers/" class="red">Meet the Makers</a></h2>
+								<h2 class="look_like_h3"><a href="<?php echo home_url( '/category/makers/' ); ?>" class="red">Meet the Makers</a></h2>
 
 								<div class="grid-box boxy">
 
@@ -394,7 +394,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h2 class="look_like_h3"><a href="http://makezine.com/tag/maker-faire/" class="red">Maker Faire News</a></h2>
+								<h2 class="look_like_h3"><a href="<?php echo home_url( '/tag/maker-faire/' ); ?>" class="red">Maker Faire News</a></h2>
 
 								<div class="grid-box boxy">
 
@@ -432,7 +432,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h2 class="look_like_h3"><a href="http://makezine.com/tag/component-of-the-month/" class="red">Skill Builder</a></h2>
+								<h2 class="look_like_h3"><a href="<?php echo home_url( '/tag/component-of-the-month/' ); ?>" class="red">Skill Builder</a></h2>
 
 								<div class="grid-box boxy">
 
@@ -467,7 +467,7 @@ Template Name: Home Page
 							<div class="span4">
 
 
-								<h2 class="look_like_h3"><a href="http://makezine.com/page-2/" class="red">Make: Page 2</a></h2>
+								<h2 class="look_like_h3"><a href="<?php echo home_url( '/page-2/' ); ?>" class="red">Make: Page 2</a></h2>
 
 								<div class="grid-box boxy">
 

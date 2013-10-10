@@ -60,9 +60,9 @@
 					<div class="row">
 						<div class="logo span2">
     						<?php if ( is_front_page() || is_home() ) : ?>
-								<h1 title="Make Magazine Blog- Hardware Hacking Projects &amp; DIY Technology Projects"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png"  alt="Tech-savvy DIY Enthusiasts Innovative Projects and Ideas"/></a></h1>
+								<h1 title="Make Magazine - <?php echo bloginfo( 'description' ); ?>"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png"  alt="Tech-savvy DIY Enthusiasts Innovative Projects and Ideas" /></a></h1>
 							<?php else : ?>
-								<h2 title="Make Magazine Blog- Hardware Hacking Projects &amp; DIY Technology Projects"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png"  alt="Tech-savvy DIY Enthusiasts Innovative Projects and Ideas"/></a></h2>
+								<h2 title="Make Magazine - <?php echo bloginfo( 'description' ); ?>"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png"  alt="Tech-savvy DIY Enthusiasts Innovative Projects and Ideas" /></a></h2>
 							<?php endif; ?>
 						</div>
 						<nav role="navigation" class="span10 site-navigation primary-navigation">
