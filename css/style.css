@@ -5633,23 +5633,20 @@ ul.inline.urban-sensor-nav li a:hover {
   background-image: url('../img/header_bg.jpg');
   margin: 15px 0 0;
 }
-.look_like_h4 a {
-  font-size: 14px;
-  font-weight: bold;
+.entry-content .blurb {
   line-height: 18px;
-  height: 120px;
-  margin-bottom: 5px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 5px;
-  width: 274px;
-  display: block;
-  height: 90px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-.look_like_h4 a .blurb {
-  font-weight: 400;
-  color: #333;
+.look_like_h4 {
+  font-size: 14px !important;
+  font-weight: bold !important;
+  line-height: 18px !important;
+  height: 120px !important;
+  margin: 5px 0 !important;
+  width: auto !important;
+  display: inline !important;
+  height: 90px !important;
+  color: #005d8f !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 .look_like_h4_cat {
   font-family: "proxima-nova", sans-serif !important;
