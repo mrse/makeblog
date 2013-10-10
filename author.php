@@ -115,7 +115,7 @@ make_get_header() ?>
 			
 			<?php
 
-				$types = array( 'posts' => 'post', 'craft' => 'craft', 'projects' => 'projects', 'videos' => 'video', /*'articles' => 'magazine',*/ 'reviews' => 'review' );
+				$types = array( 'posts' => 'post', 'craft' => 'craft', 'projects' => 'projects', 'videos' => 'video', 'articles' => 'magazine', 'reviews' => 'review' );
 
 				foreach ( $types as $type ) { ?>
 
