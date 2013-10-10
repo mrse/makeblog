@@ -1599,33 +1599,3 @@ function make_generate_title_tag() {
 	}
 	return $output;
 }
-
-
-/**
- * Used to sanitize a string or a list of items. A delimiter can be set to search for which will then break the list in to an array with sanitized values
- * @param  string 		$string    The data to be cleand
- * @param  String 		$delimiter The separator to search for when break apart a string into an array
- * @param  string/array $match     We may want to return data that matches a value in an array or a specific value
- * @return string/array
- *
- * @since  Autobots
- */
-function make_convert_sanitize_string_to_array( $string, $delimiter = ',', $match = '' ) {
-	if ( strpos( $string, $delimiter ) !== false) {
-	    $array = explode( esc_html( $delimiter ), $string );
-
-	    foreach ( $array as $key => $value ) {
-	    	if ( ! empty( $match ) && in_array( $value, $match ) ) {
-		    	$output[ absint( $key ) ] = sanitize_text_field( $value );
-		    } elseif ( ! empty( $match ) && $match == $value ) {
-		    	$output[ absint( $key ) ] = sanitize_text_field( $value );
-		    } else {
-		    	$output[ absint( $key ) ] = sanitize_text_field( $value );
-		    }
-	    }
-	} else {
-		$output = sanitize_text_field( $string );
-	}
-
-	return $output;
-}
