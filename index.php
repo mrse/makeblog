@@ -6,6 +6,7 @@
  * @license    http://opensource.org/licenses/gpl-license.php  GNU Public License
  * 
  */
+
 make_get_header() ?>
 		
 	<div class="single">
@@ -14,51 +15,50 @@ make_get_header() ?>
 
 			<div class="row">
 
-				<div class="span12">
+				<div class="span8">
 					
 					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-			
-					<div class="projects-masthead">
-						
+
+					<article <?php post_class(); ?>>
+				
 						<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 						
-					</div>
-					
-					<ul class="projects-meta">
-						<li>
-							By <?php 
-							if( function_exists( 'coauthors_posts_links' ) ) {	
-								coauthors_posts_links(); 
-							} else { 
-								the_author_posts_link(); 
-							} ?>
-						</li>
-						<li>
-							Posted <span class="blue"><?php the_date('m/d/Y \@ g:i a'); ?></span>
-						</li>
-						<li>
-							Category <?php the_category(', '); ?>
-						</li>
-						<li>
-							Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a>
-						</li>
-					</ul>
-		
-				</div>
-			
-			</div>
-									
-			<div class="row">
-			
-				<div class="span8">
-				
-					<article <?php post_class(); ?>>
-
-						<?php the_content(); ?>
+						<ul class="projects-meta">
+							<?php if ( make_get_author( $post->ID ) ) : ?>
+								<?php make_get_author( $post->ID ); ?>
+							<?php endif ?>
+							<li>Posted <span class="blue"><?php the_time('m/d/Y \@ g:i a'); ?></span></li>
+							<li>Category <?php the_category(', '); ?></li>
+							<li>Comments <a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0', '1', '%' ); ?></a></li>
+						</ul>
+						
+						<div class="media">
+							
+							<a href="<?php the_permalink(); ?>" class="pull-left">
+								<?php the_post_thumbnail( 'archive-thumb', array( 'class' => 'media-object' ) ); ?>
+							</a>
+							
+							<div class="media-body">
+								<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?> <a href="<?php the_permalink(); ?>">Read more &raquo;</a></p>
+							</div>
+							
+							<div class="jetpack-sharing">
+								<?php if ( function_exists( 'sharing_display') ) echo sharing_display(); ?> 
+							</div>
+							
+							
+						</div>
 					
 					</article>
-					
+
 					<?php endwhile; ?>
+					
+					<ul class="pager">
+							
+						<li class="previous"><?php previous_posts_link('&larr; Previous Page'); ?></li>
+						<li class="next"><?php next_posts_link('Next Page &rarr;'); ?></li>
+					
+					</ul>
 
 					<?php if (function_exists('make_featured_products')) { make_featured_products(); } ?>
 
