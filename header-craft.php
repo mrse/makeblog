@@ -3,12 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title><?php echo make_generate_title_tag(); ?></title>
-		<meta name="description" content="<?php if ( is_single() ) {
-				echo wp_trim_words( strip_shortcodes( htmlspecialchars( $post->post_content ) ), 20 );
-			} else {
-				bloginfo('name'); echo " - "; bloginfo('description');
-			}
-			?>" />
+		<meta name="description" content="<?php echo make_generate_description(); ?>" />
 
 		<meta name="p:domain_verify" content="c4e1096cb904ca6df87a2bb867715669" >
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->

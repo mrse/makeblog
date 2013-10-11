@@ -1598,3 +1598,12 @@ function make_generate_title_tag() {
 	}
 	return $output;
 }
+
+function make_generate_description() {
+	global $post;
+	if ( is_single() ) {
+		return wp_trim_words( htmlspecialchars( wp_kses( strip_shortcodes( $post->post_content ), array() ) ), 20 );
+	} else {
+		return get_bloginfo('name') . " - " . get_bloginfo('description');
+	}
+}
