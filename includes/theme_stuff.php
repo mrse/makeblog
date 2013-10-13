@@ -1599,11 +1599,16 @@ function make_generate_title_tag() {
 	return $output;
 }
 
+/**
+ * Generate a description for the meta description tag. 
+ *
+ * On the home page, use the bloginfo() description, if a single page, use 20 words of the post content. At some point, need to use the excerpt if it exists, then default to the post content. At the end, run it through esc_attr().
+ */
 function make_generate_description() {
 	global $post;
 	if ( is_single() ) {
-		return wp_trim_words( htmlspecialchars( wp_kses( strip_shortcodes( $post->post_content ), array() ) ), 20 );
+		return esc_attr( wp_trim_words( htmlspecialchars( wp_kses( strip_shortcodes( $post->post_content ), array() ) ), 20 ) );
 	} else {
-		return get_bloginfo('name') . " - " . get_bloginfo('description');
+		return esc_attr( get_bloginfo('name') . " - " . get_bloginfo('description') );
 	}
 }
