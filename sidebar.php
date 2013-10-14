@@ -13,6 +13,12 @@
 					
 					<div class="span4 sidebar">
 
+						<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+							<div id="secondary" class="widget-area" role="complementary">
+								<?php dynamic_sidebar( 'sidebar-1' ); ?>
+							</div><!-- #secondary -->
+						<?php endif; ?>
+
 						<div class="sidebar-ad">
 
 							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
