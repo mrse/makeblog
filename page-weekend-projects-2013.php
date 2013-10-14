@@ -59,8 +59,8 @@ get_header(); ?>
 				
 				<div class="span4">
 					
-					<a href="http://pubads.g.doubleclick.net/gampad/clk?id=40880938&iu=/11548178/Makezine">
-						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/makercamp_300x250.jpg" alt="Maker Camp!" style="margin-bottom:20px;">
+					<a href="http://makezine.com/2013/10/11/weekend-projects-hoa-week1/">
+						<img src="http://makezineblog.files.wordpress.com/2013/10/weekendprojects_hangoutsonair.png" alt="Weekend Projects Hangout on Air" style="margin-bottom:20px;">
 					</a>
 					
 					<div class="sidebar-ad">
