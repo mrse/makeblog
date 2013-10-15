@@ -95,26 +95,6 @@ function js_truncate_post($length = 55, $more = '[...]',$echo = true){
 	}
 }
 
-
-
-
-if ( function_exists('register_sidebar') )
-	register_sidebar();
-	
-	
-if ( function_exists( 'add_theme_support' ) ) {
-	add_theme_support( 'post-thumbnails' );
-}
-
-if ( function_exists( 'add_image_size' ) ) { 
-	// add_image_size( 'small-thumb', 56, 56, true );
-	// add_image_size( 'small-another', 40, 40, true );
-	// add_image_size( 'feat-cat-thumb', 263, 117, true );
-	// add_image_size( 'review-large', 589, 9999 );
-	// add_image_size( 'featured-large', 352, 262 );
-
-}
-
 if (class_exists('MultiPostThumbnails')) { 
 	new MultiPostThumbnails(array( 'label' => 'Secondary Image', 'id' => 'secondary-image', 'post_type' => 'post' )); 
 	}
