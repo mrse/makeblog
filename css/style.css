@@ -9920,8 +9920,8 @@ body.camp a.button.block {
   display: block;
 }
 .camp .header-bottom {
-  border-color: red !important;
-  background-color: #fff !important;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
 }
 .camp .header-bottom ul {
   margin-bottom: auto;
@@ -9964,7 +9964,7 @@ body.camp a.button.block {
 .camp .home-intro h1 {
   width: 100%;
   text-align: center;
-  margin-top: 0;
+  margin-top: 0px;
 }
 .camp .btn {
   line-height: 15px;
@@ -9982,7 +9982,7 @@ body.camp a.button.block {
   margin-top: 0 !important;
 }
 .camp #header h1 {
-  margin-top: 0;
+  margin-top: 40px;
   text-align: center;
   float: none;
 }
