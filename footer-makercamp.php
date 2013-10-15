@@ -42,9 +42,6 @@
 											<label for="MAKENewsletter">
 												<input type="checkbox" name="cm-ol-jjuylk" id="MAKENewsletter"> MAKE Newsletter
 											</label>
-											<label for="CRAFTNewsletter">
-												<input type="checkbox" name="cm-ol-jjurhj" id="CRAFTNewsletter"> CRAFT Newsletter
-											</label>
 											<label for="MakerFaireNewsletter">
 												<input type="checkbox" name="cm-ol-jjuruj" id="MakerFaireNewsletter"> Maker Faire Newsletter
 											</label>
