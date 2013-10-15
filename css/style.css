@@ -5822,8 +5822,6 @@ article h4 a:hover {
   background-color: #F0F0F0;
 }
 .dotw {
-  background-image: url('../img/dots.png');
-  background-repeat: no-repeat;
   padding-top: 20px;
   margin-top: 25px;
 }
@@ -7929,14 +7927,7 @@ textarea.narrow,
 .feed-wrapper:after {
   clear: both;
 }
-.dots {
-  background: url('../img/dots.png');
-  background-repeat: repeat-x;
-}
 .category-top {
-  background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
-  background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
   padding-top: 20px;
@@ -8066,9 +8057,6 @@ textarea.narrow,
   font-size: 24px;
 }
 .child {
-  background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
-  background-repeat: repeat-x;
   padding: 20px 0;
   background-color: #f3f3f3;
   border-top: 4px solid #696a6a;
@@ -8103,14 +8091,7 @@ textarea.narrow,
 #taxonomy-image {
   margin-top: 20px;
 }
-.dots {
-  background-color: url('../img/dots.png');
-  background-repeat: repeat-x;
-}
 .content-type {
-  background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
-  background-repeat: repeat-x;
   padding: 20px 0;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
@@ -8401,14 +8382,7 @@ a {
   border: 1px solid #cecece;
   margin-bottom: 5px;
 }
-.dots {
-  background-color: url('../img/dots.png');
-  background-repeat: repeat-x;
-}
 .projects-home {
-  background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
-  background-repeat: repeat-x;
   padding-top: 20px;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
@@ -8805,9 +8779,6 @@ a.oembed {
   border: 0px;
 }
 body .single {
-  background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
-  background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
   padding-top: 20px;
@@ -10916,9 +10887,6 @@ body.makercamp a.button.small-button {
   }
 }
 .archive {
-  background: url('../img/dots.png');
-  background-color: url('../img/dots.png');
-  background-repeat: repeat-x;
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
   padding-top: 20px;

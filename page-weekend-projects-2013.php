@@ -147,7 +147,7 @@ get_header(); ?>
 		
 	</div>
 
-	<div class="grey dots topper">
+	<div class="grey topper">
 		
 		<div class="container">
 			<div class="row">
