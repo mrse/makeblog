@@ -479,6 +479,8 @@ function make_carousel( $args, $title_link = true ) {
 	
 <?php }
 
+add_shortcode( 'carousel', 'make_carousel' );
+
 
 /**
  * The Better Gallery shortcode, courtesy of WordPress Core
