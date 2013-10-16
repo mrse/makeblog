@@ -117,7 +117,7 @@ get_header(); ?>
 	<?php
 
 		if ($catslugs) {
-			echo '<div class="grey dots topper"><div class="container"><div class="row"><div class="span12"><h2>Videos by Category</h2></div></div></div></div>';
+			echo '<div class="grey topper"><div class="container"><div class="row"><div class="span12"><h2>Videos by Category</h2></div></div></div></div>';
 			foreach ($catslugs as $category) {
 				$category = wpcom_vip_get_term_by('name', $category, 'category');
 				echo '<div class="grey"><div class="container"><div class="row"><div class="span12">';							

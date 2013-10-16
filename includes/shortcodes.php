@@ -127,7 +127,6 @@ function meetup_newsletter( $atts, $content = null ) {
 				<div class="clearfix">
 					<div class="control-group">
 						<div class="controls">
-							<label class="checkbox" for="CRAFTNewsletter">CRAFT Newsletter<input type="checkbox" name="cm-ol-jjurhj" id="CRAFTNewsletter" /></label>
 							<label class="checkbox" for="MAKENewsletter">MAKE Newsletter<input type="checkbox" name="cm-ol-jjuylk" id="MAKENewsletter" /></label>
 							<label class="checkbox" for="MakerShed-MasterList">Maker Shed<input type="checkbox" name="cm-ol-tyvyh" id="MakerShed-MasterList" /></label>
 							<label class="checkbox" for="MakerProNewsletter">Maker Pro Newsletter<input type="checkbox" name="cm-ol-jrsydu" id="MakerProNewsletter" /></label>
@@ -792,3 +791,32 @@ function maker_short_post_loop( $args ) {
 }
 
 add_shortcode( 'make_post_loop', 'maker_short_post_loop' );
+
+/**
+ * Add Maker Shed Deal of the Week
+ */
+
+function makershed_weekly_deal() {
+
+	$output = '';
+							
+	$the_query = new WP_Query( 'post_type=from-the-maker-shed&posts_per_page=1' );
+
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+			$ftms_link = get_post_custom_values( 'ftms_link' );
+			if( !isset($ftms_link[0]) ){
+				$ftms_link[0] = 'http://www.makershed.com/';
+			}
+			$output .= '<a href="'. esc_url( $ftms_link[0] ).'">';
+			$output .= get_the_post_thumbnail( get_the_ID(), 'ftms-thumb');
+			$output .= '</a>';
+		endwhile;
+
+		// Reset Post Data
+		wp_reset_postdata();
+
+		return $output;
+						
+}
+
+add_shortcode( 'shedpromo', 'makershed_weekly_deal' );
