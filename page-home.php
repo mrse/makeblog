@@ -272,7 +272,12 @@ Template Name: Home Page
 
 							<?php
 							$cap_youtube = make_get_cap_option( 'youtube' );
-							if ( $cap_youtube ) {
+							if ( is_numeric( $cap_youtube ) ) {
+								$youtube = get_post_meta( $cap_youtube, 'Link', true );
+								echo '<div class="small-youtube">';
+								echo do_shortcode('[youtube='. wp_kses_post( $youtube ) .'&w=590&h=332]');
+								echo '</div>';
+							} elseif ( $cap_youtube ) {
 								echo '<div class="small-youtube">';
 								echo do_shortcode('[youtube='. wp_kses_post( $cap_youtube ) .'&w=590&h=332]');
 								echo '</div>';
