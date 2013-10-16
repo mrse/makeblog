@@ -92,7 +92,7 @@
 						<div class="about-column-02">
 							<ul>
 								<li><a href="http://makermedia.com/about-us/management-team/" target="_blank">About Us</a></li>
-								<!-- <li><a href="http://makezine.com/faq/index.html">FAQ</a></li>  -->
+								<li><a href="http://makezine.com/faq/index.html">FAQ</a></li>
 								<li><a href="http://makezine.com/community/index.html">Forums</a></li>
 								<li><a href="http://makezine.com/contribute/">Write for MAKE</a></li>
 							</ul>
@@ -116,7 +116,7 @@
 					</div>
 					<div class="span3 subscribe">
 						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB" target="_blank">
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.jpg" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
+							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.gif" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
 						</a>
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/arrow-footer.png" width="80" height="48" id="mag-arrow">
 						<h5>Subscribe<br /> to MAKE!</h5>
