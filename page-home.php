@@ -275,11 +275,11 @@ Template Name: Home Page
 							if ( is_numeric( $cap_youtube ) ) {
 								$youtube = get_post_meta( $cap_youtube, 'Link', true );
 								echo '<div class="small-youtube">';
-								echo do_shortcode('[youtube='. wp_kses_post( $youtube ) .'&w=590&h=332]');
+								echo do_shortcode('[youtube='. esc_url( $youtube ) .'&w=590&h=332]');
 								echo '</div>';
 							} elseif ( $cap_youtube ) {
 								echo '<div class="small-youtube">';
-								echo do_shortcode('[youtube='. wp_kses_post( $cap_youtube ) .'&w=590&h=332]');
+								echo do_shortcode('[youtube='. esc_url( $cap_youtube ) .'&w=590&h=332]');
 								echo '</div>';
 							}; 
 							?>
@@ -294,7 +294,7 @@ Template Name: Home Page
 
 							<div class="span4">
 
-								<h2 class="look_like_h3"><a class="red" href="<?php echo home_url( '/projects/' ); ?>">New Projects</a></h3>
+								<h2 class="look_like_h3"><a class="red" href="<?php echo home_url( '/projects/' ); ?>">New Projects</a></h2>
 
 								<div class="grid-box boxy">
 
@@ -331,24 +331,7 @@ Template Name: Home Page
 
 								<div class="new-dotw">
 
-									<?php
-										
-										$the_query = new WP_Query( 'post_type=from-the-maker-shed&posts_per_page=1' );
-
-										while ( $the_query->have_posts() ) : $the_query->the_post();
-											$ftms_link = get_post_custom_values( 'ftms_link' );
-											if( !isset($ftms_link[0]) ){
-												$ftms_link[0] = 'http://www.makershed.com/';
-											}
-											echo '<a href="'. esc_url( $ftms_link[0] ).'">';
-											the_post_thumbnail('ftms-thumb');
-											echo '</a>';
-										endwhile;
-
-										// Reset Post Data
-										wp_reset_postdata();
-
-									?>
+									<?php echo makershed_weekly_deal(); ?>
 
 								</div>
 

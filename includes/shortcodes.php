@@ -800,14 +800,19 @@ function makershed_weekly_deal() {
 
 	$output = '';
 							
-	$the_query = new WP_Query( 'post_type=from-the-maker-shed&posts_per_page=1' );
+	$args = array(
+		'post_type' 	=> 'from-the-maker-shed',
+		'posts_per_page'=> 1
+	);
+
+	$the_query = new WP_Query( $args );
 
 		while ( $the_query->have_posts() ) : $the_query->the_post();
-			$ftms_link = get_post_custom_values( 'ftms_link' );
-			if( !isset($ftms_link[0]) ){
-				$ftms_link[0] = 'http://www.makershed.com/';
+			$ftms_link = get_post_meta( get_the_ID(), 'ftms_link', true );
+			if( !isset( $ftms_link ) ){
+				$ftms_link = 'http://www.makershed.com/';
 			}
-			$output .= '<a href="'. esc_url( $ftms_link[0] ).'">';
+			$output .= '<a href="'. esc_url( $ftms_link ).'">';
 			$output .= get_the_post_thumbnail( get_the_ID(), 'ftms-thumb');
 			$output .= '</a>';
 		endwhile;
