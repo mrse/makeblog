@@ -8,12 +8,11 @@
  * 
  */
 ?>
-				</div>
 				
-				<div class="footer-ad" style="margin-top:30px;clear:both;">
+				<div class="footer-ad <?php echo ( make_is_parent_page() ) ? 'grey' : '' ; ?>" style="clear:both;">
 				
-					<div class="" style="width:728px; margin:0 auto;">
-
+					<div style="width:728px; margin:0 auto;">
+ 
 						<!-- Beginning Sync AdSlot 4 for Ad unit header ### size: [[728,90]]  -->
 						<div id='div-gpt-ad-664089004995786621-4'>
 							<script type='text/javascript'>
@@ -21,14 +20,15 @@
 							</script>
 						</div>
 						<!-- End AdSlot 4 -->
-						
+						 
 					</div>
 
 				</div>
 			
-			</div>
+			</div></div></div>
 		
-		</div>
+		</div></div></div>
+
 		<section id="footer" class="new-footer">
 			<div class="container">
 				<div class="row">
@@ -120,7 +120,7 @@
 						</a>
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/arrow-footer.png" width="80" height="48" id="mag-arrow">
 						<h5>Subscribe<br /> to MAKE!</h5>
-						<p>Get the print and digital versions when you subscribe</p>
+						<p class="p_footer">Get the print and digital versions when you subscribe</p>
 						<hr />
 					<!-- END span subscribe -->
 					</div>

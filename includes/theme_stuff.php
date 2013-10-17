@@ -1612,3 +1612,12 @@ function make_generate_description() {
 		return esc_attr( get_bloginfo('name') . " - " . get_bloginfo('description') );
 	}
 }
+
+function make_is_parent_page() {
+	$obj = get_queried_object();
+	if ( $obj->parent == 0 && is_category() && !is_category( 86 ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
