@@ -190,8 +190,8 @@ function make_register_sidebar() {
 				'description'=>__('This widget area is at the top of the sidebar, above everything else.' ),
 				'before_widget'=>'<div class="widget">',
 				'after_widget'=>'</div>',
-				'before_title'=>'<h2 class="widget-title">',
-				'after_title'=>'</h2>'
+				'before_title'=>'<h3 class="widget-title">',
+				'after_title'=>'</h3>'
 			)
 		);
 		register_sidebar( 
@@ -201,8 +201,8 @@ function make_register_sidebar() {
 				'description'=>__('This widget area is at the bottom of the sidebar, below everything else.' ),
 				'before_widget'=>'<div class="widget">',
 				'after_widget'=>'</div>',
-				'before_title'=>'<h2 class="widget-title">',
-				'after_title'=>'</h2>'
+				'before_title'=>'<h3 class="widget-title">',
+				'after_title'=>'</h3>'
 			)
 		);
 		register_sidebar( 
@@ -212,8 +212,8 @@ function make_register_sidebar() {
 				'description'=>__('This widget area is only on the Weekend Projects page.' ),
 				'before_widget'=>'<div class="widget">',
 				'after_widget'=>'</div>',
-				'before_title'=>'<h2 class="widget-title">',
-				'after_title'=>'</h2>'
+				'before_title'=>'<h3 class="widget-title">',
+				'after_title'=>'</h3>'
 			)
 		);
 	}

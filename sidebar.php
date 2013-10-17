@@ -13,6 +13,8 @@
 					
 					<div class="span4 sidebar">
 
+						<?php dynamic_sidebar( 'sidebar_top' ); ?>
+
 						<div class="sidebar-ad">
 
 							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
@@ -87,6 +89,8 @@
 							<!-- End AdSlot 3 -->
 
 						</div>
+
+						<?php dynamic_sidebar( 'sidebar_bottom' ); ?>
 
 
 				</div>
