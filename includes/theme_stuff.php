@@ -1619,7 +1619,7 @@ function make_generate_description() {
  */
 function make_is_parent_page() {
 	$obj = get_queried_object();
-	if ( $obj->parent === 0 && is_category() ) {
+	if ( $obj->parent == 0 && is_category() ) {
 		return true;
 	} else {
 		return false;
