@@ -185,34 +185,35 @@ function make_register_sidebar() {
 	if( function_exists('register_sidebar')) {
 		register_sidebar( 
 			array(
-				'id'=>'makezine',
-				'name'=>__('Makezine'),
-				'description'=>__('Welcome to Make: Online' ),
-				'before_widget'=>'<div class="rail_content">',
+				'id'=>'sidebar_top',
+				'name'=>__('Sidebar Top'),
+				'description'=>__('This widget area is at the top of the sidebar, above everything else.' ),
+				'before_widget'=>'<div class="widget">',
 				'after_widget'=>'</div>',
-				'before_title'=>'<div style="rail_header"><h2 class="rail">',
-				'after_title'=>'</h2></div>'
+				'before_title'=>'<h2 class="widget-title">',
+				'after_title'=>'</h2>'
 			)
 		);
-	}
-}
-
-/**
- * Make: Live Widget Zone - Top of Sidebar
- * @deprecated 	Since January 2013.
- */
-add_action('widgets_init', 'make_live_register_sidebar');
-function make_live_register_sidebar() {
-	if( function_exists('register_sidebar')) {
 		register_sidebar( 
 			array(
-				'id'=>'makelive',
-				'name'=>__('Make:Live'),
-				'description'=>__('Widget Area For Make:Live. Add the Make:Live widget to have the live button show up.' ),
-				'before_widget'=>'<div class="rail_content">',
+				'id'=>'sidebar_bottom',
+				'name'=>__('Sidebar Bottom'),
+				'description'=>__('This widget area is at the bottom of the sidebar, below everything else.' ),
+				'before_widget'=>'<div class="widget">',
 				'after_widget'=>'</div>',
-				'before_title'=>'<div style="rail_header"><h2 class="rail">',
-				'after_title'=>'</h2></div>'
+				'before_title'=>'<h2 class="widget-title">',
+				'after_title'=>'</h2>'
+			)
+		);
+		register_sidebar( 
+			array(
+				'id'=>'sidebar_weekend_projects',
+				'name'=>__('Weekend Projects Sidebar'),
+				'description'=>__('This widget area is only on the Weekend Projects page.' ),
+				'before_widget'=>'<div class="widget">',
+				'after_widget'=>'</div>',
+				'before_title'=>'<h2 class="widget-title">',
+				'after_title'=>'</h2>'
 			)
 		);
 	}
@@ -1624,3 +1625,4 @@ function make_is_parent_page() {
 		return false;
 	}
 }
+
