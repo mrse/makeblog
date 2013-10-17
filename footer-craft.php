@@ -116,7 +116,7 @@
 						</a>
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/arrow-footer.png" width="80" height="48" id="mag-arrow">
 						<h5>Subscribe<br /> to MAKE!</h5>
-						<p>Get the print and digital versions when you subscribe</p>
+						<p class="p_footer">Get the print and digital versions when you subscribe</p>
 						<hr />
 					<!-- END span subscribe -->
 					</div>

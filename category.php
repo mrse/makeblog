@@ -7,7 +7,6 @@
  * @author     Jake Spurlock <jspurlock@makermedia.com>
  * 
  */
-
 $type = get_query_var( 'post_type' );
 $tag = get_query_var( 'tag' );
 
@@ -203,6 +202,8 @@ make_get_header(); ?>
 			</div>
 						
 		</div>
+
+	</div>
 		
 	<?php } }
 	else { ?>
@@ -299,8 +300,10 @@ make_get_header(); ?>
 						</div>
 					
 					</div>
+			</div>
 			<?php } ?>
+
 
 <?php
 }
-get_footer();
+get_footer(); 
