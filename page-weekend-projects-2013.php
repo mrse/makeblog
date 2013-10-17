@@ -185,10 +185,8 @@ get_header(); ?>
 
 				);
 				make_carousel( $args, false );
-				echo '</div></div></div></div>';
+				echo '</div></div></div>';
 			}
 		?>
-
-	</div>
 
 	<?php get_footer(); ?>
