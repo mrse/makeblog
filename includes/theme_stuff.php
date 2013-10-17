@@ -1613,9 +1613,12 @@ function make_generate_description() {
 	}
 }
 
+/**
+ * Simple boolean function to test if we are on a category page, and if that page has a parent.
+ */
 function make_is_parent_page() {
 	$obj = get_queried_object();
-	if ( $obj->parent == 0 && is_category() && !is_category( 86 ) ) {
+	if ( $obj->parent === 0 && is_category() ) {
 		return true;
 	} else {
 		return false;

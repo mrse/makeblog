@@ -9,7 +9,7 @@
  */
 ?>
 				
-				<div class="footer-ad <?php echo ( make_is_parent_page() ) ? 'grey' : '' ; ?>" style="clear:both;">
+				<div class="footer-ad <?php echo ( make_is_parent_page() || ! is_category( 'maker-pro' ) ) ? 'grey' : '' ; ?>" style="clear:both;">
 				
 					<div style="width:728px; margin:0 auto;">
  
