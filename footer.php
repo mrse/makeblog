@@ -25,9 +25,7 @@
 
 				</div>
 			
-			</div></div></div>
-		
-		</div></div></div>
+			</div>
 
 		<section id="footer" class="new-footer">
 			<div class="container">
