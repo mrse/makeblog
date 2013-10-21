@@ -9064,6 +9064,10 @@ body .single .tag-weekend-projects {
 .page-id-336037 .news .media {
   padding: 0 10px;
 }
+.page-id-344802 .projects-masthead,
+.page-id-342608 .projects-masthead {
+  display: none;
+}
 .widget {
   margin: 20px 0;
 }
