@@ -11167,9 +11167,12 @@ body.hiw ul.unstyled li a {
 body.hiw .sidebar-left h3 {
   margin-bottom: 0px;
 }
+body.hiw .sidebar-left h4 {
+  margin-bottom: 6px;
+}
 body.hiw .sidebar-left .accordion-heading,
 body.hiw .sidebar-left .accordion-toggle {
-  padding: 9px 0;
+  padding: 0px 0px 6px 0px;
 }
 body.hiw .sidebar-left .accordion {
   margin-bottom: 0px;
@@ -11316,12 +11319,15 @@ body.hiw .header-wrap h2 {
 body.hiw .carousel-control {
   top: 165px !important;
 }
-body.hiw h3,
 body.hiw h4,
 body.hiw h5,
 body.hiw h6 {
   line-height: 20px;
   margin-bottom: 16px;
+}
+body.hiw h3 {
+  line-height: 20px;
+  margin-bottom: 8px;
 }
 body.hiw .right-sidebar h4:first-child {
   margin-bottom: 5px;
@@ -11335,6 +11341,13 @@ body.hiw div.right-sidebar p a {
 }
 body.hiw .right-sidebar .soci {
   margin: 0 0 10px 0;
+}
+body.hiw .single p a.btn {
+  color: #005d8f;
+  border-bottom: 1px solid #ccc;
+}
+body.hiw .single p a {
+  border-bottom: none;
 }
 .button,
 a.button {
