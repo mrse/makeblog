@@ -65,30 +65,5 @@
 							</a>
 						</li>
 					</ul>
-					<h4>Press</h4>
-						<img class="thumbnail" src="http://makezineblog.files.wordpress.com/2013/03/hiw_web-asset_cnet-quote1.jpg" alt="">
-					<img src="http://cdn.makezine.com/make/bootstrap/img/etc/businessweek.jpg" alt="Bloomberg Businessweek" class="thumbnail" width="130">
-					<h4>The Maker Movement Meets the VCs</h4>
-					<p>"[The maker movement is] as significant as the shift from agriculture to the early industrial era." Jeremy Rifkin, Wharton economist. Bloomberg Business Week, 2/16/12</p>
-					<hr>
-					<img src="http://cdn.makezine.com/make/bootstrap/img/etc/washington_post.jpg" alt="Washington Post" class="thumbnail" width="130">
-					<h4>Why It's China's Turn to Worry about Manufacturing</h4>
-					<p>"Artificial intelligence, robotics, and digital manufacturing . . . these technologies will make manufacturing more creative, less expensive, more local and more personal." 1/10/12</p>
-					<hr>
-					<img src="http://cdn.makezine.com/make/bootstrap/img/etc/economist.jpg" alt="The Economist" class="thumbnail" width="130">
-					<h4>More than Just Digital Quilting</h4>
-					<p>"The maker movement could change how science is taught and boost innovation. It may even herald a new industrial revolution." 12/3/11</p>
-					<hr>
-					<img src="http://cdn.makezine.com/make/bootstrap/img/etc/forbes.jpg" alt="Forbes" class="thumbnail" width="130">
-					<h4>Moving the Economy: The Future of the Maker Movement</h4>
-					<p>"I'm motivated and moved by the idea, the belief-that the people who invent and build and make things have the power to change the world." TJ McCue, 10/26/11 Forbes Blog</p>
-					<hr>
-					<img src="http://cdn.makezine.com/make/bootstrap/img/etc/wired.jpg" alt="Wired" class="thumbnail" width="130">
-					<h4>Big DYI: The Year the Maker Movement Broke</h4>
-					<p>"Between MakerBot, Adafruit, MakerSHED and SparkFun, that's well over tens of millions of revenue . . .it's a real industry now." Phillip Torrone, Adafruit. 8/6/11</p>
-					<hr>
-					<img src="http://cdn.makezine.com/make/bootstrap/img/etc/entrepreneur.jpg" alt="Entrepreneur" class="thumbnail" width="130">
-					<h4>Maker Faire and the Growth of Do-It-Yourself</h4>
-					<p>"The movement that caught on in the garages and basements of California's Bay Area is showing signs of true financial power."  Gwen Moran 10/25/11</p>
-					
+									
 				</div> <!-- END span2 -->				
