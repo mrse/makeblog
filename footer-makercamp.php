@@ -42,9 +42,6 @@
 											<label for="MAKENewsletter">
 												<input type="checkbox" name="cm-ol-jjuylk" id="MAKENewsletter"> MAKE Newsletter
 											</label>
-											<label for="CRAFTNewsletter">
-												<input type="checkbox" name="cm-ol-jjurhj" id="CRAFTNewsletter"> CRAFT Newsletter
-											</label>
 											<label for="MakerFaireNewsletter">
 												<input type="checkbox" name="cm-ol-jjuruj" id="MakerFaireNewsletter"> Maker Faire Newsletter
 											</label>
@@ -112,7 +109,7 @@
 						<div class="span3 subscribe hidden-phone">
 							<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/arrow-footer.png" width="95" height="46" id="mag-arrow">
 							<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M**NEWB" target="_blank">
-								<img class="pull-right" src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.jpg" alt="MAKE Magazine Cover" width="128" height="181" id="mag-cover">
+								<img class="pull-right" src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.gif" alt="MAKE Magazine Cover" width="128" height="181" id="mag-cover">
 							</a>
 							<h5>Subscribe<br> to MAKE!</h5>
 							<p>Get the print and digital versions when you subscribe</p>

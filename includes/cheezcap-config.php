@@ -252,7 +252,7 @@ $cap = new CheezCap( array(
 			array(
 				new CheezCapTextOption(
 					'BIG OL\' YOUTUBE VIDEO',
-					'When you add the URL of a YouTube video here, it will add it under the feature boxes on the home page.',
+					'When you add the URL of a YouTube video here, it will add it under the feature boxes on the home page. You can also add a post ID here, and it will pull the linked YouTube video.',
 					'youtube',
 					''
 				),

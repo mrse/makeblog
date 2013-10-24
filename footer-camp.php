@@ -8,18 +8,6 @@
  * 
  */
 ?>
-
-		<div class="camp-footer">
-			<div class="container">
-
-				<ul class="nav">
-					<li class="active"><a href="http://blog.makezine.com/trainingcamp/">Home</a></li>
-					<li><a href="http://makezine.com/trainingcamp/faq">FAQ</a></li>
-				</ul>
-			
-			</div><!-- END container -->
-		</div><!-- END camp-footer -->
-
 		<!-- Le javascript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->

@@ -73,9 +73,9 @@
 							<div class="subscribe dropdown clearfix">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Subscribe</a>
 								<ul class="dropdown-menu">
-									<li><a href="<?php home_url(); ?>/subscribe">Magazine</a></li>
-									<li><a href="<?php home_url(); ?>/newsletter">Newsletter</a></li>
-									<li><a href="<?php home_url(); ?>/feeds">RSS</a></li>
+									<li><a href="https://www.pubservice.com/MK/subscribe.aspx?PC=MK&PK=M3AMZU">Magazine</a></li>
+									<li><a href="http://makezine.com/newsletter/">Newsletter</a></li>
+									<li><a href="http://makezine.com/feeds/">RSS</a></li>
 								</ul>
 							</div>
 							<form action="<?php echo home_url(); ?>/search/" class="search-make">

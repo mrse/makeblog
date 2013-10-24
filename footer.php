@@ -8,12 +8,11 @@
  * 
  */
 ?>
-				</div>
 				
-				<div class="footer-ad" style="margin-top:30px;clear:both;">
+				<div class="footer-ad <?php echo ( make_is_parent_page() && ! is_category( 'maker-pro' ) ) ? 'grey' : '' ; ?>" style="clear:both;">
 				
-					<div class="" style="width:728px; margin:0 auto;">
-
+					<div style="width:728px; margin:0 auto;">
+ 
 						<!-- Beginning Sync AdSlot 4 for Ad unit header ### size: [[728,90]]  -->
 						<div id='div-gpt-ad-664089004995786621-4'>
 							<script type='text/javascript'>
@@ -21,14 +20,15 @@
 							</script>
 						</div>
 						<!-- End AdSlot 4 -->
-						
+						 
 					</div>
 
 				</div>
 			
-			</div>
+			</div></div></div>
 		
-		</div>
+		</div></div></div>
+
 		<section id="footer" class="new-footer">
 			<div class="container">
 				<div class="row">
@@ -55,9 +55,6 @@
 									<div class="controls">
 										<label for="MAKENewsletter">
 										<input type="checkbox" name="cm-ol-jjuylk" id="MAKENewsletter" /> MAKE Newsletter
-										</label>
-										<label for="CRAFTNewsletter">
-										<input type="checkbox" name="cm-ol-jjurhj" id="CRAFTNewsletter" /> CRAFT Newsletter
 										</label>
 										<label for="MakerFaireNewsletter">
 										<input type="checkbox" name="cm-ol-jjuruj" id="MakerFaireNewsletter" /> Maker Faire Newsletter
@@ -87,7 +84,7 @@
 							<ul>
 								<li><a href="http://makezine.com/help/index.html">Help</a></li>
 								<li><a href="http://makermedia.com/contact-us/" target="_blank">Contact</a></li>
-								<li><a href="http://www.makezine.com/go/subscribe2make">Subscribe</a></li>
+								<li><a href="https://www.pubservice.com/MK/subscribe.aspx?PC=MK&PK=M3AMZF">Subscribe</a></li>
 								<li><a href="http://makermedia.com/work-with-us/advertising/" target="_blank">Advertise</a></li> 
 								<li><a href="http://makermedia.com/privacy/" target="_blank">Privacy</a></li>
 							</ul>
@@ -95,7 +92,7 @@
 						<div class="about-column-02">
 							<ul>
 								<li><a href="http://makermedia.com/about-us/management-team/" target="_blank">About Us</a></li>
-								<!-- <li><a href="http://makezine.com/faq/index.html">FAQ</a></li>  -->
+								<li><a href="http://makezine.com/faq/index.html">FAQ</a></li>
 								<li><a href="http://makezine.com/community/index.html">Forums</a></li>
 								<li><a href="http://makezine.com/contribute/">Write for MAKE</a></li>
 							</ul>
@@ -118,12 +115,12 @@
 					<!-- END span3 about-us -->
 					</div>
 					<div class="span3 subscribe">
-						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M**NEWB" target="_blank">
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.jpg" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
+						<a href="https://www.pubservice.com/MK/subscribe.aspx?PC=MK&PK=M3AMZB" target="_blank">
+							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.gif" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
 						</a>
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/arrow-footer.png" width="80" height="48" id="mag-arrow">
 						<h5>Subscribe<br /> to MAKE!</h5>
-						<p>Get the print and digital versions when you subscribe</p>
+						<p class="p_footer">Get the print and digital versions when you subscribe</p>
 						<hr />
 					<!-- END span subscribe -->
 					</div>

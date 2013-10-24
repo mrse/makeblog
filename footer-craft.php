@@ -52,9 +52,6 @@
 										<label for="MAKENewsletter">
 										<input type="checkbox" name="cm-ol-jjuylk" id="MAKENewsletter" /> MAKE Newsletter
 										</label>
-										<label for="CRAFTNewsletter">
-										<input type="checkbox" name="cm-ol-jjurhj" id="CRAFTNewsletter" /> CRAFT Newsletter
-										</label>
 										<label for="MakerFaireNewsletter">
 										<input type="checkbox" name="cm-ol-jjuruj" id="MakerFaireNewsletter" /> Maker Faire Newsletter
 										</label>
@@ -119,7 +116,7 @@
 						</a>
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/arrow-footer.png" width="80" height="48" id="mag-arrow">
 						<h5>Subscribe<br /> to MAKE!</h5>
-						<p>Get the print and digital versions when you subscribe</p>
+						<p class="p_footer">Get the print and digital versions when you subscribe</p>
 						<hr />
 					<!-- END span subscribe -->
 					</div>
