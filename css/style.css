@@ -5578,7 +5578,7 @@ body ul li {
   line-height: 140%;
 }
 #div-gpt-ad-664089004995786621-1 {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .add30 {
   width: 590px;
@@ -9064,6 +9064,10 @@ body .single .tag-weekend-projects {
 .page-id-336037 .news .media {
   padding: 0 10px;
 }
+.page-id-344802 .projects-masthead,
+.page-id-342608 .projects-masthead {
+  display: none;
+}
 .widget {
   margin: 20px 0;
 }
@@ -9096,6 +9100,12 @@ body .single .tag-weekend-projects {
 }
 .main-header .row {
   position: relative;
+}
+.main-header .logo {
+  margin-top: 67px;
+}
+.main-header .hdr-sub-ad-01 img {
+  margin-top: 10px;
 }
 .main-header .additional-content {
   position: absolute;
@@ -9142,13 +9152,12 @@ body .single .tag-weekend-projects {
   color: #ed1c24;
 }
 .main-header .additional-content .search-make {
+  float: right;
   margin: 0;
 }
 .main-header .additional-content .search-make input[type="text"] {
   display: none;
   padding: 5px 0 4px 8px;
-  width: 0;
-  border: none;
   color: #777;
 }
 .main-header .additional-content .search-make input[type="text"]:focus {
@@ -9160,6 +9169,7 @@ body .single .tag-weekend-projects {
   margin: 4px 8px 5px;
 }
 .main-header .additional-content .search-make.open {
+  width: 220px;
   border: 1px solid #ed1c24;
   border-top: none;
   -webkit-border-bottom-right-radius: 5px;
@@ -9213,7 +9223,7 @@ body .single .tag-weekend-projects {
   font-size: 20px !important;
   font-weight: bold;
   position: relative;
-  top: 27px;
+  top: 92px;
 }
 .primary-navigation ul > li {
   margin-right: 22px;
@@ -11163,9 +11173,12 @@ body.hiw ul.unstyled li a {
 body.hiw .sidebar-left h3 {
   margin-bottom: 0px;
 }
+body.hiw .sidebar-left h4 {
+  margin-bottom: 6px;
+}
 body.hiw .sidebar-left .accordion-heading,
 body.hiw .sidebar-left .accordion-toggle {
-  padding: 9px 0;
+  padding: 0px 0px 6px 0px;
 }
 body.hiw .sidebar-left .accordion {
   margin-bottom: 0px;
@@ -11312,12 +11325,15 @@ body.hiw .header-wrap h2 {
 body.hiw .carousel-control {
   top: 165px !important;
 }
-body.hiw h3,
 body.hiw h4,
 body.hiw h5,
 body.hiw h6 {
   line-height: 20px;
   margin-bottom: 16px;
+}
+body.hiw h3 {
+  line-height: 20px;
+  margin-bottom: 8px;
 }
 body.hiw .right-sidebar h4:first-child {
   margin-bottom: 5px;
@@ -11331,6 +11347,13 @@ body.hiw div.right-sidebar p a {
 }
 body.hiw .right-sidebar .soci {
   margin: 0 0 10px 0;
+}
+body.hiw .single p a.btn {
+  color: #005d8f;
+  border-bottom: 1px solid #ccc;
+}
+body.hiw .single p a {
+  border-bottom: none;
 }
 .button,
 a.button {

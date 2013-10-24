@@ -229,6 +229,11 @@ Template Name: Home Page
 							);
 
 							$the_query = new WP_Query( $args );
+
+							$post_array = array();
+							foreach ( $the_query->posts as $post ) {
+								$post_array[] = $post->ID;
+							}
 						?>
 
 						<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
@@ -305,6 +310,7 @@ Template Name: Home Page
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
 											'post_type' => 'projects',
+											'post__not_in'	=> $post_array,
 										);
 										
 										$proj_query = new WP_Query( $args );
@@ -355,6 +361,7 @@ Template Name: Home Page
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
 											'post_type' => array( 'post', 'projects', 'review', 'video', 'magazine' ),
+											'post__not_in'	=> $post_array,
 										);
 										
 
@@ -390,7 +397,8 @@ Template Name: Home Page
 											'tag_id' => 785128,
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
-											'tag__not_in' => 22815
+											'tag__not_in' => 22815,
+											'post__not_in'	=> $post_array,
 										);
 										
 										$the_query = new WP_Query( $args );
@@ -428,6 +436,7 @@ Template Name: Home Page
 											'tag_id' => 115565268,
 											'posts_per_page'  => 1,
 											'no_found_rows' => true,
+											'post__not_in'	=> $post_array,
 										);
 
 										$the_query = new WP_Query( $args );
@@ -458,8 +467,13 @@ Template Name: Home Page
 								<div class="grid-box boxy">
 
 									<?php
+										$args = array(
+											'post_type' 		=> 'page_2',
+											'posts_per_page'	=> 1,
+											'post__not_in'	=> $post_array,
+											);
 										
-										$the_query = new WP_Query( 'post_type=page_2&posts_per_page=1' );
+										$the_query = new WP_Query( $args );
 
 										while ( $the_query->have_posts() ) : $the_query->the_post();
 											echo '<a href="'.get_permalink().'">';

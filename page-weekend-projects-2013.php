@@ -58,11 +58,9 @@ get_header(); ?>
 				</div>
 				
 				<div class="span4">
-					
-					<a href="http://makezine.com/2013/10/11/weekend-projects-hoa-week1/">
-						<img src="http://makezineblog.files.wordpress.com/2013/10/weekendprojects_hangoutsonair.png" alt="Weekend Projects Hangout on Air" style="margin-bottom:20px;">
-					</a>
-					
+
+					<?php dynamic_sidebar( 'sidebar_weekend_projects' ); ?>
+										
 					<div class="sidebar-ad">
 
 						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->

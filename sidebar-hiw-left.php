@@ -11,28 +11,44 @@
 				<div class="span3 sidebar-left">
 					<ul class="left-nav">
 						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/' ); ?>">Home</a></li>
-						<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/' ); ?>">2013 New York Event</a></li>
-						<div style="padding-left:15px;">
-							<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/agenda/' ); ?>">Agenda</a></li>
-							<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/speakers/' ); ?>">Speakers</a></li>
-							<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/tickets/' ); ?>">Tickets</a></li>
-							<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/hotel/' ); ?>">Travel</a></li>
-                    	</div>  
 						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/research/' ); ?>">Maker Market Research</a></li>
 						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/press/' ); ?>">Press</a></li>
 						<li><a href="<?php echo home_url( '/hardware-innovation-workshop/contact/' ); ?>">Contact</a></li>
 					</ul>
+<h4>Past Events</h4>					
+
+<ul class="left-nav"> <li>
 					<div class="accordion">
 						<div class="accordion">
 							<div class="accordion-heading">
-								<h3><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">2013 Bay Area Event</a></h3>
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">2013 New York Event</a>
 							</div>
 							<div id="collapseOne" class="accordion-body collapse in">
 								<div class="accordion-inner">
 									<ul class="left-nav left-nav-accord">
+										<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/' ); ?>">2013 New York Overview</a></li>
+										<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/agenda/' ); ?>">2013 Agenda</a></li>
+										<li><a href="<?php echo home_url( 'hardware-innovation-workshop/2013-new-york-event/speakers/' ); ?>">2013 Speakers</a></li>		
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+</li>
+<li>
+
+
+					<div class="accordion">
+						<div class="accordion">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">2013 Bay Area Event</a>
+							</div>
+							<div id="collapseTwo" class="accordion-body collapse in">
+								<div class="accordion-inner">
+									<ul class="left-nav left-nav-accord">
 										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/overview/' ); ?>">2013 Bay Area Overview</a></li>
 										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/agenda/' ); ?>">2013 Agenda</a></li>
-										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/keynotes/' ); ?>">2013 Speaker Roster</a></li>
+										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/keynotes/' ); ?>">2013 Speakers</a></li>
 										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/innovators/' ); ?>">2013 Showcase Innovators</a></li>  
 										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/master-class/' ); ?>">2013 Master Class Workshop</a></li>
 									</ul>
@@ -40,24 +56,26 @@
 							</div>
 						</div>
 					</div>
+
+
+</li><li>
 					<div class="accordion">
 						<div class="accordion">
 							<div class="accordion-heading">
-								<h3><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">2012 Bay Area Event</a></h3>
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">2012 Bay Area Event</a>
 							</div>
-							<div id="collapseTwo" class="accordion-body collapse in">
+							<div id="collapseThree" class="accordion-body collapse in">
 								<div class="accordion-inner">
 									<ul class="left-nav left-nav-accord">
-										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/overview-2012/' ); ?>">2012 Bay Area Overview</a></li>
 										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/overview-2012/agenda-2012/' ); ?>">2012 Agenda</a></li>
-										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/overview-2012/speaker-roster-2012/' ); ?>">2012 Speaker Roster</a></li>
+										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/overview-2012/speaker-roster-2012/' ); ?>">2012 Speakers</a></li>
 										<li><a href="<?php echo home_url( '/hardware-innovation-workshop/overview-2012/showcase-innovators-2012/' ); ?>">2012 Showcase Innovators</a></li> 
 									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
-					
+				</ul></ul>	
 					<h4>Follow us:</h4>
 
 					<ul class="left-nav">

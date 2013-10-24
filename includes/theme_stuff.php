@@ -185,34 +185,35 @@ function make_register_sidebar() {
 	if( function_exists('register_sidebar')) {
 		register_sidebar( 
 			array(
-				'id'=>'makezine',
-				'name'=>__('Makezine'),
-				'description'=>__('Welcome to Make: Online' ),
-				'before_widget'=>'<div class="rail_content">',
+				'id'=>'sidebar_top',
+				'name'=>__('Sidebar Top'),
+				'description'=>__('This widget area is at the top of the sidebar, above everything else.' ),
+				'before_widget'=>'<div class="widget">',
 				'after_widget'=>'</div>',
-				'before_title'=>'<div style="rail_header"><h2 class="rail">',
-				'after_title'=>'</h2></div>'
+				'before_title'=>'<h3 class="widget-title">',
+				'after_title'=>'</h3>'
 			)
 		);
-	}
-}
-
-/**
- * Make: Live Widget Zone - Top of Sidebar
- * @deprecated 	Since January 2013.
- */
-add_action('widgets_init', 'make_live_register_sidebar');
-function make_live_register_sidebar() {
-	if( function_exists('register_sidebar')) {
 		register_sidebar( 
 			array(
-				'id'=>'makelive',
-				'name'=>__('Make:Live'),
-				'description'=>__('Widget Area For Make:Live. Add the Make:Live widget to have the live button show up.' ),
-				'before_widget'=>'<div class="rail_content">',
+				'id'=>'sidebar_bottom',
+				'name'=>__('Sidebar Bottom'),
+				'description'=>__('This widget area is at the bottom of the sidebar, below everything else.' ),
+				'before_widget'=>'<div class="widget">',
 				'after_widget'=>'</div>',
-				'before_title'=>'<div style="rail_header"><h2 class="rail">',
-				'after_title'=>'</h2></div>'
+				'before_title'=>'<h3 class="widget-title">',
+				'after_title'=>'</h3>'
+			)
+		);
+		register_sidebar( 
+			array(
+				'id'=>'sidebar_weekend_projects',
+				'name'=>__('Weekend Projects Sidebar'),
+				'description'=>__('This widget area is only on the Weekend Projects page.' ),
+				'before_widget'=>'<div class="widget">',
+				'after_widget'=>'</div>',
+				'before_title'=>'<h3 class="widget-title">',
+				'after_title'=>'</h3>'
 			)
 		);
 	}
@@ -955,6 +956,29 @@ function make_get_better_tag_title( $title = null ) {
 }
 
 /**
+ * For projects or reviews, filter the title to say New {post_type}: title
+ */
+function make_projects_title_change( $title ) {
+	global $post;
+	switch ( get_post_type() ) {
+		case 'projects':
+			$title = 'New Project: ' . $title;
+			break;
+		
+		case 'review':
+			$title = 'New Review: ' . $title;
+			break;
+
+		default:
+			$title;
+			break;
+	}
+	return $title;
+}
+
+add_filter( 'the_title_rss', 'make_projects_title_change' );
+
+/**
  * Adds the post thumbnail to the RSS feed.
  * Like a lot of people, I wish that we weren't truncating the RSS feed, but hey, not my decision!
  */
@@ -1618,9 +1642,10 @@ function make_generate_description() {
  */
 function make_is_parent_page() {
 	$obj = get_queried_object();
-	if ( $obj->parent === 0 && is_category() ) {
+	if ( $obj->parent == 0 && is_category() ) {
 		return true;
 	} else {
 		return false;
 	}
 }
+

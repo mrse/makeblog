@@ -586,6 +586,7 @@ function make_new_gallery_shortcode($attr) {
 			jQuery(document).ready(function(){
 				jQuery(".viewall").click(function() {
 					jQuery(".carousel-inner").removeClass("carousel-inner");
+					jQuery(".carousel-control").hide();
 					googletag.pubads().refresh();
 					_gaq.push([\'_trackPageview\']);
 					urlref = location.href;
