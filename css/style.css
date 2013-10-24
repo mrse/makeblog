@@ -5578,7 +5578,7 @@ body ul li {
   line-height: 140%;
 }
 #div-gpt-ad-664089004995786621-1 {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .add30 {
   width: 590px;
@@ -9101,6 +9101,12 @@ body .single .tag-weekend-projects {
 .main-header .row {
   position: relative;
 }
+.main-header .logo {
+  margin-top: 67px;
+}
+.main-header .hdr-sub-ad-01 img {
+  margin-top: 10px;
+}
 .main-header .additional-content {
   position: absolute;
   top: -15px;
@@ -9146,13 +9152,12 @@ body .single .tag-weekend-projects {
   color: #ed1c24;
 }
 .main-header .additional-content .search-make {
+  float: right;
   margin: 0;
 }
 .main-header .additional-content .search-make input[type="text"] {
   display: none;
   padding: 5px 0 4px 8px;
-  width: 0;
-  border: none;
   color: #777;
 }
 .main-header .additional-content .search-make input[type="text"]:focus {
@@ -9164,6 +9169,7 @@ body .single .tag-weekend-projects {
   margin: 4px 8px 5px;
 }
 .main-header .additional-content .search-make.open {
+  width: 220px;
   border: 1px solid #ed1c24;
   border-top: none;
   -webkit-border-bottom-right-radius: 5px;
@@ -9217,7 +9223,7 @@ body .single .tag-weekend-projects {
   font-size: 20px !important;
   font-weight: bold;
   position: relative;
-  top: 27px;
+  top: 92px;
 }
 .primary-navigation ul > li {
   margin-right: 22px;

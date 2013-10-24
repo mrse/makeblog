@@ -69,7 +69,7 @@ Template name: Header
 						<div class="logo span2">
 							<a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png" /></a>
 						</div>
-						<nav role="navigation" class="span10 site-navigation primary-navigation">
+						<nav role="navigation" class="span7 site-navigation primary-navigation">
 							<?php
 								wp_nav_menu( array(
 									'theme_location'  => 'make-primary', 
@@ -79,18 +79,13 @@ Template name: Header
 							?>
 						</nav>
 						<div class="additional-content">
-							<div class="subscribe dropdown clearfix">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Subscribe</a>
-								<ul class="dropdown-menu">
-									<li><a href="https://www.pubservice.com/MK/subscribe.aspx?PC=MK&PK=M3AMZU">Magazine</a></li>
-									<li><a href="http://makezine.com/newsletter/">Newsletter</a></li>
-									<li><a href="http://makezine.com/feeds/">RSS</a></li>
-								</ul>
-							</div>
-							<form action="<?php echo home_url(); ?>/search/" class="search-make">
-								<input type="text" class="search-field" name="q" placeholder="" />
-								<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-btn.png" alt="Search" class="disabled" />
+							<form action="<?php echo home_url(); ?>/search/" class="search-make open">
+								<input type="text" class="search-field" name="q" placeholder="Search" />
+								<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-btn.png" alt="Search" class="open" />
 							</form>
+							<div class="hdr-sub-ad-01" >
+								<a href="<?php echo home_url( '/subscribe' ); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/MakeAd_Circle.png" alt="Subscribe to Make Magazine" /></a>
+							</div>
 						</div>
 					</div>
 				</div>

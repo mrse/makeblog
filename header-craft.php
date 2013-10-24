@@ -31,7 +31,6 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-		<?php make_popdown_menu(); ?>
 		<div class="container">
 			<div class="row">
 				<div id="div-gpt-ad-664089004995786621-1" class="text-center">
@@ -48,7 +47,7 @@
 						<div class="logo span2">
 							<a href="http://makezine.com/craftzine"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/craft-logo.png" alt="MAKE" title="MAKE" /></a>
 						</div>
-						<nav role="navigation" class="span10 site-navigation primary-navigation">
+						<nav role="navigation" class="span7 site-navigation primary-navigation">
 							<?php
 								wp_nav_menu( array(
 									'theme_location'  => 'make-primary', 
@@ -57,19 +56,14 @@
 								) );
 							?>
 						</nav>
-						<div class="additional-content">
-							<div class="subscribe dropdown clearfix">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Subscribe</a>
-								<ul class="dropdown-menu">
-									<li><a href="<?php home_url(); ?>/subscribe">Magazine</a></li>
-									<li><a href="<?php home_url(); ?>/newsletter">Newsletter</a></li>
-									<li><a href="<?php home_url(); ?>/feeds">RSS</a></li>
-								</ul>
-							</div>
-							<form action="<?php echo home_url(); ?>/search/" class="search-make">
-								<input type="text" class="search-field" name="q" placeholder="" />
-								<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-btn.png" alt="Search" class="disabled" />
+						<div class="additional-content">						
+							<form action="<?php echo home_url(); ?>/search/" class="search-make open">
+								<input type="text" class="search-field" name="q" placeholder="Search" />
+								<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-btn.png" alt="Search" class="open" />
 							</form>
+							<div class="hdr-sub-ad-01" >
+								<a href="<?php echo home_url( '/subscribe' ); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/MakeAd_Circle.png" alt="Subscribe to Make Magazine" /></a>
+							</div>
 						</div>
 					</div>
 				</div>
