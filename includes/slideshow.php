@@ -320,7 +320,7 @@ function make_carousel( $args, $title_link = true ) {
 						echo $args['title'];
 					}
 				?>
-			</h3>
+			</h2>
 		</div>
 		<div class="span2">
 			<?php

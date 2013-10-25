@@ -102,7 +102,7 @@ Template Name: Craft Home Page
 
 						<div>
 
-							<a href="http://pubads.g.doubleclick.net/gampad/clk?id=17983018&iu=/11548178/Makezine">
+							<a href="http://pubads.g.doubleclick.net/gampad/clk?id=17983018&amp;iu=/11548178/Makezine">
 								<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Make_Money_298x144.jpg" class="contribute" alt="Make: Money Sell MAKE subscriptions and make money for your organization" />
 							</a>
 
@@ -137,7 +137,7 @@ Template Name: Craft Home Page
 
 					<div class="span12">
 
-						<a href="https://www.pubservice.com/mk/subscribe.aspx?PC=MK&PK=M2A3DP4">
+						<a href="https://www.pubservice.com/mk/subscribe.aspx?PC=MK&amp;PK=M2A3DP4">
 							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Make_3D-SIP_1112_940x39.png" alt="Subscribe to MAKE magazine" />
 						</a>
 
@@ -201,7 +201,7 @@ Template Name: Craft Home Page
 							$cap_youtube = make_get_cap_option( 'craft_youtube' );
 							if ( $cap_youtube ) {
 								echo '<div class="small-youtube">';
-								echo do_shortcode('[youtube='. wp_kses_post( $cap_youtube ) .'&w=590&h=332]');
+								echo do_shortcode('[youtube='. wp_kses_post( $cap_youtube ) .'&amp;w=590&amp;h=332]');
 								echo '</div>';
 							}; ?>
 

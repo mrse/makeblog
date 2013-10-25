@@ -9,7 +9,7 @@
 				<?php
 					$cap_youtube = make_get_cap_option( 'camp_youtube' );
 					if ( $cap_youtube ) {
-						echo do_shortcode('[youtube='. esc_url( $cap_youtube .'&w=620' ) . ']');
+						echo do_shortcode('[youtube='. esc_url( $cap_youtube .'&amp;w=620' ) . ']');
 					};
 				?>
 

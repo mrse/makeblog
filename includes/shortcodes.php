@@ -238,7 +238,7 @@ function make_volume_blurb() {
 
 			<p>Try your hand at 22 great DIY projects, like the Optical Tremolo guitar effects box, "Panjolele" cake-pan ukelele, Wii Nunchuk Mouse, CNC joinery tricks, treat-dispensing cat scratching post, laser-cut flexing wooden books, sake brewing, growing incredibly hot “ghost chili” peppers, and much more.</p>
 
-			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/Make_Volume_33_p/mmv33.htm">Maker Shed</a></p>
+			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/Make_Volume_33_p/mmv33.htm">Maker Shed</a></p>
 
 			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=9781449327651-P">Buy now!</a></p>
 
