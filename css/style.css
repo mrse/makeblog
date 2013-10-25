@@ -8939,78 +8939,92 @@ body .single .tag-weekend-projects {
 }
 .page-id-328564 .projects-masthead,
 .page-id-335857 .projects-masthead,
-.page-id-336037 .projects-masthead {
+.page-id-336037 .projects-masthead,
+.page-id-344936 .projects-masthead {
   display: none;
 }
 .page-id-328564 br,
 .page-id-335857 br,
-.page-id-336037 br {
+.page-id-336037 br,
+.page-id-344936 br {
   display: none;
 }
 .page-id-328564 .single,
 .page-id-335857 .single,
-.page-id-336037 .single {
+.page-id-336037 .single,
+.page-id-344936 .single {
   font-size: 16px;
   padding-top: 0;
 }
 .page-id-328564 .single p,
 .page-id-335857 .single p,
-.page-id-336037 .single p {
+.page-id-336037 .single p,
+.page-id-344936 .single p {
   font-size: 16px;
 }
 .page-id-328564 .single .post ul li,
 .page-id-335857 .single .post ul li,
-.page-id-336037 .single .post ul li {
+.page-id-336037 .single .post ul li,
+.page-id-344936 .single .post ul li {
   font-size: 16px;
 }
 .page-id-328564 .single .post .jetpack-sharing h3,
 .page-id-335857 .single .post .jetpack-sharing h3,
-.page-id-336037 .single .post .jetpack-sharing h3 {
+.page-id-336037 .single .post .jetpack-sharing h3,
+.page-id-344936 .single .post .jetpack-sharing h3 {
   padding: inherit;
   background-color: inherit;
 }
 .page-id-328564 .background-blue,
 .page-id-335857 .background-blue,
-.page-id-336037 .background-blue {
+.page-id-336037 .background-blue,
+.page-id-344936 .background-blue {
   background-color: #e4f4f9;
   padding: 10px;
 }
 .page-id-328564 .border-radius,
 .page-id-335857 .border-radius,
-.page-id-336037 .border-radius {
+.page-id-336037 .border-radius,
+.page-id-344936 .border-radius {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
 .page-id-328564 .border-solid,
 .page-id-335857 .border-solid,
-.page-id-336037 .border-solid {
+.page-id-336037 .border-solid,
+.page-id-344936 .border-solid {
   border-style: solid;
   border-width: 2px;
   border-color: #e4f4f9;
 }
 .page-id-328564 h3.red,
 .page-id-335857 h3.red,
-.page-id-336037 h3.red {
+.page-id-336037 h3.red,
+.page-id-344936 h3.red {
   text-transform: none;
 }
 .page-id-328564 h4.dark-blue,
 .page-id-335857 h4.dark-blue,
-.page-id-336037 h4.dark-blue {
+.page-id-336037 h4.dark-blue,
+.page-id-344936 h4.dark-blue {
   color: #005d8f;
 }
 .page-id-328564 strong,
 .page-id-335857 strong,
-.page-id-336037 strong {
+.page-id-336037 strong,
+.page-id-344936 strong {
   color: #005d8f;
 }
 .page-id-328564 div.padding-ush,
 .page-id-335857 div.padding-ush,
-.page-id-336037 div.padding-ush {
+.page-id-336037 div.padding-ush,
+.page-id-344936 div.padding-ush {
   padding: 10px;
 }
 .page-id-328564 .boxed,
 .page-id-335857 .boxed,
-.page-id-336037 .boxed {
+.page-id-336037 .boxed,
+.page-id-344936 .boxed {
   border: 1px solid #e4f4f9;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -9018,19 +9032,22 @@ body .single .tag-weekend-projects {
 }
 .page-id-328564 .boxed h3,
 .page-id-335857 .boxed h3,
-.page-id-336037 .boxed h3 {
+.page-id-336037 .boxed h3,
+.page-id-344936 .boxed h3 {
   background-color: #e4f4f9;
   padding: 10px;
 }
 .page-id-328564 .boxed h3 a,
 .page-id-335857 .boxed h3 a,
-.page-id-336037 .boxed h3 a {
+.page-id-336037 .boxed h3 a,
+.page-id-344936 .boxed h3 a {
   color: #cc2229;
   color: #CC2229;
 }
 .page-id-328564 .news,
 .page-id-335857 .news,
-.page-id-336037 .news {
+.page-id-336037 .news,
+.page-id-344936 .news {
   margin: 20px 0;
   border: 1px solid #e4f4f9;
   -webkit-border-radius: 3px;
@@ -9039,34 +9056,42 @@ body .single .tag-weekend-projects {
 }
 .page-id-328564 .news li,
 .page-id-335857 .news li,
-.page-id-336037 .news li {
+.page-id-336037 .news li,
+.page-id-344936 .news li {
   font-size: 16px;
 }
 .page-id-328564 .news h3,
 .page-id-335857 .news h3,
-.page-id-336037 .news h3 {
+.page-id-336037 .news h3,
+.page-id-344936 .news h3 {
   background-color: #e4f4f9;
   padding: 10px;
 }
 .page-id-328564 .news h3 a,
 .page-id-335857 .news h3 a,
-.page-id-336037 .news h3 a {
+.page-id-336037 .news h3 a,
+.page-id-344936 .news h3 a {
   color: #cc2229;
   color: #CC2229;
 }
 .page-id-328564 .news .Thumbnail,
 .page-id-335857 .news .Thumbnail,
-.page-id-336037 .news .Thumbnail {
+.page-id-336037 .news .Thumbnail,
+.page-id-344936 .news .Thumbnail {
   max-width: 140px;
 }
 .page-id-328564 .news .media,
 .page-id-335857 .news .media,
-.page-id-336037 .news .media {
+.page-id-336037 .news .media,
+.page-id-344936 .news .media {
   padding: 0 10px;
 }
 .page-id-344802 .projects-masthead,
 .page-id-342608 .projects-masthead {
   display: none;
+}
+.widget:first-child {
+  margin: 0 0 20px 0;
 }
 .widget {
   margin: 20px 0;
@@ -9104,7 +9129,7 @@ body .single .tag-weekend-projects {
 .main-header .logo {
   margin-top: 67px;
 }
-.main-header .hdr-sub-ad-01 img {
+.main-header .hdr-sub-ad-01 {
   margin-top: 10px;
 }
 .main-header .additional-content {

@@ -61,8 +61,11 @@
 								<input type="text" class="search-field" name="q" placeholder="Search" />
 								<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-btn.png" alt="Search" class="open" />
 							</form>
-							<div class="hdr-sub-ad-01" >
-								<a href="<?php echo home_url( '/subscribe' ); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/MakeAd_Circle.png" alt="Subscribe to Make Magazine" /></a>
+							<div class="clearfix"></div>
+							<div id="div-gpt-ad-664089004995786621-5" class="hdr-sub-ad-01" >
+								<script type='text/javascript'>
+									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-5')});
+								</script>
 							</div>
 						</div>
 					</div>
