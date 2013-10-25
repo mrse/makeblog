@@ -9090,6 +9090,9 @@ body .single .tag-weekend-projects {
 .page-id-342608 .projects-masthead {
   display: none;
 }
+.widget:first-child {
+  margin: 0 0 20px 0;
+}
 .widget {
   margin: 20px 0;
 }
