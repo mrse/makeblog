@@ -58,14 +58,15 @@
 			float:right;
 			margin:0;
 			input[type="text"] {
-				display:none;
+				width:165px;
+				border: none;
 				padding:5px 0 4px 8px;
 				color:#777;
-				&:focus { .box-shadow(0 0 0 transparent); }
+				.box-shadow(0 0 0 transparent);
+				// &:focus { .box-shadow(0 0 0 transparent); }
 			}
 			input[type="image"] { margin:4px 8px 5px; }
 			&.open {
-				width:220px;
 				border:@the-border solid @red;
 				border-top:none;
 				.border-bottom-right-radius(5px);
