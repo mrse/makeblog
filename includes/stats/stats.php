@@ -89,7 +89,7 @@ function make_social_stats() {
 					
 					<?php
 			
-						if ( !empty( $_POST ) && wp_verify_nonce( $_POST['make_stats_nonce'], 'make_stats_nonce' ) ) {
+						if ( !empty( $_POST['make_stats_nonce'] ) && wp_verify_nonce( $_POST['make_stats_nonce'], 'make_stats_nonce' ) ) {
 
 							echo '<table class="table table-striped table-bordered"><thead><tr><th>Site</th><th>Count</th></tr></thead><tbody>';
 							echo '<tr><td>Twitter Tweets</td>';
@@ -126,7 +126,7 @@ function make_social_stats() {
 					
 					<?php
 			
-						if ( !empty( $_POST ) && wp_verify_nonce( $_POST['make_wpcom_stats_nonce'], 'make_wpcom_stats_nonce' ) ) {
+						if ( !empty( $_POST['make_wpcom_stats_nonce'] ) && wp_verify_nonce( $_POST['make_wpcom_stats_nonce'], 'make_wpcom_stats_nonce' ) ) {
 
 							echo '<table class="table table-striped table-bordered"><thead><tr><th>Site</th><th>Count</th></tr></thead><tbody>';
 							echo '<tr><td>Page Views</td>';
