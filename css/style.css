@@ -7937,6 +7937,9 @@ textarea.narrow,
   position: relative;
   top: -2px;
 }
+.show-print {
+  display: none;
+}
 .category-top {
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
