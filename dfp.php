@@ -104,7 +104,7 @@ global $post;
 				elseif (has_tag('mcm')) {
 					echo "googletag.pubads().setTargeting('sponsor',['mcm']);";
 				}
-				elseif (has_tag( array( 'greatcreate', 'Weekend Projects' )) || is_page( array( 286853, 271492, 313151, 341320 ) ) ) {
+				elseif ( ( has_tag( array( 'greatcreate', 'Weekend Projects' ) ) || is_page( array( 286853, 271492, 313151, 341320 ) ) ) && !is_category( 'electronics' )  ) {
 					echo "googletag.pubads().setTargeting('sponsor',['radioshack']);";
 				}
 				elseif (has_tag('esurance') || is_page( array(313086, 316119, 316937) ) ) {
