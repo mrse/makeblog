@@ -7937,6 +7937,10 @@ textarea.narrow,
 .feed-wrapper:after {
   clear: both;
 }
+.share-email {
+  position: relative;
+  top: -2px;
+}
 .category-top {
   font-family: "proxima-nova", sans-serif;
   border-bottom: 4px solid #DBDBDB;
