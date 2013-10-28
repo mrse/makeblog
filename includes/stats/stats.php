@@ -118,7 +118,7 @@ function make_social_stats() {
 						<input type="text" class="span3" placeholder="Post ID" name="post_ID">
 						<input type="text" class="span3" placeholder="Number of Days" name="num_days">
 						<input type="date" class="span3" placeholder="End Date" name="end_date">
-						<?php wp_nonce_field( 'make_stats_nonce', 'make_stats_nonce' ); ?>
+						<?php wp_nonce_field( 'make_wpcom_stats_nonce', 'make_wpcom_stats_nonce' ); ?>
 						<button type="submit" class="btn btn info">Submit</button>
 					</form>
 					
@@ -126,7 +126,7 @@ function make_social_stats() {
 					
 					<?php
 			
-						if ( !empty( $_POST ) && wp_verify_nonce( $_POST['make_stats_nonce'], 'make_stats_nonce' ) ) {
+						if ( !empty( $_POST ) && wp_verify_nonce( $_POST['make_wpcom_stats_nonce'], 'make_wpcom_stats_nonce' ) ) {
 
 							echo '<table class="table table-striped table-bordered"><thead><tr><th>Site</th><th>Count</th></tr></thead><tbody>';
 							echo '<tr><td>Page Views</td>';
