@@ -100,7 +100,7 @@ Template Name: Craft Home Page
 
 					<div class="span4">
 
-						<div>
+						<div class="home-ads">
 
 							<a href="http://pubads.g.doubleclick.net/gampad/clk?id=17983018&iu=/11548178/Makezine">
 								<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Make_Money_298x144.jpg" class="contribute" alt="Make: Money Sell MAKE subscriptions and make money for your organization" />
@@ -108,7 +108,7 @@ Template Name: Craft Home Page
 
 						</div>
 
-						<div style="height:250x;overflow:hidden">
+						<div class="home-ads bottom">
 
 							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 							<div id='div-gpt-ad-664089004995786621-2'>
