@@ -33,8 +33,6 @@ Template name: Header
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		
-		<?php get_template_part( 'dfp' ); ?>
 
 		<script type="text/javascript" src="https://use.typekit.com/fzm8sgx.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -78,18 +76,6 @@ Template name: Header
 								) );
 							?>
 						</nav>
-						<div class="additional-content">
-							<form action="<?php echo home_url(); ?>/search/" class="search-make open">
-								<input type="text" class="search-field" name="q" placeholder="Search" />
-								<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-btn.png" alt="Search" class="open" />
-							</form>
-							<div class="clearfix"></div>
-							<div id="div-gpt-ad-664089004995786621-5" class="hdr-sub-ad-01" >
-								<script type='text/javascript'>
-									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-5')});
-								</script>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
