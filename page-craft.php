@@ -103,7 +103,7 @@ Template Name: Craft Home Page
 						<div class="home-ads">
 
 							<a href="http://pubads.g.doubleclick.net/gampad/clk?id=17983018&iu=/11548178/Makezine">
-								<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Make_Money_298x144.jpg" class="contribute" alt="Make: Money Sell MAKE subscriptions and make money for your organization" />
+								<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Make_Money_298x144.jpg" alt="Make: Money Sell MAKE subscriptions and make money for your organization" />
 							</a>
 
 						</div>
