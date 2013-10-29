@@ -5617,7 +5617,7 @@ ul.inline.urban-sensor-nav li a:hover {
 }
 .waist {
   background-image: url('../img/blue_bg1.jpg');
-  border-bottom: 2px solid #b0b3b2;
+  border-bottom: 2px solid #DBDBDB;
 }
 .caption {
   margin-top: -66px;
@@ -6113,7 +6113,6 @@ footer .pills a {
 .content {
   background-color: white;
   padding: 10px;
-  margin-top: 20px;
   background-image: url('../img/header_bg.jpg');
   border: 1px solid #C0C3C3;
 }
@@ -7356,7 +7355,7 @@ body#shop {
   padding-top: 20px;
   width: 100%;
   text-align: center;
-  border-top: 3px solid #A0B0B8;
+  border-top: 3px solid #DBDBDB;
   background-image: url('../img/header_bg.jpg');
 }
 .new-footer label {
@@ -7942,7 +7941,7 @@ textarea.narrow,
 }
 .category-top {
   font-family: "proxima-nova", sans-serif;
-  border-bottom: 4px solid #DBDBDB;
+  border-bottom: 3px solid #DBDBDB;
   padding-top: 20px;
 }
 .category-top h1 {
@@ -8072,7 +8071,7 @@ textarea.narrow,
 .child {
   padding: 20px 0;
   background-color: #f3f3f3;
-  border-top: 4px solid #696a6a;
+  border-top: 3px solid #DBDBDB;
 }
 .child h2 {
   font-family: "proxima-nova", sans-serif;
@@ -8107,7 +8106,7 @@ textarea.narrow,
 .content-type {
   padding: 20px 0;
   font-family: "proxima-nova", sans-serif;
-  border-bottom: 4px solid #DBDBDB;
+  border-bottom: 3px solid #DBDBDB;
 }
 .content-type .projects-art {
   width: 940px;
@@ -8389,7 +8388,7 @@ a {
   color: #022c44;
 }
 .topper {
-  border-top: 3px solid #868484;
+  border-top: 3px solid #DBDBDB;
 }
 .post-type-archive-projects .carousel-inner img {
   border: 1px solid #cecece;
@@ -8398,7 +8397,7 @@ a {
 .projects-home {
   padding-top: 20px;
   font-family: "proxima-nova", sans-serif;
-  border-bottom: 4px solid #DBDBDB;
+  border-bottom: 3px solid #DBDBDB;
 }
 .projects-home .art {
   width: 940px;
@@ -8793,7 +8792,7 @@ a.oembed {
 }
 body .single {
   font-family: "proxima-nova", sans-serif;
-  border-bottom: 4px solid #DBDBDB;
+  border-bottom: 3px solid #DBDBDB;
   padding-top: 20px;
   border-bottom: 0px;
 }
@@ -10937,7 +10936,7 @@ body.makercamp a.button.small-button {
 }
 .archive {
   font-family: "proxima-nova", sans-serif;
-  border-bottom: 4px solid #DBDBDB;
+  border-bottom: 3px solid #DBDBDB;
   padding-top: 20px;
   border-bottom: 0px;
 }
