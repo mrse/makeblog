@@ -137,8 +137,8 @@ Template Name: Craft Home Page
 
 					<div class="span12">
 
-						<a href="https://www.pubservice.com/mk/subscribe.aspx?PC=MK&PK=M2A3DP4">
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Make_3D-SIP_1112_940x39.png" alt="Subscribe to MAKE magazine" />
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M37BN02">
+							<img src="http://cdn.makezine.com/make/ads/Make_SIP-ProjectsGuide_SubOffer_940x39.gif" alt="Subscribe to MAKE magazine" />
 						</a>
 
 					</div>
