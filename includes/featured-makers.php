@@ -36,7 +36,7 @@ function make_featured_maker($content) {
 					if ( function_exists( 'wpcom_vip_get_resized_remote_image_url' ) ) {
 						$content .= '<img src="'.wpcom_vip_get_resized_remote_image_url( esc_url_raw( $make->exhibits[0]->photo ), 130, 130 ) . '" class="thumbnail profile" alt="'. esc_attr( $make->exhibits[0]->Name ).'" />';
 					} else {
-						$content .= '<img src="http://faire.smrtdsgn.com/timthumb/thumb.php?src='.urlencode( esc_url_raw( $make->exhibits[0]->photo ) ).'&h=130&w=130&zc=1" class="thumbnail profile" style="max-width:150px;" />';
+						$content .= '<img src="http://faire.smrtdsgn.com/timthumb/thumb.php?src='.urlencode( esc_url_raw( $make->exhibits[0]->photo ) ).'&amp;h=130&amp;w=130&amp;zc=1" class="thumbnail profile" style="max-width:150px;" />';
 					}
 
 					$content .= '</div>';	
@@ -77,7 +77,7 @@ function make_featured_maker($content) {
 			
 											if ((!empty($request_url)) && ($pos !== false)) {
 
-												$feedURL = 'http://www.youtube.com/oembed?url='. urlencode(esc_url_raw($request_url)) .'&format=xml';
+												$feedURL = 'http://www.youtube.com/oembed?url='. urlencode(esc_url_raw($request_url)) .'&amp;format=xml';
 
 												$contents = wpcom_vip_file_get_contents( $feedURL );
 
