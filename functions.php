@@ -23,7 +23,6 @@ Table of Contents
 
 // 1. Error Reporting
 
-// error_reporting(E_ALL);
 if ( defined( 'WP_CLI' ) && WP_CLI )
 	include_once dirname( __FILE__ ) . '/includes/class-make-cli.php';
 
