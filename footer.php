@@ -26,6 +26,7 @@
 				</div></div></div>
 			
 			</div></div></div>
+			<!-- These extra closing divs are to close all the divs opened by the functions that pull in cat posts -->
 
 		<section id="footer" class="new-footer">
 			<div class="container">

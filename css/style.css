@@ -6017,6 +6017,10 @@ footer {
   padding-top: 40px;
   padding-bottom: 20px;
 }
+.p_footer {
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
 .twtr-widget {
   border: 1px solid #D0D0CE !important;
 }
