@@ -6013,6 +6013,10 @@ footer {
   padding-top: 40px;
   padding-bottom: 20px;
 }
+.p_footer {
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
 .twtr-widget {
   border: 1px solid #D0D0CE !important;
 }
@@ -9210,6 +9214,10 @@ body .single .tag-weekend-projects {
 }
 .page-template-page-craft-php .main-header .logo {
   margin-top: 60px;
+}
+.single-craft .main-header .hdr-sub-ad-01,
+.post-type-archive-craft .main-header .hdr-sub-ad-01 {
+  margin-top: 17px;
 }
 .secondary-header {
   background: #ebebeb;

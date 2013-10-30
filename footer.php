@@ -21,13 +21,12 @@
 						</div>
 						<!-- End AdSlot 4 -->
 						 
-					</div>
+					</div></div>
 
-				</div>
+				</div></div></div>
 			
 			</div></div></div>
-		
-		</div></div></div>
+			<!-- These extra closing divs are to close all the divs opened by the functions that pull in cat posts -->
 
 		<section id="footer" class="new-footer">
 			<div class="container">
@@ -84,7 +83,7 @@
 							<ul>
 								<li><a href="http://makezine.com/help/index.html">Help</a></li>
 								<li><a href="http://makermedia.com/contact-us/" target="_blank">Contact</a></li>
-								<li><a href="https://www.pubservice.com/MK/subscribe.aspx?PC=MK&PK=M3AMZF">Subscribe</a></li>
+								<li><a href="https://www.pubservice.com/MK/subscribe.aspx?PC=MK&amp;PK=M3AMZF">Subscribe</a></li>
 								<li><a href="http://makermedia.com/work-with-us/advertising/" target="_blank">Advertise</a></li> 
 								<li><a href="http://makermedia.com/privacy/" target="_blank">Privacy</a></li>
 							</ul>
@@ -115,7 +114,7 @@
 					<!-- END span3 about-us -->
 					</div>
 					<div class="span3 subscribe">
-						<a href="https://www.pubservice.com/MK/subscribe.aspx?PC=MK&PK=M3AMZB" target="_blank">
+						<a href="https://www.pubservice.com/MK/subscribe.aspx?PC=MK&amp;PK=M3AMZB" target="_blank">
 							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/footer-make-cover.gif" alt="MAKE Magazine Cover" width="115" height="163" id="mag-cover">
 						</a>
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/arrow-footer.png" width="80" height="48" id="mag-arrow">

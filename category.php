@@ -37,7 +37,7 @@ make_get_header(); ?>
 						echo '<div class="span12">';
 					}
 				?>
-					<?php if ( is_category( 'electronics' ) || cat_is_ancestor_of( wpcom_vip_get_category_by_slug( 'electronics' ), get_queried_object() ) ) { echo '<p class="pull-right"><a href="http://pubads.g.doubleclick.net/gampad/clk?id=62875378&iu=/11548178/Makezine"><img src="' . get_stylesheet_directory_uri() . '/img/element14.png" /></a></p>'; } ?>
+					<?php if ( is_category( 'electronics' ) || cat_is_ancestor_of( wpcom_vip_get_category_by_slug( 'electronics' ), get_queried_object() ) ) { echo '<p class="pull-right"><a href="http://pubads.g.doubleclick.net/gampad/clk?id=62875378&amp;iu=/11548178/Makezine"><img src="' . get_stylesheet_directory_uri() . '/img/element14.png" /></a></p>'; } ?>
 
 					<h1 class="jumbo"><?php single_cat_title('', true); ?></h1>
 				
@@ -152,7 +152,7 @@ make_get_header(); ?>
 
 							while ( $the_query->have_posts() ) : $the_query->the_post();
 								$link = get_post_custom_values( 'Link' , get_the_ID() );
-								echo do_shortcode('[youtube='. esc_url( $link[0] ) .'&w=442]');
+								echo do_shortcode('[youtube='. esc_url( $link[0] ) .'&amp;w=442]');
 								the_title( '<h4>' . '<a href="' . get_permalink() . '">', '</a></h4>' );
 								echo '<p>' . wp_trim_words( strip_shortcodes( $post->post_content ), 20, '...' ) . '</p>';
 							endwhile;
