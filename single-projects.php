@@ -83,17 +83,6 @@ get_header(); ?>
 											echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 620, 465 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
 										}
 									?>
-									<?php
-										/**
-										 * Loading this remove filter in the functions.php resulted in an early run.
-										 * Placing right before the the content did the trick.
-										 * We want to pull the sharing on projects in the content because we need to load it in a custom area.
-										 * 
-										 * @since Data
-										 */
-										remove_filter( 'the_content', 'sharing_display', 19 );
-										remove_filter( 'the_content', 'post_likes', 30, 1 );
-									?>
 									<?php the_content(); ?>
 									
 								</div>
@@ -304,23 +293,6 @@ get_header(); ?>
 										</div>
 										
 										<?php } ?>
-										
-										<?php 
-											/**
-											 * Place the sharing and like modules at the "true" bottom of the page.
-											 * We'll also want to make sure they are also enabled before loading them
-											 *
-											 * @since  data
-											 */
-											if ( function_exists( 'sharing_display' ) || function_exists( 'post_likes' ) ) : ?>
-												<div class="row">
-													<div class="span12">
-														<?php echo ( function_exists( 'sharing_display' ) ) ? sharing_display() : ''; ?>
-														<?php echo ( function_exists( 'post_likes' ) ) ? post_likes() : ''; ?>
-													</div>
-												</div>
-											<?php endif;
-										?>
 										
 									</div>
 								
