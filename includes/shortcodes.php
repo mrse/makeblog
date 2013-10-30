@@ -631,6 +631,53 @@ function maker_camp_registration( $atts, $content = null ) {
 }
 add_shortcode( 'maker_camp_sign_up', 'maker_camp_registration' );
 
+// Multi Newsletter Subscribe
+
+function multi_newsletter_subscribe( $atts, $content = null ) {
+	return '
+		<div class="newsletter-signup">
+			<form action="http://makermedia.createsend.com/t/r/s/jrourr/" method="post" id="subForm" class="form form-horizontal">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="name">Name:</label>
+						<div class="controls">
+							<input type="text" name="cm-name" id="name" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="jrourr-jrourr">Email:</label>
+						<div class="controls">
+							<input type="text" name="cm-jrourr-jrourr" id="jrourr-jrourr" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="optionsCheckbox">Plus, sign me up for these FREE newsletters</label>
+						<div class="controls">
+							<label for="MAKENewsletter">
+								<input type="checkbox" name="cm-ol-jjuylk" id="MAKENewsletter" />
+								MAKE Newsletter
+							</label>
+							<label for="MakerFaireNewsletter">
+								<input type="checkbox" name="cm-ol-jjuruj" id="MakerFaireNewsletter" />
+								Maker Faire Newsletter
+							</label>
+							<label for="MakerShed-MasterList">
+								<input type="checkbox" name="cm-ol-tyvyh" id="MakerShed-MasterList" />
+								Maker Shed
+							</label>
+						<label for="MarketWireNewsletter">
+													<input type="checkbox" name="cm-ol-jrsydu" id="MAKEMarketWirenewsletter" /> Maker Pro Newsletter
+													</label> 
+						</div>
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-large btn-primary">Subscribe!</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>';
+}
+add_shortcode( 'newsletters', 'multi_newsletter_subscribe' );
 
 /**
  * * Adds a campaign monitor form to the post content
