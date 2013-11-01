@@ -182,7 +182,7 @@ Template Name: Home Page Test
 
 					<div class="span12">
 
-						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN02">
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M37BN02">
 							<img src="http://cdn.makezine.com/make/ads/Make_SIP-ProjectsGuide_SubOffer_940x39.gif" alt="Subscribe to MAKE magazine" />
 						</a>
 
@@ -263,7 +263,7 @@ Template Name: Home Page Test
 							$cap_youtube = make_get_cap_option( 'youtube' );
 							if ( $cap_youtube ) {
 								echo '<div class="small-youtube">';
-								echo do_shortcode('[youtube='. wp_kses_post( $cap_youtube ) .'&amp;w=590&amp;h=332]');
+								echo do_shortcode('[youtube='. wp_kses_post( $cap_youtube ) .'&w=590&h=332]');
 								echo '</div>';
 							}; 
 							?>

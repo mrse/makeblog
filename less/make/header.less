@@ -58,15 +58,14 @@
 			float:right;
 			margin:0;
 			input[type="text"] {
-				width:165px;
-				border: none;
+				display:none;
 				padding:5px 0 4px 8px;
 				color:#777;
-				.box-shadow(0 0 0 transparent);
-				// &:focus { .box-shadow(0 0 0 transparent); }
+				&:focus { .box-shadow(0 0 0 transparent); }
 			}
 			input[type="image"] { margin:4px 8px 5px; }
 			&.open {
+				width:220px;
 				border:@the-border solid @red;
 				border-top:none;
 				.border-bottom-right-radius(5px);
@@ -78,14 +77,6 @@
 			}
 		}
 	}
-}
-
-.page-template-page-craft-php .main-header .logo {
-margin-top: 60px;
-}
-
-.single-craft .main-header .hdr-sub-ad-01, .post-type-archive-craft .main-header .hdr-sub-ad-01{
-	margin-top: 17px;
 }
 
 // Wrapper containing the secondary navigation

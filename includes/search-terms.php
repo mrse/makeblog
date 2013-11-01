@@ -108,7 +108,7 @@ function make_search_header() {
 		$si = 1;
 	}
 	$siteSearch = ( !empty( $_GET['as_sitesearch'] ) ) ? htmlspecialchars( esc_attr( $_GET['as_sitesearch'] ) ) : '';
-	$url = wpcom_vip_file_get_contents('http://www.google.com/search?start=0&amp;num=10&amp;q='.urlencode($q).'&amp;start='.urlencode($si).'&amp;count=10&amp;cx=013710623676068871951:xunnvqtkgnw&amp;output=xml_no_dtd&amp;client=google-csbe&amp;as_sitesearch='.$siteSearch);
+	$url = wpcom_vip_file_get_contents('http://www.google.com/search?start=0&num=10&q='.urlencode($q).'&start='.urlencode($si).'&count=10&cx=013710623676068871951:xunnvqtkgnw&output=xml_no_dtd&client=google-csbe&as_sitesearch='.$siteSearch);
 
 	$json_output = simplexml_load_string( $url );
 
@@ -129,7 +129,7 @@ function make_search() {
 	}
 	$siteSearch = htmlspecialchars(esc_attr($_GET['as_sitesearch']));
 
-	$url = wpcom_vip_file_get_contents('http://www.google.com/search?start=0&amp;num=10&amp;q='.urlencode($q).'&amp;start='.urlencode($si).'&amp;count=10&amp;cx=013710623676068871951:xunnvqtkgnw&amp;output=xml_no_dtd&amp;client=google-csbe&amp;as_sitesearch='.$siteSearch);
+	$url = wpcom_vip_file_get_contents('http://www.google.com/search?start=0&num=10&q='.urlencode($q).'&start='.urlencode($si).'&count=10&cx=013710623676068871951:xunnvqtkgnw&output=xml_no_dtd&client=google-csbe&as_sitesearch='.$siteSearch);
 	$json_output = simplexml_load_string( $url );
 
 	if ( ! $json_output )
@@ -259,7 +259,7 @@ function make_search() {
 				echo '<div class="span8"><h3><a href="'.make_linkify($item).'">';
 				make_namify($item);
 				echo '</a></h3>';
-				echo '<a href="' . make_linkify( $item ) . '">' . $item->UE . '</a>';
+				echo '<a href="'.make_linkify($item).'"</a>'.$item->UE.'</a>';
 				echo '<p>'.strip_tags($item->S).'</p></div></div><div class="clear:both"></div></div><div class="clear:both"></div>';
 			} else {
 				echo '<div class="row result"><div class="result">';
@@ -267,7 +267,7 @@ function make_search() {
 				//namify($item);
 				make_namify($item);
 				echo '</a></h3>';
-				echo '<a href="' . make_linkify( $item ) . '">' . $item->UE . '</a>';
+				echo '<a href="'.make_linkify($item).'"</a>'.$item->UE.'</a>';
 				echo '<p>'.strip_tags($item->S).'</p></div></div></div>	';
 			}
 	

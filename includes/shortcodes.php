@@ -238,7 +238,7 @@ function make_volume_blurb() {
 
 			<p>Try your hand at 22 great DIY projects, like the Optical Tremolo guitar effects box, "Panjolele" cake-pan ukelele, Wii Nunchuk Mouse, CNC joinery tricks, treat-dispensing cat scratching post, laser-cut flexing wooden books, sake brewing, growing incredibly hot “ghost chili” peppers, and much more.</p>
 
-			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/Make_Volume_33_p/mmv33.htm">Maker Shed</a></p>
+			<p>On newsstands now, by <a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M3ANEWT">subscription</a>, or available in the <a href="http://www.makershed.com/Make_Volume_33_p/mmv33.htm">Maker Shed</a></p>
 
 			<p><a class="btn btn-primary" href="http://www.makershed.com/ProductDetails.asp?ProductCode=9781449327651-P">Buy now!</a></p>
 
@@ -631,53 +631,6 @@ function maker_camp_registration( $atts, $content = null ) {
 }
 add_shortcode( 'maker_camp_sign_up', 'maker_camp_registration' );
 
-// Multi Newsletter Subscribe
-
-function multi_newsletter_subscribe( $atts, $content = null ) {
-	return '
-		<div class="newsletter-signup">
-			<form action="http://makermedia.createsend.com/t/r/s/jrourr/" method="post" id="subForm" class="form form-horizontal">
-				<fieldset>
-					<div class="control-group">
-						<label class="control-label" for="name">Name:</label>
-						<div class="controls">
-							<input type="text" name="cm-name" id="name" />
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="jrourr-jrourr">Email:</label>
-						<div class="controls">
-							<input type="text" name="cm-jrourr-jrourr" id="jrourr-jrourr" />
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="optionsCheckbox">Plus, sign me up for these FREE newsletters</label>
-						<div class="controls">
-							<label for="MAKENewsletter">
-								<input type="checkbox" name="cm-ol-jjuylk" id="MAKENewsletter" />
-								MAKE Newsletter
-							</label>
-							<label for="MakerFaireNewsletter">
-								<input type="checkbox" name="cm-ol-jjuruj" id="MakerFaireNewsletter" />
-								Maker Faire Newsletter
-							</label>
-							<label for="MakerShed-MasterList">
-								<input type="checkbox" name="cm-ol-tyvyh" id="MakerShed-MasterList" />
-								Maker Shed
-							</label>
-						<label for="MarketWireNewsletter">
-													<input type="checkbox" name="cm-ol-jrsydu" id="MAKEMarketWirenewsletter" /> Maker Pro Newsletter
-													</label> 
-						</div>
-					</div>
-					<div class="form-actions">
-						<button type="submit" class="btn btn-large btn-primary">Subscribe!</button>
-					</div>
-				</fieldset>
-			</form>
-		</div>';
-}
-add_shortcode( 'newsletters', 'multi_newsletter_subscribe' );
 
 /**
  * * Adds a campaign monitor form to the post content

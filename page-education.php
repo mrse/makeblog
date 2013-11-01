@@ -61,11 +61,11 @@ make_get_header() ?>
 
 						if ( $side_query->have_posts() ) : while ( $side_query->have_posts() ) : $side_query->the_post(); ?>
 							<article <?php post_class( 'side-post' ); ?>>
-								<div class="">
-									<a href="<?php the_permalink(); ?>"><h4 class="side-title"><?php the_title(); ?></h4></a>	
+								<div class="media">
+									<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'archive-thumb', array( 'class' => 'media-object' ) ); ?></a>
 								</div>
 								<div class="media-body">
-									<a class="media thumbnail pull-left" href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'archive-thumb', array( 'class' => 'media-object' ) ); ?></a>
+									<a href="<?php the_permalink(); ?>"><h4 class="side-title"><?php the_title(); ?></h4></a>
 									<p><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?></p>
 								</div>
 							</article>
