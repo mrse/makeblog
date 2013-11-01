@@ -15,6 +15,10 @@ make_get_header() ?>
 			<div class="row">
 
 				<div class="span8">
+
+					<h1>Search Results: <?php echo get_search_query(); ?></h1>
+
+					<div><?php get_search_form(); ?></div>
 					
 					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
