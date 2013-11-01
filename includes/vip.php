@@ -209,8 +209,7 @@ if ( function_exists( 'vip_redirects' ) ) {
 		'/5issues'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M34AIR',
 		'/3DPDF'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
 		'/3dpdf'					=> 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M35SIP',
-		'/magazine'					=> 'http://makezine.com/volume/make-36/',
-		'/36'						=> 'http://makezine.com/volume/make-36/',
+		'/magazine'					=> 'http://makezine.com/volume/make-35/',
 		'/35'						=> 'http://makezine.com/volume/make-35/',
 		'/34'						=> 'http://makezine.com/volume/make-34/',
 		'/01'						=> 'http://archive.makezine.com/01/',
@@ -328,4 +327,45 @@ add_action( 'init', function() {
         wp_redirect( esc_url_raw( 'http://archive.makezine.com' . $_SERVER['REQUEST_URI'] ) );
         exit;
     }
+<<<<<<< HEAD
 } );
+=======
+} );
+
+
+// Sets ElasticSearch facets
+add_action( 'after_setup_theme', function() {
+ 
+    if ( ! function_exists( 'WPCOM_elasticsearch' ) )
+        return;
+ 
+    WPCOM_elasticsearch()->set_facets( array(
+        'Content Type' => array(
+            'type'     => 'post_type',
+            'count'    => 10,
+        ),
+        'Categories' => array(
+            'type'     => 'taxonomy',
+            'taxonomy' => 'category',
+            'count'    => 10,
+        ),
+        'Tags' => array(
+            'type'     => 'taxonomy',
+            'taxonomy' => 'post_tag',
+            'count'    => 10,
+        ),
+        'Year' => array(
+            'type'     => 'date_histogram',
+            'field'    => 'post_date',
+            'interval' => 'year',
+            'count'    => 10,
+        ),
+        'Month' => array(
+            'type'     => 'date_histogram',
+            'field'    => 'post_date',
+            'interval' => 'month',
+            'count'    => 10,
+        ),
+    ) );
+});
+>>>>>>> parent of 248e8de... Merge-O-Matic.
