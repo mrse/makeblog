@@ -583,7 +583,7 @@ function new_js_add_review($content) {
 
 //add_filter('the_excerpt_rss', 'new_js_add_review');
 
-vip_redirects( array('/kitguide' => 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M21KTAD') );
+vip_redirects( array('/kitguide' => 'https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M21KTAD') );
 
 $field_data = array (
 	'Kit' => array (

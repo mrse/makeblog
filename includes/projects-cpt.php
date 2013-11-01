@@ -566,8 +566,7 @@ function make_projects_steps( $steps, $print = false ) {
  *
  */
 function make_projects_parts( $parts ) {
-	$output = '<h3 class="show-print">Parts</h3>';
-	$output .= '<ul class="lists">';
+	$output = '<ul class="lists">';
 
 	foreach ( $parts as $part ) {
 		$notes = null;
@@ -612,8 +611,7 @@ function make_projects_parts( $parts ) {
  *
  */
 function make_projects_tools( $tools ) {
-	$output = '<h3 class="show-print">Tools</h3>';
-	$output .= '<ul class="lists">';
+	$output = '<ul class="lists">';
 
 	// The array is complicated, thus this foreach is complicated... $tool is an object.
 	if ( ! empty( $tools[0] ) && is_array( $tools[0] ) ) {

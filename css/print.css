@@ -2,7 +2,7 @@
 .biggins,
 .header-bottom,
 .topics,
-body.blog .span4.sidebar,
+.span4.sidebar,
 .footer-ad,
 .navi,
 .navbar-inverse,
@@ -66,9 +66,6 @@ a:visited {
 .visible-print {
   display: none !important;
 }
-.show-print {
-  display: block !important;
-}
 .projects-masthead {
   padding-top: 0;
 }
@@ -118,59 +115,4 @@ abbr[title]:after {
 }
 body.single-projects .hide {
   display: block;
-}
-.main-header {
-  border: none;
-}
-.main-header .logo {
-  margin-top: 0;
-}
-.projects-masthead h1 {
-  font-size: 2.8em !important;
-  line-height: 1em;
-}
-body.single-projects .category-top .container .row > div {
-  padding-top: 6px;
-}
-body.single-projects .project-masthead {
-  padding-top: 50px;
-}
-.projects-top .row .span9 > h3,
-.projects-top .row .span9 > ul.subs {
-  display: none;
-}
-.span4.sidebar .parts-tools {
-  display: block !important;
-  max-height: auto !important;
-  overflow: visible;
-}
-.span4.sidebar .parts-tools .top {
-  display: none;
-}
-.span4.sidebar .parts-tools .tab-content .tab-pane {
-  display: block;
-}
-.type-volume .type-magazine .span2 {
-  width: 140px;
-  float: left;
-}
-.type-volume .type-magazine .span6 {
-  width: 460px;
-  margin-left: 20px;
-  float: left;
-}
-.author-bio .span2 {
-  width: 140px !important;
-  float: left;
-  margin-right: 20px;
-}
-.author-bio .span6 {
-  width: 460px !important;
-  float: left;
-}
-#div-gpt-ad-664089004995786621-3,
-.related-projects,
-.projects-ad,
-.embed-youtube {
-  display: none;
 }

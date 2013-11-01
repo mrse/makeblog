@@ -320,7 +320,7 @@ function make_carousel( $args, $title_link = true ) {
 						echo $args['title'];
 					}
 				?>
-			</h2>
+			</h3>
 		</div>
 		<div class="span2">
 			<?php
@@ -380,7 +380,7 @@ function make_carousel( $args, $title_link = true ) {
 									echo '<a href="'. get_permalink( $post->ID ) . '"><img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 218, 146 ) . '" alt="' . the_title_attribute( 'echo=0' ) . '" /></a>';
 								} elseif ( $type == 'video' ) {
 									$link = get_post_custom_values( 'Link' , $post->ID );
-									$link = 'http://www.youtube.com/oembed?format=json&amp;url=' . esc_url( $link[0] );
+									$link = 'http://www.youtube.com/oembed?format=json&url=' . esc_url( $link[0] );
 									$contents = wpcom_vip_file_get_contents( $link );
 									if ($contents != false) {
 										$json_output = json_decode($contents);
@@ -653,13 +653,13 @@ function make_video_photo_gallery( $attr ) {
 			$output .= '<div class="item">';
 		}
 		if ( $youtube == true ) {
-			$output .= do_shortcode('[youtube='. esc_url( $post ) .'&amp;w=620]');
+			$output .= do_shortcode('[youtube='. esc_url( $post ) .'&w=620]');
 		} elseif ( $vine == true ) {
 			$output .= do_shortcode( '[vine url="' . esc_url( $post ) . '" type="simple" width="620"]' );
 		} else {
 			if ( get_post_type() == 'video' ) {
 				$url = get_post_meta( get_the_ID(), 'Link', true );
-				$output .= do_shortcode('[youtube='. esc_url( $url ) .'&amp;w=620]');
+				$output .= do_shortcode('[youtube='. esc_url( $url ) .'&w=620]');
 			} else {
 				$output .= wp_get_attachment_image( get_the_ID(), 'medium' );
 			}

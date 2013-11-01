@@ -24,10 +24,10 @@
 							<h5>Maker Camp Resources</h5>
 								<ul>
 									<li><a href="http://cdn.makezine.com/make/maker-camp/coordinator/MakerCamp_Talent_Release.pdf" target="_blank">Hangout Participant Release Form</a></li>
-									<li><a href="https://support.google.com/plus/answer/2407397?hl=en&amp;topic=2409412&amp;ctx=topic" target="_blank">G+ Teen Safety Guide</a></li>
+									<li><a href="https://support.google.com/plus/answer/2407397?hl=en&topic=2409412&ctx=topic" target="_blank">G+ Teen Safety Guide</a></li>
 									<li><a href="http://www.google.com/intl/en/+/safety/" target="_blank">Safety Center</a></li>
-									<li><a href="https://support.google.com/plus/answer/2423637?hl=en&amp;topic=2401644&amp;ctx=topic" target="_blank">For Parents</a></li>
-									<li><a href="https://support.google.com/plus/answer/2403357?hl=en&amp;topic=2401644&amp;ctx=topic" target="_blank">For Education</a></li>
+									<li><a href="https://support.google.com/plus/answer/2423637?hl=en&topic=2401644&ctx=topic" target="_blank">For Parents</a></li>
+									<li><a href="https://support.google.com/plus/answer/2403357?hl=en&topic=2401644&ctx=topic" target="_blank">For Education</a></li>
 									<li class="last"><a href="http://makezine.com/maker-camp/schedule-2012/">2012 Schedule</a></li>
 								</ul>
 						<!-- END trending -->
