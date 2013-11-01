@@ -7910,6 +7910,9 @@ textarea.narrow,
   margin-top: 0;
   margin-bottom: 3px;
 }
+code {
+  display: inline-block !important;
+}
 .custom-feed.simple {
   border: 1px solid #dadada;
   border-radius: 5px;
