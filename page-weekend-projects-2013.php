@@ -60,7 +60,7 @@ get_header(); ?>
 				<div class="span4">
 
 					<?php dynamic_sidebar( 'sidebar_weekend_projects' ); ?>
-					
+										
 					<div class="sidebar-ad">
 
 						<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->

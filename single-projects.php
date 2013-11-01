@@ -83,7 +83,6 @@ get_header(); ?>
 											echo '<img src="' . wpcom_vip_get_resized_remote_image_url( make_projects_to_s3( $image[0] ), 620, 465 ) . '" alt="' . esc_attr( the_title('', '', false ) ) . '" />';
 										}
 									?>
-									
 									<?php the_content(); ?>
 									
 								</div>
