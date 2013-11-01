@@ -131,11 +131,7 @@ global $post;
 				elseif (is_single(array(122575))) {
 					echo "googletag.pubads().setTargeting('sponsor',['xobject']);";
 				}
-<<<<<<< Updated upstream
 				elseif ( is_category( array( 'electronics', 'arduino', 'computers-mobile', 'raspberry-pi', 'robotics' ) ) || post_is_in_descendant_category( 'electronics' ) || has_category( 'electronics' ) ) {
-=======
-				elseif ( is_category( array( 'electronics', 'arduino', 'computers-mobile', 'raspberry-pi', 'robotics' ) ) || post_is_in_descendant_category( 'elctronics' ) || has_category( 'electronics' ) ) {
->>>>>>> Stashed changes
 					echo "googletag.pubads().setTargeting('sponsor',['element14']);";
 				}
 				elseif (is_page( array( 289746,271575 ) ) ) {
