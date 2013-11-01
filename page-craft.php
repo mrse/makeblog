@@ -100,15 +100,15 @@ Template Name: Craft Home Page
 
 					<div class="span4">
 
-						<div>
+						<div class="home-ads">
 
 							<a href="http://pubads.g.doubleclick.net/gampad/clk?id=17983018&iu=/11548178/Makezine">
-								<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Make_Money_298x144.jpg" class="contribute" alt="Make: Money Sell MAKE subscriptions and make money for your organization" />
+								<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Make_Money_298x144.jpg" alt="Make: Money Sell MAKE subscriptions and make money for your organization" />
 							</a>
 
 						</div>
 
-						<div style="height:250x;overflow:hidden">
+						<div class="home-ads bottom">
 
 							<!-- Beginning Sync AdSlot 2 for Ad unit header ### size: [[300,250]]  -->
 							<div id='div-gpt-ad-664089004995786621-2'>
@@ -137,8 +137,8 @@ Template Name: Craft Home Page
 
 					<div class="span12">
 
-						<a href="https://www.pubservice.com/mk/subscribe.aspx?PC=MK&PK=M2A3DP4">
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/Make_3D-SIP_1112_940x39.png" alt="Subscribe to MAKE magazine" />
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M37BN02">
+							<img src="http://cdn.makezine.com/make/ads/Make_SIP-ProjectsGuide_SubOffer_940x39.gif" alt="Subscribe to MAKE magazine" />
 						</a>
 
 					</div>
@@ -404,10 +404,6 @@ Template Name: Craft Home Page
 				</div>
 
 			</div>
-
-		</div>
-
-		</div>
 
 		<div class="clear"></div>
 

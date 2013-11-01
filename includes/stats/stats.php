@@ -64,7 +64,10 @@ function make_get_plusone_count( $url ) {
 
 function make_social_stats() {
 	if ( $_POST ) {
-		$url = esc_url( $_POST["url"] );
+		$url 		= ( isset( $_POST['url'] ) ) ? esc_url( $_POST['url'] ) : '' ;
+		$post_ID 	= ( isset( $_POST['post_ID'] ) ) ? intval( $_POST['post_ID'] ) : '' ;
+		$num_days 	= ( isset( $_POST['num_days'] ) ) ? intval( $_POST['num_days'] ) : '' ;
+		$end_date 	= ( isset( $_POST['num_days'] ) ) ? sanitize_title( $_POST['end_date'] ) : '' ;
 	}
 	?>
 	<div class="wrap">
@@ -72,7 +75,7 @@ function make_social_stats() {
 		<h1>The Social Counter!</h1>
 		
 		<div id="" class="postbox metabox-holder">
-			<h3 class="hndle"><span>Like, the best tool ever...</span></h3>
+			<h3 class="hndle"><span>Social Stats</span></h3>
 			<div class="inside">
 				<div class="table table_content">
 					<p class="sub">Add a URL to get stats</p>
@@ -86,7 +89,7 @@ function make_social_stats() {
 					
 					<?php
 			
-						if ( !empty( $_POST ) && wp_verify_nonce( $_POST['make_stats_nonce'], 'make_stats_nonce' ) ) {
+						if ( !empty( $_POST['make_stats_nonce'] ) && wp_verify_nonce( $_POST['make_stats_nonce'], 'make_stats_nonce' ) ) {
 
 							echo '<table class="table table-striped table-bordered"><thead><tr><th>Site</th><th>Count</th></tr></thead><tbody>';
 							echo '<tr><td>Twitter Tweets</td>';
@@ -102,6 +105,40 @@ function make_social_stats() {
 					<br class="clear">
 				</div>
 			</div>
+		</div>
+
+		<div class="postbox metabox-holder">
+
+			<h3 class="hndle"><span>WordPress.com Stats Counter</span></h3>
+			
+			<div class="inside">
+				<div class="table table_content">
+					<p class="sub">Add a Post ID to combined stats for the page.</p>
+					<form action="" method="post" class="">
+						<input type="text" class="span3" placeholder="Post ID" name="post_ID">
+						<input type="text" class="span3" placeholder="Number of Days" name="num_days">
+						<input type="date" class="span3" placeholder="End Date" name="end_date">
+						<?php wp_nonce_field( 'make_wpcom_stats_nonce', 'make_wpcom_stats_nonce' ); ?>
+						<button type="submit" class="btn btn info">Submit</button>
+					</form>
+					
+					<br class="clear">
+					
+					<?php
+			
+						if ( !empty( $_POST['make_wpcom_stats_nonce'] ) && wp_verify_nonce( $_POST['make_wpcom_stats_nonce'], 'make_wpcom_stats_nonce' ) ) {
+
+							echo '<table class="table table-striped table-bordered"><thead><tr><th>Site</th><th>Count</th></tr></thead><tbody>';
+							echo '<tr><td>Page Views</td>';
+							echo '<td>' . wpcom_vip_get_post_pageviews( $post_ID, $num_days, $end_date ) . '</td></tr>';
+							echo '</tbody></table>';
+						}
+					?>
+					
+					<br class="clear">
+				</div>
+			</div>
+
 		</div>
 	<?php
 }

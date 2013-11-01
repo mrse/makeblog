@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title><?php echo make_generate_title_tag(); ?></title>
-		<meta name="description" content="<?php echo make_generate_description(); ?>" />
+		<meta name="description" content="<?php echo esc_attr( make_generate_description() ); ?>" />
 
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>

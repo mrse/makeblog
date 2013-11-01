@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title><?php echo make_generate_title_tag(); ?></title>
-		<meta name="description" content="<?php echo make_generate_description(); ?>" />
+		<meta name="description" content="<?php echo esc_attr( make_generate_description() ); ?>" />
 
 		<meta name="p:domain_verify" content="c4e1096cb904ca6df87a2bb867715669" >
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -39,7 +39,7 @@
 	</head>
 
 	<body <?php body_class(); ?>>	
-		<div class="container">
+		<div class="container hidden-print">
 			<div class="row">
 				<div id="div-gpt-ad-664089004995786621-1" class="text-center">
 					<script type='text/javascript'>
@@ -59,7 +59,7 @@
 								<h2 title="Make Magazine - <?php echo bloginfo( 'description' ); ?>"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/make-logo.png"  alt="Tech-savvy DIY Enthusiasts Innovative Projects and Ideas" /></a></h2>
 							<?php endif; ?>
 						</div>
-						<nav role="navigation" class="span7 site-navigation primary-navigation">
+						<nav role="navigation" class="span7 site-navigation primary-navigation hidden-print">
 							<?php
 								wp_nav_menu( array(
 									'theme_location'  => 'make-primary', 
@@ -69,19 +69,22 @@
 							?>
 						</nav>
 
-						<div class="additional-content">						
+						<div class="additional-content hidden-print">						
 							<form action="<?php echo home_url(); ?>/search/" class="search-make open">
 								<input type="text" class="search-field" name="q" placeholder="Search" />
 								<input type="image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/search-btn.png" alt="Search" class="open" value="Search" />
 							</form>
-							<div class="hdr-sub-ad-01" >
-								<a href="<?php echo home_url( '/subscribe' ); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/MakeAd_Circle.png" alt="Subscribe to Make Magazine" /></a>
+							<div class="clearfix"></div>
+							<div id="div-gpt-ad-664089004995786621-5" class="hdr-sub-ad-01" >
+								<script type='text/javascript'>
+									googletag.cmd.push(function(){googletag.display('div-gpt-ad-664089004995786621-5')});
+								</script>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="secondary-header">
+			<div class="secondary-header hidden-print">
 				<div class="container">
 					<div class="row">
 						<nav class="span12 site-navigation secondary-navigation">
