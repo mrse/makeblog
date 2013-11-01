@@ -190,7 +190,7 @@ Template Name: Home Page
 
 					<div class="span12">
 
-						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&PK=M37BN02">
+						<a href="https://readerservices.makezine.com/mk/subscribe.aspx?PC=MK&amp;PK=M37BN02">
 							<img src="http://cdn.makezine.com/make/ads/Make_SIP-ProjectsGuide_SubOffer_940x39.gif" alt="Subscribe to MAKE magazine" />
 						</a>
 
@@ -280,11 +280,11 @@ Template Name: Home Page
 							if ( is_numeric( $cap_youtube ) ) {
 								$youtube = get_post_meta( $cap_youtube, 'Link', true );
 								echo '<div class="small-youtube">';
-								echo do_shortcode('[youtube='. esc_url( $youtube ) .'&w=590&h=332]');
+								echo do_shortcode('[youtube='. esc_url( $youtube ) .'&amp;w=590&amp;h=332]');
 								echo '</div>';
 							} elseif ( $cap_youtube ) {
 								echo '<div class="small-youtube">';
-								echo do_shortcode('[youtube='. esc_url( $cap_youtube ) .'&w=590&h=332]');
+								echo do_shortcode('[youtube='. esc_url( $cap_youtube ) .'&amp;w=590&amp;h=332]');
 								echo '</div>';
 							}; 
 							?>

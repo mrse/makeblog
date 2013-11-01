@@ -26,7 +26,6 @@ wpcom_vip_load_plugin( 'get-the-image' );
 wpcom_vip_load_plugin( 'cheezcap' );
 wpcom_vip_load_plugin( 'add-meta-tags-mod' );
 wpcom_vip_load_plugin( 'wpcom-thumbnail-editor' );
-wpcom_vip_load_plugin( 'wpcom-elasticsearch' );
 
 // Needs to run on the contribute page, admin, and possibly page 2 pages.
 if ( is_page( 'contribute' ) || is_admin() ) {
@@ -330,39 +329,3 @@ add_action( 'init', function() {
         exit;
     }
 } );
-
-// Sets ElasticSearch facets
-add_action( 'after_setup_theme', function() {
- 
-    if ( ! function_exists( 'WPCOM_elasticsearch' ) )
-        return;
- 
-    WPCOM_elasticsearch()->set_facets( array(
-        'Content Type' => array(
-            'type'     => 'post_type',
-            'count'    => 10,
-        ),
-        'Categories' => array(
-            'type'     => 'taxonomy',
-            'taxonomy' => 'category',
-            'count'    => 10,
-        ),
-        'Tags' => array(
-            'type'     => 'taxonomy',
-            'taxonomy' => 'post_tag',
-            'count'    => 10,
-        ),
-        'Year' => array(
-            'type'     => 'date_histogram',
-            'field'    => 'post_date',
-            'interval' => 'year',
-            'count'    => 10,
-        ),
-        'Month' => array(
-            'type'     => 'date_histogram',
-            'field'    => 'post_date',
-            'interval' => 'month',
-            'count'    => 10,
-        ),
-    ) );
-});
