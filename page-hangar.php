@@ -51,7 +51,7 @@ get_header(); ?>
 
 							<p>Join us on the <a href="https://plus.google.com/communities/111848781234483620161">Maker Hangar Google+ Community page</a> to share your ideas, comments, photos and video and details for your own RC plane project builds.</p>
 
-							<p>NOTE: Be sure to check out the <a href="#parts" role="button" class="" data-toggle="modal">parts list</a> for the materials you’ll need to build the Maker Trainer. </p>
+							<p>NOTE: Be sure to check out the <a href="#parts" role="button" class="" data-toggle="modal">parts list</a> for the materials you’ll need to build the Maker Trainer, and <a href="http://cdn.makezine.com/make/makerhanger/makertrainerver3_1.pdf">download the PDF plans</a>.</p>
 							
 							<!-- Modal -->
 							<div id="parts" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
