@@ -6,6 +6,7 @@
 		<meta name="description" content="<?php echo esc_attr( make_generate_description() ); ?>" />
 
 		<meta name="p:domain_verify" content="c4e1096cb904ca6df87a2bb867715669" >
+		<meta name="google-site-verification" content="tjgq9UGR8WCMZI_40j_B5wda_oVYqKyFtQW547LzMgQ" />
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
