@@ -399,6 +399,11 @@ $cap = new CheezCap( array(
 					'qualtrics_script_percent',
 					'8'
 				),
+				new CheezCapBooleanOption(
+					'Display Survey Monkey Script',
+					'Do you want to show the survey script?',
+					'survey_monkey_script'
+				),
 			)
 		),
 	), array(
