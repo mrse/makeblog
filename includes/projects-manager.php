@@ -388,8 +388,8 @@
 				$int = 0;
 			 	foreach( $_POST[ 'step-lines-' . $i ] as $line ) {
 					$step['lines'][] = (object) array(
-						'text'     => wp_filter_post_kses( htmlentities( $line ) ),
-						'text_raw' => wp_filter_post_kses( htmlentities( $line ) ),
+						'text'     => wp_filter_post_kses( $line ),
+						'text_raw' => wp_filter_post_kses( $line ),
 						'bullet'   => 'black',
 						'level'    => 0
 					);
