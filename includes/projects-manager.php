@@ -372,11 +372,11 @@
 	function make_magazine_projects_save_step_manager( $post_id ) {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
 		if ( ! isset( $_POST['meta_box_nonce'] ) || ! wp_verify_nonce( $_POST['meta_box_nonce'], 'make-mag-projects-metabox-nonce' ) ) return;
-		if ( ! current_user_can( 'edit_post' ) ) return;
+		if ( ! current_user_can( 'edit_post', $post_id ) ) return;
 
 
 		// Check if any of our "Step" data exists and isn't empty. Then, loop through each step and create an object for each by looping through the number of total steps sent through the $_POST array.
-		if ( $_POST['total-steps'] != '-1' ) {
+		if ( $_POST['total-steps'] != '0' ) {
 			for ( $i = 1; $i <= intval( $_POST['total-steps'] ); $i++ ) {
 				// Define a new $step array. Other wise, we'll end up getting duplicate content...
 				$step = array();
@@ -388,8 +388,8 @@
 				$int = 0;
 			 	foreach( $_POST[ 'step-lines-' . $i ] as $line ) {
 					$step['lines'][] = (object) array(
-						'text'     => wp_filter_post_kses( $line ),
-						'text_raw' => wp_filter_post_kses( $line ),
+						'text'     => wp_filter_post_kses( htmlentities( $line ) ),
+						'text_raw' => wp_filter_post_kses( htmlentities( $line ) ),
 						'bullet'   => 'black',
 						'level'    => 0
 					);
@@ -427,7 +427,7 @@
 
 
 		// Check if any of our "Parts" data exists and isn't empty. Then, loop through each part and create an array for each by looping through the number of total parts sent through the $_POST array.
-		if ( $_POST['total-parts'] != '-1' ) {
+		if ( $_POST['total-parts'] != '0' ) {
 			
 			// We need to check if post meta already exists.
 			$post_meta = get_post_meta( $post_id, 'parts' );
@@ -475,7 +475,7 @@
 
 
 		// Check if any of our "Tools" data exists and isn't empty. Then, loop through each tool and create an array for each by looping through the number of total tools sent through the $_POST array.
-		if ( $_POST['total-tools'] != '-1' )  {
+		if ( $_POST['total-tools'] != '0' )  {
 
 			// Loop through all of our tools.
 			for ( $i = 1; $i <= intval( $_POST['total-tools'] ); $i++ ) {
