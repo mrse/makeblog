@@ -154,21 +154,21 @@ function printrbot_sweepstakes_newsletter( $atts, $content = null ) {
 	return '
 		<form action="http://newsletter.makezine.com/t/r/s/tyilklk/" method="post">
     		<p>
-        		<label for="fieldName">Name</label><br />
-        		<input id="fieldName" name="cm-name" type="text" />
+        		<label for="fieldName">Name</label>
+        		<input id="fieldName" class="input-large" name="cm-name" type="text" />
     		</p>
     		<p>
-        		<label for="fieldEmail">Email</label><br />
-        		<input id="fieldEmail" name="cm-tyilklk-tyilklk" type="email" required />
+        		<label for="fieldEmail">Email</label>
+        		<input id="fieldEmail" class="input-large" name="cm-tyilklk-tyilklk" type="email" required />
     		</p>
     		<p>
-        		<label>Opt into another list</label><br />
-        		<input id="listjjuylk" name="cm-ol-jjuylk" type="checkbox" /> <label for="listjjuylk">MAKE Newsletter</label><br />
-        		<input id="listjrsydu" name="cm-ol-jrsydu" type="checkbox" /> <label for="listjrsydu">Maker Pro Newsletter</label><br />
-        		<input id="listttihir" name="cm-ol-ttihir" type="checkbox" /> <label for="listttihir">Maker Shed Newsletter</label>
+        		<label>Opt into another list</label>
+        		<input id="listjjuylk" name="cm-ol-jjuylk" type="checkbox" /> <label style="display:inline;" for="listjjuylk">MAKE Newsletter</label><br>
+        		<input id="listjrsydu" name="cm-ol-jrsydu" type="checkbox" /> <label style="display:inline;" for="listjrsydu">Maker Pro Newsletter</label><br>
+        		<input id="listttihir" name="cm-ol-ttihir" type="checkbox" /> <label style="display:inline;" for="listttihir">Maker Shed Newsletter</label><br>
     		</p>
     		<p>
-        		<button type="submit">Subscribe</button>
+        		<button class="btn blue btn-large" type="submit">Submit</button>
     		</p>
 		</form>';
 }
