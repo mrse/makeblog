@@ -144,6 +144,36 @@ add_shortcode( 'meetup', 'meetup_newsletter' );
 
 add_shortcode( 'newsletter', 'make_newsletter' );
 
+/**
+ * Adds check boxes for newsletter signup.
+ * This can be deleted after the sweepstakes are over. Dec. 2013 
+ * http://makezine.com/meetup/3dprinter/
+ */
+
+function printrbot_sweepstakes_newsletter( $atts, $content = null ) {
+	return '
+		<form action="http://newsletter.makezine.com/t/r/s/tyilklk/" method="post">
+    		<p>
+        		<label for="fieldName">Name</label><br />
+        		<input id="fieldName" name="cm-name" type="text" />
+    		</p>
+    		<p>
+        		<label for="fieldEmail">Email</label><br />
+        		<input id="fieldEmail" name="cm-tyilklk-tyilklk" type="email" required />
+    		</p>
+    		<p>
+        		<label>Opt into another list</label><br />
+        		<input id="listjjuylk" name="cm-ol-jjuylk" type="checkbox" /> <label for="listjjuylk">MAKE Newsletter</label><br />
+        		<input id="listjrsydu" name="cm-ol-jrsydu" type="checkbox" /> <label for="listjrsydu">Maker Pro Newsletter</label><br />
+        		<input id="listttihir" name="cm-ol-ttihir" type="checkbox" /> <label for="listttihir">Maker Shed Newsletter</label>
+    		</p>
+    		<p>
+        		<button type="submit">Subscribe</button>
+    		</p>
+		</form>';
+}
+add_shortcode( 'printrbot', 'printrbot_sweepstakes_newsletter' );
+
 function maker_camp_list( $atts, $content = null ) {
 	return '
 		<form class="form-stacked" action="http://makermedia.createsend.com/t/r/s/jdilcj/" method="post" id="subForm">
